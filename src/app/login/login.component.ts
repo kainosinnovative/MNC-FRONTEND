@@ -20,11 +20,8 @@ import { catchError, map } from 'rxjs';
 export class LoginComponent implements OnInit {
 public  dataForm: FormGroup;
   mobno: string = "";
-  // form:any;
-  // interval: any;
-  // name = 'angular 6';
-  // timeLeft: number = 60;
-
+  
+ 
  //dialog: any;
   // @Input() logindetails = { mobno:''}
 
@@ -67,26 +64,11 @@ Otpvrf(){
   // console.log(dialogRef);
 }
 
-startTimer() {
- 
-// this.interval = setInterval(() => {
-//     if(this.timeLeft > 0) {
-//       this.timeLeft--;
-//     } else {
-//       this.timeLeft = 60;
-//     }
-//   },1000)
-}
-
-// sendotp1(dataForm: any) {
-//   alert("hi")
-// }
-
 
   sendotp1(dataForm: any) {
 // alert()
     console.log("send otp>>>>>")
-    this.http.post('http://localhost/MYDEALER-API/app/sendOtp2', dataForm).subscribe(
+    this.http.post('http://localhost/MNC-PHP-API/app/sendOtp2', dataForm).subscribe(
       
         data => {
             console.log('POST Request is successful >>>>>>>>', data);

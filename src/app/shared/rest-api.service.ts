@@ -8,7 +8,7 @@ import { retry, catchError,map } from 'rxjs/operators';
 providedIn: 'root'
 })
 export class RestApiService {
-apiURL = 'http://localhost/jan24_2022/MNC-PHP-API';
+apiURL = 'http://localhost/MNC-PHP-API';
 constructor(private http:HttpClient) {}
 headers = new HttpHeaders().set('Content-Type', 'application/json');
 httpOptions = {

@@ -10,12 +10,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./otpverfied.component.scss']
 })
 export class OtpverfiedComponent implements OnInit {
-
+  showMyContainer: boolean = false;
+  showTimerContainer:boolean=true;
   isloggedinUser = localStorage.getItem('isloggedinUser');
   public  dataForm1: FormGroup;
   dialog: any;
   dialogRef: any;
-  
+  name = 'Angular 6';
+  timeLeft: number = 10;
+  interval:any;
+
   otpFirstDigit:any;
   otpSecondDigit:any;
   otpThirdDigit:any;
@@ -33,7 +37,7 @@ ngOnInit(): void {
     mobile: [this.isloggedinUser, null],
    
     });
-  
+ this.startTimer(); 
 }
 
 
@@ -91,8 +95,10 @@ VerifyOtp(){
 
 sendotp2(dataForm1: any) {
   // alert()
-      console.log("send otp>>>>>")
-      this.http.post('http://localhost/MYDEALER-API/app/sendOtp2', dataForm1).subscribe(
+  // this.pauseTimer();
+  this.timeLeft=20;
+     this.startTimer();
+      this.http.post('http://localhost/MNC-PHP-API/app/sendOtp2', dataForm1).subscribe(
         
           data => {
               console.log('POST Request is successful >>>>>>>>', data);
@@ -130,7 +136,26 @@ sendotp2(dataForm1: any) {
           }
       );
   }
+  startTimer() {
+   
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+       this.showTimerContainer=true;
+       this.showMyContainer=false;
+      }
+     
+      else{
+          this.showMyContainer=true;
+      this.showTimerContainer=false;
+     // this.timeLeft=10;
+       }
+    },2000)
+  }
   
+  pauseTimer() {
+    clearInterval(this.interval);
+  }  
 }
 // function loadCustomerDetails() {
 //   throw new Error('Function not implemented.');
