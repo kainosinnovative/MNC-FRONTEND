@@ -1,0 +1,150 @@
+<mat-sidenav-container fullscreen id="cont_id">
+  <!-- <h5><u><i>Footer creation using angular material !!</i></u></h5> -->
+  <mat-sidenav #sidenav class="sidenavstyle">
+  <mat-list>
+
+    <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/first'>Select a City
+    </a> </mat-list-item>
+    <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/second'>Online Booking
+    </a> </mat-list-item>
+    <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/'>
+      Shop
+       </a> </mat-list-item>
+    <mat-list-item class="menudesk1"> <a mat-list-item (click)="signup()" >
+      Offers/Deals</a> </mat-list-item>
+      
+    <mat-list-item class="menudesk1" > <a  mat-list-item (click)="login()">
+      Login</a></mat-list-item>
+
+  <mat-list-item > <a  mat-list-item routerLink='/shop'>Shop Services</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item routerLink='/customer-edit/1'>My Profile Update</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item >My Booking</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item routerLink='/testimonial/'>Testimonials</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item routerLink='/'>Blog</a> </mat-list-item>
+  <mat-list-item > <a mat-list-item routerLink='/contactus'>Contact Us</a> </mat-list-item>
+  </mat-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary" #toolbar>
+  <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="sidenav.open()">
+  <mat-icon>menu</mat-icon>
+  </button>
+  
+  
+  <mat-list-item > <img src="../assets/images/Kainos_logo.png" style="width: 60px;"> </mat-list-item> 
+  <label style="width: 55px;"></label>
+
+  <mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/first'>Select a City</a> </mat-list-item> &nbsp; &nbsp;
+
+  <mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/home'>Home</a> </mat-list-item> &nbsp; &nbsp;
+
+  <mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/shop'>Shop</a> </mat-list-item>  &nbsp; &nbsp;
+
+<!--<mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/first'>Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;-->
+
+<mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="signup()">Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;
+
+  <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)=" Otpvrf()">Online Booking </a> </mat-list-item> &nbsp; &nbsp;
+
+  <mat-list-item class="menudesk" *ngIf="!currentUsername" > <a  class="colorheaderMenu" (click)="login()">Login</a> </mat-list-item>  
+
+  <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
+  <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" (click)="logout()">LogOut</a> </mat-list-item> 
+
+  </mat-toolbar>
+
+
+ 
+
+  
+  <!-- <mat-sidenav-content> -->
+    <router-outlet></router-outlet>
+    
+    
+<div class="footer" #footer>
+  <footer class=" page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+  
+        </div>
+       
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+   
+ <a href="#!">Link 4</a>
+              </li>
+            </ul>
+  
+          </div>
+          <!-- Grid column -->
+
+
+          <div class="col-md-3 mb-md-0 mb-3">
+  
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+   
+ <a href="#!">Link 4</a>
+              </li>
+            </ul>
+  
+          </div>
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+
+
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" >© 2020 Copyright:
+      <a href="#"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+</div>
+
+
+<app-rightsidebar></app-rightsidebar>
+  </mat-sidenav-container>

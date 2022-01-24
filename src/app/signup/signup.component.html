@@ -1,0 +1,52 @@
+
+
+<form>
+  <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 336px;">
+    
+    <mat-card-header style="padding-left: 33%;" >
+      <mat-card-title >Sign Up</mat-card-title>
+      <br>
+    </mat-card-header>
+ 
+
+     <div>
+
+        <input style=" height: 32px;  width: 295px;" class="form-control" type="text" matInput placeholder="Your Name">
+        </div>
+
+        <label style="margin-top: 10px;"></label>
+        <div>
+
+        <input style=" height: 32px;  width: 295px;" type="text" class="form-control"  placeholder="Email">
+        </div>
+
+        <label style="padding-left: 8%;"> </label>
+
+        <div>
+        <select id = "myList" onchange = "favTutorial()"  style=" height: 32px;width: 63px;">   
+         
+          <option> + 91</option>  
+           </select>  
+
+           <label style="padding-left: 8%;"> </label>
+
+          <input style=" height: 32px;  width: 208px;" type="text" matInput placeholder="Mobile Phone">
+           </div>
+ <br>
+    <mat-card-actions style="text-align: center;">
+        <button mat-raised-button  style="border-radius: 21px;background-color: skyblue;width: 295px;" (click)=" Otpvrf();closeMe()">Receive a Code Via SMS</button>
+    </mat-card-actions>
+
+    <mat-card-actions style="text-align: center;">
+    
+    <h3> Already a member of Kanios carwash.? 
+
+     
+
+        <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="login();closeMe()">Login</a> </mat-list-item>
+
+    </h3>
+  </mat-card-actions>
+</div>
+</form>
+   

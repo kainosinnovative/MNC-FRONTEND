@@ -1,0 +1,43 @@
+<div class="" style="width: 336px;height: 30%;">
+    <div >
+
+        <h5 style="font-size: 20px;padding-left: 56px;">Mobile Number verification</h5>
+
+        <div style=" margin-bottom: 24px;"></div>
+
+        <span>Enter the code we just send on your mobile phone </span>
+
+        <div style=" margin-bottom: 19px;"></div>
+
+        <p id="invalidOtp" style="color:red"></p>
+
+        <div class="d-flex flex-row">
+            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpFirstDigit" autofocus="">
+            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpSecondDigit">
+            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpThirdDigit">
+            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpFourthDigit">
+        </div>
+
+        
+        <label></label>
+
+       <div style="text-align: center;">
+         <button style="border-radius: 21px;background-color: skyblue; width: 269px;border:none" (click)="VerifyOtp()">Verify</button>
+        </div>
+<form [formGroup]="dataForm1" >
+        <input type="text" matInput placeholder="Phone" value="{{isloggedinUser}}" formControlName='mobile' style="visibility: hidden;">
+
+        <div class="text-center"><span class="d-block mobile-text">Don't receive the code?</span><span class="font-weight-bold text-danger cursor" (click)="sendotp2(dataForm1.value)">Resend</span></div>
+    
+    </form>
+
+  
+   <!--<button (click)='startTimer()'>Start Timer</button>-->
+
+
+<p>50 Seconds Left....</p> 
+
+    
+    
+    </div>
+</div>

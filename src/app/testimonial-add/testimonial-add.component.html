@@ -1,0 +1,47 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/js/star-rating.min.js" integrity="sha512-BjVoLC9Qjuh4uR64WRzkwGnbJ+05UxQZphP2n7TJE/b0D/onZ/vkhKTWpelfV6+8sLtQTUqvZQbvvGnzRZniTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<h1  mat-dialog-title>Add Review</h1>
+    <mat-dialog-content style="width: 400px;"> 
+    <form name="testimonial" method="get" #userlogin = "ngForm" >
+        <div class="form-group form-inline">
+            <label>Description</label>
+
+            <textarea class="form-control" name = "user_description"  rows="4" [(ngModel)]="testimonialDetails.user_description">
+
+            </textarea>
+            <br>
+
+            <input hidden type="number" name = "user_rating"  [(ngModel)]="testimonialDetails.user_rating"  #username value="{{rating}}">
+
+
+            <!-- <ul class="list-inline rating-list" 
+          *ngFor="let item of starList; let i=index " (click)="setStar(i)" style="display: inline-block" >
+            <li 
+            [ngClass]="{'fa-star-o':item,'fa-star':!item}">
+              <i class="fa fa-star"></i>
+            </li> 
+      </ul> -->
+            
+             <a *ngFor="let item of starList; let i=index " (click)="setStar(i)" style="color: orange;">  
+                <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
+             </a>  
+              <br>  
+              
+              <!-- <p >Rating :- {{rating}} stars </p> -->
+
+              
+              
+            <br>
+            <div style="text-align: right;">
+                <button class="btn btn-success btn-lg btn-block" (click) = "onClickSubmit()" >Add</button>
+            </div>
+            
+
+        </div>
+
+    </form>
+    
+    </mat-dialog-content>
+<mat-dialog-actions>
+    <button  mat-raised-button (click)="closeMe()">Close</button>
+</mat-dialog-actions>
