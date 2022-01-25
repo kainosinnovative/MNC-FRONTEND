@@ -1,7 +1,7 @@
 
 
 
-<form  [formGroup]="dataForm" (ngSubmit)="sendotp1(dataForm.value)" method="post" style="width: 300px;">
+<form  [formGroup]="dataForm" (ngSubmit)="sendotp1(dataForm.value)" method="post" style="width: 336px;">  
   
   
 
@@ -12,15 +12,20 @@
     </mat-card-header>
 
 
-     <mat-card-content style="text-align: center;" >
-     
+    <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
+      <div>
+  
+      <select id = "myList" onchange = "favTutorial()" style=" height: 32px;width: 63px;">   
+         
+          <option> + 91</option>  
+           </select>  
 
-      <mat-form-field >
-        
-        <br>
-        <input type="text" matInput placeholder="Phone" formControlName='mobile'>
-      </mat-form-field>
-    </mat-card-content>
+           <label style="padding-left: 8%;"> </label>
+
+           <input style=" height: 32px;  width: 180px;" type="text" matInput placeholder="Mobile Phone" formControlName='mobile'>
+ 
+  </div>
+  </mat-card-content>
 
     <p id="pleaseregister" style="color:red;font-size: 13px;"></p>
 
@@ -33,7 +38,7 @@
 
 
 
- 
+  <mat-card-actions style="text-align: center;" >
   <h3>New to Kanios Car Wash.?
 
       <mat-list-item  > <a  mat-list-item (click)="signup()">
@@ -44,6 +49,7 @@
          
       
   </h3>
+</mat-card-actions>
 
     
 

@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Inject, Injectable} from  '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from '@angular/router';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
-// import { SignupComponent } from '../signup/signup.component';
+import { SignupComponent } from '../signup/signup.component';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { OtpverfiedComponent } from '../otpverfied/otpverfied.component';
@@ -44,17 +44,13 @@ public  dataForm: FormGroup;
  }
 
     
- 
-
-
-
  signup(){
 
-  // const dialogRef = this.dialog.open(SignupComponent, {
-  //   id: 'signup'
-  // });
+  const dialogRef = this.dialog.open(SignupComponent, {
+    id: 'signup'
+  });
 
-  // console.log(dialogRef);
+  console.log(dialogRef);
 }
 
 Otpvrf(){
