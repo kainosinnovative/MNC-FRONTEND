@@ -35,11 +35,12 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+    const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+    const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     this.dataForm3 = this.frmbuilder.group({
       username: ['', Validators.required],
-      emailid:['',[Validators.required, Validators.pattern(emailRegEx)]],
-      registermobno:['',Validators.required],
+      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      registermobno:['', [Validators.required, Validators.pattern(mobilePattern)]],
       // updateOn: 'blur'
      
       });
@@ -108,12 +109,15 @@ var newStr = str.substring(0, str.length - 1);
 
           
 let split_string = msg3.split(/(\d+)/)
-alert(split_string[1])
+// alert(split_string[1])
 localStorage.setItem('otpstore', split_string[1]);
              
           localStorage.setItem('registerUserName', dataForm3.username);
   localStorage.setItem('registerEmailid', dataForm3.emailid);
   localStorage.setItem('registerMobileNo', dataForm3.registermobno);
+
+  localStorage.setItem('isloggedinUser', dataForm3.registermobno);
+
           this.dialogRef.close();
           const dialogRef = this.dialog.open(OtpverfiedComponent, {
 id: 'otpverfied'

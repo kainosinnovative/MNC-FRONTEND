@@ -44,6 +44,7 @@ ngOnInit(): void {
 
 loadCustomerDetails2() {
   // alert("in")
+  console.log("in");
   let isloggedinUser = localStorage.getItem('isloggedinUser');
   return this.restApi.getCustomerData(isloggedinUser).subscribe((data => {
     // let singleCus = params;
@@ -64,6 +65,8 @@ signupdetailsInsert(){
   let registerUserName = localStorage.getItem('registerUserName');
       let registerEmailid = localStorage.getItem('registerEmailid');
       let registerMobileNo = localStorage.getItem('registerMobileNo');
+
+      // localStorage.setItem('otpstore', registerUserName);
   
 //       let signupdetails1 = ({customer_name: registerUserName, customer_mobileno: registerMobileNo, customer_email: registerEmailid});
       
@@ -71,6 +74,12 @@ signupdetailsInsert(){
   '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid).subscribe({
   
   } );
+
+  this.loadCustomerDetails2();
+
+  //let registerUserName = localStorage.getItem('registerUserName');
+  
+  
   
   }
 
