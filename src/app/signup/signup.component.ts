@@ -20,14 +20,11 @@ import { RestApiService } from "../shared/rest-api.service";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  dataForm: any;
+  dataForm3: any;
 
 
 
-  //dialog: any;
-
-  // constructor(private  dialogRef:  MatDialogRef<SignupComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,public router: Router,public dialog: MatDialog) {
-
+  
 
   constructor(private  dialogRef:  MatDialogRef<SignupComponent>,
      @Inject(MAT_DIALOG_DATA) public  data:  any,public router: Router,
@@ -38,6 +35,14 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+    this.dataForm3 = this.frmbuilder.group({
+      username: ['', Validators.required],
+      emailid:['',[Validators.required, Validators.pattern(emailRegEx)]],
+      registermobno:['',Validators.required],
+      // updateOn: 'blur'
+     
+      });
     
   }
 
@@ -46,15 +51,9 @@ export class SignupComponent implements OnInit {
   }
   
   
-    
-  //   this.dialogRef.close();
-  //   //newFunction();
-  // this.dialog.open(LoginComponent,{ data: {
-  // message:  "Error!!!"
-  // }});
-
-  signup(dataForm: any) {
-    //   // alert("hi")
+  
+  signup() {
+      // alert("hi")
       // this.restApi.signup(dataForm).subscribe()
     }
 
@@ -67,34 +66,70 @@ export class SignupComponent implements OnInit {
   
     // console.log(dialogRef);
   }
-
-//   signup(dataForm: any) {
-//     this.http.post('http://localhost/angPHP/carwash/PHP/insert.php', dataForm).subscribe(
-//         data => {
-//             console.log('POST Request is successful ', data);
-//             // this.getData();
-//             this.dataForm.reset('');
-//             // this.showSuccess("Data Inserted :)");
-//             this.dialogRef.close();
-//         },
-//         error => {
-//             console.log('Error', error);
-//             // this.errorMsg = error;
-//         }
-//     );
-// }
-
-
-   
+ 
 
 
 Otpvrf(){
 
-  // const dialogRef = this.dialog.open(OtpverfiedComponent, {
-  //   id: 'otpverfied'
-  // });
+  const dialogRef = this.dialog.open(OtpverfiedComponent, {
+    id: 'otpverfied'
+  });
 
   // console.log(dialogRef);
+}
+
+
+sendotp3(dataForm3: any) {
+
+  
+  this.http.post('http://localhost/MNC-PHP-API/app/sendOtp3', dataForm3).subscribe(
+      
+    data => {
+        console.log('POST Request is successful >>>>>>>>', data);
+
+    },
+    success => {
+        console.log('Error>>>>>', success);
+       
+        
+        if(success.status == 404) {
+          let msg = success.error;
+          // let text = "How are you doing today?";
+const myArray = msg.split("message");
+const secondArr = myArray[1].split(",");
+let str = secondArr[0].substring(3);
+var newStr = str.substring(0, str.length - 1);
+
+          (document.getElementById('pleaseregister') as HTMLFormElement).innerHTML = newStr;
+          
+        }
+        else {
+          let msg3 = success.error.text;
+
+          
+let split_string = msg3.split(/(\d+)/)
+alert(split_string[1])
+localStorage.setItem('otpstore', split_string[1]);
+             
+          localStorage.setItem('registerUserName', dataForm3.username);
+  localStorage.setItem('registerEmailid', dataForm3.emailid);
+  localStorage.setItem('registerMobileNo', dataForm3.registermobno);
+          this.dialogRef.close();
+          const dialogRef = this.dialog.open(OtpverfiedComponent, {
+id: 'otpverfied'
+});
+        }
+       
+    }
+);
+
+
+  
+
+  // alert(dataForm3.username)
+  // alert("hi")
+ 
+ 
 }
 
 }

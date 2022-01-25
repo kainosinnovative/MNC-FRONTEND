@@ -1,6 +1,6 @@
 
 
-<form>
+<form [formGroup]="dataForm3" (ngSubmit)="sendotp3(dataForm3.value)">
   <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 336px;">
     
     <mat-card-header style="padding-left: 33%;" >
@@ -11,13 +11,19 @@
 
      <div>
 
-        <input style=" height: 32px;  width: 295px;" class="form-control" type="text" matInput placeholder="Your Name">
+
+        <input style=" height: 32px;  width: 295px;border:1px solid" class="form-control" type="text" matInput placeholder="Your Name" formControlName='username'>
         </div>
 
         <label style="margin-top: 10px;"></label>
         <div>
 
-        <input style=" height: 32px;  width: 295px;" type="text" class="form-control"  placeholder="Email">
+        <input style=" height: 32px;  width: 295px;border:1px solid" type="text" class="form-control"  placeholder="Email" formControlName='emailid'>
+        <div *ngIf="dataForm3.controls['emailid'].touched && dataForm3.controls['emailid'].invalid ">  
+          <span *ngIf="dataForm3.controls['emailid'].hasError('required') " class="error-msg">  
+            Email is invalid  
+          </span> 
+        </div>
         </div>
 
         <label style="padding-left: 8%;"> </label>
@@ -30,11 +36,14 @@
 
            <label style="padding-left: 8%;"> </label>
 
-          <input style=" height: 32px;  width: 208px;" type="text" matInput placeholder="Mobile Phone">
+          <input style=" height: 32px;  width: 208px;border:1px solid" type="text" matInput placeholder="Mobile Phone" formControlName='registermobno'>
            </div>
  <br>
+
+ <p id="pleaseregister" style="color:red;font-size: 13px;"></p>
+
     <mat-card-actions style="text-align: center;">
-        <button mat-raised-button  style="border-radius: 21px;background-color: skyblue;width: 295px;" (click)=" Otpvrf();closeMe()">Receive a Code Via SMS</button>
+        <button mat-raised-button  style="border-radius: 21px;background-color: skyblue;width: 295px;" [disabled]='!dataForm3.valid'>Receive a Code Via SMS</button>
     </mat-card-actions>
 
     <mat-card-actions style="text-align: center;">

@@ -59,32 +59,48 @@ loadCustomerDetails2() {
   ))
 }
 
-
-VerifyOtp(){
-  var ReceiveOtp = localStorage.getItem('otpstore');
-  // alert(num1)
-  var firstDigit = this.otpFirstDigit;
-  let SecondDigit = this.otpSecondDigit;
-  let thirdDigit = this.otpThirdDigit;
-  let fourthDigit = this.otpFourthDigit;
+signupdetailsInsert(){
+  // alert("hi")
+  let registerUserName = localStorage.getItem('registerUserName');
+      let registerEmailid = localStorage.getItem('registerEmailid');
+      let registerMobileNo = localStorage.getItem('registerMobileNo');
   
-  let EnteredOtp = firstDigit + SecondDigit +thirdDigit + fourthDigit;
-  if(ReceiveOtp == EnteredOtp) {
-    localStorage.removeItem("otpstore");
-    let isloggedinUser = localStorage.getItem('isloggedinUser');
-    // alert(isloggedinUser)
-    this.loadCustomerDetails2();
-    // alert(isloggedinUser)
-   
-    // this.dialogRef.close();
-    // this.router.navigateByUrl('/home');
+//       let signupdetails1 = ({customer_name: registerUserName, customer_mobileno: registerMobileNo, customer_email: registerEmailid});
+      
+  this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+ 
+  '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid).subscribe({
+  
+  } );
+  
   }
-  else {
-    (document.getElementById('invalidOtp') as HTMLFormElement).innerHTML = "Invalid Otp";
-  }
-}
 
 
+
+  VerifyOtp(){
+    var ReceiveOtp = localStorage.getItem('otpstore');
+    // alert(num1)
+    var firstDigit = this.otpFirstDigit;
+    let SecondDigit = this.otpSecondDigit;
+    let thirdDigit = this.otpThirdDigit;
+    let fourthDigit = this.otpFourthDigit;
+    
+    let EnteredOtp = firstDigit + SecondDigit +thirdDigit + fourthDigit;
+    if(ReceiveOtp == EnteredOtp) {
+      localStorage.removeItem("otpstore");
+      let registerUserName = localStorage.getItem('registerUserName');
+      if(registerUserName == null) {
+        this.loadCustomerDetails2();
+      }
+      else {
+  this.signupdetailsInsert();
+      }
+    }
+    else {
+      (document.getElementById('invalidOtp') as HTMLFormElement).innerHTML = "Invalid Otp";
+    }
+  }
+  
+  
 
 // sendotp2(dataForm1: any) {
  
