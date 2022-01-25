@@ -1,111 +1,32 @@
-<div class="container custom-container">
-    <div class="col-md-12">
-        <h2 class="mb-3 text-center">My Profile</h2>
 
-        <div class="row">
+<div class="accordion">
+    <div class="accordion-head">
+        <h4>Section A</h4><div class="arrow down"></div>
 
-            <div class="col-sm-4">
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Name</label>
+    </div>
+    <div class="accordion-body">
+        <p>Lorem Ipsum is sfnti nting and typesetting industry dummy text o g and typesetting industry.</p>
+    </div>
+    <div class="accordion-head">
+        	<h4>Section B</h4><div class="arrow down"></div>
 
-
-                    <input type="text" [(ngModel)]="customerDetails.name" class="form-control" placeholder="">
-                </div>
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Gender</label>
-                    <select class="form-control" name="cars" id="cars" [(ngModel)]="customerDetails.gender" >
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-        
-                    </select>
-                </div>
-                
-
-
-                
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Area</label>
-                    <input type="text" [(ngModel)]="customerDetails.area" class="form-control" placeholder="">
-                
-                </div>
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Landmark</label>
-                    <input type="text" [(ngModel)]="customerDetails.landmark" class="form-control" placeholder="">
-                
-                </div>
-
-                
-            </div>
-
-            <div class="col-sm-4">
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Email</label>
-
-
-                    <input type="text" [(ngModel)]="customerDetails.email" class="form-control" placeholder="">
-                </div>
-                <!-- <br> -->
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Door No</label>
-
-
-                    <input type="text" [(ngModel)]="customerDetails.doorno" class="form-control" placeholder="">
-                </div>
-                
-                <!-- <br> -->
-                
-                <!-- <br> -->
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Pincode</label>
-
-
-                    <input type="text" [(ngModel)]="customerDetails.Pincode" class="form-control" placeholder="">
-                </div>
-
-
-                
-                <!-- <br> -->
-                
-            </div>
-
-            <div class="col-sm-4">
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Phone</label>
-
-
-                    <input type="text" [(ngModel)]="customerDetails.phone" class="form-control" placeholder="">
-                </div>
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">Street</label>
-
-
-                    <input type="text" [(ngModel)]="customerDetails.street" class="form-control" placeholder="">
-                </div>
-
-                <div class="form-group form-inline">
-                    <label class="lblwidthProfile">City</label>
-                    <input type="text" [(ngModel)]="customerDetails.city" class="form-control" placeholder="">
-                
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-sm-12" style="text-align: right;margin-left: -16px;">
-            <br>
-            <button class="btn btn-success btn-lg btn-block" (click)="addCustomer()">Update</button>
-        </div>
+    </div>
+    <div class="accordion-body">
+        <p>Lorem Ipsum is sfnti nting and typesetting industry dummy text o g and typesetting industry.</p>
     </div>
 </div>
+<script>
+    
+    $('.accordion').each(function () {
+    var $accordian = $(this);
+    $accordian.find('.accordion-head').on('click', function () {
+        $(this).removeClass('open').addClass('close');
+        $accordian.find('.accordion-body').slideUp();
+        if (!$(this).next().is(':visible')) {
+            $(this).removeClass('close').addClass('open');
+            $(this).next().slideDown();
+        }
+    });
+});
 
-<div style="height: 160px;"></div>
+</script>

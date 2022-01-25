@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
 
-
 var num2: any;
 var num1 = localStorage.getItem('isLoggedIn');
         if(num1 == "" || num1 == null) {
@@ -26,17 +25,22 @@ export class CustomerCreateComponent implements OnInit {
     // }
     // else {
         // num1 = 0;
-    // }
-     
+   
 @Input() customerDetails = { name: '', email: '', phone: num2, gender: '', doorno: '', street: '', area: '', Pincode: '', city: '', landmark: '' }
+
+  opened = false;
+  
 constructor(
 public restApi: RestApiService,
 public router: Router
 ) { }
-ngOnInit() { }
+ngOnInit() { 
+
+}
 addCustomer() {
 this.restApi.createCustomer(this.customerDetails).subscribe((data: {}) => {
 this.router.navigate(['/customercreate'])
 })
 }
+
 }
