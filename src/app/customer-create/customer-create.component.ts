@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
-
+var event:string;
 var num2: any;
 var num1 = localStorage.getItem('isLoggedIn');
         if(num1 == "" || num1 == null) {
@@ -20,23 +20,18 @@ styleUrls: ['./customer-create.component.scss']
 export class CustomerCreateComponent implements OnInit {
 
     
-    // if(localStorage.getItem('isLoggedIn') == "") {
-        
-    // }
-    // else {
-        // num1 = 0;
-   
 @Input() customerDetails = { name: '', email: '', phone: num2, gender: '', doorno: '', street: '', area: '', Pincode: '', city: '', landmark: '' }
 
-  opened = false;
+  opened = true;
+  opened1 = false;
   
 constructor(
 public restApi: RestApiService,
 public router: Router
 ) { }
 ngOnInit() { 
-
-}
+    
+;}
 addCustomer() {
 this.restApi.createCustomer(this.customerDetails).subscribe((data: {}) => {
 this.router.navigate(['/customercreate'])
@@ -44,3 +39,4 @@ this.router.navigate(['/customercreate'])
 }
 
 }
+

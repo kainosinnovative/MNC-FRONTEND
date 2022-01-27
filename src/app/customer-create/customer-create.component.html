@@ -1,32 +1,158 @@
-
+<h2  style="text-align:center;">My Account</h2>
+<form>
 <div class="accordion">
-    <div class="accordion-head">
-        <h4>Section A</h4><div class="arrow down"></div>
+    <h2 class="title" (click)="opened = !opened">Personal Information</h2>
+    <div class="content-container" [class.opened]="opened">
+           <!--phto-->
+            <div class="form-group">
+            <label >Profile Photo</label>
+            </div>
+            <div class= "border-right">
+               <div><img class="rounded-circle" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></div>
+            </div>
+            <div class="form-group form-inline">
+            <input class="form-control"  id="image" type="file" name="profile_photo"  required="" style="width:500px;" >
+            </div>
+            <!--endphoto-->
+            <br>
+            <!--info-->
+            <div class="row">
+                <div class="col-sm-4">
 
-    </div>
-    <div class="accordion-body">
-        <p>Lorem Ipsum is sfnti nting and typesetting industry dummy text o g and typesetting industry.</p>
-    </div>
-    <div class="accordion-head">
-        	<h4>Section B</h4><div class="arrow down"></div>
+                        <div class="form-group">
+                            <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
 
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                                <label class="lblwidthProfile">Mobile Number</label><span class="requiredfield">  *</span>
+                                <input type="text" class="form-control" placeholder="">
+                            
+                         </div>
+                         <br>
+                         <div class="form-group">
+                            <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span>
+                         <select class="form-control" placeholder="">
+                            <option>Maruthi</option>
+                                <option>Ford</option>
+                                <option>Nissan</option>
+                                <option>Other</option>
+                            </select>
+                            </div>
+                 </div>
+
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
+                            <input type="text"  class="form-control" placeholder="">
+                        </div>
+                
+                       <br>
+               
+                        <div class="form-group">
+                        <label class="lblwidthProfile">Date of Birth </label><span class="requiredfield">  *</span>
+                        <input type="date"  class="form-control" placeholder="">
+                        </div>
+                </div>
+
+                <div class="col-sm-4">
+                        <div class="form-group form-inline">
+                        <label class="lblwidthProfile">Email </label><span class="requiredfield">  *</span>
+                        <input type="text"  class="form-control" placeholder="">
+                        </div>
+                        <br>
+                        <div class="form-group form-inline">
+                            <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span>
+                            <select class="form-control" placeholder="">
+                                <option value="Male">Male</option>
+                                <option value="FeMale">FeMale</option>
+                                </select>
+                            </div>
+
+                </div>
+             
+            </div>
+
+            <!--endinfo-->
     </div>
-    <div class="accordion-body">
-        <p>Lorem Ipsum is sfnti nting and typesetting industry dummy text o g and typesetting industry.</p>
-    </div>
-</div>
-<script>
+  </div>
+
+  <!--Endof Personal-->
+  <!--address start-->
+  <div class="accordion1">
+    <h2 class="title1" (click)="opened1 = !opened1">Address</h2>
+    <div class="content-container1" [class.opened1]="opened1">
+           <!--phto-->
+           <div class="row">
+                <div class="col-sm-4">
+
+                    <div class="form-group">
+                        <label class="lblwidthProfile">Door No/Apartment Name</label>
+
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label class="lblwidthProfile">City</label>
+                        <input type="text" class="form-control" placeholder="">
+                    
+                    </div>
+
+                    
     
-    $('.accordion').each(function () {
-    var $accordian = $(this);
-    $accordian.find('.accordion-head').on('click', function () {
-        $(this).removeClass('open').addClass('close');
-        $accordian.find('.accordion-body').slideUp();
-        if (!$(this).next().is(':visible')) {
-            $(this).removeClass('close').addClass('open');
-            $(this).next().slideDown();
-        }
-    });
-});
+                   
+                </div>
 
-</script>
+                 <div class="col-sm-4">
+
+                   
+                    <div class="form-group">
+                        <label class="lblwidthProfile">Street Name</label>
+    
+                         <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <br>
+                    
+                    <div class="form-group">
+                        <label class="lblwidthProfile">Zipcode</label>
+                        <input type="text" class="form-control" placeholder="">
+                    
+                </div>
+
+                   
+                    </div>
+
+                     <div class="col-sm-4">
+
+                        <div class="form-group">
+                            <label class="lblwidthProfile">State</label>
+                            <input type="text" class="form-control" placeholder="">
+                        
+                        </div>
+            
+                           
+        
+                        </div>
+
+        </div>
+
+        </div>
+
+
+  
+  </div>
+  <div class="col-sm-12 form-inline" style="text-align: right;margin-left: 26px;">
+        
+    <button class="btn btn-success " style="margin-right: 14px;" (click)="addCustomer()">Update</button>
+  
+    <button class="btn btn-success " style="margin-right: 41px;">Logout</button>
+
+</div>
+<br>
+</form>
+  <!--Address End-->
