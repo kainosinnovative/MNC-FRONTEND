@@ -51,7 +51,9 @@ loadCustomerDetails2() {
     this.customerdata = data;
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
+      // alert(this.customerdata2[0].customer_id)
       localStorage.setItem('currentUsername', this.customerdata2[0].customer_name); 
+      localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
 
       window.location.reload();
     

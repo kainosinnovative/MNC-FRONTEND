@@ -31,7 +31,7 @@ import {NewinsertpageComponent} from './newinsertpage/newinsertpage.component'
 
 import { OtpverfiedComponent } from './otpverfied/otpverfied.component';
 import { LogoutComponent } from './logout/logout.component'
-
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -80,7 +80,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     // Customer,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgxStarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

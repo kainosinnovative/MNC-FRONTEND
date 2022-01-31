@@ -10,7 +10,7 @@ providedIn: 'root'
 export class RestApiService {
 apiURL = 'http://localhost/MNC-PHP-API';
 constructor(private http:HttpClient) {}
-headers = new HttpHeaders().set('Content-Type', 'application/json');
+headers = new HttpHeaders().set('Content-Type', 'application/text');
 httpOptions = {
 headers: new HttpHeaders({}),
 
@@ -33,19 +33,29 @@ gettestimonialData(): Observable<Testimonial> {
   catchError(this.handleError)
   )
   }
+
+
+
+  
   
 
-  createTestimonial(testimonialData: { user_description: string;user_rating: any}):
-    Observable<Testimonial2> {
-      // alert(testimonialData)
-      // alert(JSON.stringify(testimonialData))
-    return this.http.post<Testimonial2>(this.apiURL + '/add-user', testimonialData,
-    this.httpOptions)
-    .pipe(
-    retry(1),
-    catchError(this.handleError)
-    )
-    }
+  // createTestimonial(testimonialData:any):
+  //   Observable<Testimonial2> {
+      
+  //   return this.http.post<Testimonial2>(this.apiURL + '/app/AddTestimonial', testimonialData,
+  //   this.httpOptions)
+  //   .pipe(
+  //   retry(1),
+  //   catchError(this.handleError)
+  //   )
+
+    
+  //   }
+
+
+  createTestimonial(testimonialData: any): Observable<Testimonial2>{
+    return this.http.post<Testimonial2>(`${this.apiURL}/app/AddTestimonial`, testimonialData);
+  }
 
 
 //     return this.http.post('http://localhost:3000/api/Users/login', data, httpOptions)
