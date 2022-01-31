@@ -1,5 +1,5 @@
 <h2  style="text-align:center;">My Account</h2>
-<form>
+<form [formGroup]="profileform" (ngSubmit)="sendprofile(profileform.value)">
 <div class="accordion">
     <h2 class="title" (click)="opened = !opened">Personal Information</h2>
     <div class="content-container" [class.opened]="opened">
@@ -11,8 +11,18 @@
                <div><img class="rounded-circle" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></div>
             </div>
             <div class="form-group form-inline">
-            <input class="form-control"  id="image" type="file" name="profile_photo"  required="" style="width:500px;" >
-            </div>
+            <input class="form-control"  id="image" type="file" name="profile_photo"  required="" style="width:500px;"  formControlName="uploadimage">
+            <div *ngIf="profileform.controls['uploadimage'].touched && profileform.controls['uploadimage'].invalid "> 
+          
+                <div *ngIf="profileform.controls['uploadimage'].errors" style="color: red;"> 
+                  <div *ngIf="profileform.controls['uploadimage'].errors.required" style="margin-left: 14px;">
+                      Upload Your Profile Photo
+                  </div> 		   
+                 
+               </div> 
+                
+              </div>    
+        </div>
             <!--endphoto-->
             <br>
             <!--info-->
@@ -22,24 +32,45 @@
                         <div class="form-group">
                             <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
 
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" formControlName='firstname'>
+                            <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
+          
+                                <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
+                                  <div *ngIf="profileform.controls['firstname'].errors.required" style="margin-left: 14px;">
+                                      First Name is required. 
+                                  </div> 		   
+                                 
+                               </div> 
+                                
+                              </div>
                         </div>
 
                         <br>
 
                         <div class="form-group">
                                 <label class="lblwidthProfile">Mobile Number</label><span class="requiredfield">  *</span>
-                                <input type="text" class="form-control" placeholder="">
-                            
+                                <input type="text" class="form-control" placeholder="" formControlName="mobileno">
+                                <div *ngIf="profileform.controls['mobileno'].touched && profileform.controls['mobileno'].invalid "> 
+          
+                                    <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;"> 
+                                      <div *ngIf="profileform.controls['mobileno'].errors.required" style="margin-left: 14px;">
+                                          Mobile Number is required.
+                                      </div> 		   
+                                      <div *ngIf="profileform.controls['mobileno'].errors.pattern" style="margin-left: 14px;">
+                                        Mobile Number is not valid.
+                                      </div> 
+                                   </div> 
+                                    
+                                  </div>
                          </div>
                          <br>
                          <div class="form-group">
                             <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span>
-                         <select class="form-control" placeholder="">
-                            <option>Maruthi</option>
-                                <option>Ford</option>
-                                <option>Nissan</option>
-                                <option>Other</option>
+                         <select class="form-control"  #cartype >
+                            <option value="Maruthi">Maruthi</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Other">Other</option>
                             </select>
                             </div>
                  </div>
@@ -47,26 +78,48 @@
                 <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"  class="form-control" placeholder="">
+                            <input type="text"  class="form-control" placeholder="" formControlName='lastname'>
+                            <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
+          
+                                <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
+                                  <div *ngIf="profileform.controls['lastname'].errors.required" style="margin-left: 14px;">
+                                      Last Name is required. 
+                                  </div> 		   
+                                 
+                               </div> 
+                                
+                              </div>
                         </div>
                 
                        <br>
                
                         <div class="form-group">
                         <label class="lblwidthProfile">Date of Birth </label><span class="requiredfield">  *</span>
-                        <input type="date"  class="form-control" placeholder="">
+                        <input type="date"  class="form-control" placeholder="" >
                         </div>
                 </div>
 
                 <div class="col-sm-4">
                         <div class="form-group form-inline">
                         <label class="lblwidthProfile">Email </label><span class="requiredfield">  *</span>
-                        <input type="text"  class="form-control" placeholder="">
+                        <input type="text"  class="form-control" placeholder=" " formControlName="emailid">
+                        <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
+          
+                            <div *ngIf="profileform.controls['emailid'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['emailid'].errors.required" style="margin-left: 14px;">
+                                  Email Id is required.
+                              </div> 		   
+                              <div *ngIf="profileform.controls['emailid'].errors.pattern" style="margin-left: 14px;">
+                                   Email Id is not valid.
+                              </div> 
+                           </div> 
+                            
+                          </div>
                         </div>
                         <br>
                         <div class="form-group form-inline">
-                            <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span>
-                            <select class="form-control" placeholder="">
+                            <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span><br>
+                            <select  placeholder="" >
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
                                 </select>
@@ -96,13 +149,12 @@
                     </div>
 
                     <br>
+                   
                     <div class="form-group">
-                        <label class="lblwidthProfile">City</label>
+                        <label class="lblwidthProfile">State</label>
                         <input type="text" class="form-control" placeholder="">
                     
                     </div>
-
-                    
     
                    
                 </div>
@@ -128,12 +180,13 @@
                     </div>
 
                      <div class="col-sm-4">
-
                         <div class="form-group">
-                            <label class="lblwidthProfile">State</label>
+                            <label class="lblwidthProfile">City</label>
                             <input type="text" class="form-control" placeholder="">
                         
                         </div>
+    
+                       
             
                            
         
@@ -148,9 +201,9 @@
   </div>
   <div class="col-sm-12 form-inline" style="text-align: right;margin-left: 26px;">
         
-    <button class="btn btn-success " style="margin-right: 14px;" (click)="addCustomer()">Update</button>
+    <button class="btn btn-success " style="margin-right: 14px;"  [disabled]='!profileform.valid'>Update</button>
   
-    <button class="btn btn-success " style="margin-right: 41px;">Logout</button>
+    
 
 </div>
 <br>

@@ -5,7 +5,7 @@
 
     <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/first'>Select a City
     </a> </mat-list-item>
-    <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/second'>Online Booking
+    <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/onlinebooking'>Online Booking
     </a> </mat-list-item>
     <mat-list-item class="menudesk1"> <a mat-list-item routerLink='/'>
       Shop
@@ -44,7 +44,7 @@
 
 <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="signup()">Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;
 
-  <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)=" Otpvrf()">Online Booking </a> </mat-list-item> &nbsp; &nbsp;
+  <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)=" Otpvrf()" routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> &nbsp; &nbsp;
 
   <mat-list-item class="menudesk" *ngIf="!currentUsername" > <a  class="colorheaderMenu" (click)="login()">Login</a> </mat-list-item>  
 
