@@ -12,6 +12,17 @@
               
             </textarea>
 
+            <div *ngIf="testimonialForm.controls['user_description'].touched && testimonialForm.controls['user_description'].invalid "> 
+          
+              <div *ngIf="testimonialForm.controls['user_description'].errors" style="color: red;"> 
+                <div *ngIf="testimonialForm.controls['user_description'].errors.required" style="margin-left: 14px;">
+                  User Description is required.
+                </div> 		   
+               
+             </div> 
+              
+            </div>
+
             
           </div>
            

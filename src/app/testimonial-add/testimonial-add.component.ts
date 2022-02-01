@@ -8,10 +8,12 @@ import { HttpClient } from '@angular/common/http';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common'
 @Component({
   selector: 'app-testimonial-add',
   templateUrl: './testimonial-add.component.html',
-  styleUrls: ['./testimonial-add.component.scss']
+  styleUrls: ['./testimonial-add.component.scss'],
+  providers: [DatePipe]
 })
 export class TestimonialAddComponent implements OnInit {
 
@@ -21,6 +23,7 @@ export class TestimonialAddComponent implements OnInit {
   LoginTestimonial2:any;
   LoginTestimonial3:any;
   LoginTestimonial4:any;
+  date:any;
   
 
   currentUserId = localStorage.getItem('currentUserId');
@@ -28,7 +31,7 @@ export class TestimonialAddComponent implements OnInit {
   // @Input() testimonialDetails = { user_description:'', user_rating:''}
   constructor(private  dialogRef:  MatDialogRef<TestimonialAddComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,
   public router: Router, public restApi: RestApiService, private frmbuilder: FormBuilder,private http: HttpClient,
-  private toastr: ToastrService) {
+  private toastr: ToastrService,public datepipe: DatePipe) {
     
   }
 
@@ -50,14 +53,18 @@ rating:any;
     
 //  }
 
-  
+
 
   ngOnInit(): void {
+    this.date=new Date();
+let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd H:m:s');
+
     this.testimonialForm = this.frmbuilder.group({
       user_description: ['', Validators.required],
       user_rating: ['', Validators.required],
       customer_id: [this.currentUserId, Validators.required],
       review_count:[1],
+      review_date:[latest_date]
       });
 
       // this.loadLoginuserTestimonial();

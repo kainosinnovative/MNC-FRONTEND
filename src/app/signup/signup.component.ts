@@ -118,6 +118,8 @@ localStorage.setItem('otpstore', split_string[1]);
 
   localStorage.setItem('isloggedinUser', dataForm3.registermobno);
 
+  localStorage.setItem('sessionbtn', "register");
+
           this.dialogRef.close();
           const dialogRef = this.dialog.open(OtpverfiedComponent, {
 id: 'otpverfied'

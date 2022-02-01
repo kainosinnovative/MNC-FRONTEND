@@ -92,7 +92,8 @@ var newStr = str.substring(0, str.length - 1);
 let split_string = msg3.split(/(\d+)/)
 // alert(split_string[1])
 localStorage.setItem('otpstore', split_string[1]);
-localStorage.setItem('isloggedinUser', dataForm.mobile);             
+localStorage.setItem('isloggedinUser', dataForm.mobile); 
+localStorage.setItem('sessionbtn', "login");             
               this.dialogRef.close();
               const dialogRef = this.dialog.open(OtpverfiedComponent, {
     id: 'otpverfied'
