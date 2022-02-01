@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
-import { Testimonial,Testimonial2,loginauth,logindetails } from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial } from '../shared/customer/customer';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 @Injectable({
@@ -11,10 +11,19 @@ export class RestApiService {
 apiURL = 'http://localhost/MNC-PHP-API';
 constructor(private http:HttpClient) {}
 headers = new HttpHeaders().set('Content-Type', 'application/text');
-httpOptions = {
-headers: new HttpHeaders({}),
+// httpOptions = {
+// headers: new HttpHeaders({}),
 
-}
+// }
+
+httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    "Access-Control-Allow-Origin": "*",
+    
+  } ),responseType: 'text' as 'json'
+};
+
 getCustomers(): Observable<Customer> {
 return this.http.get<Customer>(this.apiURL + '/customers')
 .pipe(
@@ -102,6 +111,19 @@ gettestimonialData(): Observable<Testimonial> {
       )
     
     } 
+
+
+    // getLoginTestimonial(currentUserId	:any): Observable<singleLoginTestimonial> {
+      
+    //   return this.http.get<singleLoginTestimonial>(this.apiURL + '/app/SingleLoginTestimonial?customerid='+ currentUserId	)
+      
+    //   .pipe(
+    //     retry(1),
+    //     catchError(this.handleError)
+        
+    //   )
+    
+    // }
   
 
 getCustomer(id:any): Observable<Customer> {

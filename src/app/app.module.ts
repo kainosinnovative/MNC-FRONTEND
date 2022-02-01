@@ -32,8 +32,13 @@ import {NewinsertpageComponent} from './newinsertpage/newinsertpage.component'
 import { OtpverfiedComponent } from './otpverfied/otpverfied.component';
 
 
-import { LogoutComponent } from './logout/logout.component'
+import { LogoutComponent } from './logout/logout.component';
+import { OnlinebookingComponent } from './onlinebooking/onlinebooking.component'
+
+
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 const appRoutes: Routes = [
@@ -47,8 +52,9 @@ const appRoutes: Routes = [
   { path: 'customercreate', component: CustomerCreateComponent, data: { title: 'Customer Create Component'} },
   
   { path: 'contactus', component: ContactUsComponent, data: { title: 'Contact Us'} },
-  { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}}
- 
+  { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
+  { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}}
+
 ];
 @NgModule({
   declarations: [
@@ -66,7 +72,7 @@ const appRoutes: Routes = [
     NewinsertpageComponent,
     OtpverfiedComponent,
     LogoutComponent,
-
+    OnlinebookingComponent,
     // SignupComponent
      ],
   imports: [
@@ -86,7 +92,11 @@ const appRoutes: Routes = [
     // Customer,
     FormsModule,
     ReactiveFormsModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-center-center'
+    })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

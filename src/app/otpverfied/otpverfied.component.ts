@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-otpverfied',
   templateUrl: './otpverfied.component.html',
@@ -28,9 +29,11 @@ export class OtpverfiedComponent implements OnInit {
   customerdata:any;
   customerdata1:any;
   customerdata2:any;
+
+  
   
 constructor(public router: Router, public restApi: RestApiService,
-  private frmbuilder: FormBuilder,private http: HttpClient) { };
+  private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService) { };
 
 ngOnInit(): void {
   this.dataForm1 = this.frmbuilder.group({
@@ -42,10 +45,11 @@ ngOnInit(): void {
 
 
 
-loadCustomerDetails2() {
+loadCustomerDetails2(Objval:any) {
   // alert("in")
   console.log("in");
   let isloggedinUser = localStorage.getItem('isloggedinUser');
+  // this.loadLoginuserTestimonial();
   return this.restApi.getCustomerData(isloggedinUser).subscribe((data => {
     // let singleCus = params;
     this.customerdata = data;
@@ -55,12 +59,19 @@ loadCustomerDetails2() {
       localStorage.setItem('currentUsername', this.customerdata2[0].customer_name); 
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
 
+      
+      this.toastr.success(Objval+' Successfully');
       window.location.reload();
     
     
   }
   ))
+  
 }
+
+
+
+
 
 signupdetailsInsert(){
   // alert("hi")
@@ -77,7 +88,9 @@ signupdetailsInsert(){
   
   } );
 
-  this.loadCustomerDetails2();
+  
+
+  this.loadCustomerDetails2("Registered");
 
   //let registerUserName = localStorage.getItem('registerUserName');
   
@@ -100,7 +113,7 @@ signupdetailsInsert(){
       localStorage.removeItem("otpstore");
       let registerUserName = localStorage.getItem('registerUserName');
       if(registerUserName == null) {
-        this.loadCustomerDetails2();
+        this.loadCustomerDetails2("Loggedin");
       }
       else {
   this.signupdetailsInsert();
