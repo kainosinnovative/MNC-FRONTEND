@@ -17,8 +17,8 @@
       Login</a></mat-list-item>
 
   <mat-list-item > <a  mat-list-item routerLink='/shop'>Shop Services</a> </mat-list-item>
-  <mat-list-item > <a mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
-  <mat-list-item > <a mat-list-item routerLink='/customer-edit/1'>My Profile Update</a> </mat-list-item>
+  <mat-list-item *ngIf="currentUsername"> <a mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
+
   <mat-list-item > <a mat-list-item >My Booking</a> </mat-list-item>
   <mat-list-item > <a mat-list-item routerLink='/testimonial/'>Testimonials</a> </mat-list-item>
   <mat-list-item > <a mat-list-item routerLink='/'>Blog</a> </mat-list-item>

@@ -1,10 +1,12 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+
 @Component({
   selector: 'app-otpverfied',
   templateUrl: './otpverfied.component.html',
@@ -16,7 +18,7 @@ export class OtpverfiedComponent implements OnInit {
   isloggedinUser = localStorage.getItem('isloggedinUser');
   public  dataForm1: FormGroup;
   dialog: any;
-  dialogRef: any;
+  // dialogRef: any;
   name = 'Angular 6';
   timeLeft: number = 10;
   interval:any;
@@ -32,7 +34,8 @@ export class OtpverfiedComponent implements OnInit {
 
   
   
-constructor(public router: Router, public restApi: RestApiService,
+constructor(public router: Router, public restApi: RestApiService,private  dialogRef:  MatDialogRef<OtpverfiedComponent>,
+  @Inject(MAT_DIALOG_DATA) public  data:  any,
   private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService) { };
 
 ngOnInit(): void {
@@ -57,6 +60,7 @@ loadCustomerDetails2(Objval:any) {
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
       // alert(this.customerdata2[0].firstname)
+      console.log("data")
       localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
 
@@ -90,8 +94,10 @@ signupdetailsInsert(){
   } );
 
   
+  this.toastr.success('Registered Successfully Please Login');
+  this.dialogRef.close();
 
-  this.loadCustomerDetails2("Registered");
+  // this.loadCustomerDetails2("this.toastr.success(Objval+' Successfully');");
 
   //let registerUserName = localStorage.getItem('registerUserName');
   
