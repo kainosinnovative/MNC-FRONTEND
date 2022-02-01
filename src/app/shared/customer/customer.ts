@@ -37,6 +37,16 @@ export class Customer {
         customer_id :any = "";
        
       }
+
+      export class createcustomer {
+        json() {
+          throw new Error('Method not implemented.');
+        }
+        user_description:string = "";
+        user_rating:any = "";
+        customer_id :any = "";
+       
+      }
       
       export class loginauth {
         statusText(statusText: any) {

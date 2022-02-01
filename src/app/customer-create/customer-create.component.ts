@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
 
 var event:string;
 var num2: any;
@@ -36,7 +38,9 @@ profileform : any;
     public router: Router,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
-    public restApi: RestApiService) {
+    public restApi: RestApiService,
+    private toastr: ToastrService,
+    private  dialogRef:  MatDialogRef<CustomerCreateComponent>) {
 
       
  }
@@ -64,16 +68,44 @@ ngOnInit() {
 ;}
 
 sendprofile(profileform: any){
-  const formData = new FormData();
-  formData.append('file', this.profileform.get('fileSource').value);
+  //const formData = new FormData();
+  //formData.append('file', this.profileform.get('fileSource').value);
  
-  this.http.post('http://localhost:8080/MNC-PHP-API/upload.php', formData)
-    .subscribe(res => {
-      console.log(res);
-      alert('Uploaded Successfully.');
-    })
+  //this.http.post('http://localhost:8080/MNC-PHP-API/upload.php', formData)
+  //  .subscribe(res => {
+    //  console.log(res);
+     // alert('Uploaded Successfully.');
+   // })
+
+    this.restApi.createcustomer(profileform).subscribe(data => {
+      console.log('POST Request is successful ', data);
+      this.showError();
+  },
+  error => {
+      console.log('Error', error);
+      this.showSuccess();
+      
+      
+  })
+    
+          this.closeMe();
+       
+          
 }
 
+showSuccess() {
+  
+  this.toastr.success('Customer Feedback Added Successfully!');
+}
+
+showError() {
+  
+  this.toastr.error('Something went wrong!');
+}
+
+public  closeMe() {
+  this.dialogRef.close();
+}
 
 get f(){
   return this.profileform.controls;

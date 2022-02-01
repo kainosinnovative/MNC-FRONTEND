@@ -27,6 +27,24 @@
             <div class="row">
                 <div class="col-sm-4">
 
+                    <div class="form-group">
+                        <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
+
+                        <input type="text" class="form-control" placeholder="" formControlName='firstname'>
+                        <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
+      
+                            <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['firstname'].errors.required" style="margin-left: 14px;">
+                                  First Name is required. 
+                              </div> 		   
+                             
+                           </div> 
+                            
+                          </div>
+                    </div>
+
+                    <br>
+
                         <div class="form-group">
                             <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
 
