@@ -52,11 +52,12 @@ loadCustomerDetails2(Objval:any) {
   // this.loadLoginuserTestimonial();
   return this.restApi.getCustomerData(isloggedinUser).subscribe((data => {
     // let singleCus = params;
+    console.log(data)
     this.customerdata = data;
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
-      // alert(this.customerdata2[0].customer_id)
-      localStorage.setItem('currentUsername', this.customerdata2[0].customer_name); 
+      // alert(this.customerdata2[0].firstname)
+      localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
 
       
@@ -111,8 +112,8 @@ signupdetailsInsert(){
     let EnteredOtp = firstDigit + SecondDigit +thirdDigit + fourthDigit;
     if(ReceiveOtp == EnteredOtp) {
       localStorage.removeItem("otpstore");
-      let registerUserName = localStorage.getItem('registerUserName');
-      if(registerUserName == null) {
+      let sessionbtn = localStorage.getItem('sessionbtn');
+      if(sessionbtn == "login") {
         this.loadCustomerDetails2("Loggedin");
       }
       else {

@@ -38,7 +38,7 @@ import { OnlinebookingComponent } from './onlinebooking/onlinebooking.component'
 
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ToastrModule } from 'ngx-toastr';
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 const appRoutes: Routes = [
@@ -95,7 +95,8 @@ const appRoutes: Routes = [
     NgxStarRatingModule,
     ToastrModule.forRoot({
       positionClass: 'toast-center-center'
-    })
+    }),
+    NgCircleProgressModule.forRoot()
     
   ],
   providers: [],

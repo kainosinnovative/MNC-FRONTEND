@@ -105,6 +105,7 @@ gettestimonialData(): Observable<Testimonial> {
     }
 
     getCustomerData(customer_mobileno	:any): Observable<logindetails> {
+      console.log(customer_mobileno);
       // alert("phone"+customer_mobileno)
       // alert("phone"+this.apiURL + '/customers/' + phone)
       return this.http.get<logindetails>(this.apiURL + '/app/SingleCustomerDetails?orderby='+ customer_mobileno	)

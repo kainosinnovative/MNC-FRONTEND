@@ -24,16 +24,69 @@
           <img src="../assets/images/avatar.png" class="rounded-circle">
         </div>
         <!--Content-->
-        <h4 class="font-weight-bold dark-grey-text mt-4">{{test.customer_name}}</h4>
+        <h4 class="font-weight-bold dark-grey-text mt-4">{{test.firstname}}</h4>
         <!-- <h6 class="font-weight-bold blue-text my-3">{{test.user_title}}</h6> -->
         <p class="font-weight-normal dark-grey-text">
           {{test.user_description}}
       </p>
         <!--Review-->
 
-        <!-- <div role="progressbar" aria-valuenow="{{test.review_count}}" aria-valuemin="1" aria-valuemax="5" style="--value:65"></div> -->
+        <!-- <div role="progressbar"   style="--value:{{test.user_rating}}"></div> -->
+
+        <!-- <span><circle-progress [percent]="70" [radius]="40" [outerStrokeWidth]="2" 
+  [outerStrokeColor]="'#3777BE'" [innerStrokeColor]="'#7f9fc1'" 
+ ></circle-progress></span> -->
+
+        <!-- <div class="inside-circle"> 75% </div> -->
+<!-- {{test.user_rating}} -->
+        <div *ngIf="test.user_rating == 1">
+          
+          <span  class="fa fa-star checked"></span>
+<span  class="fa fa-star "></span>
+<span  class="fa fa-star "></span>
+<span  class="fa fa-star"></span>
+<span  class="fa fa-star"></span>
+</div>
+
+<div *ngIf="test.user_rating == 2">
+          
+  <span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star "></span>
+<span  class="fa fa-star"></span>
+<span  class="fa fa-star"></span>
+</div>
+
+<div *ngIf="test.user_rating == 3">
+          
+  <span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star"></span>
+<span  class="fa fa-star"></span>
+</div>
+
+<div *ngIf="test.user_rating == 4">
+          
+  <span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star"></span>
+</div>
+
+<div *ngIf="test.user_rating == 5">
+          
+  <span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+<span  class="fa fa-star checked"></span>
+</div>
        
       </div>
+
+      
 
     </div>
    
@@ -48,3 +101,4 @@
 
 </section>
 <!-- Section: Testimonials v.3 -->
+
