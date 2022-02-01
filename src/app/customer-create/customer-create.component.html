@@ -1,5 +1,5 @@
 <h2  style="text-align:center;">My Account</h2>
-<form [formGroup]="profileform" (ngSubmit)="sendprofile(profileform.value)">
+<form [formGroup]="profileform" >
 <div class="accordion">
     <h2 class="title" (click)="opened = !opened">Personal Information</h2>
     <div class="content-container" [class.opened]="opened">
@@ -11,12 +11,12 @@
                <div><img class="rounded-circle" style="height: 100px; width:150px" [src]="imageSrc" *ngIf="imageSrc"></div>
             </div>
             <div class="form-group form-inline">
-                <input 
+                <input [formControl]="file"
                 formControlName="file"
                 id="file" 
                 type="file" 
                 class="form-control"
-                (change)="onFileChange($event)">
+                (change)="fileChange($event)">
             <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
                 <div *ngIf="f.file.errors.required">File is required.</div>
             </div> 
@@ -294,8 +294,8 @@
   </div>
   <div class="col-sm-12 form-inline" style="text-align: right;margin-left: 26px;">
         
-    <button class="btn btn-success " style="margin-right: 14px;"  [disabled]='!profileform.valid'>Update</button>
-  
+    <button class="btn btn-success " style="margin-right: 14px;" (click)="uploadFile(profileform.value)"  >Update</button>
+    <!-- [disabled]='!profileform.valid' -->
     
 
 </div>

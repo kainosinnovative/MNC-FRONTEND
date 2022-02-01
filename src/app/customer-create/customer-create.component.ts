@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
@@ -44,6 +44,9 @@ profileform : any;
 
       
  }
+
+ file=new FormControl('')
+  file_data:any=''
  
 ngOnInit() { 
  
@@ -67,7 +70,7 @@ ngOnInit() {
     })    
 ;}
 
-sendprofile(profileform: any){
+// sendprofile(profileform: any){
   //const formData = new FormData();
   //formData.append('file', this.profileform.get('fileSource').value);
  
@@ -77,21 +80,21 @@ sendprofile(profileform: any){
      // alert('Uploaded Successfully.');
    // })
 
-    this.restApi.createcustomer(profileform).subscribe(data => {
-      console.log('POST Request is successful ', data);
-      this.showError();
-  },
-  error => {
-      console.log('Error', error);
-      this.showSuccess();
+  //   this.restApi.createcustomer(profileform).subscribe(data => {
+  //     console.log('POST Request is successful ', data);
+  //     this.showError();
+  // },
+  // error => {
+  //     console.log('Error', error);
+  //     this.showSuccess();
       
       
-  })
+  // })
     
         
        
           
-}
+// }
 
 showSuccess() {
   
@@ -108,24 +111,79 @@ showError() {
 get f(){
   return this.profileform.controls;
 }
-onFileChange(event: any) {
-  const reader = new FileReader();
+// onFileChange(event: any) {
+//   const reader = new FileReader();
   
-  if(event.target.files && event.target.files.length) {
-    const [file] = event.target.files;
-    reader.readAsDataURL(file);
+//   if(event.target.files && event.target.files.length) {
+//     const [file] = event.target.files;
+//     reader.readAsDataURL(file);
   
-    reader.onload = () => {
+//     reader.onload = () => {
  
-      this.imageSrc = reader.result as string;
+//       this.imageSrc = reader.result as string;
    
-      this.profileform.patchValue({
-        fileSource: reader.result
-      });
+//       this.profileform.patchValue({
+//         fileSource: reader.result
+//       });
  
-    };
+//     };
  
+//   }
+// }
+
+fileChange(event:any) {
+    
+  const fileList: FileList = event.target.files;
+  //check whether file is selected or not
+  if (fileList.length > 0) {
+
+      const file = fileList[0];
+      //get file information such as name, size and type
+      console.log('finfo',file.name,file.size,file.type);
+      //max file size is 4 mb
+      let currentUserId:any = localStorage.getItem('currentUserId');
+      if((file.size/1048576)<=4)
+      {
+        let formData = new FormData();
+        let info={id:2,name:'raja'}
+        formData.append('file', file, file.name);
+        formData.append('id','2');
+        formData.append('tz',new Date().toISOString())
+        formData.append('update','2')
+        formData.append('info',JSON.stringify(info))
+        formData.append('currentUserId',currentUserId)
+        this.file_data=formData
+        
+      }else{
+        //this.snackBar.open('File size exceeds 4 MB. Please choose less than 4 MB','',{duration: 2000});
+      }
+      
   }
+
+  
+  alert(this.file_data)
+
+  this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerInsert',this.file_data)
+      .subscribe(res => {
+      //send success response
+      }, (err) => {
+      //send error response
+    });
+
 }
+
+
+uploadFile(profileform:any)
+    {
+      
+//       this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerInsert',this.profileform)
+//       .subscribe(res => {
+      
+//       }, (err) => {
+      
+//     });
+    }
+
+
 }
 
