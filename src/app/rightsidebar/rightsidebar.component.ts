@@ -9,7 +9,7 @@ import { TestimonialAddComponent } from '../testimonial-add/testimonial-add.comp
   styleUrls: ['./rightsidebar.component.scss']
 })
 export class RightsidebarComponent implements OnInit {
-
+  currentUsername = localStorage.getItem('currentUsername');
   constructor(private  dialog:  MatDialog, private  router:  Router) { }
 
   ngOnInit(): void {

@@ -34,6 +34,7 @@ export class Customer {
         }
         user_description:string = "";
         user_rating:any = "";
+        customer_id :any = "";
        
       }
       

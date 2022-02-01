@@ -3,42 +3,54 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Inject, Injectable} from  '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from '@angular/router';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 import { RestApiService } from "../shared/rest-api.service";
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-testimonial-add',
   templateUrl: './testimonial-add.component.html',
   styleUrls: ['./testimonial-add.component.scss']
 })
 export class TestimonialAddComponent implements OnInit {
+
+  testimonialForm: any;
   
-  @Input() testimonialDetails = { user_description:'', user_rating:''}
-  constructor(private  dialogRef:  MatDialogRef<TestimonialAddComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,public router: Router, public restApi: RestApiService) {
+  
+
+  currentUserId = localStorage.getItem('currentUserId');
+  
+  // @Input() testimonialDetails = { user_description:'', user_rating:''}
+  constructor(private  dialogRef:  MatDialogRef<TestimonialAddComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,
+  public router: Router, public restApi: RestApiService, private frmbuilder: FormBuilder,private http: HttpClient) {
   }
 
   // user_description:any;
   starList: boolean[] = [true,true,true,true,true];       // create a list which contains status of 5 stars
 rating:any;  
-//Create a function which receives the value counting of stars click, 
-//and according to that value we do change the value of that star in list.
-setStar(data:any){
-      this.rating=data+1;                               
-      for(var i=0;i<=4;i++){  
-        if(i<=data){  
-          this.starList[i]=false;  
-        }  
-        else{  
-          this.starList[i]=true;  
-        }  
-     } 
-    //  
-    this.testimonialDetails.user_rating = this.rating
- }
+
+// setStar(data:any){
+//       this.rating=data+1;                               
+//       for(var i=0;i<=4;i++){  
+//         if(i<=data){  
+//           this.starList[i]=false;  
+//         }  
+//         else{  
+//           this.starList[i]=true;  
+//         }  
+//      } 
+//      this.textbox= 'somevalue';
+    
+//  }
 
   
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.testimonialForm = this.frmbuilder.group({
+      user_description: ['', Validators.required],
+      user_rating: ['', Validators.required],
+      customer_id: [this.currentUserId, Validators.required],
+      });
   }
   public  closeMe() {
       this.dialogRef.close();
@@ -46,14 +58,15 @@ setStar(data:any){
 
   testimonial: any = [];
 
-  onClickSubmit() {
-    alert(this.testimonialDetails.user_description)
-    // alert(this.testimonialDetails.username)
-    // this.testimonialDetails.user_rating = (<HTMLInputElement>document.getElementById("username")).value;
-    // this.testimonialDetails.user_rating = "300";
-    this.restApi.createTestimonial(this.testimonialDetails).subscribe()
-    
- }
+
+
+createTestimonial2(testimonialForm:any){
+//  alert("hi")
+  this.restApi.createTestimonial(testimonialForm).subscribe()
+
+        this.closeMe();
+       
+}
 
  
 }
