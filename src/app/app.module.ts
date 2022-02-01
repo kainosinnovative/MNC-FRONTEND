@@ -63,8 +63,7 @@ const appRoutes: Routes = [
     LoginComponent,
     TestimonialComponent,
     CustomerCreateComponent,
-   
-    ContactUsComponent,
+       ContactUsComponent,
          ShopComponent,
          SignupComponent,
          TestimonialAddComponent,

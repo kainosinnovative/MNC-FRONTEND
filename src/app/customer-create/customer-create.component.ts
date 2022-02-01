@@ -4,7 +4,7 @@ import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+
 
 var event:string;
 var num2: any;
@@ -39,8 +39,8 @@ profileform : any;
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public restApi: RestApiService,
-    private toastr: ToastrService,
-    private  dialogRef:  MatDialogRef<CustomerCreateComponent>) {
+    private toastr: ToastrService
+   ) {
 
       
  }
@@ -88,7 +88,7 @@ sendprofile(profileform: any){
       
   })
     
-          this.closeMe();
+        
        
           
 }
@@ -103,9 +103,7 @@ showError() {
   this.toastr.error('Something went wrong!');
 }
 
-public  closeMe() {
-  this.dialogRef.close();
-}
+
 
 get f(){
   return this.profileform.controls;
