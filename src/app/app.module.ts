@@ -36,6 +36,7 @@ import { OnlinebookingComponent } from './onlinebooking/onlinebooking.component'
 
 
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const appRoutes: Routes = [
@@ -89,6 +90,9 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NgxStarRatingModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-center-center'
+    })
     
   ],
   providers: [],

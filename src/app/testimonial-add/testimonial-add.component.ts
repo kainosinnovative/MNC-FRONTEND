@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-testimonial-add',
   templateUrl: './testimonial-add.component.html',
@@ -15,14 +16,20 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class TestimonialAddComponent implements OnInit {
 
   testimonialForm: any;
-  
+  LoginTestimonial:any;
+  LoginTestimonial1:any;
+  LoginTestimonial2:any;
+  LoginTestimonial3:any;
+  LoginTestimonial4:any;
   
 
   currentUserId = localStorage.getItem('currentUserId');
   
   // @Input() testimonialDetails = { user_description:'', user_rating:''}
   constructor(private  dialogRef:  MatDialogRef<TestimonialAddComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,
-  public router: Router, public restApi: RestApiService, private frmbuilder: FormBuilder,private http: HttpClient) {
+  public router: Router, public restApi: RestApiService, private frmbuilder: FormBuilder,private http: HttpClient,
+  private toastr: ToastrService) {
+    
   }
 
   // user_description:any;
@@ -50,7 +57,10 @@ rating:any;
       user_description: ['', Validators.required],
       user_rating: ['', Validators.required],
       customer_id: [this.currentUserId, Validators.required],
+      review_count:[1],
       });
+
+      // this.loadLoginuserTestimonial();
   }
   public  closeMe() {
       this.dialogRef.close();
@@ -61,12 +71,35 @@ rating:any;
 
 
 createTestimonial2(testimonialForm:any){
+  
 //  alert("hi")
-  this.restApi.createTestimonial(testimonialForm).subscribe()
-
+  this.restApi.createTestimonial(testimonialForm).subscribe(data => {
+    console.log('POST Request is successful ', data);
+    this.showError();
+},
+error => {
+    console.log('Error', error);
+    this.showSuccess();
+    
+    
+})
+  
         this.closeMe();
        
 }
+
+showSuccess() {
+  
+  this.toastr.success('Customer Feedback Added Successfully!');
+}
+
+showError() {
+  
+  this.toastr.error('Something went wrong!');
+}
+
+
+
 
  
 }

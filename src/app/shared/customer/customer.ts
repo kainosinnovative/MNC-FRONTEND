@@ -57,4 +57,9 @@ export class Customer {
       }
 
 
+      export class singleLoginTestimonial {
+        customer_id:any = "";
+      }
+
+
       
