@@ -33,6 +33,7 @@ import { OtpverfiedComponent } from './otpverfied/otpverfied.component';
 import { LogoutComponent } from './logout/logout.component'
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
     // Customer,
     FormsModule,
     ReactiveFormsModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
