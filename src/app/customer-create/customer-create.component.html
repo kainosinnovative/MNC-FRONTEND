@@ -8,20 +8,18 @@
             <label >Profile Photo</label>
             </div>
             <div class= "border-right">
-               <div><img class="rounded-circle" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"></div>
+               <div><img class="rounded-circle" style="height: 100px; width:150px" [src]="imageSrc" *ngIf="imageSrc"></div>
             </div>
             <div class="form-group form-inline">
-            <input class="form-control"  id="image" type="file" name="profile_photo"  required="" style="width:500px;"  formControlName="uploadimage">
-            <div *ngIf="profileform.controls['uploadimage'].touched && profileform.controls['uploadimage'].invalid "> 
-          
-                <div *ngIf="profileform.controls['uploadimage'].errors" style="color: red;"> 
-                  <div *ngIf="profileform.controls['uploadimage'].errors.required" style="margin-left: 14px;">
-                      Upload Your Profile Photo
-                  </div> 		   
-                 
-               </div> 
-                
-              </div>    
+                <input 
+                formControlName="file"
+                id="file" 
+                type="file" 
+                class="form-control"
+                (change)="onFileChange($event)">
+            <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                <div *ngIf="f.file.errors.required">File is required.</div>
+            </div> 
         </div>
             <!--endphoto-->
             <br>
@@ -95,7 +93,18 @@
                
                         <div class="form-group">
                         <label class="lblwidthProfile">Date of Birth </label><span class="requiredfield">  *</span>
-                        <input type="date"  class="form-control" placeholder="" >
+                        <input type="date"  class="form-control" placeholder="" formControlName="dob">
+                        <div *ngIf="profileform.controls['dob'].touched && profileform.controls['dob'].invalid "> 
+          
+                            <div *ngIf="profileform.controls['dob'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['dob'].errors.required" style="margin-left: 14px;">
+                                  Date of Birth is required. 
+                              </div> 		   
+                             
+                           </div> 
+                            
+                          </div>
+                    
                         </div>
                 </div>
 
@@ -119,10 +128,21 @@
                         <br>
                         <div class="form-group form-inline">
                             <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span><br>
-                            <select  placeholder="" >
+                            <select  placeholder=""  class="selectoptiongender" formControlName="gender">
+                                <option ></option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
                                 </select>
+                                <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
+          
+                                    <div *ngIf="profileform.controls['gender'].errors" style="color: red;"> 
+                                      <div *ngIf="profileform.controls['gender'].errors.required" style="margin-left: 14px;">
+                                          Select Gender
+                                      </div> 		   
+                                     
+                                   </div> 
+                                    
+                                  </div>
                             </div>
 
                 </div>
@@ -145,15 +165,37 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Door No/Apartment Name</label>
 
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" class="form-control" placeholder="" formControlName="doorno">
+                        <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
+          
+                            <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['doorno'].errors.required" style="margin-left: 14px;">
+                                  Please fill Address Detail
+                              </div> 		   
+                             
+                           </div> 
+                            
+                          </div>
                     </div>
 
                     <br>
                    
                     <div class="form-group">
-                        <label class="lblwidthProfile">State</label>
-                        <input type="text" class="form-control" placeholder="">
-                    
+                        <label class="lblwidthProfile">State</label><br>
+                        <select  placeholder=""  class="selectoption" formControlName="state">
+                            <option value=""></option>
+                            <option value="FeMale">TamilNadu</option>
+                            </select>
+                            <div *ngIf="profileform.controls['state'].touched && profileform.controls['state'].invalid "> 
+          
+                                <div *ngIf="profileform.controls['state'].errors" style="color: red;"> 
+                                  <div *ngIf="profileform.controls['state'].errors.required" style="margin-left: 14px;">
+                                      Select State
+                                  </div> 		   
+                                 
+                               </div> 
+                                
+                              </div>
                     </div>
     
                    
@@ -165,14 +207,34 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Street Name</label>
     
-                         <input type="text" class="form-control" placeholder="">
+                         <input type="text" class="form-control" placeholder="" formControlName="street">
+                         <div *ngIf="profileform.controls['street'].touched && profileform.controls['street'].invalid "> 
+          
+                            <div *ngIf="profileform.controls['street'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['street'].errors.required" style="margin-left: 14px;">
+                                Enter Your Street 
+                              </div> 	   
+                             
+                           </div> 
+                            
+                          </div>
                     </div>
 
                     <br>
                     
                     <div class="form-group">
                         <label class="lblwidthProfile">Zipcode</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" class="form-control" placeholder="" formControlName="zipcode">
+                        <div *ngIf="profileform.controls['zipcode'].touched && profileform.controls['zipcode'].invalid "> 
+          
+                            <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
+                              <div *ngIf="profileform.controls['zipcode'].errors.required" style="margin-left: 14px;">
+                                  ZipCode is Required
+                              </div> 		   
+                             
+                           </div> 
+                            
+                          </div>
                     
                 </div>
 
@@ -182,7 +244,20 @@
                      <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">City</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <select  placeholder=""  class="selectoption" formControlName="city"><br>
+                                <option value=""></option>
+                                <option value="FeMale">Chennai</option>
+                                </select>
+                                <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
+              
+                                    <div *ngIf="profileform.controls['city'].errors" style="color: red;"> 
+                                      <div *ngIf="profileform.controls['city'].errors.required" style="margin-left: 14px;">
+                                          Select City
+                                      </div> 		   
+                                     
+                                   </div> 
+                                    
+                                  </div>
                         
                         </div>
     

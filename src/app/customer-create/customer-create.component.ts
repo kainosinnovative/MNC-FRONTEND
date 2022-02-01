@@ -30,6 +30,7 @@ profileform : any;
 
   opened = true;
   opened1 = false;
+  imageSrc: string;
   
   constructor(
     public router: Router,
@@ -41,24 +42,60 @@ profileform : any;
  }
  
 ngOnInit() { 
+ 
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   this.profileform = this.frmbuilder.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    uploadimage: ['', Validators.required],
+    dob: ['', Validators.required],
+    doorno: ['', Validators.required],
+    state: ['', Validators.required],
+    gender: ['', Validators.required],
+    city: ['', Validators.required],
+    street: ['', Validators.required],
+    zipcode: ['', Validators.required],
     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     // updateOn: 'blur'
-   
+    file: ['', [Validators.required]],
+    //fileSource:['', [Validators.required]]
     })    
 ;}
-// addCustomer() {
-// this.restApi.createCustomer(this.customerDetails).subscribe((data: {}) => {
-// this.router.navigate(['/customercreate'])
-// })
-// }
-sendprofile(profileform: any){}
 
+sendprofile(profileform: any){
+  const formData = new FormData();
+  formData.append('file', this.profileform.get('fileSource').value);
+ 
+  this.http.post('http://localhost:8080/MNC-PHP-API/upload.php', formData)
+    .subscribe(res => {
+      console.log(res);
+      alert('Uploaded Successfully.');
+    })
+}
+
+
+get f(){
+  return this.profileform.controls;
+}
+onFileChange(event: any) {
+  const reader = new FileReader();
+  
+  if(event.target.files && event.target.files.length) {
+    const [file] = event.target.files;
+    reader.readAsDataURL(file);
+  
+    reader.onload = () => {
+ 
+      this.imageSrc = reader.result as string;
+   
+      this.profileform.patchValue({
+        fileSource: reader.result
+      });
+ 
+    };
+ 
+  }
+}
 }
 
