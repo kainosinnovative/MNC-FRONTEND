@@ -154,6 +154,26 @@ getCustomer(id:any): Observable<Customer> {
     )
   }
 
+
+  // read user data
+  // readCustomerDataById(currentUserId:any): Observable<createcustomer>{
+  //   return this.http.get<createcustomer>(`${this.apiURL}/app/readCustomerDataById`);
+  // }
+
+  readCustomerDataById(currentUserId	:any): Observable<logindetails> {
+    console.log("api>>>",currentUserId);
+    // alert("phone"+customer_mobileno)
+    // alert("phone"+this.apiURL + '/customers/' + phone)
+    return this.http.get<logindetails>(this.apiURL + '/app/readCustomerDataById?customer_id='+ currentUserId	)
+    
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+      
+    )
+  
+  } 
+
 createCustomer(employee: { name: string; email: string; phone: number; gender: string;doorno: string; street: string;
 area: string; Pincode: string; city: string; landmark: string;}):
 Observable<Customer> {
