@@ -64,7 +64,7 @@ Otpvrf(){
   sendotp1(dataForm: any) {
 // alert()
     console.log("send otp>>>>>")
-    this.http.post('http://localhost/MNC-PHP-API/app/sendOtp2', dataForm).subscribe(
+    this.http.post('http://localhost/MNC-PHP-API/app/sendOtp1', dataForm).subscribe(
       
         data => {
             console.log('POST Request is successful >>>>>>>>', data);

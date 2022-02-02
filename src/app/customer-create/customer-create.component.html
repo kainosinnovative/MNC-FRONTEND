@@ -27,6 +27,10 @@
             </div>  -->
         </div>
             <!--endphoto-->
+
+            <img *ngIf="CustomerDataById1.profile_img" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{CustomerDataById1.profile_img}}" class="rounded-circle">
+            <img *ngIf="!CustomerDataById1.profile_img" style="width: 100px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+
             <br>
             <!--info-->
             <div class="row">
@@ -139,7 +143,7 @@
                         <br>
                         <div class="form-group form-inline">
                             <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span><br>
-                            <select  placeholder=""  class="selectoptiongender" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
+                            <select  placeholder=""  class="form-control selectoptiongender" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
                                 <option ></option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>

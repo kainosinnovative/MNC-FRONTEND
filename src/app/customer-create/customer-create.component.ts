@@ -159,6 +159,8 @@ fileChange(event:any) {
       //send error response
     });
 
+    // this.toastr.success('Profile Image Successfully');
+
 }
 
 
@@ -173,6 +175,7 @@ uploadFile(profileform:any)
     });
 
     this.toastr.success('Profile Updated Successfully');
+    window.location.reload();
     }
 
 
