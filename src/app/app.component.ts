@@ -28,6 +28,10 @@ import { SignupComponent } from './signup/signup.component';
 export class AppComponent {
 
   currentUsername = localStorage.getItem('currentUsername');
+
+  userroleSes = localStorage.getItem('userroleSes');
+
+ 
   
   
   title = 'angular6-sidenav-example';
@@ -85,7 +89,15 @@ logout() {
 }
 
 loginCheck() {
-  // alert("hi")
+  // alert("shop")
+  localStorage.removeItem("loginfor");
+  localStorage.setItem('loginfor','shopowner');
+}
+
+loginCheck1() {
+  // alert("customer")
+  localStorage.removeItem("loginfor");
+  localStorage.setItem('loginfor','customer');
 }
     
 }

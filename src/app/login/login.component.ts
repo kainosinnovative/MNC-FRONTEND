@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 public  dataForm: FormGroup;
   mobno: string = "";
   
- 
+  loginfor = localStorage.getItem('loginfor');
  //dialog: any;
   // @Input() logindetails = { mobno:''}
 
@@ -34,8 +34,11 @@ public  dataForm: FormGroup;
   }
 
   ngOnInit(): void {
+    const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     this.dataForm = this.frmbuilder.group({
-      mobile: ['', null],
+      mobile:['', [Validators.required, Validators.pattern(mobilePattern)]],
+     
+      loginfor:[localStorage.getItem('loginfor'),null]
      
       });
   }

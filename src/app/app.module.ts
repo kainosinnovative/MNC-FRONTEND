@@ -42,6 +42,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 
 import { ServicesComponent } from './services/services.component';
+import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
 // import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
 
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
   { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
   { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
-  { path: 'services', component: ServicesComponent, data: {title: 'Services component'}}
+  { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
+  { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}}
 
 ];
 @NgModule({
@@ -83,6 +85,7 @@ const appRoutes: Routes = [
     FileuploadComponent,
 
     ServicesComponent,
+      ShopProfileComponent,
     // ImagedisplayComponent,
 
     // SignupComponent

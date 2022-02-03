@@ -52,23 +52,52 @@ loadCustomerDetails2(Objval:any) {
   // alert("in")
   console.log("in");
   let isloggedinUser = localStorage.getItem('isloggedinUser');
+  let loginfor = localStorage.getItem('loginfor');
+// alert(loginfor)
+  // this.http.get('http://localhost/MNC-PHP-API/app/SingleCustomerDetails?customer_mobileno='+isloggedinUser+ 
+  // '&loginfor='+loginfor).subscribe(data=>{
+  //   console.log(data)
+  //   this.customerdata = data;
+  //     this.customerdata1 = this.customerdata.data;
+  //     this.customerdata2 = this.customerdata1.SingleCustomerDetails;
+     
+  //     console.log("data")
+  //     localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
+  //     localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
+  //     this.toastr.success(Objval+' Successfully');
+  //     // window.location.reload();
+  // } );
+
+  var jsonObject = 
+                {
+                  "isloggedinUser": isloggedinUser,
+                  "loginfor": loginfor 
+                  
+                  }
   // this.loadLoginuserTestimonial();
-  return this.restApi.getCustomerData(isloggedinUser).subscribe((data => {
-    // let singleCus = params;
-    console.log(data)
+  
+  return this.restApi.getCustomerData(jsonObject).subscribe((data => {
     this.customerdata = data;
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
-      // alert(this.customerdata2[0].firstname)
+     
       console.log("data")
-      localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
+      
+      if(loginfor == 'shopowner') {
+        
+        localStorage.setItem('currentUsername', this.customerdata2[0].owner_firstname); 
+      localStorage.setItem('currentUserId', this.customerdata2[0].shop_id );
+      localStorage.setItem('userroleSes', 'shopOwnerSes');
+      }
+      else {
+        localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
+      localStorage.setItem('userroleSes', 'CustomerSes');
+      }
 
       
       this.toastr.success(Objval+' Successfully');
       window.location.reload();
-    
-    
   }
   ))
   

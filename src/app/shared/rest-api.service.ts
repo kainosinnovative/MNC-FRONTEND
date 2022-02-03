@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial } from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin } from '../shared/customer/customer';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
@@ -104,11 +104,14 @@ gettestimonialData(): Observable<Testimonial> {
     )
     }
 
-    getCustomerData(customer_mobileno	:any): Observable<logindetails> {
-      console.log(customer_mobileno);
-      // alert("phone"+customer_mobileno)
-      // alert("phone"+this.apiURL + '/customers/' + phone)
-      return this.http.get<logindetails>(this.apiURL + '/app/SingleCustomerDetails?orderby='+ customer_mobileno	)
+    getCustomerData(jsonObject:any): Observable<shopCustlogin> {
+      // console.log("mob>>>",jsonObject);
+      let customer_mobileno = jsonObject["isloggedinUser"];
+      let loginfor = jsonObject["loginfor"];
+      // var finalstr = customer_mobileno + "" + loginfor;
+      // alert("loginfor>>>"+loginfor)
+      // alert("customer_mobileno>>>"+customer_mobileno)
+      return this.http.get<shopCustlogin>(this.apiURL + '/app/SingleCustomerDetails?customer_mobileno='+customer_mobileno+'&loginfor='+loginfor)
       
       .pipe(
         retry(1),

@@ -71,5 +71,10 @@ export class Customer {
         customer_id:any = "";
       }
 
+      export class shopCustlogin {
+        customer_mobileno:string = "";
+        loginfor:string = "";
+      }
+
 
       
