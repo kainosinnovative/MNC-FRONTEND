@@ -41,7 +41,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 
+import { ServicesComponent } from './services/services.component';
+
 // import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
+
 
 
 const appRoutes: Routes = [
@@ -57,8 +60,8 @@ const appRoutes: Routes = [
   { path: 'contactus', component: ContactUsComponent, data: { title: 'Contact Us'} },
   { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
   { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
-  { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}}
-  
+  { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
+  { path: 'services', component: ServicesComponent, data: {title: 'Services component'}}
 
 ];
 @NgModule({
@@ -78,7 +81,11 @@ const appRoutes: Routes = [
     LogoutComponent,
     OnlinebookingComponent,
     FileuploadComponent,
-   
+
+    ServicesComponent,
+    // ImagedisplayComponent,
+
+    // SignupComponent
      ],
   imports: [
     BrowserModule,
