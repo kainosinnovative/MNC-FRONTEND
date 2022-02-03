@@ -40,6 +40,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ToastrModule } from 'ngx-toastr';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FileuploadComponent } from './fileupload/fileupload.component';
+
 // import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
 
 
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
   { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}}
+  
 
 ];
 @NgModule({
@@ -76,8 +78,7 @@ const appRoutes: Routes = [
     LogoutComponent,
     OnlinebookingComponent,
     FileuploadComponent,
-    // ImagedisplayComponent,
-    // SignupComponent
+   
      ],
   imports: [
     BrowserModule,
