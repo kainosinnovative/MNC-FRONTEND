@@ -27,7 +27,9 @@ export class SignupComponent implements OnInit {
   
 
   constructor(private  dialogRef:  MatDialogRef<SignupComponent>,
-     @Inject(MAT_DIALOG_DATA) public  data:  any,public router: Router,
+     @Inject(MAT_DIALOG_DATA) 
+     public  data:  any,
+     public router: Router,
      private frmbuilder: FormBuilder,
      private http: HttpClient,
      public restApi: RestApiService,public dialog: MatDialog) {

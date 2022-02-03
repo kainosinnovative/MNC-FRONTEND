@@ -1,16 +1,28 @@
 .form-control {
     display: unset !important;
-    width: 350px;
-    height: 28px;
-    font-size: 12px;
+    width: 330px;
+    height: 35px;
+    font-size: 15px;
+    margin-left: 8px;
 }
+
+
 
 .lblwidthContactus {
     width: 100px;
 }
 
+.lblwidthContactus2{
+
+    width: 100px;
+    display: inline-block;
+   vertical-align: top;
+   // padding-bottom: 10px;
+   
+
+}
 .form-group {
-    height: 34px;
+    height: 60px;
 }
 
 button {
@@ -19,7 +31,7 @@ button {
 
 .form-control2 {
     // display: block;
-    width: 350px;
+    width: 330px;
     padding: .375rem .75rem;
     font-size: 12px;
     font-weight: 400;
@@ -33,4 +45,11 @@ button {
     appearance: none;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-left: 8px;
+}
+
+.message{
+
+    text-align: right;    
+    margin-left: -14px;
 }
