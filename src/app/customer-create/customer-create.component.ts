@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { config_url } from '../shared/customer/constant';
 
 
 var event:string;
@@ -87,6 +88,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
 
 
 readCustomerDataById() {
+  
   let currentUserId = localStorage.getItem('currentUserId');
   return this.restApi.readCustomerDataById(currentUserId).subscribe((res)=>{
     this.CustomerDataById = res
@@ -152,7 +154,7 @@ fileChange(event:any) {
   
   // alert(this.file_data)
 
-  this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerInsert',this.file_data)
+  this.http.post(config_url+'/app/AddCustomerInsert',this.file_data)
       .subscribe(res => {
       //send success response
       }, (err) => {
@@ -167,7 +169,7 @@ fileChange(event:any) {
 uploadFile(profileform:any)
     {
       
-      this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerdetails',profileform)
+      this.http.post(config_url+'/app/AddCustomerdetails',profileform)
       .subscribe(res => {
       
       }, (err) => {

@@ -84,7 +84,9 @@ logout() {
   window.location.reload();
 }
 
-
+loginCheck() {
+  // alert("hi")
+}
     
 }
   // function signup() {
