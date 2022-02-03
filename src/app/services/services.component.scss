@@ -58,17 +58,22 @@
     background-color: #eee
 }
 
-.container {
-   // width: 500px
-}
+
 
 .card {
     //background-color: #eee;
     border: none;
     border-radius: 10px;
     width: 300px;
- 
+  
     //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.card1 {
+    
+    border:1px solid;
+    background-color: lightgrey;
+    height: 300px;
 }
 
 
@@ -105,11 +110,6 @@ transition: all .3s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
-.first {
-   // position: absolute;
-   // width: 100%;
-    //padding: 9px
-}
 
 .dress-name {
     font-size: 13px;
