@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Inject, Injectable} from  '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 
 var event:string;
@@ -19,7 +21,8 @@ var num1 = localStorage.getItem('isLoggedIn');
 @Component({
 selector: 'app-customer-create',
 templateUrl: './customer-create.component.html',
-styleUrls: ['./customer-create.component.scss']
+styleUrls: ['./customer-create.component.scss'],
+providers: [DatePipe]
 })
 
 export class CustomerCreateComponent implements OnInit {
@@ -28,18 +31,24 @@ export class CustomerCreateComponent implements OnInit {
 
 types:any;
 profileform : any;
-@Input() customerDetails = { name: '', email: '', phone: num2, gender: '', doorno: '', street: '', area: '', Pincode: '', city: '', landmark: '' }
 
   opened = true;
   opened1 = false;
   imageSrc: string;
+  CustomerDataById: any;
+  CustomerDataById1:any;
+  CustomerDataById2:any;
+  CustomerDataById3:any;
+  firstname: any;
+  data:any = [];
+  date: any;
   
   constructor(
     public router: Router,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public restApi: RestApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,public datepipe: DatePipe
    ) {
 
       
@@ -49,6 +58,12 @@ profileform : any;
   file_data:any=''
  
 ngOnInit() { 
+
+  this.readCustomerDataById();
+  let currentUserId:any = localStorage.getItem('currentUserId');
+
+  this.date=new Date();
+let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
  
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
@@ -59,42 +74,34 @@ ngOnInit() {
     doorno: ['', Validators.required],
     state: ['', Validators.required],
     gender: ['', Validators.required],
+    cartype: ['', Validators.required],
     city: ['', Validators.required],
     street: ['', Validators.required],
     zipcode: ['', Validators.required],
     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
-    // updateOn: 'blur'
-    file: ['', [Validators.required]],
-    //fileSource:['', [Validators.required]]
+    lastupddt: [current_date, [Validators.required]],
+    customer_id:[currentUserId, [Validators.required]]
     })    
 ;}
 
-// sendprofile(profileform: any){
-  //const formData = new FormData();
-  //formData.append('file', this.profileform.get('fileSource').value);
- 
-  //this.http.post('http://localhost:8080/MNC-PHP-API/upload.php', formData)
-  //  .subscribe(res => {
-    //  console.log(res);
-     // alert('Uploaded Successfully.');
-   // })
 
-  //   this.restApi.createcustomer(profileform).subscribe(data => {
-  //     console.log('POST Request is successful ', data);
-  //     this.showError();
-  // },
-  // error => {
-  //     console.log('Error', error);
-  //     this.showSuccess();
-      
-      
-  // })
+readCustomerDataById() {
+  let currentUserId = localStorage.getItem('currentUserId');
+  return this.restApi.readCustomerDataById(currentUserId).subscribe((res)=>{
+    this.CustomerDataById = res
+
     
-        
-       
-          
-// }
+    this.CustomerDataById1 = this.CustomerDataById.data.profile
+    console.log(this.CustomerDataById)
+    
+  }
+    
+  
+  )
+  
+}
+
 
 showSuccess() {
   
@@ -111,25 +118,7 @@ showError() {
 get f(){
   return this.profileform.controls;
 }
-// onFileChange(event: any) {
-//   const reader = new FileReader();
-  
-//   if(event.target.files && event.target.files.length) {
-//     const [file] = event.target.files;
-//     reader.readAsDataURL(file);
-  
-//     reader.onload = () => {
- 
-//       this.imageSrc = reader.result as string;
-   
-//       this.profileform.patchValue({
-//         fileSource: reader.result
-//       });
- 
-//     };
- 
-//   }
-// }
+
 
 fileChange(event:any) {
     
@@ -161,7 +150,7 @@ fileChange(event:any) {
   }
 
   
-  alert(this.file_data)
+  // alert(this.file_data)
 
   this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerInsert',this.file_data)
       .subscribe(res => {
@@ -170,18 +159,23 @@ fileChange(event:any) {
       //send error response
     });
 
+    // this.toastr.success('Profile Image Successfully');
+
 }
 
 
 uploadFile(profileform:any)
     {
       
-//       this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerInsert',this.profileform)
-//       .subscribe(res => {
+      this.http.post('http://localhost/MNC-PHP-API/app/AddCustomerdetails',profileform)
+      .subscribe(res => {
       
-//       }, (err) => {
+      }, (err) => {
       
-//     });
+    });
+
+    this.toastr.success('Profile Updated Successfully');
+    window.location.reload();
     }
 
 

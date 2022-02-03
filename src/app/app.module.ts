@@ -40,7 +40,11 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ToastrModule } from 'ngx-toastr';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FileuploadComponent } from './fileupload/fileupload.component';
+
 import { ServicesComponent } from './services/services.component';
+
+// import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
+
 
 
 const appRoutes: Routes = [
@@ -77,7 +81,10 @@ const appRoutes: Routes = [
     LogoutComponent,
     OnlinebookingComponent,
     FileuploadComponent,
+
     ServicesComponent,
+    // ImagedisplayComponent,
+
     // SignupComponent
      ],
   imports: [
@@ -101,7 +108,8 @@ const appRoutes: Routes = [
     ToastrModule.forRoot({
       positionClass: 'toast-center-center'
     }),
-    NgCircleProgressModule.forRoot()
+    NgCircleProgressModule.forRoot(),
+    
     
   ],
   providers: [],

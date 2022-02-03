@@ -1,4 +1,9 @@
-<h2  style="text-align:center;">My Account</h2>
+<h2  style="text-align:center;">My Profile</h2>
+<!-- *ngFor = "let news  of CustomerDataById1" -->
+<div >
+    <!-- <ul *ngFor="let c of CustomerDataById">
+        <li>hi {{c.data.profile.firstname}}</li>
+    </ul> -->
 <form [formGroup]="profileform" >
 <div class="accordion">
     <h2 class="title" (click)="opened = !opened">Personal Information</h2>
@@ -12,25 +17,30 @@
             </div>
             <div class="form-group form-inline">
                 <input [formControl]="file"
-                formControlName="file"
+                
                 id="file" 
                 type="file" 
                 class="form-control"
                 (change)="fileChange($event)">
-            <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+            <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
                 <div *ngIf="f.file.errors.required">File is required.</div>
-            </div> 
+            </div>  -->
         </div>
             <!--endphoto-->
+
+            <img *ngIf="CustomerDataById1.profile_img" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{CustomerDataById1.profile_img}}" class="rounded-circle">
+            <img *ngIf="!CustomerDataById1.profile_img" style="width: 100px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+
             <br>
             <!--info-->
             <div class="row">
                 <div class="col-sm-4">
+                    
 
                     <div class="form-group">
                         <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
 
-                        <input type="text" class="form-control" placeholder="" formControlName='firstname'>
+                        <input type="text" class="form-control" [(ngModel)]="CustomerDataById1.firstname" formControlName="firstname" value="{{CustomerDataById1.firstname}}" >
                         <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
       
                             <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
@@ -45,27 +55,13 @@
 
                     <br>
 
-                        <div class="form-group">
-                            <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
-
-                            <input type="text" class="form-control" placeholder="" formControlName='firstname'>
-                            <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
-          
-                                <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
-                                  <div *ngIf="profileform.controls['firstname'].errors.required" style="margin-left: 14px;">
-                                      First Name is required. 
-                                  </div> 		   
-                                 
-                               </div> 
-                                
-                              </div>
-                        </div>
+                        
 
                         <br>
 
                         <div class="form-group">
                                 <label class="lblwidthProfile">Mobile Number</label><span class="requiredfield">  *</span>
-                                <input type="text" class="form-control" placeholder="" formControlName="mobileno">
+                                <input type="text" class="form-control" [(ngModel)]="CustomerDataById1.mobileno" placeholder="" formControlName="mobileno">
                                 <div *ngIf="profileform.controls['mobileno'].touched && profileform.controls['mobileno'].invalid "> 
           
                                     <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;"> 
@@ -82,7 +78,8 @@
                          <br>
                          <div class="form-group">
                             <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span>
-                         <select class="form-control"  #cartype >
+                         <select class="form-control" name="cartype" formControlName="cartype" [(ngModel)]="CustomerDataById1.cartype">
+                             
                             <option value="Maruthi">Maruthi</option>
                                 <option value="Ford">Ford</option>
                                 <option value="Nissan">Nissan</option>
@@ -94,7 +91,7 @@
                 <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"  class="form-control" placeholder="" formControlName='lastname'>
+                            <input type="text" [(ngModel)]="CustomerDataById1.lastname"  class="form-control" placeholder="" formControlName='lastname'>
                             <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
           
                                 <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
@@ -111,7 +108,7 @@
                
                         <div class="form-group">
                         <label class="lblwidthProfile">Date of Birth </label><span class="requiredfield">  *</span>
-                        <input type="date"  class="form-control" placeholder="" formControlName="dob">
+                        <input type="date"  class="form-control" [(ngModel)]="CustomerDataById1.dob" placeholder="" formControlName="dob">
                         <div *ngIf="profileform.controls['dob'].touched && profileform.controls['dob'].invalid "> 
           
                             <div *ngIf="profileform.controls['dob'].errors" style="color: red;"> 
@@ -129,7 +126,7 @@
                 <div class="col-sm-4">
                         <div class="form-group form-inline">
                         <label class="lblwidthProfile">Email </label><span class="requiredfield">  *</span>
-                        <input type="text"  class="form-control" placeholder=" " formControlName="emailid">
+                        <input type="text"  class="form-control" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
                         <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
           
                             <div *ngIf="profileform.controls['emailid'].errors" style="color: red;"> 
@@ -146,7 +143,7 @@
                         <br>
                         <div class="form-group form-inline">
                             <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span><br>
-                            <select  placeholder=""  class="selectoptiongender" formControlName="gender">
+                            <select  placeholder=""  class="form-control selectoptiongender" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
                                 <option ></option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
@@ -183,7 +180,7 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Door No/Apartment Name</label>
 
-                        <input type="text" class="form-control" placeholder="" formControlName="doorno">
+                        <input type="text" class="form-control" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
                         <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
           
                             <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
@@ -200,9 +197,10 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">State</label><br>
-                        <select  placeholder=""  class="selectoption" formControlName="state">
-                            <option value=""></option>
-                            <option value="FeMale">TamilNadu</option>
+                        <select  placeholder=""  class="selectoption" formControlName="state" name="" [(ngModel)]="CustomerDataById1.state">
+                            <!-- <option value=""></option> -->
+                            <option value="TamilNadu">TamilNadu</option>
+                            <option value="Telengana">Telengana</option>
                             </select>
                             <div *ngIf="profileform.controls['state'].touched && profileform.controls['state'].invalid "> 
           
@@ -225,7 +223,7 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Street Name</label>
     
-                         <input type="text" class="form-control" placeholder="" formControlName="street">
+                         <input type="text" class="form-control" placeholder="" formControlName="street" [(ngModel)]="CustomerDataById1.street">
                          <div *ngIf="profileform.controls['street'].touched && profileform.controls['street'].invalid "> 
           
                             <div *ngIf="profileform.controls['street'].errors" style="color: red;"> 
@@ -242,7 +240,7 @@
                     
                     <div class="form-group">
                         <label class="lblwidthProfile">Zipcode</label>
-                        <input type="text" class="form-control" placeholder="" formControlName="zipcode">
+                        <input type="text" class="form-control" placeholder="" formControlName="zipcode" [(ngModel)]="CustomerDataById1.zipcode">
                         <div *ngIf="profileform.controls['zipcode'].touched && profileform.controls['zipcode'].invalid "> 
           
                             <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
@@ -262,9 +260,10 @@
                      <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">City</label>
-                            <select  placeholder=""  class="selectoption" formControlName="city"><br>
+                            <select  placeholder=""  class="form-control selectoption" formControlName="city" [(ngModel)]="CustomerDataById1.city"><br>
                                 <option value=""></option>
-                                <option value="FeMale">Chennai</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Madurai">Madurai</option>
                                 </select>
                                 <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
               
@@ -292,13 +291,15 @@
 
   
   </div>
-  <div class="col-sm-12 form-inline" style="text-align: right;margin-left: 26px;">
+  <div class="col-sm-12 form-inline" style="text-align: right;">
         
-    <button class="btn btn-success " style="margin-right: 14px;" (click)="uploadFile(profileform.value)"  >Update</button>
+    <button class="btn btn-success " style="margin-right: 14px;" (click)="uploadFile(profileform.value)" [disabled]='!profileform.valid' >Update</button>
     <!-- [disabled]='!profileform.valid' -->
     
 
 </div>
 <br>
+
 </form>
+</div>
   <!--Address End-->

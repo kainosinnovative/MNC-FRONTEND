@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <section class="team-section text-center my-5">
 
@@ -21,7 +21,8 @@
       <div class="testimonial">
 <!-- <p>{{i}}</p> -->
         <div class="avatar mx-auto" >
-          <img src="../assets/images/avatar.png" class="rounded-circle">
+          <div *ngIf="test.profile_img"><img style="width: 100px;height: 100px;" src="http://localhost/MNC-PHP-API/{{test.profile_img}}" class="rounded-circle"></div>
+          <div *ngIf="!test.profile_img"> <img style="width: 100px;height: 100px;" src="../assets/images/avatar.png" class="rounded-circle"></div>
         </div>
         <!--Content-->
         <h4 class="font-weight-bold dark-grey-text mt-4">{{test.firstname}}</h4>
@@ -38,7 +39,7 @@
  ></circle-progress></span> -->
 
         <!-- <div class="inside-circle"> 75% </div> -->
-<!-- {{test.user_rating}} -->
+        
         <div *ngIf="test.user_rating == 1">
           
           <span  class="fa fa-star checked"></span>
@@ -58,7 +59,7 @@
 </div>
 
 <div *ngIf="test.user_rating == 3">
-          
+ 
   <span  class="fa fa-star checked"></span>
 <span  class="fa fa-star checked"></span>
 <span  class="fa fa-star checked"></span>
@@ -86,7 +87,7 @@
        
       </div>
 
-      
+      <i style="color:red" class="fa fa-less-than"></i>
 
     </div>
    

@@ -163,7 +163,7 @@ sendotp2(dataForm1: any) {
   let str = secondArr[0].substring(3);
   var newStr = str.substring(0, str.length - 1);
   
-                (document.getElementById('pleaseregister') as HTMLFormElement).innerHTML = newStr;
+                // (document.getElementById('pleaseregister') as HTMLFormElement).innerHTML = newStr;
                 
               }
               else {
@@ -174,10 +174,10 @@ sendotp2(dataForm1: any) {
   // alert(split_string[1])
   localStorage.setItem('otpstore', split_string[1]);
   localStorage.setItem('isloggedinUser', dataForm1.mobile);             
-                this.dialogRef.close();
-                const dialogRef = this.dialog.open(OtpverfiedComponent, {
-      id: 'otpverfied'
-    });
+                // this.dialogRef.close();
+    //             const dialogRef = this.dialog.open(OtpverfiedComponent, {
+    //   id: 'otpverfied'
+    // });
               }
              
           }
@@ -196,6 +196,8 @@ sendotp2(dataForm1: any) {
           this.showMyContainer=true;
       this.showTimerContainer=false;
      // this.timeLeft=10;
+    //  alert("in")
+    localStorage.removeItem("otpstore");
        }
     },2000)
   }

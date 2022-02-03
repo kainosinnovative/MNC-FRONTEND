@@ -29,6 +29,7 @@
     "ng2-toastr": "^4.1.2",
     "ngx-star-rating": "^2.1.0",
     "ngx-toastr": "^14.2.1",
+    "platform-browser": "^0.0.1-security",
     "rxjs": "~7.4.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
