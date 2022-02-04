@@ -1,9 +1,15 @@
 <div class="sticky-container" >
     <ul class="sticky">
         <li>
-            <a *ngIf="currentUsername" style="cursor: pointer;" (click)="testimonialAdd()"><img src="../assets/images/rating.png" width="40" height="38"></a>
+            <a *ngIf="currentUsername" style="cursor: pointer;" (click)="testimonialAdd()">
+                <img src="../assets/images/rating.png" width="40" height="38">
+                <!-- Feedback -->
+            </a>
 
-            <a *ngIf="!currentUsername" (click)="loginToRate()" style="cursor: pointer;" ><img src="../assets/images/rating.png" width="40" height="38" title="Please Login to Rate"></a>
+            <a *ngIf="!currentUsername" (click)="loginToRate()" style="cursor: pointer;" >
+                <!-- Feedback -->
+                <img src="../assets/images/rating.png" width="40" height="38" title="Please Login to Rate">
+            </a>
         </li>
         
     </ul>

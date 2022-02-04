@@ -68,6 +68,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
  
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
+  const zipcodePattern = "^[1-9][0-9]{5}$";
   this.profileform = this.frmbuilder.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
@@ -78,7 +79,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     cartype: ['', Validators.required],
     city: ['', Validators.required],
     street: ['', Validators.required],
-    zipcode: ['', Validators.required],
+    zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     lastupddt: [current_date, [Validators.required]],

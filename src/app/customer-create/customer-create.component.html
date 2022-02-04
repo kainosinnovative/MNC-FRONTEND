@@ -1,6 +1,6 @@
 <h2  style="text-align:center;">My Profile</h2>
 <!-- *ngFor = "let news  of CustomerDataById1" -->
-<div >
+<div style="margin-left: -66px;">
     <!-- <ul *ngFor="let c of CustomerDataById">
         <li>hi {{c.data.profile.firstname}}</li>
     </ul> -->
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">First Name</label><span class="requiredfield">  *</span>
 
-                        <input type="text" class="form-control" [(ngModel)]="CustomerDataById1.firstname" formControlName="firstname" value="{{CustomerDataById1.firstname}}" >
+                        <input type="text" class="form-control firstLastnamecls" [(ngModel)]="CustomerDataById1.firstname" formControlName="firstname" value="{{CustomerDataById1.firstname}}" >
                         <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
       
                             <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
@@ -61,7 +61,7 @@
 
                         <div class="form-group">
                                 <label class="lblwidthProfile">Mobile Number</label><span class="requiredfield">  *</span>
-                                <input type="text" class="form-control" [(ngModel)]="CustomerDataById1.mobileno" placeholder="" formControlName="mobileno">
+                                <input type="text" class="form-control mobilenumbercls" [(ngModel)]="CustomerDataById1.mobileno" placeholder="" formControlName="mobileno">
                                 <div *ngIf="profileform.controls['mobileno'].touched && profileform.controls['mobileno'].invalid "> 
           
                                     <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;"> 
@@ -77,8 +77,8 @@
                          </div>
                          <br>
                          <div class="form-group">
-                            <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span>
-                         <select class="form-control" name="cartype" formControlName="cartype" [(ngModel)]="CustomerDataById1.cartype">
+                            <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span> <br>
+                         <select class="selectoption cartypecls" name="cartype" formControlName="cartype" [(ngModel)]="CustomerDataById1.cartype">
                              
                             <option value="Maruthi">Maruthi</option>
                                 <option value="Ford">Ford</option>
@@ -91,7 +91,7 @@
                 <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text" [(ngModel)]="CustomerDataById1.lastname"  class="form-control" placeholder="" formControlName='lastname'>
+                            <input type="text" [(ngModel)]="CustomerDataById1.lastname"  class="form-control firstLastnamecls" placeholder="" formControlName='lastname'>
                             <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
           
                                 <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
@@ -108,7 +108,7 @@
                
                         <div class="form-group">
                         <label class="lblwidthProfile">Date of Birth </label><span class="requiredfield">  *</span>
-                        <input type="date"  class="form-control" [(ngModel)]="CustomerDataById1.dob" placeholder="" formControlName="dob">
+                        <input type="date"  class="form-control dateofbirthcls" [(ngModel)]="CustomerDataById1.dob" placeholder="" formControlName="dob">
                         <div *ngIf="profileform.controls['dob'].touched && profileform.controls['dob'].invalid "> 
           
                             <div *ngIf="profileform.controls['dob'].errors" style="color: red;"> 
@@ -126,7 +126,7 @@
                 <div class="col-sm-4">
                         <div class="form-group form-inline">
                         <label class="lblwidthProfile">Email </label><span class="requiredfield">  *</span>
-                        <input type="text"  class="form-control" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
+                        <input type="text"  class="form-control emailidcls" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
                         <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
           
                             <div *ngIf="profileform.controls['emailid'].errors" style="color: red;"> 
@@ -148,7 +148,7 @@
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
                                 </select>
-                                <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
+                                <div *ngIf="profileform.controls['gender'].touched && profileform.controls['gender'].invalid "> 
           
                                     <div *ngIf="profileform.controls['gender'].errors" style="color: red;"> 
                                       <div *ngIf="profileform.controls['gender'].errors.required" style="margin-left: 14px;">
@@ -178,9 +178,9 @@
                 <div class="col-sm-4">
 
                     <div class="form-group">
-                        <label class="lblwidthProfile">Door No/Apartment Name</label>
+                        <label class="lblwidthProfile">Door No/Apartment Name</label><span class="requiredfield">  *</span>
 
-                        <input type="text" class="form-control" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
+                        <input type="text" class="form-control dateofbirthcls" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
                         <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
           
                             <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
@@ -196,8 +196,8 @@
                     <br>
                    
                     <div class="form-group">
-                        <label class="lblwidthProfile">State</label><br>
-                        <select  placeholder=""  class="selectoption" formControlName="state" name="" [(ngModel)]="CustomerDataById1.state">
+                        <label class="lblwidthProfile">State</label><span class="requiredfield">  *</span><br>
+                        <select  placeholder=""  class="selectoption emailidcls" formControlName="state" name="" [(ngModel)]="CustomerDataById1.state">
                             <!-- <option value=""></option> -->
                             <option value="TamilNadu">TamilNadu</option>
                             <option value="Telengana">Telengana</option>
@@ -221,9 +221,9 @@
 
                    
                     <div class="form-group">
-                        <label class="lblwidthProfile">Street Name</label>
+                        <label class="lblwidthProfile">Street Name</label><span class="requiredfield">  *</span>
     
-                         <input type="text" class="form-control" placeholder="" formControlName="street" [(ngModel)]="CustomerDataById1.street">
+                         <input type="text" class="form-control emailidcls" placeholder="" formControlName="street" [(ngModel)]="CustomerDataById1.street">
                          <div *ngIf="profileform.controls['street'].touched && profileform.controls['street'].invalid "> 
           
                             <div *ngIf="profileform.controls['street'].errors" style="color: red;"> 
@@ -239,8 +239,8 @@
                     <br>
                     
                     <div class="form-group">
-                        <label class="lblwidthProfile">Zipcode</label>
-                        <input type="text" class="form-control" placeholder="" formControlName="zipcode" [(ngModel)]="CustomerDataById1.zipcode">
+                        <label class="lblwidthProfile">Zipcode</label><span class="requiredfield">  *</span>
+                        <input type="text" class="form-control zipcodecls" placeholder="" formControlName="zipcode" [(ngModel)]="CustomerDataById1.zipcode">
                         <div *ngIf="profileform.controls['zipcode'].touched && profileform.controls['zipcode'].invalid "> 
           
                             <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
@@ -249,6 +249,13 @@
                               </div> 		   
                              
                            </div> 
+
+                           <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
+                            <div *ngIf="profileform.controls['zipcode'].errors.pattern" style="margin-left: 14px;">
+                                ZipCode is Not Valid
+                            </div> 		   
+                           
+                         </div> 
                             
                           </div>
                     
@@ -259,8 +266,8 @@
 
                      <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="lblwidthProfile">City</label>
-                            <select  placeholder=""  class="form-control selectoption" formControlName="city" [(ngModel)]="CustomerDataById1.city"><br>
+                            <label class="lblwidthProfile">City</label><span class="requiredfield">  *</span><br>
+                            <select  placeholder=""  class=" selectoption emailidcls" formControlName="city" [(ngModel)]="CustomerDataById1.city"><br>
                                 <option value=""></option>
                                 <option value="Chennai">Chennai</option>
                                 <option value="Madurai">Madurai</option>

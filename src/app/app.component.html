@@ -13,14 +13,14 @@
     <mat-list-item class="menudesk1"> <a mat-list-item (click)="signup()" >
       Offers/Deals</a> </mat-list-item>
       
-    <mat-list-item class="menudesk1" > <a  mat-list-item (click)="login()">
+    <mat-list-item class="menudesk1 " > <a class="cursorcls" mat-list-item (click)="login()">
       Login</a></mat-list-item>
 
   <mat-list-item > <a class="txtunderline_remove"  mat-list-item routerLink='/shop'>Shop Services</a> </mat-list-item>
   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
   <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ShopProfile'>My Profile</a> </mat-list-item>
 
-  <mat-list-item > <a class="txtunderline_remove" mat-list-item >My Booking</a> </mat-list-item>
+  <mat-list-item > <a class="txtunderline_remove cursorcls" mat-list-item >My Booking</a> </mat-list-item>
   <mat-list-item > <a class="txtunderline_remove" mat-list-item routerLink='/testimonial/'>Testimonials</a> </mat-list-item>
   <mat-list-item > <a class="txtunderline_remove" mat-list-item routerLink='/'>Blog</a> </mat-list-item>
   <mat-list-item > <a class="txtunderline_remove" mat-list-item routerLink='/contactus'>Contact Us</a> </mat-list-item>
@@ -43,16 +43,16 @@
 
 <!--<mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/first'>Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;-->
 
-<mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="signup()">Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;
+<mat-list-item class="menudesk cursorcls"> <a class="colorheaderMenu" style="text-decoration: unset;" >Offers/Deals</a> </mat-list-item>  &nbsp; &nbsp;
 
 
-  <mat-list-item class="menudesk"> <a class="colorheaderMenu" mat-list-item routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> &nbsp; &nbsp;
+  <mat-list-item class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> &nbsp; &nbsp;
 
 
-  <mat-list-item class="menudesk" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>  
+  <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>  
 
   <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
-  <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" (click)="logout()">LogOut</a> </mat-list-item> 
+  <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a  class="colorheaderMenu" (click)="logout()">LogOut</a> </mat-list-item> 
 
   </mat-toolbar>
 
