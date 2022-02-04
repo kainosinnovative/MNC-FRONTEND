@@ -60,7 +60,7 @@ body {
 }
 
 .firstLastnamecls{
-  width: 200px !important;
+  width: 250px !important;
 }
 
 .emailidcls {
@@ -71,11 +71,21 @@ body {
   width: 170px !important;
 }
 
+.doornocls {
+  width: 250px;
+}
+
 .cartypecls {
   width: 200px !important;
 }
 
 .zipcodecls{
   width: 100px !important;
+}
+
+.form-control{
+border: 1px solid #000407 !important;
+border-radius: 0px !important;
+line-height: unset !important;
 }
 

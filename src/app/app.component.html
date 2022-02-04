@@ -52,7 +52,7 @@
   <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>  
 
   <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
-  <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a  class="colorheaderMenu" (click)="logout()">LogOut</a> </mat-list-item> 
+  <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()">LogOut</a> </mat-list-item> 
 
   </mat-toolbar>
 

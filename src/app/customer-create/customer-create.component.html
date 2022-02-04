@@ -1,4 +1,5 @@
-<h2  style="text-align:center;">My Profile</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2  style="text-align:center;">My Profile </h2>
 <!-- *ngFor = "let news  of CustomerDataById1" -->
 <div style="margin-left: -66px;">
     <!-- <ul *ngFor="let c of CustomerDataById">
@@ -6,7 +7,7 @@
     </ul> -->
 <form [formGroup]="profileform" >
 <div class="accordion">
-    <h2 class="title" (click)="opened = !opened">Personal Information</h2>
+    <h2 class="title" (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
     <div class="content-container" [class.opened]="opened">
            <!--phto-->
             <div class="form-group">
@@ -143,7 +144,7 @@
                         <br>
                         <div class="form-group form-inline">
                             <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span><br>
-                            <select  placeholder=""  class="form-control selectoptiongender" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
+                            <select  placeholder=""  class="selectoptiongender" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
                                 <option ></option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
@@ -171,7 +172,7 @@
   <!--Endof Personal-->
   <!--address start-->
   <div class="accordion1">
-    <h2 class="title1" (click)="opened1 = !opened1">Address</h2>
+    <h2 class="title1" (click)="opened1 = !opened1">Address <i class="fa fa-chevron-down"></i></h2>
     <div class="content-container1" [class.opened1]="opened1">
            <!--phto-->
            <div class="row">
@@ -180,7 +181,7 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Door No/Apartment Name</label><span class="requiredfield">  *</span>
 
-                        <input type="text" class="form-control dateofbirthcls" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
+                        <input type="text" class="form-control doornocls" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
                         <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
           
                             <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
