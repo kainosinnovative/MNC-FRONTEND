@@ -96,7 +96,7 @@ const appRoutes: Routes = [
     CustomMaterialModule,
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true }
+      // { useHash: false }
     ),
     MatInputModule,
     MatButtonModule,
