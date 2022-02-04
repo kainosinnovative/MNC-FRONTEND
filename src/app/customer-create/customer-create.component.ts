@@ -178,7 +178,7 @@ uploadFile(profileform:any)
     });
 
     this.toastr.success('Profile Updated Successfully');
-    window.location.reload();
+    // window.location.reload();
     }
 
 
