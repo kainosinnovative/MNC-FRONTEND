@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+import {NotificationsService} from 'angular2-notifications';
+
 
 @Component({
   selector: 'app-otpverfied',
@@ -36,7 +38,7 @@ export class OtpverfiedComponent implements OnInit {
   
 constructor(public router: Router, public restApi: RestApiService,private  dialogRef:  MatDialogRef<OtpverfiedComponent>,
   @Inject(MAT_DIALOG_DATA) public  data:  any,
-  private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService) { };
+  private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService,private service :NotificationsService) { };
 
 ngOnInit(): void {
   this.dataForm1 = this.frmbuilder.group({
@@ -95,16 +97,29 @@ loadCustomerDetails2(Objval:any) {
       localStorage.setItem('userroleSes', 'CustomerSes');
       }
 
-      
-      this.toastr.success(Objval+' Successfully');
-      window.location.reload();
+     
+      this.showloginSuccess();
+      // this.toastr.success(Objval+' Successfully');
+      // window.location.reload();
+      this.pagerefresh();
   }
   ))
   
 }
 
 
+showloginSuccess() {
+  console.log("login message");
+  
+  this.toastr.success('LoggedIn Successfully');
+  
+      // 
+}
 
+pagerefresh() {
+  // window.location.reload();
+  window.setTimeout(function(){location.reload()},2000)
+}
 
 
 signupdetailsInsert(){
@@ -113,18 +128,31 @@ signupdetailsInsert(){
       let registerEmailid = localStorage.getItem('registerEmailid');
       let registerMobileNo = localStorage.getItem('registerMobileNo');
 
-      // localStorage.setItem('otpstore', registerUserName);
-  
-//       let signupdetails1 = ({customer_name: registerUserName, customer_mobileno: registerMobileNo, customer_email: registerEmailid});
       
   this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+ 
-  '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid).subscribe({
+  '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid).subscribe(
+    data => {
+      alert(data)
+    },
+    error => {
+      // alert(error)
+      console.log(error.status)
+      if(error.status == "200") {
+        this.showsuccess();
+        this.pagerefresh();
+      }
+    }
+    
   
-  } );
+   );
 
   
-  this.toastr.success('Registered Successfully Please Login');
-  this.dialogRef.close();
+
+  // console.log("in");
+  
+  // localStorage.removeItem("otpstore");
+  // window.location.reload();
+  // this.dialogRef.close();
 
   // this.loadCustomerDetails2("this.toastr.success(Objval+' Successfully');");
 
@@ -134,17 +162,25 @@ signupdetailsInsert(){
   
   }
 
+  showsuccess() {
+    console.log("success");
+    this.toastr.success('Registered Successfully Please Login');
+    // window.location.reload();
+  }
+
 
 
   VerifyOtp(){
     var ReceiveOtp = localStorage.getItem('otpstore');
-    // alert(num1)
+    //  alert("ReceiveOtp>>>"+ReceiveOtp)
     var firstDigit = this.otpFirstDigit;
     let SecondDigit = this.otpSecondDigit;
     let thirdDigit = this.otpThirdDigit;
     let fourthDigit = this.otpFourthDigit;
     
     let EnteredOtp = firstDigit + SecondDigit +thirdDigit + fourthDigit;
+    // alert("EnteredOtp>>>"+EnteredOtp)
+   
     if(ReceiveOtp == EnteredOtp) {
       localStorage.removeItem("otpstore");
       let sessionbtn = localStorage.getItem('sessionbtn');
