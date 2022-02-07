@@ -5,6 +5,8 @@ import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
+import { contactdetails } from '../shared/customer/customer';
+
 @Injectable({
 providedIn: 'root'
 })
@@ -70,6 +72,9 @@ gettestimonialData(): Observable<Testimonial> {
   createcustomer(customerData: any): Observable<createcustomer>{
     return this.http.post<createcustomer>(`${this.apiURL}/app/Addcustomer`, customerData);
   }
+
+ 
+
 
 
 //     return this.http.post('http://localhost:3000/api/Users/login', data, httpOptions)

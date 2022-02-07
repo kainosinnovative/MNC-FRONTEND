@@ -55,20 +55,7 @@ loadCustomerDetails2(Objval:any) {
   console.log("in");
   let isloggedinUser = localStorage.getItem('isloggedinUser');
   let loginfor = localStorage.getItem('loginfor');
-// alert(loginfor)
-  // this.http.get('http://localhost/MNC-PHP-API/app/SingleCustomerDetails?customer_mobileno='+isloggedinUser+ 
-  // '&loginfor='+loginfor).subscribe(data=>{
-  //   console.log(data)
-  //   this.customerdata = data;
-  //     this.customerdata1 = this.customerdata.data;
-  //     this.customerdata2 = this.customerdata1.SingleCustomerDetails;
-     
-  //     console.log("data")
-  //     localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
-  //     localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
-  //     this.toastr.success(Objval+' Successfully');
-  //     // window.location.reload();
-  // } );
+
 
   var jsonObject = 
                 {
@@ -87,7 +74,7 @@ loadCustomerDetails2(Objval:any) {
       
       if(loginfor == 'shopowner') {
         
-        localStorage.setItem('currentUsername', this.customerdata2[0].owner_firstname); 
+      localStorage.setItem('currentUsername', this.customerdata2[0].owner_firstname); 
       localStorage.setItem('currentUserId', this.customerdata2[0].shop_id );
       localStorage.setItem('userroleSes', 'shopOwnerSes');
       }
