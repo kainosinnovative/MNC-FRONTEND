@@ -45,7 +45,9 @@ import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
 // import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
+import { ShopservicesComponent } from './shopservices/shopservices.component';
 
 
 const appRoutes: Routes = [
@@ -86,6 +88,8 @@ const appRoutes: Routes = [
 
     ServicesComponent,
       ShopProfileComponent,
+      
+      ShopservicesComponent,
     // ImagedisplayComponent,
 
     // SignupComponent
@@ -111,9 +115,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     NgxStarRatingModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-center-center'
+      positionClass: 'toast-center-center',
+      timeOut: 150000,
     }),
     NgCircleProgressModule.forRoot(),
+    SimpleNotificationsModule.forRoot()
     
     
   ],

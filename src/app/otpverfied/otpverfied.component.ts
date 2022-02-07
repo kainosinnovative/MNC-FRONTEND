@@ -156,6 +156,10 @@ signupdetailsInsert(){
   }
 
 
+  closeMe() {
+    this.dialogRef.close();
+ }
+ 
 
   VerifyOtp(){
     var ReceiveOtp = localStorage.getItem('otpstore');

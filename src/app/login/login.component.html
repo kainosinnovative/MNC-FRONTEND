@@ -7,6 +7,9 @@
 
 
     <mat-card  class="bordercard">
+      <div  style="text-align: right;margin-top: -29px;margin-right: -21px;">
+        <a style="cursor: pointer;font-size: 20px;font-weight: bold;" (click)="closeMe()">×</a>
+      </div>
     <mat-card-header style="padding-left: 107px;" >
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
@@ -44,13 +47,13 @@
   
   </mat-card-content>
 
-    <p id="pleaseregister" style="color:red;font-size: 13px;"></p>
+    <p id="pleaseregister" style="color:red;font-size: 13px;text-align: center;"></p>
 
     
 
 
   <mat-card-actions style="text-align: center;margin-top: 15px;" >
-      <button mat-raised-button  style="border-radius: 21px;background-color: skyblue; width: 269px;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
+      <button mat-raised-button class="carwashbtn" style="border-radius: 21px;width: 190px;height: 36px;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
   </mat-card-actions>
 
 
@@ -61,7 +64,7 @@
       <mat-list-item  > <a  mat-list-item (click)="signup()">
          </a></mat-list-item>
 
-          <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="signup();closeMe()"> Sign Up</a> </mat-list-item>
+          <mat-list-item class="menudesk"> <a style="cursor: pointer;" class="colorheaderMenu" (click)="signup();closeMe()"> Sign Up</a> </mat-list-item>
 
          
       
