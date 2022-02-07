@@ -44,10 +44,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
-// import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
-import { SimpleNotificationsModule } from 'angular2-notifications';
 
-import { ShopservicesComponent } from './shopservices/shopservices.component';
 
 
 const appRoutes: Routes = [
@@ -87,12 +84,9 @@ const appRoutes: Routes = [
     FileuploadComponent,
 
     ServicesComponent,
-      ShopProfileComponent,
+      ShopProfileComponent
       
-      ShopservicesComponent,
-    // ImagedisplayComponent,
-
-    // SignupComponent
+   
      ],
   imports: [
     BrowserModule,
@@ -118,8 +112,8 @@ const appRoutes: Routes = [
       positionClass: 'toast-center-center',
       timeOut: 150000,
     }),
-    NgCircleProgressModule.forRoot(),
-    SimpleNotificationsModule.forRoot()
+    NgCircleProgressModule.forRoot()
+   
     
     
   ],
