@@ -47,6 +47,18 @@ export class Customer {
         customer_id :any = "";
        
       }
+
+      export class contactdetails {
+        json() {
+          throw new Error('Method not implemented.');
+        }
+        name:string = "";
+        phoneno:any = "";
+        mailid :any = "";
+        message :any = "";
+        shopower :any = "";
+       
+      }
       
       export class loginauth {
         statusText(statusText: any) {
