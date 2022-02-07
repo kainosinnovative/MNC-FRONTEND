@@ -86,13 +86,16 @@ Otpvrf(){
 logout() {
   window.localStorage.clear();
   
-  window.location.reload();
-  // this.movetohome();
+  
+   this.movetohome();
   
 }
 
 movetohome() {
-  // this.router.navigate(['/home']);
+  
+ this.router.navigate(['/home']);
+// window.location.reload();
+ window.setTimeout(function(){location.reload()},100)
 }
 
 loginCheck() {

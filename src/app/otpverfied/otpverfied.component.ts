@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
-import {NotificationsService} from 'angular2-notifications';
+
 
 
 @Component({
@@ -38,7 +38,7 @@ export class OtpverfiedComponent implements OnInit {
   
 constructor(public router: Router, public restApi: RestApiService,private  dialogRef:  MatDialogRef<OtpverfiedComponent>,
   @Inject(MAT_DIALOG_DATA) public  data:  any,
-  private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService,private service :NotificationsService) { };
+  private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService) { };
 
 ngOnInit(): void {
   this.dataForm1 = this.frmbuilder.group({
