@@ -44,7 +44,6 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
-// import { ImagedisplayComponent } from './imagedisplay/imagedisplay.component';
 
 
 
@@ -85,10 +84,9 @@ const appRoutes: Routes = [
     FileuploadComponent,
 
     ServicesComponent,
-      ShopProfileComponent,
-    // ImagedisplayComponent,
-
-    // SignupComponent
+      ShopProfileComponent
+      
+   
      ],
   imports: [
     BrowserModule,
@@ -111,9 +109,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     NgxStarRatingModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-center-center'
+      positionClass: 'toast-center-center',
+      timeOut: 150000,
     }),
-    NgCircleProgressModule.forRoot(),
+    NgCircleProgressModule.forRoot()
+   
     
     
   ],

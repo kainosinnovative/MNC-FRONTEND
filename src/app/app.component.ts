@@ -48,7 +48,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router){}
 
   login(){
     console.log("hiiiii1111");
-       this.dialog.open(LoginComponent);
+       this.dialog.open(LoginComponent,{disableClose: true});
     console.log("test>>>>",localStorage.getItem('isLoggedIn'))
   }
 
