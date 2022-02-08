@@ -50,7 +50,7 @@ public  dataForm: FormGroup;
  signup(){
 
   const dialogRef = this.dialog.open(SignupComponent, {
-    id: 'signup'
+    id: 'signup',disableClose: true
   });
 
   console.log(dialogRef);
@@ -99,7 +99,7 @@ localStorage.setItem('isloggedinUser', dataForm.mobile);
 localStorage.setItem('sessionbtn', "login");             
               this.dialogRef.close();
               const dialogRef = this.dialog.open(OtpverfiedComponent, {
-    id: 'otpverfied'
+    id: 'otpverfied',disableClose: true
   });
             }
            

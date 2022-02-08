@@ -228,8 +228,8 @@
                                 <label class="lblwidthProfile">City</label><span class="requiredfield">  *</span>
                                 <select  placeholder=""  class=" city form-control" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
                                     <option value="">--Select City--</option>
-                                    <option *ngFor="let cartypes of fetchdata1" [value]="cartypes">
-                                        {{cartypes}}
+                                    <option *ngFor="let cartypes of fetchdata1" [value]="cartypes.id">
+                                        {{cartypes.type_name}}
                                     </option>
                                      </select>
                                     <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 

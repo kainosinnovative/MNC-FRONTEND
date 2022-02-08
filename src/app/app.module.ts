@@ -43,6 +43,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 
 import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
+import { ShopServiceComponent } from './shop-service/shop-service.component';
 
 
 
@@ -62,7 +63,9 @@ const appRoutes: Routes = [
   { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
   { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
-  { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}}
+  { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
+  { path: 'ShopProfile', component: ShopServiceComponent, data: {title: 'ShopService'}}
+
 
 ];
 @NgModule({
@@ -84,7 +87,8 @@ const appRoutes: Routes = [
     FileuploadComponent,
 
     ServicesComponent,
-      ShopProfileComponent
+      ShopProfileComponent,
+      ShopServiceComponent
       
    
      ],

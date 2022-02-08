@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
 Otpvrf(){
 
   const dialogRef = this.dialog.open(OtpverfiedComponent, {
-    id: 'otpverfied'
+    id: 'otpverfied',disableClose: true
   });
 
   // console.log(dialogRef);

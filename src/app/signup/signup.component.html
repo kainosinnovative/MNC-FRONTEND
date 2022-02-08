@@ -2,6 +2,10 @@
 
 <form [formGroup]="dataForm3" (ngSubmit)="sendotp3(dataForm3.value)">
   <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 336px;">
+
+    <div  style="text-align: right;margin-top: -15px;margin-right: -9px;">
+      <a style="cursor: pointer;font-size: 20px;font-weight: bold;" (click)="closeMe()">×</a>
+    </div>
     
     <mat-card-header style="padding-left: 33%;margin-bottom: 10px;" >
       <mat-card-title >Sign Up</mat-card-title>
@@ -76,19 +80,10 @@
  <p id="pleaseregister" style="color:red;font-size: 13px;"></p>
 
     <mat-card-actions style="text-align: center;">
-        <button mat-raised-button  style="border-radius: 21px;background-color: skyblue;width: 295px;" [disabled]='!dataForm3.valid'>Receive a Code Via SMS</button>
+        <button mat-raised-button class="carwashbtn" style="border-radius: 21px;width: 190px;" [disabled]='!dataForm3.valid'>Receive a Code Via SMS</button>
     </mat-card-actions>
 
-    <mat-card-actions style="text-align: center;">
     
-    <h3> Already a member of Kanios carwash.? 
-
-     
-
-        <mat-list-item class="menudesk"> <a class="colorheaderMenu" (click)="login();closeMe()">Login</a> </mat-list-item>
-
-    </h3>
-  </mat-card-actions>
 </div>
 </form>
    

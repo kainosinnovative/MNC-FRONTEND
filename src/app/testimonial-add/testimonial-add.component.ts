@@ -98,6 +98,7 @@ error => {
 showSuccess() {
   
   this.toastr.success('Customer Feedback Added Successfully!');
+  window.setTimeout(function(){location.reload()},100)
 }
 
 showError() {
