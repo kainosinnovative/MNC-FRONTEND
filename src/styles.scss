@@ -56,23 +56,40 @@ body {
 //  }
 
 .mobilenumbercls{
-  width: 150px !important;
+  width: 120px !important;
+  padding-left: 2px !important;
+  margin-left: 12px;
 }
 
 .firstLastnamecls{
-  width: 250px !important;
+  width: 190px !important;
+  padding-left: 2px !important;
+  margin-left: 40px;
 }
 
 .emailidcls {
-  width: 300px !important;
+  width: 280px !important;
+  margin-left: 23px;
+  padding-left: 2px !important;
+ 
 }
 
 .dateofbirthcls {
-  width: 170px !important;
+  width: 150px !important;
+  margin-left: 29px;
+  padding-left: 2px !important;
 }
 
+.street{
+  width: 150px;
+  margin-left: 28px;
+  padding-left: 2px !important;
+}
 .doornocls {
-  width: 250px;
+  //width: 205px;
+  padding-left: 2px !important;
+  margin-left: 56px;
+  display: inline;
 }
 
 .cartypecls {
@@ -80,12 +97,15 @@ body {
 }
 
 .zipcodecls{
-  width: 100px !important;
+  width: 80px !important;
+  margin-left: 55px;
+  padding-left: 2px !important;
 }
 
 .form-control{
 border: 1px solid #000407 !important;
 border-radius: 0px !important;
 line-height: unset !important;
+
 }
 

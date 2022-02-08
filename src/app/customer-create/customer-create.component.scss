@@ -53,20 +53,70 @@
 .form-control
 {
     width:300px;
+    font-size: 13px !important;
+    height: 28px;
+    padding-top: 3px;
+    padding-left: 2px !important;
+    display: inline;
 }
+
+
 .requiredfield
 {
     color:red;
 }
 .selectoption
 {
-    height:33px;
-    width:250px;
-    // line-height: 1.5;
+    height: 28px;
+    width: 170px !important;
+    padding-left: 2px !important;
+    margin-left: 75px;
+        
+
 }
 .selectoptiongender
 {
-    height:33px;
-    width:150px;
-    // line-height: 1.5;
+    height: 28px;
+    width: 85px !important;
+    padding-top: 3px;
+    padding-left: 2px !important;
+    margin-left: 12px;
+ 
 }
+
+.city{
+    padding-left: 2px !important;
+    width: 170px;
+    margin-left: 32px;
+ }
+
+ .cartype{
+    padding-left: 2px !important;
+    width: 200px;
+    margin-left: 25px;
+ }
+
+ .fueltype{
+    padding-left: 2px !important; 
+    width: 180px;
+    margin-left: 19px;
+ }
+
+ .carbrand{
+    padding-left: 2px !important;
+    width: 260px !important;
+    margin-left: 20px;
+ }
+
+ .carcolor{
+    width: 175px;
+    padding-left: 2px !important;
+    margin-left: 24px;
+ }
+
+ .carmodel{
+    padding-left: 2px !important;
+    width: 240px; 
+    margin-left: 25px; 
+ }
+

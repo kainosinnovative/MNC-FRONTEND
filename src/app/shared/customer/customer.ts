@@ -38,6 +38,12 @@ export class Customer {
        
       }
 
+      export class Cartype{
+        type_name:any = '';
+        id:any = '';
+      }
+
+
       export class createcustomer {
         json() {
           throw new Error('Method not implemented.');

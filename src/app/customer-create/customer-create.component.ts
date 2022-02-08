@@ -33,6 +33,7 @@ export class CustomerCreateComponent implements OnInit {
 types:any;
 profileform : any;
 
+
   opened = true;
   opened1 = false;
   imageSrc: string;
@@ -41,8 +42,10 @@ profileform : any;
   CustomerDataById2:any;
   CustomerDataById3:any;
   firstname: any;
-  data:any = [];
+
   date: any;
+  fetchdata: any;
+  fetchdata1: any;
   
   constructor(
     public router: Router,
@@ -61,6 +64,7 @@ profileform : any;
 ngOnInit() { 
 
   this.readCustomerDataById();
+  this.loadcartype();
   let currentUserId:any = localStorage.getItem('currentUserId');
 
   this.date=new Date();
@@ -79,11 +83,18 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     cartype: ['', Validators.required],
     city: ['', Validators.required],
     street: ['', Validators.required],
+    
+    fueltype: ['', Validators.required],
+    cartypes: ['', Validators.required],
+    carbrands: ['', Validators.required],
+    carcolor: ['', Validators.required],
+    carmodel: ['', Validators.required],
     zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     lastupddt: [current_date, [Validators.required]],
     customer_id:[currentUserId, [Validators.required]]
+  
     })    
 ;}
 
@@ -179,6 +190,18 @@ uploadFile(profileform:any)
 
     this.toastr.success('Profile Updated Successfully');
     // window.location.reload();
+    }
+
+    loadcartype(){
+    
+    
+      return this.restApi.getcartype().subscribe((cartypedata: {}) => {
+        // alert(data)
+        this.fetchdata = cartypedata;
+        this.fetchdata1 = this.fetchdata.data.type;
+        
+        console.log("data>>>>",this.fetchdata1)
+      })
     }
 
 
