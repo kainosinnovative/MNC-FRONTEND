@@ -64,7 +64,7 @@ const appRoutes: Routes = [
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
   { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
   { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
-  { path: 'ShopProfile', component: ShopServiceComponent, data: {title: 'ShopService'}}
+  { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}}
 
 
 ];

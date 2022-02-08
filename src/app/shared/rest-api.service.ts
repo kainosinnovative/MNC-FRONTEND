@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype } from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService } from '../shared/customer/customer';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
@@ -57,22 +57,30 @@ gettestimonialData(): Observable<Testimonial> {
     }
 
 
-
-  
-  
-
-  // createTestimonial(testimonialData:any):
-  //   Observable<Testimonial2> {
-      
-  //   return this.http.post<Testimonial2>(this.apiURL + '/app/AddTestimonial', testimonialData,
-  //   this.httpOptions)
-  //   .pipe(
-  //   retry(1),
-  //   catchError(this.handleError)
-  //   )
-
+    getServiceData(currentUserId:any): Observable<Services> {
+      // alert(currentUserId)
+      return this.http.get<Services>(this.apiURL + "/app/carAndShopservice?currentUserId="+currentUserId)
     
-  //   }
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
+  
+  
+      // AddshopService(shopservAmount:any): Observable<ShopService> {
+      //   alert(shopservAmount)
+      //   let serviceid = shopservAmount["serviceid"];
+      // let service_amount = shopservAmount["service_amount"];
+      // let currentUserId = shopservAmount["currentUserId"];
+      //   return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
+      //    "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
+      
+      //   .pipe(
+      //   retry(1),
+      //   catchError(this.handleError)
+      //   )
+      //   }
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{
