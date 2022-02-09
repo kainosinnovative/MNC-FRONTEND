@@ -97,5 +97,16 @@ export class carbrand{
         loginfor:string = "";
       }
 
+      export class Services {
+        service_id :string = "";
+        service_name:string = "";
+      }
+
+      export class ShopService {
+        serviceid :string = "";
+        service_amount:string = "";
+        currentUserId:string="";
+      }
+
 
       
