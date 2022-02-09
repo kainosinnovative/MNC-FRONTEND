@@ -1,1 +1,58 @@
-<p>shop-service works!</p>
+<h2 style="text-align: center;">Shop Services</h2>
+
+<div class="row">
+    <div class="col-sm-3">
+
+    </div>
+
+    <div class="col-sm-6">
+        <table class="table table-responsive" >
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">S No</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Tool</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of  serviceData1; let i=index; ">
+                <!-- <th scope="row">{{i+1}}</th> -->
+                <td>{{service.service_id}}</td>
+                <td>{{service.service_name}}</td>
+                <td><i class="fa fa-rupee"> </i> &nbsp; <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 80px;">
+                <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
+                </td>
+                <td>
+                
+                  <button *ngIf="service.actual_amount ==null" class="carwashbtn" style="border-radius: 21px;width: 100px;border: none;"  id="addbtn_{{service.service_id}}" (click)="AddServiceAmount(service.service_id)">Add</button> 
+                     <button *ngIf="service.actual_amount !=null"  style="border-radius: 21px;width: 100px;border: none;background-color: green;" (click)="UpdateServiceAmount(service.service_id)">Update</button>
+
+
+                      
+                     <button   style="border-radius: 21px;width: 100px;border: none;background-color: green;display:none;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button> 
+                    
+
+                    </td>
+        
+                
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+
+    <div class="col-sm-3">
+
+    </div>
+
+</div>
+
+
+
+
+
+  <div class="row">
+
+  </div>
