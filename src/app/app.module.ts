@@ -44,9 +44,9 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopServiceComponent } from './shop-service/shop-service.component';
+import { DataTablesModule } from 'angular-datatables';
 
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -64,7 +64,8 @@ const appRoutes: Routes = [
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
   { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
   { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
-  { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}}
+  { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}},
+  { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}}
 
 
 ];
@@ -116,8 +117,9 @@ const appRoutes: Routes = [
       positionClass: 'toast-center-center',
       timeOut: 150000,
     }),
-    NgCircleProgressModule.forRoot()
-   
+    NgCircleProgressModule.forRoot(),
+    DataTablesModule,
+    NgxPaginationModule
     
     
   ],

@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 <h2 style="text-align: center;">Shop Services</h2>
 
 <div class="row">
@@ -6,19 +7,23 @@
     </div>
 
     <div class="col-sm-6">
-        <table class="table table-responsive" >
-            <thead>
-              <tr>
-                <!-- <th scope="col">#</th> -->
-                <th scope="col">S No</th>
-                <th scope="col">Service Name</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Tool</th>
+
+      
+
+
+        <table  class="table table-responsive" style="width: 100%;border: 0.5px solid #aeaeae;">
+            <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
+              <tr >
+               
+                <th >Sl No</th>
+                <th >Service Name</th>
+                <th >Amount</th>
+                <th >Tool</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let service of  serviceData1; let i=index; ">
-                <!-- <th scope="row">{{i+1}}</th> -->
+              <tr *ngFor="let service of  serviceData1 | paginate: config ">
+                
                 <td>{{service.service_id}}</td>
                 <td>{{service.service_name}}</td>
                 <td><i class="fa fa-rupee"> </i> &nbsp; <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 80px;">
@@ -26,12 +31,12 @@
                 </td>
                 <td>
                 
-                  <button *ngIf="service.actual_amount ==null" class="carwashbtn" style="border-radius: 21px;width: 100px;border: none;"  id="addbtn_{{service.service_id}}" (click)="AddServiceAmount(service.service_id)">Add</button> 
-                     <button *ngIf="service.actual_amount !=null"  style="border-radius: 21px;width: 100px;border: none;background-color: green;" (click)="UpdateServiceAmount(service.service_id)">Update</button>
+                  <button *ngIf="service.actual_amount ==null" class="carwashbtn" style="border-radius: 21px;width: 100px;border: none;color: white;"  id="addbtn_{{service.service_id}}" (click)="AddServiceAmount(service.service_id)">Add</button> 
+                     <button  *ngIf="service.actual_amount !=null"  style="border-radius: 21px;width: 100px;border: none;background-color: #198754;height: 22px;color: white;" (click)="UpdateServiceAmount(service.service_id)">Update</button>
 
 
                       
-                     <button   style="border-radius: 21px;width: 100px;border: none;background-color: green;display:none;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button> 
+                     <button   style="border-radius: 21px;width: 100px;border: none;background-color: #198754;display:none;height: 22px;color: white;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button> 
                     
 
                     </td>
@@ -41,6 +46,12 @@
               
             </tbody>
           </table>
+
+<br>
+<div style="text-align: center;">
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+          
     </div>
 
     <div class="col-sm-3">
@@ -53,6 +64,4 @@
 
 
 
-  <div class="row">
 
-  </div>
