@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
 
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand } from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist} from '../shared/customer/customer';
 
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
@@ -47,6 +47,26 @@ gettestimonialData(): Observable<Testimonial> {
   catchError(this.handleError)
   )
   }
+
+  getcitylist(): Observable<citylist> {
+  
+    return this.http.get<citylist>(this.apiURL + "/app/citylist")
+  
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+    }
+
+    getstatelist(): Observable<statelist> {
+  
+      return this.http.get<statelist>(this.apiURL + "/app/state")
+    
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
 
   getcartype(): Observable<Cartype> {
   

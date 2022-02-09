@@ -68,6 +68,16 @@ export class carbrand{
         shopower :any = "";
        
       }
+
+      export class citylist{
+        city_id: any ="";
+        city_name: any ="";
+      }
+
+      export class statelist{
+        state_id : any="";
+        name : any="";
+      }
       
       export class loginauth {
         statusText(statusText: any) {

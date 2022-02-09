@@ -60,7 +60,10 @@ profileform : any;
  
   cartypedata: any;
   cardata: any;
- 
+  citytype: any;
+  citydata: any;
+  statetype: any;
+  statedata: any;
   
   constructor(
     public router: Router,
@@ -81,6 +84,8 @@ ngOnInit() {
   this.readCustomerDataById();
   this.loadcartype();
   this.loadcarbrand();
+  this. loadcitylist();
+  this.getstatedata();
   element: HTMLElement;
 
   let currentUserId:any = localStorage.getItem('currentUserId');
@@ -98,18 +103,16 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     doorno: ['', Validators.required],
     state: ['', Validators.required],
      gender: ['', Validators.required],
-    
-     city: ['', Validators.required],
+      city: ['', Validators.required],
      street: ['', Validators.required],
-    
      fueltype: ['', Validators.required],
      cartype: ['', Validators.required],
-     carbrands: ['', Validators.required],
-     carcolor: ['', Validators.required],
-     carmodel: ['', Validators.required],
+     brand: ['', Validators.required],
+     color: ['', Validators.required],
+     model: ['', Validators.required],
      zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    // mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
+    mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
      lastupddt: [current_date, [Validators.required]],
     customer_id:[currentUserId, [Validators.required]]
   
@@ -233,6 +236,34 @@ uploadFile(profileform:any)
         this.branddata = this.brandtype.data.type;
         
         console.log("data>>>>",this.branddata)
+      })
+    }
+
+    loadcitylist(){
+    
+    
+      return this.restApi.getcitylist().subscribe((citylistdata: {}) => {
+     
+       // console.log(citylistdata)
+        this.citytype = citylistdata;
+
+        console.log(this.citytype)
+    //console.log("hi")
+        this.citydata = this.citytype.data.list;
+        
+         console.log("data>>>>",this.citydata)
+      })
+    }
+
+    getstatedata(){
+    
+    
+      return this.restApi.getstatelist().subscribe((statelistdata: {}) => {
+     
+        this.statetype = statelistdata;
+       this.statedata = this.statetype.data.list;
+        
+     console.log("data>>>>",this.statedata)
       })
     }
 
