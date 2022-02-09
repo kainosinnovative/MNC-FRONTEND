@@ -4,41 +4,60 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { ToastrManager } from 'ng6-toastr-notifications';
 // import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { RestApiService } from "../shared/rest-api.service";
 @Component({
   selector: 'app-newinsertpage',
   templateUrl: './newinsertpage.component.html',
   styleUrls: ['./newinsertpage.component.scss']
 })
 export class NewinsertpageComponent implements OnInit {
-  dataForm: FormGroup;
-  // fetchdata;
-  // errorMsg;
-  constructor(private frmbuilder: FormBuilder,private http: HttpClient,private router: Router) {}
+  config: any;
+  collection = { count: 60, data: [] };
+  serviceData:any;
+  serviceData1:any;
+  constructor(private frmbuilder: FormBuilder,private http: HttpClient,private router: Router,
+    public restApi: RestApiService) {
+    
+  }
 
 
   ngOnInit(): void {
-    this.dataForm = this.frmbuilder.group({
-      id: ['', null],
-      name: ['', Validators.required],
-      mobile: ['', Validators.required],
-      designation: ['', Validators.required],
-      salary: ['', Validators.required]
-      });
+    let value:any;
+    // for (var i = 0; i < this.collection.count; i++) {
+    //   this.collection.data.push(
+    //     {
+    //       id: i + 1,
+    //       value: "items number " + (i + 1)
+    //     }
+    //   );
+    // }
+
+    this.loadServiceData();
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      // totalItems: this.collection.count
+    };
   }
 
-  PostData(dataForm: any) {
-    this.http.post('http://localhost/angPHP/carwash/PHP/insert.php', dataForm).subscribe(
-        data => {
-            console.log('POST Request is successful ', data);
-            // this.getData();
-            // this.dataForm.reset('');
-            // this.showSuccess("Data Inserted :)");
-        },
-        error => {
-            console.log('Error', error);
-            // this.errorMsg = error;
-        }
-    );
-}
+  pageChanged(event:any){
+    this.config.currentPage = event;
+  }
+  
+  loadServiceData(){
+    let currentUserId = localStorage.getItem('currentUserId');
+    return this.restApi.getServiceData(currentUserId).subscribe((data: {}) => {
+      // alert(data)
+      this.serviceData = data;
+      this.serviceData1 = this.serviceData.data.carAndShopservice;
+      
+      console.log("data>222>>>",this.serviceData1)
+      // this.dtTrigger.next();
+    })
+
+    
+  }
+
 
 }
