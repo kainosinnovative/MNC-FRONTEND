@@ -9,9 +9,28 @@
         <div class="content-container" [class.opened]="opened">
             <!--phto-->
         
-            <img *ngIf="ShopProfileDetails.profile_img" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.profile_img}}" class="rounded-circle">
-            <img *ngIf="!ShopProfileDetails.profile_img" style="width: 180px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+           
+              
+            <div class="form-group form-inline">
+                <img *ngIf="ShopProfileDetails.shop_image" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_image}}" class="rounded-circle">
+                <img *ngIf="!ShopProfileDetails.shop_image" style="width: 180px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+                   
+                <label style="width:10%;"></label>
+                <label style class="lblwidthprofile">Shop Name</label><span class="requiredfield">  *</span>
 
+                                <input type="text"  class="form-control Shopnamecls" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
+                                <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
+            
+                                    <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="margin-left: 14px;">
+                                        Enter Your Shop Name 
+                                    </div> 		   
+                                    
+                                    </div> 
+                                    
+                                </div>
+                
+                    </div>
                 <div class="form-group form-inline">
                 <label >Profile Photo</label>
             
@@ -37,7 +56,7 @@
                         
 
                         <div class="form-inline" > 
-                            <label styl class="lblwidthprofile">First Name</label><span class="requiredfield">  *</span>
+                            <label style class="lblwidthprofile">First Name</label><span class="requiredfield">  *</span>
 
                             <input type="text"  class="form-control firstLastnamecls" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
                             <div *ngIf="shopprofile.controls['firstname'].touched && shopprofile.controls['firstname'].invalid "> 
@@ -51,22 +70,71 @@
                                 
                             </div>
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="lblwidthProfile">Mobile Number</label><span class="requiredfield">  *</span>
+                            <input type="text"  class="form-control mobilenumbercls" [(ngModel)]="ShopProfileDetails.mobileno" placeholder="" formControlName="mobileno">
+                            <div *ngIf="shopprofile.controls['mobileno'].touched && shopprofile.controls['mobileno'].invalid "> 
+      
+                                <div *ngIf="shopprofile.controls['mobileno'].errors" style="color: red;"> 
+                                  <div *ngIf="shopprofile.controls['mobileno'].errors.required" style="margin-left: 14px;">
+                                      Mobile Number is required.
+                                  </div> 		   
+                                  <div *ngIf="shopprofile.controls['mobileno'].errors.pattern" style="margin-left: 14px;">
+                                    Mobile Number is not valid.
+                                  </div> 
+                               </div> 
+                                
+                              </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                        <label class="lblwidthProfile">Door No</label><span class="requiredfield">  *</span>
 
-                      
-            
-                        
-                
+                        <input type="text" style="width: 250px" class="form-control doornocls form-inline" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
+                            <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
+          
+                            <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
+                              <div *ngIf="shopprofile.controls['doorno'].errors.required" style="margin-left: 14px;">
+                                  Please fill Address Detail
+                              </div> 		   
+                             
+                           </div> 
                             
+                          </div>
+                        </div>
+                    <br>
+                        <div class="form-group">
+                            <label class="lblwidthProfile">State</label><span class="requiredfield">  *</span>
+                            <select  placeholder=""   class="form-control selectoption" formControlName="state" name="">
+                                 <option value="">--Select State---</option> 
+                                <option value="TamilNadu">TamilNadu</option>
+                                <option value="Telengana">Telengana</option>
+                                </select>
+                                <div *ngIf="shopprofile.controls['state'].touched && shopprofile.controls['state'].invalid "> 
+              
+                                    <div *ngIf="shopprofile.controls['state'].errors" style="color: red;"> 
+                                      <div *ngIf="shopprofile.controls['state'].errors.required" style="margin-left: 14px;">
+                                          Select State
+                                      </div> 		   
+                                     
+                                   </div> 
+                                    
+                                  </div>
+                        </div>
+
+       
             
                      </div>
+                     <!--End of first Column-->
+                
+                </div><!--End of row-->
 
-                </div>
-
-            </div>
+            </div><!--End of formgroup-->
 
 
     
-    </div>
+    </div><!--End of Accordion-->
  
     <div class="col-sm-12 form-inline" style="text-align: right;">
             

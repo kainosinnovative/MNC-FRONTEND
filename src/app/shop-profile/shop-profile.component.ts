@@ -42,10 +42,11 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
   this.shopprofile = this.frmbuilder.group({
+    name:['', Validators.required],
     firstname: ['', Validators.required],
     // lastname: ['', Validators.required],
     // dob: ['', Validators.required],
-    // doorno: ['', Validators.required],
+    doorno: ['', Validators.required],
     // state: ['', Validators.required],
     // gender: ['', Validators.required],
     // cartype: ['', Validators.required],
@@ -59,7 +60,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     // carmodel: ['', Validators.required],
     // zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
     // emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    // mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
+     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     // lastupddt: [current_date, [Validators.required]],
     shop_id:[currentShopId, [Validators.required]]
   
@@ -120,7 +121,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
           formData.append('update','2')
           formData.append('info',JSON.stringify(info))
           formData.append('currentUserId',currentUserId)
-          formData.append('shopownersession',usertype)
+          formData.append('shopownersession',"shopowner")
           this.file_data=formData
           
         }
