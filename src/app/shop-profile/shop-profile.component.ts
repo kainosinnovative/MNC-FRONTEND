@@ -25,6 +25,10 @@ file=new FormControl('')
 opened = true;
 opened1 = false;
 imageSrc: string;
+citytype: any;
+  citydata: any;
+  statetype: any;
+  statedata: any;
   constructor(public router: Router,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
@@ -34,34 +38,30 @@ imageSrc: string;
   ngOnInit(): void {
     this.readProfileDataById();
   let currentShopId:any = localStorage.getItem('currentUserId');
-
+  this. loadcitylist();
+  this.getstatedata();
   this.date=new Date();
 let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
- 
+  const aadharPattern="/^[01]\d{3}[\s-]?\d{4}[\s-]?\d{4}$/";
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
   this.shopprofile = this.frmbuilder.group({
     name:['', Validators.required],
     firstname: ['', Validators.required],
-    // lastname: ['', Validators.required],
-    // dob: ['', Validators.required],
+    lastname: ['', Validators.required],
+    dob: ['', Validators.required],
     doorno: ['', Validators.required],
-    // state: ['', Validators.required],
-    // gender: ['', Validators.required],
-    // cartype: ['', Validators.required],
-    // city: ['', Validators.required],
-    // street: ['', Validators.required],
-    
-    // fueltype: ['', Validators.required],
-    // cartypes: ['', Validators.required],
-    // carbrands: ['', Validators.required],
-    // carcolor: ['', Validators.required],
-    // carmodel: ['', Validators.required],
-    // zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
-    // emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
+    state: ['', Validators.required],
+    gender: ['', Validators.required],
+    city: ['', Validators.required],
+    street: ['', Validators.required],
+    aadharno: ['', Validators.required],
+    // aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
+    zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
+     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
-    // lastupddt: [current_date, [Validators.required]],
+    lastupddt: [current_date, [Validators.required]],
     shop_id:[currentShopId, [Validators.required]]
   
     })    
@@ -86,15 +86,15 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
 
   uploadFile(shopprofile:any)
   {
-    this.http.post(config_url+'/app/AddCustomerdetails',shopprofile)
+    this.http.post(config_url+'/shop/AddShopdetails',shopprofile)
     .subscribe(res => {
     
     }, (err) => {
-    
+   
   });
 
   this.toastr.success('Profile Updated Successfully');
-    
+  window.setTimeout(function(){location.reload()},100)
   // window.location.reload();
   }  
   get f(){
@@ -137,5 +137,33 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
 
   
   }    
+  loadcitylist(){
+    
+    
+    return this.restApi.getcitylist().subscribe((citylistdata: {}) => {
+   
+     // console.log(citylistdata)
+      this.citytype = citylistdata;
+
+      console.log(this.citytype)
+  //console.log("hi")
+      this.citydata = this.citytype.data.list;
+      
+       console.log("data>>>>",this.citydata)
+    })
+  }
+
+  getstatedata(){
+  
+  
+    return this.restApi.getstatelist().subscribe((statelistdata: {}) => {
+   
+      this.statetype = statelistdata;
+     this.statedata = this.statetype.data.list;
+      
+   console.log("data>>>>",this.statedata)
+    })
+  }
+
    
 }
