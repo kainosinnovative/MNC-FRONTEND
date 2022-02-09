@@ -235,4 +235,18 @@ errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
 window.alert(errorMessage);
 return throwError(errorMessage);
 }
+
+
+readShopProfileDataById(currentShopId	:any): Observable<logindetails> {
+  
+  return this.http.get<logindetails>(this.apiURL + '/shop/getShopProfileById?shop_id='+ currentShopId	)
+  
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+    
+  )
+
+} 
+
 }

@@ -173,6 +173,7 @@ fileChange(event:any) {
         formData.append('update','2')
         formData.append('info',JSON.stringify(info))
         formData.append('currentUserId',currentUserId)
+        
         this.file_data=formData
         
       }else{
