@@ -1,7 +1,9 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService } from '../shared/customer/customer';
+
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand } from '../shared/customer/customer';
+
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
@@ -55,6 +57,16 @@ gettestimonialData(): Observable<Testimonial> {
     catchError(this.handleError)
     )
     }
+
+    getcarbrand(): Observable<carbrand> {
+  
+      return this.http.get<carbrand>(this.apiURL + "/app/brandtype")
+    
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
 
 
     getServiceData(currentUserId:any): Observable<Services> {
