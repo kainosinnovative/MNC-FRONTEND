@@ -7,7 +7,7 @@
     </ul> -->
 <form [formGroup]="profileform" name="pf">
 <div class="accordion">
-    <h2 class="title" (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
+    <h2 class="title"  (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
     <div class="content-container" [class.opened]="opened">
            <!--phto-->
        
@@ -75,7 +75,7 @@
                          </div>
                          <br>
                          <div class="form-group">
-                            <label class="lblwidthProfile">Door No</label><span class="requiredfield">  *</span>
+                            <label class="lblwidthProfile">Address</label><span class="requiredfield">  *</span>
     
                             <input type="text" style="width: 250px" class="form-control doornocls form-inline" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
                             <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
@@ -114,7 +114,7 @@
                <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls" placeholder="" formControlName='lastname'>
+                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls" placeholder="" formControlName='lastname' [(ngModel)]="CustomerDataById1.lastname">
                             <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
           
                                 <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
@@ -315,7 +315,7 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Brand</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carbrand form-control" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.carbrands">
+                        <select  placeholder="" class="carbrand form-control" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">
                             <option value="">--Select---</option>
                             <option *ngFor="let carbrand of branddata" [value]="carbrand.id">
                                 {{carbrand.brand_name}}
@@ -337,7 +337,7 @@
                     
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Color</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carcolor form-control" formControlName="color" name="" [(ngModel)]="CustomerDataById1.carcolor">
+                        <select  placeholder="" class="carcolor form-control" formControlName="color" name="" [(ngModel)]="CustomerDataById1.color">
                             <option value="">--Select---</option>
                             <option value="black">Black</option>
                             <option value="red">Red</option>
@@ -362,7 +362,7 @@
                      <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Car Model</label><span class="requiredfield">  *</span>
-                            <select  placeholder=""  class="carmodel form-control" formControlName="model" id="model" [(ngModel)]="CustomerDataById1.model">
+                            <select  placeholder=""  class="carmodel form-control" id="model" formControlName="model" [(ngModel)]="CustomerDataById1.model">
                                 <option value="">--Select---</option>
                                <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
                                 {{carmodels.model_name}}
@@ -394,7 +394,7 @@
   </div>
   <div class="col-sm-12 form-inline" style="text-align: right;">
         
-    <button class="btn btn-success " style="margin-right: 14px;" (click)="uploadFile(profileform.value)" [disabled]='!profileform.valid' >Update</button>
+    <button class="btn carwashbtn btn-success" (click)="uploadFile(profileform.value)" [disabled]='!profileform.valid' >Update</button>
     <!-- [disabled]='!profileform.valid' -->
     
 
