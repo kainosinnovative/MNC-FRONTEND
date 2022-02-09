@@ -34,6 +34,7 @@ types:any;
 profileform : any;
 
 
+
   opened = true;
   opened1 = false;
   imageSrc: string;
@@ -42,10 +43,24 @@ profileform : any;
   CustomerDataById2:any;
   CustomerDataById3:any;
   firstname: any;
+  myusername: any;
 
   date: any;
   fetchdata: any;
   fetchdata1: any;
+  branddata: any;
+  brandtype: any;
+  selectedDeviceObj: any;
+  selectedcaetype: any;
+  carmodelsdata: any;
+  element: HTMLElement;
+  modelsdata: any;
+  selecttypedata: any;
+  myuser: any;
+ 
+  cartypedata: any;
+  cardata: any;
+ 
   
   constructor(
     public router: Router,
@@ -65,6 +80,9 @@ ngOnInit() {
 
   this.readCustomerDataById();
   this.loadcartype();
+  this.loadcarbrand();
+  element: HTMLElement;
+
   let currentUserId:any = localStorage.getItem('currentUserId');
 
   this.date=new Date();
@@ -75,24 +93,24 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   const zipcodePattern = "^[1-9][0-9]{5}$";
   this.profileform = this.frmbuilder.group({
     firstname: ['', Validators.required],
-    lastname: ['', Validators.required],
+     lastname: ['', Validators.required],
     dob: ['', Validators.required],
     doorno: ['', Validators.required],
     state: ['', Validators.required],
-    gender: ['', Validators.required],
-    cartype: ['', Validators.required],
-    city: ['', Validators.required],
-    street: ['', Validators.required],
+     gender: ['', Validators.required],
     
-    fueltype: ['', Validators.required],
-    cartypes: ['', Validators.required],
-    carbrands: ['', Validators.required],
-    carcolor: ['', Validators.required],
-    carmodel: ['', Validators.required],
-    zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
-    emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
-    lastupddt: [current_date, [Validators.required]],
+     city: ['', Validators.required],
+     street: ['', Validators.required],
+    
+     fueltype: ['', Validators.required],
+     cartype: ['', Validators.required],
+     carbrands: ['', Validators.required],
+     carcolor: ['', Validators.required],
+     carmodel: ['', Validators.required],
+     zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
+     emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
+    // mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
+     lastupddt: [current_date, [Validators.required]],
     customer_id:[currentUserId, [Validators.required]]
   
     })    
@@ -187,7 +205,7 @@ uploadFile(profileform:any)
       }, (err) => {
       
     });
-
+    console.log(profileform);
     this.toastr.success('Profile Updated Successfully');
     // window.location.reload();
     }
@@ -204,6 +222,90 @@ uploadFile(profileform:any)
       })
     }
 
+    loadcarbrand(){
+    
+    
+      return this.restApi.getcarbrand().subscribe((carbranddata: {}) => {
+        // console.log(carbranddata);
+         //console.log(hi)
+        this.brandtype = carbranddata;
+        this.branddata = this.brandtype.data.type;
+        
+        console.log("data>>>>",this.branddata)
+      })
+    }
 
+    onChangeObj(newObj: any) {
+      console.log(newObj);
+      
+    
+      this.selectedDeviceObj = newObj;
+  
+      (<HTMLInputElement>document.getElementById("model")).value='';
+      this.myusername = (<HTMLInputElement>document.getElementById("cartype")).value;
+      console.log(this.myusername);
+  
+  
+
+      // ... do other stuff here ...
+
+      this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+ 
+  '&brand='+this.selectedDeviceObj).subscribe(
+    data => {
+      //alert(data)
+      console.log(data);
+      this.carmodelsdata = data
+      this.modelsdata = this.carmodelsdata.data.type;
+    },
+    error => {
+      // alert(error)
+      console.log(error.status)
+     // if(error.status == "200") {
+        //this.showsuccess();
+       // this.pagerefresh();
+     // }
+    }
+    );
+  }
+
+  onchangecartype(typedata: any) {
+    console.log(typedata);
+    
+  
+    this.selecttypedata = typedata;
+
+    (<HTMLInputElement>document.getElementById("model")).value='';
+    this.myuser = (<HTMLInputElement>document.getElementById("carbrand")).value;
+    console.log(this.myuser);
+
+
+
+    // ... do other stuff here ...
+
+    this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+ 
+'&cartype='+this.selecttypedata).subscribe(
+  data => {
+    //alert(data)
+    console.log(data);
+    this.carmodelsdata = data
+    this.modelsdata = this.carmodelsdata.data.type;
+  },
+  error => {
+    // alert(error)
+    console.log(error.status)
+   // if(error.status == "200") {
+      //this.showsuccess();
+     // this.pagerefresh();
+   // }
+  }
+  );
+}
+   
+  }
+    
+   
+
+function newObj(newObj: any) {
+  throw new Error('Function not implemented.');
 }
 
