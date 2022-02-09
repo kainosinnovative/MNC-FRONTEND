@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, ChangeDetectorRef,OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
+
+
 
 @Component({
   selector: 'app-shop-service',
   templateUrl: './shop-service.component.html',
   styleUrls: ['./shop-service.component.scss']
 })
-export class ShopServiceComponent implements OnInit {
+export class ShopServiceComponent implements  OnInit{
+
   
   serviceData: any;
   serviceData1: any;
@@ -16,12 +19,29 @@ export class ShopServiceComponent implements OnInit {
   element: HTMLElement;
   service_amount: string;
 
+  config: any;
+
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService) { }
 
+
   ngOnInit(): void {
     this.loadServiceData();
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      // totalItems: this.collection.count
+    };
+    
   }
+
+
+  pageChanged(event:any){
+    this.config.currentPage = event;
+  }
+
+  
 
 
   loadServiceData(){
@@ -32,7 +52,10 @@ export class ShopServiceComponent implements OnInit {
       this.serviceData1 = this.serviceData.data.carAndShopservice;
       
       console.log("data>222>>>",this.serviceData1)
+      // this.dtTrigger.next();
     })
+
+    
   }
 
 
@@ -60,7 +83,7 @@ export class ShopServiceComponent implements OnInit {
                   
     //               }
 
-                  this.http.get('http://localhost/MNC-PHP-API//shop/AddshopService?service_amount='+service_amount +
+                  this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
                      "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe()
 
     // this.restApi.AddshopService(shopservAmount).subscribe((data => {
@@ -82,9 +105,17 @@ export class ShopServiceComponent implements OnInit {
     console.log(service_amount);
     let currentUserId = localStorage.getItem('currentUserId');
 
+    if(service_amount != "") {
+
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/UpdateshopService?service_amount='+service_amount +
                      "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe() 
+    }
+    else {
+      (<HTMLInputElement>document.getElementById(service_amountid)).focus();
+      let validateamount = "validateamount_"+obj;
+      (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
+    }
   }
 
 

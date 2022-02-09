@@ -90,6 +90,12 @@ body {
   margin-left: 28px;
   padding-left: 2px !important;
 }
+.streetshop
+{width: 150px;
+  margin-left: 32px;
+  padding-left: 2px !important;
+
+}
 .doornocls {
   //width: 205px;
   padding-left: 2px !important;
@@ -106,6 +112,11 @@ body {
   margin-left: 55px;
   padding-left: 2px !important;
 }
+.shopzipcodecls{
+  width: 80px !important;
+  margin-left: 58px;
+  padding-left: 2px !important;
+}
 
 .form-control{
 border: 1px solid #000407 !important;
@@ -115,10 +126,20 @@ line-height: unset !important;
 }
 
 .carwashbtn {
+
   margin-right: 14px !important;
     width: 94px !important;
     height: 35px !important;
     padding-top: 4px !important;
     padding-bottom: 4px !important;
-    
+  
+}
+.shopgender
+{
+  height: 28px;
+  width: 85px !important;
+  padding-top: 3px;
+  padding-left: 2px !important;
+  margin-left: 22px;
+
 }
