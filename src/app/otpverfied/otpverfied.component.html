@@ -33,7 +33,7 @@
                 <span  class="font-weight-bold text-danger cursor" (click)="sendotp2(dataForm1.value)">Resend Code</span> 
               </div>
        <div style="text-align: center;">
-         <button class="carwashbtn" style="border-radius: 21px;width: 100px;border: none;height: 36px;" (click)="VerifyOtp()">Verify</button>
+         <button class="carwashbtn1" style="border-radius: 21px;width: 100px;border: none;height: 36px;" (click)="VerifyOtp()">Verify</button>
         </div>
 <form [formGroup]="dataForm1" >
         <input type="text" matInput placeholder="Phone" value="{{isloggedinUser}}" formControlName='mobile' style="visibility: hidden;">
