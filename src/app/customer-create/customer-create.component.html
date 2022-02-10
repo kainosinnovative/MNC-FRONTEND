@@ -227,13 +227,19 @@
                             <br>
                             <div class="form-group">
                                 <label class="lblwidthProfile">City</label><span class="requiredfield">  *</span>
-                                <select  placeholder=""  class=" city form-control citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
-                                    <option value="">--Select City--</option>
-                                   <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
+                                 <select  placeholder=""  class="city form-control citycls" formControlName="city" name=""  [(ngModel)]="CustomerDataById1.city">
+                                     <option value="">--Select City--</option>
+                                      <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
                                         {{citylist.city_name}}
                                      </option>
-                                
-                                     </select>
+                                  </select> 
+
+                                     <!-- <select  placeholder=""   class="city form-control citycls" formControlName="city" name="" [(ngModel)]="CustomerDataById1.state">
+                                        <option value="">--Select city---</option> 
+                                        <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
+                                            {{citylist.city_name}}
+                                         </option>
+                                       </select> -->
                                     <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
                   
                                         <div *ngIf="profileform.controls['city'].errors" style="color: red;"> 
@@ -315,7 +321,7 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Brand</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carbrand form-control carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">
+                        <select  placeholder="" class="carbrand form-control carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.state">
                             <option value="">--Select---</option>
                             <option *ngFor="let carbrand of branddata" [value]="carbrand.id">
                                 {{carbrand.brand_name}}
@@ -362,7 +368,7 @@
                      <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Car Model</label><span class="requiredfield">  *</span>
-                            <select  placeholder=""  class="carmodel form-control carmodel" id="model" formControlName="model" [(ngModel)]="CustomerDataById1.model">
+                            <select  placeholder=""  class="carmodel form-control carmodel" id="model" formControlName="model" [(ngModel)]="CustomerDataById1.state">
                                 <option value="">--Select---</option>
                                <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
                                 {{carmodels.model_name}}
