@@ -47,6 +47,7 @@ import { ShopServiceComponent } from './shop-service/shop-service.component';
 import { DataTablesModule } from 'angular-datatables';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ShopdashboardComponent } from './shopdashboard/shopdashboard.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -65,8 +66,8 @@ const appRoutes: Routes = [
   { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
   { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
   { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}},
-  { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}}
-
+  { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}},
+  { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}}
 
 ];
 @NgModule({
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
 
     ServicesComponent,
       ShopProfileComponent,
-      ShopServiceComponent
+      ShopServiceComponent,
+      ShopdashboardComponent
       
    
      ],
