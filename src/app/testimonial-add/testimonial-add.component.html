@@ -1,9 +1,14 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/js/star-rating.min.js" integrity="sha512-BjVoLC9Qjuh4uR64WRzkwGnbJ+05UxQZphP2n7TJE/b0D/onZ/vkhKTWpelfV6+8sLtQTUqvZQbvvGnzRZniTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
-
+<p  style="text-align: right;">
+  <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
+</p>
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<h1  mat-dialog-title>Add Review</h1>
+<h1 class="mainheading" style="text-align: center;margin-top: -19px;" mat-dialog-title>Add Review</h1>
     <mat-dialog-content style="width: 400px;"> 
+
+     
+
     <form name="testimonial"  [formGroup]="testimonialForm" (ngSubmit)="createTestimonial2(testimonialForm.value)" >
         <div class="form-group form-inline">
             <!-- <label>Description</label> -->
@@ -14,9 +19,9 @@
 
             <div *ngIf="testimonialForm.controls['user_description'].touched && testimonialForm.controls['user_description'].invalid "> 
           
-              <div *ngIf="testimonialForm.controls['user_description'].errors" style="color: red;"> 
-                <div *ngIf="testimonialForm.controls['user_description'].errors.required" style="margin-left: 14px;">
-                  User Description is required.
+              <div *ngIf="testimonialForm.controls['user_description'].errors" style="color: red;font-size: 12px;"> 
+                <div *ngIf="testimonialForm.controls['user_description'].errors.required" >
+                  Enter your review
                 </div> 		   
                
              </div> 
@@ -62,7 +67,7 @@
               <br>
               <div class="col-sm-9"></div>
               <div class="col-sm-3">
-                <button class="btn btn-success btn-lg btn-block"  [disabled]='!testimonialForm.valid' >Add</button>
+                <button class=" " style="width:70px;color:black;border-radius: 21px;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!testimonialForm.valid' >Add</button>
               </div>
                 
             </div>
@@ -74,5 +79,5 @@
     
     </mat-dialog-content>
 <!-- <mat-dialog-actions> -->
-    <button  mat-raised-button (click)="closeMe()">Close</button>
+    <!-- <button  mat-raised-button (click)="closeMe()">Close</button> -->
 <!-- </mat-dialog-actions> -->

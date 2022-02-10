@@ -104,6 +104,10 @@ font-weight:500;
         font-weight:500;
     }
 
+    .txtunderline_remove2{
+        text-decoration: unset !important;
+    }
+
 
     // .mat-list-item{
     //     font-size: 14px;
@@ -122,4 +126,14 @@ font-weight:500;
     }
 
 
-   
+    @media screen and (max-width: 768px) {
+        .sidemenucls {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .sidemenucls {
+            display: none;
+        }
+    }

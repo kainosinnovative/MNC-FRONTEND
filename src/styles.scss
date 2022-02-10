@@ -144,5 +144,25 @@ line-height: unset !important;
 }
 
 .carwashbtn1 {
-background-color: #198754;
+  
+    border: 1px solid #0bae62;
+    background-color: white !important;
+
+}
+
+.mainheading {
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+.subheading {
+  font-size: 14px !important;
+  // font-weight: 900 !important;
+}
+
+.secondsubheading {
+  
+    font-size: 12px !important;
+    // font-weight: 900 !important;
+  
 }

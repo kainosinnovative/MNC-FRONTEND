@@ -8,69 +8,74 @@
 
     <mat-card  class="bordercard">
       <div  style="text-align: right;margin-top: -29px;margin-right: -21px;">
-        <a style="cursor: pointer;font-size: 20px;font-weight: bold;" (click)="closeMe()">×</a>
+        <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
       </div>
     <mat-card-header style="padding-left: 107px;" >
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title class="mainheading">Login</mat-card-title>
     </mat-card-header>
 
 
     <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
       <div>
   
-      <select id = "myList" onchange = "favTutorial()" style=" height: 32px;width: 63px;">   
+      <select id = "myList" onchange = "favTutorial()" style=" height: 32px;width: 32%;">   
          
           <option> + 91</option>  
            </select>  
 
            <label style="padding-left: 8%;"> </label>
 
-           <input style=" height: 32px;  width: 180px;" type="text" matInput placeholder="Mobile Phone" formControlName='mobile' class="mobilenumbercls">
+           <input style=" height: 32px;  width: 182px;" type="text" matInput placeholder="Mobile number" formControlName='mobile' class="">
  
+
+           <div *ngIf="dataForm.controls['mobile'].touched && dataForm.controls['mobile'].invalid " style="text-align: center;"> 
+          <br>
+            <div *ngIf="dataForm.controls['mobile'].errors" style="color: red;font-size: 12px;"> 
+              <div *ngIf="dataForm.controls['mobile'].errors?.['required']" >
+                  Mobile number is required.
+              </div> 	
+              <div *ngIf="dataForm.controls['mobile'].errors?.['pattern']" >
+                Mobile number is not valid.
+            </div> 	   
+             
+           </div> 
+            
+          </div> 
+
   </div>
    
           
-    <div *ngIf="dataForm.controls['mobile'].touched && dataForm.controls['mobile'].invalid "> 
-          
-      <div *ngIf="dataForm.controls['mobile'].errors" style="color: red;"> 
-        <div *ngIf="dataForm.controls['mobile'].errors?.['required']" style="margin-left: 14px;">
-            Mobile Number is Required.
-        </div> 	
-        <div *ngIf="dataForm.controls['mobile'].errors?.['pattern']" style="margin-left: 14px;">
-          Mobile Number is Not Valid.
-      </div> 	   
-       
-     </div> 
-      
-    </div> 
+    
     
   
   </mat-card-content>
 
-    <p id="pleaseregister" style="color:red;font-size: 13px;text-align: center;"></p>
+    <p id="pleaseregister" style="color:red;font-size: 12px;text-align: center;"></p>
 
     
 
 
   <mat-card-actions style="text-align: center;margin-top: 15px;" >
-      <button mat-raised-button class="carwashbtn1 " style="border-radius: 21px;width: 190px;height: 36px;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
+      <button mat-raised-button class="" style="border-radius: 21px;width: 97%;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
   </mat-card-actions>
 
 
 
-  <mat-card-actions style="text-align: center;" >
-  <h3>New to Kainos Car Wash.?
+  <mat-card-actions style="text-align: center;padding: 0px;" >
+  <h3>
 
-      <mat-list-item  > <a  mat-list-item (click)="signup()">
-         </a></mat-list-item>
+      <!-- <mat-list-item  > <a  mat-list-item (click)="signup()">
+         </a></mat-list-item> -->
 
-          <mat-list-item class="menudesk"> <a style="cursor: pointer;" class="colorheaderMenu" (click)="signup();closeMe()"> Sign Up</a> </mat-list-item>
+          <mat-list-item class="menudesk subheading">New to Kainos Car Wash.?  <a style="cursor: pointer;text-decoration: unset;" class="colorheaderMenu" (click)="signup();closeMe()"> Sign Up</a> </mat-list-item>
 
-         
-      
-  </h3>
+        </h3>
 </mat-card-actions>
-
+<p style="margin-left: 46px;">
+<span style="padding-bottom: 10px;"><i class="fa fa-check-circle" style="color: #429c68;"></i> Keep your car looking new</span><br><br>
+         <span><i class="fa fa-check-circle" style="color: #429c68;"></i> Enjoy our fast and friendly service</span><br><br>
+         <span><i class="fa fa-check-circle" style="color: #429c68;"></i> Excellence in car care!</span>
+        </p>
     
 
     </mat-card>
