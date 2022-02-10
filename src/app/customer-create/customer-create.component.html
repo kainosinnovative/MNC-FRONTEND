@@ -7,7 +7,7 @@
     </ul> -->
 <form [formGroup]="profileform" name="pf">
 <div class="accordion">
-    <h2 class="title mainheading"  (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
+    <h2 class="title subheading"  (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
     <div class="content-container" [class.opened]="opened">
            <!--phto-->
        
@@ -82,7 +82,7 @@
               
                                 <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
                                   <div *ngIf="profileform.controls['doorno'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                     Door no is required
+                                    Please fill address detail
                                   </div> 		   
                                  
                                </div> 
@@ -228,7 +228,7 @@
                             <div class="form-group">
                                 <label class="lblwidthProfile">City</label><span class="requiredfield">  *</span>
                                 <select  placeholder=""  class=" city form-control citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
-                                    <option value="">--Select City--</option>
+                                    <option >--Select City--</option>
                                    <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
                                         {{citylist.city_name}}
                                      </option>
@@ -259,7 +259,7 @@
   <!--Endof Personal-->
   <!--address start-->
   <div class="accordion1">
-    <h2 class="title1 mainheading" (click)="opened1 = !opened1">Car Details<i class="fa fa-chevron-down"></i></h2>
+    <h2 class="title1 subheading" (click)="opened1 = !opened1">Car Details<i class="fa fa-chevron-down"></i></h2>
     <div class="content-container1" [class.opened1]="opened1">
            <!--phto-->
            <div class="row">
@@ -394,7 +394,7 @@
   </div>
   <div class="col-sm-12 form-inline" style="text-align: right;">
         
-    <button class="btn carwashbtn carwashbtn1 btn-success" (click)="uploadFile(profileform.value)" [disabled]='!profileform.valid' >Update</button>
+    <button class="btn carwashbtn  btn-success" (click)="uploadFile(profileform.value)" [disabled]='!profileform.valid' >Update</button>
     <!-- [disabled]='!profileform.valid' -->
     
 
