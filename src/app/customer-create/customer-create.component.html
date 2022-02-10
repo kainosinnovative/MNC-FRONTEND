@@ -1,5 +1,5 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<h2  style="text-align:center;">My Profile </h2>
+<h2 class="mainheading" style="text-align:center;">My Profile </h2>
 <!-- *ngFor = "let news  of CustomerDataById1" -->
 <div style="margin-left: -66px;">
     <!-- <ul *ngFor="let c of CustomerDataById">
@@ -7,7 +7,7 @@
     </ul> -->
 <form [formGroup]="profileform" name="pf">
 <div class="accordion">
-    <h2 class="title"  (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
+    <h2 class="title mainheading"  (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
     <div class="content-container" [class.opened]="opened">
            <!--phto-->
        
@@ -48,7 +48,7 @@
       
                             <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
                               <div *ngIf="profileform.controls['firstname'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                  First Name  required. 
+                                  First name is required. 
                               </div> 		   
                              
                            </div> 
@@ -64,10 +64,10 @@
           
                                     <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;"> 
                                       <div *ngIf="profileform.controls['mobileno'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                          Mobile Number  required.
+                                          Mobile number is required.
                                       </div> 		   
                                       <div *ngIf="profileform.controls['mobileno'].errors.pattern" style="margin-left: 116px;font-size: 12px;">
-                                        Mobile Number  not valid.
+                                        Mobile number is not valid.
                                       </div> 
                                    </div> 
                                     
@@ -77,12 +77,12 @@
                          <div class="form-group">
                             <label class="lblwidthProfile">Address</label><span class="requiredfield">  *</span>
     
-                            <input type="text" style="width: 250px" class="form-control doornocls form-inline" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
+                            <input type="text" style="width: 250px" class="form-control doornocls form-inline addresscls" placeholder="" formControlName="doorno" [(ngModel)]="CustomerDataById1.doorno">
                             <div *ngIf="profileform.controls['doorno'].touched && profileform.controls['doorno'].invalid "> 
               
                                 <div *ngIf="profileform.controls['doorno'].errors" style="color: red;"> 
                                   <div *ngIf="profileform.controls['doorno'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                     Door No required
+                                     Door no is required
                                   </div> 		   
                                  
                                </div> 
@@ -102,7 +102,7 @@
               
                                     <div *ngIf="profileform.controls['state'].errors" style="color: red;"> 
                                       <div *ngIf="profileform.controls['state'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                          Select State
+                                          Select state
                                       </div> 		   
                                      
                                    </div> 
@@ -114,12 +114,12 @@
                <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls" placeholder="" formControlName='lastname' [(ngModel)]="CustomerDataById1.lastname">
+                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls lastname" placeholder="" formControlName='lastname' [(ngModel)]="CustomerDataById1.lastname">
                             <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
           
                                 <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
                                   <div *ngIf="profileform.controls['lastname'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                      Last Name  required. 
+                                      Last name is required. 
                                   </div> 		   
                                  
                                </div> 
@@ -136,7 +136,7 @@
           
                             <div *ngIf="profileform.controls['dob'].errors" style="color: red;"> 
                               <div *ngIf="profileform.controls['dob'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                  Date of Birth  required. 
+                                  Date of birth is required. 
                               </div> 		   
                              
                            </div> 
@@ -149,12 +149,12 @@
                     <div class="form-group">
                         <label class="lblwidthProfile">Street Name</label><span class="requiredfield">  *</span>
     
-                         <input type="text" style="width: 236px;" class="form-control street" placeholder="" formControlName="street" [(ngModel)]="CustomerDataById1.street">
+                         <input type="text" style="width: 236px;" class="form-control street streetcls" placeholder="" formControlName="street" [(ngModel)]="CustomerDataById1.street">
                          <div *ngIf="profileform.controls['street'].touched && profileform.controls['street'].invalid "> 
           
                             <div *ngIf="profileform.controls['street'].errors" style="color: red;"> 
                               <div *ngIf="profileform.controls['street'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                 Street required  
+                                 Street is required  
                               </div> 	   
                              
                            </div> 
@@ -171,14 +171,14 @@
           
                             <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
                               <div *ngIf="profileform.controls['zipcode'].errors.required" style="margin-left: 116px;font-size: 12px;">
-                                  ZipCode  Required
+                                  Zipcode is required
                               </div> 		   
                              
                            </div> 
 
                            <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;"> 
                             <div *ngIf="profileform.controls['zipcode'].errors.pattern" style="margin-left: 116px;font-size: 12px;">
-                                ZipCode  Not Valid
+                                Zipcode is not valid
                             </div> 		   
                            
                          </div> 
@@ -191,15 +191,15 @@
                 <div class="col-sm-4">
                         <div class="form-group form-inline">
                         <label class="lblwidthProfile">Email </label><span class="requiredfield">  *</span>
-                        <input type="text"  class="form-control emailidcls" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
+                        <input type="text"  class="form-control emailidcls emailid" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
                         <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
           
                             <div *ngIf="profileform.controls['emailid'].errors" style="color: red;"> 
-                              <div *ngIf="profileform.controls['emailid'].errors.required" style="margin-left: 68px;font-size: 12px;">
-                                  Email Id  required.
+                              <div *ngIf="profileform.controls['emailid'].errors.required" style="margin-left: 68px;font-size: 12px;" class="emailvalid">
+                                  Email id is required.
                               </div> 		   
-                              <div *ngIf="profileform.controls['emailid'].errors.pattern" style="margin-left: 68px;font-size: 12px;">
-                                   Email Id  not valid.
+                              <div *ngIf="profileform.controls['emailid'].errors.pattern" style="margin-left: 68px;font-size: 12px;" class="emailvalid">
+                                   Email id is not valid.
                               </div> 
                            </div> 
                             
@@ -208,7 +208,7 @@
                         <br>
                         <div class="form-group">
                             <label class="lblwidthProfile">Gender </label><span class="requiredfield">  *</span>
-                            <select  placeholder=""   class="selectoptiongender form-control" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
+                            <select  placeholder=""   class="selectoptiongender form-control gendercls" formControlName="gender" [(ngModel)]="CustomerDataById1.gender">
                                 <option value="">--Select---</option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
@@ -216,8 +216,8 @@
                                 <div *ngIf="profileform.controls['gender'].touched && profileform.controls['gender'].invalid "> 
           
                                     <div *ngIf="profileform.controls['gender'].errors" style="color: red;"> 
-                                      <div *ngIf="profileform.controls['gender'].errors.required" style="margin-left: 68px;font-size: 12px;">
-                                          Select Gender
+                                      <div *ngIf="profileform.controls['gender'].errors.required" style="margin-left: 68px;font-size: 12px;" class="gendervalid">
+                                          Select gender
                                       </div> 		   
                                      
                                    </div> 
@@ -227,7 +227,7 @@
                             <br>
                             <div class="form-group">
                                 <label class="lblwidthProfile">City</label><span class="requiredfield">  *</span>
-                                <select  placeholder=""  class=" city form-control" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
+                                <select  placeholder=""  class=" city form-control citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
                                     <option value="">--Select City--</option>
                                    <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
                                         {{citylist.city_name}}
@@ -237,8 +237,8 @@
                                     <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
                   
                                         <div *ngIf="profileform.controls['city'].errors" style="color: red;"> 
-                                          <div *ngIf="profileform.controls['city'].errors.required" style="margin-left: 68px; font-size: 12px;">
-                                              Select City
+                                          <div *ngIf="profileform.controls['city'].errors.required" style="margin-left: 68px; font-size: 12px;" class="cityvalid">
+                                              Select city
                                           </div> 		   
                                          
                                        </div> 
@@ -259,7 +259,7 @@
   <!--Endof Personal-->
   <!--address start-->
   <div class="accordion1">
-    <h2 class="title1" (click)="opened1 = !opened1">Car Details<i class="fa fa-chevron-down"></i></h2>
+    <h2 class="title1 mainheading" (click)="opened1 = !opened1">Car Details<i class="fa fa-chevron-down"></i></h2>
     <div class="content-container1" [class.opened1]="opened1">
            <!--phto-->
            <div class="row">
@@ -267,7 +267,7 @@
 
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Type</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="cartype form-control" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">
+                        <select  placeholder="" class="cartype form-control cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">
                             <option value="">--Select Car Type---</option>
 
                             <option *ngFor="let cartypes of fetchdata1" [value]="cartypes.id">
@@ -277,8 +277,8 @@
                             <div *ngIf="profileform.controls['cartype'].touched && profileform.controls['cartype'].invalid "> 
           
                                 <div *ngIf="profileform.controls['cartype'].errors" style="color: red;"> 
-                                  <div *ngIf="profileform.controls['cartype'].errors.required" style="margin-left: 87px;font-size: 12px;">
-                                      Select Car Type
+                                  <div *ngIf="profileform.controls['cartype'].errors.required" style="margin-left: 87px;font-size: 12px;" class="cartypevalid">
+                                      Select car type
                                   </div> 		   
                                  
                                </div> 
@@ -290,7 +290,7 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">Fuel Type</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="fueltype form-control" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">
+                        <select  placeholder="" class="fueltype form-control fueltype" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">
                             <option value="">--Select Fuel Type---</option>
                             <option value="petrol">Petrol</option>
                             <option value="diesel">Diesel</option>
@@ -298,8 +298,8 @@
                             <div *ngIf="profileform.controls['fueltype'].touched && profileform.controls['fueltype'].invalid "> 
           
                                 <div *ngIf="profileform.controls['fueltype'].errors" style="color: red;"> 
-                                  <div *ngIf="profileform.controls['fueltype'].errors.required" style="margin-left: 89px;font-size: 12px;">
-                                      Select Fuel Type
+                                  <div *ngIf="profileform.controls['fueltype'].errors.required" style="margin-left: 89px;font-size: 12px;" class="fueltypevalid">
+                                      Select fuel type
                                   </div> 		   
                                  
                                </div> 
@@ -315,7 +315,7 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Brand</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carbrand form-control" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">
+                        <select  placeholder="" class="carbrand form-control carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">
                             <option value="">--Select---</option>
                             <option *ngFor="let carbrand of branddata" [value]="carbrand.id">
                                 {{carbrand.brand_name}}
@@ -324,8 +324,8 @@
                             <div *ngIf="profileform.controls['brand'].touched && profileform.controls['brand'].invalid "> 
           
                                 <div *ngIf="profileform.controls['brand'].errors" style="color: red;"> 
-                                  <div *ngIf="profileform.controls['brand'].errors.required" style="margin-left: 89px;font-size: 12px;">
-                                      Select Car Brand
+                                  <div *ngIf="profileform.controls['brand'].errors.required" style="margin-left: 89px;font-size: 12px;" class="carbrandvalid">
+                                      Select car brand
                                   </div> 		   
                                  
                                </div> 
@@ -337,7 +337,7 @@
                     
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Color</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carcolor form-control" formControlName="color" name="" [(ngModel)]="CustomerDataById1.color">
+                        <select  placeholder="" class="carcolor form-control carcolor" formControlName="color" name="" [(ngModel)]="CustomerDataById1.color">
                             <option value="">--Select---</option>
                             <option value="black">Black</option>
                             <option value="red">Red</option>
@@ -347,8 +347,8 @@
                             <div *ngIf="profileform.controls['color'].touched && profileform.controls['color'].invalid "> 
           
                                 <div *ngIf="profileform.controls['color'].errors" style="color: red;"> 
-                                  <div *ngIf="profileform.controls['color'].errors.required" style="margin-left: 89px;font-size: 12px;">
-                                      Select Car Color
+                                  <div *ngIf="profileform.controls['color'].errors.required" style="margin-left: 89px;font-size: 12px;" class="carcolorvalid">
+                                      Select car color
                                   </div> 		   
                                  
                                </div> 
@@ -362,7 +362,7 @@
                      <div class="col-sm-4">
                         <div class="form-group">
                             <label class="lblwidthProfile">Car Model</label><span class="requiredfield">  *</span>
-                            <select  placeholder=""  class="carmodel form-control" id="model" formControlName="model" [(ngModel)]="CustomerDataById1.model">
+                            <select  placeholder=""  class="carmodel form-control carmodel" id="model" formControlName="model" [(ngModel)]="CustomerDataById1.model">
                                 <option value="">--Select---</option>
                                <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
                                 {{carmodels.model_name}}
@@ -371,7 +371,7 @@
               
                                     <div *ngIf="profileform.controls['model'].errors" style="color: red;"> 
                                       <div *ngIf="profileform.controls['model'].errors.required" style="margin-left: 98px;font-size: 12px;">
-                                          Select Car Model
+                                          Select car model
                                       </div> 		   
                                      
                                    </div> 

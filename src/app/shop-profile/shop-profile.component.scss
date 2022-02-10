@@ -119,4 +119,36 @@
     width: 240px; 
     margin-left: 25px; 
  }
-
+ @media screen and (max-width: 768px){
+     .shopname{
+        width: 190px !important;
+     }
+     .emailid{
+        width: 201px !important;
+        }
+    .streetcls{
+        width: 194px !important;
+        margin-left: 34px;
+        }
+    .zipcodecls{
+        margin-left: 61px;
+    }
+    .leftnamemrg{
+        margin-left: 13px;
+    }
+    .mobilecls{
+        margin-left: 13px !important;
+    }
+    .firstnamecls{
+        width: 194px !important;
+        margin-left: 42px;
+    }
+    .aadharcls{
+        width: 194px !important;
+        margin-left: 61px;
+    }
+    .address{
+        width: 201px !important;
+    }
+    
+ }

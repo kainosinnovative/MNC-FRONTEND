@@ -13,6 +13,9 @@ export class RightsidebarComponent implements OnInit {
   
 
   currentUsername = localStorage.getItem('currentUsername');
+
+  userroleSes = localStorage.getItem('userroleSes');
+
   constructor(private  dialog:  MatDialog, private  router:  Router,public restApi: RestApiService) { }
 
   ngOnInit(): void {
@@ -21,7 +24,7 @@ export class RightsidebarComponent implements OnInit {
 
   testimonialAdd(){
   
-    this.dialog.open(TestimonialAddComponent);
+    this.dialog.open(TestimonialAddComponent,{disableClose: true});
  
 
  

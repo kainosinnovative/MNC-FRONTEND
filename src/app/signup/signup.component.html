@@ -1,14 +1,14 @@
 
 
 <form [formGroup]="dataForm3" (ngSubmit)="sendotp3(dataForm3.value)">
-  <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 336px;">
+  <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 300px;">
 
     <div  style="text-align: right;margin-top: -15px;margin-right: -9px;">
-      <a style="cursor: pointer;font-size: 20px;font-weight: bold;" (click)="closeMe()">×</a>
+      <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
     </div>
     
     <mat-card-header style="padding-left: 33%;margin-bottom: 10px;" >
-      <mat-card-title >Sign Up</mat-card-title>
+      <mat-card-title class="mainheading">Sign Up</mat-card-title>
       <br>
     </mat-card-header>
  
@@ -16,12 +16,12 @@
      <div>
 
 
-        <input style=" height: 32px;  width: 295px;border:1px solid;    margin-left: 14px;" class="form-control" type="text" matInput placeholder="Your Name" formControlName='username'>
+        <input style=" height: 32px;  width: 295px;border:1px solid; " class="form-control" type="text" matInput placeholder="Your name" formControlName='username'>
 
         <div *ngIf="dataForm3.controls['username'].touched && dataForm3.controls['username'].invalid "> 
           
-          <div *ngIf="dataForm3.controls['username'].errors" style="color: red;"> 
-            <div *ngIf="dataForm3.controls['username'].errors.required" style="margin-left: 14px;">
+          <div *ngIf="dataForm3.controls['username'].errors" style="color: red;font-size: 12px;"> 
+            <div *ngIf="dataForm3.controls['username'].errors.required" >
                 Name is required.
             </div> 		   
            
@@ -34,15 +34,15 @@
         <label style="margin-top: 10px;"></label>
         <div>
 
-        <input style=" height: 32px;  width: 295px;border:1px solid;    margin-left: 14px;" type="text" class="form-control"  placeholder="Email" formControlName='emailid'>
+        <input style=" height: 32px;  width: 295px;border:1px solid; " type="text" class="form-control"  placeholder="Email" formControlName='emailid'>
         <div *ngIf="dataForm3.controls['emailid'].touched && dataForm3.controls['emailid'].invalid "> 
           
-          <div *ngIf="dataForm3.controls['emailid'].errors" style="color: red;"> 
-            <div *ngIf="dataForm3.controls['emailid'].errors.required" style="margin-left: 14px;">
-                EmailId is required.
+          <div *ngIf="dataForm3.controls['emailid'].errors" style="color: red;font-size: 12px"> 
+            <div *ngIf="dataForm3.controls['emailid'].errors.required" >
+                Email id is required.
             </div> 		   
-            <div *ngIf="dataForm3.controls['emailid'].errors.pattern" style="margin-left: 14px;">
-                 Emailid is not valid.
+            <div *ngIf="dataForm3.controls['emailid'].errors.pattern" >
+                 Email id is not valid.
             </div> 
          </div> 
           
@@ -52,22 +52,22 @@
         <label style="padding-left: 8%;"> </label>
 
         <div>
-        <select id = "myList" onchange = "favTutorial()"  style=" height: 32px;width: 63px;margin-left: 15px;">   
+        <select id = "myList" onchange = "favTutorial()"  style=" height: 32px;width: 63px;">   
          
           <option> + 91</option>  
            </select>  
 
            <label style="padding-left: 2%;"> </label>
 
-          <input style=" height: 32px;  width: 208px;border:1px solid;margin-left: 13px;" type="text" matInput placeholder="Mobile Phone" formControlName='registermobno'>
+          <input style=" height: 32px;  width: 75%;border:1px solid;" type="text" matInput placeholder="Mobile number" formControlName='registermobno'>
 
           <div *ngIf="dataForm3.controls['registermobno'].touched && dataForm3.controls['registermobno'].invalid "> 
           
-            <div *ngIf="dataForm3.controls['registermobno'].errors" style="color: red;"> 
-              <div *ngIf="dataForm3.controls['registermobno'].errors.required" style="margin-left: 14px;">
+            <div *ngIf="dataForm3.controls['registermobno'].errors" style="color: red;font-size: 12px"> 
+              <div *ngIf="dataForm3.controls['registermobno'].errors.required" >
                   Mobile Number is required.
               </div> 		   
-              <div *ngIf="dataForm3.controls['registermobno'].errors.pattern" style="margin-left: 14px;">
+              <div *ngIf="dataForm3.controls['registermobno'].errors.pattern" >
                 Mobile Number is not valid.
               </div> 
            </div> 
@@ -80,7 +80,7 @@
  <p id="pleaseregister" style="color:red;font-size: 13px;"></p>
 
     <mat-card-actions style="text-align: center;">
-        <button mat-raised-button class="carwashbtn1" style="border-radius: 21px;width: 190px;" [disabled]='!dataForm3.valid'>Receive a Code Via SMS</button>
+        <button mat-raised-button class="" style="border-radius: 21px;width: 92%;border: 1px solid #0bae62;background-color: white !important" [disabled]='!dataForm3.valid'>Receive a Code Via SMS</button>
     </mat-card-actions>
 
     

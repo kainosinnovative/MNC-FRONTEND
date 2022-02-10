@@ -120,3 +120,73 @@
     margin-left: 25px; 
  }
 
+ @media screen and (max-width: 768px){
+
+.addresscls{
+    width: 190px !important;
+}
+
+.streetcls{
+    width: 200px !important;
+}
+
+.lastname{
+    margin-top: 22px !important;
+}
+
+.emailid{
+    width: 209px !important;
+    margin-top: 22px !important;
+    margin-left: 70px;
+}
+.gendercls{
+    margin-left: 60px; 
+}
+.citycls{
+    margin-left: 80px;
+    width: 180px !important;
+}
+.cartypecls{
+    margin-left: 49px !important;
+}
+.fueltype{
+    margin-left: 44px !important;
+}
+.carbrand{
+    margin-left: 42px !important;
+    width: 198px !important;
+    margin-top: 22px !important;
+}
+.carcolor{
+    margin-left: 44px !important;
+}
+.carmodel{
+    margin-left: 39px !important;
+    width: 205px !important;
+    margin-top: 22px !important;
+      }
+
+.emailvalid{
+    margin-left: 112px !important;
+      }
+
+ .gendervalid{
+        margin-left: 112px !important;
+          }
+ .cityvalid{
+     margin-left: 112px !important;
+  }
+  .cartypevalid{
+    margin-left: 112px !important;
+ }
+ .fueltypevalid{
+    margin-left: 112px !important;
+ }
+ .carbrandvalid{
+    margin-left: 112px !important;
+ }
+ .carcolorvalid{
+    margin-left: 112px !important;
+ }         
+ }
+
