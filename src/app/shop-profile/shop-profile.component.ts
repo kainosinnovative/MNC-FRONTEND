@@ -42,7 +42,7 @@ citytype: any;
   this.getstatedata();
   this.date=new Date();
 let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
-  const aadharPattern="/^[01]\d{3}[\s-]?\d{4}[\s-]?\d{4}$/";
+  const aadharPattern="^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$";
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
@@ -56,8 +56,8 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     gender: ['', Validators.required],
     city: ['', Validators.required],
     street: ['', Validators.required],
-    aadharno: ['', Validators.required],
-    // aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
+   // aadharno: ['', Validators.required],
+     aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
     zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],

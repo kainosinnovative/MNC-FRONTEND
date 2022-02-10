@@ -45,7 +45,7 @@
                                                 <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
                             
                                                     <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
-                                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="margin-left: 14px;">
+                                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="font-size: 12px;">
                                                         Enter Your Shop Name 
                                                     </div> 		   
                                                     
@@ -63,10 +63,10 @@
                             <div *ngIf="shopprofile.controls['emailid'].touched && shopprofile.controls['emailid'].invalid "> 
             
                                 <div *ngIf="shopprofile.controls['emailid'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['emailid'].errors.required" style="margin-left: 68px;font-size: 12px;">
+                                <div *ngIf="shopprofile.controls['emailid'].errors.required" style="font-size: 12px;">
                                     Email Id  required.
                                 </div> 		   
-                                <div *ngIf="shopprofile.controls['emailid'].errors.pattern" style="margin-left: 68px;font-size: 12px;">
+                                <div *ngIf="shopprofile.controls['emailid'].errors.pattern" style="font-size: 12px;">
                                     Email Id  not valid.
                                 </div> 
                             </div> 
@@ -84,7 +84,7 @@
                                     <div *ngIf="shopprofile.controls['gender'].touched && shopprofile.controls['gender'].invalid "> 
             
                                         <div *ngIf="shopprofile.controls['gender'].errors" style="color: red;"> 
-                                        <div *ngIf="shopprofile.controls['gender'].errors.required" style="margin-left: 68px;font-size: 12px;">
+                                        <div *ngIf="shopprofile.controls['gender'].errors.required" style="font-size: 12px;">
                                             Select Gender
                                         </div> 		   
                                         
@@ -101,7 +101,7 @@
                             <div *ngIf="shopprofile.controls['street'].touched && shopprofile.controls['street'].invalid "> 
             
                                 <div *ngIf="shopprofile.controls['street'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['street'].errors.required" style="margin-left: 116px;font-size: 12px;">
+                                <div *ngIf="shopprofile.controls['street'].errors.required" style="font-size: 12px;">
                                     Enter Your Street
                                 </div> 	   
                                 
@@ -116,14 +116,14 @@
                             <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
             
                                 <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['zipcode'].errors.required" style="margin-left: 116px;font-size: 12px;">
+                                    <div *ngIf="shopprofile.controls['zipcode'].errors.required" style="font-size: 12px;">
                                         ZipCode is Required
                                     </div> 		   
                                     
                                 </div> 
 
                                 <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['zipcode'].errors.pattern" style="margin-left: 116px;font-size: 12px;">
+                                    <div *ngIf="shopprofile.controls['zipcode'].errors.pattern" style="font-size: 12px;">
                                         ZipCode  Not Valid
                                     </div> 		   
                                 
@@ -146,7 +146,7 @@
                             <div *ngIf="shopprofile.controls['firstname'].touched && shopprofile.controls['firstname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['firstname'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['firstname'].errors.required" style="margin-left: 14px;">
+                                <div *ngIf="shopprofile.controls['firstname'].errors.required" style="font-size: 12px;">
                                     First Name is required. 
                                 </div> 		   
                                 
@@ -162,10 +162,10 @@
                                 <div *ngIf="shopprofile.controls['mobileno'].touched && shopprofile.controls['mobileno'].invalid "> 
           
                                     <div *ngIf="shopprofile.controls['mobileno'].errors" style="color: red;"> 
-                                      <div *ngIf="shopprofile.controls['mobileno'].errors.required" style="margin-left: 14px;">
+                                      <div *ngIf="shopprofile.controls['mobileno'].errors.required" style="font-size: 12px;">
                                           Mobile Number is required.
                                       </div> 		   
-                                      <div *ngIf="shopprofile.controls['mobileno'].errors.pattern" style="margin-left: 14px;">
+                                      <div *ngIf="shopprofile.controls['mobileno'].errors.pattern" style="font-size: 12px;">
                                         Mobile Number is not valid.
                                       </div> 
                                    </div> 
@@ -180,12 +180,12 @@
                                 <div *ngIf="shopprofile.controls['aadharno'].touched && shopprofile.controls['aadharno'].invalid "> 
               
                                 <div *ngIf="shopprofile.controls['aadharno'].errors" style="color: red;"> 
-                                  <div *ngIf="shopprofile.controls['aadharno'].errors.required" style="margin-left: 14px;">
+                                  <div *ngIf="shopprofile.controls['aadharno'].errors.required" style="font-size: 12px;">
                                       Enter Your Aadhar Number
                                   </div> 		   
-                                  <!-- <div *ngIf="shopprofile.controls['aadharno'].errors.pattern" style="margin-left: 68px;font-size: 12px;">
-                                    Aadhar Number is not valid.
-                                </div>  -->
+                                  <div *ngIf="shopprofile.controls['aadharno'].errors.pattern" style="font-size: 12px;">
+                                    Please Enter as 0000 0000 0000.
+                                </div> 
                                </div> 
                                 
                               </div>
@@ -203,7 +203,7 @@
                             <div *ngIf="shopprofile.controls['city'].touched && shopprofile.controls['city'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['city'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['city'].errors.required" style="margin-left: 68px; font-size: 12px;">
+                                <div *ngIf="shopprofile.controls['city'].errors.required" style="font-size: 12px;">
                                     Select City
                                 </div> 		   
                                 
@@ -225,7 +225,7 @@
                                 <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
             
                                     <div *ngIf="shopprofile.controls['lastname'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['lastname'].errors.required" style="margin-left: 116px;font-size: 12px;">
+                                    <div *ngIf="shopprofile.controls['lastname'].errors.required" style="font-size: 12px;">
                                         Last Name  is required. 
                                     </div> 		   
                                     
@@ -241,7 +241,7 @@
                             <div *ngIf="shopprofile.controls['dob'].touched && shopprofile.controls['dob'].invalid "> 
             
                                 <div *ngIf="shopprofile.controls['dob'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['dob'].errors.required" style="margin-left: 116px;font-size: 12px;">
+                                <div *ngIf="shopprofile.controls['dob'].errors.required" style="font-size: 12px;">
                                     Date of Birth  required. 
                                 </div> 		   
                                 
@@ -259,7 +259,7 @@
                                     <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
                   
                                     <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
-                                      <div *ngIf="shopprofile.controls['doorno'].errors.required" style="margin-left: 14px;">
+                                      <div *ngIf="shopprofile.controls['doorno'].errors.required" style="font-size: 12px;">
                                           Please fill Address Detail
                                       </div> 		   
                                      
@@ -280,7 +280,7 @@
                             <div *ngIf="shopprofile.controls['state'].touched && shopprofile.controls['state'].invalid "> 
           
                                 <div *ngIf="shopprofile.controls['state'].errors" style="color: red;"> 
-                                  <div *ngIf="shopprofile.controls['state'].errors.required" style="margin-left: 14px;">
+                                  <div *ngIf="shopprofile.controls['state'].errors.required" style="font-size: 12px;">
                                       Select State
                                   </div> 		   
                                  
@@ -311,7 +311,7 @@
  
     <div class="col-sm-12 form-inline" style="text-align: right;">
             
-        <button class="btn btn-success " style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
+        <button class="btn btn-success carwashbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
         <!-- [disabled]='!shopprofile.valid' -->
         
 
