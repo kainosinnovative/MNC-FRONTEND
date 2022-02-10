@@ -6,14 +6,22 @@
 //     right: 0;
 //     background: rgb(155, 184, 26);
 //     }
-
+.touch
+{
+    color: #ec0c1f;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #e81c2e;
+}
 
 .footer {
     // position: fixed;
     bottom: 0;
     width: 100%;
     height: 200px;
-    background-color: #b3b5bf;
+    background-color: #202c45;
     color: rgb(9, 2, 24);
     // text-align: center;
     margin: 0px;
@@ -122,4 +130,80 @@ font-weight:500;
     }
 
 
-   
+   .footer .footer-link{
+       margin-top:5px;
+       
+   }
+.footer .footer-contact h2,
+.footer .footer-link h2,
+.footer .footer-newsletter h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #E81C2E;
+}
+
+.footer .footer-link a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: .3s;
+    text-align:left;
+    margin-left:40px;
+}
+
+.footer .footer-link a::before {
+    position: relative;
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    margin-left:50px;
+    margin-top:-25px;
+}
+
+.footer .footer-link a:hover {
+    color: #E81C2E;
+    letter-spacing: 1px;
+}
+
+.footer .footer-contact p i {
+    width: 25px;
+    
+}
+.footer .footer-contact p
+{
+color:#ffffff;
+text-align:left;
+}
+
+.footer .footer-social {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    
+}
+
+.footer .footer-social a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #202C45;
+    background: #ffffff;
+    border-radius: 40px;
+    margin-right: 5px;
+    transition: .5s;
+}
+
+.footer .footer-social a:last-child {
+    margin: 0;
+}
+
+.footer .footer-social a:hover {
+    color: #ffffff;
+    background: #E81C2E;
+}
