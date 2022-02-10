@@ -122,18 +122,30 @@
       <div class="row">
   
         <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-          <div class="row" style="height: 300px;">
-            <iframe  class="embed-responsive-item" loop="1" autoplay="" src="https://www.youtube.com/embed/PU5orW-mtVs" allowfullscreen></iframe>
-            
+          <div class="col-md-6 mt-md-0 mt-3">
+              <div class="row" style="height: 300px;">
+                <iframe  class="embed-responsive-item" loop="1" autoplay="" src="https://www.youtube.com/embed/PU5orW-mtVs" allowfullscreen></iframe>
+                
+                  </div>
+    
+          </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-link" >
+                  <h2>Popular Links</h2>
+                
+                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Online Booking</a>
+                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Offers and Deals</a>
+                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Blog</a>
+              
+                    <a *ngIf="!userroleSes" class="" style="cursor: pointer;padding-top:0px !important;margin-top:0px!important;" (click)="loginCheck();login()" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;For Shop</a>
+                  
+                  
               </div>
-  
-        </div>
-       
-        <div class="col-md-3 mb-md-0 mb-3">
+          </div>
+        <!-- <div class="col-md-3 mb-md-0 mb-3">-->
   
             <!-- Links -->
-            <h4 class="text-uppercase">Quick Links</h4>
+            <!-- <h4 class="text-uppercase">Quick Links</h4>
   
             <ul class="list-unstyled">
               <li *ngIf="!userroleSes">
@@ -148,72 +160,36 @@
               <li>
                 <a class="txtunderline_remove" routerLink='/shop/'>Shop</a>
               </li>
-              <!-- <li>
+               <li>
    
  <a class="txtunderline_remove" routerLink='#'>   Blog</a>
               </li> -->
               <!-- <li>
    
                 <a class="txtunderline_remove" routerLink='/contactus/'>   Contact Us</a>
-                             </li> -->
-            </ul>
+                             </li> 
+            </ul>-->
   
-          </div>
+          <!-- </div>  -->
           <!-- Grid column -->
+ 
 
-
-          <div class="col-md-3 mb-md-0 mb-3">
-  
-            <!-- Links -->
-            <h4 class="text-uppercase">Contact Us</h4>
-  
-            <div class="container p-4 pb-0">
-              <!-- Section: Social media -->
-              <section class="mb-4">
-                <!-- Facebook -->
-                <a
-                   class="btn btn-primary btn-floating m-1"
-                   style="background-color: #3b5998;"
-                   href="#"
-                   role="button"
-                   ><i class="fa fa-facebook-f"></i
-                  ></a>
-        
-                <!-- Twitter -->
-                <a
-                   class="btn btn-primary btn-floating m-1"
-                   style="background-color: #55acee;"
-                   href="#"
-                   role="button"
-                   ><i class="fa fa-twitter"></i
-                  ></a>
-        
-                <!-- Google -->
-                <a
-                   class="btn btn-primary btn-floating m-1"
-                   style="background-color: #dd4b39;"
-                   href="#"
-                   role="button"
-                   ><i class="fa fa-google"></i
-                  ></a>
-        
-                <!-- Instagram -->
-                <a
-                   class="btn btn-primary btn-floating m-1"
-                   style="background-color: #ac2bac;"
-                   href="#"
-                   role="button"
-                   ><i class="fa fa-globe"></i
-                  ></a>
-        
-                
-                
-              </section>
-              <!-- Section: Social media -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-contact">
+                <h2 style="text-align:left;">Get In Touch</h2>
+                <p><i class="fa fa-location-arrow"></i>No: 176 & 177, Ethiraj Salai, Egmore, Chennai 600008.</p>
+                <p><i class="fa fa-phone"></i>+1(517) 399-9224</p>
+                <p><i class="fa fa-envelope"></i>info@kainosinnovative.com</p>
+                <div class="footer-social">
+                    <a class="btn" href=""><i class="fa fa-twitter"></i></a>
+                    <a class="btn" href=""><i class="fa fa-facebook-f"></i></a>
+                    <a class="btn" href=""><i class="fa fa-youtube"></i></a>
+                    <a class="btn" href=""><i class="fa fa-instagram"></i></a>
+                    <a class="btn" href=""><i class="fa fa-linkedin-square"></i></a>
+                </div>
             </div>
-  
-          </div>
-  
+        </div>
+        
       </div>
       <!-- Grid row -->
   
@@ -223,7 +199,7 @@
     <!-- Footer Links -->
   
     <!-- Copyright -->
-    <div style="background: #b3b5bf;" class="footer-copyright text-center py-3" >© 2020 Copyright:
+    <div style="background: white;" class="footer-copyright text-center py-3" >© 2022 Copyright:
       <a href="#"> Kainos Innovative Solutions</a>
     </div>
     <!-- Copyright -->
