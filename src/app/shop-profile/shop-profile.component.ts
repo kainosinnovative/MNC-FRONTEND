@@ -94,7 +94,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   });
 
   this.toastr.success('Profile Updated Successfully');
-  window.setTimeout(function(){location.reload()},100)
+  // window.setTimeout(function(){location.reload()},100)
   // window.location.reload();
   }  
   get f(){
