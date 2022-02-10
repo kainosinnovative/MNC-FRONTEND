@@ -1,7 +1,7 @@
 
 
 <form [formGroup]="dataForm3" (ngSubmit)="sendotp3(dataForm3.value)">
-  <div fxLayout="row" fxLayoutAlign="center center" class="login-main" style="width: 300px;">
+  <div fxLayout="row" fxLayoutAlign="center center" class="login-main signupMobile" style="width: 300px;">
 
     <div  style="text-align: right;margin-top: -15px;margin-right: -9px;">
       <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
@@ -59,7 +59,7 @@
 
            <label style="padding-left: 2%;"> </label>
 
-          <input style=" height: 32px;  width: 75%;border:1px solid;" type="text" matInput placeholder="Mobile number" formControlName='registermobno'>
+          <input style=" height: 32px;  width: 75%;border:1px solid;" type="text" matInput placeholder="Mobile number" formControlName='registermobno' (keyup)="removeErrorMsg()">
 
           <div *ngIf="dataForm3.controls['registermobno'].touched && dataForm3.controls['registermobno'].invalid "> 
           

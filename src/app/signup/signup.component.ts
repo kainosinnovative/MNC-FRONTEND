@@ -81,6 +81,11 @@ Otpvrf(){
   // console.log(dialogRef);
 }
 
+removeErrorMsg() {
+  // alert("hi")
+  (<HTMLInputElement>document.getElementById("pleaseregister")).innerHTML = "";
+}
+
 
 sendotp3(dataForm3: any) {
 

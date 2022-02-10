@@ -105,6 +105,14 @@ showloginSuccess() {
 
 pagerefresh() {
   // window.location.reload();
+let userroleSes = localStorage.getItem('userroleSes');
+  if(userroleSes == 'CustomerSes'){
+    this.router.navigate(['/home']);
+  }
+  else {
+    this.router.navigate(['/ShopDashboard']);
+  }
+
   window.setTimeout(function(){location.reload()},2000)
 }
 
