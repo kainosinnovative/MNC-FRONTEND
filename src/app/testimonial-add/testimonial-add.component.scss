@@ -39,3 +39,25 @@ label.star.star-4.ng-star-inserted {
         margin-left: -96px; 
     } 
 }
+
+
+@media screen and (min-width: 768px) {
+.tesimonialaddMobile{
+    margin-left: 6px;
+}
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .tesimonialaddMobile{
+        width: 340px;
+    }
+
+    .reviewheadingMobile{
+        margin-left: -35px;
+    }
+    .testimonialClosemobile {
+        margin-left: -71px;
+    }
+    }

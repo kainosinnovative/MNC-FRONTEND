@@ -1,10 +1,10 @@
 <div class="sticky-container" *ngIf="!userroleSes">
     <ul class="sticky">
         <li>
-            <a *ngIf="userroleSes == 'CustomerSes'" style="cursor: pointer;" (click)="testimonialAdd()">
+            <!-- <a *ngIf="userroleSes == 'CustomerSes'" style="cursor: pointer;" (click)="testimonialAdd()">
                 <img src="../assets/images/rating.png" width="40" height="38">
-                <!-- Feedback -->
-            </a>
+                
+            </a> -->
 
             <a  (click)="loginToRate()" style="cursor: pointer;" >
                 <!-- Feedback -->
@@ -16,18 +16,17 @@
   </div>
 
 
-  <div class="sticky-container" *ngIf="!userroleSes">
+  <div class="sticky-container" *ngIf="userroleSes == 'CustomerSes'">
     <ul class="sticky">
         <li>
-            <a *ngIf="userroleSes == 'CustomerSes'" style="cursor: pointer;" (click)="testimonialAdd()">
+            <a  style="cursor: pointer;" (click)="testimonialAdd()">
                 <img src="../assets/images/rating.png" width="40" height="38">
-                <!-- Feedback -->
+                
             </a>
 
-            <a  (click)="loginToRate()" style="cursor: pointer;" >
-                <!-- Feedback -->
+            <!-- <a  (click)="loginToRate()" style="cursor: pointer;" >
                 <img src="../assets/images/rating.png" width="40" height="38" title="Please Login to Rate">
-            </a>
+            </a> -->
         </li>
         
     </ul>

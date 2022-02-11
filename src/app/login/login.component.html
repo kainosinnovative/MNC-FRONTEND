@@ -1,7 +1,7 @@
 
+<div class="loginpopup">
 
-
-<form  [formGroup]="dataForm" (ngSubmit)="sendotp1(dataForm.value)" method="post" style="width: 336px;">  
+<form  [formGroup]="dataForm" (ngSubmit)="sendotp1(dataForm.value)" method="post"  style="">  
   
   
 
@@ -18,12 +18,12 @@
     <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
       <div>
   
-      <select id = "myList" onchange = "favTutorial()" style=" height: 32px;width: 32%;">   
+      <select id = "myList" onchange = "favTutorial()"  class="countrycodecls" style=" height: 32px;">   
          
           <option> + 91</option>  
            </select>  
 
-           <label style="padding-left: 8%;"> </label>
+           <label style="padding-left: 2%;"> </label>
 
            <input style=" height: 32px;  width: 182px;" type="text" matInput placeholder="Mobile number" formControlName='mobile' class="">
  
@@ -56,7 +56,7 @@
 
 
   <mat-card-actions style="text-align: center;margin-top: 15px;" >
-      <button mat-raised-button class="" style="border-radius: 21px;width: 97%;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
+      <button mat-raised-button class="" style="border-radius: 21px;width: 89%;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!dataForm.valid'>Receive a Code Via SMS</button>
   </mat-card-actions>
 
 
@@ -83,7 +83,7 @@
    
 </form>
 
-
+</div>
 
 
   

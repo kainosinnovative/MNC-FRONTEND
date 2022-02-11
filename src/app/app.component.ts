@@ -92,13 +92,13 @@ logout() {
 }
 
 movetohome() {
-  let userroleSes = localStorage.getItem('userroleSes');
-  if(userroleSes == 'CustomerSes'){
+  // let userroleSes = localStorage.getItem('userroleSes');
+  // if(userroleSes == 'CustomerSes'){
     this.router.navigate(['/home']);
-  }
-  if(userroleSes == 'shopOwnerSes'){
-    this.router.navigate(['/ShopDashboard']);
-  }
+  // }
+  // if(userroleSes == 'shopOwnerSes'){
+  //   this.router.navigate(['/ShopDashboard']);
+  // }
   
   window.setTimeout(function(){location.reload()},100)
 }
