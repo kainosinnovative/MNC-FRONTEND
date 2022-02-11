@@ -92,7 +92,14 @@ logout() {
 }
 
 movetohome() {
-  this.router.navigate(['/home']);
+  let userroleSes = localStorage.getItem('userroleSes');
+  if(userroleSes == 'CustomerSes'){
+    this.router.navigate(['/home']);
+  }
+  if(userroleSes == 'shopOwnerSes'){
+    this.router.navigate(['/ShopDashboard']);
+  }
+  
   window.setTimeout(function(){location.reload()},100)
 }
 
