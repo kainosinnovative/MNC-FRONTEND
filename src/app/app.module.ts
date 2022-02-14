@@ -48,6 +48,8 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ShopdashboardComponent } from './shopdashboard/shopdashboard.component';
+import { SelectcityComponent } from './selectcity/selectcity.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -91,7 +93,8 @@ const appRoutes: Routes = [
     ServicesComponent,
       ShopProfileComponent,
       ShopServiceComponent,
-      ShopdashboardComponent
+      ShopdashboardComponent,
+      SelectcityComponent
       
    
      ],
@@ -121,8 +124,8 @@ const appRoutes: Routes = [
     }),
     NgCircleProgressModule.forRoot(),
     DataTablesModule,
-    NgxPaginationModule
-    
+    NgxPaginationModule,
+    AutocompleteLibModule
     
   ],
   providers: [],

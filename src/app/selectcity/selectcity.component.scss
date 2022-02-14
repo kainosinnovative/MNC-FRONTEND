@@ -1,0 +1,23 @@
+@media screen and (min-width: 768px) {
+    .loginpopup {
+        width: 336px;
+    }
+
+    .selectcitymobile {
+        padding-left: 107px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    .selectcitymobile {
+        padding-left: 31px;
+    }
+}
+
+.autocomplete-container .suggestions-container ul li a {
+    text-align: left !important;
+   
+}
+

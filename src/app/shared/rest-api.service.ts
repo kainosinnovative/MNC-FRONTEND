@@ -100,19 +100,19 @@ gettestimonialData(): Observable<Testimonial> {
       }
   
   
-      // AddshopService(shopservAmount:any): Observable<ShopService> {
-      //   alert(shopservAmount)
-      //   let serviceid = shopservAmount["serviceid"];
-      // let service_amount = shopservAmount["service_amount"];
-      // let currentUserId = shopservAmount["currentUserId"];
-      //   return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
-      //    "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
+      AddshopService(shopservAmount:any): Observable<ShopService> {
+        // alert(shopservAmount)
+        let serviceid = shopservAmount["serviceid"];
+      let service_amount = shopservAmount["service_amount"];
+      let currentUserId = shopservAmount["currentUserId"];
+        return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
+         "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
       
-      //   .pipe(
-      //   retry(1),
-      //   catchError(this.handleError)
-      //   )
-      //   }
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{

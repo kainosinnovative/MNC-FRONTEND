@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
+import { SelectcityComponent } from './selectcity/selectcity.component';
 // import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 // import * as data from '.../server/db';
 // import { TestimonialAddComponent } from './testimonial-add/testimonial-add.component';
@@ -113,6 +114,13 @@ loginCheck1() {
   // alert("customer")
   localStorage.removeItem("loginfor");
   localStorage.setItem('loginfor','customer');
+}
+
+
+selectcity(){
+  
+     this.dialog.open(SelectcityComponent,{disableClose: true});
+  
 }
     
 }

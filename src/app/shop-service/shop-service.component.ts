@@ -75,27 +75,43 @@ export class ShopServiceComponent implements  OnInit{
     let updatebtn = "updatebtn_"+obj;
     (<HTMLInputElement>document.getElementById(updatebtn)).style.display="block";
 
-    // var shopservAmount = 
-    //             {
-    //               "serviceid": obj,
-    //               "service_amount": service_amount,
-    //               "currentUserId":currentUserId
+    var shopservAmount = 
+                {
+                  "serviceid": obj,
+                  "service_amount": service_amount,
+                  "currentUserId":currentUserId
                   
-    //               }
+                  }
 
-                  this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
-                     "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe()
+                  // this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
+                  //    "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe( data => {
+                  //     console.log('POST Request is successful >>>>>>>>', data);
+          
+                  // },
+                  // success => {
+                  //     console.log('Error>>>>>', success.status);
+                  //     if(success.status == 200) {
+                  //       this.loadServiceData();
+                  //     }
+                  // }
+                      
 
-    // this.restApi.AddshopService(shopservAmount).subscribe((data => {
-    //  console.log(">>>>>",data)
-    // }
-    // ));
+                  //    )
+
+    this.restApi.AddshopService(shopservAmount).subscribe((data => {
+     console.log(">>>>>",data)
+    }
+    ));
+
+    
     }
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
     }
+
+    
   
   }
 

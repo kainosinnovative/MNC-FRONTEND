@@ -1,0 +1,87 @@
+
+<div class="loginpopup" style="height: 300px;">
+
+    <form [formGroup]="dataForm"  method="post"  >  
+      
+      
+    
+    
+        <mat-card  class="bordercard" style="box-shadow: none;">
+          <div  style="text-align: right;margin-top: -29px;margin-right: -21px;">
+            <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
+          </div>
+        <mat-card-header class="selectcitymobile"  >
+          <mat-card-title class="mainheading">Select City</mat-card-title>
+        </mat-card-header>
+    
+    
+        <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
+          <div>
+
+            <div class="ng-autocomplete" style="width: 300px;">
+                <ng-autocomplete style="color: white;" formControlName='city'
+                  [data]="citydata"
+                  [searchKeyword]="keyword"
+                  placeholder="Select City"
+                  (selected)='selectEvent($event)'
+                  [itemTemplate]="itemTemplate"
+                  [notFoundTemplate]="notFoundTemplate">                                 
+                </ng-autocomplete>
+                
+                <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+                </ng-template>
+                
+                <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+                </ng-template>
+                </div>
+    
+               <!-- <input style=" height: 32px;  width: 100%;" type="text" matInput placeholder="City" formControlName='mobile' class=""> -->
+     
+    
+               <div *ngIf="dataForm.controls['city'].touched && dataForm.controls['city'].invalid " style="text-align: center;"> 
+              <br>
+                <div *ngIf="dataForm.controls['city'].errors" style="color: red;font-size: 12px;"> 
+                  <div *ngIf="dataForm.controls['city'].errors?.['required']" >
+                      City is required.
+                  </div> 	
+                  <div *ngIf="dataForm.controls['city'].errors?.['pattern']" >
+                    City is not valid.
+                </div> 	   
+                 
+               </div> 
+                
+              </div> 
+    
+      </div>
+       
+              
+        
+        
+      
+      </mat-card-content>
+    
+        <!-- <p id="pleaseregister" style="color:red;font-size: 12px;text-align: center;"></p> -->
+    
+        
+    
+    
+      <!-- <mat-card-actions style="text-align: center;margin-top: 15px;" >
+          <button mat-raised-button class="" style="border-radius: 21px;width: 89%;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!dataForm.valid'>Apply</button>
+      </mat-card-actions> -->
+    
+    
+    
+    
+        
+    
+        </mat-card>
+     
+       
+    </form>
+    
+    </div>
+    
+    
+      
