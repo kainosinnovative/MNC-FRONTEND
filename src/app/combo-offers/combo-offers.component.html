@@ -1,0 +1,85 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+<h2 style="text-align: center;">Combo Offers</h2>
+
+<div class="row">
+    <div class="col-sm-3">
+
+    </div>
+
+    <div class="col-sm-6">
+
+      
+
+
+        <table  class="table table-responsive" style="width: 100%;border: 0.5px solid #aeaeae;">
+            <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
+              <tr >
+               
+                <th >Sl No</th>
+                <th >Service Name</th>
+                <th >Amount</th>
+                <th >Tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
+                <tr *ngFor="let service of  serviceData1">
+                
+                <td>{{service.service_id}}</td>
+                <td>{{service.service_name}}</td>
+                <td><i class="fa fa-rupee"> </i> &nbsp; <span id="amount_{{service.service_id}}">{{service.actual_amount}}</span>
+                <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
+                </td>
+                <td>
+                  <input type="checkbox" (click)="collectServiceid(service.service_id)">
+                    </td>
+        
+                
+              </tr>
+              
+            </tbody>
+          </table>
+
+<div style="text-align: right;">
+  
+From date - <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}"> &nbsp; <br>
+To date - <input type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}"> &nbsp; 
+<input type="hidden" id="Selectedserviceid"> 
+  <br>
+  Amount - <input type="text" readonly id="totalamount"> &nbsp;
+<br>
+
+
+<!-- offer Percent - <input type="text" id="combooffer_offerpercent"> &nbsp; <br> -->
+offer % -
+<select  id="combooffer_offerpercent" (change)="getOfferPrice($event)" style="width:180px">
+  <option></option>
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+</select>
+<br>
+offer Amount - <input readonly type="text" id="combooffer_offeramount"> &nbsp; <br>
+  <button disabled id="addCombobtn" (click)="AddComboOffer()">Add Offer</button>
+</div>
+          
+
+<br>
+<!-- <div style="text-align: center;">
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div> -->
+          
+    </div>
+
+    <div class="col-sm-3">
+
+    </div>
+
+</div>
+
+
+
+
+
+

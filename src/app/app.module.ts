@@ -50,6 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ShopdashboardComponent } from './shopdashboard/shopdashboard.component';
 import { SelectcityComponent } from './selectcity/selectcity.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { ComboOffersComponent } from './combo-offers/combo-offers.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
   { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
   { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}},
   { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}},
-  { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}}
+  { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
+  { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}}
 
 ];
 @NgModule({
@@ -94,7 +96,8 @@ const appRoutes: Routes = [
       ShopProfileComponent,
       ShopServiceComponent,
       ShopdashboardComponent,
-      SelectcityComponent
+      SelectcityComponent,
+      ComboOffersComponent
       
    
      ],
