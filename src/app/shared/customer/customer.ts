@@ -42,6 +42,7 @@ export class Customer {
         type_name:any = '';
         id:any = '';
       }
+      
 export class carbrand{
   brand_name:any = '';
   id: any = '';

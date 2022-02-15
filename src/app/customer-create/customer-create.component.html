@@ -235,14 +235,7 @@
                                         {{citylist.city_name}}
                                      </option>
                                   </select> 
-
-                                     <!-- <select  placeholder=""   class="city form-control citycls" formControlName="city" name="" [(ngModel)]="CustomerDataById1.state">
-                                        <option value="">--Select city---</option> 
-                                        <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
-                                            {{citylist.city_name}}
-                                         </option>
-                                       </select> -->
-                                    <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
+                                      <div *ngIf="profileform.controls['city'].touched && profileform.controls['city'].invalid "> 
                   
                                         <div *ngIf="profileform.controls['city'].errors" style="color: red;"> 
                                           <div *ngIf="profileform.controls['city'].errors.required" style="margin-left: 68px; font-size: 12px;" class="cityvalid">
@@ -313,6 +306,8 @@
                                </div> 
                                 
                               </div>
+
+                              
                     </div>
     
                    
@@ -323,7 +318,7 @@
                    
                     <div class="form-group">
                         <label class="lblwidthProfile">Car Brand</label><span class="requiredfield">  *</span>
-                        <select  placeholder="" class="carbrand form-control carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.state">
+                        <select  placeholder="" class="carbrand form-control carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">
                             <option value="">--Select---</option>
                             <option *ngFor="let carbrand of branddata" [value]="carbrand.id">
                                 {{carbrand.brand_name}}
@@ -374,6 +369,7 @@
                                 <option value="">--Select---</option>
                                <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
                                 {{carmodels.model_name}}
+                                </option>
                                 </select>
                                 <div *ngIf="profileform.controls['model'].touched && profileform.controls['model'].invalid "> 
               

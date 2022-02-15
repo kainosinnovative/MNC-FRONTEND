@@ -123,12 +123,13 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
 readCustomerDataById() {
   
   let currentUserId = localStorage.getItem('currentUserId');
+
   return this.restApi.readCustomerDataById(currentUserId).subscribe((res)=>{
     this.CustomerDataById = res
 
     
     this.CustomerDataById1 = this.CustomerDataById.data.profile
-    console.log(this.CustomerDataById)
+    console.log(this.CustomerDataById);
     
   }
     
@@ -325,10 +326,7 @@ uploadFile(profileform:any)
   error => {
     // alert(error)
     console.log(error.status)
-   // if(error.status == "200") {
-      //this.showsuccess();
-     // this.pagerefresh();
-   // }
+   
   }
   );
 }
