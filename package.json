@@ -22,6 +22,7 @@
     "@angular/router": "~13.1.0",
     "angular-bootstrap-md": "^4.3.2",
     "angular-datatables": "^13.0.1",
+    "angular-ng-autocomplete": "^2.0.8",
     "bootstrap": "^5.1.3",
     "cors": "^2.8.5",
     "datatables.net": "^1.11.4",

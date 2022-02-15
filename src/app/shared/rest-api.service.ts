@@ -100,19 +100,19 @@ gettestimonialData(): Observable<Testimonial> {
       }
   
   
-      // AddshopService(shopservAmount:any): Observable<ShopService> {
-      //   alert(shopservAmount)
-      //   let serviceid = shopservAmount["serviceid"];
-      // let service_amount = shopservAmount["service_amount"];
-      // let currentUserId = shopservAmount["currentUserId"];
-      //   return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
-      //    "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
+      AddshopService(shopservAmount:any): Observable<ShopService> {
+        // alert(shopservAmount)
+        let serviceid = shopservAmount["serviceid"];
+      let service_amount = shopservAmount["service_amount"];
+      let currentUserId = shopservAmount["currentUserId"];
+        return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
+         "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
       
-      //   .pipe(
-      //   retry(1),
-      //   catchError(this.handleError)
-      //   )
-      //   }
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{
@@ -124,7 +124,23 @@ gettestimonialData(): Observable<Testimonial> {
   }
 
  
-
+  AddComboOfferDetails(ComboOfferDetails:any): Observable<ShopService> {
+    // alert(shopservAmount)
+    let services = ComboOfferDetails["services"];
+  let combo_price = ComboOfferDetails["combo_price"];
+  let shop_id = ComboOfferDetails["shop_id"];
+  let offer_percent = ComboOfferDetails["offer_percent"];
+  let start_date = ComboOfferDetails["start_date"];
+  let end_date = ComboOfferDetails["end_date"];
+    return this.http.get<ShopService>(this.apiURL + "/shop/AddComboOfferDetails?services="+services +
+     "&combo_price=" + combo_price + "&shop_id="+shop_id +"&offer_percent=" + offer_percent + "&start_date="+start_date +
+     "&end_date=" + end_date)
+  
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+    }
 
 
 //     return this.http.post('http://localhost:3000/api/Users/login', data, httpOptions)

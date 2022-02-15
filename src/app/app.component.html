@@ -4,7 +4,7 @@
   <mat-list >
 
     <!-- customer mobile start -->
-    <mat-list-item class="menudesk1 " *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/first'>Select a City
+    <mat-list-item class="menudesk1 " *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'>Select a City
     </a> </mat-list-item>
     <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
     </a> </mat-list-item>
@@ -63,7 +63,7 @@
 
 
 <!-- for cust general user -->
-  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/first'>Select a City</a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
+  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu cursorcls" mat-list-item (click)="selectcity()">Select a City</a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
 <!-- for cust general user -->
 
   <!-- both customer and shop owner -->
@@ -90,6 +90,9 @@
 
 <!-- for shop owner -->
 <mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopService'>Services </a> </mat-list-item> &nbsp; &nbsp;
+
+<mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ComboOffers'>Combo Offers </a> </mat-list-item> &nbsp; &nbsp;
+
 
 <mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopProfile'>My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
 

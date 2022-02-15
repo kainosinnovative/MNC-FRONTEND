@@ -26,7 +26,7 @@
                 
                 <td>{{service.service_id}}</td>
                 <td>{{service.service_name}}</td>
-                <td><i class="fa fa-rupee"> </i> &nbsp; <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 80px;">
+                <td><i class="fa fa-rupee"> </i> &nbsp; <input id="amount_{{service.service_id}}" type="number"  value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 80px;">
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
                 </td>
                 <td>

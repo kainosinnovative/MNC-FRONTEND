@@ -84,18 +84,34 @@ export class ShopServiceComponent implements  OnInit{
     //               }
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
-                     "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe()
+                     "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe( data => {
+                      console.log('POST Request is successful >>>>>>>>', data);
+          
+                  },
+                  success => {
+                      console.log('Error>>>>>', success.status);
+                      if(success.status == 200) {
+                        this.loadServiceData();
+                      }
+                  }
+                      
+
+                     )
 
     // this.restApi.AddshopService(shopservAmount).subscribe((data => {
     //  console.log(">>>>>",data)
     // }
     // ));
+
+    
     }
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
     }
+
+    
   
   }
 
