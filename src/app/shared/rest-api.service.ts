@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
 
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist} from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid} from '../shared/customer/customer';
 
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
@@ -98,6 +98,54 @@ gettestimonialData(): Observable<Testimonial> {
       catchError(this.handleError)
       )
       }
+
+
+      combooffertblByModelid(combooffertbl:any): Observable<shopserviceByModelid> {
+      //  alert(combooffertbl)
+      let model_id = combooffertbl["model_id"];
+      let shopid = combooffertbl["shop_id"];
+  // alert(shopid)
+        return this.http.get<shopserviceByModelid>(this.apiURL + "/shop/combooffertblByModelid?currentUserId="+shopid +
+        "&model_id=" + model_id)
+      
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
+
+        shopserviceByModelid(shopid:any): Observable<shopserviceByModelid> {
+  
+          return this.http.get<shopserviceByModelid>(this.apiURL + "/shop/shopserviceByModelid?currentUserId="+shopid)
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
+
+      getComboOffersData(currentUserId:any): Observable<Services> {
+        // alert(currentUserId)
+        return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?currentUserId="+currentUserId)
+      
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
+
+        getMasterService(): Observable<Services> {
+          // alert(currentUserId)
+          return this.http.get<Services>(this.apiURL + "/app/services")
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
   
   
       AddshopService(shopservAmount:any): Observable<ShopService> {
@@ -132,9 +180,10 @@ gettestimonialData(): Observable<Testimonial> {
   let offer_percent = ComboOfferDetails["offer_percent"];
   let start_date = ComboOfferDetails["start_date"];
   let end_date = ComboOfferDetails["end_date"];
+  let model_id = ComboOfferDetails["model_id"];
     return this.http.get<ShopService>(this.apiURL + "/shop/AddComboOfferDetails?services="+services +
      "&combo_price=" + combo_price + "&shop_id="+shop_id +"&offer_percent=" + offer_percent + "&start_date="+start_date +
-     "&end_date=" + end_date)
+     "&end_date=" + end_date + "&model_id=" + model_id)
   
     .pipe(
     retry(1),

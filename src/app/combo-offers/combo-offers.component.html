@@ -1,36 +1,148 @@
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-<h2 style="text-align: center;">Combo Offers</h2>
+<div class="row">
+  <div class="col-sm-2">
+
+  </div>
+
+  <div class="col-sm-8">
+
+    <h2 style="text-align: center;" class="mainheading">Combo Offers List</h2>
+
+
+      <table  class="table table-responsive" style="width:99%;border: 0.5px solid #aeaeae;">
+          <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
+            <tr >
+             
+              <th >Sl No</th>
+              <th>Model</th>
+              <th >Services</th>
+              <th >From Date</th>
+              <th >To Date</th>
+              <th >Offer Percent</th>
+              <th >Offer Amount</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="comboofferData1.length == 0">
+              <td colspan="7" style="">No data available</td>
+              
+            </tr>
+            <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
+              <tr *ngFor="let service of  comboofferData1;let i=index">
+              
+              <td>{{i + 1}}</td>
+              <td>
+                <span *ngFor="let s of shopserviceModel1" >
+                  <span *ngIf="s.model_id === service.model_id">{{s.model_name}}</span>
+                  <!-- {{s.model_name}} -->
+                </span>
+                </td>
+              <td > 
+                <div *ngFor="let m of  service.services.split(',')">
+                  <span *ngFor="let m1 of  MasterServiceData1" >
+                   
+<span *ngIf="m === m1.service_id">{{m1.service_name}}</span>
+                  </span>
+                  
+                </div>
+                
+              </td>
+              <!-- <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
+                
+                
+              </td> -->
+              <td>{{service.start_date}}</td>
+              <td>{{service.end_date}}</td>
+              <td>{{service.offer_percent}} %</td>
+              <td><i class="fa fa-rupee"> </i> {{service.combo_price}}</td>
+              
+      
+              
+            </tr>
+            
+          </tbody>
+        </table>
+
+      </div >
+
+      <div class="col-sm-2">
+
+      </div>
+      </div>
+
+
+
+<h2 style="text-align: center;" class="mainheading">Combo Offers and Deals</h2>
+
+
+
+
 
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-8">
 
-      
+      <div class="row">
+        <div class="col-sm-4" style="text-align: left;">
+          <label style="width: 74px;">From date</label>  <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;"> 
+        </div>
+    
+        <div class="col-sm-4">
+          <label style="width: 59px;">To date</label>  <input (click)="dateErrorMsg()" type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;"> 
+          <br><span id="enddate_message" style="color: red;display: none;">To date must be greater than from date</span>
+        </div>
 
+        <div class="col-sm-4">
+          <label style="width: 50px;">Model</label>
+                        <select    style="width: 130px;height: 24px;" (change)="loadcombooffertblByModelid(2)" id="model_id">
+                            <option value="">--Select Model--</option>
 
-        <table  class="table table-responsive" style="width: 100%;border: 0.5px solid #aeaeae;">
+                            <option *ngFor="let s of shopserviceModel1" [value]="s.model_id">
+                                {{s.model_name}}
+                            </option>
+                            </select>
+        </div>
+    
+        
+    
+      </div>
+
+      <br>
+
+      <div style="display: none !important;" id="secondtblid">
+
+        <table  class="row table table-responsive" style="width: 100%;border: 0.5px solid #aeaeae;" >
             <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
               <tr >
                
-                <th >Sl No</th>
-                <th >Service Name</th>
-                <th >Amount</th>
-                <th >Tools</th>
+                <th  style="width: 200px;">Sl No</th>
+                <th style="width: 300px;">Service Name</th>
+                <th style="width: 200px">Amount</th>
+                <th style="width: 330px">Tools</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="combooffertblByModelid1.length < 2">
+             <tr><td colspan="4" style="text-align: center;">No data available</td></tr> 
+              </tbody>
+
+
+            <tbody *ngIf="combooffertblByModelid1.length >= 2">
+
+              
+              
               <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
-                <tr *ngFor="let service of  serviceData1">
+                <tr   *ngFor="let service of  combooffertblByModelid1">
                 
-                <td>{{service.service_id}}</td>
-                <td>{{service.service_name}}</td>
-                <td><i class="fa fa-rupee"> </i> &nbsp; <span id="amount_{{service.service_id}}">{{service.actual_amount}}</span>
+                <td style="width: 200px;">{{service.service_id}}</td>
+                <td style="width: 300px;">{{service.service_name}}</td>
+                <td style="width: 200px;"><i class="fa fa-rupee"> </i> &nbsp; <span id="amount_{{service.service_id}}">{{service.actual_amount}}</span>
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
                 </td>
-                <td>
+                <td style="width: 330px;">
                   <input type="checkbox" (click)="collectServiceid(service.service_id)">
                     </td>
         
@@ -40,28 +152,54 @@
             </tbody>
           </table>
 
-<div style="text-align: right;">
+<div >
+
+  <div>
+
+  <input type="hidden" id="Selectedserviceid"> 
+
   
-From date - <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}"> &nbsp; <br>
-To date - <input type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}"> &nbsp; 
-<input type="hidden" id="Selectedserviceid"> 
   <br>
-  Amount - <input type="text" readonly id="totalamount"> &nbsp;
-<br>
 
+  <div class="row amountwebrow" >
+    <div class="col-sm-4">
+      <label style="width: 61px;">Amount</label>   <input type="text" readonly id="totalamount" style="width: 130px;height: 24px;"> 
+    </div>
+   
 
-<!-- offer Percent - <input type="text" id="combooffer_offerpercent"> &nbsp; <br> -->
-offer % -
-<select  id="combooffer_offerpercent" (change)="getOfferPrice($event)" style="width:180px">
+    <div class="col-sm-4" style="text-align: left;">
+      <label style="width: 57px;">offer %</label> 
+      <input  type="text" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 130px;height: 24px">
+<!-- <select  id="combooffer_offerpercent"  style="width:130px;height: 24px;">
   <option></option>
   <option value="5">5</option>
   <option value="10">10</option>
   <option value="15">15</option>
   <option value="20">20</option>
-</select>
+</select> -->
+<p style="color: red;display: none;text-align: center;" id="offerpercentError">Please enter offer %</p>
+    </div>
+
+    <div class="col-sm-4">
+      <label style="width: 95px;">Offer Amount</label>  <input readonly type="text" id="combooffer_offeramount" style="width: 130px;height: 24px">
+      </div>
+
+      
+
+  </div>
 <br>
-offer Amount - <input readonly type="text" id="combooffer_offeramount"> &nbsp; <br>
-  <button disabled id="addCombobtn" (click)="AddComboOffer()">Add Offer</button>
+  <!-- <div class="row" style="text-align: right;"> -->
+    <div class="col-sm-12"style="text-align: right;" >
+      <button disabled id="addCombobtn" class="btn btn-success mobileofferbtn"  (click)="AddComboOffer()">Add Offer</button>
+    </div>
+  <!-- </div> -->
+
+</div>
+  
+
+  
+</div>
+
 </div>
           
 
@@ -72,7 +210,7 @@ offer Amount - <input readonly type="text" id="combooffer_offeramount"> &nbsp; <
           
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
     </div>
 

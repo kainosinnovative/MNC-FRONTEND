@@ -119,5 +119,9 @@ export class carbrand{
         currentUserId:string="";
       }
 
+      export class shopserviceByModelid {
+        
+      }
+
 
       
