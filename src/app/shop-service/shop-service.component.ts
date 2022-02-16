@@ -2,32 +2,36 @@ import { Component, OnInit, ViewChild, HostListener, AfterViewInit, ChangeDetect
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
-
-
+import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-shop-service',
   templateUrl: './shop-service.component.html',
-  styleUrls: ['./shop-service.component.scss']
+  styleUrls: ['./shop-service.component.scss'],
+  providers: [DatePipe]
 })
 export class ShopServiceComponent implements  OnInit{
 
-  
+  offerpricetext:any;
   serviceData: any;
   serviceData1: any;
 
   element: HTMLElement;
   service_amount: string;
-
+   date:any;
   config: any;
-
+   current_date:any;
   constructor(private http: HttpClient,private router: Router,
-    public restApi: RestApiService) { }
+    public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe) { }
 
 
   ngOnInit(): void {
+    this.date=new Date();
+    this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadServiceData();
-
+   
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -51,7 +55,7 @@ export class ShopServiceComponent implements  OnInit{
       this.serviceData = data;
       this.serviceData1 = this.serviceData.data.carAndShopservice;
       
-      console.log("data>222>>>",this.serviceData1)
+      console.log(this.serviceData1)
       // this.dtTrigger.next();
     })
 
@@ -116,24 +120,143 @@ export class ShopServiceComponent implements  OnInit{
   }
 
   UpdateServiceAmount(obj:any) {
+    let responsedata :any;
+    let servicename="servicename_"+obj;
     let service_amountid = "amount_"+obj;
     let service_amount = (<HTMLInputElement>document.getElementById(service_amountid)).value;
-    console.log(service_amount);
+    let service_name = (<HTMLInputElement>document.getElementById(servicename)).value;
+    let model_id = (<HTMLInputElement>document.getElementById("model_"+obj)).value;
     let currentUserId = localStorage.getItem('currentUserId');
 
     if(service_amount != "") {
 
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/UpdateshopService?service_amount='+service_amount +
-                     "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe() 
+                     "&serviceid=" + obj + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
+                     console.log(data);
+                     responsedata=data;
+                     if(responsedata.status=="pass")
+                     {
+                      this.toastr.success('Amount for ' +  service_name + ' Updated Successfully');
+                      this.loadServiceData();
+                     }
+                     else{
+                      this.toastr.success('Please Try Again');
+                     }
+
+
+                     })) 
     }
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
     }
+    
   }
+  UpdateOfferAmount(obj:any)
+  {
+    let validateoffer= "validateoffer_"+obj;
+    (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="none";
+    let responsedata :any;
+    let servicename="servicename_"+obj;
+    let offer_percent = "offer_"+obj;
+    let offer_amount="offeramount_"+obj;
+    let offerfromdate="offerfromdate_"+obj;
+    let offertodate="offertodate_"+obj
+    let todateformat="validatetodateformat_"+obj;
+    (<HTMLInputElement>document.getElementById(todateformat)).style.display ="none";
+    let fromdateformat="validatefromdateformat_"+obj;
+    (<HTMLInputElement>document.getElementById(fromdateformat)).style.display ="none";
+    let offerpercentage = (<HTMLInputElement>document.getElementById(offer_percent)).value;
+    let offeramount = (<HTMLInputElement>document.getElementById(offer_amount)).value;
+    let service_name = (<HTMLInputElement>document.getElementById(servicename)).value;
+    let model_id = (<HTMLInputElement>document.getElementById("model_"+obj)).value;
+    let currentUserId = localStorage.getItem('currentUserId');
+    let fromdate= (<HTMLInputElement>document.getElementById(offerfromdate)).value;
+    let todate= (<HTMLInputElement>document.getElementById(offertodate)).value;
+    let validatefromdateid= "validatefromdate_"+obj;
+    (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="none";
+    let validatetodateid= "validatetodate_"+obj;
+    (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="none";
+    if(offerpercentage != "" && fromdate !="" && todate !="") {
 
+                  if(todate<fromdate)
+                  {
+                    (<HTMLInputElement>document.getElementById(offertodate)).focus();
+                   
+                    (<HTMLInputElement>document.getElementById(todateformat)).style.display ="block";
+                  }
+                 
+                  else
+                  {
+                  this.http.get('http://localhost/MNC-PHP-API/shop/Updateshopoffer?offer_amount='+offeramount +
+                     "&serviceid=" + obj  + "&modelId="+model_id +"&offerpercent="+offerpercentage + "&lastupddt="+this.current_date +
+                      "&fromdate="+fromdate + "&todate="+todate +"&currentUserId="+currentUserId) .subscribe((data => {
+                     
+                     responsedata=data;
+                     if(responsedata.status=="pass")
+                     {
+                      this.toastr.success('Offer Price for ' +  service_name + ' Updated Successfully');
+                      this.loadServiceData();
+                     }
+                     else{
+                      this.toastr.success('Please Try Again');
+                     }
+                    this.loadServiceData();
+
+                    })) 
+                  }
+    }
+    else if(offerpercentage!="" && fromdate === "" && todate === ""){
+      (<HTMLInputElement>document.getElementById(offerfromdate)).focus();
+     
+      (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="block";
+      (<HTMLInputElement>document.getElementById(offertodate)).focus();
+     
+      (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="block";
+    }
+    else if(offerpercentage!="" && fromdate != "" && todate === ""){
+    
+      (<HTMLInputElement>document.getElementById(offertodate)).focus();
+      let validatetodateid= "validatetodate_"+obj;
+      (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="block";
+    }
+    else if(offerpercentage!="" && fromdate === "" && todate != ""){
+    
+      (<HTMLInputElement>document.getElementById(offerfromdate)).focus();
+      let validatefromdateid= "validatefromdate_"+obj;
+      (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="block";
+    }
+    else {
+      (<HTMLInputElement>document.getElementById(offer_percent)).focus();
+    
+      (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="block";
+    }
+   
+  }
+  getOfferPrice(term: string,termid: string): void
+  {
+      
+      var termid1=termid;
+      var splitted = termid1.split("_", 2); 
+      var splitted1=splitted[1];
+      var amount="amount_"+splitted1;
+      var serviceamount= Number((<HTMLInputElement>document.getElementById(amount)).value);
+      var offeramount=serviceamount *(Number(term)/100);
+      var offeramtid;
+      offeramtid="offeramount_"+splitted[1];
+      console.log(offeramtid);
+     (<HTMLInputElement>document.getElementById(offeramtid)).value =offeramount.toString();
+ 
+
+  }
+  // validatedate(datestring :string)
+  // {
+  //   console.log($event)
+
+  // }
+ 
 
   removevalidateMsg(id:any) {
     // alert("hi")
@@ -141,5 +264,6 @@ export class ShopServiceComponent implements  OnInit{
     // alert(validateamount)
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="none";
   }
+  
 
 }
