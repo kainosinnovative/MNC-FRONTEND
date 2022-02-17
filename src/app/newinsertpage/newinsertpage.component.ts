@@ -15,6 +15,8 @@ export class NewinsertpageComponent implements OnInit {
   collection = { count: 60, data: [] };
   serviceData:any;
   serviceData1:any;
+  dashboardShop:any;
+  dashboardShop1:any;
   constructor(private frmbuilder: FormBuilder,private http: HttpClient,private router: Router,
     public restApi: RestApiService) {
     
@@ -22,6 +24,7 @@ export class NewinsertpageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dashboardShopList();
     let value:any;
     // for (var i = 0; i < this.collection.count; i++) {
     //   this.collection.data.push(
@@ -57,6 +60,21 @@ export class NewinsertpageComponent implements OnInit {
     })
 
     
+  }
+
+  dashboardShopList(){
+    var cityid:any;
+    cityid = localStorage.getItem('selectedCity');
+    if(cityid == null ){
+      cityid = 3;
+    }
+    // alert(cityid)
+    return this.restApi.dashboardShop(cityid).subscribe((data: {}) => {
+      // alert(data)
+      this.dashboardShop = data;
+      this.dashboardShop1 = this.dashboardShop.data.dashboardShopList;
+      console.log("data dashboard>>>",this.dashboardShop1);
+    })
   }
 
 

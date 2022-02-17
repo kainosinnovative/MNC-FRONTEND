@@ -28,7 +28,7 @@ export class TestimonialComponent implements OnInit {
       this.fetchdata = data;
       this.fetchdata1 = this.fetchdata.data.testimonial;
       
-      console.log("data>>>>",this.fetchdata1)
+      // console.log("data>>>>",this.fetchdata1)
     })
   }
 

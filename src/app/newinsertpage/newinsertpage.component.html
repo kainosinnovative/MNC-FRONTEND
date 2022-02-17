@@ -1,7 +1,14 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <div style="text-align:center">
-  <h4>
+
+  <ul *ngFor="let test of dashboardShop1">
+  <li>
+    {{test.name}}
+  </li>
+</ul>
+
+  <!-- <h4>
     Basic Pagination
   </h4>
 
@@ -20,6 +27,6 @@
     </tbody>
   </table>
 
-  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
 
 </div>

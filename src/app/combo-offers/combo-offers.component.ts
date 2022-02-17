@@ -218,7 +218,8 @@ AddComboOffer() {
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
   let Selectedserviceid = (<HTMLInputElement>document.getElementById("Selectedserviceid")).value;
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
-  let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
+  let model_id = (<HTMLInputElement>document.getElementById("model_id")).value; 
+  let totalamount = (<HTMLInputElement>document.getElementById("totalamount")).value;
   console.log(combo_price);
   let currentUserId = localStorage.getItem('currentUserId');
 // alert(currentUserId)
@@ -246,7 +247,8 @@ else {
                 "offer_percent":combooffer_offerpercent,
                 "start_date":start_date,
                 "end_date":end_date,
-                "model_id":model_id
+                "model_id":model_id,
+                "original_amount":totalamount
                 }
 
                 

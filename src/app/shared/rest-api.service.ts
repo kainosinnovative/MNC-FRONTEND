@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../shared/customer/customer';
 
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid} from '../shared/customer/customer';
+import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid, dahsboardShop} from '../shared/customer/customer';
 
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
@@ -126,6 +126,17 @@ gettestimonialData(): Observable<Testimonial> {
           }
 
 
+          dashboardShop(cityid:any): Observable<dahsboardShop> {
+  
+            return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopList?cityid="+cityid)
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
+
+
       getComboOffersData(currentUserId:any): Observable<Services> {
         // alert(currentUserId)
         return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?currentUserId="+currentUserId)
@@ -181,9 +192,10 @@ gettestimonialData(): Observable<Testimonial> {
   let start_date = ComboOfferDetails["start_date"];
   let end_date = ComboOfferDetails["end_date"];
   let model_id = ComboOfferDetails["model_id"];
+  let original_amount = ComboOfferDetails["original_amount"];
     return this.http.get<ShopService>(this.apiURL + "/shop/AddComboOfferDetails?services="+services +
      "&combo_price=" + combo_price + "&shop_id="+shop_id +"&offer_percent=" + offer_percent + "&start_date="+start_date +
-     "&end_date=" + end_date + "&model_id=" + model_id)
+     "&end_date=" + end_date + "&model_id=" + model_id + "&original_amount=" + original_amount)
   
     .pipe(
     retry(1),

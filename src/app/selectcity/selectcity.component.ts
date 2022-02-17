@@ -63,7 +63,9 @@ export class SelectcityComponent implements OnInit {
 
 
   selectEvent(item:any) {
-    alert(item.city_id)
+    // alert(item.city_id)
+    localStorage.setItem('selectedCity',item.city_id);
+    window.setTimeout(function(){location.reload()},100)
     // let selectedLaw : any = item.target.value;
   //  console.log(item.name);
   }
