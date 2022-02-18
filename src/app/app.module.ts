@@ -51,6 +51,10 @@ import { ShopdashboardComponent } from './shopdashboard/shopdashboard.component'
 import { SelectcityComponent } from './selectcity/selectcity.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ComboOffersComponent } from './combo-offers/combo-offers.component';
+// import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -128,8 +132,9 @@ const appRoutes: Routes = [
     NgCircleProgressModule.forRoot(),
     DataTablesModule,
     NgxPaginationModule,
-    AutocompleteLibModule
-    
+    AutocompleteLibModule,
+    NgImageSliderModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

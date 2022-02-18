@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="loginpopup" style="height: 300px;">
 
     <form [formGroup]="dataForm"  method="post"  >  
@@ -18,14 +18,15 @@
         <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
           <div>
 
-            <div class="ng-autocomplete" style="width: 300px;color: black;">
-                <ng-autocomplete style="color: black;" formControlName='city'
+            <div class="ng-autocomplete" style="overflow:visible !important">
+                <ng-autocomplete  formControlName='city'
                   [data]="citydata"
                   [searchKeyword]="keyword"
                   placeholder="Select City"
                   (selected)='selectEvent($event)'
                   [itemTemplate]="itemTemplate"
-                  [notFoundTemplate]="notFoundTemplate">                                 
+                  [notFoundTemplate]="notFoundTemplate">   
+                                                
                 </ng-autocomplete>
                 
                 <ng-template #itemTemplate let-item>
@@ -37,7 +38,6 @@
                 </ng-template>
                 </div>
     
-               <!-- <input style=" height: 32px;  width: 100%;" type="text" matInput placeholder="City" formControlName='mobile' class=""> -->
      
     
                <div *ngIf="dataForm.controls['city'].touched && dataForm.controls['city'].invalid " style="text-align: center;"> 
@@ -62,14 +62,7 @@
       
       </mat-card-content>
     
-        <!-- <p id="pleaseregister" style="color:red;font-size: 12px;text-align: center;"></p> -->
-    
-        
-    
-    
-      <!-- <mat-card-actions style="text-align: center;margin-top: 15px;" >
-          <button mat-raised-button class="" style="border-radius: 21px;width: 89%;height: 36px;border: 1px solid #0bae62;background-color: white !important;"  [disabled]='!dataForm.valid'>Apply</button>
-      </mat-card-actions> -->
+       
     
     
     
@@ -84,4 +77,21 @@
     </div>
     
     
-      
+       -->
+
+
+
+       <div class="ng-autocomplete" style="height: 300px;">
+        <ng-autocomplete [data]="citydata" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+            (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate">
+        </ng-autocomplete>
+    
+        <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.city_name"></a>
+        </ng-template>
+    
+        <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+        </ng-template>
+    </div>

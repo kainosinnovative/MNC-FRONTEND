@@ -1,32 +1,10 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<div style="text-align:center">
-
-  <ul *ngFor="let test of dashboardShop1">
-  <li>
-    {{test.name}}
-  </li>
-</ul>
-
-  <!-- <h4>
-    Basic Pagination
-  </h4>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Item</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of serviceData1 | paginate: config">
-        <th scope="row">{{item.service_id}}</th>
-        <td>{{item.service_name}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
-
-</div>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.city_name">
+          {{option.city_name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

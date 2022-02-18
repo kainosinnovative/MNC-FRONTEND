@@ -16,6 +16,36 @@ import { HttpClient } from '@angular/common/http';
 export class SelectcityComponent implements OnInit {
   public  dataForm: FormGroup;
 
+  // keyword = 'name';
+  
+  // data1 = [
+  //    {
+  //      id: 1,
+  //      name: 'Dakota Gaylord PhD',
+  //      address: '14554 Smith Mews'
+  //    },
+  //    {
+  //      id: 2,
+  //      name: 'Maria Legros',
+  //      address: '002 Pagac Drives'
+  //    },
+  //    {
+  //      id: 3,
+  //      name: 'Brandyn Fritsch',
+  //      address: '8542 Lowe Mountain'
+  //    },
+  //    {
+  //      id: 4,
+  //      name: 'Glenna Ward V',
+  //      address: '1260 Oda Summit'
+  //    },
+  //    {
+  //      id: 5,
+  //      name: 'Jamie Veum',
+  //      address: '5017 Lowe Route'
+  //    }
+  // ];
+
   keyword = 'city_name';
   // data1 = [
   //   {

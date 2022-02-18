@@ -5,13 +5,13 @@ import { RestApiService } from "../shared/rest-api.service";
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  
 })
 export class HomeComponent implements OnInit {
   selectedCity: any;
   dashboardShop:any;
   dashboardShop1:any;
-  constructor(private cdr:ChangeDetectorRef, public restApi: RestApiService) { }
+  constructor(public restApi: RestApiService) { }
 
   ngOnInit(): void {
     // alert("hi")

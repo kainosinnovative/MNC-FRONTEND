@@ -1,5 +1,5 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
+<br>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -48,26 +48,26 @@
   <div class="carousel-indicators" style="display: none;">
     <button style="color:black" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button style="color:black" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <!-- <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
   </div>
 
 
 
   <div class="carousel-inner" data-interval="10">
+    <!-- <div *ngFor="let l of dashboardShop1.length;let i=index;"> -->
       <div class=" carousel-item onesection active"  style="background: no-repeat center center scroll;">
+        <!-- <div *ngIf="i==3" class=" carousel-item onesection"  style="background: no-repeat center center scroll;"> -->
           <div class="row" style="margin-left: 6px;">
 
          
 
-            <div class="col-sm-3" >
-              <div class="card">
-                <div class="image-container oneimage" style="border:1px solid;" >
+            <div class="col-sm-6" *ngFor="let s of dashboardShop1">
+              <div class="card" >
+                <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" >
                     <div class="first">
-                        <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                      <h1 style="text-align: center;">Shop Image</h1> 
+                        <div class="d-flex justify-content-between align-items-center"> <span class="discount">{{s.offer_percent}}% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
+                      <!-- <h1 style="text-align: center;">Shop Image</h1>  -->
                     </div> 
 
-                    <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
                 </div>
 
                 
@@ -76,7 +76,7 @@
 
                   <div class="d-flex justify-content-between align-items-center pt-1">
                     <div class="color-select d-flex "> 
-                      <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
+                      <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
                       </div>
                  </div>
 
@@ -103,361 +103,19 @@
                     
                 </div>
             </div>
-                <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
                 
                 </div>
 
 
-                <div class="col-sm-3" >
-                  <div class="card">
-                    <div class="image-container oneimage" style="border:1px solid;" >
-                        <div class="first">
-                            <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                            <h1 style="text-align: center;">Shop Image</h1>
-                            <!-- <img src=" shop image"> -->
-                        </div> 
-  
-                        <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                    </div>
-    
-                    
-    
-                    <div class="product-detail-container p-2">
-    
-                      <div class="d-flex justify-content-between align-items-center pt-1">
-                        <div class="color-select d-flex "> 
-                          <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                          </div>
-                     </div>
-    
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                     
-                      </div>
-                  
-    
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                            
-                        </div>
-    
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                          
-                      </div>
-                        
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                           
-                        </div>
-                        
-                    </div>
-                </div>
-                    <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                    
-                    </div>
-                    <div class="col-sm-3" >
-                      <div class="card">
-                        <div class="image-container oneimage" style="border:1px solid;" >
-                            <div class="first">
-                                <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                <h1 style="text-align: center;">Shop Image</h1>
-                                <!-- <img src=" shop image"> -->
-                            </div> 
-      
-                            <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                        </div>
-        
-                        
-        
-                        <div class="product-detail-container p-2">
-        
-                          <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div class="color-select d-flex "> 
-                              <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                              </div>
-                         </div>
-        
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                         
-                          </div>
-                      
-        
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                
-                            </div>
-        
-                            <div class="d-flex justify-content-between align-items-center">
-                              <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                              
-                          </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center pt-1">
-                                <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                               
-                            </div>
-                            
-                        </div>
-                    </div>
-                        <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                        
-                        </div>
-
-                  
-                        <div class="col-sm-3" >
-                          <div class="card">
-                            <div class="image-container oneimage" style="border:1px solid;" >
-                                <div class="first">
-                                    <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                    <h1 style="text-align: center;">Shop Image</h1>
-                                    <!-- <img src=" shop image"> -->
-                                </div> 
-          
-                                <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                            </div>
-            
-                            
-            
-                            <div class="product-detail-container p-2">
-            
-                              <div class="d-flex justify-content-between align-items-center pt-1">
-                                <div class="color-select d-flex "> 
-                                  <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                  </div>
-                             </div>
-            
-                            <div class="d-flex justify-content-between align-items-center">
-                              <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                             
-                              </div>
-                          
-            
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                    
-                                </div>
-            
-                                <div class="d-flex justify-content-between align-items-center">
-                                  <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                  
-                              </div>
-                                
-                                <div class="d-flex justify-content-between align-items-center pt-1">
-                                    <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                   
-                                </div>
-                                
-                            </div>
-                        </div>
-                            <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                            
-                            </div>
+                
                   </div>
               </div>
 
-              <div class=" carousel-item onesection"  style="background: no-repeat center center scroll;">
-                <div class="row" style="margin-left: 6px;">
-    
-                  <div class="col-sm-3" >
-                    <div class="card">
-                      <div class="image-container oneimage" style="border:1px solid;" >
-                          <div class="first">
-                              <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                              <h1 style="text-align: center;">Shop Image</h1>
-                              <!-- <img src=" shop image"> -->
-                          </div> 
-    
-                          <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                      </div>
-      
-                      
-      
-                      <div class="product-detail-container p-2">
-      
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                          <div class="color-select d-flex "> 
-                            <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                            </div>
-                       </div>
-      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                       
-                        </div>
-                    
-      
-                          <div class="d-flex justify-content-between align-items-center">
-                              <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                              
-                          </div>
-      
-                          <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                            
-                        </div>
-                          
-                          <div class="d-flex justify-content-between align-items-center pt-1">
-                              <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                             
-                          </div>
-                          
-                      </div>
-                  </div>
-                      <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                      
-                      </div>
-    
-    
-                      <div class="col-sm-3" >
-                        <div class="card">
-                          <div class="image-container oneimage" style="border:1px solid;" >
-                              <div class="first">
-                                  <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                  <h1 style="text-align: center;">Shop Image</h1>
-                                  <!-- <img src=" shop image"> -->
-                              </div> 
-        
-                              <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                          </div>
-          
-                          
-          
-                          <div class="product-detail-container p-2">
-          
-                            <div class="d-flex justify-content-between align-items-center pt-1">
-                              <div class="color-select d-flex "> 
-                                <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                </div>
-                           </div>
-          
-                          <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                           
-                            </div>
-                        
-          
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                  
-                              </div>
-          
-                              <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                
-                            </div>
-                              
-                              <div class="d-flex justify-content-between align-items-center pt-1">
-                                  <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                 
-                              </div>
-                              
-                          </div>
-                      </div>
-                          <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                          
-                          </div>
-                          <div class="col-sm-3" >
-                            <div class="card">
-                              <div class="image-container oneimage" style="border:1px solid;" >
-                                  <div class="first">
-                                      <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                      <h1 style="text-align: center;">Shop Image</h1>
-                                      <!-- <img src=" shop image"> -->
-                                  </div> 
-            
-                                  <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                              </div>
+            <!-- </div> -->
+
               
-                              
-              
-                              <div class="product-detail-container p-2">
-              
-                                <div class="d-flex justify-content-between align-items-center pt-1">
-                                  <div class="color-select d-flex "> 
-                                    <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                    </div>
-                               </div>
-              
-                              <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                               
-                                </div>
-                            
-              
-                                  <div class="d-flex justify-content-between align-items-center">
-                                      <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                      
-                                  </div>
-              
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                    
-                                </div>
-                                  
-                                  <div class="d-flex justify-content-between align-items-center pt-1">
-                                      <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                     
-                                  </div>
-                                  
-                              </div>
-                          </div>
-                              <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                              
-                              </div>
-    
-                        
-                              <div class="col-sm-3" >
-                                <div class="card">
-                                  <div class="image-container oneimage" style="border:1px solid;" >
-                                      <div class="first">
-                                          <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                          <h1 style="text-align: center;">Shop Image</h1>
-                                          <!-- <img src=" shop image"> -->
-                                      </div> 
-                
-                                      <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                                  </div>
-                  
-                                  
-                  
-                                  <div class="product-detail-container p-2">
-                  
-                                    <div class="d-flex justify-content-between align-items-center pt-1">
-                                      <div class="color-select d-flex "> 
-                                        <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                        </div>
-                                   </div>
-                  
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                                   
-                                    </div>
-                                
-                  
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                          
-                                      </div>
-                  
-                                      <div class="d-flex justify-content-between align-items-center">
-                                        <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                        
-                                    </div>
-                                      
-                                      <div class="d-flex justify-content-between align-items-center pt-1">
-                                          <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                         
-                                      </div>
-                                      
-                                  </div>
-                              </div>
-                                  <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                                  
-                                  </div>
-                        </div>
-                    </div>
+
+             
                       
  
   </div>

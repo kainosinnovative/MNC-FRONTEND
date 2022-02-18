@@ -9,6 +9,7 @@ import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
 import { contactdetails } from '../shared/customer/customer';
 
+
 @Injectable({
 providedIn: 'root'
 })
@@ -28,6 +29,13 @@ httpOptions = {
     
   } ),responseType: 'text' as 'json'
 };
+
+// getData(){
+//   return this.http.get('https://jsonplaceholder.typicode.com/users')
+//     .pipe(
+//       map((response:any) => response.map((item: { [x: string]: any; }) => item['name']))
+//     )
+// }
 
 getCustomers(): Observable<Customer> {
 return this.http.get<Customer>(this.apiURL + '/customers')
