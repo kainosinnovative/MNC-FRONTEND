@@ -35,6 +35,7 @@ export class OnlinebookingComponent implements OnInit {
   MasterServiceid: any;
   MasterServiceid1: any;
    public totalvalue : number=0;
+   public finalvalue : number=0;
 //totalvalue = 0;
 
   currentUsername = localStorage.getItem('currentUsername');
@@ -231,8 +232,11 @@ loadshopoffers(){
   })
 }
 
- changeBgColor(offer_id:any){
-   
+changeBgColor(offer_id:any){
+
+  let offer_totalid = "offerprice_" + offer_id ;
+  //alert(offer_totalid);
+   var offer_amt: number;
     let  buttonid="select_"+ offer_id;
 
     let buttontext =  (<HTMLInputElement>document.getElementById(buttonid)).innerHTML;
@@ -240,14 +244,19 @@ loadshopoffers(){
       if(buttontext === 'Select') { 
        
 
-        (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "selected";
+        (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Selected";
       (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "green";
-
+       offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
+        //alert(offer_amt);
+        this.finalvalue = this.finalvalue +(offer_amt);
+        (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
       } else {
      
-      (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "select";
+      (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Select";
       (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "skyblue";
-
+       offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
+       this.finalvalue = this.finalvalue -(offer_amt);
+       (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
   }
 }
 
@@ -264,16 +273,17 @@ selectbuttoncolor(service_id:any){
  // alert(selecttext);
 
       if(selecttext === 'Select') { 
-        (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "selected";
+        (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Selected";
        (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "green";
        var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
        console.log(service_amt);
       this.totalvalue = this.totalvalue +(service_amt);
       console.log(this.totalvalue);
       (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+
        } else {
    
-     (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "select";
+     (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Select";
      (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "skyblue";
      var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
      this.totalvalue = this.totalvalue -(service_amt);
