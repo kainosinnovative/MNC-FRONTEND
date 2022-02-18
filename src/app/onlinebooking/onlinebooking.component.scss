@@ -64,7 +64,7 @@
       .oneimage {
         height:225px !important;
         width:100%;
-        background-color:rgb(214, 211, 211);
+        //background-color:rgb(214, 211, 211);
       }
       
       .twoimage {
@@ -84,6 +84,18 @@
     border-radius: 6px;
     color: #fff
 }
+.discount2 {
+    background-color: rgb(12, 148, 58);
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 8px;
+    border-radius: 6px;
+    color: #fff
+}
+
+
 .p6 {
 padding: 1rem!important;
 }
@@ -109,13 +121,13 @@ padding: 1rem!important;
     border: none;
     width: 250px;
     height: 50px;
-    margin-left: 18px;
+    //margin-left: 18px;
 }
 
 .emailcls{
     background-color: #def2fa7d;
     border: none;
-    width: 250px;
+    width: 250px !important;
     height: 50px;
 }
 .cartypecls{
@@ -123,21 +135,21 @@ padding: 1rem!important;
     border: none;
     width: 250px !important;
     height: 50px
-    ;margin-left: 18px;
+    //margin-left: 18px;
 }
 .fueltypecls{
     background-color: #def2fa7d;
     border: none;
     width: 250px !important;
     height: 50px;
-    margin-left: 18px;
+    //margin-left: 18px;
 }
 .textcls{
     background-color: #def2fa7d;
     border: none;
-    margin-left: 18px;
+    //margin-left: 18px;
     height: 150px;
-    width: 795px;
+    width: 1100px;
 }
 .carbrandcls{
     background-color: #def2fa7d;
@@ -157,3 +169,42 @@ padding: 1rem!important;
     width: 250px;
     height: 50px;
 }
+.selectnow{
+    background-color: rgb(119 180 227 / 92%);;
+          border: none;
+          height: 35px;
+          width: 100px;
+          margin-top: -11px;
+          
+}
+
+.selectnow2{
+   // background-color: rgb(119 180 227 / 92%);;
+          //border: none;
+          height: 30px;
+          width: 75px;
+          border-radius: 6%;
+          font-size: 16px;
+          margin-left: 871px;
+}
+
+.selectnow3{
+    //background-color: rgb(119 180 227 / 92%);;
+          //border: none;
+          height: 30px;
+          width: 75px;
+          border-radius: 6%;
+          font-size: 16px;
+          margin-top: -11px;
+}
+
+.comboselectbtm{
+    background-color: rgb(119 180 227 / 92%);;
+          border: none;
+          height: 35px;
+          width: 100px;
+          margin-top: -11px;
+          font-size: 16px;
+}
+
+

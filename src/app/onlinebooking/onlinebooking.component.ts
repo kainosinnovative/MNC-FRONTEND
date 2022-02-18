@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OnlinebookingComponent implements OnInit {
 
+  show: boolean = true
+
   displaydata: any;
   displaydata1: any;
   onlinebooking: any;
@@ -26,12 +28,21 @@ export class OnlinebookingComponent implements OnInit {
   CustomerDataById: any;
   CustomerDataById1: any;
   //date: any;
-  
-
+  shopdetails: any;
+  shopdetails1: any;
+  offerdetails: any;
+  offerslist: any;
+  MasterServiceid: any;
+  MasterServiceid1: any;
+   public totalvalue : number=0;
+//totalvalue = 0;
 
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
+ public text: string = 'Select';
+
+ public textcontent: string = 'Select';
 
 
   constructor(
@@ -39,16 +50,21 @@ export class OnlinebookingComponent implements OnInit {
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     //public datepipe: DatePipe
+    
   ) {  }
+
+
+
+
 
   ngOnInit(): void {
     this.displaycartype();
     this.loadcarbrand();
     this.readCustomerDataById();
-
-   // let currentUserId:any = localStorage.getItem('currentUserId');
-    // this.date=new Date();
-    // let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+    this.loadshopdetails();
+    this.loadshopoffers();
+    this.idbyMasterService();
+  
    
     const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
@@ -184,5 +200,102 @@ readCustomerDataById() {
   )
   
 }
+
+loadshopdetails(){
+
+  let currentUserId = 1;
+  
+  return this.restApi.getServiceData(currentUserId).subscribe((data: {}) => {
+    // alert(data)
+    this.shopdetails = data;
+    //console.log("abi", this.shopdetails);
+     this.shopdetails1 = this.shopdetails.data.carAndShopservice;
+    
+     console.log("abi>>>>",this.shopdetails1)
+    
+  })
 }
+
+loadshopoffers(){
+
+  let currentShopId = 1;
+  
+  return this.restApi.ShopoffersById(currentShopId).subscribe((data: {}) => {
+
+    //console.log('testabi', data);
+   
+    this.offerdetails = data;
+    this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
+    console.log("test>>>>",this.offerslist)
+    
+  })
+}
+
+ changeBgColor(offer_id:any){
+   
+    let  buttonid="select_"+ offer_id;
+
+    let buttontext =  (<HTMLInputElement>document.getElementById(buttonid)).innerHTML;
+
+      if(buttontext === 'Select') { 
+       
+
+        (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "selected";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "green";
+
+      } else {
+     
+      (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "select";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "skyblue";
+
+  }
+}
+
+selectbuttoncolor(service_id:any){
+
+ //alert(service_id);
+   
+  let service_totalid = "amount_" + service_id ;
+  
+
+ let  currentserviceid ="chooice_"+ service_id;
+  let selecttext =  (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML;
+
+ // alert(selecttext);
+
+      if(selecttext === 'Select') { 
+        (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "selected";
+       (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "green";
+       var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
+       console.log(service_amt);
+      this.totalvalue = this.totalvalue +(service_amt);
+      console.log(this.totalvalue);
+      (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+       } else {
+   
+     (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "select";
+     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "skyblue";
+     var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
+     this.totalvalue = this.totalvalue -(service_amt);
+     (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+ }
+}
+
+idbyMasterService(){
+    
+  return this.restApi.getMasterService().subscribe((data: {}) => {
+    // alert(data)
+    this.MasterServiceid = data;
+    this.MasterServiceid1 = this.MasterServiceid.data.type;
+    
+    console.log("aravind>>>>",this.MasterServiceid1)
+    // this.dtTrigger.next();
+
+  })
+
+  
+}
+
+}
+
 
