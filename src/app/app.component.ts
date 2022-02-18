@@ -59,6 +59,8 @@ constructor(private  dialog:  MatDialog, private  router:  Router){}
     if(this.cityid == null ){
       this.cityid = 3;
     }
+
+    
   }
 
   login(){

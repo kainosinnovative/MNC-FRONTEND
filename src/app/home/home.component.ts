@@ -1,28 +1,51 @@
 import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
-// import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { DatePipe } from '@angular/common';
 import { RestApiService } from "../shared/rest-api.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  
+  providers: [DatePipe]
 })
 export class HomeComponent implements OnInit {
+  date:any;
   selectedCity: any;
   dashboardShop:any;
   dashboardShop1:any;
   dashboardShopOffer:any;
   dashboardShopOffer1:any;
-  constructor(public restApi: RestApiService) { }
+  MasterServiceData:any;
+  MasterServiceData1:any;
+  constructor(public restApi: RestApiService,public datepipe: DatePipe) { }
+
+  
 
   ngOnInit(): void {
+    this.date=new Date();
+    this.loadMasterService();
     // alert("hi")
     this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
+
+    
   }
 
-  slideConfig = {"slidesToShow": 3, "slidesToScroll": 1};
+  loadMasterService(){
+    
+    return this.restApi.getMasterService().subscribe((data: {}) => {
+      // alert(data)
+      this.MasterServiceData = data;
+      this.MasterServiceData1 = this.MasterServiceData.data.type;
+      
+      console.log("data>>>>",this.MasterServiceData1)
+      // this.dtTrigger.next();
+    })
+
+    
+  }
+
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
   
   slickInit(e:any) {
     console.log('slick initialized');
@@ -50,7 +73,7 @@ export class HomeComponent implements OnInit {
       // alert(data)
       this.dashboardShop = data;
       this.dashboardShop1 = this.dashboardShop.data.dashboardShopList;
-      // console.log("data dashboard>>>",this.dashboardShop1);
+      console.log("data dashboard>>>",this.dashboardShop1);
     })
   }
  
@@ -70,8 +93,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  
 
-  slideConfig1 = {"slidesToShow": 3, "slidesToScroll": 1};
+
+  slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
   
   slickInit1(e:any) {
     console.log('slick initialized');
