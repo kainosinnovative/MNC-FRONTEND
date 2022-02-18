@@ -119,6 +119,18 @@ export class carbrand{
         currentUserId:string="";
       }
 
+      export class shopoffers{
+        offer_id: string = '';
+        services: string ='';
+        start_date: string ='';
+        end_date: string ='';
+        shop_id: string='';
+        combo_price: string='';
+        offer_percent: string='';
+        model_id: string='';
+        
+ }
+
       export class shopserviceByModelid {
         
       }

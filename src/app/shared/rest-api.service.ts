@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Customer } from '../shared/customer/customer';
+import { Customer, shopoffers } from '../shared/customer/customer';
 
 import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid, dahsboardShop} from '../shared/customer/customer';
 
@@ -356,6 +356,18 @@ return throwError(errorMessage);
 readShopProfileDataById(currentShopId	:any): Observable<logindetails> {
   
   return this.http.get<logindetails>(this.apiURL + '/shop/getShopProfileById?shop_id='+ currentShopId	)
+  
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+    
+  )
+
+} 
+
+ShopoffersById(currentShopId:any): Observable<shopoffers> {
+  
+  return this.http.get<shopoffers>(this.apiURL +'/shop/OnlineBookingShopDetails?currentUserId='+ currentShopId )
   
   .pipe(
     retry(1),

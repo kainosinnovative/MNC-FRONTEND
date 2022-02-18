@@ -1,701 +1,325 @@
 <h2 class="mainheading" style="text-align:center;">My Online Booking</h2>
+
 <div style=" margin-top: -75px;">
 
-<form [formGroup]="onlinebooking" class="form-container">
-    <mat-card>
-
+  <form [formGroup]="onlinebooking" class="form-container" >
+      <mat-card>
   
-  <mat-card-header>
-    <mat-card-title>
-      <h4 class="subheading" style="color:skyblue;">Choose a Plan ______</h4>
-      <h2 class="mainheading"> Select Pricing Plan</h2>
-  
-      <h2 style="text-align: center;">Plan Of The Day</h2>
-   
-    <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators" style="display: none;">
-        <button style="color:black" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button style="color:black" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <!-- <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
-      </div>
-  
-    
-  
-      <div class="carousel-inner" data-interval="10">
-          <div class=" carousel-item onesection active"  style="background: no-repeat center center scroll;">
-              <div class="row" style="margin-left: 6px;">
-  
+        <mat-card-header>
+          <mat-card-title>
+            <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Enter Your Details_____</h4>
+            <h2 class="mainheading" style=" margin-top: -17px;margin-left: -17px;">  Booking Details</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <div class="row">
+          <div class="col-sm-3">
+           
              
-  
-                <div class="col-sm-3" >
-                  <div class="card">
-                    <div class="image-container oneimage" style="border:1px solid;" >
-                        <div class="first">
-                            <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                          <h1 style="text-align: center;">Shop Image</h1> 
-                        </div> 
-  
-                        <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                    </div>
-    
-                    
-    
-                    <div class="product-detail-container p-2">
-    
-                      <div class="d-flex justify-content-between align-items-center pt-1">
-                        <div class="color-select d-flex "> 
-                          <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                          </div>
-                     </div>
-    
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
+               <div class="form-group">
+                  <input class="fistnamecls" matinput="" formControlName="firstname" placeholder="Your Name" [(ngModel)]="currentUsername" value="{{currentUsername}}">
+                  <div *ngIf="onlinebooking.controls['firstname'].touched && onlinebooking.controls['firstname'].invalid "> 
+          
+                    <div *ngIf="onlinebooking.controls['firstname'].errors" style="color: red;"> 
+                      <div *ngIf="onlinebooking.controls['firstname'].errors.required" style="font-size: 12px;margin-left: 17px;">
+                          First name is required. 
+                      </div> 		   
                      
-                      </div>
-                  
-    
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                            
-                        </div>
-    
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                          
-                      </div>
-                        
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                           
-                        </div>
-                        
-                    </div>
-                </div>
-                    <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
+                   </div> 
                     
-                    </div>
-  
-  
-                    <div class="col-sm-3" >
-                      <div class="card">
-                        <div class="image-container oneimage" style="border:1px solid;" >
-                            <div class="first">
-                                <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                <h1 style="text-align: center;">Shop Image</h1>
-                                <!-- <img src=" shop image"> -->
-                            </div> 
-      
-                            <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                        </div>
-        
-                        
-        
-                        <div class="product-detail-container p-2">
-        
-                          <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div class="color-select d-flex "> 
-                              <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                              </div>
-                         </div>
-        
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                         
-                          </div>
-                      
-        
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                
-                            </div>
-        
-                            <div class="d-flex justify-content-between align-items-center">
-                              <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                              
-                          </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center pt-1">
-                                <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                               
-                            </div>
-                            
-                        </div>
-                    </div>
-                        <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                        
-                        </div>
-                        <div class="col-sm-3" >
-                          <div class="card">
-                            <div class="image-container oneimage" style="border:1px solid;" >
-                                <div class="first">
-                                    <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                    <h1 style="text-align: center;">Shop Image</h1>
-                                    <!-- <img src=" shop image"> -->
-                                </div> 
-          
-                                <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                            </div>
-            
-                            
-            
-                            <div class="product-detail-container p-2">
-            
-                              <div class="d-flex justify-content-between align-items-center pt-1">
-                                <div class="color-select d-flex "> 
-                                  <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                  </div>
-                             </div>
-            
-                            <div class="d-flex justify-content-between align-items-center">
-                              <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                             
-                              </div>
-                          
-            
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                    
-                                </div>
-            
-                                <div class="d-flex justify-content-between align-items-center">
-                                  <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                  
-                              </div>
-                                
-                                <div class="d-flex justify-content-between align-items-center pt-1">
-                                    <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                   
-                                </div>
-                                
-                            </div>
-                        </div>
-                            <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                            
-                            </div>
-  
-                      
-                            <div class="col-sm-3" >
-                              <div class="card">
-                                <div class="image-container oneimage" style="border:1px solid;" >
-                                    <div class="first">
-                                        <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 60% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                        <h1 style="text-align: center;">Shop Image</h1>
-                                        <!-- <img src=" shop image"> -->
-                                    </div> 
-              
-                                    <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                                </div>
-                
-                                
-                
-                                <div class="product-detail-container p-2">
-                
-                                  <div class="d-flex justify-content-between align-items-center pt-1">
-                                    <div class="color-select d-flex "> 
-                                      <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                      </div>
-                                 </div>
-                
-                                <div class="d-flex justify-content-between align-items-center">
-                                  <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                                 
-                                  </div>
-                              
-                
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                        
-                                    </div>
-                
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                      
-                                  </div>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center pt-1">
-                                        <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                       
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                                <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                                
-                                </div>
-                      </div>
                   </div>
-  
-                  <div class=" carousel-item onesection"  style="background: no-repeat center center scroll;">
-                    <div class="row" style="margin-left: 6px;">
-        
-                      <div class="col-sm-3" >
-                        <div class="card">
-                          <div class="image-container oneimage" style="border:1px solid;" >
-                              <div class="first">
-                                  <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                  <h1 style="text-align: center;">Shop Image</h1>
-                                  <!-- <img src=" shop image"> -->
-                              </div> 
-        
-                              <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                          </div>
-          
-                          
-          
-                          <div class="product-detail-container p-2">
-          
-                            <div class="d-flex justify-content-between align-items-center pt-1">
-                              <div class="color-select d-flex "> 
-                                <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                </div>
-                           </div>
-          
-                          <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                           
-                            </div>
-                        
-          
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                  
-                              </div>
-          
-                              <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                
-                            </div>
-                              
-                              <div class="d-flex justify-content-between align-items-center pt-1">
-                                  <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                 
-                              </div>
-                              
-                          </div>
-                      </div>
-                          <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                          
-                          </div>
-        
-        
-                          <div class="col-sm-3" >
-                            <div class="card">
-                              <div class="image-container oneimage" style="border:1px solid;" >
-                                  <div class="first">
-                                      <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                      <h1 style="text-align: center;">Shop Image</h1>
-                                      <!-- <img src=" shop image"> -->
-                                  </div> 
-            
-                                  <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                              </div>
-              
-                              
-              
-                              <div class="product-detail-container p-2">
-              
-                                <div class="d-flex justify-content-between align-items-center pt-1">
-                                  <div class="color-select d-flex "> 
-                                    <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                    </div>
-                               </div>
-              
-                              <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                               
-                                </div>
-                            
-              
-                                  <div class="d-flex justify-content-between align-items-center">
-                                      <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                      
-                                  </div>
-              
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                    
-                                </div>
-                                  
-                                  <div class="d-flex justify-content-between align-items-center pt-1">
-                                      <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                     
-                                  </div>
-                                  
-                              </div>
-                          </div>
-                              <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                              
-                              </div>
-                              <div class="col-sm-3" >
-                                <div class="card">
-                                  <div class="image-container oneimage" style="border:1px solid;" >
-                                      <div class="first">
-                                          <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                          <h1 style="text-align: center;">Shop Image</h1>
-                                          <!-- <img src=" shop image"> -->
-                                      </div> 
-                
-                                      <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                                  </div>
-                  
-                                  
-                  
-                                  <div class="product-detail-container p-2">
-                  
-                                    <div class="d-flex justify-content-between align-items-center pt-1">
-                                      <div class="color-select d-flex "> 
-                                        <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                        </div>
-                                   </div>
-                  
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                                   
-                                    </div>
-                                
-                  
-                                      <div class="d-flex justify-content-between align-items-center">
-                                          <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                          
-                                      </div>
-                  
-                                      <div class="d-flex justify-content-between align-items-center">
-                                        <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                        
-                                    </div>
-                                      
-                                      <div class="d-flex justify-content-between align-items-center pt-1">
-                                          <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                         
-                                      </div>
-                                      
-                                  </div>
-                              </div>
-                                  <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                                  
-                                  </div>
-        
-                            
-                                  <div class="col-sm-3" >
-                                    <div class="card">
-                                      <div class="image-container oneimage" style="border:1px solid;" >
-                                          <div class="first">
-                                              <div class="d-flex justify-content-between align-items-center"> <span class="discount">Up to 40% Off</span> <span class="wishlist"><i class="fa fa-heart-o"></i></span> </div>
-                                              <h1 style="text-align: center;">Shop Image</h1>
-                                              <!-- <img src=" shop image"> -->
-                                          </div> 
-                    
-                                          <!-- <a href=""><img  src="../assets/images/car2.jpg" class="img-fluid rounded thumbnail-image oneimage"></a> -->
-                                      </div>
-                      
-                                      
-                      
-                                      <div class="product-detail-container p-2">
-                      
-                                        <div class="d-flex justify-content-between align-items-center pt-1">
-                                          <div class="color-select d-flex "> 
-                                            <img src="https://admin.mynewcar.in/MNC-API/uploads/0bd2b75bea41c32c416071d6171d588e.jpg" style="width: 50px;margin-top: -7px;"> Shop <br> Name
-                                            </div>
-                                       </div>
-                      
-                                      <div class="d-flex justify-content-between align-items-center">
-                                        <h5 class="dress-name">60% OFF inside..! Great offers on car get a clean</h5>
-                                       
-                                        </div>
-                                    
-                      
-                                          <div class="d-flex justify-content-between align-items-center">
-                                              <h5 class="dress-name">Petrol, CNG | Manual | 8 Variants</h5>
-                                              
-                                          </div>
-                      
-                                          <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="dress-name">On-Road Price/ Starting @ 4999/-</h5>
-                                            
-                                        </div>
-                                          
-                                          <div class="d-flex justify-content-between align-items-center pt-1">
-                                              <div> <i class="fa fa-star-o rating-star"></i> <span class="rating-number">4.8</span> </div> <span class="buy">Save Upto 1000 +</span>
-                                             
-                                          </div>
-                                          
-                                      </div>
-                                  </div>
-                                      <!-- <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> -->
-                                      
-                                      </div>
-                            </div>
-                        </div>
-                          
-     
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon1"  aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="next">
-        <span class="carousel-control-next-icon1" aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  
-    
-      </mat-card-title>
-  </mat-card-header>
-  
-   <!---End of Pricing plan-->
-  
-   <mat-card-header>
-    <mat-card-title>
-      <h4 style="font-size: 19px;color:skyblue">Select Them Now _____</h4>
-      <h2 style="font-size: 28px;">Choose Extra  Features</h2>
-      </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div style="display: inline;">
-      <div class="container my-5 px-0 z-depth-1" style="background-color: #def2fa7d;">
-
-
-        <!--Section: Content-->
-        <section class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2" >
-      
-          <h3 style="font-size: 20px;" class="font-weight-bold;back" >Tire Shine</h3>
-          
-          <button type="button" class="btn btn-white btn-rounded" style="background-color: #ff8507; ">Select Now</button>
-      
-        </section>
-        <!--Section: Content-->
-      
-      
-      </div>
-    </div>
-
-    <div style="display: inline;">
-      <div class="container my-5 px-0 z-depth-1" style="background-color: #def2fa7d;">
-
-
-        <!--Section: Content-->
-        <section class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2" >
-      
-          <h3 style="font-size: 20px;" class="font-weight-bold;back" >Express Interior</h3>
-          
-          <button type="button" class="btn btn-white btn-rounded" style="background-color: #ff8507; ">Select Now</button>
-      
-        </section>
-        <!--Section: Content-->
-      
-      
-      </div>
-    </div>
-
-    <div style="display: inline;">
-      <div class="container my-5 px-0 z-depth-1" style="background-color: #def2fa7d;">
-
-
-        <!--Section: Content-->
-        <section class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2" >
-      
-          <h3 style="font-size: 20px;" class="font-weight-bold;back" >Interior Vacuum</h3>
-          
-          <button type="button" class="btn btn-white btn-rounded" style="background-color: #ff8507; ">Select Now</button>
-      
-        </section>
-        <!--Section: Content-->
-      
-      
-      </div>
-    </div>
-    </mat-card-content>
-   <!---Feature-->
-  
-  
-      <mat-card-header>
-        <mat-card-title>
-          <h4 class="subheading" style="color:skyblue">Enter Your Details_____</h4>
-          <h2 class="mainheading" style=" margin-top: -17px;">  Booking Details</h2>
-          </mat-card-title>
-      </mat-card-header>
-
-     
-      <div class="row">
-      <div class="col-sm-3">
-       
-         
-           <div class="form-group">
-              <input class="fistnamecls" matinput="" formControlName="firstname" placeholder="Your Name" [(ngModel)]="currentUsername" value="{{currentUsername}}">
-              <div *ngIf="onlinebooking.controls['firstname'].touched && onlinebooking.controls['firstname'].invalid "> 
-      
-                <div *ngIf="onlinebooking.controls['firstname'].errors" style="color: red;"> 
-                  <div *ngIf="onlinebooking.controls['firstname'].errors.required" style="font-size: 12px;margin-left: 17px;">
-                      First name is required. 
-                  </div> 		   
+             </div>
+             <br>
                  
+            <div class="form-group">
+              <select   class="cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">   
+                 
+                <option>car Type</option>  
+                 <option *ngFor="let cartypes of displaydata1" [value]="cartypes.id">
+                  {{cartypes.type_name}}
+              </option> 
+                 </select>
+                 <div *ngIf="onlinebooking.controls['cartype'].touched && onlinebooking.controls['cartype'].invalid "> 
+              
+                  <div *ngIf="onlinebooking.controls['cartype'].errors" style="color: red;"> 
+                    <div *ngIf="onlinebooking.controls['cartype'].errors.required" style="margin-left: 17px;font-size: 12px;">
+                        Select car type
+                    </div> 		   
+                   
+                 </div> 
+                  
+                </div> 
+                  </div>
+    
+                   <br>
+    
+                      <div class="form-group">
+                        <textarea class="textcls"  matinput="" placeholder="Write Comment"></textarea>
+                    </div>
+                    <br>
+            </div>
+    
+            <div class="col-sm-3">
+           
+             
+              <div class="form-group">
+                <input class="emailcls" matinput="" formControlName="emailid" placeholder="Email Address"  [(ngModel)]="CustomerDataById1.emailid">
+                  <div *ngIf="onlinebooking.controls['emailid'].touched && onlinebooking.controls['emailid'].invalid "> 
+             
+                   <div *ngIf="onlinebooking.controls['emailid'].errors" style="color: red;"> 
+                     <div *ngIf="onlinebooking.controls['emailid'].errors.required" style="font-size: 12px;" class="emailvalid">
+                         Email id is required.
+                     </div> 		   
+                     <div *ngIf="onlinebooking.controls['emailid'].errors.pattern" style="font-size: 12px;" class="emailvalid">
+                          Email id is not valid.
+                     </div> 
+                  </div> 
+                   
+                 </div>
+                 </div>
+            <br>
+                
+           <div class="form-group">
+            <select class="carbrandcls" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">   
+                 
+              <option>Car Brand</option>  
+              <option *ngFor="let brandlist of branddata" [value]="brandlist.id">
+                {{brandlist.brand_name}}
+            </option>
+               </select>
+               <div *ngIf="onlinebooking.controls['brand'].touched && onlinebooking.controls['brand'].invalid "> 
+                <div *ngIf="onlinebooking.controls['brand'].errors" style="color: red;"> 
+                 <div *ngIf="onlinebooking.controls['brand'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                     Select Car Brand
+                 </div> 		   
+               </div> 
+             </div>
+                 </div>
+    
+                 <br>
+    
+               
+                 
+              </div>
+    
+           <div class="col-sm-3">
+           
+             
+            <div class="form-group">
+              <input style="background-color: #def2fa7d;border: none;width: 250px;height: 50px;" matinput="" formControlName="mobileno" placeholder="Phone Number" [(ngModel)]="isloggedinUser" value="{{isloggedinUser}}">
+              <div *ngIf="onlinebooking.controls['mobileno'].touched && onlinebooking.controls['mobileno'].invalid "> 
+          
+                <div *ngIf="onlinebooking.controls['mobileno'].errors" style="color: red;"> 
+                  <div *ngIf="onlinebooking.controls['mobileno'].errors.required" style="font-size: 12px;">
+                      Mobile number is required.
+                  </div> 		   
+                  <div *ngIf="onlinebooking.controls['mobileno'].errors.pattern" style="font-size: 12px;">
+                    Mobile number is not valid.
+                  </div> 
                </div> 
                 
               </div>
-         </div>
-         <br>
-             
-        <div class="form-group">
-          <select   class="cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">   
-             
-            <option>car Type</option>  
-             <option *ngFor="let cartypes of displaydata1" [value]="cartypes.id">
-              {{cartypes.type_name}}
-          </option> 
+        </div>
+          <br>
+              
+         <div class="form-group">
+                   
+          <select  onchange = "favTutorial()" class="carmodelcls" formControlName="model" id="model">   
+                 
+            <option>Car Model</option>  
+            <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
+              {{carmodels.model_name}}
+              </option> 
              </select>
-             <div *ngIf="onlinebooking.controls['cartype'].touched && onlinebooking.controls['cartype'].invalid "> 
-          
-              <div *ngIf="onlinebooking.controls['cartype'].errors" style="color: red;"> 
-                <div *ngIf="onlinebooking.controls['cartype'].errors.required" style="margin-left: 17px;font-size: 12px;">
-                    Select car type
+              <div *ngIf="onlinebooking.controls['model'].touched && onlinebooking.controls['model'].invalid"> 
+                  
+              <div *ngIf="onlinebooking.controls['model'].errors" style="color: red;"> 
+                <div *ngIf="onlinebooking.controls['model'].errors.required" style="font-size: 12px;">
+                    Select car model
                 </div> 		   
                
              </div> 
               
             </div> 
-              </div>
-
-             <br>
-             <div class="form-group">
-              <select class="fueltypecls" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">    
-                 
-                <option value="">--Select Fuel Type---</option>
-                <option value="petrol">Petrol</option>
-                <option value="diesel">Diesel</option>
-                 </select> 
-                 <div *ngIf="onlinebooking.controls['fueltype'].touched && onlinebooking.controls['fueltype'].invalid "> 
-                   <div *ngIf="onlinebooking.controls['fueltype'].errors" style="color: red;"> 
-                    <div *ngIf="onlinebooking.controls['fueltype'].errors.required" style="margin-left: 17px;font-size: 12px;">
-                        Select fuel type
-                    </div> 		   
-                  </div> 
-                </div>
-                  </div>
-                  
-                  <br>
-
-                  <div class="form-group">
-                    <textarea class="textcls"  matinput="" placeholder="Write Comment"></textarea>
-                </div>
-        </div>
-
-        <div class="col-sm-3">
-       
-         
-          <div class="form-group">
-            <input class="emailcls" matinput="" formControlName="emailid" placeholder="Email Address" style="width: 250px;"  [(ngModel)]="CustomerDataById1.emailid">
-              <div *ngIf="onlinebooking.controls['emailid'].touched && onlinebooking.controls['emailid'].invalid "> 
-         
-               <div *ngIf="onlinebooking.controls['emailid'].errors" style="color: red;"> 
-                 <div *ngIf="onlinebooking.controls['emailid'].errors.required" style="font-size: 12px;" class="emailvalid">
-                     Email id is required.
-                 </div> 		   
-                 <div *ngIf="onlinebooking.controls['emailid'].errors.pattern" style="font-size: 12px;" class="emailvalid">
-                      Email id is not valid.
-                 </div> 
-              </div> 
-               
-             </div>
-             </div>
-        <br>
-            
-       <div class="form-group">
-        <select class="carbrandcls" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">   
-             
-          <option>Car Brand</option>  
-          <option *ngFor="let brandlist of branddata" [value]="brandlist.id">
-            {{brandlist.brand_name}}
-        </option>
-           </select>
-           <div *ngIf="onlinebooking.controls['brand'].touched && onlinebooking.controls['brand'].invalid "> 
-            <div *ngIf="onlinebooking.controls['brand'].errors" style="color: red;"> 
-             <div *ngIf="onlinebooking.controls['brand'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                 Select Car Brand
-             </div> 		   
-           </div> 
-         </div>
-             </div>
-
-             <br>
-
-             <div class="form-group">
-              <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
-              <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
-                <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
-                 <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                     Select Date
-                 </div> 		   
-               </div> 
-             </div>
-
-  
-          </div>
-             
-          </div>
-
-       <div class="col-sm-3">
-       
-         
-        <div class="form-group">
-          <input style="background-color: #def2fa7d;border: none;width: 250px;height: 50px;" matinput="" formControlName="mobileno" placeholder="Phone Number" [(ngModel)]="isloggedinUser" value="{{isloggedinUser}}">
-          <div *ngIf="onlinebooking.controls['mobileno'].touched && onlinebooking.controls['mobileno'].invalid "> 
-      
-            <div *ngIf="onlinebooking.controls['mobileno'].errors" style="color: red;"> 
-              <div *ngIf="onlinebooking.controls['mobileno'].errors.required" style="font-size: 12px;">
-                  Mobile number is required.
-              </div> 		   
-              <div *ngIf="onlinebooking.controls['mobileno'].errors.pattern" style="font-size: 12px;">
-                Mobile number is not valid.
-              </div> 
-           </div> 
-            
-          </div>
-    </div>
-      <br>
-          
-     <div class="form-group">
-               
-      <select  onchange = "favTutorial()" class="carmodelcls" formControlName="model" id="model">   
-             
-        <option>Car Model</option>  
-        <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
-          {{carmodels.model_name}}
-          </option> 
-         </select>
-          <div *ngIf="onlinebooking.controls['model'].touched && onlinebooking.controls['model'].invalid"> 
+               </div>
               
-          <div *ngIf="onlinebooking.controls['model'].errors" style="color: red;"> 
-            <div *ngIf="onlinebooking.controls['model'].errors.required" style="font-size: 12px;">
-                Select car model
-            </div> 		   
+            </div>
+            <div class="col-sm-3">
            
-         </div> 
-          
-        </div> 
-           </div>
-          
-        </div>
-        </div>
-      
-  
-  
-       <mat-card-actions>
-        <button mat-raised-button="" style="background-color: #ff8507;margin-left: 18px;">Conform Booking</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-  </div>
-  <script>
-  function slideShowController($scope, $timeout) {
-    var slidesInSlideshow = 4;
-    var slidesTimeIntervalInMs = 3000; 
+             
+              <div class="form-group">
+                <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
+                <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
+                  <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
+                   <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                       Select Date
+                   </div> 		   
+                 </div> 
+               </div>
+         </div>
+         <br>
+         <div class="form-group">
+          <select class="fueltypecls" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">    
+             
+            <option value="">--Select Fuel Type---</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+             </select> 
+             <div *ngIf="onlinebooking.controls['fueltype'].touched && onlinebooking.controls['fueltype'].invalid "> 
+               <div *ngIf="onlinebooking.controls['fueltype'].errors" style="color: red;"> 
+                <div *ngIf="onlinebooking.controls['fueltype'].errors.required" style="margin-left: 17px;font-size: 12px;">
+                    Select fuel type
+                </div> 		   
+              </div> 
+            </div>
+              </div>
+                  
    
-    $scope.slideshow = 1;
-    var slideTimer =
-    $timeout(function interval() {
-        $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
-        slideTimer = $timeout(interval, slidesTimeIntervalInMs);
-        }, slidesTimeIntervalInMs);
-      }
-        </script>
+                   
+           </div>
+            </div>
+    
+     <!---End of Booking details-->
+
+       <!--End of booking details-->
+    <!-- <mat-card-header> -->
+      <!-- <mat-card-title> -->
+        <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Choose a Today Offers ______</h4>
+        <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;"> Shop Deal Of The Day(offers)</h2>
+    
+     
+      <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
+        
+      <div class="carousel-inner" data-interval="10">
+            <div class=" carousel-item onesection active"  style="background: no-repeat center center scroll;">
+                <div class="row" style="margin-left: 6px;">
+                     <div class="col-sm-3"  *ngFor="let combolist of offerslist;">
+                    <div class="card"  >
+                      <div class="oneimage">
+                            <a href="">
+                              <img *ngIf="combolist.shop_image"   src="http://localhost/MNC-PHP-API/{{combolist.shop_image}}"  class="img-fluid rounded thumbnail-image oneimage">
+                            </a>
+                     </div>
+                <div class="product-detail-container p-2">
+                        <div class="d-flex justify-content-between align-items-center pt-1">
+                          <div class="color-select d-flex "> 
+                            <img *ngIf="combolist.shop_logo" src="http://localhost/MNC-PHP-API/{{combolist.shop_logo}}" style="width: 50px;margin-top: -7px;">{{combolist.name}}
+                            </div>
+                       </div>
+      
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="dress-name">{{combolist.offer_percent}} % OFFER inside..! Great offers on car get a clean</h5>
+                       
+                        </div>
+                    
+      
+                          <div class="d-flex justify-content-between align-items-center">
+                              <h5 class="dress-name">Petrol, CNG |{{combolist.model_name}} |
+
+                                  <div *ngFor="let m of  combolist.services.split(',')">
+                                  <span *ngFor="let m1 of  MasterServiceid1" >
+
+                                   <span *ngIf="m === m1.service_id">{{m1.service_name}}</span>
+                                  </span>
+                                 </div>  
+                                <!-- {{combolist.services}}  -->
+                                </h5> 
+                          </div>
+      
+                          <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="dress-name" >Offer Price @  <input type="number" style="width: 50px;"  value="{{combolist.combo_price}}"  id="offerprice_{{combolist.offer_id}}">
+                              /-</h5>
+                        </div>
+                          <!-- <div class="d-flex justify-content-between align-items-center pt-1">
+                            <i class="fa fa-star-o rating-star discount2"><span class="rating-number">4.8</span></i>
+                             <span class="buy">Save Upto 1000 +</span>
+                          </div> -->
+                           <button  id="select_{{combolist.offer_id}}"  (click)="changeBgColor(combolist.offer_id)"   class="comboselectbtm" >{{text}}</button>  
+                     </div>
+                  </div>
+                    <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> 
+                     </div>
+                         </div>
+                    </div>
+    
+                   
+       
+        </div>
+        <button style="color: black;" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon1"  aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button style="color: black;" class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="next">
+          <span class="carousel-control-next-icon1" aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+      
+        <!-- </mat-card-title> -->
+    <!-- </mat-card-header> -->
+    
+
+      <!---End of Pricing plan-->
+
+      <!-- <mat-card-header> -->
+        <!-- <mat-card-title> -->
+          <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4>
+          <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;">Choose Extra  Services</h2>
+          <!-- </mat-card-title> -->
+      <!-- </mat-card-header> -->
+      <mat-card-content >
+    
+       
+        <div class="" style="display: inline;" *ngFor="let shoplist of shopdetails1;">
+      
+          <div class="" style="background-color: #def2fa7d; height:70px !important;">
+    
+            <div class="d-flex justify-content-between align-items-center">
+               <span class="discount2" *ngIf="shoplist.offer_percent!=0">Up to {{shoplist. offer_percent}}% Off</span>  
+          </div>
+            <!--Section: Content-->
+              <div class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2"  >
+                 <p style="font-size: 17x;" class="font-weight-bold;back" >
+                  {{shoplist.service_name}}</p> 
+                <br>
+                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent!=0" > On Service Price @ 
+                  <input type="text" class="selectnow3" value="{{shoplist.offer_price}}" id="amount_{{shoplist.service_id}}">
+                </p> 
+                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent ==0" > On Service Price @ 
+                  <input type="text" class="selectnow3" value="{{shoplist.actual_amount}}" id="amount_{{shoplist.service_id}}">
+                </p>
+               
+                <button id="chooice_{{shoplist.service_id}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id)">{{textcontent}}</button> 
+              </div> 
+     
+          
+        </div>
+        <br>
+    </div>
+
+      
+    </mat-card-content>
+
+     <mat-card-actions > 
+     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 18px;" >Conform Booking</button>
+     <!-- <label>Totally:</label> -->
+     <input type="number" id="totalamount" class="selectnow2"  >
+     <input type="number" id="finalamount" class="selectnow2"  >
+     </mat-card-actions>
+       
+   </mat-card>
+    </form>
+    </div> 
+    <script>
+    function slideShowController($scope, $timeout) {
+      var slidesInSlideshow = 4;
+      var slidesTimeIntervalInMs = 3000; 
+     
+      $scope.slideshow = 1;
+      var slideTimer =
+      $timeout(function interval() {
+          $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+          slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+          }, slidesTimeIntervalInMs);
+        }
+          </script>
