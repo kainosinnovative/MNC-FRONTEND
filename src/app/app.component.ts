@@ -42,6 +42,7 @@ export class AppComponent implements OnInit{
   title = 'angular6-sidenav-example';
   cont_id: any;
   cityid: any;
+  cityname:any;
 constructor(private  dialog:  MatDialog, private  router:  Router){}
   closemenu() {
     console.log("hi")
@@ -56,8 +57,10 @@ constructor(private  dialog:  MatDialog, private  router:  Router){}
   ngOnInit(): void {
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
+    this.cityname=localStorage.getItem('selectedCityname');
     if(this.cityid == null ){
       this.cityid = 3;
+      this.cityname="Arakkonam";
     }
   }
 

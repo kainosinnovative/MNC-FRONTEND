@@ -1,93 +1,15 @@
-<!-- 
-<div class="loginpopup" style="height: 300px;">
-
-    <form [formGroup]="dataForm"  method="post"  >  
-      
-      
-    
-    
-        <mat-card  class="bordercard" style="box-shadow: none;">
-          <div  style="text-align: right;margin-top: -29px;margin-right: -21px;">
-            <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
-          </div>
-        <mat-card-header class="selectcitymobile"  >
-          <mat-card-title class="mainheading">Select City</mat-card-title>
-        </mat-card-header>
-    
-    
-        <mat-card-content style="text-align: center;margin-top: 10px;"  class="form-inline">
-          <div>
-
-            <div class="ng-autocomplete" style="overflow:visible !important">
-                <ng-autocomplete  formControlName='city'
-                  [data]="citydata"
-                  [searchKeyword]="keyword"
-                  placeholder="Select City"
-                  (selected)='selectEvent($event)'
-                  [itemTemplate]="itemTemplate"
-                  [notFoundTemplate]="notFoundTemplate">   
-                                                
-                </ng-autocomplete>
-                
-                <ng-template #itemTemplate let-item>
-                <a [innerHTML]="item.name"></a>
-                </ng-template>
-                
-                <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-                </ng-template>
-                </div>
-    
-     
-    
-               <div *ngIf="dataForm.controls['city'].touched && dataForm.controls['city'].invalid " style="text-align: center;"> 
-              <br>
-                <div *ngIf="dataForm.controls['city'].errors" style="color: red;font-size: 12px;"> 
-                  <div *ngIf="dataForm.controls['city'].errors?.['required']" >
-                      City is required.
-                  </div> 	
-                  <div *ngIf="dataForm.controls['city'].errors?.['pattern']" >
-                    City is not valid.
-                </div> 	   
-                 
-               </div> 
-                
-              </div> 
-    
-      </div>
-       
-              
+<div  style="text-align: right;margin-top: -29px;margin-right: -21px;">
+  <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
+</div>
+       <div class="ng-autocomplete" style="height: 150px;width:500px;overflow:hidden;">
         
-        
-      
-      </mat-card-content>
-    
-       
-    
-    
-    
-    
-        
-    
-        </mat-card>
-     
-       
-    </form>
-    
-    </div>
-    
-    
-       -->
-
-
-
-       <div class="ng-autocomplete" style="height: 300px;">
+        <h2 class="mainheading" style="text-align: center;">Please enter your city to customize your experience</h2>
         <ng-autocomplete [data]="citydata" [searchKeyword]="keyword" (selected)='selectEvent($event)'
             (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
-            [notFoundTemplate]="notFoundTemplate">
+            [notFoundTemplate]="notFoundTemplate" style="overflow:hidden;">
         </ng-autocomplete>
     
-        <ng-template #itemTemplate let-item>
+        <ng-template #itemTemplate let-item >
             <a [innerHTML]="item.city_name"></a>
         </ng-template>
     

@@ -39,3 +39,9 @@ select {
 
 
  
+  .autocomplete-container .suggestions-container ul {
+    padding: 0;
+    margin: 0;
+    max-height: 240px;
+     overflow: hidden !important;
+}
