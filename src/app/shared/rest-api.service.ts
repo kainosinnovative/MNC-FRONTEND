@@ -147,7 +147,7 @@ gettestimonialData(): Observable<Testimonial> {
 
             dashboardShopDetailsByOffer(cityid:any): Observable<dahsboardShop> {
   
-              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopList?cityid="+cityid)
+              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopDetailsByOffer?cityid="+cityid)
             
               .pipe(
               retry(1),

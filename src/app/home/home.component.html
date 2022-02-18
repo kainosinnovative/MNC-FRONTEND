@@ -103,14 +103,23 @@
 <br>
 <br>
 
+
+<div *ngIf="dashboardShopOffer1">
+  <h2 style="text-align: center;" class="mainheading">Offers </h2>
+
+  <p class="dark-blue-text w-responsive mx-auto " style="text-align: center;margin-bottom: 2%;">Today offer upto 60%, Enjoy and 1st booking have 25% discount..!
+  
+  </p>
+</div>
+
 <ngx-slick-carousel class="carousel" style="width:90%;background: none;"
                         #slickModal="slick-carousel" 
-                        [config]="slideConfig" 
-                        (init)="slickInit($event)"
-                        (breakpoint)="breakpoint($event)"
-                        (afterChange)="afterChange($event)"
-                        (beforeChange)="beforeChange($event)">
-        <div ngxSlickItem *ngFor="let s of dashboardShop1" class="slide col-sm-6">
+                        [config]="slideConfig1" 
+                        (init)="slickInit1($event)"
+                        (breakpoint)="breakpoint1($event)"
+                        (afterChange)="afterChange1($event)"
+                        (beforeChange)="beforeChange1($event)">
+        <div ngxSlickItem *ngFor="let s of dashboardShopOffer1" class="slide1">
           <div class=" card" >
             <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" >
                 <div class="first">
