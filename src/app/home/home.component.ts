@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     this.dashboardShopList();
   }
 
-  slideConfig = {"slidesToShow": 5, "slidesToScroll": 1};
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 1};
   
   slickInit(e:any) {
     console.log('slick initialized');
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       // alert(data)
       this.dashboardShop = data;
       this.dashboardShop1 = this.dashboardShop.data.dashboardShopList;
-      console.log("data dashboard>>>",this.dashboardShop1);
+      // console.log("data dashboard>>>",this.dashboardShop1);
     })
   }
  
@@ -66,8 +66,27 @@ export class HomeComponent implements OnInit {
       // alert(data)
       this.dashboardShopOffer = data;
       this.dashboardShopOffer1 = this.dashboardShopOffer.data.dashboardShopDetailsByOffer;
-      // console.log("dashboard>>>",this.dashboardShopOffer1);
+      console.log("dashboard>>>",this.dashboardShopOffer1);
     })
+  }
+
+
+  slideConfig1 = {"slidesToShow": 3, "slidesToScroll": 1};
+  
+  slickInit1(e:any) {
+    console.log('slick initialized');
+  }
+    
+  breakpoint1(e:any) {
+    console.log('breakpoint');
+  }
+    
+  afterChange1(e:any) {
+    console.log('afterChange');
+  }
+    
+  beforeChange1(e:any) {
+    console.log('beforeChange');
   }
   
 
