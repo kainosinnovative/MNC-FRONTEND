@@ -54,7 +54,8 @@ import { ComboOffersComponent } from './combo-offers/combo-offers.component';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { TestinsertComponent } from './testinsert/testinsert.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -75,7 +76,9 @@ const appRoutes: Routes = [
   { path: 'ShopService', component: ShopServiceComponent, data: {title: 'ShopService'}},
   { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}},
   { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
-  { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}}
+  { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}},
+  { path: 'test', component: TestinsertComponent, data: {title: 'test'}}
+  
 
 ];
 @NgModule({
@@ -101,8 +104,8 @@ const appRoutes: Routes = [
       ShopServiceComponent,
       ShopdashboardComponent,
       SelectcityComponent,
-      ComboOffersComponent
-      
+      ComboOffersComponent,
+      TestinsertComponent
    
      ],
   imports: [
@@ -134,7 +137,8 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     AutocompleteLibModule,
     NgImageSliderModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

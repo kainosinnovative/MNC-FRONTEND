@@ -26,7 +26,11 @@ import { SelectcityComponent } from './selectcity/selectcity.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+
+
+export class AppComponent implements OnInit{
+
+ 
 
   currentUsername = localStorage.getItem('currentUsername');
 
@@ -37,6 +41,7 @@ export class AppComponent {
   
   title = 'angular6-sidenav-example';
   cont_id: any;
+  cityid: any;
 constructor(private  dialog:  MatDialog, private  router:  Router){}
   closemenu() {
     console.log("hi")
@@ -45,6 +50,15 @@ constructor(private  dialog:  MatDialog, private  router:  Router){}
   //   myTag = this.el.nativeElement.querySelector("li");
   // element.classList.remove("mystyle");
     // document.getElementById("cont_id").classList.remove("mat-drawer-container mat-sidenav-container mat-drawer-transition");
+  }
+
+
+  ngOnInit(): void {
+    //  var cityid:any;
+    this.cityid = localStorage.getItem('selectedCity');
+    if(this.cityid == null ){
+      this.cityid = 3;
+    }
   }
 
   login(){

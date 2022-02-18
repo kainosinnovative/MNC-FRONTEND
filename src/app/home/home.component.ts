@@ -11,23 +11,34 @@ export class HomeComponent implements OnInit {
   selectedCity: any;
   dashboardShop:any;
   dashboardShop1:any;
+  dashboardShopOffer:any;
+  dashboardShopOffer1:any;
   constructor(public restApi: RestApiService) { }
 
   ngOnInit(): void {
     // alert("hi")
-    // this.getdatabycity();
+    this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
   }
 
-  // getdatabycity() {
-  //   this.selectedCity = localStorage.getItem('selectedCity');
-  // }
-
-  // dashboardShopList() {
-  // let selectedCity2 = localStorage.getItem('selectedCity');
-  // }
-
+  slideConfig = {"slidesToShow": 5, "slidesToScroll": 1};
+  
+  slickInit(e:any) {
+    console.log('slick initialized');
+  }
+    
+  breakpoint(e:any) {
+    console.log('breakpoint');
+  }
+    
+  afterChange(e:any) {
+    console.log('afterChange');
+  }
+    
+  beforeChange(e:any) {
+    console.log('beforeChange');
+  }
   dashboardShopList(){
     var cityid:any;
     cityid = localStorage.getItem('selectedCity');
@@ -42,7 +53,22 @@ export class HomeComponent implements OnInit {
       console.log("data dashboard>>>",this.dashboardShop1);
     })
   }
+ 
 
+  dashboardShopDetailByOffer(){
+    var cityid:any;
+    cityid = localStorage.getItem('selectedCity');
+    if(cityid == null ){
+      cityid = 3;
+    }
+    // alert(cityid)
+    return this.restApi.dashboardShopDetailsByOffer(cityid).subscribe((data: {}) => {
+      // alert(data)
+      this.dashboardShopOffer = data;
+      this.dashboardShopOffer1 = this.dashboardShopOffer.data.dashboardShopDetailsByOffer;
+      // console.log("dashboard>>>",this.dashboardShopOffer1);
+    })
+  }
   
 
 }

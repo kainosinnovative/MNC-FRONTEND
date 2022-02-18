@@ -145,6 +145,17 @@ gettestimonialData(): Observable<Testimonial> {
             }
 
 
+            dashboardShopDetailsByOffer(cityid:any): Observable<dahsboardShop> {
+  
+              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopList?cityid="+cityid)
+            
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
+
+
       getComboOffersData(currentUserId:any): Observable<Services> {
         // alert(currentUserId)
         return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?currentUserId="+currentUserId)

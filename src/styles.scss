@@ -167,7 +167,11 @@ line-height: unset !important;
   
 }
 
-
+.slick-prev:before, .slick-next:before {
+  
+  color: black !important;
+  
+}
 
 // .autocomplete-container .suggestions-container ul li a {
   // padding: 14px 15px;
