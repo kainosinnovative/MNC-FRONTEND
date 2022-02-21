@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 //import { DatePipe } from '@angular/common';
 import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-onlinebooking',
@@ -238,7 +239,27 @@ loadshopoffers(currentShopId:any){
     console.log("test>>>>",this.offerslist)
     
   })
+
 }
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+  
+  slickInit(e:any) {
+    console.log('slick initialized');
+  }
+    
+  breakpoint(e:any) {
+    console.log('breakpoint');
+  }
+    
+  afterChange(e:any) {
+    console.log('afterChange');
+  }
+    
+  beforeChange(e:any) {
+    console.log('beforeChange');
+  }
+
+  
 
 changeBgColor(offer_id:any){
 
@@ -313,6 +334,7 @@ idbyMasterService(){
 
   
 }
+
 
 }
 

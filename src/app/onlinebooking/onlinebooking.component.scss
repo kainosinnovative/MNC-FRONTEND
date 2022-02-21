@@ -49,7 +49,7 @@
 
     .carousel-item {
         height: 65vh;
-        // min-height: 350px;
+         min-height: 250px;
         background: no-repeat center center scroll;
     
     //     transition: -webkit-transform 0.1s ease;
@@ -149,7 +149,7 @@ padding: 1rem!important;
     border: none;
     //margin-left: 18px;
     height: 150px;
-    width: 1100px;
+    width: 816px;
 }
 .carbrandcls{
     background-color: #def2fa7d;
@@ -172,30 +172,27 @@ padding: 1rem!important;
 .selectnow{
     background-color: rgb(119 180 227 / 92%);;
           border: none;
-          height: 35px;
-          width: 100px;
-          margin-top: -11px;
+          height: 30px;
+          width: 80px;
+         // margin-top: -11px;
           
 }
 
 .selectnow2{
-   // background-color: rgb(119 180 227 / 92%);;
-          //border: none;
           height: 30px;
-          width: 75px;
+          width: 65px;
           border-radius: 6%;
           font-size: 16px;
-          margin-left: 871px;
+          margin-left: 20px;
 }
 
 .selectnow3{
-    //background-color: rgb(119 180 227 / 92%);;
-          //border: none;
+  
           height: 30px;
-          width: 75px;
+          width: 55px;
           border-radius: 6%;
-          font-size: 16px;
-          margin-top: -11px;
+          font-size: 15px;
+    //margin-top: -11px;
 }
 
 .comboselectbtm{
@@ -207,4 +204,18 @@ padding: 1rem!important;
           font-size: 16px;
 }
 
+.extser{
+    background-color: #def2fa7d; 
+    height:70px !important;
+    width: 541px;
+}
+.servicename{
+    font-size: 17x;
+    width: 150px;
+    text-align: left;
+}
+.serviceprice{
+    margin-left: 80px;
+    font-size: 14px;
+}
 

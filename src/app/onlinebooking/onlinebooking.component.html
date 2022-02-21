@@ -14,23 +14,7 @@
         <div class="row">
           <div class="col-sm-3">
            
-             
                <div class="form-group">
-                  <input class="fistnamecls" matinput="" formControlName="firstname" placeholder="Your Name" [(ngModel)]="currentUsername" value="{{currentUsername}}">
-                  <div *ngIf="onlinebooking.controls['firstname'].touched && onlinebooking.controls['firstname'].invalid "> 
-          
-                    <div *ngIf="onlinebooking.controls['firstname'].errors" style="color: red;"> 
-                      <div *ngIf="onlinebooking.controls['firstname'].errors.required" style="font-size: 12px;margin-left: 17px;">
-                          First name is required. 
-                      </div> 		   
-                     
-                   </div> 
-                    
-                  </div>
-             </div>
-             <br>
-                 
-            <div class="form-group">
               <select   class="cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">   
                  
                 <option>car Type</option>  
@@ -49,35 +33,22 @@
                   
                 </div> 
                   </div>
-    
-                   <br>
-    
-                      <div class="form-group">
-                        <textarea class="textcls"  matinput="" placeholder="Write Comment"></textarea>
-                    </div>
-                    <br>
+                 <br>
+                  <div class="form-group">
+                    <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
+                    <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
+                      <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
+                       <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                           Select Date
+                       </div> 		   
+                     </div> 
+                   </div>
+             </div>
+             <br>
             </div>
     
             <div class="col-sm-3">
            
-             
-              <div class="form-group">
-                <input class="emailcls" matinput="" formControlName="emailid" placeholder="Email Address"  [(ngModel)]="CustomerDataById1.emailid">
-                  <div *ngIf="onlinebooking.controls['emailid'].touched && onlinebooking.controls['emailid'].invalid "> 
-             
-                   <div *ngIf="onlinebooking.controls['emailid'].errors" style="color: red;"> 
-                     <div *ngIf="onlinebooking.controls['emailid'].errors.required" style="font-size: 12px;" class="emailvalid">
-                         Email id is required.
-                     </div> 		   
-                     <div *ngIf="onlinebooking.controls['emailid'].errors.pattern" style="font-size: 12px;" class="emailvalid">
-                          Email id is not valid.
-                     </div> 
-                  </div> 
-                   
-                 </div>
-                 </div>
-            <br>
-                
            <div class="form-group">
             <select class="carbrandcls" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">   
                  
@@ -94,33 +65,16 @@
                </div> 
              </div>
                  </div>
-    
-                 <br>
-    
-               
+                <br>
+                  <div class="form-group">
+                        <textarea class="textcls"  matinput="" placeholder="Special Instruction"></textarea>
+                    </div>
+                    <br>
                  
               </div>
     
            <div class="col-sm-3">
-           
-             
-            <div class="form-group">
-              <input style="background-color: #def2fa7d;border: none;width: 250px;height: 50px;" matinput="" formControlName="mobileno" placeholder="Phone Number" [(ngModel)]="isloggedinUser" value="{{isloggedinUser}}">
-              <div *ngIf="onlinebooking.controls['mobileno'].touched && onlinebooking.controls['mobileno'].invalid "> 
-          
-                <div *ngIf="onlinebooking.controls['mobileno'].errors" style="color: red;"> 
-                  <div *ngIf="onlinebooking.controls['mobileno'].errors.required" style="font-size: 12px;">
-                      Mobile number is required.
-                  </div> 		   
-                  <div *ngIf="onlinebooking.controls['mobileno'].errors.pattern" style="font-size: 12px;">
-                    Mobile number is not valid.
-                  </div> 
-               </div> 
                 
-              </div>
-        </div>
-          <br>
-              
          <div class="form-group">
                    
           <select  onchange = "favTutorial()" class="carmodelcls" formControlName="model" id="model">   
@@ -146,17 +100,7 @@
             <div class="col-sm-3">
            
              
-              <div class="form-group">
-                <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
-                <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
-                  <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
-                   <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                       Select Date
-                   </div> 		   
-                 </div> 
-               </div>
-         </div>
-         <br>
+              
          <div class="form-group">
           <select class="fueltypecls" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">    
              
@@ -181,38 +125,44 @@
      <!---End of Booking details-->
 
        <!--End of booking details-->
-    <!-- <mat-card-header> -->
-      <!-- <mat-card-title> -->
+     <mat-card-header> 
+       <mat-card-title> 
         <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Choose a Today Offers ______</h4>
         <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;"> Shop Deal Of The Day(offers)</h2>
     
-     
-      <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
+        <ngx-slick-carousel class="carousel"
+        #slickModal="slick-carousel" 
+        [config]="slideConfig" 
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem  *ngFor="let combolist of offerslist;"  >
+
+      <div id="carouselExampleCaptions1" data-bs-ride="carousel" >
         
-      <div class="carousel-inner" data-interval="10">
-            <div class=" carousel-item onesection active"  style="background: no-repeat center center scroll;">
+      <div data-interval="10">
+            <div class=" carousel-item onesection active">
                 <div class="row" style="margin-left: 6px;">
-                     <div class="col-sm-3"  *ngFor="let combolist of offerslist;">
-                    <div class="card"  >
-                      <div class="oneimage">
+                    
+      
+
+                    <div class="card col-sm-6"  style="width: 100px !important;" >
+                      <!-- <div class="oneimage">
                             <a href="">
                               <img *ngIf="combolist.shop_image"   src="http://localhost/MNC-PHP-API/{{combolist.shop_image}}"  class="img-fluid rounded thumbnail-image oneimage">
                             </a>
-                     </div>
-                <div class="product-detail-container p-2">
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                          <div class="color-select d-flex "> 
+                     </div> -->
+                <div class="product-detail-container p-2" >
+                       
+                           <div class="color-select d-flex "> 
                             <img *ngIf="combolist.shop_logo" src="http://localhost/MNC-PHP-API/{{combolist.shop_logo}}" style="width: 50px;margin-top: -7px;">{{combolist.name}}
                             </div>
-                       </div>
-      
-                      <div class="d-flex justify-content-between align-items-center">
+
+                <div class="d-flex justify-content-between align-items-center">
                         <h5 class="dress-name">{{combolist.offer_percent}} % OFFER inside..! Great offers on car get a clean</h5>
-                       
                         </div>
-                    
-      
-                          <div class="d-flex justify-content-between align-items-center">
+                       <div class="d-flex justify-content-between align-items-center">
                               <h5 class="dress-name">Petrol, CNG |{{combolist.model_name}} |
 
                                   <div *ngFor="let m of  combolist.services.split(',')">
@@ -236,14 +186,12 @@
                            <button  id="select_{{combolist.offer_id}}"  (click)="changeBgColor(combolist.offer_id)"   class="comboselectbtm" >{{text}}</button>  
                      </div>
                   </div>
+                  
                     <div class="eachcontMultislide" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');"></div> 
                      </div>
                          </div>
                     </div>
-    
-                   
-       
-        </div>
+     </div>
         <button style="color: black;" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
           <span class="carousel-control-prev-icon1"  aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
           <span class="visually-hidden">Previous</span>
@@ -253,42 +201,47 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    
+    </ngx-slick-carousel>
+
       
-        <!-- </mat-card-title> -->
-    <!-- </mat-card-header> -->
+        </mat-card-title> 
+     </mat-card-header> 
     
 
       <!---End of Pricing plan-->
-
-      <!-- <mat-card-header> -->
-        <!-- <mat-card-title> -->
-          <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4>
+<br>
+      <mat-card-header> 
+         <mat-card-title> 
+          <!-- <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4> -->
           <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;">Choose Extra  Services</h2>
-          <!-- </mat-card-title> -->
-      <!-- </mat-card-header> -->
+          </mat-card-title> 
+       </mat-card-header> 
       <mat-card-content >
     
-       
-        <div class="" style="display: inline;" *ngFor="let shoplist of shopdetails1;">
+       <div class="row"> 
+        <div class="col-sm-6" style="display: inline;" *ngFor="let shoplist of shopdetails1;">
       
-          <div class="" style="background-color: #def2fa7d; height:70px !important;">
+          <div class="extser">
     
             <div class="d-flex justify-content-between align-items-center">
                <span class="discount2" *ngIf="shoplist.offer_percent!=0">Up to {{shoplist. offer_percent}}% Off</span>  
           </div>
             <!--Section: Content-->
               <div class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2"  >
-                 <p style="font-size: 17x;" class="font-weight-bold;back" >
+                <div class="servicename">
+                 <p class="font-weight-bold;back" >
                   {{shoplist.service_name}}</p> 
+                 </div>
                 <br>
-                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent!=0" > On Service Price @ 
+                <div class="serviceprice">
+                <p *ngIf="shoplist.offer_percent!=0" > Offer Price @ 
                   <input type="text" class="selectnow3" value="{{shoplist.offer_price}}" id="amount_{{shoplist.service_id}}">
                 </p> 
-                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent ==0" > On Service Price @ 
+                
+                <p *ngIf="shoplist.offer_percent ==0" > Service Price @ 
                   <input type="text" class="selectnow3" value="{{shoplist.actual_amount}}" id="amount_{{shoplist.service_id}}">
                 </p>
-               
+              </div>
                 <button id="chooice_{{shoplist.service_id}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id)">{{textcontent}}</button> 
               </div> 
      
@@ -296,15 +249,20 @@
         </div>
         <br>
     </div>
-
+</div>
       
     </mat-card-content>
 
+    <div style=" margin-left: 876px;font-size: 17px;">
+      <label class="mainheading">Extra Services price: </label>
+      <input type="number" id="totalamount" class="selectnow2"  >
+      </div>
+<br>
      <mat-card-actions > 
-     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 18px;" >Conform Booking</button>
+     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 975px;" >Conform Booking</button>
      <!-- <label>Totally:</label> -->
-     <input type="number" id="totalamount" class="selectnow2"  >
-     <input type="number" id="finalamount" class="selectnow2"  >
+   
+     <!-- <input type="number" id="finalamount" class="selectnow2"  > -->
      </mat-card-actions>
        
    </mat-card>
