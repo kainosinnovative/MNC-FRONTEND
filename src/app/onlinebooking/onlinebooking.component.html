@@ -181,8 +181,8 @@
      <!---End of Booking details-->
 
        <!--End of booking details-->
-    <!-- <mat-card-header> -->
-      <!-- <mat-card-title> -->
+     <mat-card-header> 
+       <mat-card-title> 
         <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Choose a Today Offers ______</h4>
         <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;"> Shop Deal Of The Day(offers)</h2>
     
@@ -255,40 +255,44 @@
       </div>
     
       
-        <!-- </mat-card-title> -->
-    <!-- </mat-card-header> -->
+        </mat-card-title> 
+     </mat-card-header> 
     
 
       <!---End of Pricing plan-->
-
-      <!-- <mat-card-header> -->
-        <!-- <mat-card-title> -->
-          <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4>
+<br>
+      <mat-card-header> 
+         <mat-card-title> 
+          <!-- <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4> -->
           <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;">Choose Extra  Services</h2>
-          <!-- </mat-card-title> -->
-      <!-- </mat-card-header> -->
+          </mat-card-title> 
+       </mat-card-header> 
       <mat-card-content >
     
-       
-        <div class="" style="display: inline;" *ngFor="let shoplist of shopdetails1;">
+       <div class="row"> 
+        <div class="col-sm-6" style="display: inline;" *ngFor="let shoplist of shopdetails1;">
       
-          <div class="" style="background-color: #def2fa7d; height:70px !important;">
+          <div class="extser">
     
             <div class="d-flex justify-content-between align-items-center">
                <span class="discount2" *ngIf="shoplist.offer_percent!=0">Up to {{shoplist. offer_percent}}% Off</span>  
           </div>
             <!--Section: Content-->
               <div class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2"  >
-                 <p style="font-size: 17x;" class="font-weight-bold;back" >
+                <div class="servicename">
+                 <p class="font-weight-bold;back" >
                   {{shoplist.service_name}}</p> 
+                 </div>
                 <br>
-                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent!=0" > On Service Price @ 
+                <div class="serviceprice">
+                <p *ngIf="shoplist.offer_percent!=0" >  Service Price @ 
                   <input type="text" class="selectnow3" value="{{shoplist.offer_price}}" id="amount_{{shoplist.service_id}}">
                 </p> 
-                <p  style="font-size: 14px;margin-right: -275px;" *ngIf="shoplist.offer_percent ==0" > On Service Price @ 
+                
+                <p *ngIf="shoplist.offer_percent ==0" >  Service Price @ 
                   <input type="text" class="selectnow3" value="{{shoplist.actual_amount}}" id="amount_{{shoplist.service_id}}">
                 </p>
-               
+              </div>
                 <button id="chooice_{{shoplist.service_id}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id)">{{textcontent}}</button> 
               </div> 
      
@@ -296,15 +300,20 @@
         </div>
         <br>
     </div>
-
+</div>
       
     </mat-card-content>
 
+    <div style=" margin-left: 863px;font-size: 17px;">
+      <label class="mainheading">Extra Services price: </label>
+      <input type="number" id="totalamount" class="selectnow2"  >
+      </div>
+<br>
      <mat-card-actions > 
-     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 18px;" >Conform Booking</button>
+     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 975px;" >Conform Booking</button>
      <!-- <label>Totally:</label> -->
-     <input type="number" id="totalamount" class="selectnow2"  >
-     <input type="number" id="finalamount" class="selectnow2"  >
+   
+     <!-- <input type="number" id="finalamount" class="selectnow2"  > -->
      </mat-card-actions>
        
    </mat-card>
