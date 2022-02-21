@@ -17,12 +17,14 @@
 
 .title  {
   padding-left: 6px;
-  background-color:#e81c2ea8;
+  background-color:#202c45;
+  color: white;
 }
 .title1
 {
     padding-left: 6px;
-    background-color:#e81c2ea8;
+    background-color:#202c45;
+    color: white;
 }
 
 .content {
@@ -70,7 +72,7 @@
     height: 28px;
     width: 170px !important;
     padding-left: 2px !important;
-    margin-left: 75px;
+    // margin-left: 75px;
         
 
 }
@@ -80,113 +82,125 @@
     width: 85px !important;
     padding-top: 3px;
     padding-left: 2px !important;
-    margin-left: 12px;
+    // margin-left: 12px;
  
 }
 
-.city{
-    padding-left: 2px !important;
-    width: 170px;
-    margin-left: 32px;
- }
+// .city{
+//     padding-left: 2px !important;
+//     width: 170px;
+//     margin-left: 32px;
+//  }
 
- .cartype{
-    padding-left: 2px !important;
-    width: 200px;
-    margin-left: 25px;
- }
+//  .cartype{
+//     padding-left: 2px !important;
+//     width: 200px;
+//     margin-left: 25px;
+//  }
 
- .fueltype{
-    padding-left: 2px !important; 
-    width: 180px;
-    margin-left: 19px;
- }
+//  .fueltype{
+//     padding-left: 2px !important; 
+//     width: 180px;
+//     margin-left: 19px;
+//  }
 
- .carbrand{
-    padding-left: 2px !important;
-    width: 260px !important;
-    margin-left: 20px;
- }
+//  .carbrand{
+//     padding-left: 2px !important;
+//     width: 260px !important;
+//     margin-left: 20px;
+//  }
 
- .carcolor{
-    width: 175px;
-    padding-left: 2px !important;
-    margin-left: 24px;
- }
+//  .carcolor{
+//     width: 175px;
+//     padding-left: 2px !important;
+//     margin-left: 24px;
+//  }
 
- .carmodel{
-    padding-left: 2px !important;
-    width: 240px; 
-    margin-left: 25px; 
- }
+//  .carmodel{
+//     padding-left: 2px !important;
+//     width: 240px; 
+//     margin-left: 25px; 
+//  }
 
- @media screen and (max-width: 768px){
+//  @media screen and (max-width: 768px){
 
-.addresscls{
-    width: 190px !important;
+// .addresscls{
+//     width: 190px !important;
+// }
+
+// .streetcls{
+//     width: 200px !important;
+// }
+
+// .lastname{
+//     margin-top: 22px !important;
+// }
+
+// .emailid{
+//     width: 209px !important;
+//     margin-top: 22px !important;
+//     margin-left: 70px;
+// }
+// .gendercls{
+//     margin-left: 60px; 
+// }
+// .citycls{
+//     margin-left: 80px;
+//     width: 180px !important;
+// }
+// .cartypecls{
+//     margin-left: 49px !important;
+// }
+// .fueltype{
+//     margin-left: 44px !important;
+// }
+// .carbrand{
+//     margin-left: 42px !important;
+//     width: 198px !important;
+//     margin-top: 22px !important;
+// }
+// .carcolor{
+//     margin-left: 44px !important;
+// }
+// .carmodel{
+//     margin-left: 39px !important;
+//     width: 205px !important;
+//     margin-top: 22px !important;
+//       }
+
+// .emailvalid{
+//     margin-left: 112px !important;
+//       }
+
+//  .gendervalid{
+//         margin-left: 112px !important;
+//           }
+//  .cityvalid{
+//      margin-left: 112px !important;
+//   }
+//   .cartypevalid{
+//     margin-left: 112px !important;
+//  }
+//  .fueltypevalid{
+//     margin-left: 112px !important;
+//  }
+//  .carbrandvalid{
+//     margin-left: 112px !important;
+//  }
+//  .carcolorvalid{
+//     margin-left: 112px !important;
+//  }         
+//  }
+
+select {
+    height: 28px;
 }
 
-.streetcls{
-    width: 200px !important;
+input {
+    height: 28px;
 }
 
-.lastname{
-    margin-top: 22px !important;
+.customerProfileLbl{
+    width: 130px;
 }
-
-.emailid{
-    width: 209px !important;
-    margin-top: 22px !important;
-    margin-left: 70px;
-}
-.gendercls{
-    margin-left: 60px; 
-}
-.citycls{
-    margin-left: 80px;
-    width: 180px !important;
-}
-.cartypecls{
-    margin-left: 49px !important;
-}
-.fueltype{
-    margin-left: 44px !important;
-}
-.carbrand{
-    margin-left: 42px !important;
-    width: 198px !important;
-    margin-top: 22px !important;
-}
-.carcolor{
-    margin-left: 44px !important;
-}
-.carmodel{
-    margin-left: 39px !important;
-    width: 205px !important;
-    margin-top: 22px !important;
-      }
-
-.emailvalid{
-    margin-left: 112px !important;
-      }
-
- .gendervalid{
-        margin-left: 112px !important;
-          }
- .cityvalid{
-     margin-left: 112px !important;
-  }
-  .cartypevalid{
-    margin-left: 112px !important;
- }
- .fueltypevalid{
-    margin-left: 112px !important;
- }
- .carbrandvalid{
-    margin-left: 112px !important;
- }
- .carcolorvalid{
-    margin-left: 112px !important;
- }         
- }
 

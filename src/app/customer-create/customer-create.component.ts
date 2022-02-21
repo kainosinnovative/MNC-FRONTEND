@@ -32,7 +32,7 @@ export class CustomerCreateComponent implements OnInit {
 
 types:any;
 profileform : any;
-
+cardetailForm :any;
 
 
   opened = true;
@@ -99,10 +99,10 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   this.profileform = this.frmbuilder.group({
     firstname: ['', Validators.required],
      lastname: ['', Validators.required],
-    dob: ['', Validators.required],
+    dob: [],
     doorno: ['', Validators.required],
     state: ['', Validators.required],
-     gender: ['', Validators.required],
+     gender: [],
       city: ['', Validators.required],
      street: ['', Validators.required],
      fueltype: ['', Validators.required],
@@ -116,7 +116,19 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      lastupddt: [current_date, [Validators.required]],
     customer_id:[currentUserId, [Validators.required]]
   
-    })    
+    }) 
+    
+    
+    this.cardetailForm = this.frmbuilder.group({
+      
+       fueltype: ['', Validators.required],
+       cartype: ['', Validators.required],
+       brand: ['', Validators.required],
+       color: ['', Validators.required],
+       model: ['', Validators.required]
+       
+    
+      })
 ;}
 
 
@@ -129,7 +141,7 @@ readCustomerDataById() {
 
     
     this.CustomerDataById1 = this.CustomerDataById.data.profile
-    console.log(this.CustomerDataById);
+    console.log("shop info>>>",this.CustomerDataById);
     
   }
     
@@ -331,6 +343,21 @@ uploadFile(profileform:any)
   );
 }
    
+
+AddCustomerCarDetails(cardetailForm:any)
+    {
+      
+      this.http.post(config_url+'/app/CustomerCarDetailsInsert',cardetailForm)
+      .subscribe(res => {
+      
+      }, (err) => {
+      
+    });
+    // console.log(profileform);
+    this.toastr.success('Car Details added Successfully');
+    // window.location.reload();
+    }
+
   }
     
    

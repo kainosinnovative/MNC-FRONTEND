@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms'
 //import { CustomerCreateComponent } from '../customer-create/customer-create.component';
 import { HttpClient } from '@angular/common/http';
 //import { DatePipe } from '@angular/common';
+import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
 
 @Component({
   selector: 'app-onlinebooking',
@@ -51,7 +52,7 @@ export class OnlinebookingComponent implements OnInit {
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     //public datepipe: DatePipe
-    
+    private router: ActivatedRoute
   ) {  }
 
 
@@ -62,8 +63,8 @@ export class OnlinebookingComponent implements OnInit {
     this.displaycartype();
     this.loadcarbrand();
     this.readCustomerDataById();
-    this.loadshopdetails();
-    this.loadshopoffers();
+    // this.loadshopdetails();
+    // this.loadshopoffers();
     this.idbyMasterService();
   
    
@@ -80,6 +81,13 @@ export class OnlinebookingComponent implements OnInit {
       model: ['', Validators.required],
       // lastupddt: [current_date, [Validators.required]]
        }) 
+
+
+       this.router.params.subscribe(params => {
+        const id = params['id'];
+        this.loadshopdetails(id);
+        this.loadshopoffers(id);
+  })
   }
 
 
@@ -202,9 +210,9 @@ readCustomerDataById() {
   
 }
 
-loadshopdetails(){
+loadshopdetails(currentUserId:any){
 
-  let currentUserId = 1;
+  // let currentUserId = 1;
   
   return this.restApi.getServiceData(currentUserId).subscribe((data: {}) => {
     // alert(data)
@@ -217,9 +225,9 @@ loadshopdetails(){
   })
 }
 
-loadshopoffers(){
+loadshopoffers(currentShopId:any){
 
-  let currentShopId = 1;
+  // let currentShopId = 1;
   
   return this.restApi.ShopoffersById(currentShopId).subscribe((data: {}) => {
 

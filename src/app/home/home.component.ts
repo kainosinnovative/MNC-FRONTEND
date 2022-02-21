@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RestApiService } from "../shared/rest-api.service";
+import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,7 +17,11 @@ export class HomeComponent implements OnInit {
   dashboardShopOffer1:any;
   MasterServiceData:any;
   MasterServiceData1:any;
-  constructor(public restApi: RestApiService,public datepipe: DatePipe) { }
+
+  param1: string;
+param2: string;
+  // route: any;
+  constructor(public restApi: RestApiService,public datepipe: DatePipe,private router: ActivatedRoute) { }
 
   
 
@@ -28,6 +33,10 @@ export class HomeComponent implements OnInit {
     this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
+    
+    // this.router.queryParams.subscribe(params => {
+    //   console.log("params>>>",params);
+    // });
 
     
   }
