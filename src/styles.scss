@@ -38,7 +38,7 @@ $angular6-sidenav-example-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { 
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  
+  // background-color: white !important;
 }
 
 // .a{
@@ -185,3 +185,8 @@ line-height: unset !important;
   //  z-index: 100px;
 // }
 .select::-ms-expand { display: block !important; }
+
+.mat-drawer-content {
+    
+  background: white !important;
+}

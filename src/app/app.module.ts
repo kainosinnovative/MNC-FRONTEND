@@ -69,7 +69,7 @@ const appRoutes: Routes = [
   
   { path: 'contactus', component: ContactUsComponent, data: { title: 'Contact Us'} },
   { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
-  { path: 'onlinebooking', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
+  { path: 'onlinebooking/:id', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
   { path: 'FileuploadComponent', component: FileuploadComponent, data: { title: 'FileuploadComponent'}},
   { path: 'services', component: ServicesComponent, data: {title: 'Services component'}},
   { path: 'ShopProfile', component: ShopProfileComponent, data: {title: 'ShopProfile'}},
