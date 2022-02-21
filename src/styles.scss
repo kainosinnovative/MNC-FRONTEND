@@ -64,24 +64,24 @@ body {
 .firstLastnamecls{
   width: 190px !important;
   padding-left: 2px !important;
-  margin-left: 40px;
+  margin-left: 36px;
 }
 .Shopnamecls
 {
   width: 250px !important;
   padding-left: 2px !important;
-  margin-left: 40px;
+  margin-left: 33px;
 }
 .emailidcls {
   width: 280px !important;
-  margin-left: 23px;
+  margin-left: 13px;
   padding-left: 2px !important;
  
 }
 
 .dateofbirthcls {
   width: 150px !important;
-  margin-left: 29px;
+  margin-left: 38px;
   padding-left: 2px !important;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 .streetshop
 {width: 150px;
-  margin-left: 32px;
+  margin-left: 28px;
   padding-left: 2px !important;
 
 }
@@ -139,7 +139,7 @@ line-height: unset !important;
   width: 85px !important;
   padding-top: 3px;
   padding-left: 2px !important;
-  margin-left: 22px;
+  margin-left: 16px;
 
 }
 
@@ -184,3 +184,4 @@ line-height: unset !important;
   //  background: rgb(17, 192, 183) !important; 
   //  z-index: 100px;
 // }
+.select::-ms-expand { display: block !important; }
