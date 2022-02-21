@@ -50,7 +50,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     name:['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    dob: ['', Validators.required],
+    dob:[],
     doorno: ['', Validators.required],
     state: ['', Validators.required],
     gender: ['', Validators.required],
@@ -62,7 +62,9 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     lastupddt: [current_date, [Validators.required]],
-    shop_id:[currentShopId, [Validators.required]]
+    shop_id:[currentShopId, [Validators.required]],
+    shop_timing_from:['',[Validators.required]],
+    shop_timing_to:['',[Validators.required]]
   
     })    
 ;
@@ -122,6 +124,43 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
           formData.append('info',JSON.stringify(info))
           formData.append('currentUserId',currentUserId)
           formData.append('shopownersession',"shopowner")
+          this.file_data=formData
+          
+        }
+   
+        
+    }
+    this.http.post(config_url+'/app/AddCustomerInsert',this.file_data)
+    .subscribe(res => {
+    //send success response
+    }, (err) => {
+    //send error response
+  });
+
+  
+  }    
+  fileChangelogo(event:any) {
+    let usertype:any;
+    const fileList: FileList = event.target.files;
+    //check whether file is selected or not
+    if (fileList.length > 0) {
+  
+        const file = fileList[0];
+        //get file information such as name, size and type
+        console.log('finfo',file.name,file.size,file.type);
+        //max file size is 4 mb
+        let currentUserId:any = localStorage.getItem('currentUserId');
+        if((file.size/1048576)<=4)
+        {
+          let formData = new FormData();
+          let info={id:2,name:'raja'}
+          formData.append('file', file, file.name);
+          formData.append('id','2');
+          formData.append('tz',new Date().toISOString())
+          formData.append('update','2')
+          formData.append('info',JSON.stringify(info))
+          formData.append('currentUserId',currentUserId)
+          formData.append('shopownersession',"shopownerlogo")
           this.file_data=formData
           
         }

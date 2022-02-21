@@ -17,12 +17,15 @@
 
 .title  {
     padding-left: 6px;
-    background-color:#e81c2ea8;
+    background-color:#202c45;
+    color:white;
+    
 }
 .title1
 {
     padding-left: 6px;
-    background-color:#e81c2ea8;
+    background-color:#202c45;
+    color:white;
 }
 
 .content {
@@ -119,6 +122,7 @@
     width: 240px; 
     margin-left: 25px; 
  }
+ 
  @media screen and (max-width: 768px){
      .shopname{
         width: 190px !important;
