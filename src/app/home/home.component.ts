@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.date=new Date();
+    this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadMasterService();
     // alert("hi")
     this.dashboardShopDetailByOffer();
