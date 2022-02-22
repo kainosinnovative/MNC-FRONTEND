@@ -336,6 +336,25 @@ idbyMasterService(){
 }
 
 
+slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
+  
+  slickInit1(e:any) {
+    console.log('slick initialized');
+  }
+    
+  breakpoint1(e:any) {
+    console.log('breakpoint');
+  }
+    
+  afterChange1(e:any) {
+    console.log('afterChange');
+  }
+    
+  beforeChange1(e:any) {
+    console.log('beforeChange');
+  }
+
+
 }
 
 
