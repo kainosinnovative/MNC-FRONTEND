@@ -74,25 +74,26 @@
         //background-color:rgb(214, 211, 211);
       }  
 
-.discount {
-    background-color: red;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 4px;
-    padding-right: 4px;
-    font-size: 10px;
-    border-radius: 6px;
-    color: #fff
-}
+      .discount {
+        background-color: #b83b5e;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 10px;
+        border-radius: 6px;
+        color: white;
+    }
+    
 .discount2 {
-    background-color: rgb(12, 148, 58);
-    padding-top: 1px;
-    padding-bottom: 1px;
+    font-size: 10px;
+    color: white;
+    font-weight: 500;
+    background: rgb(5, 168, 73);
+    border-radius: 6px;
     padding-left: 4px;
     padding-right: 4px;
-    font-size: 8px;
-    border-radius: 6px;
-    color: #fff
+
 }
 
 
@@ -199,9 +200,9 @@ padding: 1rem!important;
     background-color: rgb(119 180 227 / 92%);;
           border: none;
           height: 30px;
-          width: 75px;
-          //margin-top: -11px;
-          font-size: 16px;
+          width: 70px;
+          font-size: 15px;
+          margin-left: 183px;
 }
 
 .extser{
@@ -219,3 +220,22 @@ padding: 1rem!important;
     font-size: 14px;
 }
 
+.combovaluebox{
+
+    height: 25px;
+    width: 55px;
+    border-radius: 6%;
+    font-size: 15px;
+//margin-top: -11px; 
+}
+
+.buy {
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+    background: purple;
+    border-radius: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-bottom: -49px;
+}
