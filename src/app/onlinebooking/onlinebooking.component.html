@@ -1,4 +1,11 @@
 <h2 class="mainheading" style="text-align:center;">My Online Booking</h2>
+<!-- <div class="d-flex justify-content-between align-items-center pt-1""> -->
+  <!-- <div class="color-select d-flex ">  -->
+    <div style="margin-left: 597px;">
+    <img src="http://localhost/MNC-PHP-API/{{offerslist[0].shop_logo}}" style="width: 50px;margin-top: -7px;"><b> {{offerslist[0].name}}</b>
+    </div>
+    <!-- </div> -->
+<!-- </div> -->
 
 <div style=" margin-top: -75px;">
 
@@ -7,133 +14,60 @@
   
         <mat-card-header>
           <mat-card-title>
-            <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Enter Your Details_____</h4>
+            <!-- <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Enter Your Details_____</h4> -->
             <h2 class="mainheading" style=" margin-top: -17px;margin-left: -17px;">  Booking Details</h2>
             </mat-card-title>
         </mat-card-header>
         <div class="row">
           <div class="col-sm-3">
            
-               <div class="form-group">
-              <select   class="cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" [(ngModel)]="CustomerDataById1.cartype">   
-                 
-                <option>car Type</option>  
-                 <option *ngFor="let cartypes of displaydata1" [value]="cartypes.id">
-                  {{cartypes.type_name}}
-              </option> 
+            <div class="form-group">
+                   
+              <select  onchange = "favTutorial()" class="carmodelcls" formControlName="model" id="model">   
+                     
+                <option>Car Model</option>  
+                <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
+                  {{carmodels.model_name}}
+                  </option> 
                  </select>
-                 <div *ngIf="onlinebooking.controls['cartype'].touched && onlinebooking.controls['cartype'].invalid "> 
-              
-                  <div *ngIf="onlinebooking.controls['cartype'].errors" style="color: red;"> 
-                    <div *ngIf="onlinebooking.controls['cartype'].errors.required" style="margin-left: 17px;font-size: 12px;">
-                        Select car type
+                  <div *ngIf="onlinebooking.controls['model'].touched && onlinebooking.controls['model'].invalid"> 
+                      
+                  <div *ngIf="onlinebooking.controls['model'].errors" style="color: red;"> 
+                    <div *ngIf="onlinebooking.controls['model'].errors.required" style="font-size: 12px;">
+                        Select car model
                     </div> 		   
                    
                  </div> 
                   
                 </div> 
-                  </div>
-                 <br>
-                  <div class="form-group">
-                    <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
-                    <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
-                      <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
-                       <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                           Select Date
-                       </div> 		   
-                     </div> 
                    </div>
-             </div>
+                 <br>
+                 <div class="form-group">
+                  <textarea class="textcls"  matinput="" placeholder="Special Instruction"></textarea>
+              </div>
              <br>
             </div>
     
             <div class="col-sm-3">
-           
-           <div class="form-group">
-            <select class="carbrandcls" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" [(ngModel)]="CustomerDataById1.brand">   
-                 
-              <option>Car Brand</option>  
-              <option *ngFor="let brandlist of branddata" [value]="brandlist.id">
-                {{brandlist.brand_name}}
-            </option>
-               </select>
-               <div *ngIf="onlinebooking.controls['brand'].touched && onlinebooking.controls['brand'].invalid "> 
-                <div *ngIf="onlinebooking.controls['brand'].errors" style="color: red;"> 
-                 <div *ngIf="onlinebooking.controls['brand'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                     Select Car Brand
-                 </div> 		   
-               </div> 
-             </div>
-                 </div>
-                <br>
-                  <div class="form-group">
-                        <textarea class="textcls"  matinput="" placeholder="Special Instruction"></textarea>
-                    </div>
-                    <br>
-                 
-              </div>
-    
-           <div class="col-sm-3">
-                
-         <div class="form-group">
-                   
-          <select  onchange = "favTutorial()" class="carmodelcls" formControlName="model" id="model">   
-                 
-            <option>Car Model</option>  
-            <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
-              {{carmodels.model_name}}
-              </option> 
-             </select>
-              <div *ngIf="onlinebooking.controls['model'].touched && onlinebooking.controls['model'].invalid"> 
-                  
-              <div *ngIf="onlinebooking.controls['model'].errors" style="color: red;"> 
-                <div *ngIf="onlinebooking.controls['model'].errors.required" style="font-size: 12px;">
-                    Select car model
-                </div> 		   
-               
-             </div> 
-              
-            </div> 
+            <div class="form-group">
+                <input class="datecls" type="date" matinput="" formControlName="date" placeholder="Date From" [(ngModel)]="CustomerDataById1.lastupddt">
+                <div *ngIf="onlinebooking.controls['date'].touched && onlinebooking.controls['date'].invalid "> 
+                  <div *ngIf="onlinebooking.controls['date'].errors" style="color: red;"> 
+                   <div *ngIf="onlinebooking.controls['date'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                       Select Date
+                   </div> 		   
+                 </div> 
                </div>
-              
-            </div>
-            <div class="col-sm-3">
-           
-             
-              
-         <div class="form-group">
-          <select class="fueltypecls" formControlName="fueltype" name="" [(ngModel)]="CustomerDataById1.fueltype">    
-             
-            <option value="">--Select Fuel Type---</option>
-            <option value="petrol">Petrol</option>
-            <option value="diesel">Diesel</option>
-             </select> 
-             <div *ngIf="onlinebooking.controls['fueltype'].touched && onlinebooking.controls['fueltype'].invalid "> 
-               <div *ngIf="onlinebooking.controls['fueltype'].errors" style="color: red;"> 
-                <div *ngIf="onlinebooking.controls['fueltype'].errors.required" style="margin-left: 17px;font-size: 12px;">
-                    Select fuel type
-                </div> 		   
-              </div> 
-            </div>
+                 </div>
               </div>
-                  
-   
-                   
-           </div>
-            </div>
+     </div>
+
     
      <!---End of Booking details-->
 
-       <!--End of booking details-->
-     <!-- <mat-card-header> 
-       <mat-card-title>  -->
-        <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Choose a Today Offers ______</h4>
-        <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;"> Shop Deal Of The Day(offers)</h2>
-    <div class="row">
-
-    
-        
-        <ngx-slick-carousel class="carousel" style="width:100%;background: none;"
+      <h2 class="mainheading">Hurry before these deals fly by!</h2>
+      <div class="row">
+       <ngx-slick-carousel class="carousel" style="width:100%;background: none;"
                         #slickModal="slick-carousel" 
                         [config]="slideConfig1" 
                         (init)="slickInit1($event)"
@@ -141,59 +75,46 @@
                         (afterChange)="afterChange1($event)"
                         (beforeChange)="beforeChange1($event)">
         <div ngxSlickItem *ngFor="let s of offerslist" class="slide1">
-          <div class=" card" >
+          <div class=" card oneimage" >
             <!-- <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" > -->
                  <div class="first">
                     <div class="d-flex justify-content-between align-items-center"> 
                       <span *ngIf="s.offer_percent != 0" class="discount">{{s.offer_percent}}% Off</span> 
                       <span *ngIf="s.offer_percent == 0" class="discount"></span>
 
-                      <span  class="discount2"> {{s.offer_name}} </span>
+                      <!-- <span  class="discount2"> {{s.offer_name}} </span> -->
                       
-                      <ng-template  #other_content1></ng-template>
-
-                      <!-- <span  *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content1" class="openClosed">Closed</span> -->
-                      
-                      <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span>  -->
-                    </div>
+                      <!-- <ng-template  #other_content1></ng-template> -->
+                  </div>
                 </div> 
 
-            <!-- </div> -->
+              <div class="product-detail-container p-2">
 
-            
-
-            <div class="product-detail-container p-2">
-
-              <div class="d-flex justify-content-between align-items-center pt-1">
+              <!-- <div class="d-flex justify-content-between align-items-center pt-1">
                 <div class="color-select d-flex "> 
-                  <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
+                  <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"><b> {{s.name}}</b>
                   </div>
+             </div> -->
+
+              <div class="d-flex justify-content-between align-items-center pt-1" style="margin-bottom: 5px;">
+                <div class="color-select d-flex "> 
+                  <span ><i class="fa fa-car" style="color: #429c68;"></i>&nbsp; <b>{{s.offer_name}}</b></span> </div>
              </div>
 
-             <!-- <b>Service: </b> -->
-             <!-- <span>{{s.service_id}}</span> -->
-             <!-- <div style="height: 50px;"> -->
-             <!-- <div *ngFor="let m of  s.serviceid.split(',');let j=index" > -->
-              
-              
-            <!-- </div> -->
-          <!-- </div> -->
-
-            <!-- <div class="d-flex justify-content-between align-items-center">
-              <span *ngFor="let m1 of  MasterServiceid1;" >
-                <h5 *ngIf="s.offer_percent != 0 && s.service_id === m1.service_id" class="dress-name">{{s.offer_percent}}% OFF on {{m1.service_name}}..! Great offers on car get a clean</h5>
-
-                <h5 *ngIf="s.offer_percent == 0 && s.service_id === m1.service_id" class="dress-name">{{m1.service_name}}. affordable price on car get a clean</h5>
-                              </span>
-             
-              </div> -->
-          
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="dress-name">{{s.model_name}} || {{s.services}}</h5>
+               <div class="d-flex justify-content-between align-items-center" style=" margin-bottom: 5px;">
+                  {{s.model_name}}
                  </div>
-
-                <div class="d-flex justify-content-between align-items-center" style="height:20px">
+            
+                 <b>Services:</b>
+                 <div style="height: 50px;">
+                 <div *ngFor="let m of  s.services.split(',');let j=index" >
+                  <div *ngFor="let m1 of  MasterServiceid1;" >
+                 <span *ngIf="m === m1.service_id && j<2"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
+                 </div>
+                 </div>
+              </div>
+            
+                <div class="d-flex justify-content-between align-items-center" >
                   <h5 *ngIf="s.offer_percent != 0" class="dress-name">Offer Price <i class="fa fa-rupee"></i>
                     <input type="text" class="combovaluebox" value="{{s.combo_price}}">  /-</h5>
                   <h5 *ngIf="s.offer_percent == 0" class="dress-name">Price <i class="fa fa-rupee"></i>
@@ -210,7 +131,7 @@
 </ngx-slick-carousel>
 
 <br><br>
-<div style=" margin-left: 876px;font-size: 17px;margin-top: 15px;">
+<div style=" margin-left: 863px;font-size: 17px;margin-top: 15px;">
   <label class="mainheading" id="name" >Combo Offer price: </label>
   <input type="number" id="finalamount" class="selectnow2"  >
   </div>
@@ -222,13 +143,13 @@
     
 
       <!---End of Pricing plan-->
-<br><br>
-      <mat-card-header> 
-         <mat-card-title> 
+
+      <!-- <mat-card-header>  -->
+         <!-- <mat-card-title>  -->
           <!-- <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Select Them Now _____</h4> -->
-          <h2 class="mainheading" style="margin-top: -17px;margin-left: -17px;">Choose Extra  Services</h2>
-          </mat-card-title> 
-       </mat-card-header> 
+          <h2 class="mainheading">Choose Extra  Services</h2>
+          <!-- </mat-card-title>  -->
+       <!-- </mat-card-header>  -->
       <mat-card-content >
     
        <div class="row"> 

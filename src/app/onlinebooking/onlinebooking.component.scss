@@ -62,9 +62,10 @@
       }
 
       .oneimage {
-        height:225px !important;
-        width:100%;
+        //height:225px !important;
+        width: 90% !important;
         //background-color:rgb(214, 211, 211);
+        background-color: #def2fa7d; 
       }
       
       .twoimage {
@@ -202,7 +203,8 @@ padding: 1rem!important;
           height: 30px;
           width: 70px;
           font-size: 15px;
-          margin-left: 183px;
+          margin-left: 167px;
+          margin-top: 8px;
 }
 
 .extser{
@@ -227,6 +229,7 @@ padding: 1rem!important;
     border-radius: 6%;
     font-size: 15px;
 //margin-top: -11px; 
+    margin-left: 10px;
 }
 
 .buy {

@@ -274,7 +274,7 @@ changeBgColor(offer_id:any){
        
 
         (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Selected";
-      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "green";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "lightgreen";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
         //alert(offer_amt);
         this.finalvalue = this.finalvalue +(offer_amt);
