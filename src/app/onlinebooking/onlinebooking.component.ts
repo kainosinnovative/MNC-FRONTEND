@@ -264,7 +264,7 @@ loadshopoffers(currentShopId:any){
 changeBgColor(offer_id:any){
 
   let offer_totalid = "offerprice_" + offer_id ;
-  //alert(offer_totalid);
+  // alert(offer_totalid);
    var offer_amt: number;
     let  buttonid="select_"+ offer_id;
 

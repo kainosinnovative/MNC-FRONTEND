@@ -3,10 +3,12 @@
 </div>
        <div class="ng-autocomplete" style="height: 150px;width:500px;overflow:hidden;">
         
-        <h2 class="mainheading" style="text-align: center;">Please enter your city to customize your experience</h2>
+        <h2 class="mainheading" style="text-align: center;">Enter your city to customize your experience</h2>
         <ng-autocomplete [data]="citydata" [searchKeyword]="keyword" (selected)='selectEvent($event)'
             (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
             [notFoundTemplate]="notFoundTemplate" style="overflow:hidden;">
+            <!-- <div class="input-container" style="border:1px solid black;">
+                <input type="text" aria-autocomplete="list" role="combobox" autocomplete="off" placeholder="" ng-reflect-model="" aria-label="" class="ng-pristine ng-valid ng-touched" style="border:5px solid black !important;"></div> -->
         </ng-autocomplete>
     
         <ng-template #itemTemplate let-item >

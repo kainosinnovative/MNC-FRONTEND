@@ -2,12 +2,12 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Inject, Injectable} from  '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
-import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { config_url } from '../shared/customer/constant';
-
+import { DynamicGrid } from '../shared//grid.model';
 
 var event:string;
 var num2: any;
@@ -34,6 +34,8 @@ types:any;
 profileform : any;
 cardetailForm :any;
 
+dynamicArray: Array<DynamicGrid> = [];
+  newDynamic: any = {};
 
   opened = true;
   opened1 = false;
@@ -64,7 +66,9 @@ cardetailForm :any;
   citydata: any;
   statetype: any;
   statedata: any;
-  
+  carDetailsById:any;
+  carDetailsById1:any;
+  removedata:any;
   constructor(
     public router: Router,
     private frmbuilder: FormBuilder,
@@ -86,6 +90,7 @@ ngOnInit() {
   this.loadcarbrand();
   this. loadcitylist();
   this.getstatedata();
+  this.loadcarDetailsById();
   element: HTMLElement;
 
   let currentUserId:any = localStorage.getItem('currentUserId');
@@ -105,11 +110,11 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      gender: [],
       city: ['', Validators.required],
      street: ['', Validators.required],
-     fueltype: ['', Validators.required],
-     cartype: ['', Validators.required],
-     brand: ['', Validators.required],
-     color: ['', Validators.required],
-     model: ['', Validators.required],
+    //  fueltype: ['', Validators.required],
+    //  cartype: ['', Validators.required],
+    //  brand: ['', Validators.required],
+    //  color: ['', Validators.required],
+    //  model: ['', Validators.required],
      zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
@@ -125,11 +130,35 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
        cartype: ['', Validators.required],
        brand: ['', Validators.required],
        color: ['', Validators.required],
-       model: ['', Validators.required]
-       
+       model: ['', Validators.required],
+       lastupddt: [current_date, [Validators.required]],
+       customer_id:[currentUserId, [Validators.required]]
     
       })
+
+
+      
 ;}
+
+
+addRow() {  
+  this.newDynamic = {title1: "", title2: "",title3:""};
+  this.carDetailsById1.push(this.newDynamic);
+  this.toastr.success('New row added successfully', 'New Row');
+  // console.log(this.dynamicArray);
+  return true;
+}
+
+deleteRow(index:any) {
+  if(this.dynamicArray.length ==1) {
+    this.toastr.error("Can't delete the row when there is only one row", 'Warning');
+      return false;
+  } else {
+      this.carDetailsById1.splice(index, 1);
+      this.toastr.warning('Row deleted successfully', 'Delete row');
+      return true;
+  }
+}
 
 
 readCustomerDataById() {
@@ -235,7 +264,7 @@ uploadFile(profileform:any)
         this.fetchdata = cartypedata;
         this.fetchdata1 = this.fetchdata.data.type;
         
-        console.log("data>>>>",this.fetchdata1)
+        // console.log("data>>>>",this.fetchdata1)
       })
     }
 
@@ -264,7 +293,7 @@ uploadFile(profileform:any)
     //console.log("hi")
         this.citydata = this.citytype.data.list;
         
-         console.log("data>>>>",this.citydata)
+        //  console.log("data>>>>",this.citydata)
       })
     }
 
@@ -276,7 +305,7 @@ uploadFile(profileform:any)
         this.statetype = statelistdata;
        this.statedata = this.statetype.data.list;
         
-     console.log("data>>>>",this.statedata)
+    //  console.log("data>>>>",this.statedata)
       })
     }
 
@@ -346,16 +375,48 @@ uploadFile(profileform:any)
 
 AddCustomerCarDetails(cardetailForm:any)
     {
-      
+      // alert("cardetailForm"+cardetailForm)
       this.http.post(config_url+'/app/CustomerCarDetailsInsert',cardetailForm)
       .subscribe(res => {
-      
+      console.log("res>>>>>",res);
       }, (err) => {
-      
+        console.log("err>>>>>",err);
+        if(err.status == 200) {
+          this.toastr.success('Car Details added Successfully');
+          this.loadcarDetailsById();
+          this.cardetailForm.reset();
+        }
     });
     // console.log(profileform);
-    this.toastr.success('Car Details added Successfully');
+    
     // window.location.reload();
+    }
+
+
+
+    loadcarDetailsById(){
+    
+      let currentUserId = localStorage.getItem('currentUserId');
+      return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+        // alert(data)
+        this.carDetailsById = data;
+        this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+        console.log("carDetailsById1>>>",this.carDetailsById1)
+      })
+    }
+
+
+    RemoveMyCarInfo(carinfo_id:any) {
+      // alert(carinfo_id)
+      this.restApi.RemoveMyCarInfo(carinfo_id).subscribe((data: {}) => {
+       
+       this.removedata = data;
+       console.log("Remove>>>",data)
+       if(this.removedata.status == "pass"){
+        this.loadcarDetailsById();
+       }
+      })
+      
     }
 
   }

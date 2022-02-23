@@ -134,6 +134,29 @@ gettestimonialData(): Observable<Testimonial> {
           }
 
 
+
+          CarDetailsById(customer_id:any): Observable<any[]> {
+  
+            return this.http.get<any[]>(this.apiURL + "/app/CarDetailsByCustomerId?customer_id="+customer_id)
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
+
+
+            RemoveMyCarInfo(carinfo_id:any): Observable<any[]> {
+              // alert(carinfo_id)
+              return this.http.get<any[]>(this.apiURL + "/app/RemoveMyCarInfo?carinfo_id="+carinfo_id)
+            
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
+
+
           dashboardShop(cityid:any): Observable<dahsboardShop> {
   
             return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopList?cityid="+cityid)

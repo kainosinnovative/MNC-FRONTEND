@@ -118,7 +118,7 @@
                   <h5 *ngIf="s.offer_percent != 0" class="dress-name">Offer Price <i class="fa fa-rupee"></i>
                     <input type="text" class="combovaluebox" value="{{s.combo_price}}">  /-</h5>
                   <h5 *ngIf="s.offer_percent == 0" class="dress-name">Price <i class="fa fa-rupee"></i>
-                    <input type="text" class="combovaluebox" value="{{s.original_amount}}">  /-</h5>
+                    <input type="text" id="offerprice_{{s.offer_id}}" class="combovaluebox" value="{{s.original_amount}}">  /-</h5>
                 </div>
                 
               <div class="d-flex justify-content-between align-items-center pt-1">

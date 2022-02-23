@@ -222,3 +222,9 @@ text-align:left;
             display: none;
         }
     }
+    .fa-sign-out:before {
+        content: "\f08b";
+        color: #2a14df;
+        font-weight: bold;
+        font-size: 20px;
+    }
