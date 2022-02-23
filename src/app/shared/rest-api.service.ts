@@ -296,17 +296,24 @@ gettestimonialData(): Observable<Testimonial> {
     } 
 
 
-    // getLoginTestimonial(currentUserId	:any): Observable<singleLoginTestimonial> {
+    OnlineBookingInsertFn(onlinebooking	:any): Observable<any[]> {
+      // alert(onlinebooking)
+      console.log("onlinebooking from service>>>",onlinebooking)
+      return this.http.post<any[]>(this.apiURL + '/shop/addonlinebooking', onlinebooking,
+    this.httpOptions)
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+      // this.http.post<any[]>(this.apiURL + '/app/SingleLoginTestimonial')
       
-    //   return this.http.get<singleLoginTestimonial>(this.apiURL + '/app/SingleLoginTestimonial?customerid='+ currentUserId	)
-      
-    //   .pipe(
-    //     retry(1),
-    //     catchError(this.handleError)
+      // .pipe(
+      //   retry(1),
+      //   catchError(this.handleError)
         
-    //   )
+      // )
     
-    // }
+    }
   
 
 getCustomer(id:any): Observable<Customer> {

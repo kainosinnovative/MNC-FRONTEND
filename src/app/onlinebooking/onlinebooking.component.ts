@@ -3,14 +3,16 @@ import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
 //import { CustomerCreateComponent } from '../customer-create/customer-create.component';
 import { HttpClient } from '@angular/common/http';
-//import { DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { config_url } from '../shared/customer/constant';
 
 @Component({
   selector: 'app-onlinebooking',
   templateUrl: './onlinebooking.component.html',
-  styleUrls: ['./onlinebooking.component.scss']
+  styleUrls: ['./onlinebooking.component.scss'],
+  providers: [DatePipe]
 })
 export class OnlinebookingComponent implements OnInit {
 
@@ -29,7 +31,7 @@ export class OnlinebookingComponent implements OnInit {
   myuser: any;
   CustomerDataById: any;
   CustomerDataById1: any;
-  //date: any;
+  date: any;
   shopdetails: any;
   shopdetails1: any;
   offerdetails: any;
@@ -41,7 +43,8 @@ export class OnlinebookingComponent implements OnInit {
 //totalvalue = 0;
 carDetailsById:any;
 carDetailsById1:any;
-
+current_date:any;
+OnlineBookingInsert:any;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
@@ -54,7 +57,7 @@ carDetailsById1:any;
     public restApi: RestApiService,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
-    //public datepipe: DatePipe
+    public datepipe: DatePipe,
     private router: ActivatedRoute
   ) {  }
 
@@ -63,6 +66,10 @@ carDetailsById1:any;
 
 
   ngOnInit(): void {
+    this.date=new Date();
+     this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+     let currentUserId = localStorage.getItem('currentUserId');
+
     this.displaycartype();
     this.loadcarbrand();
     this.readCustomerDataById();
@@ -70,19 +77,23 @@ carDetailsById1:any;
     this.loadcarDetailsById();
     this.idbyMasterService();
   
+    
    
     const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     this.onlinebooking = this.frmbuilder.group({
-      firstname: ['', Validators.required],
-      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
-      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
-      cartype: ['', Validators.required],
-      fueltype: ['', Validators.required],
-      brand: ['', Validators.required],
-      date: ['', Validators.required],
-      model: ['', Validators.required],
-      // lastupddt: [current_date, [Validators.required]]
+      Booking_id: ['', Validators.required],
+      // emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      // mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]], 
+      services: ['', Validators.required],
+      combo_id: ['', Validators.required],
+      Customer_id: [currentUserId, Validators.required],
+      instructions: ['', Validators.required],
+      bookingdate: ['', Validators.required],
+      model_id: ['', Validators.required],
+      payable_amt: ['', Validators.required],
+      Shop_id: ['', Validators.required],
+      lastupddt: [this.current_date, [Validators.required]]
        }) 
 
 
@@ -90,6 +101,9 @@ carDetailsById1:any;
         const id = params['id'];
         this.loadshopdetails(id);
         this.loadshopoffers(id);
+        var randomnumber = Math.floor(100000 + Math.random() * 900000) + "_" + id;
+        this.onlinebooking.controls.Booking_id.setValue(randomnumber);
+        this.onlinebooking.controls.Shop_id.setValue(id);
   })
   }
 
@@ -290,7 +304,8 @@ changeBgColor(offer_id:any){
        (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
   }
 }
-
+ExtraServiceArr = new Array();
+ExtraServiceArr1 = new Array();
 selectbuttoncolor(service_id:any){
 
  //alert(service_id);
@@ -321,25 +336,34 @@ selectbuttoncolor(service_id:any){
      (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
  }
 
-//  var extraserviceTotalAmount:any = (<HTMLInputElement>document.getElementById("totalamount")).value;
-//     var comboserviceTotalAmount:any = (<HTMLInputElement>document.getElementById("finalamount")).value;
-//     if(comboserviceTotalAmount == "0" || comboserviceTotalAmount == "" || extraserviceTotalAmount == "0" || extraserviceTotalAmount == "") {
-//       comboserviceTotalAmount = 0;
-//       extraserviceTotalAmount = 0;
-//       alert("if");
-//       (<HTMLInputElement>document.getElementById("final_totalamount")).value = extraserviceTotalAmount + comboserviceTotalAmount;
+ var concatServiceid_amount2 =  service_id + "#" + service_totalid;
 
-//     }
-//     else {
-//       (<HTMLInputElement>document.getElementById("final_totalamount")).value = extraserviceTotalAmount + comboserviceTotalAmount;
+ if(this.ExtraServiceArr.includes(concatServiceid_amount2)){
+  this.ExtraServiceArr = this.remove1(this.ExtraServiceArr, concatServiceid_amount2);
+}
+else {
+  this.ExtraServiceArr.push(concatServiceid_amount2);
+}
 
-//     }
+ var arrayLength1 = this.ExtraServiceArr.length;
+ 
+ this.ExtraServiceArr1 = new Array();
+ for (var i = 0; i < arrayLength1; i++) {
+   var splitArr = this.ExtraServiceArr[i].split("#");
+   
 
+   //Do something
+   this.ExtraServiceArr1.push(splitArr[0]);
+  //  this.ComboPrimaryIdArr.push(splitArr[0]);
+   
+}
+this.onlinebooking.controls.services.setValue(this.ExtraServiceArr1.toString());
 
 var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
     var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
-    (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
     
 }
 
@@ -359,6 +383,7 @@ idbyMasterService(){
 }
 ComboServiceArr = new Array();
 ComboServiceArr1 = new Array();
+ComboPrimaryIdArr = new Array();
 getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Offername:any) {
   var concatServiceid_amount =  Comboserviceid + "#" + Comboservice_Offername;
 
@@ -371,21 +396,28 @@ getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Off
 
     var arrayLength = this.ComboServiceArr.length;
     this.ComboServiceArr1 = new Array();
+    this.ComboPrimaryIdArr = new Array();
     for (var i = 0; i < arrayLength; i++) {
       var splitArr = this.ComboServiceArr[i].split("#");
       
 
       //Do something
       this.ComboServiceArr1.push(splitArr[1]);
+      this.ComboPrimaryIdArr.push(splitArr[0]);
       
   }
-
+// alert(this.ComboPrimaryIdArr);
+// this.onlinebooking.controls['ComboPrimaryIdArr'].setValue(this.ComboPrimaryIdArr);
+// this.onlinebooking.controls['combo_id'].value = "test@test.com";
+this.onlinebooking.controls.combo_id.setValue(this.ComboPrimaryIdArr.toString());
+  // (<HTMLInputElement>document.getElementById("ComboPrimaryIdArr")).value = this.ComboPrimaryIdArr.toString();
     (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
     
     var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
     var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
-    (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
     
 
     
@@ -403,6 +435,20 @@ remove(arr:any, item:any)
  
         // part of the array after the given item
         ...this.ComboServiceArr.slice(index + 1)
+    ];
+}
+
+
+remove1(arr:any, item:any)
+{
+    var index = this.ExtraServiceArr.indexOf(item);
+    return [
+ 
+        // part of the array before the given item
+        ...this.ExtraServiceArr.slice(0, index),
+ 
+        // part of the array after the given item
+        ...this.ExtraServiceArr.slice(index + 1)
     ];
 }
 
@@ -438,6 +484,27 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
       this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
       console.log("carDetailsById1>>>",this.carDetailsById1)
     })
+  }
+
+
+  OnlineBooking(onlinebooking:any) {
+
+    this.http.post(config_url+'/shop/addonlinebooking',onlinebooking)
+      .subscribe(res => {
+      console.log("res>>>>>",res);
+      }, (err) => {
+        console.log("err>>>>>",err);
+        if(err.status == 200) {
+          // this.toastr.success('Booking Successfully');
+          
+          
+        }
+    });
+// this.restApi.OnlineBookingInsertFn(onlinebooking).subscribe((data: {}) => {
+  
+//   this.OnlineBookingInsert = data;
+  
+// })
   }
 
 }
