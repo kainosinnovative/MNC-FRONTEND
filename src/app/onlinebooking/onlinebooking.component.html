@@ -204,7 +204,7 @@
                 <span *ngIf="s.offer_percent != 0" class="buy">Save Upto <i class="fa fa-rupee"></i> {{s.original_amount - s.combo_price }} +</span>
               </div>
 
-           <button id="select_{{s.offer_id}}" (click)="changeBgColor(s.offer_id)"   class="comboselectbtm" >{{text}}</button>    </div>
+           <button id="select_{{s.offer_id}}" (click)="changeBgColor(s.offer_id);getComboOfferDetails(s.offer_id,s.combo_price,s.offer_name)"   class="comboselectbtm" >{{text}}</button>    </div>
         </div>
         </div>
 </ngx-slick-carousel>
@@ -213,6 +213,11 @@
 <div style=" margin-left: 876px;font-size: 17px;margin-top: 15px;">
   <label class="mainheading" id="name" >Combo Offer price: </label>
   <input type="number" id="finalamount" class="selectnow2"  >
+  <br>
+  <div style="width: 200px;overflow: auto;">
+    <p  id="offernameShow"></p>
+  </div>
+  
   </div>
 
 </div>
@@ -271,10 +276,14 @@
     <div style=" margin-left: 876px;font-size: 17px;">
       <label class="mainheading">Extra Services price: </label>
       <input type="number" id="totalamount" class="selectnow2"  >
+
+<br>
+      <label class="mainheading">Final price: </label>
+      <input type="number" id="final_totalamount" class="selectnow2"  >
       </div>
 <br>
      <mat-card-actions > 
-     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 975px;" >Conform Booking</button>
+     <button mat-raised-button="" style="background-color: #ff8507;margin-left: 975px;" >Confirm Booking</button>
      <!-- <label>Totally:</label> -->
    
      <!-- <input type="number" id="finalamount" class="selectnow2"  > -->

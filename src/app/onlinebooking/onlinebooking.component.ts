@@ -39,6 +39,8 @@ export class OnlinebookingComponent implements OnInit {
    public totalvalue : number=0;
    public finalvalue : number=0;
 //totalvalue = 0;
+carDetailsById:any;
+carDetailsById1:any;
 
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
@@ -65,7 +67,7 @@ export class OnlinebookingComponent implements OnInit {
     this.loadcarbrand();
     this.readCustomerDataById();
     // this.loadshopdetails();
-    // this.loadshopoffers();
+    this.loadcarDetailsById();
     this.idbyMasterService();
   
    
@@ -318,6 +320,27 @@ selectbuttoncolor(service_id:any){
      this.totalvalue = this.totalvalue -(service_amt);
      (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
  }
+
+//  var extraserviceTotalAmount:any = (<HTMLInputElement>document.getElementById("totalamount")).value;
+//     var comboserviceTotalAmount:any = (<HTMLInputElement>document.getElementById("finalamount")).value;
+//     if(comboserviceTotalAmount == "0" || comboserviceTotalAmount == "" || extraserviceTotalAmount == "0" || extraserviceTotalAmount == "") {
+//       comboserviceTotalAmount = 0;
+//       extraserviceTotalAmount = 0;
+//       alert("if");
+//       (<HTMLInputElement>document.getElementById("final_totalamount")).value = extraserviceTotalAmount + comboserviceTotalAmount;
+
+//     }
+//     else {
+//       (<HTMLInputElement>document.getElementById("final_totalamount")).value = extraserviceTotalAmount + comboserviceTotalAmount;
+
+//     }
+
+
+var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
+    var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+    let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
+    (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    
 }
 
 idbyMasterService(){
@@ -334,6 +357,57 @@ idbyMasterService(){
 
   
 }
+ComboServiceArr = new Array();
+ComboServiceArr1 = new Array();
+getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Offername:any) {
+  var concatServiceid_amount =  Comboserviceid + "#" + Comboservice_Offername;
+
+    if(this.ComboServiceArr.includes(concatServiceid_amount)){
+      this.ComboServiceArr = this.remove(this.ComboServiceArr, concatServiceid_amount);
+    }
+    else {
+      this.ComboServiceArr.push(concatServiceid_amount);
+    }
+
+    var arrayLength = this.ComboServiceArr.length;
+    this.ComboServiceArr1 = new Array();
+    for (var i = 0; i < arrayLength; i++) {
+      var splitArr = this.ComboServiceArr[i].split("#");
+      
+
+      //Do something
+      this.ComboServiceArr1.push(splitArr[1]);
+      
+  }
+
+    (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
+    
+    var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
+    var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+    let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
+    (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
+    
+
+    
+    // alert(this.ComboServiceArr1)
+}
+
+
+remove(arr:any, item:any)
+{
+    var index = this.ComboServiceArr.indexOf(item);
+    return [
+ 
+        // part of the array before the given item
+        ...this.ComboServiceArr.slice(0, index),
+ 
+        // part of the array after the given item
+        ...this.ComboServiceArr.slice(index + 1)
+    ];
+}
+
+
+
 
 
 slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
@@ -354,6 +428,17 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
     console.log('beforeChange');
   }
 
+
+  loadcarDetailsById(){
+    
+    let currentUserId = localStorage.getItem('currentUserId');
+    return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+      // alert(data)
+      this.carDetailsById = data;
+      this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+      console.log("carDetailsById1>>>",this.carDetailsById1)
+    })
+  }
 
 }
 
