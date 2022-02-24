@@ -194,5 +194,23 @@ line-height: unset !important;
 {
     border:1px solid black !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.autocomplete-container .input-container input {
+  font-size: 14px;
+  /* box-sizing: border-box; */
+  border: none;
+  /* box-shadow: none; */
+  /* outline: none; */
+  background-color: #fff;
+  color: #000000de;
+  width: 200px;
+  // padding: 0 15px;
+  /* line-height: 40px; */
+  height: 30px !important;
+}
+
+.autocomplete-container {
+  box-shadow: unset !important;
+ 
+}

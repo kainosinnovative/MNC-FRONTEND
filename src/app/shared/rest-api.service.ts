@@ -190,15 +190,37 @@ gettestimonialData(): Observable<Testimonial> {
         }
 
 
-        getMasterService(): Observable<Services> {
+        getMasterServiceAndShopService(currentUserId:any): Observable<any[]> {
           // alert(currentUserId)
-          return this.http.get<Services>(this.apiURL + "/app/services")
+          return this.http.get<any[]>(this.apiURL + "/shop/MasterServiceAndShopService?currentUserId="+currentUserId)
         
           .pipe(
           retry(1),
           catchError(this.handleError)
           )
           }
+
+
+          getMasterService(): Observable<Services> {
+            // alert(currentUserId)
+            return this.http.get<Services>(this.apiURL + "/app/services")
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
+
+          
+          getAllModels(): Observable<Services> {
+            // alert(currentUserId)
+            return this.http.get<Services>(this.apiURL + "/app/allmodels")
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
   
   
       AddshopService(shopservAmount:any): Observable<ShopService> {
@@ -299,7 +321,7 @@ gettestimonialData(): Observable<Testimonial> {
     OnlineBookingInsertFn(onlinebooking	:any): Observable<any[]> {
       // alert(onlinebooking)
       console.log("onlinebooking from service>>>",onlinebooking)
-      return this.http.post<any[]>(this.apiURL + '/shop/addonlinebooking', onlinebooking,
+      return this.http.post<any[]>(this.apiURL + '/onlinebooking/addonlinebooking', onlinebooking,
     this.httpOptions)
     .pipe(
     retry(1),
