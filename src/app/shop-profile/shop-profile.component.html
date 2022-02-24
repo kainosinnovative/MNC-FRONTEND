@@ -308,11 +308,11 @@
     
     </div><!--End of Accordion-->
     <div class="accordion1">
-        <h2 class="title1 subheading" (click)="opened1 = !opened1">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
+        <h2 class="title1 subheading" (click)="opened1 = !opened1">Business Hours <i class="fa fa-chevron-down"></i> </h2> 
         <div class="content-container1" [class.opened1]="opened1">
             <!--phto-->
-        
-           
+           <div class="row">
+            <div class="col-sm-3">          
               
             
                 <img *ngIf="ShopProfileDetails.shop_logo" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" class="rounded-circle">
@@ -335,89 +335,83 @@
                 
                 </div>
                 <!--endphoto-->
-    
-                <br>
-                <!--info-->
-                <div class="row ">
-                    <div class="col-sm-6"  style="padding-right:0px !important;">
-                                        <div class="form-group form-inline">
-                                      
-                                            <label style class="">Working Hours</label><span class="requiredfield">  *</span>
-                                            <br>
-                                            <label style class="">From</label><span class="requiredfield">  *</span>
-                                            <select  placeholder=""   class="shopgender" formControlName="shop_timing_from" [(ngModel)]="ShopProfileDetails.shop_timing_from">
-                                                <option value="">--Select---</option>
-                                                <option value="9">9 AM</option>
-                                                <option value="9.30">9.30 AM</option>
-                                                <option value="10">10 AM</option>
-                                                <option value="10.30">10.30 AM</option>
-                                                </select>
-                                                
-                                                <div *ngIf="shopprofile.controls['shop_timing_from'].touched && shopprofile.controls['shop_timing_from'].invalid "> 
-                            
-                                                    <div *ngIf="shopprofile.controls['shop_timing_from'].errors" style="color: red;"> 
-                                                    <div *ngIf="shopprofile.controls['shop_timing_from'].errors.required" style="font-size: 12px;">
-                                                        Select the Timings
-                                                    </div> 		   
-                                                    
-                                                    </div> 
-                                                    
-                                                </div>
-                                                <label style="width:25px;">To</label><span class="requiredfield">  *</span>
-                                                <select  placeholder=""   class="shopgender" formControlName="shop_timing_to" [(ngModel)]="ShopProfileDetails.shop_timing_to">
-                                                    <option value="">--Select---</option>
-                                                    <option value="5">5 PM</option>
-                                                    <option value="5.30">5.30 PM</option>
-                                                    <option value="6">6.30 PM</option>
-                                                    <option value="7.00">7.30 PM</option>
-                                                    </select>
-                                                    <div *ngIf="shopprofile.controls['shop_timing_to'].touched && shopprofile.controls['shop_timing_to'].invalid "> 
-                            
-                                                        <div *ngIf="shopprofile.controls['shop_timing_to'].errors" style="color: red;"> 
-                                                        <div *ngIf="shopprofile.controls['shop_timing_to'].errors.required" style="font-size: 12px;">
-                                                            Select the Timings
-                                                        </div> 		   
-                                                        
-                                                        </div> 
-                                                        </div>
-                                                
-                                    </div>
+            </div>
+          
+        <div class="col-sm-4">  
+    <div class="form-group form-inline">
+              
+        <label style class="">Working Hours</label><span class="requiredfield">  *</span>
+        <br><br>
+        <label style class="">From</label>
+        <select  placeholder=""   class="shopgender" formControlName="shop_timing_from" [(ngModel)]="ShopProfileDetails.shop_timing_from">
+            <option value="">--Select---</option>
+            <option value="9">9 AM</option>
+            <option value="9.30">9.30 AM</option>
+            <option value="10">10 AM</option>
+            <option value="10.30">10.30 AM</option>
+            </select>
+            
+            <div *ngIf="shopprofile.controls['shop_timing_from'].touched && shopprofile.controls['shop_timing_from'].invalid "> 
+
+                <div *ngIf="shopprofile.controls['shop_timing_from'].errors" style="color: red;"> 
+                <div *ngIf="shopprofile.controls['shop_timing_from'].errors.required" style="font-size: 12px;">
+                    Select the Timings
+                </div> 		   
+                
+                </div> 
+                
+            </div>
+            <label style="width:25px;margin-left:12px;">To</label>
+            <select  placeholder=""   class="shopgender" formControlName="shop_timing_to" [(ngModel)]="ShopProfileDetails.shop_timing_to">
+                <option value="">--Select---</option>
+                <option value="5">5 PM</option>
+                <option value="5.30">5.30 PM</option>
+                <option value="6">6.30 PM</option>
+                <option value="7.00">7.30 PM</option>
+                </select>
+                <div *ngIf="shopprofile.controls['shop_timing_to'].touched && shopprofile.controls['shop_timing_to'].invalid "> 
+
+                    <div *ngIf="shopprofile.controls['shop_timing_to'].errors" style="color: red;"> 
+                    <div *ngIf="shopprofile.controls['shop_timing_to'].errors.required" style="font-size: 12px;">
+                        Select the Timings
+                    </div> 		   
+                    
+                    </div> 
+                </div>
+            
                 </div>
 
-                        <br>
-                        <div class="col-sm-6">
-                        <div class="form-group form-inline">
-                                      
-                            <label style class="">Leave Date</label><span class="requiredfield">  *</span>
-                            <br>
-                            <label style class="">From</label><span class="requiredfield">  *</span>
-                            <input type="date"   class="form-control dateofbirthcls" [(ngModel)]="ShopProfileDetails.leave_from_date" placeholder="" formControlName="dob">
-                          
-                                
-                               
-                                <label style class="">To</label><span class="requiredfield">  *</span>
-                                <input type="date"   class="form-control dateofbirthcls" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
-                               
-                                   
-</div>
-
-
-                        
-                        
-                    </div>
+        </div>
+        <div class="col-sm-5">  
+            <div class="form-group form-inline">
+                      
+                <label style class="">Closing Date</label>
+                <br><br>
+                <label  class="">From</label>
+                <input type="date"   class="form-control dateofbirthcls"  style="margin-left:12px !important;"[(ngModel)]="ShopProfileDetails.leave_from_date" placeholder="" formControlName="dob">
+              
+                
+                   
+                    <label style="padding:5px;">To</label>
+                    <input type="date"   class="form-control dateofbirthcls" style="margin-left:0px !important;" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
+                      
+                    
+                        </div>
+        
+                </div>
+            </div>
+            
+        </div>
+        </div>
+              
                       
                      <!--End of first Column-->
                    
                
 
                 
-                </div><!--End of row-->
+            
 
-            </div><!--End of formgroup-->
-
-
-    
-    </div>
     <div class="col-sm-12 form-inline" style="text-align: right;">
             
         <button class="btn btn-success carwashbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
