@@ -5,7 +5,8 @@ import { RestApiService } from "../shared/rest-api.service";
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { from } from 'rxjs';
-
+import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angular/forms';
+import { config_url } from '../shared/customer/constant';
 @Component({
   selector: 'app-shop-service',
   templateUrl: './shop-service.component.html',
@@ -13,7 +14,7 @@ import { from } from 'rxjs';
   providers: [DatePipe]
 })
 export class ShopServiceComponent implements  OnInit{
-
+  keyword = 'service_name';
   offerpricetext:any;
   serviceData: any;
   serviceData1: any;
@@ -23,20 +24,51 @@ export class ShopServiceComponent implements  OnInit{
    date:any;
   config: any;
    current_date:any;
+   MasterServiceData:any;
+   MasterServiceData1:any;
+   MasterModelData:any;
+   MasterModelData1:any;
+   shopserviceForm:any;
+   MasterserviceForm:any;
+   citytype:any;
+   citytype1:any;
   constructor(private http: HttpClient,private router: Router,
-    public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe) { }
+    public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe,
+    private frmbuilder: FormBuilder) { }
 
 
   ngOnInit(): void {
     this.date=new Date();
     this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadServiceData();
+    this.loadMasterService();
+    this.loadAllModels();
    
+    let currentUserId:any = localStorage.getItem('currentUserId');
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
       // totalItems: this.collection.count
     };
+
+    this.shopserviceForm = this.frmbuilder.group({
+      service_id: ['', Validators.required],
+      model_id: ['', Validators.required],
+      lastupddt: [this.current_date, Validators.required],
+      actual_amount: ['', Validators.required],
+      shop_id:[currentUserId, Validators.required],
+      // hidden_service: [''],
+    }
+    )
+
+
+    this.MasterserviceForm = this.frmbuilder.group({
+      service_name: ['', Validators.required],
+      
+      lastupddt: [this.current_date, Validators.required],
+      
+    }
+    )
     
   }
 
@@ -265,5 +297,115 @@ export class ShopServiceComponent implements  OnInit{
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="none";
   }
   
+
+  loadMasterService(){
+    let currentUserId = localStorage.getItem('currentUserId');
+    return this.restApi.getMasterServiceAndShopService(currentUserId).subscribe((data: {}) => {
+      // alert(data)
+      this.MasterServiceData = data;
+      this.MasterServiceData1 = this.MasterServiceData.data.MasterServiceAndShopService;
+      
+      console.log("data>>>>",this.MasterServiceData1)
+      // this.dtTrigger.next();
+    })
+
+    
+  }
+
+
+  loadAllModels(){
+    
+    return this.restApi.getAllModels().subscribe((data: {}) => {
+      // alert(data)
+      this.MasterModelData = data;
+      this.MasterModelData1 = this.MasterModelData.data.list;
+      
+      console.log("models>>>>",this.MasterModelData1)
+      // this.dtTrigger.next();
+    })
+
+    
+  }
+
+  
+
+  AddMasterserviceDetails(MasterserviceForm:any) {
+    
+    this.http.post(config_url+'/shop/AddMasterservice',{MasterserviceForm})
+      .subscribe(res => {
+      
+      }, (err) => {
+        console.log(err.status)
+        if(err.status == 200) {
+          this.loadMasterService();
+          this.toastr.success('Services added Successfully');
+        }
+      
+    });
+    console.log(MasterserviceForm);
+    
+
+  }
+
+
+  AddShopserviceDetails(shopserviceForm:any) {
+    // let formData = new FormData();
+    // formData.append('test','2');
+    console.log(shopserviceForm);
+    // let hidden_service = (<HTMLInputElement>document.getElementById("hidden_service")).value;
+    this.http.post(config_url+'/shop/AddShopserviceDetails',{shopserviceForm})
+      .subscribe(res => {
+      
+      }, (err) => {
+        console.log(err.status)
+        if(err.status == 200) {
+          this.loadServiceData();
+          this.loadMasterService();
+          this.loadAllModels();
+          // this.shopserviceForm.controls.actual_amount.setValue("");
+        }
+      
+    });
+    console.log(shopserviceForm);
+    this.toastr.success('Services added Successfully');
+
+  }
+
+  DisplayForm() {
+    // (<HTMLInputElement>document.getElementById("shopservFormid")).style.display = "block";
+  }
+
+  changeOtherToadd(selectedVal:any) {
+    // alert("hi") 
+    // alert(selectedVal.target.value);
+    if(selectedVal.target.value == "Others") {
+      // (<HTMLInputElement>document.getElementById("hiddenServidTd")).style.display = "block";
+    }
+    else {
+      // this.shopserviceForm.controls.hidden_service.setValue("");
+      // (<HTMLInputElement>document.getElementById("hidden_service")).value = "";
+      // (<HTMLInputElement>document.getElementById("hiddenServidTd")).style.display = "none";
+    }
+  }
+
+
+
+ 
+
+  
+
+
+  selectEvent(item:any) {
+    // alert(item.service_id)
+  }
+
+  onChangeSearch(val: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+  
+  onFocused(e:any){
+    // do something when input is focused
+  }
 
 }

@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { config_url } from '../shared/customer/constant';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-onlinebooking',
   templateUrl: './onlinebooking.component.html',
@@ -58,7 +58,8 @@ OnlineBookingInsert:any;
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public datepipe: DatePipe,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private toastr: ToastrService
   ) {  }
 
 
@@ -495,8 +496,8 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
       }, (err) => {
         console.log("err>>>>>",err);
         if(err.status == 200) {
-          // this.toastr.success('Booking Successfully');
-          
+          this.toastr.success('Booking Successfully');
+          window.setTimeout(function(){location.reload()},100)
           
         }
     });
