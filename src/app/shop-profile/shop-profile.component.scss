@@ -73,7 +73,7 @@
     height: 28px;
     width: 170px !important;
     padding-left: 2px !important;
-    margin-left: 75px;
+    margin-left: 76px;
         
 
 }
@@ -126,17 +126,18 @@
  @media screen and (max-width: 768px){
      .shopname{
         width: 190px !important;
+        margin-left: 37px;
      }
      .emailid{
         width: 201px !important;
+        margin-left: 20px;
         }
     .streetcls{
         width: 194px !important;
-        margin-left: 34px;
+        margin-left: 31px;
+        // margin-left: 34px;
         }
-    .zipcodecls{
-        margin-left: 61px;
-    }
+    
     .leftnamemrg{
         margin-left: 13px;
     }
@@ -145,7 +146,12 @@
     }
     .firstnamecls{
         width: 194px !important;
+        margin-left: 41px;
+     
+    }
+    .lastnamecls{
         margin-left: 42px;
+        width: 200px;
     }
     .aadharcls{
         width: 194px !important;
@@ -153,6 +159,23 @@
     }
     .address{
         width: 201px !important;
+        margin-left: 57px;
     }
-    
+    .dateofbirthcls{
+        margin-left: 40px;
+    }
+    .shopgender{
+        margin-left: 19px;
+    }
+    .citycls{
+        width: 201px !important;
+       
+        }
+     .fromdata{
+            margin-left: 70px;
+        }
+     .leavefromdate{
+        margin-left: 69px;
+        width: 135px;
+    }
  }

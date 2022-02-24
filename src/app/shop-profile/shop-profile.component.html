@@ -41,7 +41,7 @@
                                       
                                             <label style class="">Shop Name</label><span class="requiredfield">  *</span>
 
-                                                <input type="text"  class="form-control Shopnamecls shopname" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
+                                                <input type="text"  class="form-control shopname" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
                                                 <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
                             
                                                     <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
@@ -58,9 +58,9 @@
 
                         <br>
                         <div class="form-inline" > 
-                            <label style class="lblwidthprofile leftnamemrg">First Name</label><span class="requiredfield">  *</span>
+                            <label style class="lblwidthprofile ">First Name</label><span class="requiredfield">  *</span>
 
-                            <input type="text"  class="form-control firstnamecls firstLastnamecls" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
+                            <input type="text"  class="form-control firstnamecls" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
                             <div *ngIf="shopprofile.controls['firstname'].touched && shopprofile.controls['firstname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['firstname'].errors" style="color: red;"> 
@@ -74,7 +74,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label class="lblwidthProfile leftnamemrg">Last Name</label><span class="requiredfield">  *</span>
+                            <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
                             <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
                             <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
         
