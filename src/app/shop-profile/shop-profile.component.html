@@ -41,7 +41,7 @@
                                       
                                             <label style class="">Shop Name</label><span class="requiredfield">  *</span>
 
-                                                <input type="text"  class="form-control shopname" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
+                                                <input type="text"  class="form-control shopname firstLastnamecls" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
                                                 <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
                             
                                                     <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
@@ -60,7 +60,7 @@
                         <div class="form-inline" > 
                             <label style class="lblwidthprofile ">First Name</label><span class="requiredfield">  *</span>
 
-                            <input type="text"  class="form-control firstnamecls" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
+                            <input type="text"  class="form-control firstnamecls firstLastnamecls" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
                             <div *ngIf="shopprofile.controls['firstname'].touched && shopprofile.controls['firstname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['firstname'].errors" style="color: red;"> 
@@ -75,7 +75,7 @@
                         <br>
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
+                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls firstnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
                             <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['lastname'].errors" style="color: red;"> 
@@ -167,8 +167,8 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label class="" style="width:99px !important;">Gender <span class="requiredfield">  *</span> </label>
-                            <select  placeholder=""   class="shopgender form-control" formControlName="gender" [(ngModel)]="ShopProfileDetails.gender">
+                            <label class="leftnamemrg" style="width:99px !important;">Gender <span class="requiredfield ">  *</span> </label>
+                            <select  placeholder=""   class="shopgender form-control shopgender" formControlName="gender" [(ngModel)]="ShopProfileDetails.gender">
                                 <option value="">--Select---</option>
                                 <option value="Male">Male</option>
                                 <option value="FeMale">FeMale</option>
@@ -185,15 +185,14 @@
                                 </div>
                             </div>
                        <br>
-                        <br>
-                    
-                        </div>
+                        
+                     </div>
                         <!--eND OF SECOND COLUMN-->
                                 
                         <div class="col-sm-4"  style="padding-right:0px !important;padding-left:0px !important;">
                           
                             <div class="form-group">
-                                <label class="lblwidthProfile ">Address</label><span class="requiredfield">  *</span>
+                                <label class="lblwidthProfile leftnamemrg">Address</label><span class="requiredfield">  *</span>
         
                                 <input type="text" style="width: 250px" class="form-control doornocls address" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
                                     <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
@@ -209,7 +208,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label class="">Street Name</label><span class="requiredfield">  *</span>
+                                    <label class="leftnamemrg">Street Name</label><span class="requiredfield">  *</span>
                 
                                     <input type="text" style="width: 236px;" class="form-control streetshop streetcls" placeholder="" formControlName="street" [(ngModel)]="ShopProfileDetails.street">
                                     <div *ngIf="shopprofile.controls['street'].touched && shopprofile.controls['street'].invalid "> 
@@ -273,8 +272,8 @@
                                 <br>
                                 
                                 <div class="form-group">
-                                    <label class="">Zipcode</label><span class="requiredfield">  *</span>
-                                    <input type="text" class="form-control shopzipcodecls zipcodecls" placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
+                                    <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
+                                    <input type="text" class="form-control shopzipcodecls " placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
                                     <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
                     
                                         <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
@@ -343,7 +342,7 @@
         <label style class="">Working Hours</label><span class="requiredfield">  *</span>
         <br><br>
         <label style class="">From</label>
-        <select  placeholder=""   class="shopgender" formControlName="shop_timing_from" [(ngModel)]="ShopProfileDetails.shop_timing_from">
+        <select  placeholder=""   class="fromdata" formControlName="shop_timing_from" [(ngModel)]="ShopProfileDetails.shop_timing_from">
             <option value="">--Select---</option>
             <option value="9">9 AM</option>
             <option value="9.30">9.30 AM</option>
@@ -385,15 +384,15 @@
         <div class="col-sm-5">  
             <div class="form-group form-inline">
                       
-                <label style class="">Closing Date</label>
+                <label style class="closedate">Closing Date</label>
                 <br><br>
-                <label  class="">From</label>
-                <input type="date"   class="form-control dateofbirthcls"  style="margin-left:12px !important;"[(ngModel)]="ShopProfileDetails.leave_from_date" placeholder="" formControlName="dob">
+                <label  class="leavefromdate">From</label>
+                <input type="date"   class="form-control dateofbirthcls leavefromdate1"  style="margin-left:12px !important;"[(ngModel)]="ShopProfileDetails.leave_from_date" placeholder="" formControlName="dob">
               
                 
                    
-                    <label style="padding:5px;">To</label>
-                    <input type="date"   class="form-control dateofbirthcls" style="margin-left:0px !important;" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
+                    <label class="leavefromdate2" style="padding:5px;">To</label>
+                    <input type="date"   class="form-control dateofbirthcls leavefromdate1" style="margin-left:0px !important;" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
                       
                     
                         </div>
