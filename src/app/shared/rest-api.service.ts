@@ -406,5 +406,18 @@ ShopoffersById(currentShopId:any): Observable<shopoffers> {
   )
 
 } 
+getCustomerWhislist(customerid:any) : Observable<any[]>
+{
+
+ return this.http.get<any>(this.apiURL +'/app/customerwhislist?currentUserId='+ customerid )
+  
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+    
+  )
+
+
+}
 
 }

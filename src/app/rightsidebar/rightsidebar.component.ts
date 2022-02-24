@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 // import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 import { TestimonialAddComponent } from '../testimonial-add/testimonial-add.component';
 import { RestApiService } from "../shared/rest-api.service";
+import { EventEmitterService } from '../event-emitter.service';
 @Component({
   selector: 'app-rightsidebar',
   templateUrl: './rightsidebar.component.html',
@@ -16,7 +17,7 @@ export class RightsidebarComponent implements OnInit {
 
   userroleSes = localStorage.getItem('userroleSes');
 
-  constructor(private  dialog:  MatDialog, private  router:  Router,public restApi: RestApiService) { }
+  constructor(private  dialog:  MatDialog, private  router:  Router,public restApi: RestApiService,private eventEmitterService: EventEmitterService) { }
 
   ngOnInit(): void {
     
@@ -31,7 +32,11 @@ export class RightsidebarComponent implements OnInit {
 }
 
 loginToRate(){
-  alert("Please Login to Rate")
+  if(!this.userroleSes)
+  {
+    this.eventEmitterService.onFirstComponentButtonClick();  
+   // alert("please login");
+  }
 }
 
 

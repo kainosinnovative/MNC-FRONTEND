@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef, ComponentFactoryResolver } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RestApiService } from "../shared/rest-api.service";
 import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
+import { EventEmitterService } from '../event-emitter.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,12 +19,16 @@ export class HomeComponent implements OnInit {
   dashboardShopOffer1:any;
   MasterServiceData:any;
   MasterServiceData1:any;
+  CustomerWhislistData:any;
+  CustomerWhislistData1:any;
 
   param1: string;
 param2: string;
   // route: any;
-  constructor(public restApi: RestApiService,public datepipe: DatePipe,private router: ActivatedRoute) { }
+  constructor(public restApi: RestApiService,public datepipe: DatePipe,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService) { }
+  currentUsername = localStorage.getItem('currentUsername');
 
+  userroleSes = localStorage.getItem('userroleSes');
   
 
   ngOnInit(): void {
@@ -33,14 +39,41 @@ param2: string;
     this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
-    
+    this.customerWhislist();
     // this.router.queryParams.subscribe(params => {
     //   console.log("params>>>",params);
     // });
 
     
   }
+  customerWhislist()
+  {
+    var whislist : [];
+    var customerId= localStorage.getItem('currentUserId');
+    console.log(customerId);
+    return this.restApi.getCustomerWhislist(customerId).subscribe((data: {}) => {
+      // alert(data)
+      this.CustomerWhislistData = data;
+      this.CustomerWhislistData1= this.CustomerWhislistData.data.whislist;
+      
+      console.log("whislist",this.CustomerWhislistData1);
+      // this.dtTrigger.next();
+    })
 
+  }
+  userloggedin(shopid :number)
+  {
+    if(!this.userroleSes)
+    {
+      this.eventEmitterService.onFirstComponentButtonClick();  
+     // alert("please login");
+    }
+    else
+    {
+      console.log(shopid);
+      this.router.navigate(['/onlinebooking/'+shopid]);
+    }
+  }
   loadMasterService(){
     
     return this.restApi.getMasterService().subscribe((data: {}) => {
