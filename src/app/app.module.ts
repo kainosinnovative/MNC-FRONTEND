@@ -56,7 +56,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TestinsertComponent } from './testinsert/testinsert.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-
+import {MatSelectModule} from '@angular/material/select';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -138,7 +138,8 @@ const appRoutes: Routes = [
     AutocompleteLibModule,
     NgImageSliderModule,
     MatAutocompleteModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

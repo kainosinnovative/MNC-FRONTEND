@@ -21,6 +21,8 @@
           <div class="col-sm-3">
            
             <div class="form-group">
+
+              <label>Model</label> <br>
                    
               <select   class="carmodelcls" formControlName="model_id" id="model">   
                      
@@ -42,7 +44,8 @@
                    </div>
                  <br>
                  <div class="form-group">
-                  <textarea class="textcls" formControlName="instructions" matinput="" placeholder="Special Instruction"></textarea>
+                  <label>Special Instructions</label> <br>
+                  <textarea class="textcls" formControlName="instructions" matinput="" placeholder=""></textarea>
 
                   <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
                     <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
@@ -57,6 +60,7 @@
     
             <div class="col-sm-3">
             <div class="form-group">
+              <label>Booking Date</label> <br>
                 <input class="datecls" type="date" matinput="" formControlName="bookingdate" placeholder="Date From" [(ngModel)]="current_date">
                 <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
                   <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
@@ -87,7 +91,7 @@
                         (breakpoint)="breakpoint1($event)"
                         (afterChange)="afterChange1($event)"
                         (beforeChange)="beforeChange1($event)">
-        <div ngxSlickItem *ngFor="let s of offerslist" class="slide1">
+        <div ngxSlickItem *ngFor="let s of offerslist" class="slide1" style="width: 200px !important;">
           <div class=" card" >
             <!-- <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" > -->
                  <div class="first">
