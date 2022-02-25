@@ -16,11 +16,10 @@ export class TestinsertComponent implements OnInit {
     
   }
   
-  
   toppings = new FormControl();
 
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-
+  toppingList = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  selectedToppings:any;
   
  
 }

@@ -74,7 +74,7 @@
 
                       <span #other_content *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content" class="openClosed">Closed</span>
                       
-                      <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span> -->
+                      
                      </div>
                 </div> 
 
@@ -88,6 +88,12 @@
                 <div class="color-select d-flex "> 
                   <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
                   </div>
+                  <div *ngFor="let s1 of CustomerWhislistData1">
+                  <div *ngFor="let m1 of  s1.whislist.split(',');let j1=index" >
+                
+                   <span  *ngIf="m1 === s.shop_id" class="wishlist" style="margin-top:12px;"><i class="fa fa-heart " style="color:#ff0077;font-size:12px;"></i></span>
+                   </div>
+                   </div>
              </div>
              
              <b>Services:</b>
@@ -120,8 +126,9 @@
                 <div class="d-flex justify-content-between align-items-center pt-1">
                        <span class="buy">Save Upto <i class="fa fa-rupee"></i> {{s.original_amount - s.comboprice }} +</span>
                        <a *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else booknowDisable" style="text-decoration: none;" class="booknowntn" disbabled title="closed">Book Now</a>
+                     
                     <ng-template  #booknowDisable>
-                       <a  style="text-decoration: none;" class="booknowntn" routerLink="/onlinebooking/{{s.shop_id}}" >Book Now</a>
+                       <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
                     </ng-template>
                 </div>
                 
@@ -219,7 +226,7 @@
                  
                   <a *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else booknowDisable1" style="text-decoration: none;" class="booknowntn" disbabled title="closed">Book Now</a>
                   <ng-template  #booknowDisable1>
-                     <a  style="text-decoration: none;" class="booknowntn" routerLink="/onlinebooking/{{s.shop_id}}" >Book Now</a>
+                     <a  style="text-decoration: none;cursor: pointer;" class="booknowntn" (click)="userloggedin(s.shop_id)" >Book Now</a>
                   </ng-template>
                 <!-- <a style="text-decoration: none;" class="booknowntn" routerLink="/onlinebooking/{{s.shop_id}}" >Book Now</a> -->
                

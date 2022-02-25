@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
 import { SelectcityComponent } from './selectcity/selectcity.component';
+import { EventEmitterService } from './event-emitter.service';
 // import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 // import * as data from '.../server/db';
 // import { TestimonialAddComponent } from './testimonial-add/testimonial-add.component';
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit{
   cont_id: any;
   cityid: any;
   cityname:any;
-constructor(private  dialog:  MatDialog, private  router:  Router){}
+constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService ){}
   closemenu() {
     console.log("hi")
     // this.cont_id.nativeElement.classList.add('mat-drawer-container mat-sidenav-container mat-drawer-transition')
@@ -62,7 +63,13 @@ constructor(private  dialog:  MatDialog, private  router:  Router){}
       this.cityid = 3;
       this.cityname="Arakkonam";
     }
-
+    if (this.eventEmitterService.subsVar==undefined) {    
+      this.eventEmitterService.subsVar = this.eventEmitterService.    
+      invokeFirstComponentFunction.subscribe(() => {    
+        this.login();    
+        this.loginCheck1();
+      });    
+    }   
     
   }
  
