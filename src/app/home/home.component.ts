@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   MasterServiceData1:any;
   CustomerWhislistData:any;
   CustomerWhislistData1:any;
-
+  customerId:any;
   param1: string;
 param2: string;
   // route: any;
@@ -39,18 +39,23 @@ param2: string;
     this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
-    this.customerWhislist();
+   
+    this.customerId= localStorage.getItem('currentUserId');
+   console.log(this.customerId);
+    if(this.customerId != null)
+    {
+    this.customerWhislist(this.customerId);
+    }
     // this.router.queryParams.subscribe(params => {
     //   console.log("params>>>",params);
     // });
 
     
   }
-  customerWhislist()
+  customerWhislist(customerId:any)
   {
     var whislist : [];
-    var customerId= localStorage.getItem('currentUserId');
-    console.log(customerId);
+    
     return this.restApi.getCustomerWhislist(customerId).subscribe((data: {}) => {
       // alert(data)
       this.CustomerWhislistData = data;
