@@ -9,6 +9,11 @@ import { DatePipe } from '@angular/common';
 import { config_url } from '../shared/customer/constant';
 import { DynamicGrid } from '../shared//grid.model';
 
+//import { RestApiService } from "../shared/rest-api.service";
+//import { Component, OnInit } from '@angular/core';
+//import {Router} from '@angular/router';
+//import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+
 var event:string;
 var num2: any;
 var num1 = localStorage.getItem('isLoggedIn');
@@ -39,6 +44,8 @@ dynamicArray: Array<DynamicGrid> = [];
 
   opened = true;
   opened1 = false;
+  opened2 =  true;
+  
   imageSrc: string;
   CustomerDataById: any;
   CustomerDataById1:any;
@@ -418,6 +425,10 @@ AddCustomerCarDetails(cardetailForm:any)
       })
       
     }
+
+    toppings = new FormControl();
+
+    toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   }
     
