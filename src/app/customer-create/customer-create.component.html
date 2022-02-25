@@ -479,6 +479,27 @@
   
 <br>
 
+<div class="accordion2">
+    <h2 class="title1 subheading" (click)="opened2 = !opened2">My Favorite Shop<i class="fa fa-chevron-down"></i></h2>   
+    <!-- <div class="content-container1" [class.opened2]="opened2"> -->
+
+    <mat-form-field appearance="fill" style="width: 400px;">
+        <!-- <label> Shop List</label> -->
+    <mat-label >Shops</mat-label>
+    <mat-select [formControl]="toppings" multiple>
+      <mat-select-trigger>
+        {{toppings.value ? toppings.value[0] : ''}}
+        <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+          (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- </div> -->
+</div>
+
 </form>
 </div>
   <!--Address End-->
