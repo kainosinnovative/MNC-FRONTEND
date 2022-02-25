@@ -238,6 +238,22 @@ gettestimonialData(): Observable<Testimonial> {
         }
 
 
+
+        changeServiceStatus(changeServiceStatus:any): Observable<ShopService> {
+          // alert(shopservAmount)
+          let shopserviceid = changeServiceStatus["shopserviceid"];
+        let status = changeServiceStatus["status"];
+       
+          return this.http.get<ShopService>(this.apiURL + "/shop/changeShopServiceStatus?status="+status +
+           "&shopserviceid=" + shopserviceid)
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
+
   createTestimonial(testimonialData: any): Observable<Testimonial2>{
     return this.http.post<Testimonial2>(`${this.apiURL}/app/AddTestimonial`, testimonialData);
   }

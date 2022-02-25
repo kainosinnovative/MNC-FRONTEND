@@ -41,11 +41,11 @@
 
                 <!-- <label style="width: 100px;">Service Name</label>
                 <input type="text"   style="padding-left: 2px !important;"  formControlName="service_name"  placeholder=""  > -->
-                <div *ngIf="MasterserviceForm.controls['service_name'].touched && MasterserviceForm.controls['service_name'].invalid"> 
+                <div style="margin-top: -27px;" *ngIf="MasterserviceForm.controls['service_name'].touched && MasterserviceForm.controls['service_name'].invalid"> 
                     
                   <div *ngIf="MasterserviceForm.controls['service_name'].errors" style="color: red;"> 
                     <div *ngIf="MasterserviceForm.controls['service_name'].errors.required" style="font-size: 12px;">
-                        Service is required
+                        Enter the service name
                     </div> 		   
                    
                  </div> 
@@ -56,7 +56,7 @@
         
               
               <td style="text-align: center;">
-                <button class="btn carwashbtn  " style="background-color: #198754;color: white;margin-top: -11px;" (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
+                <button class="btn carwashbtn  " style="background-color: #198754;color: white;margin-top: -11px;" (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Save</button>
         
               </td>
             </tr>
@@ -76,7 +76,7 @@
 
      
       <div style="border: 1px solid;height: 125px;">
-        <h2 style="text-align: center;" class="mainheading">Add Shop Service</h2>
+        <h2 style="text-align: center;" class="mainheading">Add Service Price</h2>
       <form [formGroup]="shopserviceForm" name="pf">
       <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;" id="shopservFormid">
         <table class="table" style="border: none;">
@@ -139,7 +139,7 @@
       
                   <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;"> 
                     <div *ngIf="shopserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
-                         Amount is required. 
+                         Enter the amount  
                     </div> 		   
                    
                  </div> 
@@ -147,7 +147,7 @@
                 </div>
             </td>
             <td>
-              <button class="btn carwashbtn  " style="background-color: #198754;color: white;margin-top: -10px;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'  >Add</button>
+              <button class="btn carwashbtn  " style="background-color: #198754;color: white;margin-top: -10px;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'  >Save</button>
       
             </td>
           </tr>
@@ -172,7 +172,7 @@
         <table  class="table table-responsive servicecss" >
             <thead style="background: #8bc7ef;border-bottom: 0.5px solid #aeaeae;">
               <tr >
-                <th colspan="5" style="text-align:center;border-right:solid 1px;font-weight: bold;font-size:14px;">Service Details</th>
+                <th colspan="6" style="text-align:center;border-right:solid 1px;font-weight: bold;font-size:14px;">Service Details</th>
                 <th colspan="5"  style="text-align:center;font-weight:bold;font-size:14px">Offer Details</th>
                 </tr>
                 <tr>
@@ -180,7 +180,9 @@
                 <th style="width:200px;">Service Name</th>
                 <th style="width:150px;">Model </th>
                 <th style="width:80px;" >Service Amount</th>
-                <th  style="width:150px;border-right:solid 1px;">Action</th>
+                <th style="width:60px;" >Status </th>
+                <th  style="width:100px;border-right:solid 1px;">Action</th>
+                
                 <th style="width:85px;" >Offer(%) </th>
                 <th style="width:85px;" >Offer Price </th>
                 <th style="width:35px;">Offer From Date</th>
@@ -197,14 +199,33 @@
                 <td><i class="fa fa-rupee"> </i> &nbsp; <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
                 </td>
-                <td style="border-right:solid 1px;">
-                
-                
+                <td >
+                <!-- Default checked -->
+<!-- <div class="custom-control custom-switch"> -->
+  <!-- <input type="checkbox" *ngIf="service.status == '1'" (click)="changeServiceStatus(service.id,service.status)"  class="custom-control-input" id="customSwitch1" checked> <span *ngIf="service.status == '1'">&nbsp;</span> -->
+  <!-- <input type="checkbox" *ngIf="service.status == '0'" (click)="changeServiceStatus(service.id,service.status)"  class="custom-control-input" id="customSwitch1" > <span *ngIf="service.status == '0'">&nbsp;</span> -->
 
-                      
-                     <button   style="border-radius: 21px;width: 60px;border: none;background-color: #b9c3f5;height: 22px;color: black;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button>
-                    
+  <span *ngIf="service.status == '1'">&nbsp;</span>
+  <label class="switch" *ngIf="service.status == '1'" (click)="changeServiceStatus(service.id,service.status)">
+    <input type="checkbox" checked>
+    <span class="slider round"></span>
+  </label>
+  
+  <span *ngIf="service.status == '0'">&nbsp;</span>
+  <label class="switch" *ngIf="service.status == '0'" (click)="changeServiceStatus(service.id,service.status)">
+    <input type="checkbox" >
+    <span class="slider round"></span>
+  </label>
+ 
+  <!-- <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label> -->
+<!-- </div> -->
+                 
                   
+                    </td>
+
+                    <td style="border-right:solid 1px;">
+                      <button   style="border-radius: 21px;width: 60px;border: none;background-color: #b9c3f5;height: 22px;color: black;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button>
+
                     </td>
                 <td>
                  &nbsp; <input id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)" style="width: 80px;">&nbsp;<i class="fa fa-percent"> </i>

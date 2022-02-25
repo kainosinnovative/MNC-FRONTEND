@@ -57,6 +57,7 @@ export class ShopServiceComponent implements  OnInit{
       lastupddt: [this.current_date, Validators.required],
       actual_amount: ['', Validators.required],
       shop_id:[currentUserId, Validators.required],
+      status:['1', Validators.required]
       // hidden_service: [''],
     }
     )
@@ -406,6 +407,31 @@ export class ShopServiceComponent implements  OnInit{
   
   onFocused(e:any){
     // do something when input is focused
+  }
+
+
+  changeServiceStatus(serviceid:any,status:any) {
+// alert(serviceid)
+// alert(status)
+    var changeServiceStatus = 
+                   {
+                  "shopserviceid": serviceid,
+                  "status": status,
+                   }
+
+this.restApi.changeServiceStatus(changeServiceStatus).subscribe((data: any) => {
+  console.log('POST Request is successful >>>>>>>>', data.status);
+  if(data.status == "pass") {
+    this.loadServiceData();
+  }
+},
+success => {
+  console.log('Error>>>>>', success);
+ 
+  
+  
+}
+);
   }
 
 }
