@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   CustomerWhislistData:any;
   CustomerWhislistData1:any;
   customerId:any;
+  selectedcity:any;
   param1: string;
 param2: string;
   // route: any;
@@ -29,7 +30,7 @@ param2: string;
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
-  
+ 
 
   ngOnInit(): void {
     this.date=new Date();
@@ -55,8 +56,8 @@ param2: string;
   customerWhislist(customerId:any)
   {
     var whislist : [];
-    
-    return this.restApi.getCustomerWhislist(customerId).subscribe((data: {}) => {
+    this.selectedcity=localStorage.getItem('selectedCity');
+    return this.restApi.getCustomerWhislist(customerId,this.selectedcity).subscribe((data: {}) => {
       // alert(data)
       this.CustomerWhislistData = data;
       this.CustomerWhislistData1= this.CustomerWhislistData.data.whislist;

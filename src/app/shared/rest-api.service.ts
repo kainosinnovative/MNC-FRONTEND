@@ -444,10 +444,11 @@ ShopoffersById(currentShopId:any): Observable<shopoffers> {
   )
 
 } 
-getCustomerWhislist(customerid:any) : Observable<any[]>
+getCustomerWhislist(customerid:any,selectedcity:any) : Observable<any[]>
 {
 
- return this.http.get<any>(this.apiURL +'/app/customerwhislist?currentUserId='+ customerid )
+ return this.http.get<any>(this.apiURL +'/app/customerwhislist?currentUserId='+ customerid+ 
+ '&city_id='+selectedcity)
   
   .pipe(
     retry(1),

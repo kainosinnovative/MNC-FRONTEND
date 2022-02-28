@@ -1,19 +1,22 @@
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-<div class="row">
-  <div class="col-sm-2">
-
+<div class="col-sm-6" class="mainheading" style="text-align:center;">
+  <h2 style="text-align: center;" class="mainheading">Combo Offers </h2>
+</div>
+<!-- <div class="row"> <div class="col-sm-2">
+    
   </div>
 
-  <div class="col-sm-8">
-
-    <h2 style="text-align: center;" class="mainheading">Combo Offers List</h2>
+  <div class="col-sm-8" style="border:1px solid rgb(92, 43, 228);" >
+   
+    <h2 style="text-align: center;" class="subheading">Current Offers </h2>
 
 
       <table  class="table table-responsive" style="width:99%;border: 0.5px solid #aeaeae;">
           <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
             <tr >
              
-              <th >Sl No</th>
+              <th >Sl. No.</th>
+              <th>Offer Name</th>
               <th>Model</th>
               <th >Services</th>
               <th >From Date</th>
@@ -28,14 +31,15 @@
               <td colspan="7" style="">No data available</td>
               
             </tr>
-            <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
+           
               <tr *ngFor="let service of  comboofferData1;let i=index">
               
               <td>{{i + 1}}</td>
+              <td>{{service.offer_name}}</td>
               <td>
                 <span *ngFor="let s of shopserviceModel1" >
                   <span *ngIf="s.model_id === service.model_id">{{s.model_name}}</span>
-                  <!-- {{s.model_name}} -->
+                
                 </span>
                 </td>
               <td > 
@@ -48,12 +52,12 @@
                 </div>
                 
               </td>
-              <!-- <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
+              <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
                 
                 
-              </td> -->
-              <td>{{service.start_date}}</td>
-              <td>{{service.end_date}}</td>
+              </td>
+              <td>{{service.start_date | date: 'dd-MM-yyyy'}}</td>
+              <td>{{service.end_date |  date: 'dd-MM-yyyy'}}</td>
               <td>{{service.offer_percent}} %</td>
               <td><i class="fa fa-rupee"> </i> {{service.combo_price}}</td>
               
@@ -69,23 +73,23 @@
       <div class="col-sm-2">
 
       </div>
-      </div>
+      </div> -->
+
+<br>
 
 
 
-<h2 style="text-align: center;" class="mainheading">Combo Offers and Deals</h2>
 
 
 
-
-
-<div class="row">
+<div class="row" >
     <div class="col-sm-2">
 
     </div>
 
-    <div class="col-sm-8">
-
+    <div class="col-sm-8" style="border:1px solid black;padding-top:10px;">
+       
+<h2 style="text-align: center;" class="subheading">Add Tody's Combo Offer</h2>
       <div class="row">
         <div class="col-sm-4" style="text-align: left;">
           <label style="width: 74px;">From date</label>  <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;"> 
@@ -113,16 +117,17 @@
 
       <br>
 
-      <div style="display: none !important;" id="secondtblid">
+      <div style="display: none !important;" id="secondtblid" >
 
         <table  class="row table table-responsive" style="width: 100%;border: 0.5px solid #aeaeae;" >
             <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
               <tr >
                
-                <th  style="width: 200px;">Sl No</th>
-                <th style="width: 300px;">Service Name</th>
+                <th  style="width: 200px;">Sl. No.</th>
+                
+                <th style="width: 300px;">Active Service Name</th>
                 <th style="width: 200px">Amount</th>
-                <th style="width: 330px">Tools</th>
+                <th style="width: 330px">Action</th>
               </tr>
             </thead>
             <tbody *ngIf="combooffertblByModelid1.length < 2">
@@ -135,9 +140,9 @@
               
               
               <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
-                <tr   *ngFor="let service of  combooffertblByModelid1">
-                
-                <td style="width: 200px;">{{service.service_id}}</td>
+                <tr   *ngFor="let service of  combooffertblByModelid1; let i=index;">
+               <td  style="width: 200px;">{{i+1}}</td>
+                <!-- <td style="width: 200px;display:hidden;">{{service.service_id}}</td> -->
                 <td style="width: 300px;">{{service.service_name}}</td>
                 <td style="width: 200px;"><i class="fa fa-rupee"> </i> &nbsp; <span id="amount_{{service.service_id}}">{{service.actual_amount}}</span>
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
@@ -215,7 +220,7 @@
     </div>
 
 </div>
-
+<br>
 
 
 
