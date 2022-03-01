@@ -11,6 +11,26 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class ComboOffersComponent implements OnInit {
+  month: Month = [
+    { id: 1, name: "Jan" },
+    { id: 2, name: "Feb" },
+    { id: 3, name: "Mar" },
+    { id: 4, name: "Apr" },
+    { id: 5, name: "May" },
+    { id: 6, name: "Jun" },
+    { id: 7, name: "Jul" },
+    { id: 8, name: "Aug" },
+    { id: 9, name: "Sep" },
+    { id: 10, name: "Oct" },
+    { id: 11, name: "Nov" },
+    { id: 12, name: "Dec"}
+  ];
+  year: Year = [
+    { id: 2021, name: 2021 },
+    { id: 2022, name: 2022 },
+    { id: 2023, name:2023 },
+    { id: 2024, name: 2024 }
+  ];
   serviceData: any;
   serviceData1: any;
   config: any;
@@ -25,15 +45,17 @@ export class ComboOffersComponent implements OnInit {
   combooffertblByModelid1:any;
   addoffermsg:any;
   addoffermsg1:any;
+  opened = true;
+ 
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.date=new Date();
 // let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
-
+(<HTMLInputElement>document.getElementById("history")).style.display = "none";
 this.loadServiceData();
-this.loadComboOffers();
+//this.loadComboOffers();
 this.loadMasterService();
 this.loadshopserviceByModelid();
 this.loadcombooffertblByModelid(1);
@@ -45,7 +67,6 @@ this.loadcombooffertblByModelid(1);
   }
 
 
- 
 
   loadcombooffertblByModelid(a:any) {
     this.serviceIdArr = new Array();
@@ -105,14 +126,7 @@ this.loadcombooffertblByModelid(1);
 
   loadComboOffers(){
     let currentUserId = localStorage.getItem('currentUserId');
-    return this.restApi.getComboOffersData(currentUserId).subscribe((data: {}) => {
-      // alert(data)
-      this.comboofferData = data;
-      this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
-      
-      // console.log("data>>>>",this.comboofferData1)
-      // this.dtTrigger.next();
-    })
+   
 
     
   }
@@ -220,7 +234,8 @@ AddComboOffer() {
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
   let model_id = (<HTMLInputElement>document.getElementById("model_id")).value; 
   let totalamount = (<HTMLInputElement>document.getElementById("totalamount")).value;
-  console.log(combo_price);
+  let offername=(<HTMLInputElement>document.getElementById("offername")).value;
+  console.log(offername);
   let currentUserId = localStorage.getItem('currentUserId');
 // alert(currentUserId)
   if(start_date > end_date) {
@@ -233,6 +248,13 @@ else if(combooffer_offerpercent == "") {
   //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
   //   let validateamount = "validateamount_"+obj;
     (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="block";
+}
+else if (offername=="")
+{
+  (<HTMLInputElement>document.getElementById("offername")).focus();
+  //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+  //   let validateamount = "validateamount_"+obj;
+    (<HTMLInputElement>document.getElementById("offernameError")).style.display ="block";
 }
 else if(combo_price == "") {
   (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
@@ -248,6 +270,7 @@ else {
                 "start_date":start_date,
                 "end_date":end_date,
                 "model_id":model_id,
+                "offer_name":offername,
                 "original_amount":totalamount
                 }
 
@@ -291,5 +314,51 @@ getOfferPrice(offerPercent:any) {
 dateErrorMsg() {
   (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="none";
 }
+retreivedata()
+{
+    (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
+    (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
+    let mon = (<HTMLInputElement>document.getElementById("month")).value; 
+    let year = (<HTMLInputElement>document.getElementById("year")).value;
+    console.log(mon);
+    console.log(year);
+    if(mon=="")
+    {
+    (<HTMLInputElement>document.getElementById("month")).focus();
+  
+      (<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
+    }
+    else if(year=="")
+    {
+      (<HTMLInputElement>document.getElementById("year")).focus();
+      //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+      //   let validateamount = "validateamount_"+obj;
+        (<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
+    }
+    else{
+      (<HTMLInputElement>document.getElementById("history")).style.display = "block";
+      let currentUserId = localStorage.getItem('currentUserId');
+      var monyear=
+      {
+        "month":mon,
+        "year":year,
+        "currentUserId":currentUserId
+      }
+      
+    this.restApi.getComboOffersData(monyear).subscribe((data: {}) => {
+        // alert(data)
+        this.comboofferData = data;
+        this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
+        
+        // console.log("data>>>>",this.comboofferData1)
+        // this.dtTrigger.next();
+      })
+   
+
+    }
+ 
+}
 
 }
+type Month = Array<{ id: number; name: String }>;
+type Year = Array<{ id: number; name: number }>;

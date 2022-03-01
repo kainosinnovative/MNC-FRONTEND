@@ -179,9 +179,15 @@ gettestimonialData(): Observable<Testimonial> {
               }
 
 
-      getComboOffersData(currentUserId:any): Observable<Services> {
+      getComboOffersData(monyear:any): Observable<Services> {
+
         // alert(currentUserId)
-        return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?currentUserId="+currentUserId)
+        let month=monyear["month"];
+        let year=monyear["year"];
+        let currentId=monyear["currentUserId"];
+        return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?month="+month+
+        "&year="+year+
+        "&id="+currentId)
       
         .pipe(
         retry(1),
@@ -273,9 +279,10 @@ gettestimonialData(): Observable<Testimonial> {
   let end_date = ComboOfferDetails["end_date"];
   let model_id = ComboOfferDetails["model_id"];
   let original_amount = ComboOfferDetails["original_amount"];
+  let offer_name=ComboOfferDetails["offer_name"];
     return this.http.get<ShopService>(this.apiURL + "/shop/AddComboOfferDetails?services="+services +
      "&combo_price=" + combo_price + "&shop_id="+shop_id +"&offer_percent=" + offer_percent + "&start_date="+start_date +
-     "&end_date=" + end_date + "&model_id=" + model_id + "&original_amount=" + original_amount)
+     "&end_date=" + end_date + "&model_id=" + model_id + "&original_amount=" + original_amount + "&offer_name=" + offer_name)
   
     .pipe(
     retry(1),

@@ -168,7 +168,8 @@ export class ShopServiceComponent implements  OnInit{
                      "&serviceid=" + obj + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
                      console.log(data);
                      responsedata=data;
-                     if(responsedata.status=="pass")
+                     if(responsedata
+                      =="pass")
                      {
                       this.toastr.success('Amount for ' +  service_name + ' Updated Successfully');
                       this.loadServiceData();
