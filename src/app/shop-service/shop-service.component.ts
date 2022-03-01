@@ -18,7 +18,8 @@ export class ShopServiceComponent implements  OnInit{
   offerpricetext:any;
   serviceData: any;
   serviceData1: any;
-
+  opened = true;
+  opened1 = false;
   element: HTMLElement;
   service_amount: string;
    date:any;
@@ -65,7 +66,9 @@ export class ShopServiceComponent implements  OnInit{
 
     this.MasterserviceForm = this.frmbuilder.group({
       service_name: ['', Validators.required],
-      
+      model_id: ['', Validators.required],
+      shop_id:[currentUserId, Validators.required],
+      actual_amount: ['', Validators.required],
       lastupddt: [this.current_date, Validators.required],
       
     }
@@ -168,8 +171,7 @@ export class ShopServiceComponent implements  OnInit{
                      "&serviceid=" + obj + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
                      console.log(data);
                      responsedata=data;
-                     if(responsedata
-                      =="pass")
+                     if(responsedata.status =="pass")
                      {
                       this.toastr.success('Amount for ' +  service_name + ' Updated Successfully');
                       this.loadServiceData();
@@ -277,11 +279,12 @@ export class ShopServiceComponent implements  OnInit{
       var splitted1=splitted[1];
       var amount="amount_"+splitted1;
       var serviceamount= Number((<HTMLInputElement>document.getElementById(amount)).value);
-      var offeramount=serviceamount *(Number(term)/100);
+      var offeramount=(serviceamount *  Number(term))/100;
       var offeramtid;
+      var originalVal = serviceamount - offeramount;
       offeramtid="offeramount_"+splitted[1];
       console.log(offeramtid);
-     (<HTMLInputElement>document.getElementById(offeramtid)).value =offeramount.toString();
+     (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
  
 
   }
@@ -340,6 +343,7 @@ export class ShopServiceComponent implements  OnInit{
         console.log(err.status)
         if(err.status == 200) {
           this.loadMasterService();
+          this.loadServiceData();
           this.toastr.success('Services added Successfully');
         }
       

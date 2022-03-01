@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class OnlinebookingComponent implements OnInit {
 
   show: boolean = true
-
+  opened = true;
   displaydata: any;
   displaydata1: any;
   onlinebooking: any;
