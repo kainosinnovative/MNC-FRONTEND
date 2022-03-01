@@ -204,7 +204,7 @@ clickEvent(shopid :number){
             this.wishlistdata = data;
             if(this.wishlistdata.status === "pass"){
 
-             (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "pink";
+             (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
 
              this.showloginSuccess();
              }
