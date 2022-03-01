@@ -172,7 +172,7 @@ padding: 1rem!important;
     height: 50px;
 }
 .selectnow{
-    background-color: rgb(119 180 227 / 92%);;
+    background-color: #ffc207;
           border: none;
           height: 30px;
           width: 80px;
@@ -198,13 +198,15 @@ padding: 1rem!important;
 }
 
 .comboselectbtm{
-    background-color: rgb(119 180 227 / 92%);;
+    background-color: #ffc207;
           border: none;
           height: 30px;
           width: 70px;
           font-size: 15px;
-          margin-left: 167px;
+          margin-left: 214px;
           margin-top: 8px;
+          color: black;
+          border-radius: 5px;
 }
 
 .extser{
@@ -236,9 +238,14 @@ padding: 1rem!important;
     font-size: 12px;
     color: white;
     font-weight: 500;
-    background: purple;
+    background: #138808;
     border-radius: 6px;
     padding-left: 4px;
     padding-right: 4px;
     margin-bottom: -49px;
+}
+
+.card {
+    width: 300px;
+    background: #3f6eb530;
 }

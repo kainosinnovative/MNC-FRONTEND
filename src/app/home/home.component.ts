@@ -3,6 +3,10 @@ import { DatePipe } from '@angular/common';
 import { RestApiService } from "../shared/rest-api.service";
 import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
 import { EventEmitterService } from '../event-emitter.service';
+import { HttpClient } from '@angular/common/http';
+import { style } from '@angular/animations';
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +16,7 @@ import { EventEmitterService } from '../event-emitter.service';
 })
 export class HomeComponent implements OnInit {
   date:any;
+  //data: any;
   selectedCity: any;
   dashboardShop:any;
   dashboardShop1:any;
@@ -25,12 +30,20 @@ export class HomeComponent implements OnInit {
   selectedcity:any;
   param1: string;
 param2: string;
+wishlistdata: any;
+wishlistdata1: any;
+ 
   // route: any;
-  constructor(public restApi: RestApiService,public datepipe: DatePipe,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService) { }
+
+  
+  
+
+
+  constructor(private toastr: ToastrService,public restApi: RestApiService,public datepipe: DatePipe,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) { }
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
- 
+
 
   ngOnInit(): void {
     this.date=new Date();
@@ -162,6 +175,71 @@ param2: string;
   beforeChange1(e:any) {
     console.log('beforeChange');
   }
-  
+ 
+clickEvent(shopid :number){
+         //alert(shopid)
+         let wishlist1="wishlistvalue_"+ shopid;
+
+         let  customerid = localStorage.getItem('currentUserId');
+         let cityid = localStorage.getItem('selectedCity'); 
+
+         
+         
+         //let wishlist1 =  (<HTMLInputElement>document.getElementById(wishlist)).innerHTML;
+         //console.log(wishlist1)
+      let wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist1)).style.color;
+      //alert(wishlistcolor)
+      
+      if(wishlistcolor === "gray"){
+
+      this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+ 
+            '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+              (data: any) => {
+            console.log(data)
+
+
+    
+
+
+            this.wishlistdata = data;
+            if(this.wishlistdata.status === "pass"){
+
+             (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "pink";
+
+             this.showloginSuccess();
+             }
+          }
+           );
+     }
+
+else
+      {
+          this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+ 
+            '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+              (data: any) => {
+            //console.log(data)
+
+
+           
+            this.wishlistdata1 = data;
+            if(this.wishlistdata1.status === "pass"){
+
+             (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "gray";
+             alert("Successfully Removed your Wishlist")
+             }
+          }
+           );
+       }
+      
+       }
+
+       showloginSuccess() {
+        console.log("login message");
+        
+        this.toastr.success('Added Successfully to Wishlist');
+        
+            // 
+      }
+
 
 }
