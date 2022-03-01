@@ -84,9 +84,7 @@ OnlineBookingInsert:any;
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     this.onlinebooking = this.frmbuilder.group({
       Booking_id: ['', Validators.required],
-      // emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
-      // mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]], 
-      services: ['', Validators.required],
+       services: ['', Validators.required],
       combo_id: ['', Validators.required],
       Customer_id: [currentUserId, Validators.required],
       instructions: ['', Validators.required],
@@ -107,15 +105,6 @@ OnlineBookingInsert:any;
         this.onlinebooking.controls.Shop_id.setValue(id);
   })
   }
-
-
-
-
-  // readCustomerDataById() {
-  //   throw new Error('Method not implemented.');
-  // }
-
-  
 
 
   cartype(){

@@ -91,10 +91,9 @@
                   <!-- <div *ngFor="let s1 of CustomerWhislistData1">
                   <div *ngFor="let m1 of  s1.whislist.split(',');let j1=index" > -->
                 
-                   <!-- <span  *ngIf="m1 === s.shop_id" class="wishlist" style="margin-top:12px;"><i class="fa fa-heart " style="color:#ff0077;font-size:12px;"></i></span> -->
                    <!-- </div>
                    </div> -->
-                   <span   class="wishlist" style="margin-top:12px;"><i class="fa fa-heart " style="color:#ff0077;font-size:12px;"></i></span>
+                   <span  class="wishlist" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id)" style="margin-top:12px;color: gray;"><i class="fa fa-heart "></i></span>
              </div>
              
              <b>Services:</b>
