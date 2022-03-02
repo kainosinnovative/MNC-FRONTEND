@@ -176,6 +176,8 @@ padding: 1rem!important;
           border: none;
           height: 30px;
           width: 80px;
+          border-radius: 5px;
+          font-size: 15px;
          // margin-top: -11px;
           
 }
@@ -343,4 +345,12 @@ padding: 1rem!important;
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  .switch-toggle {
+    width: 10em;
+  }
+  
+  .switch-toggle label:not(.disabled) {
+    cursor: pointer;
   }
