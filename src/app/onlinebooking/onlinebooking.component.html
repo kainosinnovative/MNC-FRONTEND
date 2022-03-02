@@ -18,6 +18,32 @@
         
         
         <div class="row" style="border: 1px solid #aeaeae;padding-top: 10px;padding-bottom: 10px;width: 1268px;margin-left: -1px;">
+          
+          <div class="col-sm-3">
+            <div class="form-group">
+
+              <label>Vehicle Number</label> <br>
+                   
+              <select   class="carmodelcls" formControlName="vehicle_number" id="model" style="border: 1px solid;height: 34px;">   
+                     
+                <option value="">--Select Vehicle Number--</option>  
+                <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.model">
+                  {{carmodels.vehicle_number}}
+                  </option> 
+                 </select>
+                  <div *ngIf="onlinebooking.controls['vehicle_number'].touched && onlinebooking.controls['vehicle_number'].invalid"> 
+                      
+                  <div *ngIf="onlinebooking.controls['vehicle_number'].errors" style="color: red;"> 
+                    <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 12px;">
+                        Select car model
+                    </div> 		   
+                   
+                 </div> 
+                  
+                </div> 
+                   </div>
+          </div>
+          
           <div class="col-sm-3">
            
             <div class="form-group">
@@ -73,6 +99,19 @@
                  </div>
               </div>
               </div>
+              
+              <div class="col-sm-3">
+                <br>
+                <div class="form-group">
+                  <label style="width: 201px;">do you want pick-up and dropped?</label> 
+                  
+                  <label class="switch" >
+                    <input  type="checkbox" >
+                    <span class="slider round"></span>
+                  </label>
+                  
+                  </div>
+                  </div>
      </div>
     <br>
      <!---End of Booking details-->

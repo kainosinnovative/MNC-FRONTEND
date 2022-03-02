@@ -308,6 +308,26 @@
                 
                 <tbody>
                      <tr >
+
+                      <td >
+                          
+                        <div class="form-group">
+                            <label class="customerProfileLbl">Vehicle Number<span class="requiredfield">  *</span></label>
+                            <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="vehicle_number" style="width: 120px;">
+
+                                <div *ngIf="cardetailForm.controls['vehicle_number'].touched && cardetailForm.controls['vehicle_number'].invalid "> 
+              
+                                    <div *ngIf="cardetailForm.controls['vehicle_number'].errors" style="color: red;"> 
+                                      <div *ngIf="cardetailForm.controls['vehicle_number'].errors.required" style="font-size: 12px;" class="cartypevalid">
+                                          Enter vehicle number
+                                      </div> 		   
+                                     
+                                   </div> 
+                                    
+                                  </div>
+                        </div>
+                      </td>
+
                       <td >
                           
                         <div class="form-group">
@@ -432,16 +452,18 @@
           </div>
         
 
-          <div class="col-sm-12 form-inline" style="text-align: right;">
+          <div class="col-sm-12 form-inline" style="text-align: right;margin-left: -114px;">
         
             <button class="btn carwashbtn  btn-success1" (click)="AddCustomerCarDetails(cardetailForm.value)"  [disabled]='!cardetailForm.valid'>Add</button>
             
         
         </div>
+        <br>
 <div class="table-responsive">
 
         <table class="table ">  
             <tr>  
+              <th>Vehicle Number</th> 
               <th>Type</th> 
               <th>Brand</th> 
               <th>Model</th> 
@@ -456,6 +478,7 @@
             </tbody>
             <tbody *ngIf="carDetailsById1.length > 0">
                 <tr *ngFor="let c of carDetailsById1; let i=index" >  
+                    <td>{{c.vehicle_number}}</td>
                     <td>{{c.type_name}}</td>      
                     <td>{{c.brand_name}}</td>
                     <td>{{c.model_name}}</td>

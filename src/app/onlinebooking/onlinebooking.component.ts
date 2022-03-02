@@ -92,7 +92,8 @@ OnlineBookingInsert:any;
       model_id: ['', Validators.required],
       payable_amt: ['', Validators.required],
       Shop_id: ['', Validators.required],
-      lastupddt: [this.current_date, [Validators.required]]
+      lastupddt: [this.current_date, [Validators.required]],
+      vehicle_number: ['', Validators.required]
        }) 
 
 
