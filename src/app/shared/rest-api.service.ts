@@ -466,4 +466,18 @@ getCustomerWhislist(customerid:any,selectedcity:any) : Observable<any[]>
 
 }
 
+getallshoplist() : Observable<any[]>
+{
+
+ return this.http.get<any>(this.apiURL +"/shop/getallshoplist")
+  
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+    
+  )
+
+
+}
+
 }
