@@ -108,6 +108,17 @@ gettestimonialData(): Observable<Testimonial> {
       }
 
 
+      getcustomerBookingForShop(currentUserId:any): Observable<any[]> {
+        // alert(currentUserId)
+        return this.http.get<any[]>(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
+      
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
+
       combooffertblByModelid(combooffertbl:any): Observable<shopserviceByModelid> {
       //  alert(combooffertbl)
       let model_id = combooffertbl["model_id"];
@@ -258,6 +269,19 @@ gettestimonialData(): Observable<Testimonial> {
           catchError(this.handleError)
           )
           }
+
+
+          vehicleBasedModel(vehicle_number:any): Observable<any[]> {
+            // alert(shopservAmount)
+            
+         
+            return this.http.get<any[]>(this.apiURL + "/app/getCarinfomodels?vehicle_number="+vehicle_number)
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{

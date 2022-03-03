@@ -59,6 +59,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import {MatSelectModule} from '@angular/material/select';
 import { SearchComponent } from './search/search.component';
 // import { ShopLoginComponent } from './shop-login/shop-login.component';
+import { ShoploginComponent } from './shoplogin/shoplogin.component';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -80,10 +82,10 @@ const appRoutes: Routes = [
   { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
   { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}},
   { path: 'test', component: TestinsertComponent, data: {title: 'test'}},
-  { path: 'search', component: SearchComponent, data: {title: 'search'}}
+  { path: 'search', component: SearchComponent, data: {title: 'search'}},
   // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
+  { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}}
   
-
 ];
 @NgModule({
   declarations: [
@@ -110,8 +112,10 @@ const appRoutes: Routes = [
       SelectcityComponent,
       ComboOffersComponent,
       TestinsertComponent,
-      SearchComponent
+      SearchComponent,
       // ShopLoginComponent
+      ShoploginComponent
+      
    
      ],
   imports: [
@@ -131,7 +135,6 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     HttpClientModule,
-    // Customer,
     FormsModule,
     ReactiveFormsModule,
     NgxStarRatingModule,
@@ -155,6 +158,13 @@ const appRoutes: Routes = [
 export class AppModule { 
 
   constructor(private  dialog:  MatDialog) { }
+
+  shoplogin(){
+    
+    this.dialog.open(ShoploginComponent,{ data: {
+    message:  "Error!!!"
+    }});
+}
 
   login(){
     

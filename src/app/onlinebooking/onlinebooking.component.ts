@@ -45,6 +45,8 @@ carDetailsById:any;
 carDetailsById1:any;
 current_date:any;
 OnlineBookingInsert:any;
+carinfoModels:any;
+carinfoModels1:any;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
@@ -71,6 +73,8 @@ OnlineBookingInsert:any;
      this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      let currentUserId = localStorage.getItem('currentUserId');
 
+     
+
     this.displaycartype();
     this.loadcarbrand();
     this.readCustomerDataById();
@@ -82,18 +86,22 @@ OnlineBookingInsert:any;
    
     const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
+    const zerocheck = '^0{1}$';
     this.onlinebooking = this.frmbuilder.group({
       Booking_id: ['', Validators.required],
-       services: ['', Validators.required],
-      combo_id: ['', Validators.required],
+       services: [],
+      combo_id: [],
       Customer_id: [currentUserId, Validators.required],
-      instructions: ['', Validators.required],
+      instructions: [],
       bookingdate: ['', Validators.required],
       model_id: ['', Validators.required],
-      payable_amt: ['', Validators.required],
-      Shop_id: ['', Validators.required],
+      payable_amt:['', [Validators.required]],
+      serviceprice_total: [],
+      comboprice_total: [],
+      Shop_id: [],
       lastupddt: [this.current_date, [Validators.required]],
-      vehicle_number: ['', Validators.required]
+      vehicle_number: ['', Validators.required],
+      pickup_drop: []
        }) 
 
 
@@ -104,6 +112,7 @@ OnlineBookingInsert:any;
         var randomnumber = Math.floor(100000 + Math.random() * 900000) + "_" + id;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
+        this.onlinebooking.controls.pickup_drop.setValue(false);
   })
   }
 
@@ -285,14 +294,16 @@ changeBgColor(offer_id:any){
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
         //alert(offer_amt);
         this.finalvalue = this.finalvalue +(offer_amt);
-        (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
+        // (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
+        this.onlinebooking.controls.comboprice_total.setValue(this.finalvalue.toFixed());
       } else {
      
       (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Select";
       (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#ffc207";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
        this.finalvalue = this.finalvalue -(offer_amt);
-       (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
+       this.onlinebooking.controls.comboprice_total.setValue(this.finalvalue.toFixed());
+      //  (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
   }
 }
 ExtraServiceArr = new Array();
@@ -316,7 +327,8 @@ selectbuttoncolor(service_id:any){
        console.log(service_amt);
       this.totalvalue = this.totalvalue +(service_amt);
       console.log(this.totalvalue);
-      (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+      // (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+      this.onlinebooking.controls.serviceprice_total.setValue(this.totalvalue.toFixed());
 
        } else {
    
@@ -324,7 +336,8 @@ selectbuttoncolor(service_id:any){
      (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#ffc207";
      var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
      this.totalvalue = this.totalvalue -(service_amt);
-     (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+    //  (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
+    this.onlinebooking.controls.serviceprice_total.setValue(this.totalvalue.toFixed());
  }
 
  var concatServiceid_amount2 =  service_id + "#" + service_totalid;
@@ -350,8 +363,10 @@ else {
 }
 this.onlinebooking.controls.services.setValue(this.ExtraServiceArr1.toString());
 
-var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
-    var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+// var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
+let extraserviceTotalAmount = Number(this.onlinebooking.get('serviceprice_total').value);
+    // var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+    let comboserviceTotalAmount = Number(this.onlinebooking.get('comboprice_total').value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
     // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
     this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
@@ -404,8 +419,10 @@ this.onlinebooking.controls.combo_id.setValue(this.ComboPrimaryIdArr.toString())
   // (<HTMLInputElement>document.getElementById("ComboPrimaryIdArr")).value = this.ComboPrimaryIdArr.toString();
     (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
     
-    var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
-    var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+    // var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
+    let extraserviceTotalAmount = Number(this.onlinebooking.get('serviceprice_total').value);
+    // var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
+    let comboserviceTotalAmount = Number(this.onlinebooking.get('comboprice_total').value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
     // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
     this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
@@ -480,6 +497,14 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
 
   OnlineBooking(onlinebooking:any) {
 
+    let payable_amt = this.onlinebooking.get('payable_amt').value;
+    // alert(payable_amt)
+
+    if(payable_amt == "" || payable_amt == 0){
+      this.toastr.error('Please select any service for your car');
+    }
+    else {
+
     this.http.post(config_url+'/shop/addonlinebooking',onlinebooking)
       .subscribe(res => {
       console.log("res>>>>>",res);
@@ -491,11 +516,43 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
           
         }
     });
+  }
 // this.restApi.OnlineBookingInsertFn(onlinebooking).subscribe((data: {}) => {
   
 //   this.OnlineBookingInsert = data;
   
 // })
+  }
+
+
+  vehicleBasedModel(newObj: any) {
+    let vehicle_number : any = newObj.target.value;
+    
+    this.restApi.vehicleBasedModel(vehicle_number).subscribe((data: any) => {
+      console.log('POST Request is successful >>>>>>>>', data.status);
+      if(data.status == "pass") {
+        this.carinfoModels = data
+  this.carinfoModels1 = this.carinfoModels.data;
+      }
+    },
+    success => {
+      console.log('Error>>>>>', success);
+      
+    }
+    );
+//   this.http.get('http://localhost/MNC-PHP-API/app/getCarinfomodels?vehicle_number='+vehicle_number).subscribe(
+// data => {
+ 
+//   console.log("model data>>>>>",data);
+//   this.carinfoModels = data
+//   this.carinfoModels1 = this.carinfoModels.data;
+// },
+// error => {
+  
+//   console.log(error.status)
+
+// }
+// );
   }
 
 }
