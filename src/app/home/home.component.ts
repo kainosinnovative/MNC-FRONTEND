@@ -225,7 +225,7 @@ else
             if(this.wishlistdata1.status === "pass"){
 
              (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "gray";
-             alert("Successfully Removed your Wishlist")
+             //alert("Successfully Removed your Wishlist")
              }
           }
            );
@@ -236,7 +236,7 @@ else
        showloginSuccess() {
         console.log("login message");
         
-        this.toastr.success('Added Successfully to Wishlist');
+        //this.toastr.success('Added Successfully to Wishlist');
         
             // 
       }

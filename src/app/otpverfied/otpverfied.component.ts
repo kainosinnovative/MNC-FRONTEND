@@ -98,7 +98,7 @@ loadCustomerDetails2(Objval:any) {
 showloginSuccess() {
   console.log("login message");
   
-  this.toastr.success('LoggedIn Successfully');
+  this.toastr.success('Logged In Successfully');
   
       // 
 }

@@ -57,7 +57,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TestinsertComponent } from './testinsert/testinsert.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import {MatSelectModule} from '@angular/material/select';
-// import { ShopLoginComponent } from './shop-login/shop-login.component';
+import { ShoploginComponent } from './shoplogin/shoplogin.component';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -78,10 +79,9 @@ const appRoutes: Routes = [
   { path: 'NewinsertpageComponent', component: NewinsertpageComponent, data: {title: 'ShopService'}},
   { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
   { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}},
-  { path: 'test', component: TestinsertComponent, data: {title: 'test'}}
-  // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
+  { path: 'test', component: TestinsertComponent, data: {title: 'test'}},
+  { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}}
   
-
 ];
 @NgModule({
   declarations: [
@@ -107,8 +107,9 @@ const appRoutes: Routes = [
       ShopdashboardComponent,
       SelectcityComponent,
       ComboOffersComponent,
-      TestinsertComponent
-      // ShopLoginComponent
+      TestinsertComponent,
+      ShoploginComponent
+      
    
      ],
   imports: [
@@ -128,7 +129,6 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     HttpClientModule,
-    // Customer,
     FormsModule,
     ReactiveFormsModule,
     NgxStarRatingModule,
@@ -152,6 +152,13 @@ const appRoutes: Routes = [
 export class AppModule { 
 
   constructor(private  dialog:  MatDialog) { }
+
+  shoplogin(){
+    
+    this.dialog.open(ShoploginComponent,{ data: {
+    message:  "Error!!!"
+    }});
+}
 
   login(){
     
