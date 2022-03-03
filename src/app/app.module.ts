@@ -134,7 +134,7 @@ const appRoutes: Routes = [
     NgxStarRatingModule,
     ToastrModule.forRoot({
       positionClass: 'toast-center-center',
-      timeOut: 150000,
+      timeOut: 2000,
     }),
     NgCircleProgressModule.forRoot(),
     DataTablesModule,

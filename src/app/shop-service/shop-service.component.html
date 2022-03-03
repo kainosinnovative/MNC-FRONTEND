@@ -13,26 +13,26 @@
     <div class="col-sm-12">
 
       
-        <table  class="table table-responsive servicecss" >
+        <table  class="table table-responsive servicecss" *ngIf="serviceData1!=''">
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
               <tr >
-                <th colspan="6" style="text-align:center;border-right:solid 1px;font-weight: bold;font-size:14px;">Services offered in my shop</th>
-                <th colspan="5"  style="text-align:center;font-weight:bold;font-size:14px">Offer Details</th>
+                <th colspan="6" style="text-align:center;border-right:solid 1px;font-weight: normal;font-size:14px;">Services offered in my shop</th>
+                <th colspan="5"  style="text-align:center;font-weight:normal;font-size:14px">Offer Details</th>
                 </tr>
                 <tr>
-                <th style="width:40px;">Sl. No.</th>
-                <th style="width:200px;">Service Name</th>
-                <th style="width:60px;" >Status </th>
-                <th style="width:150px;">Model </th>
-                <th style="width:90px;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:40px;font-weight:normal;">Sl. No.</th>
+                <th style="width:200px;font-weight:normal;">Service Name</th>
+                <th style="width:66px;font-weight:normal;" >Service Status	 </th>
+                <th style="width:150px;font-weight:normal;">Model </th>
+                <th style="width:90px;font-weight:normal;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
                
-                <th  style="width:100px;border-right:solid 1px;">Action</th>
+                <th  style="width:100px;border-right:solid 1px;font-weight:normal;">Action</th>
                 
-                <th style="width:85px;" >Offer(%) </th>
-                <th style="width:85px;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
-                <th style="width:35px;">Start Date</th>
-                <th style="width:35px;">End Date</th>
-                <th  style="width:100px;">Action</th>
+                <th style="width:85px;font-weight:normal;" >Offer(%) </th>
+                <th style="width:85px;font-weight:normal;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:35px;font-weight:normal;">Start Date</th>
+                <th style="width:35px;font-weight:normal;">End Date</th>
+                <th  style="width:100px;font-weight:normal;">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -96,8 +96,9 @@
             </tbody>
           </table>
 
-            <br>
-            <div style="text-align: center;">
+            
+            <div style="text-align: center;" *ngIf="serviceData1!=''">
+              <br>
               <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
           
@@ -122,7 +123,7 @@
         <div style="border: 1px solid;;">
           <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
         <form [formGroup]="shopserviceForm" name="pf">
-        <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;" id="shopservFormid" >
+        <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
           <table class="table" style="border: none;">
             <tr style="text-align: left;">
               <td>Service</td>
@@ -233,7 +234,7 @@
     <div style="border: 1px solid;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
-      <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;" id="shopservFormid">
+      <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid2">
         <table class="table" style="border: none;margin-top: -23px;">
           <tr style="text-align: left;">
             

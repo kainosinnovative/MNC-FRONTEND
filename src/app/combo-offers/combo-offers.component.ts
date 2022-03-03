@@ -45,7 +45,7 @@ export class ComboOffersComponent implements OnInit {
   combooffertblByModelid1:any;
   addoffermsg:any;
   addoffermsg1:any;
-  opened = true;
+  opened = false;
  
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
@@ -59,11 +59,11 @@ this.loadServiceData();
 this.loadMasterService();
 this.loadshopserviceByModelid();
 this.loadcombooffertblByModelid(1);
-    // this.config = {
-    //   itemsPerPage: 10,
-    //   currentPage: 1,
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
       
-    // };
+    };
   }
 
 
@@ -314,6 +314,7 @@ getOfferPrice(offerPercent:any) {
 dateErrorMsg() {
   (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="none";
 }
+
 retreivedata()
 {
     (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";

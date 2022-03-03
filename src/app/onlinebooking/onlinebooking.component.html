@@ -18,16 +18,42 @@
         
         
         <div class="row" style="border: 1px solid #aeaeae;padding-top: 10px;padding-bottom: 10px;width: 1268px;margin-left: -1px;">
+          
+          <div class="col-sm-3">
+            <div class="form-group">
+
+              <label>Vehicle Number</label> <br>
+                   
+              <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;" (change)="vehicleBasedModel($event)">   
+                     
+                <option value="">--Select Vehicle Number--</option>  
+                <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.vehicle_number">
+                  {{carmodels.vehicle_number}}
+                  </option> 
+                 </select>
+                  <div *ngIf="onlinebooking.controls['vehicle_number'].touched && onlinebooking.controls['vehicle_number'].invalid"> 
+                      
+                  <div *ngIf="onlinebooking.controls['vehicle_number'].errors" style="color: red;"> 
+                    <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 12px;">
+                        Select car model
+                    </div> 		   
+                   
+                 </div> 
+                  
+                </div> 
+                   </div>
+          </div>
+          
           <div class="col-sm-3">
            
             <div class="form-group">
 
               <label>Model</label> <br>
                    
-              <select   class="carmodelcls" formControlName="model_id" id="model" style="border: 1px solid;height: 34px;">   
+              <select   class="carmodelcls" formControlName="model_id"  style="border: 1px solid;height: 34px;">   
                      
                 <option value="">--Select Model--</option>  
-                <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.model">
+                <option *ngFor="let carmodels of carinfoModels1" [value]="carmodels.model">
                   {{carmodels.model_name}}
                   </option> 
                  </select>
@@ -73,6 +99,40 @@
                  </div>
               </div>
               </div>
+              
+              <div class="col-sm-3">
+                <br>
+                <div class="form-group">
+                  <label style="width:185px;">Do you want pick-up and drop?</label> 
+
+                  <!-- <p class="switch-toggle switch-3 switch-candy">
+                    <input id="on" formControlName="pickup_drop"  type="radio" value="No" />
+                    <label for="on" onclick="">No</label>
+                  
+                    
+                  
+                    <input id="off" formControlName="pickup_drop"  type="radio" value="Yes"  />
+                    <label for="off" onclick="">Yes</label>
+                  
+                    <a></a> -->
+                  <!-- </p> -->
+                  <label>No</label> &nbsp;
+                  <label class="switch" >
+                    <input  type="checkbox" formControlName="pickup_drop" value="Yes">
+                    <span class="slider round"></span>
+                  </label> &nbsp;
+                  <label>Yes</label>
+
+                  <!-- <div *ngIf="onlinebooking.controls['pickup_drop'].touched && onlinebooking.controls['pickup_drop'].invalid "> 
+                    <div *ngIf="onlinebooking.controls['pickup_drop'].errors" style="color: red;"> 
+                     <div *ngIf="onlinebooking.controls['pickup_drop'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                         Select 
+                     </div> 		   
+                   </div> 
+                 </div> -->
+                  
+                  </div>
+                  </div>
      </div>
     <br>
      <!---End of Booking details-->
@@ -164,7 +224,7 @@
 <div style="font-size: 17px;margin-top: 15px;text-align: right;margin-left: -23px;;">
   <input type="hidden" formControlName="combo_id" id="ComboPrimaryIdArr" class="selectnow2"  >
   <label class="mainheading" id="name" >Combo Offer price </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i> 
-  <input type="number" readonly id="finalamount" class="selectnow2"  >
+  <input type="number" readonly id="finalamount" formControlName="comboprice_total" class="selectnow2"  >
   <br>
   <!-- <div > -->
     <p style="text-align: right" id="offernameShow"></p>
@@ -236,14 +296,14 @@
 
     <div style="font-size: 17px;text-align: right;margin-right: 28px;">
       <label class="mainheading">Extra Services price: </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i>
-      <input readonly type="number" id="totalamount" class="selectnow2"  >
+      <input readonly type="number" id="totalamount" formControlName="serviceprice_total" class="selectnow2"  >
 
 <br><br>
 <input type="hidden" formControlName="services"  class="selectnow2"  >     
 <label class="mainheading">Net Amount Payable: </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i>
       <input readonly type="number" formControlName="payable_amt" id="final_totalamount" class="selectnow2"  >
       <br><br>
-      <button class="allSubmitbtn" mat-raised-button="" style="margin-left: 975px;" (click)="OnlineBooking(onlinebooking.value)">Confirm Booking</button>
+      <button class="allSubmitbtn btn" mat-raised-button="" style="margin-left: 975px;" [disabled]='!onlinebooking.valid' (click)="OnlineBooking(onlinebooking.value)">Confirm Booking</button>
       </div>
 
      <mat-card-actions style="text-align: right;"> 
