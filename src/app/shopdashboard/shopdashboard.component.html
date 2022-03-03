@@ -1,4 +1,4 @@
-<h2 style="text-align: center;" class="mainheading">New Booking</h2>
+<h2 style="text-align: center;" class="mainheading">Today's Booking</h2>
 
 <div class="row">
     <div class="col-sm-1"></div>
@@ -10,17 +10,19 @@
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
               
                 <tr>
-                <th style="width:40px;font-weight:normal;">Sl. No.</th>
-                <th style="width:40px;font-weight:normal;">Booking Id</th>
-                <th style="width:40px;font-weight:normal;">Vehicle Number</th>
-                <th style="width:40px;font-weight:normal;">Date</th>
-                <th style="width:200px;font-weight:normal;">Name</th>
-                <th style="width:66px;font-weight:normal;" >Combo Services</th>
-                <th style="width:66px;font-weight:normal;" >Combo Services Total</th>
-                <th style="width:66px;font-weight:normal;" >Extra Services</th>
-                <th style="width:66px;font-weight:normal;" >Extra Services Total</th>
-                <th style="width:150px;font-weight:normal;">Total </th>
-                <th style="width:90px;font-weight:normal;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:60px;font-weight:normal;">Sl. No.</th>
+                <th style="width:90px;font-weight:normal;">Booking Id</th>
+                <th style="width:110px;font-weight:normal;">Vehicle Number</th>
+                <th style="width:90px;font-weight:normal;">Date</th>
+                <th style="width:150px;font-weight:normal;">Name</th>
+                <!-- <th style="width:66px;font-weight:normal;" >Combo Services</th> -->
+                <th style="width:150px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
+                <!-- <th style="width:66px;font-weight:normal;" >Extra Services</th> -->
+                <th style="width:150px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+                <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th>
+                <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th>
+                <th style="width:110px;font-weight:normal;" >Action</th>
                
                 
               </tr>
@@ -31,13 +33,47 @@
                 <td>{{i+1}}</td>
                 <td>{{b.Booking_id}}</td>
                 <td>{{b.vehicle_number}}</td>
-                <td>{{b.Booking_date}}</td>
+                <td>{{b.bookingdate}}</td>
                 <td>{{b.firstname}}({{b.Customer_id}})</td>
-                <td>{{b.combo_id}}</td> 
+                <!-- <td>
+                  
+              {{b.combo_id}} 
+            </td>  -->
                 <td>{{b.comboprice_total}}</td>
-                <td>{{b.services}}</td> 
+                <!-- <td>
+                  <div *ngIf="b.services != ''">
+                  <div *ngFor="let m of  b.services.split(',');let j=index" >
+                    <div *ngFor="let m1 of  MasterServiceData1;" >
+                     
+      <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
+                    </div>
+                    
+                  </div>
+                </div>
+                  </td>  -->
                 <td>{{b.serviceprice_total}}</td>
                 <td>{{b.payable_amt}}</td>
+                <td>
+                  <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
+                     
+                    <ng-template  #pickDropid>
+                      <span>Yes</span>
+                    </ng-template>
+                  </td>
+                  <td>
+                    
+                    <select  style="width: 100px;"   id="model"  >
+                      <option value="">--Select---</option>
+                     <option *ngFor="let p of pickdrop_statusDetails1" [value]="p.id">
+                      {{p.status_name}}
+                      </option>
+                      </select>
+                    
+                  </td>
+                <td>
+                  <button (click)="acceptrejectbooking('Accepted',b.Booking_id)" class="btn"><i cl></i></button>
+                  <button (click)="acceptrejectbooking('Rejected',b.Booking_id)" class="btn">Reject</button>
+                </td>
               </tr>
               
             </tbody>

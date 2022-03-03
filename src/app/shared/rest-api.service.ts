@@ -118,6 +118,17 @@ gettestimonialData(): Observable<Testimonial> {
         )
         }
 
+        
+        getmaster_pickdrop_status(): Observable<any[]> {
+          // alert(currentUserId)
+          return this.http.get<any[]>(this.apiURL + "/shop/master_pickdrop_status")
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
 
       combooffertblByModelid(combooffertbl:any): Observable<shopserviceByModelid> {
       //  alert(combooffertbl)
@@ -503,5 +514,20 @@ getallshoplist() : Observable<any[]>
 
 
 }
+
+
+changeBookingStatus(changeBookingStatus:any): Observable<any[]> {
+  // alert(shopservAmount)
+  let booking_status = changeBookingStatus["booking_status"];
+let Booking_id = changeBookingStatus["Booking_id"];
+
+  return this.http.get<any[]>(this.apiURL + "/shop/changeBookingStatus?booking_status="+booking_status +
+   "&Booking_id=" + Booking_id)
+
+  .pipe(
+  retry(1),
+  catchError(this.handleError)
+  )
+  }
 
 }

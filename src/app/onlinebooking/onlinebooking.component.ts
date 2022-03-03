@@ -109,7 +109,7 @@ carinfoModels1:any;
         const id = params['id'];
         this.loadshopdetails(id);
         this.loadshopoffers(id);
-        var randomnumber = Math.floor(100000 + Math.random() * 900000) + "_" + id;
+        var randomnumber = Math.floor(100000 + Math.random() * 900000) + "-" + id;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
         this.onlinebooking.controls.pickup_drop.setValue(false);
