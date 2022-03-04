@@ -520,9 +520,10 @@ changeBookingStatus(changeBookingStatus:any): Observable<any[]> {
   // alert(shopservAmount)
   let booking_status = changeBookingStatus["booking_status"];
 let Booking_id = changeBookingStatus["Booking_id"];
+let pickup_drop = changeBookingStatus["pickup_drop"];
 
   return this.http.get<any[]>(this.apiURL + "/shop/changeBookingStatus?booking_status="+booking_status +
-   "&Booking_id=" + Booking_id)
+   "&Booking_id=" + Booking_id + "&pickup_drop=" + pickup_drop)
 
   .pipe(
   retry(1),
