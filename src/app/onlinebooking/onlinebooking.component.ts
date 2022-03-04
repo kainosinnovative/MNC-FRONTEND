@@ -38,6 +38,9 @@ export class OnlinebookingComponent implements OnInit {
   offerslist: any;
   MasterServiceid: any;
   MasterServiceid1: any;
+  getPickupAvlData:any;
+  getPickupAvlData1:any;
+  getPickupAvlData2:any;
    public totalvalue : number=0;
    public finalvalue : number=0;
 //totalvalue = 0;
@@ -94,14 +97,18 @@ carinfoModels1:any;
       Customer_id: [currentUserId, Validators.required],
       instructions: [],
       bookingdate: ['', Validators.required],
-      model_id: ['', Validators.required],
+      // model_id: ['', Validators.required],
       payable_amt:['', [Validators.required]],
       serviceprice_total: [],
       comboprice_total: [],
       Shop_id: [],
       lastupddt: [this.current_date, [Validators.required]],
       vehicle_number: ['', Validators.required],
-      pickup_drop: []
+      pickup_drop: [],
+      pickup_date: [],
+      pickup_time: [],
+      drop_date: [],
+      drop_time: []
        }) 
 
 
@@ -109,6 +116,7 @@ carinfoModels1:any;
         const id = params['id'];
         this.loadshopdetails(id);
         this.loadshopoffers(id);
+        this.getPickupAvl(id);
         var randomnumber = Math.floor(100000 + Math.random() * 900000) + "-" + id;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
@@ -119,6 +127,24 @@ carinfoModels1:any;
 
   cartype(){
     console.log("hiiiii1111");
+}
+
+getPickupAvl(currentShopId:any) {
+  
+  // let currentShopId = localStorage.getItem('currentUserId');
+  return this.restApi.readShopProfileDataById(currentShopId).subscribe((res)=>{
+    this.getPickupAvlData = res
+
+    
+    this.getPickupAvlData1 = this.getPickupAvlData.data.profile;
+    this.getPickupAvlData2 = this.getPickupAvlData1.is_pickup_drop_avl;
+    console.log("getPickupAvl>>>",this.getPickupAvlData1.is_pickup_drop_avl)
+    
+  }
+    
+  
+  )
+  
 }
 
 displaycartype(){
@@ -526,33 +552,21 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
 
 
   vehicleBasedModel(newObj: any) {
-    let vehicle_number : any = newObj.target.value;
+  //   let vehicle_number : any = newObj.target.value;
     
-    this.restApi.vehicleBasedModel(vehicle_number).subscribe((data: any) => {
-      console.log('POST Request is successful >>>>>>>>', data.status);
-      if(data.status == "pass") {
-        this.carinfoModels = data
-  this.carinfoModels1 = this.carinfoModels.data;
-      }
-    },
-    success => {
-      console.log('Error>>>>>', success);
+  //   this.restApi.vehicleBasedModel(vehicle_number).subscribe((data: any) => {
+  //     console.log('POST Request is successful >>>>>>>>', data.status);
+  //     if(data.status == "pass") {
+  //       this.carinfoModels = data
+  // this.carinfoModels1 = this.carinfoModels.data;
+  //     }
+  //   },
+  //   success => {
+  //     console.log('Error>>>>>', success);
       
-    }
-    );
-//   this.http.get('http://localhost/MNC-PHP-API/app/getCarinfomodels?vehicle_number='+vehicle_number).subscribe(
-// data => {
- 
-//   console.log("model data>>>>>",data);
-//   this.carinfoModels = data
-//   this.carinfoModels1 = this.carinfoModels.data;
-// },
-// error => {
-  
-//   console.log(error.status)
+  //   }
+  //   );
 
-// }
-// );
   }
 
 }

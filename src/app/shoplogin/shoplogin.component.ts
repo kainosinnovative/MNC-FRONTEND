@@ -25,7 +25,7 @@ export class ShoploginComponent implements OnInit {
     private http: HttpClient) { }
 
   ngOnInit(): void {
-
+    localStorage.setItem('loginfor','shopowner');
     
     (<HTMLInputElement>document.getElementById('footerdisplay')).style.display = "none";
 
@@ -89,6 +89,7 @@ export class ShoploginComponent implements OnInit {
     
     
     signup(){
+      localStorage.setItem('loginfor','shopownersignup');
 
       const dialogRef = this.dialog.open(SignupComponent, {
         id: 'signup',disableClose: true
@@ -96,6 +97,10 @@ export class ShoploginComponent implements OnInit {
     
       console.log(dialogRef);
     }   
+
+    logincheck() {
+      localStorage.setItem('loginfor','shopowner');
+    }
  
 }
 

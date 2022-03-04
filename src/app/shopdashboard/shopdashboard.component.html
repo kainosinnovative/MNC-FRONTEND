@@ -12,7 +12,7 @@
                 <tr>
                 <th style="width:60px;font-weight:normal;">Sl. No.</th>
                 <th style="width:90px;font-weight:normal;">Booking Id</th>
-                <th style="width:110px;font-weight:normal;">Vehicle Number</th>
+                <th style="width:125px;font-weight:normal;">Registration Number</th>
                 <th style="width:90px;font-weight:normal;">Date</th>
                 <th style="width:150px;font-weight:normal;">Name</th>
                 <!-- <th style="width:66px;font-weight:normal;" >Combo Services</th> -->
@@ -21,13 +21,21 @@
                 <th style="width:150px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
                 <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
                 <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th>
-                <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th>
-                <th style="width:110px;font-weight:normal;" >Action</th>
+                <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
+                <th style="width:60px;font-weight:normal;" >Accept</th>
+                <th style="width:60px;font-weight:normal;" >Reject</th>
                
                 
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf = "bookingDetails1 == ''">
+              <tr>
+                <td colspan="11" style="text-align: center;">
+                  No data available
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf = "bookingDetails1 != ''">
               <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" >
                 
                 <td>{{i+1}}</td>
@@ -60,19 +68,20 @@
                       <span>Yes</span>
                     </ng-template>
                   </td>
-                  <td>
+                  <!-- <td>
                     
-                    <select  style="width: 100px;"   id="model"  >
+                    <select  style="width: 100px;"   id="PickupDrop_{{b.Booking_id}}"  >
                       <option value="">--Select---</option>
-                     <option *ngFor="let p of pickdrop_statusDetails1" [value]="p.id">
+                     <option *ngFor="let p of pickdrop_statusDetails1" [value]="p.status_name">
                       {{p.status_name}}
                       </option>
                       </select>
                     
-                  </td>
+                  </td> -->
                 <td>
-                  <button (click)="acceptrejectbooking('Accepted',b.Booking_id)" class="btn"><i cl></i></button>
-                  <button (click)="acceptrejectbooking('Rejected',b.Booking_id)" class="btn">Reject</button>
+                  <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" class="btn"><i class="fa fa-check"></i></a> </td>
+                  <td>
+                  <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" class="btn"><i class="fa fa-close"></i></a>
                 </td>
               </tr>
               

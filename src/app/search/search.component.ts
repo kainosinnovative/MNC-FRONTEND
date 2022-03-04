@@ -1,94 +1,197 @@
 import { Component, OnInit,Injectable } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { RestApiService } from "../shared/rest-api.service";
-import { HttpClient } from '@angular/common/http';
+
 import { Observable,of } from "rxjs";
-import { map, startWith } from "rxjs/operators";
+import { DatePipe } from '@angular/common';
+
+import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
+import { EventEmitterService } from '../event-emitter.service';
+import { HttpClient } from '@angular/common/http';
+import { style } from '@angular/animations';
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
+import { ToastrService } from 'ngx-toastr';
+
+
+
+import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 
 export class Service {
   apiURL = 'http://localhost/MNC-PHP-API';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  jokes = [];
+  opts = [];
 
   getData() {
-    return this.jokes.length ? of(this.jokes)
-      : this.httpClient.get<any>(this.apiURL +'/shop/getallshoplist').pipe(
-        map((shoplist) => {
-          this.jokes = shoplist.value;
-          console.log("seetha>>",this.jokes);
-          return this.jokes;
-        })
-      )
+    return this.opts.length ?
+      of(this.opts) :
+      this.http.get<any>(this.apiURL+'/shop/getallshoplist').pipe(tap(data => this.opts = data))
+
   }
+
 }
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  providers: [DatePipe]
 })
 export class SearchComponent implements OnInit {
 
-  custom = new FormControl();
-  customerFilter: Observable<any>;
-  shoptype:any;
-  shopdata:any;
- 
-  constructor(public restApi: RestApiService,
-  private http: HttpClient,private service: Service) {
-
-
-  }   
+  myControl = new FormControl();
+  options = [];
+  filteredOptions: Observable<any[]>;
+  MasterServiceData:any;
+  MasterServiceData1:any;
+  wishlistdata: any;
+wishlistdata1: any;
+date:any;
+  constructor(private service: Service,public datepipe: DatePipe,private toastr: ToastrService,public restApi: RestApiService,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) {
+     this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap(val => {
+            return this.filter(val || '')
+       })
+    )
+   }
+   userroleSes = localStorage.getItem('userroleSes');
+   dashboardShop:any;
+   dashboardShop1:any;
   ngOnInit() {
-    this.loadshoplist();
-    // this.customerFilter = this.custom.valueChanges.pipe(
-    //   startWith(""),
-    //   map(value => this._filter(value))
-    // );
+    this.date=new Date();
+    this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+    this.loadMasterService();
   }
-loadshoplist()
+
+  filter(val: string): Observable<any[]> {
+    // call the service which makes the http-request
+    return this.service.getData()
+     .pipe(
+       map(response => response.filter((option:any) => {
+         return option.name.toLowerCase().indexOf(val.toLowerCase()) >-1
+       }))
+     )
+   }
+   onSelFunc(option: any){
+    console.log(option);
+    return this.restApi.dashboardShopSearch(option).subscribe((data: {}) => {
+    //  alert(data)
+      this.dashboardShop = data;
+      this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
+      console.log("data dashboard>>>",this.dashboardShop1);
+    })
+  }
+  loadMasterService(){
+
+    return this.restApi.getMasterService().subscribe((data: {}) => {
+      // alert(data)
+      this.MasterServiceData = data;
+      this.MasterServiceData1 = this.MasterServiceData.data.type;
+
+      console.log("data>>>>",this.MasterServiceData1)
+      // this.dtTrigger.next();
+    })
+
+
+  }
+
+clickEvent(shopid :number){
+  //alert(shopid)
+  let wishlist1="wishlistvalue_"+ shopid;
+
+  let  customerid = localStorage.getItem('currentUserId');
+  let cityid = localStorage.getItem('selectedCity');
+
+
+
+  //let wishlist1 =  (<HTMLInputElement>document.getElementById(wishlist)).innerHTML;
+  //console.log(wishlist1)
+let wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist1)).style.color;
+//alert(wishlistcolor)
+
+if(wishlistcolor === "gray"){
+
+this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
+     '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+       (data: any) => {
+     console.log(data)
+
+
+
+
+
+     this.wishlistdata = data;
+     if(this.wishlistdata.status === "pass"){
+
+      (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
+
+      this.showloginSuccess();
+      }
+   }
+    );
+}
+
+else
 {
-  return this.restApi.getallshoplist().subscribe((shoplistdata: {}) => { 
-   
-    // console.log(citylistdata)
-     this.shoptype = shoplistdata;
+   this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
+     '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+       (data: any) => {
+     //console.log(data)
 
-     console.log(this.shoptype)
- console.log("hi")
-    this.shopdata = of(this.shoptype.data.list);
-     
-     console.log("data>>>>",this.shopdata)
-   })
+
+
+     this.wishlistdata1 = data;
+     if(this.wishlistdata1.status === "pass"){
+
+      (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "gray";
+      //alert("Successfully Removed your Wishlist")
+      }
+   }
+    );
+}
 
 }
-  // private _filter(value: string): any {
-  //   console.log("-----");
-  //   console.log(value);
-  //   const filterValue = value;
+showloginSuccess() {
+  console.log("login message");
 
-  //   return this.shopdata.filter((shoplist:any) => {
-  //     console.log(shoplist);
-  //     return shoplist.name.toLowerCase().indexOf(filterValue) === 0;
-  //   });
-  // }
-  jokes: Observable<any>;
+  //this.toastr.success('Added Successfully to Wishlist');
 
-
-  currentJoke = '';
-
-  
-
-  doFilter() {
-    this.jokes = this.service.getData()
-      .pipe(map(jokes => this.filter(jokes)),
-      )
-  }
-
-  filter(values: any[]) {
-    console.log(values)
-    return values.filter(joke => joke.joke.toLowerCase().includes(this.currentJoke))
-  }
+      //
 }
+slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+
+  slickInit(e:any) {
+    console.log('slick initialized');
+  }
+
+  breakpoint(e:any) {
+    console.log('breakpoint');
+  }
+
+  afterChange(e:any) {
+    console.log('afterChange');
+  }
+
+  beforeChange(e:any) {
+    console.log('beforeChange');
+  }
+
+userloggedin(shopid :number)
+  {
+    if(!this.userroleSes)
+    {
+      this.eventEmitterService.onFirstComponentButtonClick();
+     // alert("please login");
+    }
+    else
+    {
+      console.log(shopid);
+      this.router.navigate(['/onlinebooking/'+shopid]);
+    }
+  }
+  }

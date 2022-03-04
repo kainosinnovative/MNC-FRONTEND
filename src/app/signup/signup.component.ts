@@ -43,9 +43,8 @@ export class SignupComponent implements OnInit {
       username: ['', Validators.required],
       emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
       registermobno:['', [Validators.required, Validators.pattern(mobilePattern)]],
-      // updateOn: 'blur'
-      signinfor:'shopowner'
-      
+      loginFor: [localStorage.getItem('loginfor')]
+     
       });
 
      

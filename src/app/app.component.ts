@@ -111,7 +111,7 @@ Otpvrf(){
 }
 
 logout() {
-  window.localStorage.clear();
+  
   
   // window.location.reload();
   this.movetohome();
@@ -119,13 +119,16 @@ logout() {
 }
 
 movetohome() {
-  // let userroleSes = localStorage.getItem('userroleSes');
-  // if(userroleSes == 'CustomerSes'){
+  let userroleSes = localStorage.getItem('userroleSes');
+  // alert(userroleSes)
+  if(userroleSes == 'CustomerSes'){
+    window.localStorage.clear();
     this.router.navigate(['/home']);
-  // }
-  // if(userroleSes == 'shopOwnerSes'){
-  //   this.router.navigate(['/ShopDashboard']);
-  // }
+  }
+  if(userroleSes == 'shopOwnerSes'){
+    window.localStorage.clear();
+    this.router.navigate(['/shoplogin']);
+  }
   
   window.setTimeout(function(){location.reload()},100)
 }

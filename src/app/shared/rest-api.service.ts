@@ -188,7 +188,15 @@ gettestimonialData(): Observable<Testimonial> {
             catchError(this.handleError)
             )
             }
-
+            dashboardShopSearch(shopname:any): Observable<dahsboardShop> {
+  
+              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopSearch?shopname="+shopname)
+            
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
 
             dashboardShopDetailsByOffer(cityid:any): Observable<dahsboardShop> {
   
@@ -364,7 +372,8 @@ gettestimonialData(): Observable<Testimonial> {
       let loginfor = jsonObject["loginfor"];
       // var finalstr = customer_mobileno + "" + loginfor;
       // alert("loginfor>>>"+loginfor)
-      // alert("customer_mobileno>>>"+customer_mobileno)
+      // alert("customer_mobileno>>>"+customer_mobileno);
+      
       return this.http.get<shopCustlogin>(this.apiURL + '/app/SingleCustomerDetails?customer_mobileno='+customer_mobileno+'&loginfor='+loginfor)
       
       .pipe(
@@ -372,6 +381,7 @@ gettestimonialData(): Observable<Testimonial> {
         catchError(this.handleError)
         
       )
+      
     
     } 
 
@@ -520,9 +530,10 @@ changeBookingStatus(changeBookingStatus:any): Observable<any[]> {
   // alert(shopservAmount)
   let booking_status = changeBookingStatus["booking_status"];
 let Booking_id = changeBookingStatus["Booking_id"];
+let pickup_drop = changeBookingStatus["pickup_drop"];
 
   return this.http.get<any[]>(this.apiURL + "/shop/changeBookingStatus?booking_status="+booking_status +
-   "&Booking_id=" + Booking_id)
+   "&Booking_id=" + Booking_id + "&pickup_drop=" + pickup_drop)
 
   .pipe(
   retry(1),

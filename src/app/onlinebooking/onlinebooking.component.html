@@ -18,15 +18,132 @@
         
         
         <div class="row" style="border: 1px solid #aeaeae;padding-top: 10px;padding-bottom: 10px;width: 1268px;margin-left: -1px;">
-          
-          <div class="col-sm-3">
+          <table>
+            
+            <tr>
+              <td>
+                <label>Booking Date</label> <br>
+                <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="bookingdate" placeholder="Date From" [(ngModel)]="current_date">
+                
+              </td>
+              <td>
+                <label>Registration Number</label> <br>
+                <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;" (change)="vehicleBasedModel($event)">   
+                     
+                  <option value="">--Select--</option>  
+                  <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.vehicle_number">
+                    {{carmodels.vehicle_number}}
+                    </option> 
+                   </select>
+
+                   <div *ngIf="onlinebooking.controls['vehicle_number'].touched && onlinebooking.controls['vehicle_number'].invalid"> 
+                      
+                    <div *ngIf="onlinebooking.controls['vehicle_number'].errors" style="color: red;"> 
+                      <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 12px;">
+                          Select Registration Number
+                      </div> 		   
+                     
+                   </div> 
+                    
+                  </div> 
+              </td>
+              <td>
+                <label>Special Instructions</label> <br>
+                  <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" matinput="" placeholder=""></textarea>
+
+                  <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
+                    <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
+                     <div *ngIf="onlinebooking.controls['bookingdate'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                         Select Date
+                     </div> 		   
+                   </div> 
+                 </div>
+              </td>
+              <td>
+                <div  *ngIf="getPickupAvlData2 == 1">
+                  <label >Do you want pick-up and drop?</label> 
+<br>
+                 
+                  <label>No</label> &nbsp;
+                  <label class="switch" >
+                    <input  type="checkbox" formControlName="pickup_drop" value="Yes">
+                    <span class="slider round"></span>
+                  </label> &nbsp;
+                  <label>Yes</label>
+
+                  
+                  
+                  </div>
+              </td>
+              <td>
+                <div *ngIf="getPickupAvlData2 == 1">
+                <label >Pick-up Date</label> 
+    <br>
+                     
+    <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" placeholder="Date From" >
+</div>
+              </td>
+              <td>
+                <div *ngIf="getPickupAvlData2 == 1">
+                <label >Pick-up time</label> 
+    <br>
+                     
+                      <select  style="height: 34px;" formControlName="pickup_time" class="fromdata" >
+                        <option value="">--Select---</option>
+                        <option value="9">9 AM</option>
+                        <option value="9.30">9.30 AM</option>
+                        <option value="10">10 AM</option>
+                        <option value="10.30">10.30 AM</option>
+                        </select>
+                      </div>
+              </td>
+
+              <td>
+                <div *ngIf="getPickupAvlData2 == 1">
+                <label >Drop Date</label> 
+    <br>
+                     
+    <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="drop_date" placeholder="Date From" >
+              </div>
+              </td>
+              <td>
+                <div *ngIf="getPickupAvlData2 == 1">
+                <label >Drop time</label> 
+    <br>
+                     
+                      <select formControlName="drop_time" style="height: 34px;"  class="fromdata" >
+                        <option value="">--Select---</option>
+                        <option value="9">9 AM</option>
+                        <option value="9.30">9.30 AM</option>
+                        <option value="10">10 AM</option>
+                        <option value="10.30">10.30 AM</option>
+                        </select>
+                        </div>
+              </td>
+            </tr>
+          </table>
+          <!-- <div class="col-sm-2">
+            <div class="form-group">
+              <label>Booking Date</label> <br>
+                <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="bookingdate" placeholder="Date From" [(ngModel)]="current_date">
+                <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
+                  <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
+                   <div *ngIf="onlinebooking.controls['bookingdate'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                       Select Date
+                   </div> 		   
+                 </div> 
+               </div>
+                 </div>
+              </div> -->
+
+          <!-- <div class="col-sm-2">
             <div class="form-group">
 
-              <label>Vehicle Number</label> <br>
+              <label>Registration Number</label> <br>
                    
               <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;" (change)="vehicleBasedModel($event)">   
                      
-                <option value="">--Select Vehicle Number--</option>  
+                <option value="">--Select--</option>  
                 <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.vehicle_number">
                   {{carmodels.vehicle_number}}
                   </option> 
@@ -42,9 +159,9 @@
                   
                 </div> 
                    </div>
-          </div>
+          </div> -->
           
-          <div class="col-sm-3">
+          <!-- <div class="col-sm-3">
            
             <div class="form-group">
 
@@ -52,8 +169,7 @@
                    
               <select   class="carmodelcls" formControlName="model_id"  style="border: 1px solid;height: 34px;">   
                      
-                <option value="">--Select Model--</option>  
-                <option *ngFor="let carmodels of carinfoModels1" [value]="carmodels.model">
+                <option selected *ngFor="let carmodels of carinfoModels1" [value]="carmodels.model">
                   {{carmodels.model_name}}
                   </option> 
                  </select>
@@ -69,23 +185,11 @@
                 </div> 
                    </div>
                  
-            </div>
+            </div> -->
     
-            <div class="col-sm-3">
-            <div class="form-group">
-              <label>Booking Date</label> <br>
-                <input class="datecls" type="date" style="border: 1px solid;height: 34px;" matinput="" formControlName="bookingdate" placeholder="Date From" [(ngModel)]="current_date">
-                <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
-                  <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
-                   <div *ngIf="onlinebooking.controls['bookingdate'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                       Select Date
-                   </div> 		   
-                 </div> 
-               </div>
-                 </div>
-              </div>
+            
 
-              <div class="col-sm-3">
+              <!-- <div class="col-sm-3">
                 <div class="form-group">
                   <label>Special Instructions</label> <br>
                   <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" matinput="" placeholder=""></textarea>
@@ -98,24 +202,14 @@
                    </div> 
                  </div>
               </div>
-              </div>
+              </div> -->
               
-              <div class="col-sm-3">
+              <!-- <div class="col-sm-3">
                 <br>
-                <div class="form-group">
+                <div class="form-group" *ngIf="getPickupAvlData2 == 1">
                   <label style="width:185px;">Do you want pick-up and drop?</label> 
 
-                  <!-- <p class="switch-toggle switch-3 switch-candy">
-                    <input id="on" formControlName="pickup_drop"  type="radio" value="No" />
-                    <label for="on" onclick="">No</label>
-                  
-                    
-                  
-                    <input id="off" formControlName="pickup_drop"  type="radio" value="Yes"  />
-                    <label for="off" onclick="">Yes</label>
-                  
-                    <a></a> -->
-                  <!-- </p> -->
+                 
                   <label>No</label> &nbsp;
                   <label class="switch" >
                     <input  type="checkbox" formControlName="pickup_drop" value="Yes">
@@ -123,16 +217,16 @@
                   </label> &nbsp;
                   <label>Yes</label>
 
-                  <!-- <div *ngIf="onlinebooking.controls['pickup_drop'].touched && onlinebooking.controls['pickup_drop'].invalid "> 
-                    <div *ngIf="onlinebooking.controls['pickup_drop'].errors" style="color: red;"> 
-                     <div *ngIf="onlinebooking.controls['pickup_drop'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                         Select 
-                     </div> 		   
-                   </div> 
-                 </div> -->
+                  
                   
                   </div>
-                  </div>
+                  </div> -->
+
+
+                  
+
+
+                      
      </div>
     <br>
      <!---End of Booking details-->
@@ -250,7 +344,7 @@
         <div class="extser">
   
           <div class="d-flex justify-content-between align-items-center">
-             <span class="discount2" *ngIf="shoplist.offer_percent!=0">Up to {{shoplist. offer_percent}}% Off</span>  
+             <span class="discount2" *ngIf="shoplist.offer_percent!=0">Up to {{shoplist. offer_percent}}% Off {{shoplist.is_pickup_drop_avl}}</span>  
         </div>
           <!--Section: Content-->
             <div class="text-center white-text d-md-flex justify-content-between p6 indigo lighten-2"  >

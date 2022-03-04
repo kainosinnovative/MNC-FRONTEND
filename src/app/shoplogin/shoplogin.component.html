@@ -63,7 +63,7 @@ padding-right: 0px;">
 
        
   <mat-card-actions style="text-align: center;margin-top: 15px;" >
-    <button mat-raised-button class="" style="border-radius: 21px;width: 62%;height: 36px;border: 1px solid #202c45;background-color: white !important;"  [disabled]='!shopform.valid'>Receive a Code Via SMS</button>
+    <button mat-raised-button class="" style="border-radius: 21px;width: 62%;height: 36px;border: 1px solid #202c45;background-color: white !important;" (click)="logincheck()"  [disabled]='!shopform.valid'>Receive a Code Via SMS</button>
 </mat-card-actions>
 
 
