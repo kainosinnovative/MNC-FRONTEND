@@ -2,12 +2,13 @@
   <!-- <h5><u><i>Footer creation using angular material !!</i></u></h5> -->
   <mat-sidenav #sidenav class="sidenavstyle" >
   <mat-list >
+  
 
     <!-- customer mobile start -->
     <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item >Hi, {{currentUsername}}</a> </mat-list-item>
-    <mat-list-item class="menudesk1 " *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'>Select a City
+    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'>Select a City
     </a> </mat-list-item>
-    <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
+    <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
     </a> </mat-list-item>
     <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/onlinebooking'>Online Booking
     </a> </mat-list-item>
@@ -44,11 +45,11 @@
 
       <!-- both customer and shop owner -->
 
-  
+
 
   </mat-list>
   </mat-sidenav>
-  <mat-toolbar color="primary" #toolbar>
+  <mat-toolbar color="primary" #toolbar  id="headerdisplay">
   <button class="sidemenucls"  mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="sidenav.open()">
   <mat-icon >menu</mat-icon>
   </button>
@@ -119,7 +120,7 @@
     <router-outlet></router-outlet>
     
     
-<div class="footer" style="height: 340px;" #footer>
+<div class="footer" style="height: 340px;" #footer id="footerdisplay">
   <footer class=" page-footer font-small blue pt-4">
 
     <!-- Footer Links -->
