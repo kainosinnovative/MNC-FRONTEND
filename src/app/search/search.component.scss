@@ -1,0 +1,34 @@
+h3 {
+    text-align: center;
+    color: maroon;
+    }
+    .active-pink-3 input[type=text] {
+    border: 1px solid purple !important;
+    border-radius:15px;
+    font-size:14px;
+    }
+    .active-purple-3 input[type=text] {
+    border: 1px solid blue !important;
+    border-radius:15px;
+    font-size:14px;
+    }
+    .active-cyan-3 input[type=text] {
+    border: 2px solid green;
+    }
+    .active-red-3 input[type=text] {
+    border: 2px solid red;
+    }
+    .active-lime-3 input[type=text] {
+    border: 2px solid lime;
+    }
+
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .example-full-width {
+        width: 100%;
+      }
+      

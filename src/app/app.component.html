@@ -18,7 +18,7 @@
 
     <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login()">
       Login</a></mat-list-item>
-
+      
       <!-- customer mobile end -->
 
       
@@ -87,6 +87,7 @@
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/'>My Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
 
   <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>  
+       
 <!-- for customer -->
 
 
@@ -106,7 +107,9 @@
 
   <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item> 
   <!-- both customer and shop owner -->
-
+  
+  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search </a></mat-list-item>
   </mat-toolbar>
 
 

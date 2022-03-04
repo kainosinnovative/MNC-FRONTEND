@@ -57,6 +57,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TestinsertComponent } from './testinsert/testinsert.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import {MatSelectModule} from '@angular/material/select';
+import { SearchComponent } from './search/search.component';
+// import { ShopLoginComponent } from './shop-login/shop-login.component';
 import { ShoploginComponent } from './shoplogin/shoplogin.component';
 
 const appRoutes: Routes = [
@@ -80,6 +82,8 @@ const appRoutes: Routes = [
   { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
   { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}},
   { path: 'test', component: TestinsertComponent, data: {title: 'test'}},
+  { path: 'search', component: SearchComponent, data: {title: 'search'}},
+  // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
   { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}}
   
 ];
@@ -108,6 +112,8 @@ const appRoutes: Routes = [
       SelectcityComponent,
       ComboOffersComponent,
       TestinsertComponent,
+      SearchComponent,
+      // ShopLoginComponent
       ShoploginComponent
       
    
