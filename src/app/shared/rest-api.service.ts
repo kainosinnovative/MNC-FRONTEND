@@ -177,7 +177,15 @@ gettestimonialData(): Observable<Testimonial> {
             catchError(this.handleError)
             )
             }
-
+            dashboardShopSearch(shopname:any): Observable<dahsboardShop> {
+  
+              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopSearch?shopname="+shopname)
+            
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
 
             dashboardShopDetailsByOffer(cityid:any): Observable<dahsboardShop> {
   
