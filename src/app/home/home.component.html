@@ -93,7 +93,7 @@
                 
                    <!-- </div>
                    </div> -->
-                   <span class="wishlist" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id)" style="margin-top:12px;color: gray;"><i class="fa fa-heart "></i></span>
+                   <span class="wishlist"  title="" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id)" style="margin-top:12px;color: gray;cursor: pointer;"><i class="fa fa-heart "></i></span>
              </div>
              
              <b>Services:</b>
@@ -147,7 +147,7 @@
 
 
 <div *ngIf="dashboardShopOffer1 != ''">
-  <h2 style="text-align: center;" class="mainheading">Offers </h2>
+  <h2 style="text-align: center;" class="mainheading">Service Offers</h2>
 
   <div *ngFor="let s of dashboardShopOffer1;let k=index">
     <p *ngIf="k==0 && s.offer_percent > 0" class="dark-blue-text w-responsive mx-auto fontitalyHome" style="text-align: center;margin-bottom: 2%;">Incredible Services for Incredible People, Deals made especially for you
