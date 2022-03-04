@@ -153,12 +153,7 @@ export class AppModule {
 
   constructor(private  dialog:  MatDialog) { }
 
-  shoplogin(){
-    
-    this.dialog.open(ShoploginComponent,{ data: {
-    message:  "Error!!!"
-    }});
-}
+ 
 
   login(){
     
