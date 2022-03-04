@@ -48,7 +48,7 @@ public  dataForm: FormGroup;
 
     
  signup(){
-
+  localStorage.setItem('loginfor','customersignup');
   const dialogRef = this.dialog.open(SignupComponent, {
     id: 'signup',disableClose: true
   });

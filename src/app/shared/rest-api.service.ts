@@ -364,7 +364,8 @@ gettestimonialData(): Observable<Testimonial> {
       let loginfor = jsonObject["loginfor"];
       // var finalstr = customer_mobileno + "" + loginfor;
       // alert("loginfor>>>"+loginfor)
-      // alert("customer_mobileno>>>"+customer_mobileno)
+      // alert("customer_mobileno>>>"+customer_mobileno);
+      
       return this.http.get<shopCustlogin>(this.apiURL + '/app/SingleCustomerDetails?customer_mobileno='+customer_mobileno+'&loginfor='+loginfor)
       
       .pipe(
@@ -372,6 +373,7 @@ gettestimonialData(): Observable<Testimonial> {
         catchError(this.handleError)
         
       )
+      
     
     } 
 

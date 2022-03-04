@@ -70,7 +70,7 @@ loadCustomerDetails2(Objval:any) {
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
      
-      console.log("data")
+      console.log("data>>",data)
       
       if(loginfor == 'shopowner') {
         
@@ -122,10 +122,10 @@ signupdetailsInsert(){
   let registerUserName = localStorage.getItem('registerUserName');
       let registerEmailid = localStorage.getItem('registerEmailid');
       let registerMobileNo = localStorage.getItem('registerMobileNo');
-
+      let loginfor = localStorage.getItem('loginfor');
       
   this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+ 
-  '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid).subscribe(
+  '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid + '&loginFor='+loginfor ).subscribe(
     data => {
       alert(data)
     },
