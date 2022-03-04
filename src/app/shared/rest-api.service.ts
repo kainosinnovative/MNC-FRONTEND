@@ -118,6 +118,17 @@ gettestimonialData(): Observable<Testimonial> {
         )
         }
 
+        
+        getmaster_pickdrop_status(): Observable<any[]> {
+          // alert(currentUserId)
+          return this.http.get<any[]>(this.apiURL + "/shop/master_pickdrop_status")
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
 
       combooffertblByModelid(combooffertbl:any): Observable<shopserviceByModelid> {
       //  alert(combooffertbl)
@@ -361,7 +372,8 @@ gettestimonialData(): Observable<Testimonial> {
       let loginfor = jsonObject["loginfor"];
       // var finalstr = customer_mobileno + "" + loginfor;
       // alert("loginfor>>>"+loginfor)
-      // alert("customer_mobileno>>>"+customer_mobileno)
+      // alert("customer_mobileno>>>"+customer_mobileno);
+      
       return this.http.get<shopCustlogin>(this.apiURL + '/app/SingleCustomerDetails?customer_mobileno='+customer_mobileno+'&loginfor='+loginfor)
       
       .pipe(
@@ -369,6 +381,7 @@ gettestimonialData(): Observable<Testimonial> {
         catchError(this.handleError)
         
       )
+      
     
     } 
 
@@ -511,5 +524,21 @@ getallshoplist() : Observable<any[]>
 
 
 }
+
+
+changeBookingStatus(changeBookingStatus:any): Observable<any[]> {
+  // alert(shopservAmount)
+  let booking_status = changeBookingStatus["booking_status"];
+let Booking_id = changeBookingStatus["Booking_id"];
+let pickup_drop = changeBookingStatus["pickup_drop"];
+
+  return this.http.get<any[]>(this.apiURL + "/shop/changeBookingStatus?booking_status="+booking_status +
+   "&Booking_id=" + Booking_id + "&pickup_drop=" + pickup_drop)
+
+  .pipe(
+  retry(1),
+  catchError(this.handleError)
+  )
+  }
 
 }
