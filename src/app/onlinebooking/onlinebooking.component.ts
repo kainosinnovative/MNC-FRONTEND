@@ -50,6 +50,7 @@ current_date:any;
 OnlineBookingInsert:any;
 carinfoModels:any;
 carinfoModels1:any;
+counter:any = 0;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
@@ -75,7 +76,7 @@ carinfoModels1:any;
     this.date=new Date();
      this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      let currentUserId = localStorage.getItem('currentUserId');
-
+     
      
 
     this.displaycartype();
@@ -309,11 +310,14 @@ changeBgColor(offer_id:any){
   // alert(offer_totalid);
    var offer_amt: number;
     let  buttonid="select_"+ offer_id;
-
+// alert(buttonid)
     let buttontext =  (<HTMLInputElement>document.getElementById(buttonid)).innerHTML;
 
       if(buttontext === 'Select') { 
-       
+        // alert(this.counter);
+        
+        if(this.counter < 1) {
+          this.counter = this.counter + 1;
 
         (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Selected";
       (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#ff8507";
@@ -322,8 +326,15 @@ changeBgColor(offer_id:any){
         this.finalvalue = this.finalvalue +(offer_amt);
         // (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
         this.onlinebooking.controls.comboprice_total.setValue(this.finalvalue.toFixed());
+        }
+        else {
+          // alert("two");
+          this.toastr.error('Only one combo offer can select at a time');
+        }
       } else {
-     
+        // alert("selected");
+        this.counter = this.counter - 1;
+        // alert("count else>>"+this.counter);
       (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Select";
       (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#ffc207";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
@@ -418,15 +429,22 @@ ComboServiceArr1 = new Array();
 ComboPrimaryIdArr = new Array();
 getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Offername:any) {
   var concatServiceid_amount =  Comboserviceid + "#" + Comboservice_Offername;
-
+  
     if(this.ComboServiceArr.includes(concatServiceid_amount)){
+      // this.changeBgColor(Comboserviceid);
       this.ComboServiceArr = this.remove(this.ComboServiceArr, concatServiceid_amount);
     }
     else {
+      let arrayLength = this.ComboServiceArr.length;
+      // if
+    if(arrayLength < 1){
+      // this.changeBgColor(Comboserviceid);
       this.ComboServiceArr.push(concatServiceid_amount);
+    }
     }
 
     var arrayLength = this.ComboServiceArr.length;
+    // alert(arrayLength)
     this.ComboServiceArr1 = new Array();
     this.ComboPrimaryIdArr = new Array();
     for (var i = 0; i < arrayLength; i++) {
@@ -524,9 +542,23 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
   OnlineBooking(onlinebooking:any) {
 
     let payable_amt = this.onlinebooking.get('payable_amt').value;
-    // alert(payable_amt)
+    
+    let pickup_drop = this.onlinebooking.get('pickup_drop').value;
 
-    if(payable_amt == "" || payable_amt == 0){
+    let pickup_date = this.onlinebooking.get('pickup_date').value;
+    // alert(pickup_date)
+    // if(pickup_drop == false) {
+
+    // }
+    if(pickup_drop == true && pickup_date == null) {
+      // if(pickup_date == null){
+        (<HTMLInputElement>document.getElementById("pickup_dateid")).focus();
+      this.toastr.error('Please select pickup date');
+      // }
+      // (<any>this.onlinebooking.get('pickup_date')).focus();
+      // this.onlinebooking.focus('pickup_drop');
+    }
+    else if(payable_amt == "" || payable_amt == 0){
       this.toastr.error('Please select any service for your car');
     }
     else {

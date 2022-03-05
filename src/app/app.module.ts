@@ -60,6 +60,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { SearchComponent } from './search/search.component';
 // import { ShopLoginComponent } from './shop-login/shop-login.component';
 import { ShoploginComponent } from './shoplogin/shoplogin.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -84,7 +85,8 @@ const appRoutes: Routes = [
   { path: 'test', component: TestinsertComponent, data: {title: 'test'}},
   { path: 'search', component: SearchComponent, data: {title: 'search'}},
   // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
-  { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}}
+  { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}},
+  { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}}
   
 ];
 @NgModule({
@@ -114,7 +116,8 @@ const appRoutes: Routes = [
       TestinsertComponent,
       SearchComponent,
       // ShopLoginComponent
-      ShoploginComponent
+      ShoploginComponent,
+      MyBookingComponent
       
    
      ],

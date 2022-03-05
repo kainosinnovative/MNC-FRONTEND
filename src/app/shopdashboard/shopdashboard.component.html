@@ -1,9 +1,9 @@
-<h2 style="text-align: center;" class="mainheading">Today's Booking</h2>
+<h2 style="text-align: center;" class="mainheading">Confirm Booking</h2>
 
 <div class="row">
-    <div class="col-sm-1"></div>
+    <!-- <div class="col-sm-1"></div> -->
 
-    <div class="col-sm-10">
+    <div class="col-sm-12" style="width: 98%;margin-left: 13px;">
 
       
         <table  class="table table-responsive servicecss" >
@@ -12,13 +12,13 @@
                 <tr>
                 <th style="width:60px;font-weight:normal;">Sl. No.</th>
                 <th style="width:90px;font-weight:normal;">Booking Id</th>
-                <th style="width:125px;font-weight:normal;">Registration Number</th>
+                <th style="width: 137px;font-weight:normal;">Registration Number</th>
                 <th style="width:90px;font-weight:normal;">Date</th>
                 <th style="width:150px;font-weight:normal;">Name</th>
-                <!-- <th style="width:66px;font-weight:normal;" >Combo Services</th> -->
-                <th style="width:150px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
-                <!-- <th style="width:66px;font-weight:normal;" >Extra Services</th> -->
-                <th style="width:150px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:94px;font-weight:normal;" >Combo Services</th>
+                <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:100px;font-weight:normal;" >Extra Services</th>
+                <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
                 <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
                 <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th>
                 <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
@@ -30,7 +30,7 @@
             </thead>
             <tbody *ngIf = "bookingDetails1 == ''">
               <tr>
-                <td colspan="11" style="text-align: center;">
+                <td colspan="13" style="text-align: center;">
                   No data available
                 </td>
               </tr>
@@ -43,13 +43,13 @@
                 <td>{{b.vehicle_number}}</td>
                 <td>{{b.bookingdate}}</td>
                 <td>{{b.firstname}}({{b.Customer_id}})</td>
-                <!-- <td>
+                <td>
                   
               {{b.combo_id}} 
-            </td>  -->
+            </td> 
                 <td>{{b.comboprice_total}}</td>
-                <!-- <td>
-                  <div *ngIf="b.services != ''">
+                <td>
+                  <div *ngIf="b.services != null">
                   <div *ngFor="let m of  b.services.split(',');let j=index" >
                     <div *ngFor="let m1 of  MasterServiceData1;" >
                      
@@ -58,7 +58,7 @@
                     
                   </div>
                 </div>
-                  </td>  -->
+                  </td> 
                 <td>{{b.serviceprice_total}}</td>
                 <td>{{b.payable_amt}}</td>
                 <td>
@@ -97,4 +97,255 @@
     </div>
 
   
+</div>
+
+
+
+<h2 style="text-align: center;" class="mainheading">Accepted Booking</h2>
+
+<div class="row">
+  <!-- <div class="col-sm-1"></div> -->
+
+  <div class="col-sm-12" style="width: 98%;margin-left: 13px;">
+
+    
+      <table  class="table table-responsive servicecss" >
+          <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+            
+              <tr>
+              <th style="width:60px;font-weight:normal;">Sl. No.</th>
+              <th style="width:90px;font-weight:normal;">Booking Id</th>
+              <th style="width: 137px;font-weight:normal;">Registration Number</th>
+              <th style="width:100px;font-weight:normal;">Date</th>
+              <th style="width:150px;font-weight:normal;">Name</th>
+              <th style="width: 113px;font-weight:normal;" >Combo Services</th>
+              <th style="width: 163px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
+              <th style="width:150px;font-weight:normal;" >Extra Services</th>
+              <th style="width:190px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
+              <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+              <th  style="width: 108px;font-weight:normal;">Pick-up & Drop</th>
+              <th  style="width:150px;font-weight:normal;">Status</th>
+              <th style="width:60px;font-weight:normal;" >Update</th>
+              <!-- <th style="width:60px;font-weight:normal;" >Reject</th> -->
+             
+              
+            </tr>
+          </thead>
+          <tbody *ngIf = "AcceptbookingDetails1 == ''">
+            <tr>
+              <td colspan="13" style="text-align: center;">
+                No data available
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf = "AcceptbookingDetails1 != ''">
+            <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" >
+              
+              <td>{{i+1}}</td>
+              <td>{{b.Booking_id}}</td>
+              <td>{{b.vehicle_number}}</td>
+              <td>{{b.bookingdate}}</td>
+              <td>{{b.firstname}}({{b.Customer_id}})</td>
+              <td>
+                
+            {{b.combo_id}} 
+          </td> 
+              <td>{{b.comboprice_total}}</td>
+              <td>
+                <div *ngIf="b.services != null">
+                <div *ngFor="let m of  b.services.split(',');let j=index" >
+                  <div *ngFor="let m1 of  MasterServiceData1;" >
+                   
+    <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
+                  </div>
+                  
+                </div>
+              </div>
+                </td> 
+              <td>{{b.serviceprice_total}}</td>
+              <td>{{b.payable_amt}}</td>
+              <td>
+                <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
+                   
+                  <ng-template  #pickDropid>
+                    <span>Yes</span>
+                  </ng-template>
+                </td>
+                <td>
+                  
+                  <select  style="width: 100px;height: 28px;"   id="carwash_{{b.Booking_id}}" [(ngModel)]="b.carwash_status" >
+                    <option value="">--Select---</option>
+                   <option *ngFor="let c of carwashstatus1" [value]="c.id">
+                    {{c.carwash_status_name}}
+                    </option>
+                    </select>
+                  
+                </td>
+              <td>
+                <a (click)="updateCarwashStatus(b.Booking_id)" class="btn"><i class="fa fa-check"></i></a>
+               </td>
+                <!-- <td>
+                <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" class="btn"><i class="fa fa-close"></i></a>
+              </td> -->
+            </tr>
+            
+          </tbody>
+        </table>
+
+          
+          <div style="text-align: center;" *ngIf="AcceptbookingDetails1!=''">
+            <br>
+            <pagination-controls (pageChange)="pageChanged1($event)"></pagination-controls>
+          </div>
+        
+  </div>
+
+
+</div>
+
+
+<h2 style="text-align: center;" class="mainheading">Combo Offers</h2>
+
+<div class="row">
+  <!-- <div class="col-sm-1"></div> -->
+
+  <div class="col-sm-12" style="width: 98%;margin-left: 13px;">
+
+    <table  class="table table-responsive combotable" style="width:100%;">
+      <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;">
+        <tr >
+         
+          <th class="fontwtcls" style="width:100px;" >Sl. No.</th>
+          <th class="fontwtcls" style="width:100px;">Offer Name</th>
+          <th  class="fontwtcls" style="width:200px;">Model</th>
+          <th class="fontwtcls" style="width:200px;">Services</th>
+          <th class="fontwtcls" style="width:100px;">From Date</th>
+          <th class="fontwtcls" style="width:100px;">To Date</th>
+          <th class="fontwtcls" style="width:150px;">Offer Percent(%)</th>
+          <th class="fontwtcls" style="width:150px;">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="currentOffer1 == ''">
+          <td colspan="8" style="text-align:center;" >No data available</td>
+          
+        </tr> 
+       
+          <tr *ngFor="let service of  currentOffer1  | paginate: config2 ;  let i=index;"> 
+          
+          <td>{{i + 1}}</td>
+          <td>{{service.offer_name}}</td>
+          <td>
+            {{service.model_name}}
+            </td>
+         <td > 
+            <div *ngFor="let m of  service.services.split(',')">
+              <span *ngFor="let m1 of  MasterServiceData1" >
+               
+<span *ngIf="m === m1.service_id">{{m1.service_name}}</span>
+              </span>
+              
+            </div>
+            
+          </td>
+          <!-- <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
+            
+            
+          </td> -->
+          <td>{{service.start_date | date: 'dd-MM-yyyy'}}</td>
+          <td>{{service.end_date |  date: 'dd-MM-yyyy'}}</td>
+          <td>{{service.offer_percent}}</td>
+          <td> {{service.combo_price}}</td>
+          
+  
+          
+        </tr>
+        
+      </tbody> 
+    </table> 
+      
+          
+          <div style="text-align: center;" *ngIf="currentOffer1!=''">
+            <br>
+            <pagination-controls (pageChange)="pageChanged2($event)"></pagination-controls>
+          </div>
+        
+  </div>
+
+
+</div>
+
+<h2 style="text-align: center;" class="mainheading">Offers</h2>
+<div class="row">
+  <!-- <div class="col-sm-1"></div> -->
+
+  <div class="col-sm-12" style="width: 98%;margin-left: 13px;">
+
+    <table  class="table table-responsive servicecss" *ngIf="serviceDataOffers1!=''">
+      <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+        
+          <tr>
+          <th style="width:50px;font-weight:normal;">Sl. No.</th>
+          <th style="width:150px;font-weight:normal;">Service Name</th>
+          <!-- <th style="width:80px;font-weight:normal;" >Service Status	 </th> -->
+          <th style="width:100px;font-weight:normal;">Model </th>
+          <th style="width:100px;font-weight:normal;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
+         
+          
+          <th style="width:85px;font-weight:normal;" >Offer(%) </th>
+          <th style="width:85px;font-weight:normal;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
+          <th style="width:50px;font-weight:normal;">Start Date</th>
+          <th style="width:50px;font-weight:normal;">End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="serviceDataOffers1 == ''">
+          <td colspan="8" style="text-align:center;" >No data available</td>
+          
+        </tr> 
+
+        <tr *ngFor="let service of  serviceDataOffers1 | paginate: config3 ;  let i=index;" >
+          
+          <td>{{i+1}}</td>
+          <td >
+            {{service.service_name}}
+            </td>
+                      <!-- <td >
+                                
+            {{service.status}}
+             </td> -->
+          <td> {{service.model_name}}  </td>
+          <td> 
+            {{service.actual_amount}}
+           </td>
+          
+
+              
+          <td>
+            {{service.offer_percent}} 
+          </td>
+          <td>
+            {{service.offer_price}}
+           </td>
+          <td>  
+            {{service.from_date}}
+            </td>
+      <td> 
+        {{service.to_date}}
+          
+        </tr>
+        
+      </tbody>
+    </table> 
+      
+          
+          <div style="text-align: center;" *ngIf="serviceDataOffers1!=''">
+            <br>
+            <pagination-controls (pageChange)="pageChanged3($event)"></pagination-controls>
+          </div>
+        
+  </div>
+
+
 </div>
