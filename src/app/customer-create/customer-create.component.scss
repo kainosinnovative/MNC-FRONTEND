@@ -145,11 +145,11 @@
 //     margin-top: 22px !important;
 // }
 
-// .emailid{
-//     width: 209px !important;
-//     margin-top: 22px !important;
-//     margin-left: 70px;
-// }
+.emailid{
+    width: 209px !important;
+    //margin-top: 22px !important;
+    // margin-left: 70px;
+ }
 // .gendercls{
 //     margin-left: 60px; 
 // }
@@ -255,4 +255,11 @@ body .slick-next {
     border-color: #1872f3;
 }
 
+.noBorder  {
+    border-bottom: hidden;
+    border-right: hidden;
+    border-left: hidden;
+    border-top: hidden;
+  }
+  
 

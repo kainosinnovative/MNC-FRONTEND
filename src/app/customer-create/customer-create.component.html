@@ -41,9 +41,9 @@
                     
 
                     <div class="form-inline" > 
-                        <label class="customerProfileLbl"  >First Name<span class="requiredfield">  *</span></label>
-<p class="labelFieldSpace" style="display: none;"></p>
-                        <input type="text"  class="" [(ngModel)]="CustomerDataById1.firstname" formControlName="firstname" value="{{CustomerDataById1.firstname}}" >
+                        <label class="customerProfileLbl">First Name<span class="requiredfield">  *</span></label>
+                      <p class="labelFieldSpace" style="display: none;"></p>
+                        <input type="text"  class="" style="padding-left: 2px !important;width: 170px;"   [(ngModel)]="CustomerDataById1.firstname" formControlName="firstname" value="{{CustomerDataById1.firstname}}" >
                         <div *ngIf="profileform.controls['firstname'].touched && profileform.controls['firstname'].invalid "> 
       
                             <div *ngIf="profileform.controls['firstname'].errors" style="color: red;"> 
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label class="customerProfileLbl">Last Name<span class="requiredfield">  *</span></label>
                         <p class="labelFieldSpace" style="display: none;"></p>
-                         <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName='lastname' [(ngModel)]="CustomerDataById1.lastname">
+                         <input type="text"   style="padding-left: 2px !important;width: 190px;"   class="lastname" placeholder="" formControlName='lastname' [(ngModel)]="CustomerDataById1.lastname">
                         <div *ngIf="profileform.controls['lastname'].touched && profileform.controls['lastname'].invalid "> 
       
                             <div *ngIf="profileform.controls['lastname'].errors" style="color: red;"> 
@@ -79,7 +79,7 @@
                     <div class="form-group form-inline">
                         <label class="customerProfileLbl">Email <span class="requiredfield">  *</span></label>
                         <p class="labelFieldSpace" style="display: none;"></p>
-                        <input type="text"  class="  emailid" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
+                        <input type="text"  class="emailid" placeholder=" " [(ngModel)]="CustomerDataById1.emailid" formControlName="emailid">
                         <div *ngIf="profileform.controls['emailid'].touched && profileform.controls['emailid'].invalid "> 
           
                             <div *ngIf="profileform.controls['emailid'].errors" style="color: red;"> 
@@ -230,7 +230,7 @@
                             <div class="form-group">
                                 <label class="customerProfileLbl">City<span class="requiredfield">  *</span></label>
                                 <p class="labelFieldSpace" style="display: none;"></p>
-                                <select  placeholder=""  class=" city  citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
+                                <select  placeholder=""  class="city  citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
                                     <option value="">--Select City--</option>
                                    <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
 
@@ -304,16 +304,17 @@
 
         
         <div class="table-responsive">
-            <table class="table table-bordered " style="overflow: auto !important;">
+            <table class="table table-bordered" style="overflow: auto !important;">
                 
                 <tbody>
+                  <div class="mainheading">Add New Vechicle</div>
                      <tr >
 
-                      <td >
+                      <td class="noBorder">
                           
                         <div class="form-group">
                             <label class="customerProfileLbl">Vehicle Number<span class="requiredfield">  *</span></label>
-                            <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="vehicle_number" style="width: 120px;">
+                            <input type="text"   style="padding-left: 2px !important;"   class="lastname " placeholder="" formControlName="vehicle_number" style="width: 120px;">
 
                                 <div *ngIf="cardetailForm.controls['vehicle_number'].touched && cardetailForm.controls['vehicle_number'].invalid "> 
               
@@ -328,10 +329,10 @@
                         </div>
                       </td>
 
-                      <td >
+                      <td class="noBorder">
                           
-                        <div class="form-group">
-                            <label class="customerProfileLbl">Car Type<span class="requiredfield">  *</span></label>
+                        <div class="form-group" >
+                            <label class="customerProfileLbl">Type<span class="requiredfield">  *</span></label>
                             <select  placeholder="" class="cartype  cartypecls" formControlName="cartype" id="cartype" (ngModelChange)="onchangecartype($event)" >
                                 <option value="">--Select Car Type---</option>
     
@@ -351,10 +352,10 @@
                                   </div>
                         </div>
                       </td>
-                        <td>
+                        <td class="noBorder">
                             
                           <div class="form-group">
-                            <label class="customerProfileLbl">Car Brand<span class="requiredfield">  *</span></label>
+                            <label class="customerProfileLbl">Brand<span class="requiredfield">  *</span></label>
                             <select  placeholder="" class="carbrand  carbrand" formControlName="brand" id="carbrand" (ngModelChange)="onChangeObj($event)" >
                                 <option value="">--Select---</option>
                                 <option *ngFor="let carbrand of branddata" [value]="carbrand.id">
@@ -373,10 +374,10 @@
                                   </div>
                         </div>
                         </td>
-                        <td>
+                        <td class="noBorder">
                             
                             <div class="form-group">
-                                <label class="customerProfileLbl">Car Model<span class="requiredfield">  *</span></label>
+                                <label class="customerProfileLbl">Model<span class="requiredfield">  *</span></label>
                                 <select  placeholder=""  class="carmodel  carmodel" id="model" formControlName="model" >
                                     <option value="">--Select---</option>
                                    <option *ngFor="let carmodels of modelsdata" [value]="carmodels.id">
@@ -395,7 +396,7 @@
                                       </div>
                             </div>
                           </td>
-                          <td>
+                          <td class="noBorder">
                             
                             <div class="form-group">
                                 <label class="customerProfileLbl">Fuel Type<span class="requiredfield">  *</span></label>
@@ -421,10 +422,10 @@
                                       
                             </div>
                           </td>
-                          <td>
+                          <td class="noBorder">
                             
-                            <div class="form-group">
-                                <label class="customerProfileLbl">Car Color<span class="requiredfield">  *</span></label>
+                            <div class="form-group" style="margin-right: 41px;">
+                                <label class="customerProfileLbl">Color<span class="requiredfield">  *</span></label>
                                 <select  placeholder="" class="carcolor  carcolor" formControlName="color" name="" >
                                     <option value="">--Select---</option>
                                     <option value="black">Black</option>
@@ -452,14 +453,17 @@
           </div>
         
 
-          <div class="col-sm-12 form-inline" style="text-align: right;margin-left: -114px;">
+          <div class="col-sm-12 form-inline" style="text-align: right;margin-left: 4px;margin-top: -55px;">
         
             <button class="btn carwashbtn  btn-success1" (click)="AddCustomerCarDetails(cardetailForm.value)"  [disabled]='!cardetailForm.valid'>Add</button>
             
         
         </div>
         <br>
-<div class="table-responsive">
+        <div class="mainheading">My Vechicle</div><br>
+<div class="table-responsive ">
+
+ 
 
         <table class="table ">  
             <tr>  
@@ -477,7 +481,7 @@
                 </tr>
             </tbody>
             <tbody *ngIf="carDetailsById1.length > 0">
-                <tr *ngFor="let c of carDetailsById1; let i=index" >  
+                <tr *ngFor="let c of carDetailsById1; let i=index" class="noBorder">  
                     <td>{{c.vehicle_number}}</td>
                     <td>{{c.type_name}}</td>      
                     <td>{{c.brand_name}}</td>
@@ -506,19 +510,7 @@
     <h2 class="title1 subheading" (click)="opened2 = !opened2">My Favorite Shop<i class="fa fa-chevron-down"></i></h2>   
     <!-- <div class="content-container1" [class.opened2]="opened2"> -->
 
-    <mat-form-field appearance="fill" style="width: 400px;">
-        <!-- <label> Shop List</label> -->
-    <mat-label >Shops</mat-label>
-    <mat-select [formControl]="toppings" multiple>
-      <mat-select-trigger>
-        {{toppings.value ? toppings.value[0] : ''}}
-        <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-          (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-        </span>
-      </mat-select-trigger>
-      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    
 
   <!-- </div> -->
 </div>

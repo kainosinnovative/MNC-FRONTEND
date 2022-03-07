@@ -17,7 +17,7 @@
         </mat-card-header>
         
         
-        <div class="row" style="border: 1px solid #aeaeae;padding-top: 10px;padding-bottom: 10px;width: 1268px;margin-left: -1px;">
+        <div class="row" style="border: 1px solid #aeaeae;padding-top: 10px;padding-bottom: 10px;width: 1407px;margin-left: -1px;">
           <table>
             
             <tr>
@@ -80,7 +80,7 @@
                 <label >Pick-up Date</label> 
     <br>
                      
-    <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" placeholder="Date From" >
+    <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
 </div>
               </td>
               <td>
@@ -237,8 +237,8 @@
         <!-- <h4 class="subheading" style="color:skyblue;margin-left: -17px;">Choose a Today Offers ______</h4> -->
         <h2 class="mainheading" style="margin-top: -17px;"> Deal Of The Day (offers)</h2>
     <div class="row">
-
-    
+      <!-- <div class="col-sm-12">
+        <div class="container"> -->
         
         <ngx-slick-carousel class="carousel" style="width:100%;background: none;"
                         #slickModal="slick-carousel" 
@@ -315,7 +315,7 @@
 </ngx-slick-carousel>
 
 <br><br><br>
-<div style="font-size: 17px;margin-top: 15px;text-align: right;margin-left: -23px;;">
+<div style="font-size: 17px;margin-top: 15px;text-align: right;margin-left: -31px;">
   <input type="hidden" formControlName="combo_id" id="ComboPrimaryIdArr" class="selectnow2"  >
   <label class="mainheading" id="name" >Combo Offer price </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i> 
   <input type="number" readonly id="finalamount" formControlName="comboprice_total" class="selectnow2"  >
@@ -324,8 +324,9 @@
     <p style="text-align: right" id="offernameShow"></p>
   <!-- </div> -->
   
-  </div>
-
+  <!-- </div>
+</div> -->
+</div>
 </div>
       
         <!-- </mat-card-title> 

@@ -66,6 +66,7 @@ wishlistdata1: any;
 
     
   }
+
   customerWhislist(customerId:any)
   {
     var whislist : [];
@@ -206,6 +207,9 @@ clickEvent(shopid :number){
 
              (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
 
+              
+             (<HTMLInputElement>document.getElementById(wishlist1)).style.cursor = "pointer";
+            // document.getElementById("myP").style.cursor = "pointer";
              this.showloginSuccess();
              }
           }

@@ -107,6 +107,27 @@ gettestimonialData(): Observable<Testimonial> {
       )
       }
 
+      getServiceDataOffers(currentUserId:any): Observable<Services> {
+        // alert(currentUserId)
+        return this.http.get<Services>(this.apiURL + "/shop/getServiceDataOffersByCurdate?currentUserId="+currentUserId)
+      
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
+
+        getMybookingDetails(currentUserId:any): Observable<any[]> {
+          // alert(currentUserId)
+          return this.http.get<any[]>(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId)
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
 
       getcustomerBookingForShop(currentUserId:any): Observable<any[]> {
         // alert(currentUserId)
@@ -118,6 +139,17 @@ gettestimonialData(): Observable<Testimonial> {
         )
         }
 
+
+        getAcceptedBookingList(currentUserId:any): Observable<any[]> {
+          // alert(currentUserId)
+          return this.http.get<any[]>(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+        
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
+
         
         getmaster_pickdrop_status(): Observable<any[]> {
           // alert(currentUserId)
@@ -128,6 +160,17 @@ gettestimonialData(): Observable<Testimonial> {
           catchError(this.handleError)
           )
           }
+
+
+          getmaster_carwash_status(): Observable<any[]> {
+            // alert(currentUserId)
+            return this.http.get<any[]>(this.apiURL + "/shop/master_carwash_status")
+          
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
 
 
       combooffertblByModelid(combooffertbl:any): Observable<shopserviceByModelid> {
@@ -540,5 +583,32 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
   catchError(this.handleError)
   )
   }
+
+
+  changeCarwashStatus(changeCarwashStatus:any): Observable<any[]> {
+    // alert(shopservAmount)
+    let carwash_status = changeCarwashStatus["carwash_status"];
+  let Booking_id = changeCarwashStatus["Booking_id"];
+  
+  
+    return this.http.get<any[]>(this.apiURL + "/shop/changeCarwashStatus?carwash_status="+carwash_status +
+     "&Booking_id=" + Booking_id)
+  
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+    }
+
+
+    getcurrentComboOffersByShopid(currentUserId:any): Observable<any[]> {
+
+      return this.http.get<any[]>(this.apiURL + "/shop/getcurrentComboOffersByShopid?currentUserId="+currentUserId)
+    
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
 
 }
