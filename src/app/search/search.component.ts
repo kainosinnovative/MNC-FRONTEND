@@ -63,6 +63,8 @@ date:any;
    userroleSes = localStorage.getItem('userroleSes');
    dashboardShop:any;
    dashboardShop1:any;
+   dashboardShopoffer:any;
+   dashboardShopoffer1:any;
   ngOnInit() {
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
@@ -80,12 +82,23 @@ date:any;
    }
    onSelFunc(option: any){
     console.log(option);
-   return this.restApi.dashboardShopSearch(option).subscribe((data: {}) => {
+    let city1= localStorage.getItem('selectedCity');
+   return this.restApi.dashboardShopSearch(option,city1).subscribe((data: {}) => {
      //alert(data)
       this.dashboardShop = data;
       this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
       console.log("data dashboard>>>",this.dashboardShop1);
     })
+  }
+  onSelFunc1(option: any){
+    console.log(option);
+    let city1= localStorage.getItem('selectedCity');
+    return this.restApi.dashboardShopSearchoffer(option,city1).subscribe((data: {}) => {
+      //alert(data)
+       this.dashboardShopoffer = data;
+       this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
+       console.log("data dashboard1>>>",this.dashboardShopoffer1);
+     })
   }
   loadMasterService(){
 
@@ -195,4 +208,22 @@ userloggedin(shopid :number)
       this.router.navigate(['/onlinebooking/'+shopid]);
     }
   }
+  slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
+
+  slickInit1(e:any) {
+    console.log('slick initialized');
+  }
+
+  breakpoint1(e:any) {
+    console.log('breakpoint');
+  }
+
+  afterChange1(e:any) {
+    console.log('afterChange');
+  }
+
+  beforeChange1(e:any) {
+    console.log('beforeChange');
+  }
+
   }

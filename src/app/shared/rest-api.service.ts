@@ -26,7 +26,7 @@ httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
     "Access-Control-Allow-Origin": "*",
-    
+
   } ),responseType: 'text' as 'json'
 };
 
@@ -47,7 +47,7 @@ catchError(this.handleError)
 
 
 gettestimonialData(): Observable<Testimonial> {
-  
+
   return this.http.get<Testimonial>(this.apiURL + "/app/testimonialList")
 
   .pipe(
@@ -57,9 +57,9 @@ gettestimonialData(): Observable<Testimonial> {
   }
 
   getcitylist(): Observable<citylist> {
-  
+
     return this.http.get<citylist>(this.apiURL + "/app/citylist")
-  
+
     .pipe(
     retry(1),
     catchError(this.handleError)
@@ -67,9 +67,9 @@ gettestimonialData(): Observable<Testimonial> {
     }
 
     getstatelist(): Observable<statelist> {
-  
+
       return this.http.get<statelist>(this.apiURL + "/app/state")
-    
+
       .pipe(
       retry(1),
       catchError(this.handleError)
@@ -77,9 +77,9 @@ gettestimonialData(): Observable<Testimonial> {
       }
 
   getcartype(): Observable<Cartype> {
-  
+
     return this.http.get<Cartype>(this.apiURL + "/app/cartype")
-  
+
     .pipe(
     retry(1),
     catchError(this.handleError)
@@ -87,9 +87,9 @@ gettestimonialData(): Observable<Testimonial> {
     }
 
     getcarbrand(): Observable<carbrand> {
-  
+
       return this.http.get<carbrand>(this.apiURL + "/app/brandtype")
-    
+
       .pipe(
       retry(1),
       catchError(this.handleError)
@@ -100,7 +100,7 @@ gettestimonialData(): Observable<Testimonial> {
     getServiceData(currentUserId:any): Observable<Services> {
       // alert(currentUserId)
       return this.http.get<Services>(this.apiURL + "/app/carAndShopservice?currentUserId="+currentUserId)
-    
+
       .pipe(
       retry(1),
       catchError(this.handleError)
@@ -110,7 +110,7 @@ gettestimonialData(): Observable<Testimonial> {
       getServiceDataOffers(currentUserId:any): Observable<Services> {
         // alert(currentUserId)
         return this.http.get<Services>(this.apiURL + "/shop/getServiceDataOffersByCurdate?currentUserId="+currentUserId)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -121,7 +121,7 @@ gettestimonialData(): Observable<Testimonial> {
         getMybookingDetails(currentUserId:any): Observable<any[]> {
           // alert(currentUserId)
           return this.http.get<any[]>(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId)
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -132,7 +132,7 @@ gettestimonialData(): Observable<Testimonial> {
       getcustomerBookingForShop(currentUserId:any): Observable<any[]> {
         // alert(currentUserId)
         return this.http.get<any[]>(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -143,18 +143,18 @@ gettestimonialData(): Observable<Testimonial> {
         getAcceptedBookingList(currentUserId:any): Observable<any[]> {
           // alert(currentUserId)
           return this.http.get<any[]>(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
           )
           }
 
-        
+
         getmaster_pickdrop_status(): Observable<any[]> {
           // alert(currentUserId)
           return this.http.get<any[]>(this.apiURL + "/shop/master_pickdrop_status")
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -165,7 +165,7 @@ gettestimonialData(): Observable<Testimonial> {
           getmaster_carwash_status(): Observable<any[]> {
             // alert(currentUserId)
             return this.http.get<any[]>(this.apiURL + "/shop/master_carwash_status")
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
@@ -180,7 +180,7 @@ gettestimonialData(): Observable<Testimonial> {
   // alert(shopid)
         return this.http.get<shopserviceByModelid>(this.apiURL + "/shop/combooffertblByModelid?currentUserId="+shopid +
         "&model_id=" + model_id)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -189,9 +189,9 @@ gettestimonialData(): Observable<Testimonial> {
 
 
         shopserviceByModelid(shopid:any): Observable<shopserviceByModelid> {
-  
+
           return this.http.get<shopserviceByModelid>(this.apiURL + "/shop/shopserviceByModelid?currentUserId="+shopid)
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -201,9 +201,9 @@ gettestimonialData(): Observable<Testimonial> {
 
 
           CarDetailsById(customer_id:any): Observable<any[]> {
-  
+
             return this.http.get<any[]>(this.apiURL + "/app/CarDetailsByCustomerId?customer_id="+customer_id)
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
@@ -214,7 +214,7 @@ gettestimonialData(): Observable<Testimonial> {
             RemoveMyCarInfo(carinfo_id:any): Observable<any[]> {
               // alert(carinfo_id)
               return this.http.get<any[]>(this.apiURL + "/app/RemoveMyCarInfo?carinfo_id="+carinfo_id)
-            
+
               .pipe(
               retry(1),
               catchError(this.handleError)
@@ -223,33 +223,45 @@ gettestimonialData(): Observable<Testimonial> {
 
 
           dashboardShop(cityid:any): Observable<dahsboardShop> {
-  
+
             return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopList?cityid="+cityid)
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
             )
             }
-            dashboardShopSearch(shopname:any): Observable<dahsboardShop> {
-  
-              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopSearch?shopname="+shopname)
-            
+            dashboardShopSearch(shopname:any,cityid:any): Observable<dahsboardShop> {
+
+              return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopSearch?shopname="+shopname+
+              "&cityid=" + cityid)
+
               .pipe(
               retry(1),
               catchError(this.handleError)
               )
               }
+              dashboardShopSearchoffer(shopname:any,cityid:any): Observable<dahsboardShop> {
+
+                return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopSearchOffer?shopname="+shopname+
+                "&cityid=" + cityid)
+
+                .pipe(
+                retry(1),
+                catchError(this.handleError)
+                )
+                }
 
             dashboardShopDetailsByOffer(cityid:any): Observable<dahsboardShop> {
-  
+
               return this.http.get<dahsboardShop>(this.apiURL + "/shop/dashboardShopDetailsByOffer?cityid="+cityid)
-            
+
               .pipe(
               retry(1),
               catchError(this.handleError)
               )
               }
+              
 
 
       getComboOffersData(monyear:any): Observable<Services> {
@@ -261,7 +273,7 @@ gettestimonialData(): Observable<Testimonial> {
         return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?month="+month+
         "&year="+year+
         "&id="+currentId)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -272,7 +284,7 @@ gettestimonialData(): Observable<Testimonial> {
         getMasterServiceAndShopService(currentUserId:any): Observable<any[]> {
           // alert(currentUserId)
           return this.http.get<any[]>(this.apiURL + "/shop/MasterServiceAndShopService?currentUserId="+currentUserId)
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -283,25 +295,25 @@ gettestimonialData(): Observable<Testimonial> {
           getMasterService(): Observable<Services> {
             // alert(currentUserId)
             return this.http.get<Services>(this.apiURL + "/app/services")
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
             )
             }
 
-          
+
           getAllModels(): Observable<Services> {
             // alert(currentUserId)
             return this.http.get<Services>(this.apiURL + "/app/allmodels")
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
             )
             }
-  
-  
+
+
       AddshopService(shopservAmount:any): Observable<ShopService> {
         // alert(shopservAmount)
         let serviceid = shopservAmount["serviceid"];
@@ -309,7 +321,7 @@ gettestimonialData(): Observable<Testimonial> {
       let currentUserId = shopservAmount["currentUserId"];
         return this.http.get<ShopService>(this.apiURL + "/shop/AddshopService?service_amount="+service_amount +
          "&serviceid=" + serviceid + "&currentUserId="+currentUserId)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -322,10 +334,10 @@ gettestimonialData(): Observable<Testimonial> {
           // alert(shopservAmount)
           let shopserviceid = changeServiceStatus["shopserviceid"];
         let status = changeServiceStatus["status"];
-       
+
           return this.http.get<ShopService>(this.apiURL + "/shop/changeShopServiceStatus?status="+status +
            "&shopserviceid=" + shopserviceid)
-        
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -335,10 +347,10 @@ gettestimonialData(): Observable<Testimonial> {
 
           vehicleBasedModel(vehicle_number:any): Observable<any[]> {
             // alert(shopservAmount)
-            
-         
+
+
             return this.http.get<any[]>(this.apiURL + "/app/getCarinfomodels?vehicle_number="+vehicle_number)
-          
+
             .pipe(
             retry(1),
             catchError(this.handleError)
@@ -354,7 +366,7 @@ gettestimonialData(): Observable<Testimonial> {
     return this.http.post<createcustomer>(`${this.apiURL}/app/Addcustomer`, customerData);
   }
 
- 
+
   AddComboOfferDetails(ComboOfferDetails:any): Observable<ShopService> {
     // alert(shopservAmount)
     let services = ComboOfferDetails["services"];
@@ -369,7 +381,7 @@ gettestimonialData(): Observable<Testimonial> {
     return this.http.get<ShopService>(this.apiURL + "/shop/AddComboOfferDetails?services="+services +
      "&combo_price=" + combo_price + "&shop_id="+shop_id +"&offer_percent=" + offer_percent + "&start_date="+start_date +
      "&end_date=" + end_date + "&model_id=" + model_id + "&original_amount=" + original_amount + "&offer_name=" + offer_name)
-  
+
     .pipe(
     retry(1),
     catchError(this.handleError)
@@ -381,7 +393,7 @@ gettestimonialData(): Observable<Testimonial> {
 //    .do( function(resp) {
 //         self.setSession(resp);
 //  });
-    
+
     loginauth(AuthData: { mobno: any;}):
     Observable<loginauth> {
       // console.log("res>>>>",Response)
@@ -400,7 +412,7 @@ gettestimonialData(): Observable<Testimonial> {
 
     signup(AuthData:any):
     Observable<loginauth> {
-     
+
     return this.http.post<loginauth>(this.apiURL + '/app/signupCustomer', AuthData,
     this.httpOptions)
     .pipe(
@@ -416,17 +428,17 @@ gettestimonialData(): Observable<Testimonial> {
       // var finalstr = customer_mobileno + "" + loginfor;
       // alert("loginfor>>>"+loginfor)
       // alert("customer_mobileno>>>"+customer_mobileno);
-      
+
       return this.http.get<shopCustlogin>(this.apiURL + '/app/SingleCustomerDetails?customer_mobileno='+customer_mobileno+'&loginfor='+loginfor)
-      
+
       .pipe(
         retry(1),
         catchError(this.handleError)
-        
+
       )
-      
-    
-    } 
+
+
+    }
 
 
     OnlineBookingInsertFn(onlinebooking	:any): Observable<any[]> {
@@ -439,30 +451,30 @@ gettestimonialData(): Observable<Testimonial> {
     catchError(this.handleError)
     )
       // this.http.post<any[]>(this.apiURL + '/app/SingleLoginTestimonial')
-      
+
       // .pipe(
       //   retry(1),
       //   catchError(this.handleError)
-        
+
       // )
-    
+
     }
-  
+
 
 getCustomer(id:any): Observable<Customer> {
     // alert("phone"+phone)
     // alert("phone"+this.apiURL + '/customers/' + phone)
     return this.http.get<Customer>(this.apiURL + '/customers/' + id)
-    
+
     .pipe(
       retry(1),
       catchError(this.handleError)
-      
+
     )
-  
-  }  
-  
-  
+
+  }
+
+
   updateCustomer(id:any, employee:any): Observable<Customer> {
     return this.http.put<Customer>(this.apiURL + '/customers/' + id, JSON.stringify(employee), this.httpOptions)
     .pipe(
@@ -482,14 +494,14 @@ getCustomer(id:any): Observable<Customer> {
     // alert("phone"+customer_mobileno)
     // alert("phone"+this.apiURL + '/customers/' + phone)
     return this.http.get<logindetails>(this.apiURL + '/app/readCustomerDataById?customer_id='+ currentUserId	)
-    
+
     .pipe(
       retry(1),
       catchError(this.handleError)
-      
+
     )
-  
-  } 
+
+  }
 
 createCustomer(employee: { name: string; email: string; phone: number; gender: string;doorno: string; street: string;
 area: string; Pincode: string; city: string; landmark: string;}):
@@ -517,38 +529,38 @@ return throwError(errorMessage);
 
 
 readShopProfileDataById(currentShopId	:any): Observable<logindetails> {
-  
+
   return this.http.get<logindetails>(this.apiURL + '/shop/getShopProfileById?shop_id='+ currentShopId	)
-  
+
   .pipe(
     retry(1),
     catchError(this.handleError)
-    
+
   )
 
-} 
+}
 
 ShopoffersById(currentShopId:any): Observable<shopoffers> {
-  
+
   return this.http.get<shopoffers>(this.apiURL +'/shop/OnlineBookingShopDetails?currentUserId='+ currentShopId )
-  
+
   .pipe(
     retry(1),
     catchError(this.handleError)
-    
+
   )
 
-} 
+}
 getCustomerWhislist(customerid:any,selectedcity:any) : Observable<any[]>
 {
 
- return this.http.get<any>(this.apiURL +'/app/customerwhislist?currentUserId='+ customerid+ 
+ return this.http.get<any>(this.apiURL +'/app/customerwhislist?currentUserId='+ customerid+
  '&city_id='+selectedcity)
-  
+
   .pipe(
     retry(1),
     catchError(this.handleError)
-    
+
   )
 
 
@@ -558,11 +570,11 @@ getallshoplist() : Observable<any[]>
 {
 
  return this.http.get<any>(this.apiURL +"/shop/getallshoplist")
-  
+
   .pipe(
     retry(1),
     catchError(this.handleError)
-    
+
   )
 
 
@@ -589,11 +601,11 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
     // alert(shopservAmount)
     let carwash_status = changeCarwashStatus["carwash_status"];
   let Booking_id = changeCarwashStatus["Booking_id"];
-  
-  
+
+
     return this.http.get<any[]>(this.apiURL + "/shop/changeCarwashStatus?carwash_status="+carwash_status +
      "&Booking_id=" + Booking_id)
-  
+
     .pipe(
     retry(1),
     catchError(this.handleError)
@@ -604,7 +616,7 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
     getcurrentComboOffersByShopid(currentUserId:any): Observable<any[]> {
 
       return this.http.get<any[]>(this.apiURL + "/shop/getcurrentComboOffersByShopid?currentUserId="+currentUserId)
-    
+
       .pipe(
       retry(1),
       catchError(this.handleError)
