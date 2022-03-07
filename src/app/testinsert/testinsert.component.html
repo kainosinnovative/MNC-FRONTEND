@@ -1,8 +1,11 @@
-<!-- <mat-form-field>
-  <mat-select placeholder="Toppings" [formControl]="toppings" [(value)]="selectedToppings" multiple>
-    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<p>
-  {{selectedToppings | json}}
-</p> -->
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [labels]="chartOptions.labels"
+    [responsive]="chartOptions.responsive"
+  ></apx-chart>
+</div>
+
+

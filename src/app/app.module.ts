@@ -61,7 +61,11 @@ import { SearchComponent } from './search/search.component';
 // import { ShopLoginComponent } from './shop-login/shop-login.component';
 import { ShoploginComponent } from './shoplogin/shoplogin.component';
 import { MyBookingComponent } from './my-booking/my-booking.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { ViewbookingdetailsComponent } from './viewbookingdetails/viewbookingdetails.component';
+// import { NgChartsModule } from "ng2-charts";
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -86,7 +90,8 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent, data: {title: 'search'}},
   // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
   { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}},
-  { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}}
+  { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
+  { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}}
   
 ];
 @NgModule({
@@ -117,7 +122,8 @@ const appRoutes: Routes = [
       SearchComponent,
       // ShopLoginComponent
       ShoploginComponent,
-      MyBookingComponent
+      MyBookingComponent,
+      ViewbookingdetailsComponent
       
    
      ],
@@ -152,7 +158,11 @@ const appRoutes: Routes = [
     NgImageSliderModule,
     MatAutocompleteModule,
     SlickCarouselModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
+    NgApexchartsModule,
+    // NgChartsModule 
+    // ChartsModule
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent]
