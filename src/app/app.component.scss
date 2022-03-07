@@ -48,10 +48,10 @@
     }
 
     .colorheaderMenu{
-        color: black;
-text-decoration: none;
-font-size: 14px;
-font-weight:500;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    //font-weight:500;
 
     }
 
@@ -107,8 +107,8 @@ font-weight:500;
     }
     .mat-list-item
     {
-        font-size: 14px !important;
-        font-family: 'Times New Roman', Times, serif;
+       //font-size: 14px !important;
+        font-family: 'Crimson Roman', Times, serif;
         font-weight:500;
     }
 
@@ -215,6 +215,8 @@ text-align:left;
         .sidemenucls {
             display: block;
         }
+      
+        
     }
 
     @media screen and (min-width: 768px) {
@@ -226,5 +228,13 @@ text-align:left;
         content: "\f08b";
         color: #2a14df;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 17px;
+       
     }
+
+    // .lock{
+    //     color: #2a14df;
+    // font-weight: bold;
+    // font-size: 17px;
+    // margin-left: -32px;
+    // }
