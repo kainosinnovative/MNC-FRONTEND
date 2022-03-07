@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
 param2: string;
 wishlistdata: any;
 wishlistdata1: any;
- 
+
   // route: any;
 
-  
-  
+
+
 
 
   constructor(private toastr: ToastrService,public restApi: RestApiService,public datepipe: DatePipe,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) { }
@@ -53,7 +53,7 @@ wishlistdata1: any;
     this.dashboardShopDetailByOffer();
     // this.cdr.detectChanges();
     this.dashboardShopList();
-   
+
     this.customerId= localStorage.getItem('currentUserId');
    console.log(this.customerId);
     if(this.customerId != null)
@@ -64,18 +64,19 @@ wishlistdata1: any;
     //   console.log("params>>>",params);
     // });
 
-    
+
   }
 
   customerWhislist(customerId:any)
   {
     var whislist : [];
-    this.selectedcity=localStorage.getItem('selectedCity');
-    return this.restApi.getCustomerWhislist(customerId,this.selectedcity).subscribe((data: {}) => {
+    let selectedcity=localStorage.getItem('selectedCity');
+   
+    return this.restApi.getCustomerWhislist(customerId,selectedcity).subscribe((data: {}) => {
       // alert(data)
       this.CustomerWhislistData = data;
       this.CustomerWhislistData1= this.CustomerWhislistData.data.whislist;
-      
+
       console.log("whislist",this.CustomerWhislistData1);
       // this.dtTrigger.next();
     })
@@ -85,7 +86,7 @@ wishlistdata1: any;
   {
     if(!this.userroleSes)
     {
-      this.eventEmitterService.onFirstComponentButtonClick();  
+      this.eventEmitterService.onFirstComponentButtonClick();
      // alert("please login");
     }
     else
@@ -95,33 +96,33 @@ wishlistdata1: any;
     }
   }
   loadMasterService(){
-    
+
     return this.restApi.getMasterService().subscribe((data: {}) => {
       // alert(data)
       this.MasterServiceData = data;
       this.MasterServiceData1 = this.MasterServiceData.data.type;
-      
+
       console.log("data>>>>",this.MasterServiceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
-  
+
   slickInit(e:any) {
     console.log('slick initialized');
   }
-    
+
   breakpoint(e:any) {
     console.log('breakpoint');
   }
-    
+
   afterChange(e:any) {
     console.log('afterChange');
   }
-    
+
   beforeChange(e:any) {
     console.log('beforeChange');
   }
@@ -139,7 +140,7 @@ wishlistdata1: any;
       console.log("data dashboard>>>",this.dashboardShop1);
     })
   }
- 
+
 
   dashboardShopDetailByOffer(){
     var cityid:any;
@@ -156,50 +157,50 @@ wishlistdata1: any;
     })
   }
 
-  
+
 
 
   slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
-  
+
   slickInit1(e:any) {
     console.log('slick initialized');
   }
-    
+
   breakpoint1(e:any) {
     console.log('breakpoint');
   }
-    
+
   afterChange1(e:any) {
     console.log('afterChange');
   }
-    
+
   beforeChange1(e:any) {
     console.log('beforeChange');
   }
- 
+
 clickEvent(shopid :number){
          //alert(shopid)
          let wishlist1="wishlistvalue_"+ shopid;
 
          let  customerid = localStorage.getItem('currentUserId');
-         let cityid = localStorage.getItem('selectedCity'); 
+         let cityid = localStorage.getItem('selectedCity');
 
-         
-         
+
+
          //let wishlist1 =  (<HTMLInputElement>document.getElementById(wishlist)).innerHTML;
          //console.log(wishlist1)
       let wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist1)).style.color;
       //alert(wishlistcolor)
-      
+
       if(wishlistcolor === "gray"){
 
-      this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+ 
+      this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
             '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
               (data: any) => {
             console.log(data)
 
 
-    
+
 
 
             this.wishlistdata = data;
@@ -207,9 +208,6 @@ clickEvent(shopid :number){
 
              (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
 
-           
-
-              
              (<HTMLInputElement>document.getElementById(wishlist1)).style.cursor = "pointer";
             // document.getElementById("myP").style.cursor = "pointer";
              this.showloginSuccess();
@@ -220,13 +218,13 @@ clickEvent(shopid :number){
 
 else
       {
-          this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+ 
+          this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
             '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
               (data: any) => {
             //console.log(data)
 
 
-           
+
             this.wishlistdata1 = data;
             if(this.wishlistdata1.status === "pass"){
 
@@ -236,18 +234,18 @@ else
           }
            );
        }
-      
+
        }
 
        showloginSuccess() {
         console.log("login message");
-        
+
         //this.toastr.success('Added Successfully to Wishlist');
-        
-            // 
+
+            //
       }
 
-      
+
 
 
 }

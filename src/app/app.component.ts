@@ -31,15 +31,15 @@ import { EventEmitterService } from './event-emitter.service';
 
 export class AppComponent implements OnInit{
 
- 
+
 
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
 
- 
-  
-  
+
+
+
   title = 'angular6-sidenav-example';
   cont_id: any;
   cityid: any;
@@ -59,20 +59,23 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
+   // alert(this.cityid);
     if(this.cityid == null ){
       this.cityid = 3;
       this.cityname="Arakkonam";
+      localStorage.setItem('selectedCity',this.cityid);
+      localStorage.setItem('selectedCityname',this.cityname);
     }
-    if (this.eventEmitterService.subsVar==undefined) {    
-      this.eventEmitterService.subsVar = this.eventEmitterService.    
-      invokeFirstComponentFunction.subscribe(() => {    
-        this.login();    
+    if (this.eventEmitterService.subsVar==undefined) {
+      this.eventEmitterService.subsVar = this.eventEmitterService.
+      invokeFirstComponentFunction.subscribe(() => {
+        this.login();
         this.loginCheck1();
-      });    
-    }   
-    
+      });
+    }
+
   }
- 
+
   login(){
     console.log("hiiiii1111");
        this.dialog.open(LoginComponent,{disableClose: true});
@@ -101,7 +104,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
   //  };
   //  console.log(foo.results.find(item => item.name === "Beispiel"))
 
-    
+
 }
 
 Otpvrf(){
@@ -111,11 +114,11 @@ Otpvrf(){
 }
 
 logout() {
-  
-  
+
+
   // window.location.reload();
   this.movetohome();
-  
+
 }
 
 movetohome() {
@@ -129,7 +132,7 @@ movetohome() {
     window.localStorage.clear();
     this.router.navigate(['/shoplogin']);
   }
-  
+
   window.setTimeout(function(){location.reload()},100)
 }
 
@@ -147,11 +150,11 @@ loginCheck1() {
 
 
 selectcity(){
-  
+
      this.dialog.open(SelectcityComponent,{disableClose: true});
-  
+
 }
-    
+
 }
   // function signup() {
   //   throw new Error('Function not implemented.');

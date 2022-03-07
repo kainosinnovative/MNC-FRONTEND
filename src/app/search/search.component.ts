@@ -26,9 +26,10 @@ export class Service {
   opts = [];
 
   getData() {
+    let city= localStorage.getItem('selectedCity');
     return this.opts.length ?
       of(this.opts) :
-      this.http.get<any>(this.apiURL+'/shop/getallshoplist').pipe(tap(data => this.opts = data))
+      this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
 
   }
 
@@ -73,14 +74,14 @@ date:any;
     return this.service.getData()
      .pipe(
        map(response => response.filter((option:any) => {
-         return option.name.toLowerCase().indexOf(val.toLowerCase()) >-1
+         return option.name1.toLowerCase().indexOf(val.toLowerCase()) >-1
        }))
      )
    }
    onSelFunc(option: any){
     console.log(option);
-    return this.restApi.dashboardShopSearch(option).subscribe((data: {}) => {
-    //  alert(data)
+   return this.restApi.dashboardShopSearch(option).subscribe((data: {}) => {
+     //alert(data)
       this.dashboardShop = data;
       this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
       console.log("data dashboard>>>",this.dashboardShop1);
