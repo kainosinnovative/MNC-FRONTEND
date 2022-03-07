@@ -2,7 +2,7 @@
   <!-- <h5><u><i>Footer creation using angular material !!</i></u></h5> -->
   <mat-sidenav #sidenav class="sidenavstyle" >
   <mat-list >
-  
+
 
     <!-- customer mobile start -->
     <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item >Hi, {{currentUsername}}</a> </mat-list-item>
@@ -12,16 +12,16 @@
     </a> </mat-list-item>
     <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/onlinebooking'>Online Booking
     </a> </mat-list-item>
-    
+
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" mat-list-item >My Booking</a> </mat-list-item>
 
     <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login()">
       Login</a></mat-list-item>
-      
+
       <!-- customer mobile end -->
 
-      
+
 
       <!-- for shop owner -->
 
@@ -29,7 +29,7 @@
       </a> </mat-list-item>
 
   <mat-list-item *ngIf="userroleSes=='shopOwnerSes'" > <a class="txtunderline_remove"  mat-list-item routerLink='/ShopService'>Services</a> </mat-list-item>
-  
+
   <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ShopProfile'>My Profile</a> </mat-list-item>
 
   <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/contactus'>Contact Us</a> </mat-list-item>
@@ -39,7 +39,7 @@
 
       <!-- both customer and shop owner -->
 
-   
+
 
       <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item>
 
@@ -53,9 +53,9 @@
   <button class="sidemenucls"  mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="sidenav.open()">
   <mat-icon >menu</mat-icon>
   </button>
-  
-  
-  <mat-list-item > <img src="../assets/images/Kainos_logo.png" style="width: 60px;"> </mat-list-item> 
+
+
+  <mat-list-item > <img src="../assets/images/Kainos_logo.png" style="width: 60px;"> </mat-list-item>
   <label style="width: 55px;"></label>
   <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
   <mat-list-item class="menudesk" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopDashboard'>Home</a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
@@ -86,8 +86,8 @@
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink="/MyBooking">My Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
 
-  <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>  
-       
+  <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>
+
 <!-- for customer -->
 
 
@@ -105,56 +105,56 @@
 
   <!-- both customer and shop owner -->
 
-  <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item> 
+  <mat-list-item class="menudesk cursorcls" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item>
   <!-- both customer and shop owner -->
-  
+
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
     <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search </a></mat-list-item>
   </mat-toolbar>
 
 
- 
 
-  
+
+
   <!-- <mat-sidenav-content> -->
     <router-outlet></router-outlet>
-    
-    
+
+
 <div class="footer" style="height: 340px;" #footer id="footerdisplay">
   <footer class=" page-footer font-small blue pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
-  
+
       <!-- Grid row -->
       <div class="row">
-  
+
         <!-- Grid column -->
           <div class="col-md-6 mt-md-0 mt-3">
               <div class="row" style="height: 300px;">
                 <iframe  class="embed-responsive-item" loop="1" autoplay="" src="https://www.youtube.com/embed/PU5orW-mtVs" allowfullscreen></iframe>
-                
+
                   </div>
-    
+
           </div>
             <div class="col-lg-3 col-md-6">
               <div class="footer-link" >
                   <h2>Popular Links</h2>
-                
+
                   <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Online Booking</a>
                   <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Offers and Deals</a>
                   <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Blog</a>
-              
+
                     <a *ngIf="!userroleSes" class="" style="cursor: pointer;padding-top:0px !important;margin-top:0px!important;" (click)="loginCheck();login()" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;For Shop</a>
-                  
-                  
+
+
               </div>
           </div>
         <!-- <div class="col-md-3 mb-md-0 mb-3">-->
-  
+
             <!-- Links -->
             <!-- <h4 class="text-uppercase">Quick Links</h4>
-  
+
             <ul class="list-unstyled">
               <li *ngIf="!userroleSes">
                 <a class="txtunderline_remove" style="cursor: pointer;" (click)="loginCheck();login()" >Login - Shop Owner</a>
@@ -169,18 +169,18 @@
                 <a class="txtunderline_remove" routerLink='/shop/'>Shop</a>
               </li>
                <li>
-   
+
  <a class="txtunderline_remove" routerLink='#'>   Blog</a>
               </li> -->
               <!-- <li>
-   
+
                 <a class="txtunderline_remove" routerLink='/contactus/'>   Contact Us</a>
-                             </li> 
+                             </li>
             </ul>-->
-  
+
           <!-- </div>  -->
           <!-- Grid column -->
- 
+
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-contact">
@@ -197,30 +197,30 @@
                 </div>
             </div>
         </div>
-        
+
       </div>
       <!-- Grid row -->
-  
+
     </div>
 
 
     <!-- Footer Links -->
-  
+
     <!-- Copyright -->
     <div style="background: white;" class="footer-copyright text-center py-3" >© 2022 Copyright:
       <a href="#"> Kainos Innovative Solutions</a>
     </div>
     <!-- Copyright -->
 
-    
-  
+
+
   </footer>
   <!-- Footer -->
 
 
-  
 
-  
+
+
 
 </div>
 
