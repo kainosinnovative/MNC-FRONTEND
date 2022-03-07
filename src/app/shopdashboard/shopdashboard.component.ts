@@ -1,8 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ChartComponent,
+  ApexDataLabels,
+  ApexXAxis,
+  ApexPlotOptions,
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ApexFill,
+  ApexLegend
+} from "ng-apexcharts";
+export type ChartOptions = {
+  series: ApexAxisChartSeries | any;
+  chart: ApexChart | any;
+  dataLabels: ApexDataLabels | any;
+  plotOptions: ApexPlotOptions | any;
+  xaxis: ApexXAxis | any;
+};
+
+export type ChartOptions2 = {
+  series: ApexNonAxisChartSeries | any;
+  chart: ApexChart | any;
+  responsive: ApexResponsive[] | any;
+  labels: any;
+  fill: ApexFill | any;
+  legend: ApexLegend | any;
+  dataLabels: ApexDataLabels | any;
+  
+};
 @Component({
   selector: 'app-shopdashboard',
   templateUrl: './shopdashboard.component.html',
@@ -27,6 +57,16 @@ export class ShopdashboardComponent implements OnInit {
   config3:any;
   serviceDataOffers: any;
   serviceDataOffers1: any;
+  ComboOfferAmountArr:any = [];
+  ComboOfferFromDateTodate:any = [];
+  NormalOfferPercentArr:any = [];
+  servicenameArr:any = [];
+
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
+
+  @ViewChild("chart2") chart2: ChartComponent;
+  public chartOptions2: Partial<ChartOptions2>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
     private toastr: ToastrService) { }
 
@@ -48,11 +88,11 @@ export class ShopdashboardComponent implements OnInit {
       currentPage: 1,
       // totalItems: this.collection.count
     };
-    this.config2 = {
-      itemsPerPage: 10,
-      currentPage: 1,
-      // totalItems: this.collection.count
-    };
+    // this.config2 = {
+    //   itemsPerPage: 10,
+    //   currentPage: 1,
+      
+    // };
     this.config3 = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -63,19 +103,19 @@ export class ShopdashboardComponent implements OnInit {
     
   }
 
-  loadServiceDataOffers(){
-    let currentUserId = localStorage.getItem('currentUserId');
-    return this.restApi.getServiceDataOffers(currentUserId).subscribe((data: {}) => {
-      // alert(data)
-      this.serviceDataOffers = data;
-      this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentComboOffersByShopid;
+  // loadServiceDataOffers(){
+  //   let currentUserId = localStorage.getItem('currentUserId');
+  //   return this.restApi.getServiceDataOffers(currentUserId).subscribe((data: {}) => {
+  //     // alert(data)
+  //     this.serviceDataOffers = data;
+  //     this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentOffersByShopid;
       
-      console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
-      // this.dtTrigger.next();
-    })
+  //     console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
+  //     // this.dtTrigger.next();
+  //   })
 
     
-  }
+  // }
 
   customerBookingForShop(){
 
@@ -114,9 +154,9 @@ export class ShopdashboardComponent implements OnInit {
     this.config1.currentPage = event;
   }
 
-  pageChanged2(event:any){
-    this.config2.currentPage = event;
-  }
+  // pageChanged2(event:any){
+  //   this.config2.currentPage = event;
+  // }
 
   pageChanged3(event:any){
     this.config3.currentPage = event;
@@ -235,16 +275,130 @@ success => {
     }
 }
 
+
 currentComboOffers(){
   let currentUserId = localStorage.getItem('currentUserId');
-  return this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
-    // alert(data)
+  this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
     this.currentOffer = data;
-     this.currentOffer1 = this.currentOffer.data.getcurrentComboOffersByShopid;
+     this.currentOffer1 = this.currentOffer;
     
-     console.log("currentComboOffers>>>>",this.currentOffer1)
+    
+    // this.ComboOfferAmountArr = [10,100];
+     for(let i=0;i<this.currentOffer1.length;i++){
+       this.ComboOfferAmountArr.push(Number(this.currentOffer1[i].offer_percent));
+      // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
+      this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name);
+     }
+    //  console.log("array>>>",this.ComboOfferFromDateTodate);
+
+     this.chartOptions = {
+      series: [
+        {
+          name: "Offer %",
+          data: this.ComboOfferAmountArr
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 350,
+        width:300,
+        colors: "red",
+      },
+      
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          // width:20
+          // data:20
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: this.ComboOfferFromDateTodate
+      }
+    };
+
+   
     
   })
+  
+ 
+}
+
+// currentComboOffers(){
+//   let currentUserId = localStorage.getItem('currentUserId');
+//   return this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
+//     // alert(data)
+//     this.currentOffer = data;
+//      this.currentOffer1 = this.currentOffer.data.getcurrentComboOffersByShopid;
+    
+//      console.log("currentComboOffers>>>>",this.currentOffer1)
+    
+//   })
+// }
+
+
+loadServiceDataOffers(){
+  let currentUserId = localStorage.getItem('currentUserId');
+  return this.restApi.getServiceDataOffers(currentUserId).subscribe((data: {}) => {
+    // alert(data)
+    this.serviceDataOffers = data;
+    this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentOffersByShopid;
+    
+    console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
+    // this.dtTrigger.next();
+
+    for(let i=0;i<this.serviceDataOffers1.length;i++){
+      this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
+     // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
+     this.servicenameArr.push((this.serviceDataOffers1[i].service_name));
+    }
+    console.log("array>>>",this.servicenameArr);
+
+    this.chartOptions2 = {
+      series: this.NormalOfferPercentArr,
+      chart: {
+        width: 500,
+        type: "donut"
+      },
+      dataLabels: {
+        enabled: false
+      },
+      fill: {
+        type: "gradient"
+      },
+      labels: this.servicenameArr,
+      // legend: {
+        // enabled:true
+        // formatter:  this.servicenameArr
+        // formatter: function(val:any, opts:any) {
+        //   return val + " - " + opts.w.globals.series[opts.seriesIndex];
+        // }
+      // },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ]
+    };
+  })
+
+  
+}
+
+viewBookingDetails(id :any)
+{
+  alert(id)
 }
 
 }

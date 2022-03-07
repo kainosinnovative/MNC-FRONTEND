@@ -623,4 +623,14 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
       )
       }
 
+      getBookingDetailsById(Booking_id:any): Observable<any[]> {
+
+        return this.http.get<any[]>(this.apiURL + "/shop/getBookingDetailsById?Booking_id="+Booking_id)
+      
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
 }
