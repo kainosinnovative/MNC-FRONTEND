@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ViewbookdetailPopupComponent } from '../viewbookdetail-popup/viewbookdetail-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -62,13 +64,19 @@ export class ShopdashboardComponent implements OnInit {
   NormalOfferPercentArr:any = [];
   servicenameArr:any = [];
 
+  bookingDetailsById:any;
+  bookingDetailsById1:any;
+  ViewBooking_heading:any;
+  loadmasterComboOfferval:any;
+  loadmasterComboOfferval1:any;
+
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
   @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions2: Partial<ChartOptions2>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService, private  dialog:  MatDialog) { }
 
   ngOnInit(): void {
     // alert(localStorage.getItem('is_pickup_drop_avl'))
@@ -78,6 +86,11 @@ export class ShopdashboardComponent implements OnInit {
     this.master_pickdrop_status();
     this.master_carwash_status();
     this.currentComboOffers();
+
+    this.getBookingByid();
+  
+    this.loadmasterComboOffer();
+    this.ViewBooking_heading = localStorage.getItem('ViewBooking_heading');
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -400,5 +413,50 @@ viewBookingDetails(id :any)
 {
   alert(id)
 }
+
+
+  
+
+ViewDetailsPopup(Booking_id:any, heading:any){
+  localStorage.setItem('ViewBooking_id',Booking_id);
+  localStorage.setItem('ViewBooking_heading',heading);
+//   // alert("hi")
+  this.dialog.open(ViewbookdetailPopupComponent,{disableClose: true, 
+  width: '50%'});
+
+}
+
+getBookingByid() {
+  // alert(Booking_id)
+  let Booking_id = localStorage.getItem('ViewBooking_id');
+  return this.restApi.getBookingDetailsById(Booking_id).subscribe((data: {}) => {
+    // alert(data)
+    this.bookingDetailsById = data;
+    //console.log("abi", this.shopdetails);
+    //  this.bookingDetailsById1 = this.bookingDetailsById.data;
+    
+     console.log("bookingDetails2>>>>",this.bookingDetailsById)
+    
+  })
+    }
+
+    loadmasterComboOffer() {
+      
+      return this.restApi.loadmasterComboOffer().subscribe((data: {}) => {
+        // alert(data)
+        this.loadmasterComboOfferval = data;
+        
+         this.loadmasterComboOfferval1 = this.loadmasterComboOfferval;
+        
+         console.log("loadmasterComboOfferval1>>>>",this.loadmasterComboOfferval1)
+        
+      })
+        }
+
+        closeMe() {
+          localStorage.removeItem("ViewBooking_id");
+          localStorage.removeItem("ViewBooking_heading");
+          
+       }
 
 }

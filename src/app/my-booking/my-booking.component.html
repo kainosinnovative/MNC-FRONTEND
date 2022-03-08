@@ -10,19 +10,19 @@
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
               
                 <tr>
-                <th style="width:60px;font-weight:normal;">Sl. No.</th>
+                <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
                 <th style="width:90px;font-weight:normal;">Booking Id</th>
                 <th style="width: 137px;font-weight:normal;">Registration Number</th>
                 <th style="width:90px;font-weight:normal;">Date</th>
                 <th style="width:90px;font-weight:normal;">Booked Status</th>
                 <th style="width:90px;font-weight:normal;">Service Status</th>
                 <!-- <th style="width:150px;font-weight:normal;">Name</th> -->
-                <th style="width:94px;font-weight:normal;" >Combo Services</th>
+                <!-- <th style="width:94px;font-weight:normal;" >Combo Services</th>
                 <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
                 <th style="width:100px;font-weight:normal;" >Extra Services</th>
-                <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
                 <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
-                <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th>
+                <!-- <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th> -->
                 <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
                 <!-- <th style="width:60px;font-weight:normal;" >Accept</th>
                 <th style="width:60px;font-weight:normal;" >Reject</th> -->
@@ -40,14 +40,14 @@
             <tbody *ngIf = "MybookingDetails1 != ''">
               <tr *ngFor="let b of  MybookingDetails1 | paginate: config ;  let i=index;" >
                 
-                <td>{{i+1}}</td>
-                <td>{{b.Booking_id}}</td>
+                <!-- <td>{{i+1}}</td> -->
+                <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
                 <td>{{b.vehicle_number}}</td>
                 <td>{{b.bookingdate}}</td>
                 <td>{{b.booked_status}}</td>
                 <td>{{b.carwash_status}}</td>
                 <!-- <td>{{b.firstname}}({{b.Customer_id}})</td> -->
-                <td>
+                <!-- <td>
                   
               {{b.combo_id}} 
             </td> 
@@ -63,15 +63,15 @@
                   </div>
                 </div>
                   </td> 
-                <td>{{b.serviceprice_total}}</td>
+                <td>{{b.serviceprice_total}}</td> -->
                 <td>{{b.payable_amt}}</td>
-                <td>
+                <!-- <td>
                   <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
                      
                     <ng-template  #pickDropid>
                       <span>Yes</span>
                     </ng-template>
-                  </td>
+                  </td> -->
                   <!-- <td>
                     
                     <select  style="width: 100px;"   id="PickupDrop_{{b.Booking_id}}"  >

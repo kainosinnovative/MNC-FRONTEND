@@ -109,7 +109,8 @@ counter:any = 0;
       pickup_date: [],
       pickup_time: [],
       drop_date: [],
-      drop_time: []
+      drop_time: [],
+      payment_type:["Cash"]
        }) 
 
 

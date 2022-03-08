@@ -37,7 +37,7 @@
             <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" >
               
               <!-- <td>{{i+1}}</td> -->
-              <td><a style="cursor: pointer;" routerLink="/bookingdetails/{{b.Booking_id}}" >{{b.Booking_id}}</a></td>
+              <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Confirm Booking')" >{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
               <td>{{b.bookingdate}}</td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
@@ -170,7 +170,7 @@
             <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" >
               
               <!-- <td>{{i+1}}</td> -->
-              <td>{{b.Booking_id}}</td>
+              <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
               <td>{{b.bookingdate}}</td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
@@ -232,4 +232,5 @@
 
 
 </div>
+
 

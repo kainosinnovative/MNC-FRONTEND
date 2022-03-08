@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ViewbookdetailPopupComponent } from '../viewbookdetail-popup/viewbookdetail-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-my-booking',
   templateUrl: './my-booking.component.html',
@@ -15,7 +17,7 @@ export class MyBookingComponent implements OnInit {
   MasterServiceData:any;
   MasterServiceData1:any;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService, private  dialog:  MatDialog) { }
 
   ngOnInit(): void {
     this.loadMybookingDetails();
@@ -58,5 +60,20 @@ export class MyBookingComponent implements OnInit {
 
     
   }
+
+  ViewDetailsPopup(Booking_id:any, heading:any){
+    localStorage.setItem('ViewBooking_id',Booking_id);
+    localStorage.setItem('ViewBooking_heading',heading);
+  //   // alert("hi")
+    this.dialog.open(ViewbookdetailPopupComponent,{disableClose: true, 
+    width: '50%'});
+  
+  }
+
+  closeMe() {
+    localStorage.removeItem("ViewBooking_id");
+    localStorage.removeItem("ViewBooking_heading");
+    
+ }
 
 }
