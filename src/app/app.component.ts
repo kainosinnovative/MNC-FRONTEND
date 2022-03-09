@@ -151,7 +151,7 @@ loginCheck1() {
 
 selectcity(){
 
-     this.dialog.open(SelectcityComponent,{disableClose: true});
+     this.dialog.open(SelectcityComponent,{disableClose: true, width: '36%'});
 
 }
 

@@ -110,7 +110,7 @@ counter:any = 0;
       pickup_time: [],
       drop_date: [],
       drop_time: [],
-      payment_type:["Cash"]
+      payment_type:[]
        }) 
 
 
@@ -123,6 +123,8 @@ counter:any = 0;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
         this.onlinebooking.controls.pickup_drop.setValue(false);
+        this.onlinebooking.controls.payment_type.setValue("Cash On Delivery");
+        
   })
   }
 

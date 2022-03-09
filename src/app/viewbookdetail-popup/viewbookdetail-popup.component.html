@@ -34,7 +34,7 @@
         
         <div class="col-sm-6">
 <div class="row">
-    <div class="col-sm-6"><b>Combo Services & Price (<span><i class="fa fa-rupee"></i></span>)</b></div>
+    <div class="col-sm-6"><b>Combo Service & Price (<span><i class="fa fa-rupee"></i></span>)</b></div>
             <div class="col-sm-6">
                 <div *ngIf="b.combo_id != null;else nocomboservice">
                     
@@ -57,14 +57,14 @@
                 </div>
 
                 <ng-template  #nocomboservice>
-                    <span>-</span>
+                    <span>None</span>
                   </ng-template>
 
                 <div *ngIf="b.comboprice_total != null;else nocombototal">
                     <i class="fa fa-rupee"></i> {{b.comboprice_total}}
                 </div>
                 <ng-template  #nocombototal>
-                    <span>-</span>
+                    <span></span>
                   </ng-template>
                 </div>
 </div>
@@ -86,11 +86,11 @@
                         <i class="fa fa-rupee"></i> {{b.serviceprice_total}}
                     </div>
                     <ng-template  #noserviceamount>
-                        <span>-</span>
+                        <span>None</span>
                       </ng-template>
                   </div></div>
                   <ng-template  #noservice>
-                    <span>-</span>
+                    <span>None</span>
                   </ng-template>
             </div>
 

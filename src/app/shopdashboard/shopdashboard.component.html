@@ -2,17 +2,17 @@
   <div class="col-sm-6" >
     <div  style="width: 98%;margin-left: 13px;">
 
-      <h2 style="text-align: center;" class="mainheading">Confirm Booking</h2>
+      <h2 style="text-align: center;" class="mainheading">Upcoming Booking</h2>
 
       <table  class="table table-responsive servicecss" >
-          <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+          <thead style="background: #03232a;border-bottom: 0.5px solid #aeaeae;color: white;">
             
               <tr>
               <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
               <th style="width:90px;font-weight:normal;">Booking Id</th>
               <th style="width: 137px;font-weight:normal;">Registration Number</th>
               <th style="width:90px;font-weight:normal;">Date</th>
-              <th style="width:150px;font-weight:normal;">Name</th>
+              <th style="width:150px;font-weight:normal;">Customer Name</th>
               <!-- <th style="width:94px;font-weight:normal;" >Combo Services</th> -->
               <!-- <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th> -->
               <!-- <th style="width:100px;font-weight:normal;" >Extra Services</th> -->
@@ -20,7 +20,7 @@
               <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
               <!-- <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th> -->
               <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
-              <th style="width:60px;font-weight:normal;" >Accept</th>
+              <th style="width:60px;font-weight:normal;" >Conform</th>
               <th style="width:60px;font-weight:normal;" >Reject</th>
              
               
@@ -34,12 +34,12 @@
             </tr>
           </tbody>
           <tbody *ngIf = "bookingDetails1 != ''">
-            <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" >
+            <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
               
               <!-- <td>{{i+1}}</td> -->
-              <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Confirm Booking')" >{{b.Booking_id}}</a></td>
+              <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
-              <td>{{b.bookingdate}}</td>
+              <td><input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"></td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
               <!-- <td>     {{b.combo_id}}           </td>  -->
               <!-- <td>{{b.comboprice_total}}</td> -->
@@ -65,9 +65,9 @@
                 </td> -->
                 
               <td>
-                <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" class="btn"><i class="fa fa-check"></i></a> </td>
+                <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i class="fa fa-check"></i></a> </td>
                 <td>
-                <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" class="btn"><i class="fa fa-close"></i></a>
+                <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i class="fa fa-close"></i></a>
               </td>
             </tr>
             
@@ -84,76 +84,26 @@
   </div>
 
   <div class="col-sm-6" >
-    <h2 style="text-align: center;" class="mainheading"> Today Combo Offers</h2>
-    <div class="row">
-      <div class="col-sm-3" ></div>
-      <div class="col-sm-6">
-        
-        <div id="chart" style="text-align: center;">
-          <apx-chart
-            [series]="chartOptions.series"
-            [chart]="chartOptions.chart"
-            [dataLabels]="chartOptions.dataLabels"
-            [plotOptions]="chartOptions.plotOptions"
-            [xaxis]="chartOptions.xaxis"
-          ></apx-chart>
-        </div>
-      </div>
-      <div class="col-sm-3" ></div>
-    </div>
-
-</div>
-</div>
-
-<br>
-
-<div class="row">
-  <div class="col-sm-6" >
-    <h2 style="text-align: center;" class="mainheading">Today Services Offers</h2>
-    <div class="row">
-      <div class="col-sm-3" ></div>
-      <div class="col-sm-6">
-        
-        <div id="chart2">
-          <apx-chart
-            [series]="chartOptions2.series"
-            [chart]="chartOptions2.chart"
-            [labels]="chartOptions2.labels"
-            [fill]="chartOptions2.fill"
-            [dataLabels]="chartOptions2.dataLabels"
-            [responsive]="chartOptions2.responsive"
-          ></apx-chart>
-        </div>
-      </div>
-      <div class="col-sm-3" ></div>
-    </div>
-
-
-
-  </div>
-
-
-  <div class="col-sm-6" >
 
     <div  style="width: 98%;margin-left: 13px;">
 
       <h2 style="text-align: center;" class="mainheading">Carwash Status</h2>
       <table  class="table table-responsive servicecss" >
-          <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+          <thead style="background: #03232a;border-bottom: 0.5px solid #aeaeae;color: white;">
             
               <tr>
               <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
               <th style="width:90px;font-weight:normal;">Booking Id</th>
               <th style="width: 137px;font-weight:normal;">Registration Number</th>
               <th style="width:100px;font-weight:normal;">Date</th>
-              <th style="width:150px;font-weight:normal;">Name</th>
+              <th style="width:150px;font-weight:normal;">Customer Name</th>
               <!-- <th style="width: 113px;font-weight:normal;" >Combo Services</th>
               <th style="width: 163px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
               <th style="width:150px;font-weight:normal;" >Extra Services</th>
               <th style="width:190px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
-              <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+              <th style="width:80px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
               <!-- <th  style="width: 108px;font-weight:normal;">Pick-up & Drop</th> -->
-              <th  style="width:150px;font-weight:normal;">Status</th>
+              <th  style="width:130px;font-weight:normal;">Status</th>
               <th style="width:60px;font-weight:normal;" >Update</th>
              
               
@@ -167,12 +117,12 @@
             </tr>
           </tbody>
           <tbody *ngIf = "AcceptbookingDetails1 != ''">
-            <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" >
+            <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
               
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
-              <td>{{b.bookingdate}}</td>
+              <td><input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"></td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
               <!-- <td>
                 
@@ -201,7 +151,7 @@
                 </td> -->
                 <td>
                   
-                  <select  style="width: 100px;height: 28px;"   id="carwash_{{b.Booking_id}}" [(ngModel)]="b.carwash_status" >
+                  <select  style="width: 100px;height: 26px;"   id="carwash_{{b.Booking_id}}" [(ngModel)]="b.carwash_status" >
                     <option value="">--Select---</option>
                    <option *ngFor="let c of carwashstatus1" [value]="c.id">
                     {{c.carwash_status_name}}
@@ -210,7 +160,7 @@
                   
                 </td>
               <td>
-                <a (click)="updateCarwashStatus(b.Booking_id)" class="btn"><i class="fa fa-check"></i></a>
+                <a (click)="updateCarwashStatus(b.Booking_id)"><i class="fa fa-check"></i></a>
                </td>
                 
             </tr>
@@ -226,11 +176,72 @@
         
   </div>
 
+
+    
+
+</div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-sm-6" >
+    <h2 style="text-align: center;" class="mainheading"> Today's Combo Offers</h2>
+    
+    <div class="row" >
+      <div class="col-sm-3" ></div>
+      <div class="col-sm-6" >
+        <div style="border: 1px solid #aeaeae;">
+        <div id="chart" style="text-align: center;">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [xaxis]="chartOptions.xaxis"
+          ></apx-chart>
+        </div>
+      </div>
+      </div>
+      <div class="col-sm-3" ></div>
+    </div>
+  
+
   </div>
+
+  <div class="col-sm-6" >
+    <h2 style="text-align: center;" class="mainheading">Today's Services Offers</h2>
+    <div class="row">
+      <div class="col-sm-2" ></div>
+      <div class="col-sm-8" >
+        <div style="border: 1px solid #aeaeae;height: 317px;" >
+        <div id="chart2">
+          <apx-chart
+            [series]="chartOptions2.series"
+            [chart]="chartOptions2.chart"
+            [labels]="chartOptions2.labels"
+            [fill]="chartOptions2.fill"
+            [dataLabels]="chartOptions2.dataLabels"
+            [responsive]="chartOptions2.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+      </div>
+      <div class="col-sm-2" ></div>
+    </div>
+
+
+
+  </div>
+
+
+  
 
     
 
 
 </div>
+
+<br>
 
 

@@ -15,7 +15,7 @@ import {
   ApexNonAxisChartSeries,
   ApexResponsive,
   ApexFill,
-  ApexLegend
+  ApexLegend,ApexYAxis
 } from "ng-apexcharts";
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -23,6 +23,8 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels | any;
   plotOptions: ApexPlotOptions | any;
   xaxis: ApexXAxis | any;
+  yaxis:ApexYAxis | any;
+  tooltip:ApexChart | any;
 };
 
 export type ChartOptions2 = {
@@ -305,6 +307,9 @@ currentComboOffers(){
     //  console.log("array>>>",this.ComboOfferFromDateTodate);
 
      this.chartOptions = {
+
+      
+       
       series: [
         {
           name: "Offer %",
@@ -312,10 +317,21 @@ currentComboOffers(){
         }
       ],
       chart: {
+        toolbar: {
+          show: true,
+         
+          tools: {
+            // download: false,
+            download: '<i style="font-size:12px;color:black" class="fa fa-download" title="Download"></i>',
+            
+          },
+        },
+          
         type: "bar",
-        height: 350,
+        height: 300,
         width:300,
         colors: "red",
+
       },
       
       plotOptions: {
@@ -326,12 +342,42 @@ currentComboOffers(){
         }
       },
       dataLabels: {
-        enabled: false
+        enabled: true
       },
       xaxis: {
-        categories: this.ComboOfferFromDateTodate
+        categories: this.ComboOfferFromDateTodate,
+        title: {
+          text: "Offer Type",
+          style: {
+            color: "#000000",
+            //font:"20px"
+          }
+        },
+        
+      },
+      yaxis: {
+
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+         },
+        
+        
+        
+    },
+    tooltip: {
+      y: {
+        formatter: function(val:any) {
+          return ''
+        },
+        title: {
+          formatter: function (seriesName:any) {
+            return ''
+          }
+        }
       }
-    };
+    }
+  };
 
    
     
