@@ -1,15 +1,15 @@
-<p>search works!</p>
 
+<br><br>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-<h3>Search By Shop</h3>
+        <div class="col-sm-12">
+<h3 style="font-weight:bold;">Search By Shop /Services</h3>
 <div class="active-pink-3 active-pink-4 mb-4">
     <form class="example-form">
         <mat-form-field class="example-full-width">
         <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
+            <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
               {{option.name1}}
             </mat-option>
           </mat-autocomplete>
@@ -17,24 +17,7 @@
       </form>
 </div>
 </div>
-<div class="col-sm-6">
 
-<h3>Search By Services</h3>
-<div class="active-purple-3 active-purple-4 mb-4">
-    <!-- <form #f="ngForm">
-        <mat-form-field>
-            <input matInput placeholder="Joke" [matAutocomplete]="auto" name="joke" #joke="ngModel" [(ngModel)]="currentJoke" (ngModelChange)="doFilter()">
-        </mat-form-field>
-
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let joke of jokes | async" [value]="joke.joke">
-                {{joke.joke}}
-            </mat-option>
-        </mat-autocomplete>
-
-    </form> -->
-</div>
-</div>
 </div>
 </div>
 <br>

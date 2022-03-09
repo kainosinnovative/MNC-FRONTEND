@@ -8,11 +8,11 @@
 
 
 <div class="row">
-   
+
 
     <div class="col-sm-12">
 
-      
+
         <table  class="table table-responsive servicecss" *ngIf="serviceData1!=''">
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
               <tr >
@@ -25,9 +25,9 @@
                 <th style="width:66px;font-weight:normal;" >Service Status	 </th>
                 <th style="width:150px;font-weight:normal;">Model </th>
                 <th style="width:90px;font-weight:normal;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
-               
+
                 <th  style="width:100px;border-right:solid 1px;font-weight:normal;">Action</th>
-                
+
                 <th style="width:85px;font-weight:normal;" >Offer(%) </th>
                 <th style="width:85px;font-weight:normal;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
                 <th style="width:35px;font-weight:normal;">Start Date</th>
@@ -37,30 +37,30 @@
             </thead>
             <tbody>
               <tr *ngFor="let service of  serviceData1 | paginate: config ;  let i=index;" >
-                
+
                 <td>{{i+1}}</td>
                 <td ><input id="service_{{service.service_id}}" type="number" value="{{service.service_id}}"  style="width: 60px;" hidden><input id="servicename_{{service.service_id}}" type="text" value="{{service.service_name}}"  style="width: 250px;border:none;text-align: center;" readonly></td>
                 <td >
-              
+
                   <span *ngIf="service.status == '1'">&nbsp;</span>
                   <label class="switch" *ngIf="service.status == '1'" (click)="changeServiceStatus(service.id,service.status)">
                     <input  type="checkbox" checked>
                     <span class="slider round"></span>
                   </label>
-                  
+
                   <span *ngIf="service.status == '0'">&nbsp;</span>
                   <label class="switch" *ngIf="service.status == '0'" (click)="changeServiceStatus(service.id,service.status)">
                     <input type="checkbox" >
                     <span class="slider round"></span>
                   </label>
-                 
-                                  
+
+
                                     </td>
                 <td>  <input id="model_{{service.service_id}}" type="number" value="{{service.model_id}}"  style="width: 60px;" hidden> <input id="modelname_{{service.service_id}}" type="text" value="{{service.model_name}}"  style="width: 150px;border:none;text-align: center;background-color: #fff;" readonly></td>
                 <td> <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
                 </td>
-                
+
 
                     <td style="border-right:solid 1px;">
                       <button  class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button>
@@ -72,10 +72,10 @@
                 </td>
                 <td>
                   &nbsp;<input id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
-               
+
                 </td>
-                <td>  
-                  
+                <td>
+
                   <input type="date"  id="offerfromdate_{{service.service_id}}"  class=" dateofbirthcls" style="width:112px !important;" value="{{service.from_date}}"  placeholder="">
                   <p id="validatefromdate_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Select Offer Starting Date</p> <p id="validatefromdateformat_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Offer From Date Greater than To Date</p></td>
                 <td> <input type="date"  id="offertodate_{{service.service_id}}"  class=" dateofbirthcls"  style="width:112px !important;" value="{{service.to_date}}" placeholder="">
@@ -84,261 +84,274 @@
 
 
 
-                      
+
                      <button class="allSubmitbtn"  style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateOfferAmount(service.service_id)">Update</button>
-                    
-                    
-        
-              
+
+
+
+
             </td>
               </tr>
-              
+
             </tbody>
           </table>
 
-            
+
             <div style="text-align: center;" *ngIf="serviceData1!=''">
               <br>
               <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
-          
+
     </div>
 
-  
+
 </div>
-
-
-
-
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-8">
-
-        <div class="accordion">
-          <h2 class="title subheading" style="text-align: left;" (click)="opened = !opened">Add Service Price <i class="fa fa-chevron-down"></i> </h2> 
-          <div class="content-container" [class.opened]="opened">
-    
-    
-         
-        <div style="border: 1px solid;;">
-          <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
-        <form [formGroup]="shopserviceForm" name="pf">
-        <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
-          <table class="table" style="border: none;">
-            <tr style="text-align: left;">
-              <td>Service</td>
-              <td style="width: 170px;">
-                <!-- <label style="width: 50px;">Service</label>  -->
-                   
-              <select   class="carmodelcls"  id="model" formControlName="service_id" style="width: 170px;" (change) ="changeOtherToadd($event)">   
-                     
-                <option value="">--Select Services--</option>  
-                 
-                <option *ngFor="let service of MasterServiceData1" [value]="service.service_id">
-                  {{service.service_name}}
-                  </option> 
-                  <!-- <option value="Others">Others</option>  -->
-                 </select>
-                  <div *ngIf="shopserviceForm.controls['service_id'].touched && shopserviceForm.controls['service_id'].invalid"> 
-                      
-                  <div *ngIf="shopserviceForm.controls['service_id'].errors" style="color: red;"> 
-                    <div *ngIf="shopserviceForm.controls['service_id'].errors.required" style="font-size: 12px;">
-                        Select service
-                    </div> 		   
-                   
-                 </div> 
-                  
-                </div> 
-              </td>
-              <td style="width: 65px;"></td>
-              <td style="display: none;" id="hiddenServidTd">
-                <label style="width: 100px;">Service Name</label>
-                <input type="text"   style="padding-left: 2px !important;"   id="hidden_service" placeholder=""  >
-        
-              </td>
-              <td>Model</td>
-              <td>
-                <!-- <label style="width: 100px;">Model</label>  -->
-                         
-                    <select   class="carmodelcls "  id="model" formControlName="model_id">   
-                           
-                      <option value="">--Select Model--</option>  
-                      <option *ngFor="let m of MasterModelData1" [value]="m.id">
-                        {{m.model_name}}
-                        </option> 
-                       </select>
-                        <div *ngIf="shopserviceForm.controls['model_id'].touched && shopserviceForm.controls['model_id'].invalid"> 
-                            
-                        <div *ngIf="shopserviceForm.controls['model_id'].errors" style="color: red;"> 
-                          <div *ngIf="shopserviceForm.controls['model_id'].errors.required" style="font-size: 12px;">
-                              Select car model
-                          </div> 		   
-                         
-                       </div> 
-                        
-                      </div> 
-              </td>
-              <td>Amount</td>
-        
-              <td>
-                <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
-               
-                 <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
-                <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid "> 
-        
-                    <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;"> 
-                      <div *ngIf="shopserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
-                           Enter the amount  
-                      </div> 		   
-                     
-                   </div> 
-                    
-                  </div>
-              </td>
-              <td>
-                <button class="btn carwashbtn allSubmitbtn"  (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'  >Update</button>
-        
-              </td>
-
-              
-            </tr>
-
-            
-          </table>
-        
-             
-              </div>
-            </form>
-      
-          </div>
-      </div>
-    
-      
-    
-    </div>
-
-
-    </div>
-    </div>
-
-
-
-
-<br>
-
-
 <div class="row">
+  <div class="col-md-6">
+    <div class="accordion">
+      <h2 class="title subheading" style="text-align: left;" (click)="opened = !opened">Add Service Price <i class="fa fa-chevron-down"></i> </h2>
+      <div class="content-container" [class.opened]="opened">
 
-  <div class="col-sm-2"></div>
 
-  <div class="col-sm-8" >
+
+    <div style="border: 1px solid;;">
+      <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
+    <form [formGroup]="shopserviceForm" name="pf">
+    <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
+      <table class="table" style="border: none;">
+        <tr style="text-align: left;">
+          <td>Service</td>
+          <td style="width: 170px;">
+            <!-- <label style="width: 50px;">Service</label>  -->
+
+          <select   class="carmodelcls"  id="model" formControlName="service_id" style="width: 170px;" (change) ="changeOtherToadd($event)">
+
+            <option value="">--Select Services--</option>
+
+            <option *ngFor="let service of MasterServiceData1" [value]="service.service_id">
+              {{service.service_name}}
+              </option>
+              <!-- <option value="Others">Others</option>  -->
+             </select>
+              <div *ngIf="shopserviceForm.controls['service_id'].touched && shopserviceForm.controls['service_id'].invalid">
+
+              <div *ngIf="shopserviceForm.controls['service_id'].errors" style="color: red;">
+                <div *ngIf="shopserviceForm.controls['service_id'].errors.required" style="font-size: 12px;">
+                    Select service
+                </div>
+
+             </div>
+
+            </div>
+          </td>
+          <td style="width: 65px;"></td>
+          <td style="display: none;" id="hiddenServidTd">
+            <label style="width: 100px;">Service Name</label>
+            <input type="text"   style="padding-left: 2px !important;"   id="hidden_service" placeholder=""  >
+
+          </td>
+          <td>Model</td>
+          <td>
+            <!-- <label style="width: 100px;">Model</label>  -->
+
+                <select   class="carmodelcls "  id="model" formControlName="model_id">
+
+                  <option value="">--Select Model--</option>
+                  <option *ngFor="let m of MasterModelData1" [value]="m.id">
+                    {{m.model_name}}
+                    </option>
+                   </select>
+                    <div *ngIf="shopserviceForm.controls['model_id'].touched && shopserviceForm.controls['model_id'].invalid">
+
+                    <div *ngIf="shopserviceForm.controls['model_id'].errors" style="color: red;">
+                      <div *ngIf="shopserviceForm.controls['model_id'].errors.required" style="font-size: 12px;">
+                          Select car model
+                      </div>
+
+                   </div>
+
+                  </div>
+          </td>
+          <td>Amount</td>
+
+          <td>
+            <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
+
+             <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
+            <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid ">
+
+                <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;">
+                  <div *ngIf="shopserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
+                       Enter the amount
+                  </div>
+
+               </div>
+
+              </div>
+          </td>
+          <td>
+            <button class="btn carwashbtn allSubmitbtn"  (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'  >Update</button>
+
+          </td>
+
+
+        </tr>
+
+
+      </table>
+
+
+          </div>
+        </form>
+
+      </div>
+  </div>
+
+
+
+</div>
+  </div>
+
+  <div class="col-md-6">
     <div class="accordion1">
-      <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2> 
+      <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
     <div style="border: 1px solid;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
-      <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid2">
-        <table class="table" style="border: none;margin-top: -23px;">
+      <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
+        <table class="table" style="border: none;margin-top: -3px;">
           <tr style="text-align: left;">
-            
+
             <td>Service</td>
+
+            <td>Model</td>
+
+
+            <td>Amount</td>
+
+            <td></td>
+
+
+
+          </tr>
+          <tr>
             <td  style="width: 170px;">
-              <p style="height: 2px;"></p>
+
               <ng-autocomplete [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
               [notFoundTemplate]="notFoundTemplate" style="overflow:hidden;width: 200px;">
-              <!-- <div class="input-container" style="border:1px solid black;">
-                  <input type="text" aria-autocomplete="list" role="combobox" autocomplete="off" placeholder="" ng-reflect-model="" aria-label="" class="ng-pristine ng-valid ng-touched" style="border:5px solid black !important;"></div> -->
+
           </ng-autocomplete>
-      
+
           <ng-template #itemTemplate let-item >
               <a [innerHTML]="item.service_name"></a>
           </ng-template>
-      
+
           <ng-template #notFoundTemplate let-notFound>
               <div [innerHTML]="notFound"></div>
           </ng-template>
-          
-              <!-- 
+
+              <!--
               <input type="text"   style="padding-left: 2px !important;"  formControlName="service_name"  placeholder=""  > -->
-              <div style="margin-top: -27px;" *ngIf="MasterserviceForm.controls['service_name'].touched && MasterserviceForm.controls['service_name'].invalid"> 
-                  
-                <div *ngIf="MasterserviceForm.controls['service_name'].errors" style="color: red;"> 
+              <div style="margin-top: -27px;" *ngIf="MasterserviceForm.controls['service_name'].touched && MasterserviceForm.controls['service_name'].invalid">
+
+                <div *ngIf="MasterserviceForm.controls['service_name'].errors" style="color: red;">
                   <div *ngIf="MasterserviceForm.controls['service_name'].errors.required" style="font-size: 12px;">
                       Enter the service name
-                  </div> 		   
-                 
-               </div> 
-                
+                  </div>
+
+               </div>
+
               </div>
             </td>
-            <td style="width: 65px;"></td>
-            <td>Model</td>
-            <td>
+
+
+
+
+
+
+
+
+
+
+
+<td>
               <!-- <label style="width: 100px;">Model</label>  -->
-                       
-                  <select   class="carmodelcls "  id="model" formControlName="model_id">   
-                         
-                    <option value="">--Select Model--</option>  
+
+                  <select   class="carmodelcls "  id="model" formControlName="model_id">
+
+                    <option value="">--Select Model--</option>
                     <option *ngFor="let m of MasterModelData1" [value]="m.id">
                       {{m.model_name}}
-                      </option> 
+                      </option>
                      </select>
-                      <div *ngIf="MasterserviceForm.controls['model_id'].touched && MasterserviceForm.controls['model_id'].invalid"> 
-                          
-                      <div *ngIf="MasterserviceForm.controls['model_id'].errors" style="color: red;"> 
+                      <div *ngIf="MasterserviceForm.controls['model_id'].touched && MasterserviceForm.controls['model_id'].invalid">
+
+                      <div *ngIf="MasterserviceForm.controls['model_id'].errors" style="color: red;">
                         <div *ngIf="MasterserviceForm.controls['model_id'].errors.required" style="font-size: 12px;">
                             Select car model
-                        </div> 		   
-                       
-                     </div> 
-                      
-                    </div> 
+                        </div>
+
+                     </div>
+
+                    </div>
             </td>
 
-            <td>Amount</td>
-      
-            <td>
+
+
+
+
+
+
+
+
+
+<td>
               <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
-             
+
                <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
-              <div *ngIf="MasterserviceForm.controls['actual_amount'].touched && MasterserviceForm.controls['actual_amount'].invalid "> 
-      
-                  <div *ngIf="MasterserviceForm.controls['actual_amount'].errors" style="color: red;"> 
+              <div *ngIf="MasterserviceForm.controls['actual_amount'].touched && MasterserviceForm.controls['actual_amount'].invalid ">
+
+                  <div *ngIf="MasterserviceForm.controls['actual_amount'].errors" style="color: red;">
                     <div *ngIf="MasterserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
-                         Enter the amount  
-                    </div> 		   
-                   
-                 </div> 
-                  
+                         Enter the amount
+                    </div>
+
+                 </div>
+
                 </div>
             </td>
-      
-            
-            <td style="text-align: left;">
+
+
+
+
+
+
+
+
+
+
+ <td style="text-align: left;">
               <button class="btn carwashbtn allSubmitbtn "  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
-      
+
             </td>
           </tr>
         </table>
-      
-           
+
+
             </div>
           </form>
     </div>
 
-    
+
 
   </div>
 </div>
-</div>
+  </div>
 
-  <div class="col-sm-2"></div>
- </div>
-
-<br>
-
+  </div>
+<br><br>
 
 
 

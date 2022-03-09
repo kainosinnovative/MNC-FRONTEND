@@ -406,6 +406,11 @@
 <label class="mainheading">Net Amount Payable: </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i>
       <input readonly type="number" formControlName="payable_amt" id="final_totalamount" class="selectnow2"  >
       <br><br>
+
+      <label class="mainheading">Payment Type: </label> &nbsp; 
+      <input readonly type="text" formControlName="payment_type" value="Cash"  class="selectnow2"  >
+      <br> <br>
+
       <button class="allSubmitbtn btn" mat-raised-button="" style="margin-left: 975px;" [disabled]='!onlinebooking.valid' (click)="OnlineBooking(onlinebooking.value)">Confirm Booking</button>
       </div>
 

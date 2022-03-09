@@ -589,6 +589,21 @@ getallshoplist() : Observable<any[]>
 
 }
 
+loadmasterComboOffer() : Observable<any[]>
+{
+
+ return this.http.get<any>(this.apiURL +"/shop/getloadmasterComboOffer")
+
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+
+  )
+
+
+}
+
+
 
 changeBookingStatus(changeBookingStatus:any): Observable<any[]> {
   // alert(shopservAmount)

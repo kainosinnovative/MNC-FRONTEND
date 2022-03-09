@@ -69,6 +69,8 @@ date:any;
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadMasterService();
+    this.dashboardShop1='';
+    this.dashboardShopoffer1='';
   }
 
   filter(val: string): Observable<any[]> {
@@ -88,6 +90,10 @@ date:any;
       this.dashboardShop = data;
       this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
       console.log("data dashboard>>>",this.dashboardShop1);
+      if(!this.dashboardShop1)
+      {
+        this.dashboardShop1='';
+      }
     })
   }
   onSelFunc1(option: any){
@@ -97,8 +103,10 @@ date:any;
       //alert(data)
        this.dashboardShopoffer = data;
        this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
+
        console.log("data dashboard1>>>",this.dashboardShopoffer1);
      })
+
   }
   loadMasterService(){
 

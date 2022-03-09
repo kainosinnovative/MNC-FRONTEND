@@ -35,18 +35,29 @@ $angular6-sidenav-example-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; 
+html, body { height: 100%;
   max-width: 100% !important;
   overflow-x: hidden !important;
 }
-body { 
+body {
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size:12px !important;
   // background-color: white !important;
 }
-
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background: none !important;
+  //margin-left:37%;
+  display:none;
+}
+.cdk-overlay-pane
+{
+  width: 400px;
+   top: 164.625px;
+    left: 260.5px !important;
+    margin-left:160px !important;
+}
 // .a{
-//   font-size: 5px; 
+//   font-size: 5px;
 // }
 
 // .footer {
@@ -80,7 +91,7 @@ body {
   width: 280px !important;
   margin-left: 13px;
   padding-left: 2px !important;
- 
+
 }
 
 .dateofbirthcls {
@@ -148,7 +159,7 @@ line-height: unset !important;
 }
 
 .carwashbtn1 {
-  
+
     border: 1px solid #0bae62;
     background-color: white !important;
 
@@ -165,16 +176,16 @@ line-height: unset !important;
 }
 
 .secondsubheading {
-  
+
     font-size: 12px !important;
     // font-weight: 900 !important;
-  
+
 }
 
 .slick-prev:before, .slick-next:before {
-  
+
   color: black !important;
-  
+
 }
 
 // .autocomplete-container .suggestions-container ul li a {
@@ -183,15 +194,15 @@ line-height: unset !important;
   // text-decoration: none;
   // color: black !important;
   // cursor: pointer;
-  
+
   // font-size: 79px !important;
-  //  background: rgb(17, 192, 183) !important; 
+  //  background: rgb(17, 192, 183) !important;
   //  z-index: 100px;
 // }
 .select::-ms-expand { display: block !important; }
 
 .mat-drawer-content {
-    
+
   background: white !important;
 }
 .autocomplete-container .input-container input
@@ -216,10 +227,14 @@ line-height: unset !important;
 
 .autocomplete-container {
   box-shadow: unset !important;
- 
+
 }
 
 .allSubmitbtn {
   background-color: #1872f3 !important;
   color: white !important;
 }
+// .mat-dialog-container
+// {
+//   width:80% !important;
+// }

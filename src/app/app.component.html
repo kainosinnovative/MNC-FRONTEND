@@ -10,8 +10,8 @@
     </a> </mat-list-item>
     <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
     </a> </mat-list-item>
-    <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/onlinebooking'>Online Booking
-    </a> </mat-list-item>
+    <!-- <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/onlinebooking'>Online Booking
+    </a> </mat-list-item> -->
 
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" mat-list-item >My Booking</a> </mat-list-item>
@@ -80,7 +80,7 @@
 
 
 <!-- for customer -->
-  <mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
+  <!-- <mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span> -->
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/customercreate'>My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
 
@@ -141,11 +141,11 @@
               <div class="footer-link" >
                   <h2>Popular Links</h2>
 
-                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Online Booking</a>
+                  <!-- <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Online Booking</a> -->
                   <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Offers and Deals</a>
                   <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Blog</a>
 
-                    <a *ngIf="!userroleSes" class="" style="cursor: pointer;padding-top:0px !important;margin-top:0px!important;" (click)="loginCheck();login()" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;For Shop</a>
+                    <!-- <a *ngIf="!userroleSes" class="" style="cursor: pointer;padding-top:0px !important;margin-top:0px!important;" (click)="loginCheck();login()" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;For Shop</a> -->
 
 
               </div>

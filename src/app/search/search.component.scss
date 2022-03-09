@@ -1,12 +1,14 @@
 h3 {
     text-align: center;
-    color: maroon;
+    color: blue;
     }
     // .active-pink-3 input[type=text] {
-    // border: 1px solid purple !important;
-    // border-radius:15px;
-    // font-size:14px;
-    // }
+    //  border: 1px solid purple !important;
+    //  border-radius:15px;
+    //  font-size:14px;
+    //  margin-left:55%;
+    //  width:100%;
+    //  }
     // .active-purple-3 input[type=text] {
     // border: 1px solid blue !important;
     // border-radius:15px;
@@ -39,7 +41,7 @@ h3 {
         outline: none;
         padding: 0;
         margin: 0;
-        width: 50% !important;
+        width: 100% !important;
         max-width: 100%;
         vertical-align: bottom;
         text-align: inherit;
@@ -47,6 +49,12 @@ h3 {
         height:24px !important;
         border-radius:15px !important;
         padding:5px;
+        margin-left:36%;
+    }
+
+    .ss
+    {
+        margin-left:25%;
     }
     .container {
       width: 900px
@@ -376,7 +384,11 @@ h3 {
 }
 
 
-
+// .mat-form-field-appearance-legacy .mat-form-field-underline {
+//       background: none !important;
+//       margin-left:37% !important;
+//     }
+   
 .oneimage {
   height:225px !important;
   width:100%;

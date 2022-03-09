@@ -64,6 +64,8 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ViewbookingdetailsComponent } from './viewbookingdetails/viewbookingdetails.component';
+import { ViewbookdetailPopupComponent } from './viewbookdetail-popup/viewbookdetail-popup.component';
+import { PopupmodalComponent } from './popupmodal/popupmodal.component';
 // import { NgChartsModule } from "ng2-charts";
 // import { ChartsModule } from 'ng2-charts/ng2-charts';
 const appRoutes: Routes = [
@@ -91,7 +93,8 @@ const appRoutes: Routes = [
   // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
   { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}},
   { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
-  { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}}
+  { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}},
+  { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}}
   
 ];
 @NgModule({
@@ -123,7 +126,9 @@ const appRoutes: Routes = [
       // ShopLoginComponent
       ShoploginComponent,
       MyBookingComponent,
-      ViewbookingdetailsComponent
+      ViewbookingdetailsComponent,
+      ViewbookdetailPopupComponent,
+      PopupmodalComponent
       
    
      ],
