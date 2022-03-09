@@ -77,13 +77,13 @@
       }
 
       .discount {
-        background-color: #b83b5e;
+        background-color: #05a849;
         padding-top: 1px;
         padding-bottom: 1px;
         padding-left: 4px;
         padding-right: 4px;
         font-size: 10px;
-        border-radius: 6px;
+        border-radius: 4px;
         color: white;
     }
 
@@ -148,7 +148,7 @@ padding: 1rem!important;
     //margin-left: 18px;
 }
 .textcls{
-    background-color: #def2fa7d;
+    background-color: #f2f2f2;
     border: none;
     //margin-left: 18px;
     // height: 150px;
@@ -161,19 +161,19 @@ padding: 1rem!important;
     height: 50px;
 }
 .datecls{
-    background-color: #def2fa7d;
+    background-color: #f2f2f2;
     border: none;
     width: 250px;
     height: 50px;
 }
 .carmodelcls{
-    background-color: #def2fa7d;
+    background-color: #f2f2f2;
     border: none;
     width: 150px;
     height: 50px;
 }
 .selectnow{
-    background-color: #ffc207;
+    background-color: #69a3f7;
           border: none;
           height: 30px;
           width: 80px;
@@ -201,19 +201,21 @@ padding: 1rem!important;
 }
 
 .comboselectbtm{
-    background-color: #ffc207;
+    background-color: #69a3f7;
           border: none;
           height: 30px;
-          width: 70px;
+          width: 80px;
+          border-radius: 5px;
           font-size: 15px;
-          margin-left: 214px;
+          font-size: 15px;
+          margin-left: 188px;
           margin-top: 8px;
           color: black;
-          border-radius: 5px;
+          //border-radius: 5px;
 }
 
 .extser{
-    background-color: #def2fa7d;
+    background-color: rgb(0 0 0 / 5%);
     height:70px !important;
     width: 541px;
 }
@@ -241,7 +243,7 @@ padding: 1rem!important;
     font-size: 12px;
     color: white;
     font-weight: 500;
-    background: #138808;
+    background: #05a849;
     border-radius: 6px;
     padding-left: 4px;
     padding-right: 4px;
@@ -250,8 +252,8 @@ padding: 1rem!important;
 
 .card {
     width: 92%;
-    background: #3f6eb530;
-}
+    background: rgb(0 0 0 / 5%);
+  }
 
 
 .accordion{
@@ -265,15 +267,40 @@ padding: 1rem!important;
 
 }
 
+.accordion1{
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  // margin: 12px;
+  // margin-left:80px;
+  width:98%;
+  // margin-left:275px;
+
+  padding:10px;
+
+}
+
 .title  {
   padding-left: 6px;
   background-color:#202c45;
   color: white;
 }
 
+.title1  {
+  padding-left: 6px;
+  background-color:#202c45;
+  color: white;
+}
+
+
 
 .content {
   padding: 12px;
+}
+
+.content-container1  {
+  overflow: hidden;
+  max-height: 0;
+  margin-left:20px;
+  margin-bottom:10px;
 }
 
 .content-container  {
@@ -283,6 +310,9 @@ padding: 1rem!important;
     margin-bottom:10px;
 }
 
+.content-container1.opened1  {
+  max-height: none;
+}
 .content-container.opened  {
   max-height: none;
 }

@@ -18,6 +18,7 @@ export class OnlinebookingComponent implements OnInit {
 
   show: boolean = true
   opened = true;
+  opened1 = true;
   displaydata: any;
   displaydata1: any;
   onlinebooking: any;
@@ -321,7 +322,7 @@ changeBgColor(offer_id:any){
           this.counter = this.counter + 1;
 
         (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Selected";
-      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#ff8507";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "rgb(255, 194, 7)";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
         //alert(offer_amt);
         this.finalvalue = this.finalvalue +(offer_amt);
@@ -337,7 +338,7 @@ changeBgColor(offer_id:any){
         this.counter = this.counter - 1;
         // alert("count else>>"+this.counter);
       (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Select";
-      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#ffc207";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "rgb(105 163 247)";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
        this.finalvalue = this.finalvalue -(offer_amt);
        this.onlinebooking.controls.comboprice_total.setValue(this.finalvalue.toFixed());
@@ -360,7 +361,7 @@ selectbuttoncolor(service_id:any){
 
       if(selecttext === 'Select') { 
         (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Selected";
-       (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(255, 133, 7)";
+       (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(255, 194, 7)";
        var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
        console.log(service_amt);
       this.totalvalue = this.totalvalue +(service_amt);
@@ -371,7 +372,7 @@ selectbuttoncolor(service_id:any){
        } else {
    
      (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Select";
-     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#ffc207";
+     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(105 163 247)";
      var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
      this.totalvalue = this.totalvalue -(service_amt);
     //  (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
