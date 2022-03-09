@@ -39,7 +39,10 @@
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
-              <td><input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"></td>
+              <td>
+                {{b.bookingdate | date: 'dd-MM-yyyy'}} 
+                <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
+              </td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
               <!-- <td>     {{b.combo_id}}           </td>  -->
               <!-- <td>{{b.comboprice_total}}</td> -->
@@ -122,7 +125,10 @@
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
-              <td><input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"></td>
+              <td>
+                {{b.bookingdate | date: 'dd-MM-yyyy'}} 
+                <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
+              </td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
               <!-- <td>
                 

@@ -47,13 +47,10 @@
               "./node_modules//bootstrap//dist//js//bootstrap.bundle.js",
               "./node_modules/jquery/dist/jquery.min.js",
   "./node_modules/slick-carousel/slick/slick.min.js"
-<<<<<<< HEAD
               
-=======
 
 
 
->>>>>>> a3bf4c2c26d4b8dc8f674baee2bf2540cc77e3a4
             ]
           },
           "configurations": {
