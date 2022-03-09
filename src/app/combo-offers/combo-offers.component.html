@@ -3,18 +3,18 @@
   <h2 style="text-align: center;" class="mainheading">Add Today's Combo Offer</h2>
 </div>
 <!-- <div class="row"> <div class="col-sm-2">
-    
+
   </div>
 
   <div class="col-sm-8" style="border:1px solid rgb(92, 43, 228);" >
-   
+
     <h2 style="text-align: center;" class="subheading">Current Offers </h2>
 
 
       <table  class="table table-responsive" style="width:99%;border: 0.5px solid #aeaeae;">
           <thead style="background: #61c0e5;border-bottom: 0.5px solid #aeaeae;">
             <tr >
-             
+
               <th >Sl. No.</th>
               <th>Offer Name</th>
               <th>Model</th>
@@ -23,48 +23,48 @@
               <th >To Date</th>
               <th >Offer Percent</th>
               <th >Offer Amount</th>
-              
+
             </tr>
           </thead>
           <tbody>
             <tr *ngIf="comboofferData1.length == 0">
               <td colspan="7" style="">No data available</td>
-              
+
             </tr>
-           
+
               <tr *ngFor="let service of  comboofferData1;let i=index">
-              
+
               <td>{{i + 1}}</td>
               <td>{{service.offer_name}}</td>
               <td>
                 <span *ngFor="let s of shopserviceModel1" >
                   <span *ngIf="s.model_id === service.model_id">{{s.model_name}}</span>
-                
+
                 </span>
                 </td>
-              <td > 
+              <td >
                 <div *ngFor="let m of  service.services.split(',')">
                   <span *ngFor="let m1 of  MasterServiceData1" >
-                   
+
 <span *ngIf="m === m1.service_id">{{m1.service_name}}</span>
                   </span>
-                  
+
                 </div>
-                
+
               </td>
               <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
-                
-                
+
+
               </td>
               <td>{{service.start_date | date: 'dd-MM-yyyy'}}</td>
               <td>{{service.end_date |  date: 'dd-MM-yyyy'}}</td>
               <td>{{service.offer_percent}} %</td>
               <td><i class="fa fa-rupee"> </i> {{service.combo_price}}</td>
-              
-      
-              
+
+
+
             </tr>
-            
+
           </tbody>
         </table>
 
@@ -82,15 +82,15 @@
     </div>
 
     <div class="col-sm-6 secondcolumn" style="border:1px solid black;padding-top:10px;">
-       
+
 <h2 style="text-align: center;" class="subheading"></h2>
       <div class="row">
         <div class="col-sm-4" style="text-align: left;">
-          <label style="width: 74px;">From date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;"> 
+          <label style="width: 74px;">From date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
         </div>
-    
+
         <div class="col-sm-4">
-          <label style="width: 59px;">To date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input (click)="dateErrorMsg()" type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;"> 
+          <label style="width: 59px;">To date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input (click)="dateErrorMsg()" type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
           <br><span id="enddate_message" style="color: red;display: none;">To date must be greater than from date</span>
         </div>
 
@@ -104,9 +104,9 @@
                             </option>
                             </select>
         </div>
-    
-        
-    
+
+
+
       </div>
 
       <br>
@@ -116,23 +116,23 @@
         <table  class="row table table-responsive addcombooffer"  style="width: 80%;border: 0.5px solid #aeaeae;margin-left:65px;" >
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;">
               <tr >
-               
+
                 <th  style="width: 100px;">Sl. No.</th>
-                
+
                 <th style="width: 200px;">Active Service Name</th>
                 <th style="width: 100px">Amount &nbsp;(<i class="fa fa-rupee">) </i></th>
                 <th style="width: 100px">Select</th>
               </tr>
             </thead>
             <tbody *ngIf="combooffertblByModelid1.length < 2">
-             <tr><td colspan="4" style="text-align: center;">No data available</td></tr> 
+             <tr><td colspan="4" style="text-align: center;">No data available</td></tr>
               </tbody>
 
 
             <tbody *ngIf="combooffertblByModelid1.length >= 2">
 
-              
-              
+
+
               <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
                 <tr   *ngFor="let service of  combooffertblByModelid1; let i=index;">
                <td  style="width: 100px;">{{i+1}}</td>
@@ -144,10 +144,10 @@
                 <td style="width: 100px;">
                   <input type="checkbox" (click)="collectServiceid(service.service_id)">
                     </td>
-        
-                
+
+
               </tr>
-              
+
             </tbody>
           </table>
 
@@ -155,15 +155,15 @@
 
   <div>
 
-  <input type="hidden" id="Selectedserviceid"> 
+  <input type="hidden" id="Selectedserviceid">
 
-  
+
   <br>
 
   <div class="row amountwebrow" >
     <div class="col-sm-1"></div>
     <div class="col-sm-5" style="width:35% !important;">
-      <label style="width:80px;">Offer Name</label> 
+      <label style="width:80px;">Offer Name</label>
         <select  id="offername"  style="width:130px;height: 24px;">
         <option value="">--Select--</option>
         <option value="Basic">Basic</option>
@@ -171,19 +171,19 @@
         <option value="Supreme">Supreme</option>
         <option value="Delux">Delux</option>
       </select>
-      
+
 <p style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</p>
     </div>
     <div class="col-sm-6" style="padding-left:0px !important;padding-right:0px !important;">
-      <label style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>   <input type="text" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;"> 
+      <label style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>   <input type="text" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
     </div>
-    
+
    </div>
    <div  class="row amountwebrow" style="margin-top:10px;">
     <div class="col-sm-1"></div>
     <div class="col-sm-1" style="width:25% !important;">
 
-      <label style="width: 80px;">Offer (%)</label> 
+      <label style="width: 80px;">Offer (%)</label>
       <input  type="number" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 50px;height: 24px">
 
 <p style="color: red;display: none;text-align: center;" id="offerpercentError">Enter offer %</p>
@@ -192,32 +192,32 @@
     <div class="col-sm-5">
       <label style=" width: 125px;padding-left:22px;">Offer Amount &nbsp;&nbsp;(<i class="fa fa-rupee"></i>)</label>  <input readonly type="text" id="combooffer_offeramount" style="width: 130px;height: 24px;text-align:left;padding-left:15px;">
       </div>
-     
+
       <div class="col-sm-3" >
-        <button 
+        <button
          id="addCombobtn" class="allSubmitbtn"  style="width:70px !important;" (click)="AddComboOffer()">Add Offer</button>
-      </div>      
+      </div>
 
   </div>
 <br>
   <!-- <div class="row" style="text-align: right;"> -->
-   
+
   <!-- </div> -->
 
 </div>
-  
 
-  
-</div>
+
 
 </div>
-          
+
+</div>
+
 
 <br>
 <!-- <div style="text-align: center;">
   <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </div> -->
-          
+
     </div>
 
     <div class="col-sm-3">
@@ -227,25 +227,26 @@
 </div>
 <br>
 <div class="accordion">
-  <h2 class="title subheading"  (click)="opened = !opened">Your Previous Combo Offers <i class="fa fa-chevron-down"></i> </h2> 
+  <h2 class="title subheading"  (click)="opened = !opened">Your Previous Combo Offers <i class="fa fa-chevron-down"></i> </h2>
   <div class="content-container" [class.opened]="opened">
     <div class="row">
     <div class="col-sm-5" style="text-align: left;"  >
-      <label style="width: 74px;">Month</label>  
- 
+      <label style="width: 74px;">Month</label>
+
       <select  id="month"  style="width:130px;height: 24px;"  >
         <option value="">--Select--</option>
         <option *ngFor="let mon of month" [value]="mon.id">{{mon.name}}</option>
-       
-      </select> 
-      <p style="color: red;display: none;text-align: center;" id="montherror">Select Month</p>     
+
+      </select>
+      <p style="color: red;display: none;text-align: center;" id="montherror">Select Month</p>
     </div>
 
     <div class="col-sm-5">
-      <label style="width: 59px;">Year</label>  
-       <select  id="year"  style="width:130px;height: 24px;"  >
-        <option value="">--Select--</option>
-        <option *ngFor="let yr of year" [value]="yr.id">{{yr.name}}</option>
+
+      <label style="width: 59px;">Year</label>
+       <select  id="year"  style="width:130px;height: 24px;">
+            
+        <option *ngFor="let yr of year" [value]="yr.id" >{{yr.name}}</option>
         </select>
         <p style="color: red;display: none;text-align: center;" id="yearerror">Select Year</p>
       </div>
@@ -259,7 +260,7 @@
      <table  class="table table-responsive combotable" style="width:100%;">
       <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;">
         <tr >
-         
+
           <th style="width:100px;" >Sl. No.</th>
           <th style="width:100px;">Offer Name</th>
           <th style="width:200px;">Model</th>
@@ -268,50 +269,50 @@
           <th style="width:100px;">To Date</th>
           <th style="width:150px;">Offer Percent(%)</th>
           <th style="width:150px;">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
-          
+
         </tr>
       </thead>
       <tbody>
         <tr *ngIf="comboofferData1 == ''">
           <td colspan="7" style="text-align:center;" >No data available</td>
-          
-        </tr> 
-       
-          <tr *ngFor="let service of  comboofferData1  | paginate: config ;  let i=index;"> 
-          
+
+        </tr>
+
+          <tr *ngFor="let service of  comboofferData1  | paginate: config ;  let i=index;">
+
           <td>{{i + 1}}</td>
           <td>{{service.offer_name}}</td>
           <td>
             <span *ngFor="let s of shopserviceModel1" >
               <span *ngIf="s.model_id === service.model_id">{{s.model_name}}</span>
-            
+
             </span>
             </td>
-         <td > 
+         <td >
             <div *ngFor="let m of  service.services.split(',')">
               <span *ngFor="let m1 of  MasterServiceData1" >
-               
+
 <span *ngIf="m === m1.service_id">{{m1.service_name}}</span>
               </span>
-              
+
             </div>
-            
+
           </td>
           <!-- <td *ngFor="let m of  MasterServiceData1">{{service.services}} {{m.service_name}}
-            
-            
+
+
           </td> -->
           <td>{{service.start_date | date: 'dd-MM-yyyy'}}</td>
           <td>{{service.end_date |  date: 'dd-MM-yyyy'}}</td>
           <td>{{service.offer_percent}} %</td>
           <td><i class="fa fa-rupee"> </i> {{service.combo_price}}</td>
-          
-  
-          
+
+
+
         </tr>
-        
-      </tbody> 
-    </table> 
+
+      </tbody>
+    </table>
     <div style="text-align: center;">
       <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>

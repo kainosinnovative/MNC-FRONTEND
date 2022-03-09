@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer, shopoffers } from '../shared/customer/customer';
 
-import { Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid, dahsboardShop} from '../shared/customer/customer';
+import {currentuserid,Testimonial,Testimonial2,loginauth,logindetails,singleLoginTestimonial,shopCustlogin,Cartype,Services,ShopService,carbrand,citylist,statelist, shopserviceByModelid, dahsboardShop} from '../shared/customer/customer';
 
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
@@ -36,6 +36,13 @@ httpOptions = {
 //       map((response:any) => response.map((item: { [x: string]: any; }) => item['name']))
 //     )
 // }
+getcustomerwhislistprofile(currentUserId:any): Observable<any> {
+  return this.http.get<any[]>(this.apiURL + '/app/getcustomerwhislistprofile?customerId='+currentUserId)
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+   }
 
 getCustomers(): Observable<Customer> {
 return this.http.get<Customer>(this.apiURL + '/customers')
@@ -55,6 +62,8 @@ gettestimonialData(): Observable<Testimonial> {
   catchError(this.handleError)
   )
   }
+
+
 
   getcitylist(): Observable<citylist> {
 
