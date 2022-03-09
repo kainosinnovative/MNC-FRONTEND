@@ -76,6 +76,15 @@ dynamicArray: Array<DynamicGrid> = [];
   carDetailsById:any;
   carDetailsById1:any;
   removedata:any;
+  // offerdetails:any;
+  // offerslist: any;
+  // MasterServiceid1 :any;
+  // MasterServiceid: any;
+  Whislistid: any;
+  Whislistid1: any;
+
+
+
   constructor(
     public router: Router,
     private frmbuilder: FormBuilder,
@@ -98,6 +107,9 @@ ngOnInit() {
   this. loadcitylist();
   this.getstatedata();
   this.loadcarDetailsById();
+  this.Whislistdata();
+  
+
   element: HTMLElement;
 
   let currentUserId:any = localStorage.getItem('currentUserId');
@@ -426,13 +438,83 @@ AddCustomerCarDetails(cardetailForm:any)
       
     }
 
+
+    // loadshopoffers(currentShopId:any){
+
+    //   // let currentShopId = 1;
+      
+    //   return this.restApi.ShopoffersById(currentShopId).subscribe((data: {}) => {
+    
+    //     //console.log('testabi', data);
+       
+    //     this.offerdetails = data;
+    //     this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
+    //     console.log("test>>>>",this.offerslist)
+        
+    //   })
+    
+    // }
+     
+    
+      
+      // idbyMasterService(){
+    
+      //   return this.restApi.getMasterService().subscribe((data: {}) => {
+      //     // alert(data)
+      //     this.MasterServiceid = data;
+      //     this.MasterServiceid1 = this.MasterServiceid.data.type;
+          
+      //     console.log("aravind>>>>",this.MasterServiceid1)
+      //     // this.dtTrigger.next();
+      
+      //   })
+      // }
+      
+      Whislistdata()
+      {
+        let currentUserId = localStorage.getItem('currentUserId');
+
+        return this.restApi.getcustomerwhislistprofile(currentUserId).subscribe((data: {}) => { 
+          // alert(data)
+          this.Whislistid = data;
+          let test = this.Whislistid
+          console.log(test);
+
+          // this.Whislistid1= this.Whislistid.data.getcustomerwhislist;
+    
+          // console.log("whislist",this.Whislistid1);
+          // this.dtTrigger.next();
+        })
+
+      }
+
+      slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+      
+      slickInit(e:any) { 
+        console.log('slick initialized');
+      }
+        
+      breakpoint(e:any) {
+        console.log('breakpoint');
+      } 
+        
+      afterChange(e:any) {
+        console.log('afterChange');
+      }
+        
+      beforeChange(e:any) {
+        console.log('beforeChange');
+      }
+
     toppings = new FormControl();
 
     toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   }
     
-   
+ 
+
+
 
 function newObj(newObj: any) {
   throw new Error('Function not implemented.');
