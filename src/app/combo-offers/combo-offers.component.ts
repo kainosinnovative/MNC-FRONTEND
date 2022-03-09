@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class ComboOffersComponent implements OnInit {
+
   month: Month = [
     { id: 1, name: "Jan" },
     { id: 2, name: "Feb" },
@@ -46,13 +47,17 @@ export class ComboOffersComponent implements OnInit {
   addoffermsg:any;
   addoffermsg1:any;
   opened = false;
- 
+ curmonth:any;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.date=new Date();
-// let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+  //  let currentYear = new Date().getFullYear();
+  //  console.log(currentYear);
+  //  let currentMonth=new Date().getMonth();
+  //  console.log(currentMonth);
+  // let currmonth=this.date | this.date:'MMM';
 (<HTMLInputElement>document.getElementById("history")).style.display = "none";
 this.loadServiceData();
 //this.loadComboOffers();
@@ -62,7 +67,7 @@ this.loadcombooffertblByModelid(1);
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
-      
+
     };
   }
 
@@ -77,17 +82,17 @@ this.loadcombooffertblByModelid(1);
     (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=true;
     if(a == 2)
     (<HTMLInputElement>document.getElementById("secondtblid")).style.display = "block";
-    
+
     let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
     // alert(model_id  )
     let currentUserId = localStorage.getItem('currentUserId');
-    var combooffertbl = 
+    var combooffertbl =
               {
                 "model_id": model_id,
                 "shop_id":currentUserId,
                  }
 
-    
+
     return this.restApi.combooffertblByModelid(combooffertbl).subscribe((data: {}) => {
       // alert(data)
       this.combooffertblByModelid = data;
@@ -95,40 +100,40 @@ this.loadcombooffertblByModelid(1);
       console.log(this.combooffertblByModelid)
     })
 
-    
+
   }
 
   loadshopserviceByModelid(){
-    
+
     let currentUserId = localStorage.getItem('currentUserId');
     return this.restApi.shopserviceByModelid(currentUserId).subscribe((data: {}) => {
       // alert(data)
       this.shopserviceModel = data;
       this.shopserviceModel1 = this.shopserviceModel.data.shopserviceByModelid;
-      
+
     })
   }
-  
+
   loadMasterService(){
-    
+
     return this.restApi.getMasterService().subscribe((data: {}) => {
       // alert(data)
       this.MasterServiceData = data;
       this.MasterServiceData1 = this.MasterServiceData.data.type;
-      
+
       console.log("data>>>>",this.MasterServiceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
 
   loadComboOffers(){
     let currentUserId = localStorage.getItem('currentUserId');
-   
 
-    
+
+
   }
 
 
@@ -142,35 +147,35 @@ this.loadcombooffertblByModelid(1);
       // alert(data)
       this.serviceData = data;
       this.serviceData1 = this.serviceData.data.carAndShopservice;
-      
+
       // console.log("data>222>>>",this.serviceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
 
   AddServiceAmount(obj:any) {
-    
+
   }
 
   UpdateServiceAmount(obj:any) {
-    
+
   }
 
 
   removevalidateMsg(id:any) {
-    
+
   }
 
   serviceIdArr = new Array();
    serviceIdArr1 = new Array();
    serviceAmountArr = new Array();
-  
+
   collectServiceid(serviceid:any) {
     //alert(serviceid)
-    
+
     let service_amountid = "amount_"+serviceid;
     let service_amount = (<HTMLInputElement>document.getElementById(service_amountid)).innerText;
     // alert(service_amount);
@@ -216,10 +221,10 @@ this.loadcombooffertblByModelid(1);
 {
     var index = this.serviceIdArr.indexOf(item);
     return [
- 
+
         // part of the array before the given item
         ...this.serviceIdArr.slice(0, index),
- 
+
         // part of the array after the given item
         ...this.serviceIdArr.slice(index + 1)
     ];
@@ -232,7 +237,7 @@ AddComboOffer() {
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
   let Selectedserviceid = (<HTMLInputElement>document.getElementById("Selectedserviceid")).value;
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
-  let model_id = (<HTMLInputElement>document.getElementById("model_id")).value; 
+  let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
   let totalamount = (<HTMLInputElement>document.getElementById("totalamount")).value;
   let offername=(<HTMLInputElement>document.getElementById("offername")).value;
   console.log(offername);
@@ -261,7 +266,7 @@ else if(combo_price == "") {
 }
 else {
 
-  var ComboOfferDetails = 
+  var ComboOfferDetails =
               {
                 "services": Selectedserviceid,
                 "combo_price": combo_price,
@@ -274,10 +279,10 @@ else {
                 "original_amount":totalamount
                 }
 
-                
+
 
   this.restApi.AddComboOfferDetails(ComboOfferDetails).subscribe((data => {
-   
+
    this.addoffermsg = data;
    this.addoffermsg1 = this.addoffermsg.status;
    console.log(">>>>>",this.addoffermsg1)
@@ -288,8 +293,8 @@ this.toastr.success('Combo Offer Added Successfully!');
   }
   ));
 
-  
-  
+
+
   }
   // else {
   //   (<HTMLInputElement>document.getElementById(service_amountid)).focus();
@@ -319,14 +324,14 @@ retreivedata()
 {
     (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
     (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
-    let mon = (<HTMLInputElement>document.getElementById("month")).value; 
+    let mon = (<HTMLInputElement>document.getElementById("month")).value;
     let year = (<HTMLInputElement>document.getElementById("year")).value;
     console.log(mon);
     console.log(year);
     if(mon=="")
     {
     (<HTMLInputElement>document.getElementById("month")).focus();
-  
+
       (<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
     }
     else if(year=="")
@@ -345,19 +350,19 @@ retreivedata()
         "year":year,
         "currentUserId":currentUserId
       }
-      
+
     this.restApi.getComboOffersData(monyear).subscribe((data: {}) => {
         // alert(data)
         this.comboofferData = data;
         this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
-        
+
         // console.log("data>>>>",this.comboofferData1)
         // this.dtTrigger.next();
       })
-   
+
 
     }
- 
+
 }
 
 }

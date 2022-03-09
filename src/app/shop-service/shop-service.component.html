@@ -118,7 +118,7 @@
       <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
     <form [formGroup]="shopserviceForm" name="pf">
     <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
-      <table class="table" style="border: none;">
+      <table class="table" style="border: none;margin-left:0px !important;">
         <tr style="text-align: left;">
           <td>Service</td>
           <td style="width: 170px;">
@@ -144,7 +144,7 @@
 
             </div>
           </td>
-          <td style="width: 65px;"></td>
+          <td style="width: 2px;"></td>
           <td style="display: none;" id="hiddenServidTd">
             <label style="width: 100px;">Service Name</label>
             <input type="text"   style="padding-left: 2px !important;"   id="hidden_service" placeholder=""  >
@@ -177,7 +177,7 @@
           <td>
             <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
-             <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
+             <input type="text"   style="padding-left: 0px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 60px;">
             <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid ">
 
                 <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;">
@@ -216,27 +216,15 @@
     <div class="accordion1">
       <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
-    <div style="border: 1px solid;">
+    <div style="border: 1px solid;margin-left:0px!important;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
       <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
-        <table class="table" style="border: none;margin-top: -3px;">
-          <tr style="text-align: left;">
+        <table class="table" style="border: none;margin-top: -23px;border-collapse: inherit !important;padding-left:0px!important;margin-left:0px !important;">
+          <tr style="text-align: Center;">
 
             <td>Service</td>
-
-            <td>Model</td>
-
-
-            <td>Amount</td>
-
-            <td></td>
-
-
-
-          </tr>
-          <tr>
-            <td  style="width: 170px;">
+            <td style="height:25px;">
 
               <ng-autocomplete [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
@@ -265,18 +253,8 @@
 
               </div>
             </td>
-
-
-
-
-
-
-
-
-
-
-
-<td>
+            <td>Model</td>
+            <td style="height:25px;">
               <!-- <label style="width: 100px;">Model</label>  -->
 
                   <select   class="carmodelcls "  id="model" formControlName="model_id">
@@ -298,16 +276,8 @@
                     </div>
             </td>
 
-
-
-
-
-
-
-
-
-
-<td>
+            <td>Amount</td>
+            <td>
               <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
                <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
@@ -323,20 +293,14 @@
                 </div>
             </td>
 
-
-
-
-
-
-
-
-
-
- <td style="text-align: left;">
+            <td style="text-align: left;">
               <button class="btn carwashbtn allSubmitbtn "  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
 
             </td>
+
+
           </tr>
+
         </table>
 
 
