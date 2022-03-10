@@ -27,7 +27,12 @@
     background-color:#202c45;
     color:white;
 }
-
+.title2
+{
+    padding-left: 6px;
+    background-color:#202c45;
+    color:white;
+}
 .content {
   padding: 12px;
 }
@@ -45,11 +50,22 @@
     margin-left:20px;
     margin-bottom:10px;
 }
+.content-container2
+{
+    overflow: hidden;
+    max-height: 0;
+    margin-left:20px;
+    margin-bottom:10px;
+}
 
 .content-container.opened  {
   max-height: none;
 }
 .content-container1.opened1
+{
+    max-height: none;
+}
+.content-container2.opened2
 {
     max-height: none;
 }
