@@ -48,6 +48,7 @@
               "./node_modules/jquery/dist/jquery.min.js",
   "./node_modules/slick-carousel/slick/slick.min.js"
 
+
             ]
           },
           "configurations": {
@@ -124,7 +125,7 @@
             ],
             "scripts": [
               "./node_modules//bootstrap//dist//js//bootstrap.bundle.js"
-              
+
             ]
           }
         }
