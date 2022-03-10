@@ -53,8 +53,9 @@ export class ComboOffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.date=new Date();
-  //  let currentYear = new Date().getFullYear();
-  //  console.log(currentYear);
+   let currentYear = new Date().getFullYear();
+   console.log(currentYear);
+   (<HTMLInputElement>document.getElementById("Customname")).style.display ="none";
   //  let currentMonth=new Date().getMonth();
   //  console.log(currentMonth);
   // let currmonth=this.date | this.date:'MMM';
@@ -232,6 +233,8 @@ this.loadcombooffertblByModelid(1);
 
 
 AddComboOffer() {
+  (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display="none";
+  (<HTMLInputElement>document.getElementById("offernameError")).style.display="none";
   let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
   let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
@@ -240,15 +243,27 @@ AddComboOffer() {
   let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
   let totalamount = (<HTMLInputElement>document.getElementById("totalamount")).value;
   let offername=(<HTMLInputElement>document.getElementById("offername")).value;
-  console.log(offername);
+  let customoffername=(<HTMLInputElement>document.getElementById("offercustomname")).value;
+  // console.log("befoffername"+offername);
+  // console.log("befcustomoffername"+customoffername);
   let currentUserId = localStorage.getItem('currentUserId');
-// alert(currentUserId)
-  if(start_date > end_date) {
+  if(offername=='Custom' && customoffername=="")
+  {
+    alert("first");
+    (<HTMLInputElement>document.getElementById("offercustomname")).focus();
+    (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display ="block";
+  }
+
+
+  else if(start_date > end_date) {
     // alert("yes")
+ //   alert(3);
     (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="block";
   }
 
+
 else if(combooffer_offerpercent == "") {
+
    (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
   //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
   //   let validateamount = "validateamount_"+obj;
@@ -256,15 +271,19 @@ else if(combooffer_offerpercent == "") {
 }
 else if (offername=="")
 {
+
+  console.log(offername+"afterafter");
   (<HTMLInputElement>document.getElementById("offername")).focus();
   //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
   //   let validateamount = "validateamount_"+obj;
     (<HTMLInputElement>document.getElementById("offernameError")).style.display ="block";
 }
 else if(combo_price == "") {
+
   (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
 }
 else {
+  offername=(<HTMLInputElement>document.getElementById("offercustomname")).value;
 
   var ComboOfferDetails =
               {
@@ -280,7 +299,7 @@ else {
                 }
 
 
-
+console.log(ComboOfferDetails);
   this.restApi.AddComboOfferDetails(ComboOfferDetails).subscribe((data => {
 
    this.addoffermsg = data;
@@ -362,6 +381,22 @@ retreivedata()
 
 
     }
+
+}
+custom()
+{
+ // alert("h");
+ //console.log("hi");
+  let customname = (<HTMLInputElement>document.getElementById("offername")).value;
+ // console.log(customname);
+  if(customname=="Custom")
+  {
+  (<HTMLInputElement>document.getElementById("Customname")).style.display ="block";
+  }
+  else
+  {
+    (<HTMLInputElement>document.getElementById("Customname")).style.display ="none";
+  }
 
 }
 
