@@ -37,26 +37,6 @@
                 <!--info-->
                 <div class="row ">
                     <div class="col-sm-4"  style="padding-right:0px !important;">
-                                        <div class="form-group form-inline">
-                                      
-                                            <label style class="">Shop Name</label><span class="requiredfield">  *</span>
-
-                                                <input type="text"  class="form-control shopname firstLastnamecls" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
-                                                <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
-                            
-                                                    <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
-                                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="font-size: 12px;">
-                                                        Enter your shop name 
-                                                    </div> 		   
-                                                    
-                                                    </div> 
-                                                    
-                                                </div>
-                                
-                                    </div>
-                
-
-                        <br>
                         <div class="form-inline" > 
                             <label style class="lblwidthprofile ">First Name</label><span class="requiredfield">  *</span>
 
@@ -72,66 +52,26 @@
                                 
                             </div>
                         </div>
+                
+
                         <br>
                         <div class="form-group">
-                            <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls firstnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
-                            <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
-        
-                                <div *ngIf="shopprofile.controls['lastname'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['lastname'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                    Last name  is required. 
-                                </div> 		   
+                            <label class="lblwidthProfile leftnamemrg">Mobile Number</label><span class="requiredfield">  *</span>
+                            <input type="text"  class="form-control mobilenumbercls mobilecls" [(ngModel)]="ShopProfileDetails.mobileno" placeholder="" formControlName="mobileno">
+                            <div *ngIf="shopprofile.controls['mobileno'].touched && shopprofile.controls['mobileno'].invalid "> 
+      
+                                <div *ngIf="shopprofile.controls['mobileno'].errors" style="color: red;"> 
+                                  <div *ngIf="shopprofile.controls['mobileno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                      Mobile number is required.
+                                  </div> 		   
+                                  <div *ngIf="shopprofile.controls['mobileno'].errors.pattern" style="font-size: 12px;" class="leftnamemrg">
+                                    Mobile number is not valid.
+                                  </div> 
+                               </div> 
                                 
-                            </div> 
-                                
-                            </div>
+                              </div>
                         </div>
                         <br>
-                        <div class="form-group form-inline">
-                            <label class="" style="width:99px !important;">Email <span class="requiredfield">  *</span> </label>
-                            <input type="text"  class="form-control emailidcls emailid" placeholder=" " [(ngModel)]="ShopProfileDetails.emailid" formControlName="emailid">
-                            <div *ngIf="shopprofile.controls['emailid'].touched && shopprofile.controls['emailid'].invalid "> 
-            
-                                <div *ngIf="shopprofile.controls['emailid'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['emailid'].errors.required" style="font-size: 12px;">
-                                    Email id  required.
-                                </div> 		   
-                                <div *ngIf="shopprofile.controls['emailid'].errors.pattern" style="font-size: 12px;">
-                                    Email id  not valid.
-                                </div> 
-                            </div> 
-                                
-                            </div>
-                            </div>
-                            <br>
-                           
-                        
-                        
-                    </div>
-                      
-                     <!--End of first Column-->
-                    <div class="col-sm-4" style="padding-right:0px !important;padding-left:0px !important;">
-                        
-                     
-                            
-                            <div class="form-group">
-                                <label class="lblwidthProfile leftnamemrg">Mobile Number</label><span class="requiredfield">  *</span>
-                                <input type="text"  class="form-control mobilenumbercls mobilecls" [(ngModel)]="ShopProfileDetails.mobileno" placeholder="" formControlName="mobileno">
-                                <div *ngIf="shopprofile.controls['mobileno'].touched && shopprofile.controls['mobileno'].invalid "> 
-          
-                                    <div *ngIf="shopprofile.controls['mobileno'].errors" style="color: red;"> 
-                                      <div *ngIf="shopprofile.controls['mobileno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                          Mobile number is required.
-                                      </div> 		   
-                                      <div *ngIf="shopprofile.controls['mobileno'].errors.pattern" style="font-size: 12px;" class="leftnamemrg">
-                                        Mobile number is not valid.
-                                      </div> 
-                                   </div> 
-                                    
-                                  </div>
-                            </div>
-                        <br>    
                         <div class="form-group">
                             <label class="lblwidthProfile leftnamemrg">Aadhar No</label><span class="requiredfield">  *</span>
     
@@ -149,7 +89,26 @@
                                 
                               </div>
                             </div>
-                       <br>    
+                       </div>
+                      
+                     <!--End of first Column-->
+                    <div class="col-sm-4" style="padding-right:0px !important;padding-left:0px !important;">
+                        
+                        <div class="form-group">
+                            <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
+                            <input type="text"   style="padding-left: 2px !important;"   class="form-control firstLastnamecls firstnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
+                            <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
+        
+                                <div *ngIf="shopprofile.controls['lastname'].errors" style="color: red;"> 
+                                <div *ngIf="shopprofile.controls['lastname'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                    Last name  is required. 
+                                </div> 		   
+                                
+                            </div> 
+                                
+                            </div>
+                        </div>
+                        <br>    
                        <div class="form-group">
                         <label class="lblwidthProfile leftnamemrg">Date of Birth </label>
                         <input type="date"   class="form-control dateofbirthcls" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
@@ -165,136 +124,48 @@
                         </div> -->
                     
                         </div>
-                        <br>
-                        <div class="form-group">
-                            <label class="leftnamemrg" style="width:99px !important;">Gender <span class="requiredfield ">  *</span> </label>
-                            <select  placeholder=""   class="shopgender form-control shopgender" formControlName="gender" [(ngModel)]="ShopProfileDetails.gender">
-                                <option value="">--Select---</option>
-                                <option value="Male">Male</option>
-                                <option value="FeMale">FeMale</option>
-                                </select>
-                                <div *ngIf="shopprofile.controls['gender'].touched && shopprofile.controls['gender'].invalid "> 
-        
-                                    <div *ngIf="shopprofile.controls['gender'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['gender'].errors.required" style="font-size: 12px;">
-                                        Select gender
-                                    </div> 		   
-                                    
-                                </div> 
-                                    
-                                </div>
-                            </div>
-                       <br>
-                        
-                     </div>
+                       </div>
                         <!--eND OF SECOND COLUMN-->
                                 
                         <div class="col-sm-4"  style="padding-right:0px !important;padding-left:0px !important;">
                           
-                            <div class="form-group">
-                                <label class="lblwidthProfile leftnamemrg">Address</label><span class="requiredfield">  *</span>
-        
-                                <input type="text" style="width: 250px" class="form-control doornocls address" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
-                                    <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
-                  
-                                    <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
-                                      <div *ngIf="shopprofile.controls['doorno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                          Please fill address detail
-                                      </div> 		   
-                                     
-                                   </div> 
-                                    
-                                  </div>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <label class="leftnamemrg">Street Name</label><span class="requiredfield">  *</span>
+                            <div class="form-group form-inline">
+                                <label class="" style="width:99px !important;">Email <span class="requiredfield">  *</span> </label>
+                                <input type="text"  class="form-control emailidcls emailid" placeholder=" " [(ngModel)]="ShopProfileDetails.emailid" formControlName="emailid">
+                                <div *ngIf="shopprofile.controls['emailid'].touched && shopprofile.controls['emailid'].invalid "> 
                 
-                                    <input type="text" style="width: 236px;" class="form-control streetshop streetcls" placeholder="" formControlName="street" [(ngModel)]="ShopProfileDetails.street">
-                                    <div *ngIf="shopprofile.controls['street'].touched && shopprofile.controls['street'].invalid "> 
-                    
-                                        <div *ngIf="shopprofile.controls['street'].errors" style="color: red;"> 
-                                        <div *ngIf="shopprofile.controls['street'].errors.required" style="font-size: 12px;">
-                                            Enter your street
-                                        </div> 	   
-                                        
+                                    <div *ngIf="shopprofile.controls['emailid'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile.controls['emailid'].errors.required" style="font-size: 12px;">
+                                        Email id  required.
+                                    </div> 		   
+                                    <div *ngIf="shopprofile.controls['emailid'].errors.pattern" style="font-size: 12px;">
+                                        Email id  not valid.
                                     </div> 
-                                        
-                                    </div>
+                                </div> 
+                                    
                                 </div>
-                       <br>        
-                       <div class="form-group">
-                        <label class="lblwidthProfile leftnamemrg">City</label><span class="requiredfield">  *</span>
-                        <select  placeholder=""  class="form-control firstnamecls" formControlName="city" style="margin-left:82px !important;"  [(ngModel)]="ShopProfileDetails.city">
-                            <option value="">--Select City--</option>
-                            <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
-                                 {{citylist.city_name}}
-                              </option>
-                        
-                            </select>
-                            <div *ngIf="shopprofile.controls['city'].touched && shopprofile.controls['city'].invalid "> 
-        
-                                <div *ngIf="shopprofile.controls['city'].errors" style="color: red;"> 
-                                <div *ngIf="shopprofile.controls['city'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                    Select city
-                                </div> 		   
-                                
-                            </div> 
-                                
-                            </div>
-                    
-                    </div>
-
-                      <br>
-                            
-                       <div class="form-group">
-                        <label class="lblwidthProfile leftnamemrg">State</label><span class="requiredfield">  *</span>
-                        <select  placeholder=""   class="form-control selectoption" formControlName="state" name="" [(ngModel)]="ShopProfileDetails.state">
-                            <option value="">--Select State---</option> 
-                            <option *ngFor="let statetypes of statedata" [value]="statetypes.state_id ">
-                               {{statetypes.name}}
-                           </option>
-                            </select>
-                            <div *ngIf="shopprofile.controls['state'].touched && shopprofile.controls['state'].invalid "> 
-          
-                                <div *ngIf="shopprofile.controls['state'].errors" style="color: red;"> 
-                                  <div *ngIf="shopprofile.controls['state'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                      Select state
-                                  </div> 		   
-                                 
-                               </div> 
-                                
-                              </div>
-                    </div>
-
-            
-
+                                </div>
                                 <br>
-                                
                                 <div class="form-group">
-                                    <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
-                                    <input type="text" class="form-control shopzipcodecls " placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
-                                    <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
-                    
-                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                            <div *ngIf="shopprofile.controls['zipcode'].errors.required" style="font-size: 12px;">
-                                                Zipcode is required
+                                    <label class="leftnamemrg" style="width:99px !important;">Gender <span class="requiredfield ">  *</span> </label>
+                                    <select  placeholder=""   class="shopgender form-control shopgender" formControlName="gender" [(ngModel)]="ShopProfileDetails.gender">
+                                        <option value="">--Select---</option>
+                                        <option value="Male">Male</option>
+                                        <option value="FeMale">FeMale</option>
+                                        </select>
+                                        <div *ngIf="shopprofile.controls['gender'].touched && shopprofile.controls['gender'].invalid "> 
+                
+                                            <div *ngIf="shopprofile.controls['gender'].errors" style="color: red;"> 
+                                            <div *ngIf="shopprofile.controls['gender'].errors.required" style="font-size: 12px;">
+                                                Select gender
                                             </div> 		   
                                             
                                         </div> 
-        
-                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                            <div *ngIf="shopprofile.controls['zipcode'].errors.pattern" style="font-size: 12px;">
-                                                Zipcode  not valid
-                                            </div> 		   
-                                        
-                                        </div> 
-                                        
+                                            
+                                        </div>
                                     </div>
-                            
-                                </div>
-                               
-                    </div>
+                                 <br>        
+                             </div>
          <!--eND OF tHIRD COLUMN-->
                
 
@@ -402,6 +273,180 @@
             
         </div>
         </div>
+
+        <div class="accordion1">
+            <h2 class="title2 subheading" (click)="opened2 = !opened2">Shop Information<i class="fa fa-chevron-down"></i> </h2> 
+            <div class="content-container2" [class.opened2]="opened2">
+                <!--phto-->
+               <div class="row">
+                <div class="col-sm-3">          
+                  
+                
+                    <img *ngIf="ShopProfileDetails.shop_logo" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" class="rounded-circle">
+                    <img *ngIf="!ShopProfileDetails.shop_logo" style="width: 180px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+                       
+                    <div class="form-group form-inline">
+                    <label >Shop Logo</label>
+                
+                    </div>
+                    <div class= "border-right">
+                    <div><img class="rounded-circle" style="height: 100px; width:150px" [src]="imageSrc" *ngIf="imageSrc"></div>
+                    </div>
+                    <div class="form-group form-inline profileimg">
+                    <input [formControl]="file"  style=" width: 215px;"
+                        
+                        id="file" 
+                        type="file" 
+                        class="form-control"
+                        (change)="fileChangelogo($event)">
+                    
+                    </div>
+                    <!--endphoto-->
+                </div>
+              
+                <div class="row ">
+                    <div class="col-sm-4"  style="padding-right:0px !important;">
+                                        <div class="form-group form-inline">
+                                      
+                                            <label style class="">Shop Name</label><span class="requiredfield">  *</span>
+
+                                                <input type="text"  class="form-control shopname firstLastnamecls" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
+                                                <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
+                            
+                                                    <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
+                                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="font-size: 12px;">
+                                                        Enter your shop name 
+                                                    </div> 		   
+                                                    
+                                                    </div> 
+                                                    
+                                                </div>
+                                
+                                    </div>
+                
+
+                        <br>  
+                        <div class="form-group">
+                            <label class="lblwidthProfile leftnamemrg">City</label><span class="requiredfield">  *</span>
+                            <select  placeholder=""  class="form-control firstnamecls" formControlName="city" style="margin-left:82px !important;"  [(ngModel)]="ShopProfileDetails.city">
+                                <option value="">--Select City--</option>
+                                <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
+                                     {{citylist.city_name}}
+                                  </option>
+                            
+                                </select>
+                                <div *ngIf="shopprofile.controls['city'].touched && shopprofile.controls['city'].invalid "> 
+            
+                                    <div *ngIf="shopprofile.controls['city'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile.controls['city'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                        Select city
+                                    </div> 		   
+                                    
+                                </div> 
+                                    
+                                </div>
+                        
+                        </div>
+                      <br>
+                 </div>
+                      
+                     <!--End of first Column-->
+                    <div class="col-sm-4" style="padding-right:0px !important;padding-left:0px !important;">
+                        
+                     
+                            
+                        <div class="form-group">
+                            <label class="lblwidthProfile leftnamemrg">Address</label><span class="requiredfield">  *</span>
+    
+                            <input type="text" style="width: 250px" class="form-control doornocls address" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
+                                <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
+              
+                                <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
+                                  <div *ngIf="shopprofile.controls['doorno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                      Please fill address detail
+                                  </div> 		   
+                                 
+                               </div> 
+                                
+                              </div>
+                            </div>
+                        <br>    
+                        <div class="form-group">
+                            <label class="lblwidthProfile leftnamemrg">State</label><span class="requiredfield">  *</span>
+                            <select  placeholder=""   class="form-control selectoption" formControlName="state" name="" [(ngModel)]="ShopProfileDetails.state">
+                                <option value="">--Select State---</option> 
+                                <option *ngFor="let statetypes of statedata" [value]="statetypes.state_id ">
+                                   {{statetypes.name}}
+                               </option>
+                                </select>
+                                <div *ngIf="shopprofile.controls['state'].touched && shopprofile.controls['state'].invalid "> 
+              
+                                    <div *ngIf="shopprofile.controls['state'].errors" style="color: red;"> 
+                                      <div *ngIf="shopprofile.controls['state'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                          Select state
+                                      </div> 		   
+                                     
+                                   </div> 
+                                    
+                                  </div>
+                        </div>
+                       <br>
+                        
+                     </div>
+                        <!--eND OF SECOND COLUMN-->
+                                
+                        <div class="col-sm-4"  style="padding-right:0px !important;padding-left:0px !important;">
+                          
+                            <div class="form-group">
+                                <label class="leftnamemrg">Street Name</label><span class="requiredfield">  *</span>
+            
+                                <input type="text" style="width: 236px;" class="form-control streetshop streetcls" placeholder="" formControlName="street" [(ngModel)]="ShopProfileDetails.street">
+                                <div *ngIf="shopprofile.controls['street'].touched && shopprofile.controls['street'].invalid "> 
+                
+                                    <div *ngIf="shopprofile.controls['street'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile.controls['street'].errors.required" style="font-size: 12px;">
+                                        Enter your street
+                                    </div> 	   
+                                    
+                                </div> 
+                                    
+                                </div>
+                            </div>
+                                <br>
+                                <div class="form-group">
+                                    <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
+                                    <input type="text" class="form-control shopzipcodecls " placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
+                                    <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
+                    
+                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
+                                            <div *ngIf="shopprofile.controls['zipcode'].errors.required" style="font-size: 12px;">
+                                                Zipcode is required
+                                            </div> 		   
+                                            
+                                        </div> 
+        
+                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
+                                            <div *ngIf="shopprofile.controls['zipcode'].errors.pattern" style="font-size: 12px;">
+                                                Zipcode  not valid
+                                            </div> 		   
+                                        
+                                        </div> 
+                                        
+                                    </div>
+                            
+                                </div>
+                      
+                     </div>
+         <!--eND OF tHIRD COLUMN-->
+               
+
+                
+                </div><!--End of row-->
+          
+                </div>
+                
+            </div>
+            </div>
               
                       
                      <!--End of first Column-->

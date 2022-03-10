@@ -24,6 +24,7 @@ file=new FormControl('')
 
 opened = true;
 opened1 = false;
+opened2 = false;
 imageSrc: string;
 citytype: any;
   citydata: any;

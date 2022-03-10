@@ -477,12 +477,12 @@ AddCustomerCarDetails(cardetailForm:any)
         return this.restApi.getcustomerwhislistprofile(currentUserId).subscribe((data: {}) => { 
           // alert(data)
           this.Whislistid = data;
-          let test = this.Whislistid
-          console.log(test);
+          // let test = this.Whislistid
+          // console.log(test);
 
-          // this.Whislistid1= this.Whislistid.data.getcustomerwhislist;
+          this.Whislistid1= this.Whislistid.data.getcustomerwhislist;
     
-          // console.log("whislist",this.Whislistid1);
+           console.log("whislist",this.Whislistid1);
           // this.dtTrigger.next();
         })
 

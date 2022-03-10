@@ -37,7 +37,7 @@ httpOptions = {
 //     )
 // }
 getcustomerwhislistprofile(currentUserId:any): Observable<any> {
-  return this.http.get<any[]>(this.apiURL + '/app/getcustomerwhislistprofile?customerId='+currentUserId)
+  return this.http.get<any[]>(this.apiURL + '/app/getcustomerwhislistprofile?currentUserId='+currentUserId)
   .pipe(
     retry(1),
     catchError(this.handleError)
