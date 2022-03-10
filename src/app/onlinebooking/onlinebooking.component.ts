@@ -550,17 +550,22 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
     let pickup_drop = this.onlinebooking.get('pickup_drop').value;
 
     let pickup_date = this.onlinebooking.get('pickup_date').value;
+    let instructions = this.onlinebooking.get('instructions').value;
     // alert(pickup_date)
     // if(pickup_drop == false) {
 
     // }
-    if(pickup_drop == true && pickup_date == null) {
-      // if(pickup_date == null){
+    if(pickup_drop == true && instructions == null) {
+      
+      (<HTMLInputElement>document.getElementById("instructions")).focus();
+    this.toastr.error('Enter Pickup & Drop Instructions');
+    
+  }
+    else if(pickup_drop == true && pickup_date == null) {
+      
         (<HTMLInputElement>document.getElementById("pickup_dateid")).focus();
       this.toastr.error('Please select pickup date');
-      // }
-      // (<any>this.onlinebooking.get('pickup_date')).focus();
-      // this.onlinebooking.focus('pickup_drop');
+      
     }
     else if(payable_amt == "" || payable_amt == 0){
       this.toastr.error('Please select any service for your car');
@@ -603,6 +608,34 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
   //   }
   //   );
 
+  }
+
+  disabledPickupDetails() {
+    let pickup_drop = this.onlinebooking.get('pickup_drop').value;
+    // alert(pickup_drop)
+
+    this.onlinebooking.controls.pickup_date.setValue("");
+    this.onlinebooking.controls.instructions.setValue("");
+    this.onlinebooking.controls.pickup_time.setValue("");
+    this.onlinebooking.controls.drop_date.setValue("");
+    this.onlinebooking.controls.drop_time.setValue("");
+
+    if(pickup_drop == false) {
+      (<HTMLInputElement>document.getElementById("pickupupDropInstructionId")).style.display = "block";
+      (<HTMLInputElement>document.getElementById("pickupdateTdid")).style.display = "block";  
+      (<HTMLInputElement>document.getElementById("pickuptimetdid")).style.display = "block";
+      (<HTMLInputElement>document.getElementById("dropdatetdid")).style.display = "block";  
+      (<HTMLInputElement>document.getElementById("droptimetdid")).style.display = "block"; 
+    }
+    else {
+      (<HTMLInputElement>document.getElementById("pickupupDropInstructionId")).style.display = "none";
+      (<HTMLInputElement>document.getElementById("pickupdateTdid")).style.display = "none";
+      (<HTMLInputElement>document.getElementById("pickuptimetdid")).style.display = "none";
+      (<HTMLInputElement>document.getElementById("dropdatetdid")).style.display = "none"; 
+      (<HTMLInputElement>document.getElementById("droptimetdid")).style.display = "none";
+    }
+    
+    
   }
 
 }
