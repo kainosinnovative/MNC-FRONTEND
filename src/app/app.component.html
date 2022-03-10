@@ -41,7 +41,7 @@
 
 
 
-      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item>
+      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-lock" aria-hidden="true"></i></a> </mat-list-item>
 
       <!-- both customer and shop owner -->
 
@@ -105,7 +105,7 @@
 
   <!-- both customer and shop owner -->
 
-  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a> </mat-list-item> 
+  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-lock" aria-hidden="true"></i></a> </mat-list-item> 
   <!-- both customer and shop owner -->
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
