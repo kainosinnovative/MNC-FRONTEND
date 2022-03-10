@@ -3,7 +3,26 @@
 }
 
 @media screen and (max-width: 768px) {
-    .signupMobile{
-        margin-left: -16px;
+    .signupMobile {
+        margin-left: -13px;
     }
+    .signupname{
+        width: 276px !important;
+    }
+    .signupemailText {
+        width: 276px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+.signupMobile{
+    margin-left: 20px;
+    
+}
+}
+
+.mat-dialog-container {
+    
+    width: 85% !important;
+    
 }

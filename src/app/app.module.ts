@@ -68,6 +68,7 @@ import { ViewbookdetailPopupComponent } from './viewbookdetail-popup/viewbookdet
 import { PopupmodalComponent } from './popupmodal/popupmodal.component';
 // import { NgChartsModule } from "ng2-charts";
 // import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -138,7 +139,8 @@ const appRoutes: Routes = [
     CustomMaterialModule,
     RouterModule.forRoot(
       appRoutes,
-
+      
+      
      // { useHash: true }
 
     ),
@@ -166,8 +168,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatTabsModule,
     NgApexchartsModule,
-    // NgChartsModule 
-    // ChartsModule
+    
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent]

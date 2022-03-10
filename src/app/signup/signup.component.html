@@ -1,7 +1,7 @@
 
 
 <form [formGroup]="dataForm3" (ngSubmit)="sendotp3(dataForm3.value)">
-  <div fxLayout="row" fxLayoutAlign="center center" class="login-main signupMobile" style="width: 300px;">
+  <div fxLayout="row" fxLayoutAlign="center center" class="login-main signupMobile" style="width: 280px;">
 
     <div  style="text-align: right;margin-top: -15px;margin-right: -9px;">
       <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
@@ -16,7 +16,7 @@
      <div>
 
 
-        <input style=" height: 32px;  width: 295px;border:1px solid; " class="form-control" type="text" matInput placeholder="Your name" formControlName='username'>
+        <input style=" height: 32px;  width: 295px;border:1px solid; " class="form-control signupname" type="text" matInput placeholder="Your name" formControlName='username'>
 
         <div *ngIf="dataForm3.controls['username'].touched && dataForm3.controls['username'].invalid "> 
           
@@ -34,7 +34,7 @@
         <label style="margin-top: 10px;"></label>
         <div>
 
-        <input style=" height: 32px;  width: 295px;border:1px solid; " type="text" class="form-control"  placeholder="Email" formControlName='emailid'>
+        <input style=" height: 32px;  width: 295px;border:1px solid; " type="text" class="form-control signupemailText"  placeholder="Email" formControlName='emailid'>
         <div *ngIf="dataForm3.controls['emailid'].touched && dataForm3.controls['emailid'].invalid "> 
           
           <div *ngIf="dataForm3.controls['emailid'].errors" style="color: red;font-size: 12px"> 
