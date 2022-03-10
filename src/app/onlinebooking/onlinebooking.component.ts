@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef,VERSION, ViewChild } from '@angular/core';
 import { RestApiService } from "../shared/rest-api.service";
 import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
 //import { CustomerCreateComponent } from '../customer-create/customer-create.component';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
+import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { config_url } from '../shared/customer/constant';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-onlinebooking',
   templateUrl: './onlinebooking.component.html',
@@ -15,9 +16,9 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class OnlinebookingComponent implements OnInit {
-
+  
   show: boolean = true
-  opened = true;
+  opened = false;
   opened1 = true;
   displaydata: any;
   displaydata1: any;
@@ -66,6 +67,8 @@ counter:any = 0;
     private http: HttpClient,
     public datepipe: DatePipe,
     private router: ActivatedRoute,
+    private  router1:  Router,
+    // private  router:  Router,
     private toastr: ToastrService
   ) {  }
 
@@ -74,6 +77,9 @@ counter:any = 0;
 
 
   ngOnInit(): void {
+    // (<HTMLInputElement>document.getElementById("movetopid")).scrollTop=0;
+    (<HTMLInputElement>document.getElementById("booking_date")).focus();
+ 
     this.date=new Date();
      this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      let currentUserId = localStorage.getItem('currentUserId');
@@ -117,6 +123,7 @@ counter:any = 0;
 
        this.router.params.subscribe(params => {
         const id = params['id'];
+        
         this.loadshopdetails(id);
         this.loadshopoffers(id);
         this.getPickupAvl(id);
@@ -128,6 +135,8 @@ counter:any = 0;
         
   })
   }
+
+  
 
 
   cartype(){
@@ -333,7 +342,7 @@ changeBgColor(offer_id:any){
         }
         else {
           // alert("two");
-          this.toastr.error('Only one combo offer can select at a time');
+          this.toastr.error('Select only one combo offer');
         }
       } else {
         // alert("selected");
@@ -552,19 +561,20 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
     let pickup_date = this.onlinebooking.get('pickup_date').value;
     let instructions = this.onlinebooking.get('instructions').value;
     // alert(pickup_date)
+    // alert(instructions)
     // if(pickup_drop == false) {
 
     // }
-    if(pickup_drop == true && instructions == null) {
+    if(pickup_drop == true && instructions == '') {
       
       (<HTMLInputElement>document.getElementById("instructions")).focus();
     this.toastr.error('Enter Pickup & Drop Instructions');
     
   }
-    else if(pickup_drop == true && pickup_date == null) {
+    else if(pickup_drop == true && pickup_date == '') {
       
         (<HTMLInputElement>document.getElementById("pickup_dateid")).focus();
-      this.toastr.error('Please select pickup date');
+      this.toastr.error('Select pickup date');
       
     }
     else if(payable_amt == "" || payable_amt == 0){
@@ -578,7 +588,8 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
       }, (err) => {
         console.log("err>>>>>",err);
         if(err.status == 200) {
-          this.toastr.success('Booking Successfully');
+          this.toastr.success('Booking request submitted');
+          this.router1.navigate(['/MyBooking']);
           window.setTimeout(function(){location.reload()},100)
           
         }
