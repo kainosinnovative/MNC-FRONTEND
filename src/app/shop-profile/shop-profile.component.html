@@ -257,7 +257,7 @@
             <div class="content-container2" [class.opened2]="opened2">
                 <!--phto-->
                <div class="row">
-                <div class="col-sm-3">          
+                <div class="col-sm-3" style="margin-bottom: 18px;">          
                   
                 
                     <img *ngIf="ShopProfileDetails.shop_logo" style="width: 100px;height: 100px;"  src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" class="rounded-circle">
@@ -306,7 +306,7 @@
                         <br>  
                         <div class="form-group">
                             <label class="lblwidthProfile leftnamemrg">City</label><span class="requiredfield">  *</span>
-                            <select  placeholder=""  class="form-control firstnamecls" formControlName="city" style="margin-left:82px !important;"  [(ngModel)]="ShopProfileDetails.city">
+                            <select  placeholder=""  class="form-control firstnamecls" formControlName="city" style="margin-left:80px !important;width: 174px;"  [(ngModel)]="ShopProfileDetails.city">
                                 <option value="">--Select City--</option>
                                 <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
                                      {{citylist.city_name}}
@@ -336,7 +336,7 @@
                         <div class="form-group">
                             <label class="lblwidthProfile leftnamemrg">Address</label><span class="requiredfield">  *</span>
     
-                            <input type="text" style="width: 250px" class="form-control doornocls address" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
+                            <input type="text" style="width: 250px;margin-left: 20px;" class="form-control doornocls address" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
                                 <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
               
                                 <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
@@ -351,7 +351,7 @@
                         <br>    
                         <div class="form-group">
                             <label class="lblwidthProfile leftnamemrg">State</label><span class="requiredfield">  *</span>
-                            <select  placeholder=""   class="form-control selectoption" formControlName="state" name="" [(ngModel)]="ShopProfileDetails.state">
+                            <select  placeholder=""   class="form-control selectoption" style="margin-left: 37px;" formControlName="state" name="" [(ngModel)]="ShopProfileDetails.state">
                                 <option value="">--Select State---</option> 
                                 <option *ngFor="let statetypes of statedata" [value]="statetypes.state_id ">
                                    {{statetypes.name}}
@@ -393,7 +393,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
-                                    <input type="text" class="form-control shopzipcodecls " placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
+                                    <input type="text" class="form-control shopzipcodecls " style="margin-left: 52px;" placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
                                     <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
                     
                                         <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
