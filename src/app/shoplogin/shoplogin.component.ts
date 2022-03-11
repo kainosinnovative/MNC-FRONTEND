@@ -98,6 +98,10 @@ export class ShoploginComponent implements OnInit {
       console.log(dialogRef);
     }   
 
+    signupcheck() {
+      // localStorage.setItem('loginfor','customersignup');
+    }
+
     logincheck() {
       localStorage.setItem('loginfor','shopowner');
     }
