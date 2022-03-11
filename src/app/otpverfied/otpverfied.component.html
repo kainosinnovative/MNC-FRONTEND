@@ -12,7 +12,7 @@
 
         <div style=" margin-bottom: 19px;"></div>
 
-        
+
 
         <div class="d-flex flex-row">
             
@@ -23,17 +23,17 @@
             <input type="text"  #txt4 maxlength="1" class="form-control" [(ngModel)]="otpFourthDigit" (keyup)="move($event,txt3,txt4,'')">
         </div>
 
-        
+
         <label></label>
         <p id="invalidOtp" style="color:red"></p>
         <p id="pleaseregister" style="color:red;font-size: 12px;"></p>
 
         <div *ngIf="showTimerContainer" style="text-align: right;">
-            <p (onload)='startTimer()'>{{timeLeft}} Seconds Left....</p> 
-            
+            <p (onload)='startTimer()'>{{timeLeft}} Seconds Left....</p>
+
             </div>
             <div *ngIf="showMyContainer" style="text-align: right;">
-                <span  class="font-weight-bold text-danger cursor" (click)="sendotp2(dataForm1.value)">Resend Code</span> 
+                <span  class="font-weight-bold text-danger cursor" (click)="sendotp2(dataForm1.value)">Resend Code</span>
               </div>
        <div style="text-align: center;">
          <button class="carwashbtn1" style="border-radius: 21px;width: 100px;height: 36px;" (click)="VerifyOtp()">Verify</button>
@@ -42,11 +42,11 @@
         <input type="text" matInput placeholder="Phone" value="{{isloggedinUser}}" formControlName='mobile' style="visibility: hidden;">
 
         <!--<div class="text-center"><p class="font-weight-bold text-danger cursor"  id="resendbutton" >Resend</p></div>-->
-      
+
     </form>
 
-  
-    
-    
+
+
+
     </div>
 </div>

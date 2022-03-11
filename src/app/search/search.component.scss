@@ -42,20 +42,16 @@ h3 {
         padding: 0;
         margin: 0;
         width: 100% !important;
-        max-width: 100%;
+        max-width: 70%;
         vertical-align: bottom;
         text-align: inherit;
         box-sizing: content-box;
         height:24px !important;
         border-radius:15px !important;
         padding:5px;
-        margin-left:36%;
+        margin-left:50%;
     }
 
-    .ss
-    {
-        margin-left:25%;
-    }
     .container {
       width: 900px
   }
@@ -388,10 +384,37 @@ h3 {
 //       background: none !important;
 //       margin-left:37% !important;
 //     }
-   
+
 .oneimage {
   height:225px !important;
   width:100%;
   background-color:rgb(214, 211, 211);
   background-size: 100% 100%;
+}
+
+.cdk-overlay-pane
+{
+  width: 800px !important;
+   top: 164.625px;
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+    h2 {
+        text-align:center !important;
+    }
+    .mat-input-element{
+        margin-left:50%;
+    }
+}
+@media screen and (max-width: 768px) {
+    h2{
+        text-align:left !important;
+        margin-left:100px!important;
+    }
+    .mat-input-element{
+        margin-left:0px !important;
+    }
 }
