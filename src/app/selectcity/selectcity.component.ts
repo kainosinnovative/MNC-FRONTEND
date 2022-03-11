@@ -122,7 +122,8 @@ export class SelectcityComponent implements OnInit {
   }
 
 
-  closeMe() {
+  closeSelectCity() {
+    console.log("in");
     this.dialogRef.close();
  }
 

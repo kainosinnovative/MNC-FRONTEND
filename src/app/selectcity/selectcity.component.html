@@ -1,15 +1,17 @@
+<mat-card >
+    <div >
 <div  style="text-align: right;margin-top: -17px;margin-right: -14px;">
-  <a style="cursor: pointer;font-size: 20px;" (click)="closeMe()">×</a>
+  <a style="cursor: pointer;font-size: 20px;" (click)="closeSelectCity()">×</a>
 </div>
-       <div class="ng-autocomplete" style="height: 150px;width:500px;overflow:hidden;">
+
+       <div class="ng-autocomplete popupwidthSelect" style="height: 150px;overflow:hidden;">
         
         <h2 class="mainheading" style="text-align: center;">Enter your city to customize your experience</h2>
+        <div >
         <ng-autocomplete [data]="citydata" [searchKeyword]="keyword" (selected)='selectEvent($event)'
             (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
             [notFoundTemplate]="notFoundTemplate" style="overflow:hidden;">
-            <!-- <div class="input-container" style="border:1px solid black;">
-                <input type="text" aria-autocomplete="list" role="combobox" autocomplete="off" placeholder="" ng-reflect-model="" aria-label="" class="ng-pristine ng-valid ng-touched" style="border:5px solid black !important;"></div> -->
-        </ng-autocomplete>
+             </ng-autocomplete>
     
         <ng-template #itemTemplate let-item >
             <a [innerHTML]="item.city_name"></a>
@@ -18,4 +20,14 @@
         <ng-template #notFoundTemplate let-notFound>
             <div [innerHTML]="notFound"></div>
         </ng-template>
+        </div>
     </div>
+</div>
+</mat-card>
+
+
+
+
+    
+    
+      

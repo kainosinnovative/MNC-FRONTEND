@@ -105,6 +105,10 @@ export class ShoploginComponent implements OnInit {
     logincheck() {
       localStorage.setItem('loginfor','shopowner');
     }
+
+    removesignupErrorMsg() {
+      (<HTMLInputElement>document.getElementById("pleaseregister")).innerHTML = "";
+    }
  
 }
 

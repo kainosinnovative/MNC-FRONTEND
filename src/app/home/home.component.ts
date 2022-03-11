@@ -33,6 +33,7 @@ param2: string;
 wishlistdata: any;
 wishlistdata1: any;
 
+
   // route: any;
 
   private innerWidth: number;
@@ -47,8 +48,8 @@ wishlistdata1: any;
 
 
   ngOnInit(): void {
-    
 
+    this.adjustsItemsPerSlide();
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadMasterService();
@@ -70,20 +71,13 @@ wishlistdata1: any;
 this.adjustsItemsPerSlide();
   }
 
-  private adjustsItemsPerSlide() {
-    this.innerWidth = window.innerWidth;
-    if (this.innerWidth < this.mobileBreakpoint) {
-      this.itemsPerSlide = 1;
-    } else {
-      this.itemsPerSlide = 3;
-    }
-  }
+ 
 
   customerWhislist(customerId:any)
   {
     var whislist : [];
     let selectedcity=localStorage.getItem('selectedCity');
-   
+
     return this.restApi.getCustomerWhislist(customerId,selectedcity).subscribe((data: {}) => {
       // alert(data)
       this.CustomerWhislistData = data;
@@ -258,6 +252,15 @@ else
       }
 
 
-
+      private adjustsItemsPerSlide() {
+        this.innerWidth = window.innerWidth;
+        if (this.innerWidth < this.mobileBreakpoint) {
+          this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
+          this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
+        } else {
+          this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+          this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
+        }
+      }
 
 }

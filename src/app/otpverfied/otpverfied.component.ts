@@ -22,7 +22,7 @@ export class OtpverfiedComponent implements OnInit {
   dialog: any;
   // dialogRef: any;
   name = 'Angular 6';
-  timeLeft: number = 10;
+  timeLeft: number = 20;
   interval:any;
 
   otpFirstDigit:any;
@@ -34,8 +34,8 @@ export class OtpverfiedComponent implements OnInit {
   customerdata1:any;
   customerdata2:any;
 
-  
-  
+
+
 constructor(public router: Router, public restApi: RestApiService,private  dialogRef:  MatDialogRef<OtpverfiedComponent>,
   @Inject(MAT_DIALOG_DATA) public  data:  any,
   private frmbuilder: FormBuilder,private http: HttpClient,private toastr: ToastrService) { };
@@ -43,9 +43,9 @@ constructor(public router: Router, public restApi: RestApiService,private  dialo
 ngOnInit(): void {
   this.dataForm1 = this.frmbuilder.group({
     mobile: [this.isloggedinUser, null],
-   
+
     });
- this.startTimer(); 
+ this.startTimer();
 }
 
 
@@ -57,56 +57,56 @@ loadCustomerDetails2(Objval:any) {
   let loginfor = localStorage.getItem('loginfor');
 
 
-  var jsonObject = 
+  var jsonObject =
                 {
                   "isloggedinUser": isloggedinUser,
-                  "loginfor": loginfor 
-                  
+                  "loginfor": loginfor
+
                   }
   // this.loadLoginuserTestimonial();
-  
+
   return this.restApi.getCustomerData(jsonObject).subscribe((data => {
     this.customerdata = data;
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
-     
+
       console.log("data>>",data)
-      
+
       if(loginfor == 'shopowner') {
-        
-      localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
+
+      localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
       localStorage.setItem('currentUserId', this.customerdata2[0].shop_id );
       localStorage.setItem('userroleSes', 'shopOwnerSes');
       }
       else {
-        localStorage.setItem('currentUsername', this.customerdata2[0].firstname); 
+        localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
       localStorage.setItem('userroleSes', 'CustomerSes');
       }
 
-     
+
       this.showloginSuccess();
       // this.toastr.success(Objval+' Successfully');
       // window.location.reload();
       this.pagerefresh();
   }
   ))
-  
+
 }
 
 
 showloginSuccess() {
   console.log("login message");
-  
+
   this.toastr.success('Logged In Successfully');
-  
-      // 
+
+      //
 }
 
 pagerefresh() {
   // window.location.reload();
 let userroleSes = localStorage.getItem('userroleSes');
-alert(userroleSes)
+// alert(userroleSes)
   if(userroleSes == 'CustomerSes'){
     this.router.navigate(['/home']);
   }
@@ -121,7 +121,7 @@ alert(userroleSes)
 pagerefresh1() {
   // window.location.reload();
 let loginfor = localStorage.getItem('loginfor');
-alert(loginfor)
+// alert(loginfor)
   if(loginfor == 'customersignup'){
     this.router.navigate(['/home']);
     
@@ -140,11 +140,11 @@ signupdetailsInsert(){
       let registerEmailid = localStorage.getItem('registerEmailid');
       let registerMobileNo = localStorage.getItem('registerMobileNo');
       let loginfor = localStorage.getItem('loginfor');
-      
-  this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+ 
+
+  this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+
   '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid + '&loginFor='+loginfor ).subscribe(
     data => {
-      alert(data)
+      // alert(data)
     },
     error => {
       // alert(error)
@@ -154,14 +154,14 @@ signupdetailsInsert(){
         this.pagerefresh1();
       }
     }
-    
-  
+
+
    );
 
-  
+
 
   // console.log("in");
-  
+
   // localStorage.removeItem("otpstore");
   // window.location.reload();
   // this.dialogRef.close();
@@ -169,9 +169,9 @@ signupdetailsInsert(){
   // this.loadCustomerDetails2("this.toastr.success(Objval+' Successfully');");
 
   //let registerUserName = localStorage.getItem('registerUserName');
-  
-  
-  
+
+
+
   }
 
   showsuccess() {
@@ -184,7 +184,7 @@ signupdetailsInsert(){
   closeMe() {
     this.dialogRef.close();
  }
- 
+
 
   VerifyOtp(){
     var ReceiveOtp = localStorage.getItem('otpstore');
@@ -193,10 +193,10 @@ signupdetailsInsert(){
     let SecondDigit = this.otpSecondDigit;
     let thirdDigit = this.otpThirdDigit;
     let fourthDigit = this.otpFourthDigit;
-    
+
     let EnteredOtp = firstDigit + SecondDigit +thirdDigit + fourthDigit;
     // alert("EnteredOtp>>>"+EnteredOtp)
-   
+
     if(ReceiveOtp == EnteredOtp) {
       localStorage.removeItem("otpstore");
       let sessionbtn = localStorage.getItem('sessionbtn');
@@ -211,11 +211,11 @@ signupdetailsInsert(){
       (document.getElementById('invalidOtp') as HTMLFormElement).innerHTML = "Invalid Otp";
     }
   }
-  
-  
+
+
 
 // sendotp2(dataForm1: any) {
- 
+
 //       this.http.post('http://localhost/MYDEALER-API/app/sendOtp2', dataForm1).subscribe(
 //       );
 //   }
@@ -227,15 +227,15 @@ sendotp2(dataForm1: any) {
   this.timeLeft=20;
      this.startTimer();
       this.http.post('http://localhost/MNC-PHP-API/app/sendOtp2', dataForm1).subscribe(
-        
+
           data => {
               console.log('POST Request is successful >>>>>>>>', data);
-  
+
           },
           success => {
               console.log('Error>>>>>', success);
-             
-              
+
+
               if(success.status == 404) {
                 let msg = success.error;
                 // let text = "How are you doing today?";
@@ -243,36 +243,36 @@ sendotp2(dataForm1: any) {
   const secondArr = myArray[1].split(",");
   let str = secondArr[0].substring(3);
   var newStr = str.substring(0, str.length - 1);
-  
+
                 // (document.getElementById('pleaseregister') as HTMLFormElement).innerHTML = newStr;
-                
+
               }
               else {
                 let msg3 = success.error.text;
-  
-                
+
+
   let split_string = msg3.split(/(\d+)/)
   // alert(split_string[1])
   localStorage.setItem('otpstore', split_string[1]);
-  localStorage.setItem('isloggedinUser', dataForm1.mobile);             
+  localStorage.setItem('isloggedinUser', dataForm1.mobile);
                 // this.dialogRef.close();
     //             const dialogRef = this.dialog.open(OtpverfiedComponent, {
     //   id: 'otpverfied'
     // });
               }
-             
+
           }
       );
   }
   startTimer() {
-   
+
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
        this.showTimerContainer=true;
        this.showMyContainer=false;
       }
-     
+
       else{
           this.showMyContainer=true;
       this.showTimerContainer=false;
@@ -282,11 +282,36 @@ sendotp2(dataForm1: any) {
        }
     },2000)
   }
-  
+
   pauseTimer() {
     clearInterval(this.interval);
   }  
+  
+  move(event:any,p:any,c:any,n:any){
+    var length=c.value.length;
+    var maxlength=c.getAttribute('maxlength');
+    if(length==maxlength)
+    {
+      if(n!="")
+      {
+        n.focus();
+      }
+    }
+    if(event.key==="Backspace")
+    {
+
+       if(p!="")
+       {
+        p.focus();
+       }
+    }
 }
+
+  }
+  
+
+
+
 // function loadCustomerDetails() {
 //   throw new Error('Function not implemented.');
 // }

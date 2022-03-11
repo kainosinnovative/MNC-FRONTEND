@@ -208,7 +208,7 @@ padding: 1rem!important;
           border-radius: 5px;
           font-size: 15px;
           font-size: 15px;
-          margin-left: 188px;
+          // margin-left: 188px;
           margin-top: 8px;
           color: black;
           //border-radius: 5px;
@@ -385,3 +385,45 @@ padding: 1rem!important;
   .switch-toggle label:not(.disabled) {
     cursor: pointer;
   }
+
+  @media screen and (min-width: 768px) {
+  .comboselectbtm{
+    margin-left: 188px;
+      }
+
+      .comboofferpricediv{
+        margin-left: -31px;
+      }
+    }
+
+  @media screen and (max-width: 768px) {
+  .pickupDroplbl {
+    width: 100px;
+  }
+  .pickuptimeMob{
+    
+      padding-right: 13px;
+      
+      padding-left: 4px;
+  
+  }
+  .dropdateMob {
+    padding-right: 5px;
+      
+      padding-left: 0px;
+  }
+
+  .comboselectbtm{
+margin-left: 131px;
+  }
+
+  .comboofferpricediv{
+    margin-left: -21px;
+  }
+ 
+}
+
+
+.slick-prev {
+   left: -1px !important; 
+}
