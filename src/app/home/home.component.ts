@@ -32,8 +32,7 @@ export class HomeComponent implements OnInit {
 param2: string;
 wishlistdata: any;
 wishlistdata1: any;
-private innerWidth: number;
-  private mobileBreakpoint = 480;
+
 
   // route: any;
 
@@ -72,14 +71,7 @@ private innerWidth: number;
 this.adjustsItemsPerSlide();
   }
 
-  private adjustsItemsPerSlide() {
-    this.innerWidth = window.innerWidth;
-    if (this.innerWidth < this.mobileBreakpoint) {
-      this.itemsPerSlide = 1;
-    } else {
-      this.itemsPerSlide = 3;
-    }
-  }
+ 
 
   customerWhislist(customerId:any)
   {
