@@ -50,6 +50,8 @@ export class SearchComponent implements OnInit {
   wishlistdata: any;
 wishlistdata1: any;
 date:any;
+private innerWidth: number;
+  private mobileBreakpoint = 480;
   constructor(private service: Service,public datepipe: DatePipe,private toastr: ToastrService,public restApi: RestApiService,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) {
      this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -66,6 +68,7 @@ date:any;
    dashboardShopoffer:any;
    dashboardShopoffer1:any;
   ngOnInit() {
+    this.adjustsItemsPerSlide();
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadMasterService();
@@ -233,5 +236,14 @@ userloggedin(shopid :number)
   beforeChange1(e:any) {
     console.log('beforeChange');
   }
-
+  private adjustsItemsPerSlide() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < this.mobileBreakpoint) {
+      this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
+      this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
+    } else {
+      this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+      this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
+    }
+  }
   }
