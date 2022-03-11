@@ -216,8 +216,12 @@ text-align:left;
         .sidemenucls {
             display: block;
         }
-      
-        
+      .footerpopularlink{
+          text-align: left;
+      }
+        .bloglinkMob {
+            margin-left: -95px;
+        }
     }
 
     @media screen and (min-width: 768px) {

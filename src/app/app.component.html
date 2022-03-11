@@ -1,3 +1,4 @@
+
 <mat-sidenav-container fullscreen id="cont_id">
   <!-- <h5><u><i>Footer creation using angular material !!</i></u></h5> -->
   <mat-sidenav #sidenav class="sidenavstyle" >
@@ -41,7 +42,7 @@
 
 
 
-      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-lock" aria-hidden="true"></i></a> </mat-list-item>
+      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item>
 
       <!-- both customer and shop owner -->
 
@@ -105,7 +106,7 @@
 
   <!-- both customer and shop owner -->
 
-  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" (click)="logout()"><i class="fa fa-lock" aria-hidden="true"></i></a> </mat-list-item> 
+  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" title="LogOut" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item> 
   <!-- both customer and shop owner -->
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
@@ -117,14 +118,14 @@
 
 
   <!-- <mat-sidenav-content> -->
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
 
 
-<div class="footer" style="height: 340px;" #footer id="footerdisplay">
+<div class="footer" style="height: 340px;background-color: #202c45 !important;" #footer id="footerdisplay">
   <footer class=" page-footer font-small blue pt-4">
 
     <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
+    <div class="container-fluid text-center text-md-left" style="background-color: #202c45 !important;">
 
       <!-- Grid row -->
       <div class="row">
@@ -137,17 +138,21 @@
                   </div>
 
           </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="footer-link" >
+            <div class="col-lg-3 col-md-6 footerpopularlink">
+              <div class="footer-link footerpopularlink" >
                   <h2>Popular Links</h2>
-
+<div class="footerpopularlink">
+  
+<p class="bloglinkMob">
+  <a href="#" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Blog</a>
+</p>
                   <!-- <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Online Booking</a> -->
-                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Offers and Deals</a>
-                  <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Blog</a>
+                  <!-- <a href="#"><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;Offers and Deals</a> -->
+                  
 
                     <!-- <a *ngIf="!userroleSes" class="" style="cursor: pointer;padding-top:0px !important;margin-top:0px!important;" (click)="loginCheck();login()" ><i class="fa fa-arrow-right" style="font-size:8px"></i> &nbsp;For Shop</a> -->
 
-
+                  </div>
               </div>
           </div>
         <!-- <div class="col-md-3 mb-md-0 mb-3">-->

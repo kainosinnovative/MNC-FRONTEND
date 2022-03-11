@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef, ComponentFactoryResolver } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RestApiService } from "../shared/rest-api.service";
-import { Router,ActivatedRoute,ParamMap, Params  } from '@angular/router';
+import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular/router';
 import { EventEmitterService } from '../event-emitter.service';
 import { HttpClient } from '@angular/common/http';
 import { style } from '@angular/animations';
@@ -46,6 +46,8 @@ wishlistdata1: any;
 
 
   ngOnInit(): void {
+    
+
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.loadMasterService();
@@ -75,7 +77,7 @@ wishlistdata1: any;
     return this.restApi.getCustomerWhislist(customerId,selectedcity).subscribe((data: {}) => {
       // alert(data)
       this.CustomerWhislistData = data;
-      this.CustomerWhislistData1= this.CustomerWhislistData.data.whislist;
+      this.CustomerWhislistData1= this.CustomerWhislistData.data;
 
       console.log("whislist",this.CustomerWhislistData1);
       // this.dtTrigger.next();

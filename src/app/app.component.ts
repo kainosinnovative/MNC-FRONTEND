@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef,VERSION, ViewChild } from '@angular/core';
 import { OnInit } from  '@angular/core';
 import { LoginComponent } from './login/login.component';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
@@ -30,7 +30,7 @@ import { EventEmitterService } from './event-emitter.service';
 
 
 export class AppComponent implements OnInit{
-
+  
 
 
   currentUsername = localStorage.getItem('currentUsername');
@@ -44,6 +44,7 @@ export class AppComponent implements OnInit{
   cont_id: any;
   cityid: any;
   cityname:any;
+  // topScroll: any;
 constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService ){}
   closemenu() {
     console.log("hi")
@@ -56,6 +57,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
 
 
   ngOnInit(): void {
+    
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
@@ -74,7 +76,13 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
       });
     }
 
+    
+
   }
+
+  onActivate(event:any) {
+    
+ }
 
   login(){
     console.log("hiiiii1111");

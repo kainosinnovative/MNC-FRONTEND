@@ -21,13 +21,13 @@
       <div class="testimonial" >
 <!-- <p>{{i}}</p> -->
         <div class="avatar mx-auto">
-          <div *ngIf="test.profile_img"><img style="width: 100px;height: 100x;padding:5px;" src="http://localhost/MNC-PHP-API/{{test.profile_img}}" class="rounded-circle"></div>
+          <div *ngIf="test.profile_img"><img style="width: 100px;height: 100px;padding:5px;" src="http://localhost/MNC-PHP-API/{{test.profile_img}}" class="rounded-circle"></div>
           <div *ngIf="!test.profile_img"> <img style="width: 100px;height: 100px;padding:5px;" src="../assets/images/avatar.png" class="rounded-circle"></div>
         </div>
         <!--Content-->
         <h4 class="font-weight-bold dark-grey-text mt-4 subheading">{{test.firstname}}</h4>
         <!-- <h6 class="font-weight-bold blue-text my-3">{{test.user_title}}</h6> -->
-        <p class="font-weight-normal dark-grey-text secondsubheading">
+        <p style="height: 54px;" class="font-weight-normal dark-grey-text secondsubheading">
           {{test.user_description}}
       </p>
         <!--Review-->

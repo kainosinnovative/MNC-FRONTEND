@@ -1,10 +1,13 @@
+
+
+<div id="movetopid"></div>
 <h2 class="mainheading" style="text-align:center;">My Online Booking</h2>
 
 <div style="text-align: center;">
   <img src="http://localhost/MNC-PHP-API/{{offerslist[0].shop_logo}}" style="width: 50px;margin-top: -7px;"><b class="subheading"> {{offerslist[0].name}}</b>
   </div>
 
-<div style=" margin-top: -75px;">
+<div >
 
   <form [formGroup]="onlinebooking" class="form-container" >
       <mat-card style="border: 1px solid #aeaeae;">
@@ -22,16 +25,18 @@
             
             <tr style="border: 1px solid #aeaeae;">
               <td style="width: 120px">
+                <div >
                 <label>Booking Date</label> <br>
-                <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="bookingdate" placeholder="Date From" [(ngModel)]="current_date">
-                
+                <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="bookingdate" placeholder="Date From" id="booking_date" [(ngModel)]="current_date">
+              </div>
               </td>
-              <td >
-              <label style="width: 20px;"></label>
-            </td>
-              <td >
+              <!-- <td >
+              <label style="width: 1px;"></label>
+            </td> -->
+              <td style="width: 136px">
+                <div >
                 <label>Registration Number</label> <br>
-                <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;" (change)="vehicleBasedModel($event)">   
+                <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;width: 119px;" (change)="vehicleBasedModel($event)">   
                      
                   <option value="">--Select--</option>  
                   <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.vehicle_number">
@@ -49,13 +54,14 @@
                    </div> 
                     
                   </div> 
+                </div>
               </td>
-              <td >
+              <!-- <td >
                 <label style="width: 20px;"></label>
-              </td>
+              </td> -->
               
-              <td >
-                <div style="width: 165px" *ngIf="getPickupAvlData2 == 1">
+              <td style="width: 170px;">
+                <div  *ngIf="getPickupAvlData2 == 1">
                   <label >Do you need pick-up and drop?</label> 
 <br>
                  
@@ -71,11 +77,11 @@
                   </div>
               </td>
 
-              <td >
-                <label style="width: 20px;"></label>
-              </td>
+              <!-- <td >
+                <label style="width: 1px;"></label>
+              </td> -->
 
-              <td  >
+              <td  style="width: 330px;">
                 <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" style="display: none;">
                 <label>Pickup & Drop Instructions</label> <br>
                   <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" id="instructions" matinput="" placeholder=""></textarea>
@@ -89,16 +95,24 @@
                  </div>
                 </div>
               </td>
-              <td  style="width: 100%;">
-                <div id="pickupdateTdid" *ngIf="getPickupAvlData2 == 1" style="display: none;">
+              <!-- <td >
+                <label style="width: 1px;"></label>
+              </td> -->
+              <td  style="width: 119px;">
+                <div id="pickupdateTdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
                 <label >Pick-up Date</label> 
     <br>
                      
     <input class="datecls" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
 </div>
               </td>
-              <td style="width: 100%;">
-                <div *ngIf="getPickupAvlData2 == 1" id="pickuptimetdid" style="display: none;">
+
+              <!-- <td >
+                <label style="width: 20px;"></label>
+              </td> -->
+              
+              <td style="width: 87px;">
+                <div *ngIf="getPickupAvlData2 == 1" id="pickuptimetdid" style="display: none;width: 67px;">
                 <label >Pick-up time</label> 
     <br>
                      
@@ -112,8 +126,12 @@
                       </div>
               </td>
 
-              <td>
-                <div id="dropdatetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;">
+              <!-- <td >
+                <label style="width: 20px;"></label>
+              </td> -->
+
+              <td style="width: 121px;">
+                <div id="dropdatetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
                 <label >Drop Date</label> 
     <br>
                      
