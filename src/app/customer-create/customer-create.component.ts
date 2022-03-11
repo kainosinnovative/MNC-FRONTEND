@@ -488,8 +488,8 @@ AddCustomerCarDetails(cardetailForm:any)
 
       }
 
-      slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
-      
+      slideConfig = {"slidesToShow": 4, "slidesToS5croll": 1};
+       
       slickInit(e:any) { 
         console.log('slick initialized');
       }

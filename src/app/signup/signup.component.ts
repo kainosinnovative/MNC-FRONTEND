@@ -85,7 +85,7 @@ Otpvrf(){
 
 removeErrorMsg() {
   // alert("hi")
-  (<HTMLInputElement>document.getElementById("pleaseregister")).innerHTML = "";
+  (<HTMLInputElement>document.getElementById("pleaseregister1")).innerHTML = "";
 }
 
 

@@ -106,11 +106,28 @@ showloginSuccess() {
 pagerefresh() {
   // window.location.reload();
 let userroleSes = localStorage.getItem('userroleSes');
+alert(userroleSes)
   if(userroleSes == 'CustomerSes'){
     this.router.navigate(['/home']);
   }
   else {
     this.router.navigate(['/ShopDashboard']);
+  }
+
+  window.setTimeout(function(){location.reload()},2000)
+}
+
+
+pagerefresh1() {
+  // window.location.reload();
+let loginfor = localStorage.getItem('loginfor');
+alert(loginfor)
+  if(loginfor == 'customersignup'){
+    this.router.navigate(['/home']);
+    
+  }
+  else {
+    this.router.navigate(['/shoplogin']); 
   }
 
   window.setTimeout(function(){location.reload()},2000)
@@ -134,7 +151,7 @@ signupdetailsInsert(){
       console.log(error.status)
       if(error.status == "200") {
         this.showsuccess();
-        this.pagerefresh();
+        this.pagerefresh1();
       }
     }
 
