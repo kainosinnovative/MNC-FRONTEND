@@ -35,8 +35,9 @@ wishlistdata1: any;
 
   // route: any;
 
-
-
+  private innerWidth: number;
+  private mobileBreakpoint = 480;
+  itemsPerSlide = 3;
 
 
   constructor(private toastr: ToastrService,public restApi: RestApiService,public datepipe: DatePipe,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) { }
@@ -66,7 +67,16 @@ wishlistdata1: any;
     //   console.log("params>>>",params);
     // });
 
+this.adjustsItemsPerSlide();
+  }
 
+  private adjustsItemsPerSlide() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < this.mobileBreakpoint) {
+      this.itemsPerSlide = 1;
+    } else {
+      this.itemsPerSlide = 3;
+    }
   }
 
   customerWhislist(customerId:any)
