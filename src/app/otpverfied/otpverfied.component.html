@@ -15,10 +15,12 @@
         
 
         <div class="d-flex flex-row">
-            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpFirstDigit" autofocus="">
-            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpSecondDigit">
-            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpThirdDigit">
-            <input type="text" maxlength="1" class="form-control" [(ngModel)]="otpFourthDigit">
+            
+
+            <input type="text"  #txt1 maxlength="1" class="form-control" [(ngModel)]="otpFirstDigit" (keyup)="move($event,'',txt1,txt2)">
+            <input type="text"  #txt2 maxlength="1" class="form-control" [(ngModel)]="otpSecondDigit" (keyup)="move($event,txt1,txt2,txt3)">
+            <input type="text"  #txt3 maxlength="1" class="form-control" [(ngModel)]="otpThirdDigit" (keyup)="move($event,txt2,txt3,txt4)">
+            <input type="text"  #txt4 maxlength="1" class="form-control" [(ngModel)]="otpFourthDigit" (keyup)="move($event,txt3,txt4,'')">
         </div>
 
         

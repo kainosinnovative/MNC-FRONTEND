@@ -16,7 +16,8 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class OnlinebookingComponent implements OnInit {
-  
+  private innerWidth: number;
+  private mobileBreakpoint = 480;
   show: boolean = true
   opened = false;
   opened1 = true;
@@ -77,6 +78,7 @@ counter:any = 0;
 
 
   ngOnInit(): void {
+    this.adjustsItemsPerSlide();
     // (<HTMLInputElement>document.getElementById("movetopid")).scrollTop=0;
     (<HTMLInputElement>document.getElementById("booking_date")).focus();
  
@@ -134,9 +136,20 @@ counter:any = 0;
         this.onlinebooking.controls.payment_type.setValue("Cash On Delivery");
         
   })
+  
   }
 
   
+  private adjustsItemsPerSlide() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < this.mobileBreakpoint) {
+      this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
+      this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
+    } else {
+      this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+      this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
+    }
+  }
 
 
   cartype(){

@@ -20,10 +20,11 @@
         </mat-card-header>
         
         
-        <div class="row" style="padding-top: 10px;padding-bottom: 10px;margin-left: -1px;width: 98%;">
+        <div class="row" style="padding-top: 10px;padding-bottom: 10px;margin-left: -1px;">
+          <div class="table-responsive">
           <table>
             
-            <tr style="border: 1px solid #aeaeae;">
+            <tr >
               <td style="width: 120px">
                 <div >
                 <label>Booking Date</label> <br>
@@ -47,7 +48,7 @@
                    <div *ngIf="onlinebooking.controls['vehicle_number'].touched && onlinebooking.controls['vehicle_number'].invalid"> 
                       
                     <div *ngIf="onlinebooking.controls['vehicle_number'].errors" style="color: red;"> 
-                      <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 12px;">
+                      <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 11px;">
                           Select Registration Number
                       </div> 		   
                      
@@ -62,7 +63,7 @@
               
               <td style="width: 170px;">
                 <div  *ngIf="getPickupAvlData2 == 1">
-                  <label >Do you need pick-up and drop?</label> 
+                  <label class="pickupDroplbl">Do you need pick-up and drop?</label> 
 <br>
                  
                   <label>No</label> &nbsp;
@@ -83,7 +84,9 @@
 
               <td  style="width: 330px;">
                 <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" style="display: none;">
-                <label>Pickup & Drop Instructions</label> <br>
+                <label >Pickup & Drop Instructions</label> 
+                <!-- <p style="margin-top: 10px;"></p> -->
+                <!-- <br> -->
                   <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" id="instructions" matinput="" placeholder=""></textarea>
 
                   <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
@@ -111,7 +114,7 @@
                 <label style="width: 20px;"></label>
               </td> -->
               
-              <td style="width: 87px;">
+              <td style="width: 87px;" class="pickuptimeMob">
                 <div *ngIf="getPickupAvlData2 == 1" id="pickuptimetdid" style="display: none;width: 67px;">
                 <label >Pick-up time</label> 
     <br>
@@ -130,7 +133,7 @@
                 <label style="width: 20px;"></label>
               </td> -->
 
-              <td style="width: 121px;">
+              <td style="width: 121px;" class="dropdateMob">
                 <div id="dropdatetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
                 <label >Drop Date</label> 
     <br>
@@ -154,7 +157,7 @@
               </td>
             </tr>
           </table>
-         
+        </div>
 
                       
      </div>
@@ -252,7 +255,7 @@
 </ngx-slick-carousel>
 
 <br><br><br>
-<div style="font-size: 17px;margin-top: 15px;text-align: right;margin-left: -31px;">
+<div class="comboofferpricediv" style="font-size: 17px;margin-top: 15px;text-align: right;">
   <input type="hidden" formControlName="combo_id" id="ComboPrimaryIdArr" class="selectnow2"  >
   <label class="mainheading" id="name" >Combo Offer price </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i> 
   <input type="number" readonly id="finalamount" formControlName="comboprice_total" class="selectnow2"  >

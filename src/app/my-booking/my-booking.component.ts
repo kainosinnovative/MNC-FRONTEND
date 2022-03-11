@@ -16,12 +16,15 @@ export class MyBookingComponent implements OnInit {
   config:any;
   MasterServiceData:any;
   MasterServiceData1:any;
+  carwashstatus:any;
+  carwashstatus1:any;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
     private toastr: ToastrService, private  dialog:  MatDialog) { }
 
   ngOnInit(): void {
     this.loadMybookingDetails();
     this.loadMasterService();
+    this.master_carwash_status();
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -75,5 +78,16 @@ export class MyBookingComponent implements OnInit {
     localStorage.removeItem("ViewBooking_heading");
     
  }
+
+ master_carwash_status(){
+  return this.restApi.getmaster_carwash_status().subscribe((data: {}) => {
+    // alert(data)
+    this.carwashstatus = data;
+     this.carwashstatus1 = this.carwashstatus.master_carwash_status;
+    
+     console.log("master_carwash_status>>>>",this.carwashstatus1)
+    
+  })
+}
 
 }

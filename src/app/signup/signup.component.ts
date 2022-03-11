@@ -110,7 +110,7 @@ const secondArr = myArray[1].split(",");
 let str = secondArr[0].substring(3);
 var newStr = str.substring(0, str.length - 1);
 
-          (document.getElementById('pleaseregister') as HTMLFormElement).innerHTML = newStr;
+          (document.getElementById('pleaseregister1') as HTMLFormElement).innerHTML = newStr;
           
         }
         else {

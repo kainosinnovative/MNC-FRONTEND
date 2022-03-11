@@ -108,7 +108,10 @@ localStorage.setItem('sessionbtn', "login");
 }
 
 
-
+removeErrormessage() {
+  // pleaseregister
+  (<HTMLInputElement>document.getElementById("pleaseregister")).innerHTML = "";
+}
 
 
 

@@ -38,7 +38,7 @@ padding-right: 0px;">
   
              <label style="padding-left: 2%;"> </label>
   
-             <input style=" height: 32px;  width: 182px;" type="text" matInput placeholder="Mobile number" formControlName='mobile' class="">
+             <input style=" height: 32px;  width: 182px;" type="text" matInput placeholder="Mobile number" formControlName='mobile' class="" (keyup)="removesignupErrorMsg()">
    
   
              <div *ngIf="shopform.controls['mobile'].touched && shopform.controls['mobile'].invalid " style="text-align: center;"> 

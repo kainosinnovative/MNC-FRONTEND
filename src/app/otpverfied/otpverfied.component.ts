@@ -22,7 +22,7 @@ export class OtpverfiedComponent implements OnInit {
   dialog: any;
   // dialogRef: any;
   name = 'Angular 6';
-  timeLeft: number = 10;
+  timeLeft: number = 20;
   interval:any;
 
   otpFirstDigit:any;
@@ -106,7 +106,7 @@ showloginSuccess() {
 pagerefresh() {
   // window.location.reload();
 let userroleSes = localStorage.getItem('userroleSes');
-alert(userroleSes)
+// alert(userroleSes)
   if(userroleSes == 'CustomerSes'){
     this.router.navigate(['/home']);
   }
@@ -121,7 +121,7 @@ alert(userroleSes)
 pagerefresh1() {
   // window.location.reload();
 let loginfor = localStorage.getItem('loginfor');
-alert(loginfor)
+// alert(loginfor)
   if(loginfor == 'customersignup'){
     this.router.navigate(['/home']);
     
@@ -144,7 +144,7 @@ signupdetailsInsert(){
   this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+ 
   '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid + '&loginFor='+loginfor ).subscribe(
     data => {
-      alert(data)
+      // alert(data)
     },
     error => {
       // alert(error)
@@ -286,6 +286,28 @@ sendotp2(dataForm1: any) {
   pauseTimer() {
     clearInterval(this.interval);
   }  
+
+  move(event:any,p:any,c:any,n:any){
+    var length=c.value.length;
+    var maxlength=c.getAttribute('maxlength');
+    if(length==maxlength)
+    {
+      if(n!="")
+      {
+        n.focus();
+      }
+    }
+    if(event.key==="Backspace")
+    {
+
+       if(p!="")
+       {
+        p.focus();
+       }
+    }
+}
+
+
 }
 // function loadCustomerDetails() {
 //   throw new Error('Function not implemented.');
