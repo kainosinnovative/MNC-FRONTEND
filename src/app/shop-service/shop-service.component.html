@@ -224,7 +224,7 @@
           <tr style="text-align: Center;">
 
             <td>Service</td>
-            <td style="height:25px;">
+            <td>
 
               <ng-autocomplete [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
@@ -254,10 +254,10 @@
               </div>
             </td>
             <td>Model</td>
-            <td style="height:25px;">
+            <td>
               <!-- <label style="width: 100px;">Model</label>  -->
 
-                  <select   class="carmodelcls "  id="model" formControlName="model_id">
+                  <select   class="carmodelcls "  id="model" formControlName="model_id" style="height:35px !important;" >
 
                     <option value="">--Select Model--</option>
                     <option *ngFor="let m of MasterModelData1" [value]="m.id">
