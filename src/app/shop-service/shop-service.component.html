@@ -14,7 +14,7 @@
 
 
         <table  class="table table-responsive servicecss" *ngIf="serviceData1!=''">
-            <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+            <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;width: 100%;overflow: auto;">
               <tr >
                 <th colspan="6" style="text-align:center;border-right:solid 1px;font-weight: normal;font-size:14px;">Services offered in my shop</th>
                 <th colspan="5"  style="text-align:center;font-weight:normal;font-size:14px">Offer Details</th>
@@ -109,16 +109,16 @@
 <div class="row">
   <div class="col-md-6">
     <div class="accordion">
-      <h2 class="title subheading" style="text-align: left;" (click)="opened = !opened">Add Service Price <i class="fa fa-chevron-down"></i> </h2>
+      <h2 class="title subheading " style="text-align: left;" (click)="opened = !opened">Add Service Price <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container" [class.opened]="opened">
 
 
 
-    <div style="border: 1px solid;;">
+    <div style="border: 1px solid;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
-    <form [formGroup]="shopserviceForm" name="pf">
-    <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
-      <table class="table" style="border: none;margin-left:0px !important;">
+    <form [formGroup]="shopserviceForm" name="pf">  
+     <div class="table-responsive  boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
+      <table class="table table-responsive servicecss" style="border: none;margin-left:0px !important;">
         <tr style="text-align: left;">
           <td>Service</td>
           <td style="width: 170px;">
@@ -216,21 +216,20 @@
     <div class="accordion1">
       <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
-    <div style="border: 1px solid;margin-left:0px!important;">
+    <div style="border: 1px solid;margin-left:0px!important;height: 90px;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
-      <div class="table-responsive" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
-        <table class="table" style="border: none;margin-top: -23px;border-collapse: inherit !important;padding-left:0px!important;margin-left:0px !important;">
+      <div class="table-responsive boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
+        <table class="table" style="border: none;margin-top: -36px;border-collapse: inherit !important;padding-left:0px!important;margin-left:0px !important;">
           <tr style="text-align: Center;">
 
             <td>Service</td>
-            <td>
+            <td class="">
 
-              <ng-autocomplete [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        <ng-autocomplete  class="servicebls" style="height: 24px! important;width: 100%! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
-              [notFoundTemplate]="notFoundTemplate" style="overflow:hidden;width: 200px;">
-
-          </ng-autocomplete>
+              [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
 
           <ng-template #itemTemplate let-item >
               <a [innerHTML]="item.service_name"></a>
@@ -257,7 +256,7 @@
             <td>
               <!-- <label style="width: 100px;">Model</label>  -->
 
-                  <select   class="carmodelcls "  id="model" formControlName="model_id" style="height:35px !important;" >
+                  <select   class="carmodelcls "  id="model" formControlName="model_id" style="height: 24px !important;" >
 
                     <option value="">--Select Model--</option>
                     <option *ngFor="let m of MasterModelData1" [value]="m.id">
@@ -280,7 +279,7 @@
             <td>
               <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
-               <input type="text"   style="padding-left: 2px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 80px;">
+               <input type="text"   style="padding-left: 2px !important;width: 60px! important;"   class="  lastname" placeholder="" formControlName="actual_amount">
               <div *ngIf="MasterserviceForm.controls['actual_amount'].touched && MasterserviceForm.controls['actual_amount'].invalid ">
 
                   <div *ngIf="MasterserviceForm.controls['actual_amount'].errors" style="color: red;">
