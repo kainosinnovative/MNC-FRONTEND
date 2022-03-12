@@ -224,10 +224,7 @@ padding: 1rem!important;
     width: 150px;
     text-align: left;
 }
-.serviceprice{
-    margin-left: 80px;
-    font-size: 14px;
-}
+
 
 .combovaluebox{
 
@@ -392,8 +389,18 @@ padding: 1rem!important;
       }
 
       .comboofferpricediv{
-        margin-left: -31px;
+        margin-left: -67px;
       }
+
+      .serviceprice{
+        margin-left: 80px;
+        font-size: 14px;
+    }
+    .slick-slider {
+      width: 94% !important;
+      margin: auto;
+      background: rgb(14, 13, 13);
+    }
     }
 
   @media screen and (max-width: 768px) {
@@ -414,16 +421,48 @@ padding: 1rem!important;
   }
 
   .comboselectbtm{
-margin-left: 131px;
+margin-left: 70px;
   }
 
   .comboofferpricediv{
     margin-left: -21px;
   }
+
+  .serviceprice{
+   
+      
+      text-align: left;
+      margin-top: -30px;
+      font-size: 14px;
+  
+}
+
+.MobServSelectbtn {
+  text-align:left;
+}
+
+.heightdiv {
+  height: 160px;
+}
+
+
+.slick-slider {
+  width: 74% !important;
+  margin: auto;
+  background: rgb(14, 13, 13);
+}
+
+.offerpriceMobile {
+  height: 1px;
+  display: block !important;
+}
+
+.combovaluebox{
+  height: 20px;
+}
  
 }
 
 
-.slick-prev {
-   left: -1px !important; 
-}
+
+  

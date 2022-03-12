@@ -337,7 +337,8 @@ currentComboOffers(){
       plotOptions: {
         bar: {
           horizontal: false,
-          // width:20
+          width:20,
+          columnWidth: '10%',
           // data:20
         }
       },
@@ -345,6 +346,7 @@ currentComboOffers(){
         enabled: true
       },
       xaxis: {
+        // categories: ["test"],
         categories: this.ComboOfferFromDateTodate,
         title: {
           text: "Offer Type",
@@ -353,6 +355,7 @@ currentComboOffers(){
             //font:"20px"
           }
         },
+        
         
       },
       yaxis: {
@@ -441,11 +444,15 @@ loadServiceDataOffers(){
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 350
             },
             legend: {
               position: "bottom"
-            }
+            },
+            dataLabels: {
+              enabled: false
+            },
+            
           }
         }
       ]

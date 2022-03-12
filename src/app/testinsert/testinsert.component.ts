@@ -150,7 +150,10 @@ this.currentComboOffers();
               },
               legend: {
                 position: "bottom"
-              }
+              },
+              dataLabels: {
+                enabled: false
+              },
             }
           }
         ]
