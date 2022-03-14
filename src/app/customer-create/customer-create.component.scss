@@ -2,7 +2,7 @@
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
     margin: 12px;
     margin-left:80px;
-   
+
     padding:10px;
 
 }
@@ -10,7 +10,7 @@
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
     margin: 12px;
     margin-left:80px;
-    
+
     padding:10px;
 
 }
@@ -19,7 +19,7 @@
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
     margin: 12px;
     margin-left:80px;
-    
+
     padding:10px;
 
 }
@@ -99,7 +99,7 @@
     width: 170px !important;
     padding-left: 2px !important;
     // margin-left: 75px;
-        
+
 
 }
 .selectoptiongender
@@ -109,7 +109,7 @@
     padding-top: 3px;
     padding-left: 2px !important;
     // margin-left: 12px;
- 
+
 }
 
 // .city{
@@ -125,7 +125,7 @@
 //  }
 
 //  .fueltype{
-//     padding-left: 2px !important; 
+//     padding-left: 2px !important;
 //     width: 180px;
 //     margin-left: 19px;
 //  }
@@ -144,8 +144,8 @@
 
 //  .carmodel{
 //     padding-left: 2px !important;
-//     width: 240px; 
-//     margin-left: 25px; 
+//     width: 240px;
+//     margin-left: 25px;
 //  }
 
 //  @media screen and (max-width: 768px){
@@ -168,7 +168,7 @@
     // margin-left: 70px;
  }
 // .gendercls{
-//     margin-left: 60px; 
+//     margin-left: 60px;
 // }
 // .citycls{
 //     margin-left: 80px;
@@ -215,7 +215,7 @@
 //  }
 //  .carcolorvalid{
 //     margin-left: 112px !important;
-//  }         
+//  }
 //  }
 
 select {
@@ -255,8 +255,8 @@ input {
     margin: auto;
     background: rgb(14, 13, 13);
   }
-    
-body .slick-prev, 
+
+body .slick-prev,
 body .slick-next {
     height: 45px;
     width: 40px;
@@ -265,9 +265,9 @@ body .slick-next {
 }
 
 .slick-prev:before, .slick-next:before {
-  
+
   color: black !important;
-  
+
 }
 
 .btn-success1{
@@ -295,6 +295,23 @@ body .slick-next {
     -o-background-size: cover;
     background-size: cover;
   }
+  .slick-slider {
+    width: 90% !important;
+    margin: auto !important;
+  }
 
-
-  
+  #container {
+    width: 100%;
+    margin: 5em auto;
+    padding: 0;
+    .ng2-carouselamos-container{
+        width: 70%;
+        margin: auto;
+    }
+    .slide-items{
+        margin-right: 10px;
+        img{
+            width: 210px;
+        }
+    }
+}
