@@ -315,3 +315,16 @@ body .slick-next {
         }
     }
 }
+
+
+.slick-slide {
+    width: 14vw !important;
+    // for absorbing width from @Ken Wheeler answer
+    box-sizing: border-box !important;
+}
+.slick-slider{
+    width: 70% !important;
+    margin: auto;
+    height:180px !important;
+    background: #f8f8f5 !important;
+}

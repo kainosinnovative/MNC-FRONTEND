@@ -32,7 +32,7 @@ providers: [DatePipe]
 })
 
 export class CustomerCreateComponent implements OnInit {
-  
+
 
 
 types:any;
@@ -45,7 +45,7 @@ dynamicArray: Array<DynamicGrid> = [];
   opened = true;
   opened1 = false;
   opened2 =  true;
-  
+
   imageSrc: string;
   CustomerDataById: any;
   CustomerDataById1:any;
@@ -66,7 +66,7 @@ dynamicArray: Array<DynamicGrid> = [];
   modelsdata: any;
   selecttypedata: any;
   myuser: any;
- 
+
   cartypedata: any;
   cardata: any;
   citytype: any;
@@ -93,13 +93,13 @@ dynamicArray: Array<DynamicGrid> = [];
     private toastr: ToastrService,public datepipe: DatePipe
    ) {
 
-      
+
  }
 
  file=new FormControl('')
   file_data:any=''
- 
-ngOnInit() { 
+
+ngOnInit() {
 
   this.readCustomerDataById();
   this.loadcartype();
@@ -108,7 +108,7 @@ ngOnInit() {
   this.getstatedata();
   this.loadcarDetailsById();
   this.Whislistdata();
-  
+
 
   element: HTMLElement;
 
@@ -116,7 +116,7 @@ ngOnInit() {
 
   this.date=new Date();
 let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
- 
+
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
@@ -139,12 +139,12 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
      lastupddt: [current_date, [Validators.required]],
     customer_id:[currentUserId, [Validators.required]]
-  
-    }) 
-    
-    
+
+    })
+
+
     this.cardetailForm = this.frmbuilder.group({
-      
+
        fueltype: ['', Validators.required],
        cartype: ['', Validators.required],
        brand: ['', Validators.required],
@@ -156,11 +156,11 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
       })
 
 
-      
+
 ;}
 
 
-addRow() {  
+addRow() {
   this.newDynamic = {title1: "", title2: "",title3:""};
   this.carDetailsById1.push(this.newDynamic);
   this.toastr.success('New row added successfully', 'New Row');
@@ -181,31 +181,31 @@ deleteRow(index:any) {
 
 
 readCustomerDataById() {
-  
+
   let currentUserId = localStorage.getItem('currentUserId');
 
   return this.restApi.readCustomerDataById(currentUserId).subscribe((res)=>{
     this.CustomerDataById = res
 
-    
+
     this.CustomerDataById1 = this.CustomerDataById.data.profile
     console.log("shop info>>>",this.CustomerDataById);
-    
+
   }
-    
-  
+
+
   )
-  
+
 }
 
 
 showSuccess() {
-  
+
   this.toastr.success('Customer Feedback Added Successfully!');
 }
 
 showError() {
-  
+
   this.toastr.error('Something went wrong!');
 }
 
@@ -217,7 +217,7 @@ get f(){
 
 
 fileChange(event:any) {
-    
+
   const fileList: FileList = event.target.files;
   //check whether file is selected or not
   if (fileList.length > 0) {
@@ -237,16 +237,16 @@ fileChange(event:any) {
         formData.append('update','2')
         formData.append('info',JSON.stringify(info))
         formData.append('currentUserId',currentUserId)
-        
+
         this.file_data=formData
-        
+
       }else{
         //this.snackBar.open('File size exceeds 4 MB. Please choose less than 4 MB','',{duration: 2000});
       }
-      
+
   }
 
-  
+
   // alert(this.file_data)
 
   this.http.post(config_url+'/app/AddCustomerInsert',this.file_data)
@@ -263,12 +263,12 @@ fileChange(event:any) {
 
 uploadFile(profileform:any)
     {
-      
+
       this.http.post(config_url+'/app/AddCustomerdetails',profileform)
       .subscribe(res => {
-      
+
       }, (err) => {
-      
+
     });
     console.log(profileform);
     this.toastr.success('Profile Updated Successfully');
@@ -276,73 +276,73 @@ uploadFile(profileform:any)
     }
 
     loadcartype(){
-    
-    
+
+
       return this.restApi.getcartype().subscribe((cartypedata: {}) => {
         // alert(data)
         this.fetchdata = cartypedata;
         this.fetchdata1 = this.fetchdata.data.type;
-        
+
         // console.log("data>>>>",this.fetchdata1)
       })
     }
 
     loadcarbrand(){
-    
-    
+
+
       return this.restApi.getcarbrand().subscribe((carbranddata: {}) => {
         // console.log(carbranddata);
          //console.log(hi)
         this.brandtype = carbranddata;
         this.branddata = this.brandtype.data.type;
-        
+
         console.log("data>>>>",this.branddata)
       })
     }
 
     loadcitylist(){
-    
-    
+
+
       return this.restApi.getcitylist().subscribe((citylistdata: {}) => {
-     
+
        // console.log(citylistdata)
         this.citytype = citylistdata;
 
         console.log(this.citytype)
     //console.log("hi")
         this.citydata = this.citytype.data.list;
-        
+
         //  console.log("data>>>>",this.citydata)
       })
     }
 
     getstatedata(){
-    
-    
+
+
       return this.restApi.getstatelist().subscribe((statelistdata: {}) => {
-     
+
         this.statetype = statelistdata;
        this.statedata = this.statetype.data.list;
-        
+
     //  console.log("data>>>>",this.statedata)
       })
     }
 
     onChangeObj(newObj: any) {
       console.log(newObj);
-      
-    
+
+
       this.selectedDeviceObj = newObj;
-  
+
       (<HTMLInputElement>document.getElementById("model")).value='';
       this.myusername = (<HTMLInputElement>document.getElementById("cartype")).value;
       console.log(this.myusername);
-  
-  
+
+
 
       // ... do other stuff here ...
 
-      this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+ 
+      this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+
   '&brand='+this.selectedDeviceObj).subscribe(
     data => {
       //alert(data)
@@ -363,8 +363,8 @@ uploadFile(profileform:any)
 
   onchangecartype(typedata: any) {
     console.log(typedata);
-    
-  
+
+
     this.selecttypedata = typedata;
 
     (<HTMLInputElement>document.getElementById("model")).value='';
@@ -375,7 +375,7 @@ uploadFile(profileform:any)
 
     // ... do other stuff here ...
 
-    this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+ 
+    this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+
 '&cartype='+this.selecttypedata).subscribe(
   data => {
     //alert(data)
@@ -386,11 +386,11 @@ uploadFile(profileform:any)
   error => {
     // alert(error)
     console.log(error.status)
-   
+
   }
   );
 }
-   
+
 
 AddCustomerCarDetails(cardetailForm:any)
     {
@@ -407,14 +407,14 @@ AddCustomerCarDetails(cardetailForm:any)
         }
     });
     // console.log(profileform);
-    
+
     // window.location.reload();
     }
 
 
 
     loadcarDetailsById(){
-    
+
       let currentUserId = localStorage.getItem('currentUserId');
       return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
         // alert(data)
@@ -428,91 +428,89 @@ AddCustomerCarDetails(cardetailForm:any)
     RemoveMyCarInfo(carinfo_id:any) {
       // alert(carinfo_id)
       this.restApi.RemoveMyCarInfo(carinfo_id).subscribe((data: {}) => {
-       
+
        this.removedata = data;
        console.log("Remove>>>",data)
        if(this.removedata.status == "pass"){
         this.loadcarDetailsById();
        }
       })
-      
+
     }
 
 
     // loadshopoffers(currentShopId:any){
 
     //   // let currentShopId = 1;
-      
+
     //   return this.restApi.ShopoffersById(currentShopId).subscribe((data: {}) => {
-    
+
     //     //console.log('testabi', data);
-       
+
     //     this.offerdetails = data;
     //     this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
     //     console.log("test>>>>",this.offerslist)
-        
+
     //   })
-    
+
     // }
-     
-    
-      
+
+
+
       // idbyMasterService(){
-    
+
       //   return this.restApi.getMasterService().subscribe((data: {}) => {
       //     // alert(data)
       //     this.MasterServiceid = data;
       //     this.MasterServiceid1 = this.MasterServiceid.data.type;
-          
+
       //     console.log("aravind>>>>",this.MasterServiceid1)
       //     // this.dtTrigger.next();
-      
+
       //   })
       // }
-      
+
       Whislistdata()
       {
         let currentUserId = localStorage.getItem('currentUserId');
 
-        return this.restApi.getcustomerwhislistprofile(currentUserId).subscribe((data: {}) => { 
+        return this.restApi.getcustomerwhislistprofile(currentUserId).subscribe((data: {}) => {
           // alert(data)
           this.Whislistid = data;
           // let test = this.Whislistid
           // console.log(test);
 
           this.Whislistid1= this.Whislistid.data.getcustomerwhislist;
-    
+
            console.log("whislist",this.Whislistid1);
           // this.dtTrigger.next();
         })
 
       }
 
-      slideConfig = {"slidesToShow": 4, "slidesToS5croll": 1};
-       
-      slickInit(e:any) { 
+      slideConfig3= {"slidesToShow": 3, "slidesToS5croll": 1};
+
+      slickInit(e:any) {
         console.log('slick initialized');
       }
-        
+
       breakpoint(e:any) {
         console.log('breakpoint');
-      } 
-        
+      }
+
       afterChange(e:any) {
         console.log('afterChange');
       }
-        
+
       beforeChange(e:any) {
         console.log('beforeChange');
       }
 
-    toppings = new FormControl();
-
-    toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+   
 
   }
-    
- 
+
+
 
 
 

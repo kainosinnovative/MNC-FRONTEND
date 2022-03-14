@@ -513,44 +513,37 @@
     <h2 class="title2 subheading" (click)="opened2 = !opened2">My Favorite Shop<i class="fa fa-chevron-down"></i></h2>
     <div class="content-container2" [class.opened2]="opened2">
 
-        <ngx-slick-carousel class="carousel" style="background-color: white ! important;"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-        (init)="slickInit($event)"
-        (breakpoint)="breakpoint($event)"
-        (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
-        <div ngxSlickItem *ngFor="let s of Whislistid1" class="slider1"  >
-           <!-- <div >  -->
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig3">
 
-             <!-- <div class="product-detail-container p-2" style="background-color: #f2f2f2;width:250px! important; height: 190px;"> -->
+          <div ngxSlickItem *ngFor="let image of Whislistid1" class="slide" style="padding-top:12px !important;padding-left:12px !important;">
+            <img src="http://localhost/MNC-PHP-API/{{image.shop_logo}}" width="100px" height="100px">
 
-               <div class="justify-content-between align-items-center pt-1" >
-                  <div class="color-select">
-                    <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 80px;margin-top: -7px;" title="{{s.name}}" >
-                    </div>
-               </div>
-             <br>
-               <div class="d-flex justify-content-between align-items-center pt-1">
-                <h5 class="dress-name">{{s.name}}</h5>
-             </div>
+          <div class="d-flex justify-content-between align-items-center pt-1" >
+           <h5 class="dress-name" style="text-align:center;font-weight:bold;">{{image.name}}</h5>
+        </div>
 
 
 
-                  <div class="d-flex justify-content-between align-items-center pt-1">
-                    <h5 class="dress-name">{{s.city_name}}</h5>
-                   </div>
-
-             <!-- </div> -->
-          <!-- </div> -->
-         </div>
-</ngx-slick-carousel>
+             <div class="d-flex justify-content-between align-items-center pt-1" >
+               <h5 class="dress-name" style="text-align:center;font-weight:800;">{{image.city_name}}</h5>
+              </div>
+            </div>
+        </ngx-slick-carousel>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
 
 
  </div>
 
   <!-- </div> -->
 </div>
+
+<!-- <hr style="background-color:black" /> -->
+
 
 </form>
 </div>
