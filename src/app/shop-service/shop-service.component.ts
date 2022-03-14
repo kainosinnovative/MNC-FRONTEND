@@ -19,7 +19,7 @@ export class ShopServiceComponent implements  OnInit{
   serviceData: any;
   serviceData1: any;
   opened = true;
-  opened1 = false;
+  opened1 = true;
   element: HTMLElement;
   service_amount: string;
    date:any;
