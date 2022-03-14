@@ -78,7 +78,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login Component' } },
   { path: 'testimonial', component: TestimonialComponent, data: { title: 'Testimonial Component'} },
   { path: 'customercreate', component: CustomerCreateComponent, data: { title: 'Customer Create Component'} },
-  
+
   { path: 'contactus', component: ContactUsComponent, data: { title: 'Contact Us'} },
   { path: 'otpverfied', component: OtpverfiedComponent, data: { title: 'Otp Verfied'}},
   { path: 'onlinebooking/:id', component: OnlinebookingComponent, data: { title: 'Online Booking'}},
@@ -96,7 +96,7 @@ const appRoutes: Routes = [
   { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
   { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}},
   { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}}
-  
+
 ];
 @NgModule({
   declarations: [
@@ -130,8 +130,8 @@ const appRoutes: Routes = [
       ViewbookingdetailsComponent,
       ViewbookdetailPopupComponent,
       PopupmodalComponent
-      
-   
+
+
      ],
   imports: [
     BrowserModule,
@@ -139,12 +139,12 @@ const appRoutes: Routes = [
     CustomMaterialModule,
     RouterModule.forRoot(
       appRoutes,
-      
-      
+
+
      // { useHash: true }
 
     ),
-    
+
     MatInputModule,
     MatButtonModule,
     MatCardModule,
@@ -168,29 +168,29 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatTabsModule,
     NgApexchartsModule,
-    
+
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent]
 
 })
-export class AppModule { 
+export class AppModule {
 
   constructor(private  dialog:  MatDialog) { }
 
- 
+
 
   login(){
-    
-    
+
+
         this.dialog.open(LoginComponent,{ data: {
         message:  "Error!!!"
         }});
-    
+
 }
 
 signup(){
-    
+
     this.dialog.open(SignupComponent,{ data: {
   message:  "Error!!!"
   }});
