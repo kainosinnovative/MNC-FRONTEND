@@ -620,6 +620,22 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
   )
   }
 
+  
+
+  insertShopHolidays(holidaysArr:any): Observable<any[]> {
+    // alert(shopservAmount)
+    let selectedDateArr = holidaysArr["selectedDateArr"];
+  let currentUserId = holidaysArr["currentUserId"];
+
+
+    return this.http.get<any[]>(this.apiURL + "/shop/insertShopHolidays?leave_date="+selectedDateArr +
+     "&currentUserId=" + currentUserId)
+
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+    )
+    }
 
   changeCarwashStatus(changeCarwashStatus:any): Observable<any[]> {
     // alert(shopservAmount)

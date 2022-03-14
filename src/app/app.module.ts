@@ -68,7 +68,9 @@ import { ViewbookdetailPopupComponent } from './viewbookdetail-popup/viewbookdet
 import { PopupmodalComponent } from './popupmodal/popupmodal.component';
 // import { NgChartsModule } from "ng2-charts";
 // import { ChartsModule } from 'ng2-charts/ng2-charts';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
   // { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
@@ -168,9 +170,14 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatTabsModule,
     NgApexchartsModule,
-    
+    MatDatepickerModule
   ],
-  providers: [EventEmitterService],
+  providers: [
+    EventEmitterService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  ],
   bootstrap: [AppComponent]
 
 })

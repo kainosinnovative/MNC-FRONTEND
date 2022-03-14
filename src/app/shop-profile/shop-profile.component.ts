@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation,ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { Inject, Injectable} from  '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
@@ -7,13 +7,17 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { config_url } from '../shared/customer/constant';
+import * as moment from 'moment';
+import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 @Component({
   selector: 'app-shop-profile',
   templateUrl: './shop-profile.component.html',
   styleUrls: ['./shop-profile.component.scss'],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  encapsulation:ViewEncapsulation.None,
 })
 export class ShopProfileComponent implements OnInit {
+  d:any;
 shopprofile : any;
 date: any;
 ShopProfileDetails :any;
@@ -30,13 +34,28 @@ citytype: any;
   citydata: any;
   statetype: any;
   statedata: any;
+  dates: moment.Moment[] = []
+  datas:any;
+  datesToHighlight: any;
+  
+
   constructor(public router: Router,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public restApi: RestApiService,
-    private toastr: ToastrService,public datepipe: DatePipe) { }
+    private toastr: ToastrService,public datepipe: DatePipe, private cdref: ChangeDetectorRef) { }
+
+    ngAfterContentChecked() {
+
+      this.cdref.detectChanges();
+  
+    }
 
   ngOnInit(): void {
+   
+    this.datas = ["2022-03-22", "2022-03-24"]; // ["2019-01-22", "2019-01-24"]
+    console.log("this.datas>>>",this.datas);
+
     this.readProfileDataById();
   let currentShopId:any = localStorage.getItem('currentUserId');
   this. loadcitylist();
@@ -67,8 +86,15 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     shop_timing_from:['',[Validators.required]],
     shop_timing_to:['',[Validators.required]]
   
-    })    
-;
+    })   
+    
+    
+    let yesterday = new Date(new Date().setDate(new Date().getDate()-1));
+    // alert(yesterday)
+    // var alphas:string[]; 
+    // this.dates.push(yesterday);
+//  this.dates.push(new Date('7/15/1966'));
+
   }
   readProfileDataById() {
   
@@ -205,5 +231,87 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     })
   }
 
+
+
+  isSelected = (event: any) => {
+    const date = event as moment.Moment
+    
+    return (this.dates.find(x => x.isSame(date))) ? "selected" : "";
+  };
+
+  
+  
+  select(event: any, calendar: any) {
+    const date: moment.Moment = event
+
+    const index = this.dates.findIndex(x => x.isSame(date));
+    
+    // var date1:any = date.zone("+09:00").format('DD-MM-YYYY');
+    // alert(date)
+    if (index < 0) this.dates.push(date);
+    else this.dates.splice(index, 1);
+
+    calendar.updateTodaysDate();
+  }
+  HolidaysDateArr = new Array();
+  holidaysInsert() {
+    // alert(this.dates);
+    let selectedDate = (<HTMLInputElement>document.getElementById("selectedDateArr")).innerText;
+    // alert(selectedDateArr)
+    if(selectedDate == "") {
+      this.toastr.error("Select any date");
+    }
+    else {
+    var selectedDateArr = selectedDate.split(",");
+    for (let i = 0; i < selectedDateArr.length; i++) {
+      var val = selectedDateArr[i].replace(/\s/g, "");
+      if(val != "")
+      this.HolidaysDateArr.push(val);
+    }
+    // 
+    console.log(this.HolidaysDateArr)
+    let currentUserId:any = localStorage.getItem('currentUserId');
+    var holidaysArr = 
+                   {
+                  "selectedDateArr":  this.HolidaysDateArr,
+                  "currentUserId": currentUserId
+                  
+                   }
+
+this.restApi.insertShopHolidays(holidaysArr).subscribe((data: any) => {
+  console.log('POST Request is successful >>>>>>>>', data.status);
+  if(data.status == "pass") {
    
+      this.toastr.success("holidays updated");
+      this.HolidaysDateArr = new Array();
+      // this.dates = [];
+    
+    
+  }
+},
+success => {
+  console.log('Error>>>>>', success);
+ 
+  
+  
+}
+);
+  }
+  }
+  
+
+  dateClass() {
+    return (date: Date): MatCalendarCellCssClasses => {
+      date = new Date(date); // <<< My edit
+      const highlightDate = this.datas
+        .map((strDate: string | number | Date) => new Date(strDate))
+        .some((d: { getDate: () => number; getMonth: () => number; getFullYear: () => number; }) => {
+          return d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear()
+        });
+
+      return highlightDate ? 'special-date' : '';
+    };
+  }
+  
+
 }

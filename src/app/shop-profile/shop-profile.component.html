@@ -246,6 +246,29 @@
                         </div>
 
         </div>
+
+        <div class="col-sm-4"> 
+
+            <div *ngIf="datas">
+                <mat-calendar [dateClass]="dateClass()" ></mat-calendar>
+               </div>
+
+            <!-- <h1>Selected Dates:</h1>
+            <div class="results" id="selectedDateArr" style="height: 100px;overflow: auto;">
+              <div *ngFor="let date of dates" >
+                <p >{{ date.zone("+09:00").format('YYYY-MM-DD') }},</p>
+              </div>
+            </div>
+            <div (click)="$event.stopPropagation()" class="drop-calendar">
+              <mat-calendar #calendar (selectedChange)="select($event,calendar)"   [dateClass]="isSelected"></mat-calendar>
+            </div>   -->
+            
+            <div style="text-align: right;">
+                <button (click)="holidaysInsert()">
+                    Update
+                </button>
+            </div>
+        </div>
        
             </div>
             
