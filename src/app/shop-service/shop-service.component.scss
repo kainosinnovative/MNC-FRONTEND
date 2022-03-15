@@ -163,12 +163,10 @@ max-height: none;
   overflow: auto;
   width: 100%;
   }
-  .autocomplete-container .input-container input{
-    width: 0% !important;
+  .ng-autocomplete {
+    ::ng-deep .autocomplete-container {
+      width: 0% !important;
+    }
   }
 }
 
-// .secondrow
-// {
-// padding:20px !important;
-// }
