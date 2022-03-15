@@ -275,4 +275,21 @@ line-height: unset !important;
   display: none;
 } 
 
+.mat-calendar-body-cell.selected {
+  background-color: skyblue !important;
+  border-radius: 50% !important;
+  // color: white !important;
+}
+
+.mat-calendar-body-cell-content.mat-calendar-body-cell.selected{
+  background-color: green !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 768px){
+  .autocomplete-container .input-container input {
+  
+    width: 200px !important;
+  }
+  }
 

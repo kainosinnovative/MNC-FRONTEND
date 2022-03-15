@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewEncapsulation,ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Inject, Injectable} from  '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
@@ -35,28 +35,50 @@ citytype: any;
   statetype: any;
   statedata: any;
   dates: moment.Moment[] = []
-  datas:any;
+  datas = new Array();
   datesToHighlight: any;
-  
-
+  ShopHolidaysDetails:any;
+  ShopHolidaysDetails1:any;
+  config1: any;
   constructor(public router: Router,
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public restApi: RestApiService,
-    private toastr: ToastrService,public datepipe: DatePipe, private cdref: ChangeDetectorRef) { }
+    private toastr: ToastrService,public datepipe: DatePipe) { }
 
-    ngAfterContentChecked() {
+    // ngAfterContentChecked() {
 
-      this.cdref.detectChanges();
+    //   this.cdref.detectChanges();
   
-    }
+    // }
 
   ngOnInit(): void {
+    
+    
+    var currentUserId = localStorage.getItem('currentUserId');
+    this.restApi.getShopHolidays(currentUserId).subscribe((res)=>{
+      this.ShopHolidaysDetails = res
    
-    this.datas = ["2022-03-22", "2022-03-24"]; // ["2019-01-22", "2019-01-24"]
-    console.log("this.datas>>>",this.datas);
-
+      this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
+      console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
+      // console.log("this.ShopHolidaysDetails1.length>>",this.ShopHolidaysDetails1.length);
+      for(var i=0;i<=((this.ShopHolidaysDetails1.length)-1);i++){
+        //alert(this.ShopHolidaysDetails1[i])
+        //console.log("datas>>>",this.ShopHolidaysDetails1[i]["leave_date"]);
+        this.datas.push(this.ShopHolidaysDetails1[i].leave_date);
+        
+      }
+      
+      
+    }
+    );
+    // console.log("datas1>>>",this.datas);
+    // this.datas = ["2022-03-22", "2022-03-24"]; // ["2019-01-22", "2019-01-24"]
+    console.log("this.datas>>>",this.datas)
+    // this.select(1,2);
     this.readProfileDataById();
+    
+    this.getholidays();
   let currentShopId:any = localStorage.getItem('currentUserId');
   this. loadcitylist();
   this.getstatedata();
@@ -95,6 +117,12 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     // this.dates.push(yesterday);
 //  this.dates.push(new Date('7/15/1966'));
 
+// this.dateClass();
+this.config1 = {
+  itemsPerPage: 5,
+  currentPage: 1,
+  // totalItems: this.collection.count
+};
   }
   readProfileDataById() {
   
@@ -239,19 +267,40 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     return (this.dates.find(x => x.isSame(date))) ? "selected" : "";
   };
 
+  // isSelected(event: any) {
+  //   const date = event as moment.Moment
+    
+  //   return (this.dates.find(x => x.isSame(date))) ? "selected" : "";
+  // }
+
   
-  
+  // count = 0;
   select(event: any, calendar: any) {
+    
+    //alert(obj)
+    //obj.style.backgroundColor = "red";
+    var clickedDate = event.zone("+09:00").format('YYYY-MM-DD');
+    if(!this.datas.includes(clickedDate)){
     const date: moment.Moment = event
 
     const index = this.dates.findIndex(x => x.isSame(date));
     
     // var date1:any = date.zone("+09:00").format('DD-MM-YYYY');
     // alert(date)
-    if (index < 0) this.dates.push(date);
-    else this.dates.splice(index, 1);
+    if (index < 0){
+      this.dates.push(date);
+      
+    } 
+    else {
+      this.dates.splice(index, 1);
+    }
 
     calendar.updateTodaysDate();
+  }
+  else {
+    this.toastr.error("Already added");
+  }
+    
   }
   HolidaysDateArr = new Array();
   holidaysInsert() {
@@ -282,12 +331,14 @@ this.restApi.insertShopHolidays(holidaysArr).subscribe((data: any) => {
   console.log('POST Request is successful >>>>>>>>', data.status);
   if(data.status == "pass") {
    
-      this.toastr.success("holidays updated");
+      this.toastr.success("Holidays updated");
       this.HolidaysDateArr = new Array();
-      // this.dates = [];
-    
-    
+      this.getholidays();
+      window.setTimeout(function(){location.reload()},100)
   }
+  // else {
+  //   this.toastr.error("Holidays updated");
+  // }
 },
 success => {
   console.log('Error>>>>>', success);
@@ -301,6 +352,7 @@ success => {
   
 
   dateClass() {
+    // alert("hi")
     return (date: Date): MatCalendarCellCssClasses => {
       date = new Date(date); // <<< My edit
       const highlightDate = this.datas
@@ -309,9 +361,63 @@ success => {
           return d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear()
         });
 
-      return highlightDate ? 'special-date' : '';
+      return highlightDate ? 'special-date' : '' ;
     };
   }
+
   
+  
+  getClickeddate(val:any) {
+    //alert(val);
+  }
+
+  pageChanged1(event:any){
+    this.config1.currentPage = event;
+  }
+
+  DeleteHolidays(holidayid:any) {
+    // alert(holidayid);
+    var holidaysData = 
+                   {
+                  "holidayid": holidayid
+                   }
+
+this.restApi.DeleteHolidays(holidaysData).subscribe((data: any) => {
+  console.log('POST Request is successful >>>>>>>>', data.status);
+  if(data.status == "pass") {
+   
+      this.toastr.error("Holiday deleted");
+      this.getholidays();
+    
+  }
+},
+success => {
+  console.log('Error>>>>>', success);
+ 
+  
+  
+}
+);
+  }
+
+  getholidays() {
+    var currentUserId = localStorage.getItem('currentUserId');
+    this.restApi.getShopHolidays(currentUserId).subscribe((res)=>{
+      this.ShopHolidaysDetails = res
+   
+      this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
+      console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
+      // console.log("this.ShopHolidaysDetails1.length>>",this.ShopHolidaysDetails1.length);
+      for(var i=0;i<=((this.ShopHolidaysDetails1.length)-1);i++){
+        //alert(this.ShopHolidaysDetails1[i])
+        //console.log("datas>>>",this.ShopHolidaysDetails1[i]["leave_date"]);
+        this.datas.push(this.ShopHolidaysDetails1[i].leave_date);
+        
+      }
+      
+      
+    }
+    );
+  }
 
 }
