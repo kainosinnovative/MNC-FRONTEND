@@ -16,6 +16,7 @@ import { DynamicGrid } from '../shared//grid.model';
 
 var event:string;
 var num2: any;
+// size:any;
 var num1 = localStorage.getItem('isLoggedIn');
         if(num1 == "" || num1 == null) {
             num2 = 0;
@@ -33,7 +34,7 @@ providers: [DatePipe]
 
 export class CustomerCreateComponent implements OnInit {
 
-
+  @ViewChild('coverFilesInput') imgType:ElementRef;
 
 types:any;
 profileform : any;
@@ -82,6 +83,9 @@ dynamicArray: Array<DynamicGrid> = [];
   // MasterServiceid: any;
   Whislistid: any;
   Whislistid1: any;
+  size: any;
+  width: number;
+  height: number;
 
 
 
@@ -218,16 +222,26 @@ get f(){
 
 fileChange(event:any) {
 
+ 
+   
+
   const fileList: FileList = event.target.files;
   //check whether file is selected or not
   if (fileList.length > 0) {
 
+    
+
+
       const file = fileList[0];
       //get file information such as name, size and type
       console.log('finfo',file.name,file.size,file.type);
+      console.log('size',file.size);
+      console.log('type',file.type);
+      console.log('type',file);
       //max file size is 4 mb
       let currentUserId:any = localStorage.getItem('currentUserId');
-      if((file.size/1048576)<=4)
+      if(file.type == "image/jpeg") {
+        if(file.size < 70000)
       {
         let formData = new FormData();
         let info={id:2,name:'raja'}
@@ -241,10 +255,37 @@ fileChange(event:any) {
         this.file_data=formData
 
       }else{
+        this.toastr.error("File size should not exceeds 70 KB");
         //this.snackBar.open('File size exceeds 4 MB. Please choose less than 4 MB','',{duration: 2000});
       }
+        
+      }
+      else if(file.type == "image/png") {
+        if(file.size < 70000)
+      {
+        let formData = new FormData();
+        let info={id:2,name:'raja'}
+        formData.append('file', file, file.name);
+        formData.append('id','2');
+        formData.append('tz',new Date().toISOString())
+        formData.append('update','2')
+        formData.append('info',JSON.stringify(info))
+        formData.append('currentUserId',currentUserId)
 
-  }
+        this.file_data=formData
+
+      }else{
+        this.toastr.error("File size should not exceeds 50 KB");
+        //this.snackBar.open('File size exceeds 4 MB. Please choose less than 4 MB','',{duration: 2000});
+      }
+      }
+      else {
+        this.toastr.error("File must be jpeg/png");
+      }
+      
+
+  
+}
 
 
   // alert(this.file_data)
@@ -257,8 +298,13 @@ fileChange(event:any) {
     });
 
     // this.toastr.success('Profile Image Successfully');
+    
+    
+   }   
 
-}
+
+
+
 
 
 uploadFile(profileform:any)

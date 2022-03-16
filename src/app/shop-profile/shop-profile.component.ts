@@ -168,9 +168,9 @@ this.config1 = {
         console.log('finfo',file.name,file.size,file.type);
         //max file size is 4 mb
         let currentUserId:any = localStorage.getItem('currentUserId');
-        if((file.size/1048576)<=4)
-        {
-          let formData = new FormData();
+        if(file.type == "image/jpeg") {
+          if(file.size < 70000) {
+            let formData = new FormData();
           let info={id:2,name:'raja'}
           formData.append('file', file, file.name);
           formData.append('id','2');
@@ -180,9 +180,34 @@ this.config1 = {
           formData.append('currentUserId',currentUserId)
           formData.append('shopownersession',"shopowner")
           this.file_data=formData
-          
+          }
+          else{
+        this.toastr.error("File size should not exceeds 70 KB");
+        //this.snackBar.open('File size exceeds 4 MB. Please choose less than 4 MB','',{duration: 2000});
+      }
         }
-   
+        else if(file.type == "image/png") {
+          if(file.size < 70000) {
+            let formData = new FormData();
+          let info={id:2,name:'raja'}
+          formData.append('file', file, file.name);
+          formData.append('id','2');
+          formData.append('tz',new Date().toISOString())
+          formData.append('update','2')
+          formData.append('info',JSON.stringify(info))
+          formData.append('currentUserId',currentUserId)
+          formData.append('shopownersession',"shopowner")
+          this.file_data=formData
+          }
+          else {
+            this.toastr.error("File size should not exceeds 70 KB");
+          }
+        
+        }
+        else {
+          this.toastr.error("File must be jpeg/png");
+          //return false;
+        }
         
     }
     this.http.post(config_url+'/app/AddCustomerInsert',this.file_data)
@@ -205,7 +230,8 @@ this.config1 = {
         console.log('finfo',file.name,file.size,file.type);
         //max file size is 4 mb
         let currentUserId:any = localStorage.getItem('currentUserId');
-        if((file.size/1048576)<=4)
+        if(file.type == "image/jpeg") {
+          if(file.size < 50000)
         {
           let formData = new FormData();
           let info={id:2,name:'raja'}
@@ -219,6 +245,35 @@ this.config1 = {
           this.file_data=formData
           
         }
+        else {
+          this.toastr.error("File size should not exceeds 50 KB");
+        }
+        }
+
+        else if(file.type == "image/png") {
+          if(file.size < 50000)
+        {
+          let formData = new FormData();
+          let info={id:2,name:'raja'}
+          formData.append('file', file, file.name);
+          formData.append('id','2');
+          formData.append('tz',new Date().toISOString())
+          formData.append('update','2')
+          formData.append('info',JSON.stringify(info))
+          formData.append('currentUserId',currentUserId)
+          formData.append('shopownersession',"shopownerlogo")
+          this.file_data=formData
+          
+        }
+        else {
+          this.toastr.error("File size should not exceeds 50 KB");
+        }
+        }
+        else {
+          this.toastr.error("File must be jpeg/png");
+        }
+
+        
    
         
     }
