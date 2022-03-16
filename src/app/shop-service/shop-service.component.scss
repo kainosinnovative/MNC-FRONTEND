@@ -174,5 +174,21 @@ max-height: none;
 
     width: 0% !important;
   }
+  .offerptage{
+
+ width: 40px !important;
+  }
+  .offerprice{
+    width: 25px !important;
+  }
+
+}
+
+@media screen and (min-width: 768px){
+
+  .offerptage{
+
+    width: 80px !important;
+     }
 }
 

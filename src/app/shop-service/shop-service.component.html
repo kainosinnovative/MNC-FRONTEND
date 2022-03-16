@@ -67,11 +67,11 @@
 
                     </td>
                 <td>
-                 &nbsp; <input id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)" style="width: 80px;">
+                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
                  <p id="validateoffer_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
                 </td>
                 <td>
-                  &nbsp;<input id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
+                  &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
 
                 </td>
                 <td>
