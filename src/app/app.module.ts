@@ -71,6 +71,8 @@ import { PopupmodalComponent } from './popupmodal/popupmodal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home Component' } },
@@ -171,7 +173,12 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatTabsModule,
     NgApexchartsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgxChartsModule,
+    
+    // ScaleLinear, 
+    // ScalePoint, 
+    // ScaleTime
   ],
   providers: [
     EventEmitterService,

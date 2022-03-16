@@ -17,6 +17,8 @@ import {
   ApexFill,
   ApexLegend,ApexYAxis
 } from "ng-apexcharts";
+import * as CanvasJS from './canvasjs.min';
+
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -43,6 +45,8 @@ export type ChartOptions2 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
+  ComboOffersByShopiddashboard:any;
+  ComboOffersByShopiddashboard1:any;
   bookingDetails:any;
   bookingDetails1:any;
   config: any;
@@ -115,22 +119,69 @@ export class ShopdashboardComponent implements OnInit {
     };
 
     this.loadServiceDataOffers();
+
+
+    
+
+    this.getcurrentComboOffersByShopiddashboard();
     
   }
 
-  // loadServiceDataOffers(){
-  //   let currentUserId = localStorage.getItem('currentUserId');
-  //   return this.restApi.getServiceDataOffers(currentUserId).subscribe((data: {}) => {
-  //     // alert(data)
-  //     this.serviceDataOffers = data;
-  //     this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentOffersByShopid;
+  FinalBarchartArr = new Array();
+  getcurrentComboOffersByShopiddashboard(){
+    let currentUserId = localStorage.getItem('currentUserId');
+    return this.restApi.getcurrentComboOffersByShopiddashboard(currentUserId).subscribe((data: {}) => {
+      // alert(data)
+      this.ComboOffersByShopiddashboard = data;
+      this.ComboOffersByShopiddashboard1 = this.ComboOffersByShopiddashboard;
       
-  //     console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
-  //     // this.dtTrigger.next();
-  //   })
+      console.log("ComboOffersByShopiddashboard>>>",this.ComboOffersByShopiddashboard1)
+
+      // for(let i=0;i<this.ComboOffersByShopiddashboard1.length;i++){
+        
+      //   var json = 
+      //              {
+      //             "y": Number(this.ComboOffersByShopiddashboard1[i].y),
+      //             "label": this.ComboOffersByShopiddashboard1[i].label
+      //              }
+      //   this.FinalBarchartArr.push(json);
+
+      // }
+      
+
+      // let chart = new CanvasJS.Chart("chartContainer", {
+      //   animationEnabled: true,
+      //   exportEnabled: true,
+      //   title: {
+      //     text: "Basic Column Chart in Angular"
+      //   },
+      //   axisX: {
+      //     title: "Departments"
+      //   },
+      //   axisY: {
+      //     title: "Salary in USD",
+      //   },
+      //   data: [{
+      //     type: "column",
+      //     dataPoints: [this.FinalBarchartArr
+      //       // { y: 71, label: "Apple" },
+      //       // { y: 55, label: "Mango" },
+      //       // { y: 50, label: "Orange" },
+      //       // { y: 65, label: "Banana" },
+      //       // { y: 95, label: "Pineapple" },
+      //       // { y: 68, label: "Pears" },
+      //       // { y: 28, label: "Grapes" },
+      //       // { y: 34, label: "Lychee" },
+      //       // { y: 14, label: "Jackfruit" }
+      //     ]
+      //   }]
+      // });
+        
+      // chart.render();
+    })
 
     
-  // }
+  }
 
   customerBookingForShop(){
 

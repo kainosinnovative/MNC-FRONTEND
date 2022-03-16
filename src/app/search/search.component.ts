@@ -151,6 +151,12 @@ private innerWidth: number;
 
   clickEvent(shopid :number,action:any){
     //alert(action)
+    if(!this.userroleSes)
+    {
+      this.eventEmitterService.onFirstComponentButtonClick();
+     // alert("please login");
+    }
+    else {
     var wishlist1:any;
    //  if(action == "combooffer") {
      wishlist1="wishlistvalue_"+ shopid;
@@ -237,6 +243,7 @@ else
   }
 
   }
+}
 
 
 showloginSuccess() {
