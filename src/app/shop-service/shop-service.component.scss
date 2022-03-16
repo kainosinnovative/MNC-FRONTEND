@@ -157,16 +157,22 @@ max-height: none;
   margin-top: 12px!important;
 }
 
+
+
 @media screen and (max-width: 768px){
 
-  .boxwidht{
-  overflow: auto;
-  width: 100%;
-  }
+  // .boxwidht{
+  // overflow: auto;
+  // width: 100%;
+  // }
   .ng-autocomplete {
-    ::ng-deep .autocomplete-container {
+    // ::ng-deep .autocomplete-container { 
       width: 0% !important;
-    }
+    // }
+  }
+  autocomplete-container .input-container input {
+
+    width: 0% !important;
   }
 }
 
