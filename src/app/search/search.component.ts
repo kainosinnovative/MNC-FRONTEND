@@ -52,6 +52,9 @@ wishlistdata1: any;
 date:any;
 private innerWidth: number;
   private mobileBreakpoint = 480;
+  ShopHolidaysDetails:any;
+  ShopHolidaysDetails1:any;
+  customerId:any;
   constructor(private service: Service,public datepipe: DatePipe,private toastr: ToastrService,public restApi: RestApiService,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) {
      this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -67,6 +70,8 @@ private innerWidth: number;
    dashboardShop1:any;
    dashboardShopoffer:any;
    dashboardShopoffer1:any;
+   CustomerWhislistData:any;
+   CustomerWhislistData1:any;
   ngOnInit() {
     this.adjustsItemsPerSlide();
     this.date=new Date();
@@ -86,6 +91,9 @@ private innerWidth: number;
      )
    }
    onSelFunc(option: any){
+
+    
+
     console.log(option);
     let city1= localStorage.getItem('selectedCity');
    return this.restApi.dashboardShopSearch(option,city1).subscribe((data: {}) => {
@@ -97,6 +105,14 @@ private innerWidth: number;
       {
         this.dashboardShop1='';
       }
+      this.getholidaysForAll();
+
+      this.customerId= localStorage.getItem('currentUserId');
+   console.log(this.customerId);
+    if(this.customerId != null)
+    {
+    this.customerWhislist(this.customerId);
+    }
     })
   }
   onSelFunc1(option: any){
@@ -108,6 +124,14 @@ private innerWidth: number;
        this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
 
        console.log("data dashboard1>>>",this.dashboardShopoffer1);
+       this.getholidaysForAll();
+
+       this.customerId= localStorage.getItem('currentUserId');
+   console.log(this.customerId);
+    if(this.customerId != null)
+    {
+    this.customerWhislist(this.customerId);
+    }
      })
 
   }
@@ -125,62 +149,96 @@ private innerWidth: number;
 
   }
 
-clickEvent(shopid :number){
-  //alert(shopid)
-  let wishlist1="wishlistvalue_"+ shopid;
+  clickEvent(shopid :number,action:any){
+    //alert(action)
+    var wishlist1:any;
+   //  if(action == "combooffer") {
+     wishlist1="wishlistvalue_"+ shopid;
+   //  }
+   //  else {
+    let  wishlist2="wishlistvalue2_"+ shopid;
+   //  }
 
-  let  customerid = localStorage.getItem('currentUserId');
-  let cityid = localStorage.getItem('selectedCity');
-
-
-
-  //let wishlist1 =  (<HTMLInputElement>document.getElementById(wishlist)).innerHTML;
-  //console.log(wishlist1)
-let wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist1)).style.color;
-//alert(wishlistcolor)
-
-if(wishlistcolor === "gray"){
-
-this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
-     '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
-       (data: any) => {
-     console.log(data)
+    let  customerid = localStorage.getItem('currentUserId');
+    let cityid = localStorage.getItem('selectedCity');
 
 
 
+    //let wishlist1 =  (<HTMLInputElement>document.getElementById(wishlist)).innerHTML;
+    //console.log(wishlist1)
+    var wishlistcolor:any;
+     if(action == "combooffer") {
+ wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist1)).style.color;
+     }else {
+       wishlistcolor =  (<HTMLInputElement>document.getElementById(wishlist2)).style.color;
+     }
+ //alert(wishlistcolor)
+
+ if(wishlistcolor === "gray"){
+
+ this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
+       '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+         (data: any) => {
+       console.log(data)
 
 
-     this.wishlistdata = data;
-     if(this.wishlistdata.status === "pass"){
 
-      (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
 
-      this.showloginSuccess();
-      }
-   }
-    );
+
+       this.wishlistdata = data;
+       if(this.wishlistdata.status === "pass"){
+
+         if((<HTMLInputElement>document.getElementById(wishlist1)) != null) {
+           (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "red";
+
+           (<HTMLInputElement>document.getElementById(wishlist1)).style.cursor = "pointer";
+         }
+
+         if((<HTMLInputElement>document.getElementById(wishlist2)) != null) {
+           (<HTMLInputElement>document.getElementById(wishlist2)).style.color = "red";
+
+           (<HTMLInputElement>document.getElementById(wishlist2)).style.cursor = "pointer";
+         }
+
+       
+       // document.getElementById("myP").style.cursor = "pointer";
+        this.showloginSuccess();
+        }
+     }
+      );
 }
 
 else
-{
-   this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
-     '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
-       (data: any) => {
-     //console.log(data)
+ {
+     this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
+       '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
+         (data: any) => {
+       //console.log(data)
 
 
 
-     this.wishlistdata1 = data;
-     if(this.wishlistdata1.status === "pass"){
+       this.wishlistdata1 = data;
+       if(this.wishlistdata1.status === "pass"){
 
-      (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "gray";
-      //alert("Successfully Removed your Wishlist")
-      }
-   }
-    );
-}
+         if((<HTMLInputElement>document.getElementById(wishlist1)) != null) {
+           (<HTMLInputElement>document.getElementById(wishlist1)).style.color = "gray";
 
-}
+         }
+
+         if((<HTMLInputElement>document.getElementById(wishlist2)) != null) {
+           (<HTMLInputElement>document.getElementById(wishlist2)).style.color = "gray";
+
+          
+         }
+        //alert("Successfully Removed your Wishlist")
+        }
+     }
+      );
+  }
+
+  }
+
+
 showloginSuccess() {
   console.log("login message");
 
@@ -246,4 +304,117 @@ userloggedin(shopid :number)
       this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
     }
   }
+
+
+  getholidaysForAll() {
+        
+    this.restApi.getholidaysForAll().subscribe((res)=>{
+      this.ShopHolidaysDetails = res
+   
+      this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
+      console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
+     this.MoveShopHoliday();
+      this.MoveShopOfferHoliday();
+    }
+    );
+  }
+
+  customerWhislist(customerId:any)
+  {
+    var whislist : [];
+    let selectedcity=localStorage.getItem('selectedCity');
+
+    return this.restApi.getCustomerWhislist(customerId,selectedcity).subscribe((data: {}) => {
+      // alert(data)
+      this.CustomerWhislistData = data;
+      this.CustomerWhislistData1= this.CustomerWhislistData.data;
+
+      console.log("whislist",this.CustomerWhislistData1);
+      // this.dtTrigger.next();
+      this.MoveWishlistCheck();
+      this.MoveWishlistOfferCheck();
+    })
+
+  }
+
+  MoveShopHoliday() {
+    console.log("val first>>>>",this.ShopHolidaysDetails1);
+    if(this.ShopHolidaysDetails1 != undefined) {
+    for(var i=0;i < this.ShopHolidaysDetails1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShop1.length);j++) {
+        if(this.dashboardShop1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+          var newNum = "leavecheck";
+          var newVal = "Closed";
+          this.dashboardShop1[j][newNum] = newVal;
+        }
+        
+        console.log("val",this.dashboardShop1);
+        // this.datecheckArr.push(ShopHolidaysDetails1[i])
+       
+      }
+
+    }
+  }
+  }
+
+  MoveShopOfferHoliday() {
+    //console.log("val first>>>>",this.ShopHolidaysDetails1);
+    if(this.ShopHolidaysDetails1 != undefined) {
+    for(var i=0;i < this.ShopHolidaysDetails1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
+        if(this.dashboardShopoffer1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+          var newNum = "leavecheck";
+          var newVal = "Closed";
+          this.dashboardShopoffer1[j][newNum] = newVal;
+        }
+        //console.log("val offers",this.dashboardShopOffer1);
+      }
+
+    }
+  } 
+    console.log("dashboardShopoffer1>>>",this.dashboardShopoffer1);
+  }
+
+  
+
+  MoveWishlistCheck() {
+    //console.log("after ws val",this.dashboardShop1);
+    if(this.CustomerWhislistData1 != undefined) {
+    for(var i=0;i < this.CustomerWhislistData1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShop1.length);j++) {
+        if(this.dashboardShop1[j].shop_id == this.CustomerWhislistData1[i].whislist){
+          var newNum = "wishlistcheck";
+          var newVal = "Yes";
+          this.dashboardShop1[j][newNum] = newVal;
+        }
+        
+      }
+
+    }
+  }
+    console.log("val1>>>",this.dashboardShop1);
+  }
+
+  MoveWishlistOfferCheck() {
+    //console.log("after ws val",this.dashboardShop1);
+    if(this.CustomerWhislistData1 != undefined) {
+    for(var i=0;i < this.CustomerWhislistData1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
+        if(this.dashboardShopoffer1[j].shop_id == this.CustomerWhislistData1[i].whislist){
+          var newNum = "wishlistcheck";
+          var newVal = "Yes";
+          this.dashboardShopoffer1[j][newNum] = newVal;
+        }
+        
+      }
+
+    }
+  }
+    console.log("MoveWishlistOfferCheck>>>",this.dashboardShopoffer1);
+  }
+
   }

@@ -54,9 +54,9 @@
                       <!-- <div style="display: none !important;" *ngIf="date >= s.leave_from_date && date <= s.leave_to_date;else other_content"> -->
                         <!-- content here ... -->
                     <!-- </div> -->
-      <ng-template  #other_content><span  class="openClosed">Open</span></ng-template>
+      <!-- <ng-template  #other_content><span  class="openClosed">Open</span></ng-template>
 
-                      <span #other_content *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content" class="openClosed">Closed</span>
+                      <span #other_content *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content" class="openClosed">Closed</span> -->
 
 
                      </div>
@@ -72,12 +72,18 @@
                 <div class="color-select d-flex ">
                   <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
                   </div>
-                  <!-- <div *ngFor="let s1 of CustomerWhislistData1">
-                  <div *ngFor="let m1 of  s1.whislist.split(',');let j1=index" > -->
+                 
+                  <!-- <div *ngFor="let s1 of CustomerWhislistData1"> -->
+                    <div *ngIf="s.wishlistcheck === 'Yes';else whislistElse"  class="fa fa-heart " id="wishlistvalue_{{s.shop_id}}" style="margin-top:12px;color: red;cursor: pointer;" (click)="clickEvent(s.shop_id,'combooffer')"> </div> 
+                  
+                     
+                     <!-- </div> -->
+                     
+                     <ng-template #whislistElse>
+                      <span class="wishlist"  title="Add to Wishlist" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id,'combooffer')" style="margin-top:12px;color: gray;cursor: pointer;"><i class="fa fa-heart"></i> </span>
+                     </ng-template>
 
-                   <!-- </div>
-                   </div> -->
-                   <span class="wishlist" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id)" style="margin-top:12px;color: gray;"><i class="fa fa-heart "></i></span>
+                   <!-- <span class="wishlist" id="wishlistvalue_{{s.shop_id}}" (click)="clickEvent(s.shop_id)" style="margin-top:12px;color: gray;"><i class="fa fa-heart "></i></span> -->
              </div>
 
              <b>Services:</b>
@@ -110,7 +116,8 @@
                 <div class="d-flex justify-content-between align-items-center pt-1">
                        <span class="buy">Save Upto <i class="fa fa-rupee"></i> {{s.original_amount - s.comboprice }} +</span>
 
-                    <a *ngIf = "date <= s.leave_from_date;else booknowDisable11"></a> <!--style="text-decoration: none;display: block;" class="booknowntn"  title="closed">Book Now-->
+                    <!-- <a *ngIf = "date <= s.leave_from_date;else booknowDisable11"></a>
+                    
                   <ng-template  #booknowDisable11>
                      <a  style="text-decoration: none;visibility: hidden;" class="" >Book Now</a>
                   </ng-template>
@@ -118,7 +125,14 @@
 
                     <ng-template  #booknowDisable>
                        <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
+                    </ng-template> -->
+
+                    <a style="text-decoration: unset;" class="openClosed" *ngIf = "s.leavecheck == 'Closed';else booknowDisable" >Closed</a>
+                     
+                    <ng-template  #booknowDisable>
+                       <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
                     </ng-template>
+
                 </div>
 
             </div>
@@ -151,9 +165,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                       <span *ngIf="s.offer_percent != 0" class="discount">{{s.offer_percent}}% Off</span>
                       <span *ngIf="s.offer_percent == 0" class="discount"></span>
-                      <ng-template  #other_content1><span  class="openClosed">Open</span></ng-template>
+                      <!-- <ng-template  #other_content1><span  class="openClosed">Open</span></ng-template> -->
 
-                      <span  *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content1" class="openClosed">Closed</span>
+                      <!-- <span  *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content1" class="openClosed">Closed</span> -->
 
                       <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span>  -->
                     </div>
@@ -169,6 +183,15 @@
                 <div class="color-select d-flex ">
                   <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
                   </div>
+
+                  <div *ngIf="s.wishlistcheck === 'Yes';else whislistElse2"  class="fa fa-heart " id="wishlistvalue2_{{s.shop_id}}" style="margin-top:12px;color: red;cursor: pointer;" (click)="clickEvent(s.shop_id,'offer')"> </div> 
+                  
+                 
+                  <ng-template #whislistElse2>
+                   <span class="wishlist"  title="Add to Wishlist" id="wishlistvalue2_{{s.shop_id}}" (click)="clickEvent(s.shop_id,'offer')" style="margin-top:12px;color: gray;cursor: pointer;"><i class="fa fa-heart"></i> </span>
+                  </ng-template>
+
+                  
              </div>
 
              <!-- <b>Service: </b> -->
@@ -209,16 +232,24 @@
                   <span *ngIf="s.offer_percent == 0" class="buy"></span>
 
 
-                  <a *ngIf = "date <= s.leave_from_date;else booknowDisable11"></a> <!--style="text-decoration: none;display: block;" class="booknowntn"  title="closed">Book Now-->
+                  <!-- <a *ngIf = "date <= s.leave_from_date;else booknowDisable11"></a> 
+                  
                   <ng-template  #booknowDisable11>
                      <a  style="text-decoration: none;visibility: hidden;" class="" >Book Now</a>
                   </ng-template>
-                  <a *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else booknowDisable1"></a> <!--style="text-decoration: none;display: block;" class="booknowntn"  title="closed">Book Now-->
+                  <a *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else booknowDisable1"></a> 
+                  
                   <ng-template  #booknowDisable1>
                      <a  style="text-decoration: none;cursor: pointer;" class="booknowntn" (click)="userloggedin(s.shop_id)" >Book Now</a>
-                  </ng-template>
+                  </ng-template> -->
 
-                <!-- <a style="text-decoration: none;" class="booknowntn" routerLink="/onlinebooking/{{s.shop_id}}" >Book Now</a> -->
+
+                  <a style="text-decoration: unset;" class="openClosed" *ngIf = "s.leavecheck == 'Closed';else booknowDisable" >Closed</a>
+                     
+                    <ng-template  #booknowDisable>
+                       <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
+                    </ng-template>
+
 
             </div>
 

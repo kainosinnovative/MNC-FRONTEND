@@ -228,7 +228,7 @@
             
                 <!--endphoto-->
             </div>
-          
+<!--           
         <div class="col-sm-4">  
             <div class="form-group form-inline">
                       
@@ -245,30 +245,80 @@
                     
                         </div>
 
+        </div> -->
+
+        <div class="col-sm-2"> 
+
+            <!-- <mat-calendar   #calendar [dateClass]="dateClass()" (selectedChange)="select($event,calendar,this)" ></mat-calendar> -->
+
+            
+            <div (click)="$event.stopPropagation()" >
+              <mat-calendar #calendar (selectedChange)="select($event,calendar)"   [dateClass]="isSelected"></mat-calendar>
+            </div>  
+            
+            <div style="text-align: right;">
+                <button class="allSubmitbtn" (click)="holidaysInsert()" style="border: none;">
+                    Update
+                </button>
+            </div>
         </div>
 
-        <div class="col-sm-4"> 
-
-            <div *ngIf="datas">
-                <mat-calendar [dateClass]="dateClass()" ></mat-calendar>
-               </div>
-
-            <!-- <h1>Selected Dates:</h1>
+        <div class="col-sm-2">
+            <br>
+            <p>Selected Dates:</p>
             <div class="results" id="selectedDateArr" style="height: 100px;overflow: auto;">
               <div *ngFor="let date of dates" >
                 <p >{{ date.zone("+09:00").format('YYYY-MM-DD') }},</p>
               </div>
             </div>
-            <div (click)="$event.stopPropagation()" class="drop-calendar">
-              <mat-calendar #calendar (selectedChange)="select($event,calendar)"   [dateClass]="isSelected"></mat-calendar>
-            </div>   -->
-            
-            <div style="text-align: right;">
-                <button (click)="holidaysInsert()">
-                    Update
-                </button>
-            </div>
-        </div>
+         </div>
+
+         <div class="col-sm-3">
+            <h2 style="text-align: center;" class="mainheading">leave Dates</h2>
+            <table  class="table table-responsive servicecss" >
+                <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+                  
+                    <tr>
+                        <th style="width:50px;font-weight:normal;">S.No</th>
+                    <th style="width:50px;font-weight:normal;">Date</th>
+                    
+                    <th style="width:50px;font-weight:normal;" >Delete</th>
+                   
+                    
+                  </tr>
+                </thead>
+                <tbody *ngIf = "ShopHolidaysDetails1 == ''">
+                  <tr>
+                    <td colspan="13" style="text-align: center;">
+                      No data available
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf = "ShopHolidaysDetails1 != ''">
+                  <tr *ngFor="let b of  ShopHolidaysDetails1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+                    
+                    <td>{{i+1}}</td>
+                    
+                    <td>
+                      {{b.leave_date	 | date: 'dd-MM-yyyy'}} 
+                    </td>
+                   
+                      
+                    <td>
+                      <a (click)="DeleteHolidays(b.id)"><i class="fa fa-close"></i></a>
+                     </td>
+                      
+                  </tr>
+                  
+                </tbody>
+              </table>
+      
+                
+                <div style="text-align: center;" *ngIf="ShopHolidaysDetails1!=''">
+                  <br>
+                  <pagination-controls (pageChange)="pageChanged1($event)"></pagination-controls>
+                </div>
+         </div>
        
             </div>
             
@@ -459,7 +509,7 @@
 
     <div class="col-sm-12 form-inline" style="text-align: right;">
             
-        <button class="btn btn-success carwashbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
+        <button class="btn btn-success allSubmitbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
         <!-- [disabled]='!shopprofile.valid' -->
         
 

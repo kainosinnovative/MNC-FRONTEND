@@ -673,4 +673,42 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
         )
         }
 
+        getShopHolidays(currentShopId	:any): Observable<logindetails> {
+
+          return this.http.get<logindetails>(this.apiURL + '/shop/getShopHolidays?shop_id='+ currentShopId	)
+        
+          .pipe(
+            retry(1),
+            catchError(this.handleError)
+        
+          )
+        
+        }
+
+        
+        getholidaysForAll(): Observable<any[]> {
+
+          return this.http.get<any[]>(this.apiURL + '/shop/getholidaysForAll')
+        
+          .pipe(
+            retry(1),
+            catchError(this.handleError)
+        
+          )
+        
+        }
+        
+        DeleteHolidays(holidaysData:any): Observable<any[]> {
+          // alert(shopservAmount)
+          let holidayid = holidaysData["holidayid"];
+        
+      
+      
+          return this.http.get<any[]>(this.apiURL + "/shop/DeleteHolidays?holidayid="+holidayid)
+      
+          .pipe(
+          retry(1),
+          catchError(this.handleError)
+          )
+          }
 }

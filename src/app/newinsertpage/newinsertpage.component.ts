@@ -65,6 +65,7 @@ export class NewinsertpageComponent implements OnInit {
   
   @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions2: Partial<ChartOptions2>;
+  datePickerCfg: any;
 
   constructor(public restApi: RestApiService,private http: HttpClient) {
     
@@ -183,5 +184,8 @@ export class NewinsertpageComponent implements OnInit {
     
   }
 
-
+  onDateChange(event:any) {
+  
+    this.datePickerCfg.formControlDate.setValue(undefined);     // <<<---
+}
 }
