@@ -1,7 +1,17 @@
 @media screen and (max-width: 768px) {
 
+  .addcombooffer
+{
+font-size:12px !important;
+margin-left: 20px !important;
+
+
+}
+
   .addbtn{
     width:75px !important;
+    margin-top: 8px;
+    height: 26px;
   }
   .bottonpadg{
     margin-bottom: 10px;
@@ -19,7 +29,7 @@
     margin-left: 1px;
   }
   .offernmsbtn1{
-    margin-left: 0px;
+    margin-left: 25px;
   }
   .amt{
     margin-left: 14px;
@@ -30,10 +40,10 @@
   .offeramt{
    // margin-left: 10px;
     width: 127px !important;
-    margin-left: 9px;
+    margin-left: -20px;
   }
   .offeramt1{
-     margin-left: 10px !important; 
+     margin-left: 0px !important; 
     // width: 127px;
    }
  
@@ -132,11 +142,7 @@ padding: 12px;
 {
 font-size:12px !important;
 }
-.addcombooffer
-{
-font-size:12px !important;
 
-}
 .table>:not(caption)>*>* {
 padding: 0px 0px !important;
 
