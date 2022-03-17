@@ -202,6 +202,12 @@ this.adjustsItemsPerSlide();
   }
 
 clickEvent(shopid :number,action:any){
+  if(!this.userroleSes)
+    {
+      this.eventEmitterService.onFirstComponentButtonClick();
+     // alert("please login");
+    }
+    else {
          //alert(action)
          var wishlist1:any;
         //  if(action == "combooffer") {
@@ -287,6 +293,7 @@ else
           }
            );
        }
+      }
 
        }
 

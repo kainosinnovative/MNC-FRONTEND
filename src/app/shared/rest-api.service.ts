@@ -711,4 +711,14 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
           catchError(this.handleError)
           )
           }
+
+          getcurrentComboOffersByShopiddashboard(currentUserId:any): Observable<any[]> {
+
+            return this.http.get<any[]>(this.apiURL + "/shop/getcurrentComboOffersByShopiddashboard?currentUserId="+currentUserId)
+      
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
 }
