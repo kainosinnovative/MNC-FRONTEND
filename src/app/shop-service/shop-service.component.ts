@@ -33,6 +33,9 @@ export class ShopServiceComponent implements  OnInit{
    MasterserviceForm:any;
    citytype:any;
    citytype1:any;
+   myservice:any;
+   servicemodelsdata:any;
+   servicemodelsdataobj:any;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe,
     private frmbuilder: FormBuilder) { }
@@ -44,7 +47,7 @@ export class ShopServiceComponent implements  OnInit{
     this.loadServiceData();
     this.loadMasterService();
     this.loadAllModels();
-   
+
     let currentUserId:any = localStorage.getItem('currentUserId');
     this.config = {
       itemsPerPage: 10,
@@ -66,14 +69,14 @@ export class ShopServiceComponent implements  OnInit{
 
     this.MasterserviceForm = this.frmbuilder.group({
       service_name: ['', Validators.required],
-      model_id: ['', Validators.required],
+     // model_id: ['', Validators.required],
       shop_id:[currentUserId, Validators.required],
-      actual_amount: ['', Validators.required],
+      //actual_amount: ['', Validators.required],
       lastupddt: [this.current_date, Validators.required],
-      
+
     }
     )
-    
+
   }
 
 
@@ -81,7 +84,7 @@ export class ShopServiceComponent implements  OnInit{
     this.config.currentPage = event;
   }
 
-  
+
 
 
   loadServiceData(){
@@ -90,17 +93,17 @@ export class ShopServiceComponent implements  OnInit{
       // alert(data)
       this.serviceData = data;
       this.serviceData1 = this.serviceData.data.carAndShopservice;
-      
+
       console.log(this.serviceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
 
   AddServiceAmount(obj:any) {
-    
+
     // alert(obj)
     let service_amountid = "amount_"+obj;
     let service_amount = (<HTMLInputElement>document.getElementById(service_amountid)).value;
@@ -115,18 +118,18 @@ export class ShopServiceComponent implements  OnInit{
     let updatebtn = "updatebtn_"+obj;
     (<HTMLInputElement>document.getElementById(updatebtn)).style.display="block";
 
-    // var shopservAmount = 
+    // var shopservAmount =
     //             {
     //               "serviceid": obj,
     //               "service_amount": service_amount,
     //               "currentUserId":currentUserId
-                  
+
     //               }
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
                      "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe( data => {
                       console.log('POST Request is successful >>>>>>>>', data);
-          
+
                   },
                   success => {
                       console.log('Error>>>>>', success.status);
@@ -134,7 +137,7 @@ export class ShopServiceComponent implements  OnInit{
                         this.loadServiceData();
                       }
                   }
-                      
+
 
                      )
 
@@ -143,7 +146,7 @@ export class ShopServiceComponent implements  OnInit{
     // }
     // ));
 
-    
+
     }
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
@@ -151,8 +154,8 @@ export class ShopServiceComponent implements  OnInit{
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
     }
 
-    
-  
+
+
   }
 
   UpdateServiceAmount(obj:any) {
@@ -181,14 +184,14 @@ export class ShopServiceComponent implements  OnInit{
                      }
 
 
-                     })) 
+                     }))
     }
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
     }
-    
+
   }
   UpdateOfferAmount(obj:any)
   {
@@ -220,16 +223,16 @@ export class ShopServiceComponent implements  OnInit{
                   if(todate<fromdate)
                   {
                     (<HTMLInputElement>document.getElementById(offertodate)).focus();
-                   
+
                     (<HTMLInputElement>document.getElementById(todateformat)).style.display ="block";
                   }
-                 
+
                   else
                   {
                   this.http.get('http://localhost/MNC-PHP-API/shop/Updateshopoffer?offer_amount='+offeramount +
                      "&serviceid=" + obj  + "&modelId="+model_id +"&offerpercent="+offerpercentage + "&lastupddt="+this.current_date +
                       "&fromdate="+fromdate + "&todate="+todate +"&currentUserId="+currentUserId) .subscribe((data => {
-                     
+
                      responsedata=data;
                      if(responsedata.status=="pass")
                      {
@@ -241,41 +244,41 @@ export class ShopServiceComponent implements  OnInit{
                      }
                     this.loadServiceData();
 
-                    })) 
+                    }))
                   }
     }
     else if(offerpercentage!="" && fromdate === "" && todate === ""){
       (<HTMLInputElement>document.getElementById(offerfromdate)).focus();
-     
+
       (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="block";
       (<HTMLInputElement>document.getElementById(offertodate)).focus();
-     
+
       (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="block";
     }
     else if(offerpercentage!="" && fromdate != "" && todate === ""){
-    
+
       (<HTMLInputElement>document.getElementById(offertodate)).focus();
       let validatetodateid= "validatetodate_"+obj;
       (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="block";
     }
     else if(offerpercentage!="" && fromdate === "" && todate != ""){
-    
+
       (<HTMLInputElement>document.getElementById(offerfromdate)).focus();
       let validatefromdateid= "validatefromdate_"+obj;
       (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="block";
     }
     else {
       (<HTMLInputElement>document.getElementById(offer_percent)).focus();
-    
+
       (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="block";
     }
-   
+
   }
   getOfferPrice(term: string,termid: string): void
   {
-      
+
       var termid1=termid;
-      var splitted = termid1.split("_", 2); 
+      var splitted = termid1.split("_", 2);
       var splitted1=splitted[1];
       var amount="amount_"+splitted1;
       var serviceamount= Number((<HTMLInputElement>document.getElementById(amount)).value);
@@ -285,7 +288,7 @@ export class ShopServiceComponent implements  OnInit{
       offeramtid="offeramount_"+splitted[1];
       console.log(offeramtid);
      (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
- 
+
 
   }
   // validatedate(datestring :string)
@@ -293,7 +296,7 @@ export class ShopServiceComponent implements  OnInit{
   //   console.log($event)
 
   // }
- 
+
 
   removevalidateMsg(id:any) {
     // alert("hi")
@@ -301,7 +304,7 @@ export class ShopServiceComponent implements  OnInit{
     // alert(validateamount)
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="none";
   }
-  
+
 
   loadMasterService(){
     let currentUserId = localStorage.getItem('currentUserId');
@@ -309,47 +312,55 @@ export class ShopServiceComponent implements  OnInit{
       // alert(data)
       this.MasterServiceData = data;
       this.MasterServiceData1 = this.MasterServiceData.data.MasterServiceAndShopService;
-      
+
       console.log("data>>>>",this.MasterServiceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
 
   loadAllModels(){
-    
+
     return this.restApi.getAllModels().subscribe((data: {}) => {
       // alert(data)
       this.MasterModelData = data;
       this.MasterModelData1 = this.MasterModelData.data.list;
-      
+
       console.log("models>>>>",this.MasterModelData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
-  
+
 
   AddMasterserviceDetails(MasterserviceForm:any) {
-    
+
+    for(var j=0;j < (MasterserviceForm.length);j++) {
+     // if(MasterserviceForm[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+        var newNum = "currentid";
+        let currentUserId = localStorage.getItem('currentUserId');
+        this.MasterserviceForm[j][newNum] = currentUserId;
+      }
+      console.log("ssss>>>>>",MasterserviceForm.service_name);
     this.http.post(config_url+'/shop/AddMasterservice',{MasterserviceForm})
       .subscribe(res => {
-      
+
       }, (err) => {
         console.log(err.status)
         if(err.status == 200) {
           this.loadMasterService();
           this.loadServiceData();
           this.toastr.success('Services added Successfully');
+         // this.MasterserviceForm.controls.service_name.setValue("");
         }
-      
+
     });
     console.log(MasterserviceForm);
-    
+
 
   }
 
@@ -361,16 +372,18 @@ export class ShopServiceComponent implements  OnInit{
     // let hidden_service = (<HTMLInputElement>document.getElementById("hidden_service")).value;
     this.http.post(config_url+'/shop/AddShopserviceDetails',{shopserviceForm})
       .subscribe(res => {
-      
+
       }, (err) => {
         console.log(err.status)
         if(err.status == 200) {
           this.loadServiceData();
           this.loadMasterService();
           this.loadAllModels();
-          // this.shopserviceForm.controls.actual_amount.setValue("");
+          //this.shopserviceForm.controls.actual_amount.setValue("");
+          (<HTMLInputElement>document.getElementById("newamount")).value="";
+          (<HTMLInputElement>document.getElementById("model")).value="";
         }
-      
+
     });
     console.log(shopserviceForm);
     this.toastr.success('Services added Successfully');
@@ -382,34 +395,55 @@ export class ShopServiceComponent implements  OnInit{
   }
 
   changeOtherToadd(selectedVal:any) {
-    // alert("hi") 
-    // alert(selectedVal.target.value);
-    if(selectedVal.target.value == "Others") {
-      // (<HTMLInputElement>document.getElementById("hiddenServidTd")).style.display = "block";
-    }
-    else {
-      // this.shopserviceForm.controls.hidden_service.setValue("");
-      // (<HTMLInputElement>document.getElementById("hidden_service")).value = "";
-      // (<HTMLInputElement>document.getElementById("hiddenServidTd")).style.display = "none";
-    }
+    // alert("hi")
+console.log(selectedVal);
+//this.selectedDeviceObj = selectedVal;
+let currentUserId = localStorage.getItem('currentUserId');
+(<HTMLInputElement>document.getElementById("model")).value='';
+this.myservice = (<HTMLInputElement>document.getElementById("service")).value;
+console.log(this.myservice);
+
+
+
+// ... do other stuff here ...
+
+this.http.get('http://localhost/MNC-PHP-API/shop/servicebasedonmodel?service_id='+this.myservice+
+'&currentUserId='+currentUserId).subscribe(
+data => {
+// //alert(data)
+ console.log(data);
+this.servicemodelsdata = data
+this.servicemodelsdataobj = this.servicemodelsdata.data.type;
+console.log(this.servicemodelsdataobj);
+},
+error => {
+// alert(error)
+console.log(error.status)
+// if(error.status == "200") {
+  //this.showsuccess();
+ // this.pagerefresh();
+// }
+}
+ );
   }
 
 
 
- 
 
-  
+
+
 
 
   selectEvent(item:any) {
-    // alert(item.service_id)
+    this.toastr.error("Enter New Service Name,");
+    this.MasterserviceForm.controls.service_name.setValue("");
   }
 
   onChangeSearch(val: string) {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
   }
-  
+
   onFocused(e:any){
     // do something when input is focused
   }
@@ -418,7 +452,7 @@ export class ShopServiceComponent implements  OnInit{
   changeServiceStatus(serviceid:any,status:any) {
 // alert(serviceid)
 // alert(status)
-    var changeServiceStatus = 
+    var changeServiceStatus =
                    {
                   "shopserviceid": serviceid,
                   "status": status,
@@ -432,9 +466,9 @@ this.restApi.changeServiceStatus(changeServiceStatus).subscribe((data: any) => {
 },
 success => {
   console.log('Error>>>>>', success);
- 
-  
-  
+
+
+
 }
 );
   }
