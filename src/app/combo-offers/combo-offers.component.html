@@ -163,30 +163,57 @@
   <div class="row amountwebrow" >
     <div class="col-sm-1"></div>
     <div class="col-sm-5 bottonpadg" style="width:-2% !important;">
-      <label class="offernmsbtn" style="width:80px;">Offer Name</label>
-        <select class="offernmsbtn1" id="offername"  style="width:130px;height: 24px;" (change)="custom()">
-        <option value="">--Select--</option>
-        <option value="Basic">Basic</option>
-        <option value="Classic">Classic</option>
-        <option value="Supreme">Supreme</option>
-        <option value="Delux">Delux</option>
-        <option value="Custom">Custom</option>
-      </select>
-
-<p style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</p>
+      <table>
+        <tr>
+          <td>
+            <label class="offernmsbtn" style="width:80px;">Offer Name</label>
+            <select class="offernmsbtn1" id="offername"  style="width:130px;height: 24px;" (change)="custom()">
+            <option value="">--Select--</option>
+            <option value="Basic">Basic</option>
+            <option value="Classic">Classic</option>
+            <option value="Supreme">Supreme</option>
+            <option value="Delux">Delux</option>
+            <option value="Custom">Custom</option>
+          </select>
+    
+    <p style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div  class="row amountwebrow" id="Customname" style="margin-left: 81px;">
+              <!-- <div class="col-sm-1"></div> -->
+              <!-- <div class="col-sm-8"> -->
+                <br>
+                 <input type="text"  id="offercustomname" style="padding-top: 11px;width: 130px;height: 24px;text-align: left;padding-left:15px;">
+          
+              <p style="color: red;display: none;text-align: center;" id="offercustomnameError">Enter Offer Name</p>
+            <!-- </div> -->
+              </div>
+          </td>
+          </tr>
+        </table>
+      
     </div>
     <div class="col-sm-6" style="padding-left:0px !important;padding-right:0px !important;">
-      <label class="amt" style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>   <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
+      <table>
+        <tr>
+          <td>
+            <label class="amt" style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>   <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
+
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            
+          </td>
+        </tr>
+      </table>
     </div>
 
    </div>
-   <div  class="row amountwebrow" id="Customname" style="margin-top:10px;">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8">
-    <label style="width: 80px;margin-left:55px;"></label>   <input type="text"  id="offercustomname" style="width: 140px;height: 24px;text-align: left;padding-left:15px;">
-
-    <p style="color: red;display: none;text-align: center;" id="offercustomnameError">Enter Offer Name</p></div>
-    </div>
+   
    <div  class="row amountwebrow" style="margin-top:10px;">
     <div class="col-sm-1"></div>
     <div class="col-sm-1 offerpreg bottonpadg">
@@ -198,7 +225,7 @@
     </div>
 
     <div class="col-sm-5">
-      <label class="offeramt" style=" width: 125px;padding-left:22px;">Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label>  <input readonly class="offeramt1" type="text" id="combooffer_offeramount" style="width: 130px;height: 24px;text-align:left;padding-left:15px;">
+      <label class="spaceOffAmount"></label><label class="offeramt spaceOffAmount2" style=" width: 125px;padding-left:22px;">Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label>  <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;padding-left:15px;">
       </div>
 
       <div class="col-sm-3" >
@@ -239,9 +266,9 @@
   <div class="content-container" [class.opened]="opened">
     <div class="row">
     <div class="col-sm-5" style="text-align: left;"  >
-      <label style="width: 74px;">Month</label>
+      <label style="width: 74px;">Month {{shortMonth}}</label>
 
-      <select  id="month" class="month"  style="width:130px;height: 24px;"  >
+      <select  id="month" class="month"  style="width:130px;height: 24px;"  [(ngModel)]="shortMonth">
         <option value="">--Select--</option>
         <option *ngFor="let mon of month" [value]="mon.id">{{mon.name}}</option>
 
@@ -251,7 +278,7 @@
 
     <div class="col-sm-5">
       <label style="width: 59px;">Year</label>
-       <select  id="year"  style="width:130px;height: 24px;"  >
+       <select  id="year"  style="width:130px;height: 24px;" [(ngModel)]="ComboCurrentyear" >
         <!-- <option value="">{{date | date:'MMM'}}</option> -->
         <!-- <span *ngFor="let yr of year"></span>
         <option *ngIf yr.name=currentYear [value]="yr.id">{{yr.name}}</option> -->

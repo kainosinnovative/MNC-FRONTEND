@@ -48,12 +48,21 @@ export class ComboOffersComponent implements OnInit {
   addoffermsg1:any;
   opened = false;
  curmonth:any;
+ shortMonth:any;
+ ComboCurrentyear:any;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.date=new Date();
+    this.shortMonth = (new Date().getMonth() + 1).toString().slice(-2);
+    
+    // this.shortMonth = this.date.toLocaleString('en-us', { month: 'short' });
+    // alert(shortMonth)
+    this.ComboCurrentyear = this.date.getFullYear();
+    // alert(ComboCurrentyear);
    let currentYear = new Date().getFullYear();
+   
    console.log(currentYear);
    (<HTMLInputElement>document.getElementById("Customname")).style.display ="none";
   //  let currentMonth=new Date().getMonth();
@@ -249,7 +258,7 @@ AddComboOffer() {
   let currentUserId = localStorage.getItem('currentUserId');
   if(offername=='Custom' && customoffername=="")
   {
-    alert("first");
+    // alert("first");
     (<HTMLInputElement>document.getElementById("offercustomname")).focus();
     (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display ="block";
   }
@@ -257,13 +266,13 @@ AddComboOffer() {
 
   else if(start_date > end_date) {
     // alert("yes")
- //   alert(3);
+  //  alert(2);
     (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="block";
   }
 
 
 else if(combooffer_offerpercent == "") {
-
+// alert(3);
    (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
   //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
   //   let validateamount = "validateamount_"+obj;
@@ -271,7 +280,7 @@ else if(combooffer_offerpercent == "") {
 }
 else if (offername=="")
 {
-
+// alert(4);
   console.log(offername+"afterafter");
   (<HTMLInputElement>document.getElementById("offername")).focus();
   //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
@@ -279,12 +288,18 @@ else if (offername=="")
     (<HTMLInputElement>document.getElementById("offernameError")).style.display ="block";
 }
 else if(combo_price == "") {
-
+  // alert(5);
   (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
 }
 else {
   offername=(<HTMLInputElement>document.getElementById("offercustomname")).value;
-
+  if(offername == ""){
+    offername=(<HTMLInputElement>document.getElementById("offername")).value;
+  }
+  else {
+    offername=(<HTMLInputElement>document.getElementById("offercustomname")).value;
+  }
+// alert(offername);
   var ComboOfferDetails =
               {
                 "services": Selectedserviceid,
@@ -385,6 +400,7 @@ retreivedata()
 }
 custom()
 {
+  (<HTMLInputElement>document.getElementById("offernameError")).style.display ="none";
  // alert("h");
  //console.log("hi");
   let customname = (<HTMLInputElement>document.getElementById("offername")).value;

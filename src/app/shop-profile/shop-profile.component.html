@@ -40,7 +40,7 @@
                         <div class="form-inline" > 
                             <label style class="lblwidthprofile ">First Name</label><span class="requiredfield">  *</span>
 
-                            <input type="text"  class="form-control firstnamecls firstLastnamecls" style="margin-left: 38px;" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
+                            <input type="text"  class="form-control firstnamecls firstLastnamecls" style="margin-left: 35px;" [(ngModel)]="ShopProfileDetails.firstname" formControlName="firstname" value="{{ShopProfileDetails.firstname}}" >
                             <div *ngIf="shopprofile.controls['firstname'].touched && shopprofile.controls['firstname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['firstname'].errors" style="color: red;"> 
@@ -56,7 +56,7 @@
 
                         <br>
                         <div class="form-group">
-                            <label class="lblwidthProfile leftnamemrg">Mobile Number</label><span class="requiredfield">  *</span>
+                            <label class="lblwidthProfile leftnamemrg" >Mobile Number <span class="requiredfield">  *</span></label>
                             <input type="text"  class="form-control mobilenumbercls mobilecls" [(ngModel)]="ShopProfileDetails.mobileno" placeholder="" formControlName="mobileno">
                             <div *ngIf="shopprofile.controls['mobileno'].touched && shopprofile.controls['mobileno'].invalid "> 
       
@@ -73,9 +73,9 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label class="lblwidthProfile leftnamemrg">Aadhar No</label><span class="requiredfield">  *</span>
+                            <label class="lblwidthProfile leftnamemrg">Aadhar No</label>
     
-                            <input type="text" class="aadharcls form-control doornocls" placeholder="" formControlName="aadharno" [(ngModel)]="ShopProfileDetails.aadharno">
+                            <input type="text" style="width: 190px;margin-left:46px !important;" class="aadharcls form-control doornocls" id="aadhanoid" placeholder="" formControlName="aadharno" [(ngModel)]="ShopProfileDetails.aadharno">
                                 <!-- <div *ngIf="shopprofile.controls['aadharno'].touched && shopprofile.controls['aadharno'].invalid "> 
               
                                 <div *ngIf="shopprofile.controls['aadharno'].errors" style="color: red;"> 
@@ -289,7 +289,7 @@
          </div>
 
          <div class="col-sm-3">
-            <h2 style="text-align: center;" class="mainheading">leave Dates</h2>
+            <h2 style="text-align: center;" class="mainheading">Holidays</h2>
             <table  class="table table-responsive servicecss" >
                 <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
                   
@@ -429,7 +429,7 @@
               
                                 <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
                                   <div *ngIf="shopprofile.controls['doorno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
-                                      Please fill address detail
+                                      Enter your address
                                   </div> 		   
                                  
                                </div> 

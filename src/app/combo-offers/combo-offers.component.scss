@@ -1,13 +1,11 @@
 @media screen and (max-width: 768px) {
-
-  .addcombooffer
-{
-font-size:12px !important;
-margin-left: 20px !important;
-
-
-}
-
+  .spaceOffAmount2 {
+    padding-left: 31px !important;
+    margin-left: -29px !important;
+  }
+  .addcombooffer {
+    margin-left: 14px !important;
+  }
   .addbtn{
     width:75px !important;
     margin-top: 8px;
@@ -103,6 +101,9 @@ margin-left: 20px !important;
   }
   .addbtn{
     width:70px !important;
+  }
+  .spaceOffAmount{
+    width: 62px;
   }
 }
 
