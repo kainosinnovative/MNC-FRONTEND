@@ -67,11 +67,11 @@
 
                     </td>
                 <td>
-                 &nbsp; <input id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)" style="width: 80px;">
+                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
                  <p id="validateoffer_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
                 </td>
                 <td>
-                  &nbsp;<input id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
+                  &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
 
                 </td>
                 <td>
@@ -116,7 +116,7 @@
 
     <div style="border: 1px solid;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
-    <form [formGroup]="shopserviceForm" name="pf">  
+    <form [formGroup]="shopserviceForm" name="pf">
      <div class="table-responsive  boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
       <table class="table table-responsive servicecss" style="border: none;margin-left:0px !important;">
         <tr style="text-align: left;">
@@ -124,7 +124,7 @@
           <td style="width: 170px;">
             <!-- <label style="width: 50px;">Service</label>  -->
 
-          <select   class="carmodelcls"  id="model" formControlName="service_id" style="width: 170px;" (change) ="changeOtherToadd($event)">
+          <select   class="carmodelcls"  id="service" formControlName="service_id" style="width: 170px;" (ngModelChange) ="changeOtherToadd($event)">
 
             <option value="">--Select Services--</option>
 
@@ -157,7 +157,7 @@
                 <select   class="carmodelcls "  id="model" formControlName="model_id">
 
                   <option value="">--Select Model--</option>
-                  <option *ngFor="let m of MasterModelData1" [value]="m.id">
+                  <option *ngFor="let m of servicemodelsdataobj" [value]="m.id">
                     {{m.model_name}}
                     </option>
                    </select>
@@ -177,7 +177,7 @@
           <td>
             <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
-             <input type="text"   style="padding-left: 0px !important;"   class="  lastname" placeholder="" formControlName="actual_amount" style="width: 60px;">
+             <input type="text"   style="padding-left: 0px !important;"  id="newamount" class="  lastname" placeholder="" formControlName="actual_amount" style="width: 60px;">
             <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid ">
 
                 <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;">
@@ -190,7 +190,7 @@
               </div>
           </td>
           <td  style="border-right:solid 1px;">
-            <button class="allSubmitbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Update</button>
+            <button class="allSubmitbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
 
           </td>
 
@@ -228,7 +228,7 @@
 
         <ng-autocomplete class="ng-autocomplete" style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
-              [notFoundTemplate]="notFoundTemplate">
+              [notFoundTemplate]="notFoundTemplate" >
             </ng-autocomplete>
 
           <ng-template #itemTemplate let-item >
@@ -252,34 +252,34 @@
 
               </div>
             </td>
-            <td>Model</td>
-            <td>
+            <!-- <td>Model</td> -->
+            <!-- <td>
               <!-- <label style="width: 100px;">Model</label>  -->
 
-                  <select   class="carmodelcls "  id="model" formControlName="model_id" style="height: 24px !important;" >
+                  <!-- <select   class="carmodelcls "  id="model" formControlName="model_id" style="height: 24px !important;" >
 
                     <option value="">--Select Model--</option>
                     <option *ngFor="let m of MasterModelData1" [value]="m.id">
                       {{m.model_name}}
                       </option>
-                     </select>
-                      <div *ngIf="MasterserviceForm.controls['model_id'].touched && MasterserviceForm.controls['model_id'].invalid">
+                     </select> -->
+                      <!-- <div *ngIf="MasterserviceForm.controls['model_id'].touched && MasterserviceForm.controls['model_id'].invalid">
 
                       <div *ngIf="MasterserviceForm.controls['model_id'].errors" style="color: red;">
                         <div *ngIf="MasterserviceForm.controls['model_id'].errors.required" style="font-size: 12px;">
                             Select car model
                         </div>
 
-                     </div>
+                     </div> -->
 
-                    </div>
-            </td>
-
-            <td>Amount</td>
-            <td>
+                    <!-- </div>
+            </td> -->
+<!--
+            <td>Amount</td> -->
+            <!-- <td>
               <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
-               <input type="text"   style="padding-left: 2px !important;width: 60px! important;"   class="  lastname" placeholder="" formControlName="actual_amount">
+               <!-- <input type="text"   style="padding-left: 2px !important;width: 60px! important;"   class="  lastname" placeholder="" formControlName="actual_amount">
               <div *ngIf="MasterserviceForm.controls['actual_amount'].touched && MasterserviceForm.controls['actual_amount'].invalid ">
 
                   <div *ngIf="MasterserviceForm.controls['actual_amount'].errors" style="color: red;">
@@ -289,8 +289,8 @@
 
                  </div>
 
-                </div>
-            </td>
+                </div> -->
+            <!-- </td> -->
 
             <td style="text-align: left;">
               <button class="allSubmitbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;"  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>

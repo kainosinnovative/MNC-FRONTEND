@@ -96,7 +96,7 @@
                         
                         <div class="form-group">
                             <label class="lblwidthProfile">Last Name</label><span class="requiredfield">  *</span>
-                            <input type="text"   style="padding-left: 2px !important;margin-left: 25px;"   class="form-control firstLastnamecls firstnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
+                            <input type="text"    class="form-control firstLastnamecls lastnamecls" placeholder="" formControlName='lastname' [(ngModel)]="ShopProfileDetails.lastname" value="{{ShopProfileDetails.lastname}}">
                             <div *ngIf="shopprofile.controls['lastname'].touched && shopprofile.controls['lastname'].invalid "> 
         
                                 <div *ngIf="shopprofile.controls['lastname'].errors" style="color: red;"> 

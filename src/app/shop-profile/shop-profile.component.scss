@@ -155,7 +155,7 @@
         }
     
     .leftnamemrg{
-        margin-left: 13px;
+        margin-left:-1px;
         
     }
     .mobilecls{
@@ -163,7 +163,7 @@
     }
     .firstnamecls{
         width: 194px !important;
-        margin-left: 41px;
+        //margin-left: 41px;
      
     }
     .lastnamecls{
@@ -172,7 +172,7 @@
     }
     .aadharcls{
         width: 194px !important;
-        margin-left: 61px;
+        margin-left:  41px !important;
     }
     .address{
         width: 201px !important;
@@ -207,6 +207,10 @@
     .businesshrcls{
         display: block !important;
     }
+    .row {
+        
+        --bs-gutter-x: 0rem !important;
+    }
  }
 
  .mat-calendar-body-cell.selected
@@ -224,7 +228,23 @@
     border-radius: 100%;
   }
 
+
+
 //   .special-date1 {
 //     background-color: yellow !important;
 //     border-radius: 100%;
 //   }
+
+@media screen and (min-width: 768px){
+
+    .aadharcls{
+        width: 190px !important;
+        margin-left: 40px !important;
+    }
+
+    .lastnamecls{
+        padding-left: 2px !important;
+        margin-left: 25px;
+    }
+
+}
