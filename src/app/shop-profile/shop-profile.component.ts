@@ -98,8 +98,9 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     gender: ['', Validators.required],
     city: ['', Validators.required],
     street: ['', Validators.required],
-   // aadharno: ['', Validators.required],
-     aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
+    aadharno:[],
+  //  aadharno: ['', Validators.required],
+    // aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
     zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
@@ -143,14 +144,27 @@ this.config1 = {
 
   uploadFile(shopprofile:any)
   {
-    this.http.post(config_url+'/shop/AddShopdetails',shopprofile)
-    .subscribe(res => {
+    var regexp=/^[2-9]{1}[0-9]{3}\s{1}[0-9]{4}\s{1}[0-9]{4}$/;
+           
+    var x=this.shopprofile.get('aadharno').value;
+   if(regexp.test(x))
+       {
+        this.http.post(config_url+'/shop/AddShopdetails',shopprofile)
+        .subscribe(res => {
+        
+        }, (err) => {
+       
+      });
     
-    }, (err) => {
-   
-  });
+      this.toastr.success('Profile Updated Successfully');
+           
+       }
+else{ 
+  this.toastr.error('Enter valid aadhar no');
+  (<HTMLInputElement>document.getElementById("aadhanoid")).focus();
+      }
 
-  this.toastr.success('Profile Updated Successfully');
+    
   // window.setTimeout(function(){location.reload()},100)
   // window.location.reload();
   }  
