@@ -158,7 +158,8 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
        model: ['', Validators.required],
        lastupddt: [current_date, [Validators.required]],
        customer_id:[currentUserId, [Validators.required]],
-       vehicle_number: ['', Validators.required,Validators.pattern(vehiclenumberpattern)]
+       vehicle_number: []
+      //  vehicle_number: ['', Validators.required,Validators.pattern(vehiclenumberpattern)]
       })
 
 
