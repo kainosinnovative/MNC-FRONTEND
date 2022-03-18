@@ -158,12 +158,17 @@ export class ShopServiceComponent implements  OnInit{
 
   }
 
-  UpdateServiceAmount(obj:any) {
+  UpdateServiceAmount(obj1:any,i:any) {
     let responsedata :any;
+    let obj=obj1+'_'+i;
+   // alert(obj);
     let servicename="servicename_"+obj;
+   // alert(servicename);
     let service_amountid = "amount_"+obj;
     let service_amount = (<HTMLInputElement>document.getElementById(service_amountid)).value;
+   // alert(service_amount);
     let service_name = (<HTMLInputElement>document.getElementById(servicename)).value;
+   // alert(servicename);
     let model_id = (<HTMLInputElement>document.getElementById("model_"+obj)).value;
     let currentUserId = localStorage.getItem('currentUserId');
 
@@ -171,7 +176,7 @@ export class ShopServiceComponent implements  OnInit{
 
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/UpdateshopService?service_amount='+service_amount +
-                     "&serviceid=" + obj + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
+                     "&serviceid=" + obj1 + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
                      console.log(data);
                      responsedata=data;
                      if(responsedata.status =="pass")
@@ -193,8 +198,9 @@ export class ShopServiceComponent implements  OnInit{
     }
 
   }
-  UpdateOfferAmount(obj:any)
+  UpdateOfferAmount(obj1:any,i:any)
   {
+    let obj=obj1+"_"+i;
     let validateoffer= "validateoffer_"+obj;
     (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="none";
     let responsedata :any;
@@ -230,7 +236,7 @@ export class ShopServiceComponent implements  OnInit{
                   else
                   {
                   this.http.get('http://localhost/MNC-PHP-API/shop/Updateshopoffer?offer_amount='+offeramount +
-                     "&serviceid=" + obj  + "&modelId="+model_id +"&offerpercent="+offerpercentage + "&lastupddt="+this.current_date +
+                     "&serviceid=" + obj1 + "&modelId="+model_id +"&offerpercent="+offerpercentage + "&lastupddt="+this.current_date +
                       "&fromdate="+fromdate + "&todate="+todate +"&currentUserId="+currentUserId) .subscribe((data => {
 
                      responsedata=data;
@@ -276,16 +282,23 @@ export class ShopServiceComponent implements  OnInit{
   }
   getOfferPrice(term: string,termid: string): void
   {
-
+      //alert(term);
+      //alert(termid);
       var termid1=termid;
-      var splitted = termid1.split("_", 2);
+      var splitted = termid1.split("_", 3);
+     // alert(splitted);
       var splitted1=splitted[1];
-      var amount="amount_"+splitted1;
+      var splitted2=splitted[2];
+     // alert(splitted1);
+      var amount="amount_"+splitted1+"_"+splitted2;
+      // alert(amount);
       var serviceamount= Number((<HTMLInputElement>document.getElementById(amount)).value);
+      // alert(serviceamount);
       var offeramount=(serviceamount *  Number(term))/100;
+      //alert(offeramount);
       var offeramtid;
       var originalVal = serviceamount - offeramount;
-      offeramtid="offeramount_"+splitted[1];
+      offeramtid="offeramount_"+splitted[1]+"_"+splitted[2];
       console.log(offeramtid);
      (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
 

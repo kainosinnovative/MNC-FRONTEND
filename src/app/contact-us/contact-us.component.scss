@@ -64,4 +64,14 @@ button {
         // display: block;
         width: 257px !important;
     }
+    .message{
+        margin-right: 11px !important;
+    }
+}
+
+@media screen and (min-width: 768px){
+.message{
+    margin-left: -88px;
+}
+   
 }
