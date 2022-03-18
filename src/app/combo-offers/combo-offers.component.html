@@ -176,18 +176,19 @@
             <option value="Custom">Custom</option>
           </select>
     
-    <p style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</p>
+    <span style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</span>
           </td>
         </tr>
         <tr>
           <td>
             <div  class="row amountwebrow" id="Customname" style="margin-left: 81px;">
+              <p></p>
               <!-- <div class="col-sm-1"></div> -->
               <!-- <div class="col-sm-8"> -->
-                <br>
-                 <input type="text"  id="offercustomname" style="padding-top: 11px;width: 130px;height: 24px;text-align: left;padding-left:15px;">
+                <!-- <br> -->
+                 <input type="text" (keyup)="RemoveoffercustomnameError()"  id="offercustomname" class="offercustcls" style="padding-top: 11px;width: 130px;height: 24px;text-align: left;padding-left:15px;">
           
-              <p style="color: red;display: none;text-align: center;" id="offercustomnameError">Enter Offer Name</p>
+              <span style="color: red;display: none;text-align: center;" id="offercustomnameError">Enter Offer Name</span>
             <!-- </div> -->
               </div>
           </td>
