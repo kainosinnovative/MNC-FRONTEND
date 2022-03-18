@@ -416,6 +416,10 @@ custom()
 
 }
 
+RemoveoffercustomnameError() {
+  (<HTMLInputElement>document.getElementById("offercustomnameError")).innerHTML = "";
+}
+
 }
 type Month = Array<{ id: number; name: String }>;
 type Year = Array<{ id: number; name: number }>;

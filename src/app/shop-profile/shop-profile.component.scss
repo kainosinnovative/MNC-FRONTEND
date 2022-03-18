@@ -84,15 +84,7 @@
 {
     color:red;
 }
-.selectoption
-{
-    height: 28px;
-    width: 170px !important;
-    padding-left: 2px !important;
-    margin-left: 76px;
-        
 
-}
 .selectoptiongender
 {
     height: 28px;
@@ -140,26 +132,28 @@
  }
  
  @media screen and (max-width: 768px){
+    
+    
+
+    .labelFieldSpace{
+        display: block !important;
+    }
      .shopname{
         width: 190px !important;
         margin-left: 37px;
      }
      .emailid{
         width: 201px !important;
-        margin-left: 20px;
+        // margin-left: 20px;
         }
-    .streetcls{
-        width: 194px !important;
-        margin-left: 31px;
-        // margin-left: 34px;
-        }
+    
     
     .leftnamemrg{
         margin-left:-1px;
         
     }
     .mobilecls{
-        margin-left: 13px !important;
+        // margin-left: 13px !important;
     }
     .firstnamecls{
         width: 194px !important;
@@ -167,22 +161,22 @@
      
     }
     .lastnamecls{
-        margin-left: 42px;
+        // margin-left: 42px;
         width: 200px;
     }
     .aadharcls{
         width: 194px !important;
-        margin-left:  41px !important;
+       // margin-left:  41px !important;
     }
     .address{
         width: 201px !important;
         margin-left: 57px;
     }
     .dateofbirthcls{
-        margin-left: 40px;
+        // margin-left: 40px;
     }
-    .shopgender{
-        margin-left: 19px;
+    .shopgender2{
+        // margin-left: 16px;
     }
     .citycls{
         width: 201px !important;
@@ -229,22 +223,104 @@
   }
 
 
-
+  .mobilenumbercls2{
+    width: 120px !important;
+    
+  }
 //   .special-date1 {
 //     background-color: yellow !important;
 //     border-radius: 100%;
 //   }
 
+.shopzipcodecls2{
+    width: 80px !important;
+    //margin-left: 58px;
+    //padding-left: 2px !important;
+  }
+
 @media screen and (min-width: 768px){
+    .shopzipcodecls2{
+       
+        margin-left: 52px;
+    }
+    .streetcls{
+        // width: 194px !important;
+         margin-left: 31px;
+         // margin-left: 34px;
+         }
+
+    .selectoption
+{
+    height: 28px;
+    
+    padding-left: 2px !important;
+    margin-left: 37px;
+        
+
+}
+    .address2{
+        margin-left: 20px;
+      }
+    .firstLastnamecls2{
+        margin-left: 36px;
+    }
+    .emailid{
+        margin-left: -32px;
+    }
+    .dateofbirthcls2{
+        margin-left: 24px;
+    }
+    .aadharcls{
+        margin-left:46px !important;
+    }
+    .mobilenumbercls2{
+        
+        padding-left: 2px !important;
+        margin-left: 12px;
+      }
+
+    .firstLastnamecls{
+        width: 190px !important;
+        padding-left: 2px !important;
+        margin-left: 36px;
+      }
 
     .aadharcls{
         width: 190px !important;
-        margin-left: 40px !important;
+        margin-left: 45px !important;
     }
 
     .lastnamecls{
         padding-left: 2px !important;
         margin-left: 25px;
     }
+    .shopgender2{
+        margin-left: -32px;
+    }
+
+    .shopgender3{
+        margin-left: 15px;
+    }
+    .citycls2{
+        margin-left:79px !important;
+    }
 
 }
+
+.shopgender2{
+    height: 28px;
+}
+
+.shopgender3{
+    height: 28px;
+}
+
+.firstLastnamecls2{
+    width: 190px !important;
+    
+    
+  }
+
+  .address2{
+    width: 201px !important;
+  }
