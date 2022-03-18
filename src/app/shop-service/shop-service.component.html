@@ -43,13 +43,13 @@
                 <td >
 
                   <span *ngIf="service.status == '1'">&nbsp;</span>
-                  <label class="switch" *ngIf="service.status == '1'" (click)="changeServiceStatus(service.id,service.status)">
+                  <label class="switch" *ngIf="service.status == '1'"  (click)="changeServiceStatus(service.id,service.status)">
                     <input  type="checkbox" checked>
                     <span class="slider round"></span>
                   </label>
 
                   <span *ngIf="service.status == '0'">&nbsp;</span>
-                  <label class="switch" *ngIf="service.status == '0'" (click)="changeServiceStatus(service.id,service.status)">
+                  <label class="switch" *ngIf="service.status == '0'"  (click)="changeServiceStatus(service.id,service.status)">
                     <input type="checkbox" >
                     <span class="slider round"></span>
                   </label>
@@ -63,12 +63,15 @@
 
 
                     <td style="border-right:solid 1px;">
-                      <button  class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}_{{i}}" (click)="UpdateServiceAmount(service.service_id,i)">Update</button>
-
+                      <button  class="allSubmitbtn" *ngIf="service.status == '1';else butdisable" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}_{{i}}" (click)="UpdateServiceAmount(service.service_id,i)">Update</button>
+                      <ng-template #butdisable>
+                      <button   class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;opacity:.65" id="updatebtn_{{service.service_id}}_{{i}}" (click)="UpdateServiceAmount(service.service_id,i)" disabled>Update</button>
+                    </ng-template>
                     </td>
                 <td>
                  &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
                  <p id="validateoffer_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
+                 <p id="validateoffer1_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">0% offer not accepted</p>
                 </td>
                 <td>
                   &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}_{{i}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
@@ -85,8 +88,10 @@
 
 
 
-                     <button class="allSubmitbtn"  style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateOfferAmount(service.service_id,i)">Update</button>
-
+                     <button class="allSubmitbtn"  *ngIf="service.status == '1';else butdisable1" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateOfferAmount(service.service_id,i)">Update</button>
+                     <ng-template #butdisable1>
+                      <button   class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;opacity:.65" id="updatebtn_{{service.service_id}}_{{i}}" (click)="UpdateServiceAmount(service.service_id,i)" disabled>Update</button>
+                    </ng-template>
 
 
 
@@ -190,7 +195,7 @@
               </div>
           </td>
           <td  style="border-right:solid 1px;">
-            <button class="allSubmitbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
+            <button class="allSubmitbtn btn-success btn" id="addserviceshopbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
 
           </td>
 

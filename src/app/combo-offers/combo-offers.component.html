@@ -85,16 +85,19 @@
 
 <h2 style="text-align: center;" class="subheading"></h2>
       <div class="row">
-        <div class="col-sm-4 databtn" style="text-align: left;">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-3 databtn" style="text-align: left;">
           <label style="width: 74px;">From date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
         </div>
 
-        <div class="col-sm-4 databtn">
+        <div class="col-sm-3 databtn">
           <label style="width: 59px;">To date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
           <br><span id="enddate_message" style="color: red;display: none;">To date must be greater than from date</span>
         </div>
 
-        <div class="col-sm-4 databtn">
+        <div class="col-sm-3 databtn">
           <label style="width: 50px;">Model</label> <p class="labelFieldSpace" style="display: block;"></p>
                         <select  class="model"  style="width: 130px;height: 24px;" (change)="loadcombooffertblByModelid(2)" id="model_id">
                             <option value="">--Select Model--</option>
@@ -113,13 +116,13 @@
 
       <div style="display: none !important;" id="secondtblid" >
 
-        <table  class="row table table-responsive addcombooffer"  style="width: 80%;border: 0.5px solid #aeaeae;margin-left:65px;overflow: auto;" >
+        <table  class="row table table-responsive addcombooffer"  style="width: 76%;border: 0.5px solid #aeaeae;margin-left:56px;overflow: auto;" >
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;">
               <tr >
 
-                <th  style="width: 100px;">Sl. No.</th>
+                <th  style="width: 50px;">Sl. No.</th>
 
-                <th style="width: 200px;">Active Service Name</th>
+                <th style="width: 250px;">Active Service Name</th>
                 <th style="width: 100px">Amount &nbsp;(<i class="fa fa-rupee">) </i></th>
                 <th style="width: 100px">Select</th>
               </tr>
@@ -135,9 +138,9 @@
 
               <!-- <tr *ngFor="let service of  serviceData1 | paginate: config "> -->
                 <tr   *ngFor="let service of  combooffertblByModelid1; let i=index;">
-               <td  style="width: 100px;">{{i+1}}</td>
+               <td  style="width: 50px;">{{i+1}}</td>
                 <!-- <td style="width: 200px;display:hidden;">{{service.service_id}}</td> -->
-                <td style="width: 200px;">{{service.service_name}}</td>
+                <td style="width: 250px;">{{service.service_name}}</td>
                 <td style="width: 100px;"><span id="amount_{{service.service_id}}">{{service.actual_amount}}</span>
                 <p id="validateamount_{{service.service_id}}" style="color: red;display: none;">Please Enter Amount</p>
                 </td>
@@ -158,15 +161,18 @@
   <input type="hidden" id="Selectedserviceid">
 
 
-  <br>
+  <!-- <br> -->
 
   <div class="row amountwebrow" >
     <div class="col-sm-1"></div>
-    <div class="col-sm-5 bottonpadg" style="width:-2% !important;">
+
+    
+    <div class="col-sm-3 bottonpadg" style="width:-2% !important;">
       <table>
         <tr>
           <td>
             <label class="offernmsbtn" style="width:80px;">Offer Name</label>
+            <br>
             <select class="offernmsbtn1" id="offername"  style="width:130px;height: 24px;" (change)="custom()">
             <option value="">--Select--</option>
             <option value="Basic">Basic</option>
@@ -176,12 +182,12 @@
             <option value="Custom">Custom</option>
           </select>
     
-    <span style="color: red;display: none;text-align: center;" id="offernameError">Select Offer Name</span>
+    <span style="color: red;display: none;text-align: left;" id="offernameError">Select Offer Name</span>
           </td>
         </tr>
         <tr>
           <td>
-            <div  class="row amountwebrow" id="Customname" style="margin-left: 81px;">
+            <div  class="row amountwebrow" id="Customname" style="margin-left: 0px;">
               <p></p>
               <!-- <div class="col-sm-1"></div> -->
               <!-- <div class="col-sm-8"> -->
@@ -196,11 +202,13 @@
         </table>
       
     </div>
-    <div class="col-sm-6" style="padding-left:0px !important;padding-right:0px !important;">
+    <div class="col-sm-2" style="padding-left:0px !important;padding-right:0px !important;">
       <table>
         <tr>
           <td>
-            <label class="amt" style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>   <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
+            <label class="amt" style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>  
+            <br>
+            <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
 
           </td>
         </tr>
@@ -213,26 +221,28 @@
       </table>
     </div>
 
+    <div class="col-sm-2">
+      <label class="offerpreg1" style="width: 80px;">Offer (%)</label>
+      <br>
+      <input  class="offerpreg2" type="number" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 50px;height: 24px">
+
+<p style="color: red;display: none;text-align: left;" id="offerpercentError">Enter offer %</p>
+    </div>
+
+    <div class="col-sm-3 offamtdiv">
+      <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;padding-left:15px;">
+      </div>
+
    </div>
    
    <div  class="row amountwebrow" style="margin-top:10px;">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1 offerpreg bottonpadg">
-
-      <label class="offerpreg1" style="width: 80px;">Offer (%)</label>
-      <input  class="offerpreg2" type="number" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 50px;height: 24px">
-
-<p style="color: red;display: none;text-align: center;" id="offerpercentError">Enter offer %</p>
+    <div class="col-sm-10 " >
+      <div  class="addofferbtncls" style="text-align: right;">
+        <button id="addCombobtn" class="allSubmitbtn addbtn" style="opacity: .65;"  (click)="AddComboOffer()">Add Offer</button>
+      </div>
     </div>
 
-    <div class="col-sm-5">
-      <label class="spaceOffAmount"></label><label class="offeramt spaceOffAmount2" style=" width: 125px;padding-left:22px;">Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label>  <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;padding-left:15px;">
-      </div>
-
-      <div class="col-sm-3" >
-        <button
-         id="addCombobtn" class="allSubmitbtn addbtn"  (click)="AddComboOffer()">Add Offer</button>
-      </div>
+      
 
   </div>
 <br>
@@ -267,7 +277,7 @@
   <div class="content-container" [class.opened]="opened">
     <div class="row">
     <div class="col-sm-5" style="text-align: left;"  >
-      <label style="width: 74px;">Month {{shortMonth}}</label>
+      <label style="width: 74px;">Month</label>
 
       <select  id="month" class="month"  style="width:130px;height: 24px;"  [(ngModel)]="shortMonth">
         <option value="">--Select--</option>

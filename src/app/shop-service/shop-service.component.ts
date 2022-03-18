@@ -94,7 +94,7 @@ export class ShopServiceComponent implements  OnInit{
       this.serviceData = data;
       this.serviceData1 = this.serviceData.data.carAndShopservice;
 
-      console.log(this.serviceData1)
+      console.log("car>>>",this.serviceData1)
       // this.dtTrigger.next();
     })
 
@@ -202,6 +202,7 @@ export class ShopServiceComponent implements  OnInit{
   {
     let obj=obj1+"_"+i;
     let validateoffer= "validateoffer_"+obj;
+    let validateoffer1= "validateoffer1_"+obj;
     (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="none";
     let responsedata :any;
     let servicename="servicename_"+obj;
@@ -224,7 +225,8 @@ export class ShopServiceComponent implements  OnInit{
     (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="none";
     let validatetodateid= "validatetodate_"+obj;
     (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="none";
-    if(offerpercentage != "" && fromdate !="" && todate !="") {
+
+    if(Number(offerpercentage) != 0 && fromdate !="" && todate !="" ) {
 
                   if(todate<fromdate)
                   {
@@ -272,6 +274,12 @@ export class ShopServiceComponent implements  OnInit{
       (<HTMLInputElement>document.getElementById(offerfromdate)).focus();
       let validatefromdateid= "validatefromdate_"+obj;
       (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="block";
+    }
+    else if(Number(offerpercentage) ==0)
+    {
+      (<HTMLInputElement>document.getElementById(offer_percent)).focus();
+
+      (<HTMLInputElement>document.getElementById(validateoffer1)).style.display ="block";
     }
     else {
       (<HTMLInputElement>document.getElementById(offer_percent)).focus();
@@ -369,7 +377,7 @@ export class ShopServiceComponent implements  OnInit{
           this.loadServiceData();
           this.toastr.success('Services added Successfully');
          // this.MasterserviceForm.controls.service_name.setValue("");
-         window.setTimeout(function(){location.reload()},100)
+         window.setTimeout(function(){location.reload()},5)
         }
 
     });
@@ -382,6 +390,8 @@ export class ShopServiceComponent implements  OnInit{
   AddShopserviceDetails(shopserviceForm:any) {
     // let formData = new FormData();
     // formData.append('test','2');
+    // (<HTMLInputElement>document.getElementById("addserviceshopbtn")).disabled=true;
+    // (<HTMLInputElement>document.getElementById("addserviceshopbtn")).style.opacity="1";
     console.log(shopserviceForm);
     // let hidden_service = (<HTMLInputElement>document.getElementById("hidden_service")).value;
     this.http.post(config_url+'/shop/AddShopserviceDetails',{shopserviceForm})
@@ -393,8 +403,8 @@ export class ShopServiceComponent implements  OnInit{
           this.loadServiceData();
           this.loadMasterService();
           this.loadAllModels();
-          
-          window.setTimeout(function(){location.reload()},100)
+
+          window.setTimeout(function(){location.reload()},5)
         }
 
     });
@@ -463,8 +473,18 @@ console.log(error.status)
 
 
   changeServiceStatus(serviceid:any,status:any) {
-// alert(serviceid)
+ //alert(serviceid)
 // alert(status)
+// alert(index);
+// var updatebutton="updatebtn_"+serviceidnew+"_"+index;
+// alert(updatebutton);
+// if(status==1)
+// {
+//  // alert("hi");
+//   alert(  (<HTMLInputElement>document.getElementById(updatebutton)));
+//   (<HTMLInputElement>document.getElementById(updatebutton)).style.color="green";
+// }
+
     var changeServiceStatus =
                    {
                   "shopserviceid": serviceid,
