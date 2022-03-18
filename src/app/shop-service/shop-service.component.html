@@ -257,48 +257,9 @@
 
               </div>
             </td>
-            <!-- <td>Model</td> -->
-            <!-- <td>
-              <!-- <label style="width: 100px;">Model</label>  -->
-
-                  <!-- <select   class="carmodelcls "  id="model" formControlName="model_id" style="height: 24px !important;" >
-
-                    <option value="">--Select Model--</option>
-                    <option *ngFor="let m of MasterModelData1" [value]="m.id">
-                      {{m.model_name}}
-                      </option>
-                     </select> -->
-                      <!-- <div *ngIf="MasterserviceForm.controls['model_id'].touched && MasterserviceForm.controls['model_id'].invalid">
-
-                      <div *ngIf="MasterserviceForm.controls['model_id'].errors" style="color: red;">
-                        <div *ngIf="MasterserviceForm.controls['model_id'].errors.required" style="font-size: 12px;">
-                            Select car model
-                        </div>
-
-                     </div> -->
-
-                    <!-- </div>
-            </td> -->
-<!--
-            <td>Amount</td> -->
-            <!-- <td>
-              <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
-
-               <!-- <input type="text"   style="padding-left: 2px !important;width: 60px! important;"   class="  lastname" placeholder="" formControlName="actual_amount">
-              <div *ngIf="MasterserviceForm.controls['actual_amount'].touched && MasterserviceForm.controls['actual_amount'].invalid ">
-
-                  <div *ngIf="MasterserviceForm.controls['actual_amount'].errors" style="color: red;">
-                    <div *ngIf="MasterserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
-                         Enter the amount
-                    </div>
-
-                 </div>
-
-                </div> -->
-            <!-- </td> -->
-
-            <td style="text-align: left;">
-              <button class="allSubmitbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;"  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
+      
+        <td style="text-align: left;">
+              <button class="allSubmitbtn" style="margin-top: -9px;margin-left: 12px;border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;"  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
 
             </td>
 
