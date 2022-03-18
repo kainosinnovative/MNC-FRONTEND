@@ -369,6 +369,7 @@ export class ShopServiceComponent implements  OnInit{
           this.loadServiceData();
           this.toastr.success('Services added Successfully');
          // this.MasterserviceForm.controls.service_name.setValue("");
+         window.setTimeout(function(){location.reload()},100)
         }
 
     });
@@ -392,9 +393,8 @@ export class ShopServiceComponent implements  OnInit{
           this.loadServiceData();
           this.loadMasterService();
           this.loadAllModels();
-          //this.shopserviceForm.controls.actual_amount.setValue("");
-          (<HTMLInputElement>document.getElementById("newamount")).value="";
-          (<HTMLInputElement>document.getElementById("model")).value="";
+          
+          window.setTimeout(function(){location.reload()},100)
         }
 
     });
