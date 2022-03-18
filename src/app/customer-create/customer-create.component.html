@@ -106,7 +106,7 @@
                 <div class="form-group">
                     <label class="customerProfileLbl">Mobile Number<span class="requiredfield">  *</span></label>
                     <p class="labelFieldSpace" style="display: none;"></p>
-                     <input type="text"  class=" " placeholder="" formControlName="mobileno"  [(ngModel)]="CustomerDataById1.mobileno">
+                     <input type="type"   placeholder="" formControlName="mobileno"  [(ngModel)]="CustomerDataById1.mobileno">
                     <div *ngIf="profileform.controls['mobileno'].touched && profileform.controls['mobileno'].invalid ">
 
                         <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;">
@@ -179,7 +179,7 @@
 
                             <div *ngIf="profileform.controls['doorno'].errors" style="color: red;">
                               <div *ngIf="profileform.controls['doorno'].errors.required" style="font-size: 12px;">
-                                Please fill address detail
+                                 Fill address detail
                               </div>
 
                            </div>
