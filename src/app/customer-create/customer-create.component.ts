@@ -124,6 +124,8 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
+  const vehiclenumberpattern = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}[A-Z]{1,2}{0,1}[0-9]{1,4}$";
+ 
   this.profileform = this.frmbuilder.group({
     firstname: ['', Validators.required],
      lastname: ['', Validators.required],
@@ -156,7 +158,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
        model: ['', Validators.required],
        lastupddt: [current_date, [Validators.required]],
        customer_id:[currentUserId, [Validators.required]],
-       vehicle_number: ['', Validators.required]
+       vehicle_number: ['', Validators.required,Validators.pattern(vehiclenumberpattern)]
       })
 
 
