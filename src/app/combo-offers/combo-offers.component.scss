@@ -1,6 +1,13 @@
 @media screen and (max-width: 768px) {
+  .amt1{
+    margin-left: 14px;
+  }
+  .addofferbtncls{
+    text-align: left !important;
+    margin-left: 3px;
+  }
 .offercustcls{
-  margin-left: 23px;
+  // margin-left: 23px;
 }
   .spaceOffAmount2 {
     padding-left: 31px !important;
@@ -24,24 +31,22 @@
     margin-left: 2px;
   }
   .offerpreg2{
-    margin-left: 25px;
+    margin-left: 4px;
   }
   .offernmsbtn{
     margin-left: 1px;
   }
   .offernmsbtn1{
-    margin-left: 25px;
+    // margin-left: 25px;
   }
   .amt{
     margin-left: 14px;
   }
-  .amt1{
-    margin-left: 34px;
-  }
+  
   .offeramt{
    // margin-left: 10px;
     width: 127px !important;
-    margin-left: 8px;
+    margin-left: 3px;
   }
   .offeramt1{
      margin-left: 0px !important; 
@@ -99,6 +104,30 @@
 }
 
 @media screen and (min-width: 768px) {
+  .secondcolumn{
+    width: 670px;
+    margin-left: 66px;
+  }
+  .offamtdiv{
+    margin-left: -36px;
+  }
+  .offeramt{
+    // margin-left: 10px;
+     width: 127px !important;
+     margin-left: 8px;
+   }
+  .offerpreg2{
+    // margin-left: 25px;
+  }
+  .amt1{
+    // margin-left: 34px;
+  }
+  .offernmsbtn1{
+    // margin-left: 25px;
+  }
+  .addofferbtncls{
+    margin-right: -11px;
+  }
   .offerpreg{
     width:25% !important;
   }

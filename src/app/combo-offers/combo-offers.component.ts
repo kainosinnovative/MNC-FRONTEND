@@ -90,6 +90,7 @@ this.loadcombooffertblByModelid(1);
     (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = "";
     (<HTMLInputElement>document.getElementById("totalamount")).value = "";
     (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=true;
+    (<HTMLInputElement>document.getElementById("addCombobtn")).style.opacity=".65";
     if(a == 2)
     (<HTMLInputElement>document.getElementById("secondtblid")).style.display = "block";
 
@@ -200,9 +201,12 @@ this.loadcombooffertblByModelid(1);
     var arrayLength = this.serviceIdArr.length;
     if(arrayLength == 0){
       (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=true;
+      (<HTMLInputElement>document.getElementById("addCombobtn")).style.opacity=".65";
     }
     else {
       (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=false;
+      (<HTMLInputElement>document.getElementById("addCombobtn")).style.opacity="1";
+
     }
     this.serviceIdArr1 = new Array();
     var totalAmount = 0;
