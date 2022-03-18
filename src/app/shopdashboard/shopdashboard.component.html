@@ -191,7 +191,7 @@
 <br>
 
 <div class="row">
-  <div class="col-sm-6" >
+  <div class="col-sm-6" *ngIf="currentOffer1 != ''">
     <h2 style="text-align: center;" class="mainheading"> Today's Combo Offers</h2>
     
     <div class="row" >
@@ -215,7 +215,7 @@
 
   </div>
 
-  <div class="col-sm-6" >
+  <div class="col-sm-6" *ngIf="serviceDataOffers1 !=''">
     <h2 style="text-align: center;" class="mainheading">Today's Services Offers</h2>
     <div class="row">
       <div class="col-sm-2" ></div>

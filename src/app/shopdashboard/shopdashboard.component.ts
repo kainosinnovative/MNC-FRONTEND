@@ -466,7 +466,7 @@ loadServiceDataOffers(){
     for(let i=0;i<this.serviceDataOffers1.length;i++){
       this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
      // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
-     this.servicenameArr.push((this.serviceDataOffers1[i].service_name));
+     this.servicenameArr.push((this.serviceDataOffers1[i].service_name + "<br>"+ "(" + this.serviceDataOffers1[i].model_name) + ")");
     }
     console.log("array>>>",this.servicenameArr);
 
