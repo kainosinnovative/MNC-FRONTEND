@@ -243,7 +243,7 @@
               <input type="text"   style="padding-left: 2px !important;"  formControlName="service_name"  placeholder=""  > -->
               <div style="margin-top: -27px;" *ngIf="MasterserviceForm.controls['service_name'].touched && MasterserviceForm.controls['service_name'].invalid">
 
-                <div *ngIf="MasterserviceForm.controls['service_name'].errors" style="color: red;">
+                <div *ngIf="MasterserviceForm.controls['service_name'].errors" style="color: red;text-align: left;">
                   <div *ngIf="MasterserviceForm.controls['service_name'].errors.required" style="font-size: 12px;">
                       Enter the service name
                   </div>
