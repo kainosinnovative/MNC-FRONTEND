@@ -39,7 +39,7 @@
               <tr *ngFor="let service of  serviceData1 | paginate: config ;  let i=index;" >
 
                 <td>{{i+1}}</td>
-                <td ><input id="service_{{service.service_id}}" type="number" value="{{service.service_id}}"  style="width: 60px;" hidden><input id="servicename_{{service.service_id}}" type="text" value="{{service.service_name}}"  style="width: 250px;border:none;text-align: center;" readonly></td>
+                <td ><input id="service_{{service.service_id}}__{{i}}" type="number" value="{{service.service_id}}"  style="width: 60px;" hidden><input id="servicename_{{service.service_id}}_{{i}}" type="text" value="{{service.service_name}}"  style="width: 250px;border:none;text-align: center;" readonly></td>
                 <td >
 
                   <span *ngIf="service.status == '1'">&nbsp;</span>
@@ -56,36 +56,36 @@
 
 
                                     </td>
-                <td>  <input id="model_{{service.service_id}}" type="number" value="{{service.model_id}}"  style="width: 60px;" hidden> <input id="modelname_{{service.service_id}}" type="text" value="{{service.model_name}}"  style="width: 150px;border:none;text-align: center;background-color: #fff;" readonly></td>
-                <td> <input id="amount_{{service.service_id}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
-                <p id="validateamount_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
+                <td>  <input id="model_{{service.service_id}}_{{i}}" type="number" value="{{service.model_id}}"  style="width: 60px;" hidden> <input id="modelname_{{service.service_id}}_{{i}}" type="text" value="{{service.model_name}}"  style="width: 150px;border:none;text-align: center;background-color: #fff;" readonly></td>
+                <td> <input id="amount_{{service.service_id}}_{{i}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
+                <p id="validateamount_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
                 </td>
 
 
                     <td style="border-right:solid 1px;">
-                      <button  class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateServiceAmount(service.service_id)">Update</button>
+                      <button  class="allSubmitbtn" style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}_{{i}}" (click)="UpdateServiceAmount(service.service_id,i)">Update</button>
 
                     </td>
                 <td>
-                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
-                 <p id="validateoffer_{{service.service_id}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
+                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
+                 <p id="validateoffer_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
                 </td>
                 <td>
-                  &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
+                  &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}_{{i}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
 
                 </td>
                 <td>
 
-                  <input type="date"  id="offerfromdate_{{service.service_id}}"  class=" dateofbirthcls" style="width:112px !important;" value="{{service.from_date}}"  placeholder="">
-                  <p id="validatefromdate_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Select Offer Starting Date</p> <p id="validatefromdateformat_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Offer From Date Greater than To Date</p></td>
-                <td> <input type="date"  id="offertodate_{{service.service_id}}"  class=" dateofbirthcls"  style="width:112px !important;" value="{{service.to_date}}" placeholder="">
-                  <p id="validatetodate_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Select Offer Ending Date</p>  <p id="validatetodateformat_{{service.service_id}}" style="color: red;display: none;font-size:10px;">Offer To Date Less than From Date</p></td>
+                  <input type="date"  id="offerfromdate_{{service.service_id}}_{{i}}"  class=" dateofbirthcls" style="width:112px !important;" value="{{service.from_date}}"  placeholder="">
+                  <p id="validatefromdate_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Select Offer Starting Date</p> <p id="validatefromdateformat_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Offer From Date Greater than To Date</p></td>
+                <td> <input type="date"  id="offertodate_{{service.service_id}}_{{i}}"  class=" dateofbirthcls"  style="width:112px !important;" value="{{service.to_date}}" placeholder="">
+                  <p id="validatetodate_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Select Offer Ending Date</p>  <p id="validatetodateformat_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Offer To Date Less than From Date</p></td>
                 <td>
 
 
 
 
-                     <button class="allSubmitbtn"  style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateOfferAmount(service.service_id)">Update</button>
+                     <button class="allSubmitbtn"  style="border-radius: 21px;width: 60px;border: none;height: 22px;font-weight:bold;" id="updatebtn_{{service.service_id}}" (click)="UpdateOfferAmount(service.service_id,i)">Update</button>
 
 
 
