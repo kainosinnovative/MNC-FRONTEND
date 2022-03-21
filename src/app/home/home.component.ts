@@ -47,7 +47,8 @@ ShopHolidaysDetails1:any;
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
-
+  carDetailsById:any;
+  carDetailsById1:any;
 
   ngOnInit(): void {
 
@@ -177,6 +178,7 @@ this.adjustsItemsPerSlide();
       console.log("dashboard>>>",this.dashboardShopOffer1);
 
       this.getholidaysForAll();
+      this.loadcarDetailsById();
     })
   }
 
@@ -330,6 +332,45 @@ else
         );
       }
 
+
+      loadcarDetailsById(){
+
+        let currentUserId = localStorage.getItem('currentUserId');
+        return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+          // alert(data)
+          this.carDetailsById = data;
+          this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+          console.log("carDetailsById1>>>",this.carDetailsById1)
+          this.MovecarDetailsById();
+        })
+      }
+
+
+      MovecarDetailsById() {
+        
+        if(this.carDetailsById1 != undefined) {
+        for(var i=0;i < this.carDetailsById1.length;i++) {
+
+          for(var j=0;j < (this.dashboardShop1.length);j++) {
+            if(this.dashboardShop1[j].model_id == this.carDetailsById1[i].model){
+              var newNum = "modelAvail";
+              var newVal = "Available";
+              this.dashboardShop1[j][newNum] = newVal;
+            }
+            
+            //console.log("val",this.dashboardShop1);
+            // this.datecheckArr.push(ShopHolidaysDetails1[i])
+           
+          }
+
+        }
+      }
+
+
+        
+        console.log("car avl>>>",this.carDetailsById1);
+      }
+
     
 
       datecheckArr = new Array();
@@ -418,5 +459,7 @@ else
       }
         console.log("MoveWishlistOfferCheck>>>",this.dashboardShopOffer1);
       }
+
+      
 
 }

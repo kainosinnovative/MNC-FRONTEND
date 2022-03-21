@@ -4,7 +4,7 @@
 <h2 class="mainheading" style="text-align:center;">My Online Booking</h2>
 
 <div style="text-align: center;">
-  <img src="http://localhost/MNC-PHP-API/{{offerslist[0].shop_logo}}" style="width: 50px;margin-top: -7px;"><b class="subheading"> {{offerslist[0].name}}</b>
+  <img src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" style="width: 50px;margin-top: -7px;"><b class="subheading"> {{ShopProfileDetails.name}}</b>
   </div>
 
 <div >
@@ -118,14 +118,41 @@
                 <div *ngIf="getPickupAvlData2 == 1" id="pickuptimetdid" style="display: none;width: 67px;">
                 <label >Pick-up time</label> 
     <br>
+    <select style="height: 34px;" formControlName="pickup_time" class="fromdata">
+      <option value="">--Select---</option>
+      <option value="12:00 am">12:00 am</option>
+      <option value="1:00 am">1:00 am</option>
+      <option value="2:00 am">2:00 am</option>
+      <option value="3:00 am">3:00 am</option>
+      <option value="4:00 am">4:00 am</option>
+      <option value="5:00 am">5:00 am</option>
+      <option value="6:00 am">6:00 am</option>
+      <option value="7:00 am">7:00 am</option>
+      <option value="8:00 am">8:00 am</option>
+      <option value="9:00 am">9:00 am</option>
+      <option value="10:00 am">10:00 am</option>
+      <option value="11:00 am">11:00 am</option>
+      <option value="12:00 pm">12:00 pm</option>
+      <option value="1:00 pm">1:00 pm</option>
+      <option value="2:00 pm">2:00 pm</option>
+      <option value="3:00 pm">3:00 pm</option>
+      <option value="4:00 pm">4:00 pm</option>
+      <option value="5:00 pm">5:00 pm</option>
+      <option value="6:00 pm">6:00 pm</option>
+      <option value="7:00 pm">7:00 pm</option>
+      <option value="8:00 pm">8:00 pm</option>
+      <option value="9:00 pm">9:00 pm</option>
+      <option value="10:00 pm">10:00 pm</option>
+      <option value="11:00 pm">11:00 pm</option>
+    </select>
                      
-                      <select  style="height: 34px;" formControlName="pickup_time" class="fromdata" >
+                      <!-- <select  style="height: 34px;" formControlName="pickup_time" class="fromdata" >
                         <option value="">--Select---</option>
                         <option value="9">9 AM</option>
                         <option value="9.30">9.30 AM</option>
                         <option value="10">10 AM</option>
                         <option value="10.30">10.30 AM</option>
-                        </select>
+                        </select> -->
                       </div>
               </td>
 
@@ -148,10 +175,30 @@
                      
                       <select formControlName="drop_time" style="height: 34px;"  class="fromdata" >
                         <option value="">--Select---</option>
-                        <option value="9">9 AM</option>
-                        <option value="9.30">9.30 AM</option>
-                        <option value="10">10 AM</option>
-                        <option value="10.30">10.30 AM</option>
+                        <option value="12:00 am">12:00 am</option>
+      <option value="1:00 am">1:00 am</option>
+      <option value="2:00 am">2:00 am</option>
+      <option value="3:00 am">3:00 am</option>
+      <option value="4:00 am">4:00 am</option>
+      <option value="5:00 am">5:00 am</option>
+      <option value="6:00 am">6:00 am</option>
+      <option value="7:00 am">7:00 am</option>
+      <option value="8:00 am">8:00 am</option>
+      <option value="9:00 am">9:00 am</option>
+      <option value="10:00 am">10:00 am</option>
+      <option value="11:00 am">11:00 am</option>
+      <option value="12:00 pm">12:00 pm</option>
+      <option value="1:00 pm">1:00 pm</option>
+      <option value="2:00 pm">2:00 pm</option>
+      <option value="3:00 pm">3:00 pm</option>
+      <option value="4:00 pm">4:00 pm</option>
+      <option value="5:00 pm">5:00 pm</option>
+      <option value="6:00 pm">6:00 pm</option>
+      <option value="7:00 pm">7:00 pm</option>
+      <option value="8:00 pm">8:00 pm</option>
+      <option value="9:00 pm">9:00 pm</option>
+      <option value="10:00 pm">10:00 pm</option>
+      <option value="11:00 pm">11:00 pm</option>
                         </select>
                         </div>
               </td>
@@ -162,7 +209,7 @@
                       
      </div>
     <br>
-    <div class="accordion1">
+    <div class="accordion1" *ngIf="offerslist != ''">
      <!---End of Booking details-->
 
        <!--End of booking details-->
@@ -172,7 +219,8 @@
         <!-- <h2 class="mainheading" style="margin-top: -17px;"> Deal Of The Day (offers)</h2> -->
         <h2 class="title1 subheading"  (click)="opened1 = !opened1">Deal Of The Day (offers) <i class="fa fa-chevron-down"></i> </h2> 
         <div class="content-container1" [class.opened1]="opened1">
-    <div class="row">
+          
+    <div class="row" >
       <!-- <div class="col-sm-12">
         <div class="container"> -->
         
@@ -251,8 +299,9 @@
 
               <!-- <a  style="text-decoration: none;cursor: pointer;" class="booknowntn"  >Book Now</a> -->
 
-
+<div style="text-align: right;">
            <button id="select_{{s.offer_id}}" (click)="changeBgColor(s.offer_id);getComboOfferDetails(s.offer_id,s.combo_price,s.offer_name)"   class="comboselectbtm" >{{text}}</button>    </div>
+          </div>
         </div>
         </div>
 </ngx-slick-carousel>
@@ -284,7 +333,7 @@
   <h2 class="title subheading"  (click)="opened = !opened">Add Extra Services <i class="fa fa-chevron-down"></i> </h2> 
   <div class="content-container" [class.opened]="opened">
     <div class="row"> 
-      <div class="col-sm-6 heightdiv" style="display: inline;" *ngFor="let shoplist of shopdetails1;" >
+      <div class="col-sm-6 heightdiv" style="display: inline;" *ngFor="let shoplist of shopdetails1;let j=index" >
 
         <!-- <ng-template  #other_content><span  class="openClosed">no</span></ng-template>
 
@@ -328,7 +377,7 @@
             </div> -->
 
             <div class="MobServSelectbtn">
-              <button id="chooice_{{shoplist.service_id}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id)">{{textcontent}}</button> 
+              <button id="chooice_{{shoplist.service_id}}_{{j}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id,shoplist.j)">{{textcontent}}</button> 
             </div>
 
             

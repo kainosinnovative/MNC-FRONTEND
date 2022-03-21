@@ -16,14 +16,26 @@
             </div>
             <div class="col-sm-6">
                 <div class="row">
-                    <div class="col-sm-6"><b>Pick-up & Drop</b>{{userroleSes}}</div>
+                    <!-- <p>Time Format From  24 to 12 : {{'23:11:00' | convertFrom24To12Format}}</p> -->
+                    <div class="col-sm-6"><b>Pick-up & Drop</b></div>
                     <div class="col-sm-6"><span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
-                     
+                        
                         <ng-template  #pickDropid>
                             
                           <span>Yes<br>
-                            <span *ngIf="userroleSes == 'CustomerSes'"></span>
-                        {{b.pickedAndDrop_status}} on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+                            <span *ngIf="userroleSes == 'CustomerSes';else shoproleSesid">
+                                {{b.pickedAndDrop_status}}  on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+                            </span>
+
+                            <ng-template  #shoproleSesid>
+                              <span> {{b.instructions}} </span> on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+
+                            </ng-template>
+
+                            <!-- <span *ngIf="userroleSes == 'CustomerSes'">
+                                {{b.pickedAndDrop_status}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span> on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+                            </span> -->
+                        
                         <!-- {{b.instructions}} -->
                         </span>
                         </ng-template>
