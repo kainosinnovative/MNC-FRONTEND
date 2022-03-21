@@ -45,7 +45,7 @@ dynamicArray: Array<DynamicGrid> = [];
 
   opened = true;
   opened1 = false;
-  opened2 =  true;
+  opened2 =  false;
 
   imageSrc: string;
   CustomerDataById: any;
@@ -158,7 +158,7 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
        model: ['', Validators.required],
        lastupddt: [current_date, [Validators.required]],
        customer_id:[currentUserId, [Validators.required]],
-       vehicle_number: []
+       vehicle_number: ['', Validators.required]
       //  vehicle_number: ['', Validators.required,Validators.pattern(vehiclenumberpattern)]
       })
 
@@ -382,8 +382,9 @@ uploadFile(profileform:any)
 
 
       this.selectedDeviceObj = newObj;
-
-      (<HTMLInputElement>document.getElementById("model")).value='';
+      
+      this.cardetailForm.controls.model.setValue("");
+      //(<HTMLInputElement>document.getElementById("model")).value='';
       this.myusername = (<HTMLInputElement>document.getElementById("cartype")).value;
       console.log(this.myusername);
 
@@ -415,8 +416,8 @@ uploadFile(profileform:any)
 
 
     this.selecttypedata = typedata;
-
-    (<HTMLInputElement>document.getElementById("model")).value='';
+    this.cardetailForm.controls.model.setValue("");
+    //(<HTMLInputElement>document.getElementById("model")).value='';
     this.myuser = (<HTMLInputElement>document.getElementById("carbrand")).value;
     console.log(this.myuser);
 
@@ -453,6 +454,17 @@ AddCustomerCarDetails(cardetailForm:any)
           this.toastr.success('Car Details added Successfully');
           this.loadcarDetailsById();
           this.cardetailForm.reset();
+          let currentUserId:any = localStorage.getItem('currentUserId');
+          this.date=new Date();
+          let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+          this.cardetailForm.controls.lastupddt.setValue(current_date);
+          this.cardetailForm.controls.customer_id.setValue(currentUserId);
+          // this.cardetailForm.controls.fueltype.setValue("");
+          // this.cardetailForm.controls.cartype.setValue("");
+          // this.cardetailForm.controls.brand.setValue("");
+          // this.cardetailForm.controls.color.setValue("");
+          // this.cardetailForm.controls.model.setValue("");
+          // this.cardetailForm.controls.vehicle_number.setValue("");
         }
     });
     // console.log(profileform);
@@ -481,6 +493,7 @@ AddCustomerCarDetails(cardetailForm:any)
        this.removedata = data;
        console.log("Remove>>>",data)
        if(this.removedata.status == "pass"){
+        this.toastr.error('Vehicle deleted');
         this.loadcarDetailsById();
        }
       })

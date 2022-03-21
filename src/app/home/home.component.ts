@@ -121,7 +121,7 @@ this.adjustsItemsPerSlide();
 
   }
 
-  slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
 
   slickInit(e:any) {
     console.log('slick initialized');
@@ -183,7 +183,7 @@ this.adjustsItemsPerSlide();
 
 
 
-  slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
+  slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 4};
 
   slickInit1(e:any) {
     console.log('slick initialized');
@@ -309,11 +309,11 @@ else
       private adjustsItemsPerSlide() {
         this.innerWidth = window.innerWidth;
         if (this.innerWidth < this.mobileBreakpoint) {
-          this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
-          this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
+          this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 4};
+          this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 4};
         } else {
-          this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
-          this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
+          this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+          this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 4};
         }
       }
 
@@ -396,7 +396,7 @@ else
 
         }
       } 
-        //console.log("val1>>>",this.ShopHolidaysDetails1);
+        console.log("final holiday dashboardShopOffer1>>>",this.dashboardShopOffer1);
       }
 
 

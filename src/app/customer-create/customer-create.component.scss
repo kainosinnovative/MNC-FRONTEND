@@ -328,3 +328,11 @@ body .slick-next {
     height:180px !important;
     background: #f8f8f5 !important;
 }
+
+.table>:not(:first-child) {
+    border-top: 1px solid #c4c3c3 !important;
+}
+
+.thfontwt {
+font-weight: normal;
+}

@@ -54,6 +54,7 @@ OnlineBookingInsert:any;
 carinfoModels:any;
 carinfoModels1:any;
 counter:any = 0;
+date2:any;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
@@ -78,6 +79,9 @@ counter:any = 0;
 
 
   ngOnInit(): void {
+    this.date2=new Date();
+    this.date2 =this.datepipe.transform(this.date2, 'yyyy-MM-dd');
+
     this.adjustsItemsPerSlide();
     // (<HTMLInputElement>document.getElementById("movetopid")).scrollTop=0;
     (<HTMLInputElement>document.getElementById("booking_date")).focus();

@@ -54,7 +54,7 @@
           </ng-template>
          
           </span>
-        <span style="color: rgb(0, 217, 255);" *ngIf="m1.carwash_status_name === 'In Queue'">{{m1.carwash_status_name}}</span>
+        <span style="color: rgb(2, 15, 17);text-align: center !important;margin-left: 27px;" *ngIf="m1.carwash_status_name === '-'">-</span>
         <span style="color: rgb(185, 18, 88);" *ngIf="m1.carwash_status_name === 'In Progress'">{{m1.carwash_status_name}}</span>
         <span style="color: green;" *ngIf="m1.carwash_status_name === 'Completed'">{{m1.carwash_status_name}}</span>
       </span>
