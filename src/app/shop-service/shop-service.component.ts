@@ -327,6 +327,14 @@ export class ShopServiceComponent implements  OnInit{
   }
 
 
+  removedatevalidate(id:any) {
+    // alert("hi")
+    let validatemsg = "validatefromdateformat_"+id;
+    // alert(validateamount)
+      (<HTMLInputElement>document.getElementById(validatemsg)).style.display ="none";
+  }
+
+
   loadMasterService(){
     let currentUserId = localStorage.getItem('currentUserId');
     return this.restApi.getMasterServiceAndShopService(currentUserId).subscribe((data: {}) => {
