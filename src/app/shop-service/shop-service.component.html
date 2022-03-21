@@ -112,7 +112,17 @@
 
 </div>
 <div class="row">
+
   <div class="col-md-6">
+
+    <div class="row">
+      <label class="switch" style="white-space:nowrap">Do you provide pick & drop service..?!  <br>
+        <input style="float: left;     text-align: right;" type="checkbox" >
+        <span class="slider round"></span>
+      </label>
+        </div>
+
+    <div class="row">
     <div class="accordion">
       <h2 class="title subheading " style="text-align: left;" (click)="opened = !opened">Add Service Price <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container" [class.opened]="opened">
@@ -122,7 +132,7 @@
     <div style="border: 1px solid;overflow:auto;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add Service Price</h2> -->
     <form [formGroup]="shopserviceForm" name="pf">
-     <div class="table-responsive  boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height: 89px;" id="shopservFormid" >
+     <div class="table-responsive  boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 10px;height:  56px;" id="shopservFormid" >
       <table class="table table-responsive servicecss" style="border: none;margin-left:0px !important;">
         <tr style="text-align: left;">
           <td>Service</td>
@@ -214,6 +224,7 @@
 
 
 
+</div>
 </div>
   </div>
 
