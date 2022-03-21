@@ -56,13 +56,13 @@ export class ComboOffersComponent implements OnInit {
   ngOnInit(): void {
     this.date=new Date();
     this.shortMonth = (new Date().getMonth() + 1).toString().slice(-2);
-    
+
     // this.shortMonth = this.date.toLocaleString('en-us', { month: 'short' });
     // alert(shortMonth)
     this.ComboCurrentyear = this.date.getFullYear();
     // alert(ComboCurrentyear);
    let currentYear = new Date().getFullYear();
-   
+
    console.log(currentYear);
    (<HTMLInputElement>document.getElementById("Customname")).style.display ="none";
   //  let currentMonth=new Date().getMonth();
@@ -423,6 +423,12 @@ custom()
 RemoveoffercustomnameError() {
   (<HTMLInputElement>document.getElementById("offercustomnameError")).innerHTML = "";
 }
+
+getoffername(selectedVal:any) {
+  var frmdate=(<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
+  //alert(frmdate);
+}
+
 
 }
 type Month = Array<{ id: number; name: String }>;

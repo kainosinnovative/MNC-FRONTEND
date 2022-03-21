@@ -44,7 +44,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ServicesComponent } from './services/services.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopServiceComponent } from './shop-service/shop-service.component';
-import { DataTablesModule } from 'angular-datatables';
+
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ShopdashboardComponent } from './shopdashboard/shopdashboard.component';
@@ -72,6 +72,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {DataTablesModule} from 'angular-datatables';
+
 
 
 const appRoutes: Routes = [
@@ -175,9 +177,9 @@ const appRoutes: Routes = [
     NgApexchartsModule,
     MatDatepickerModule,
     NgxChartsModule,
-    
-    // ScaleLinear, 
-    // ScalePoint, 
+    DataTablesModule
+    // ScaleLinear,
+    // ScalePoint,
     // ScaleTime
   ],
   providers: [
