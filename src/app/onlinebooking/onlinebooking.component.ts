@@ -58,6 +58,8 @@ date2:any;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
 
+ ProfileDataByIdObject:any;
+ ShopProfileDetails:any;
  public text: string = 'Select';
 
  public textcontent: string = 'Select';
@@ -138,9 +140,28 @@ date2:any;
         this.onlinebooking.controls.Shop_id.setValue(id);
         this.onlinebooking.controls.pickup_drop.setValue(false);
         this.onlinebooking.controls.payment_type.setValue("Cash On Delivery");
+        this.getshopProfileDataByIdBooking(id);
         
   })
   
+  }
+
+
+  getshopProfileDataByIdBooking(id:any) {
+  
+    // let currentShopId = localStorage.getItem('currentUserId');
+    return this.restApi.readShopProfileDataById(id).subscribe((res)=>{
+      this.ProfileDataByIdObject = res
+  
+      
+      this.ShopProfileDetails = this.ProfileDataByIdObject.data.profile
+      console.log(this.ShopProfileDetails)
+      
+    }
+      
+    
+    )
+    
   }
 
   
@@ -309,7 +330,7 @@ loadshopoffers(currentShopId:any){
    
     this.offerdetails = data;
     this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
-    console.log("test>>>>",this.offerslist)
+    console.log("shop_logo>>>>",this.offerslist.shop_logo)
     
   })
 
@@ -375,11 +396,11 @@ changeBgColor(offer_id:any){
 }
 ExtraServiceArr = new Array();
 ExtraServiceArr1 = new Array();
-selectbuttoncolor(service_id:any){
+selectbuttoncolor(service_id:any,indexval:any){
 
  //alert(service_id);
    
-  let service_totalid = "amount_" + service_id ;
+  let service_totalid = "amount_" + service_id + "_" +indexval;
   
 
  let  currentserviceid ="chooice_"+ service_id;
