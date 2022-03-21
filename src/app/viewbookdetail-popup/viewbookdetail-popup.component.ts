@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./viewbookdetail-popup.component.scss']
 })
 export class ViewbookdetailPopupComponent implements OnInit {
+  userroleSes = localStorage.getItem('userroleSes');
+  
   bookingDetailsById:any;
   bookingDetailsById1:any;
   MasterServiceData:any;

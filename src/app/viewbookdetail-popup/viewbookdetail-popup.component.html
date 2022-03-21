@@ -16,11 +16,16 @@
             </div>
             <div class="col-sm-6">
                 <div class="row">
-                    <div class="col-sm-6"><b>Pick-up & Drop</b></div>
+                    <div class="col-sm-6"><b>Pick-up & Drop</b>{{userroleSes}}</div>
                     <div class="col-sm-6"><span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
                      
                         <ng-template  #pickDropid>
-                          <span>Yes</span>
+                            
+                          <span>Yes<br>
+                            <span *ngIf="userroleSes == 'CustomerSes'"></span>
+                        {{b.pickedAndDrop_status}} on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+                        <!-- {{b.instructions}} -->
+                        </span>
                         </ng-template>
                     </div>
                 </div>
