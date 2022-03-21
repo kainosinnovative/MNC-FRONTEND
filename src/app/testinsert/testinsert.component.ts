@@ -24,9 +24,44 @@ export class TestinsertComponent implements OnInit{
       pageLength: 3,
       processing: true,
       dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'print'
-        ]
+        buttons:{
+          dom: {
+            button: {
+              tag: 'i',
+              className: ''
+            }
+          },
+          //since we now have completely unstyled icons add
+          //some space between them trough a .custom-btn class
+          buttons: [
+           {
+             titleAttr: 'Download as PDF',
+             extend: 'pdfHtml5',
+             className: 'custom-btn fa fa-file-pdf-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Download as Excel',
+             extend: 'excelHtml5',
+             className: 'custom-btn fa fa-file-excel-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Download as CSV',
+             extend: 'csvHtml5',
+             className: 'custom-btn fa fa-file-text-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Print',
+             extend: 'print',
+             className: 'custom-btn fa fa-print',
+             text: ''
+           },
+
+          ]
+        }
+
     };
 
   }

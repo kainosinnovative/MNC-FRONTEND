@@ -36,6 +36,7 @@ export class ComboOffersComponent implements OnInit {
   serviceData1: any;
   config: any;
   date:any;
+  removecomboinfodata:any;
   comboofferData:any;
   comboofferData1:any;
   MasterServiceData:any;
@@ -394,7 +395,7 @@ retreivedata()
         this.comboofferData = data;
         this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
 
-        // console.log("data>>>>",this.comboofferData1)
+        console.log("data>>>>",this.comboofferData1)
         // this.dtTrigger.next();
       })
 
@@ -429,7 +430,19 @@ getoffername(selectedVal:any) {
   //alert(frmdate);
 }
 
+RemoveComboInfo(offerid:any)
+{
+//alert(offerid);
+this.restApi.RemoveMyComboInfo(offerid).subscribe((data: {}) => {
 
+  this.removecomboinfodata = data;
+  console.log("Remove>>>",data)
+  if(this.removecomboinfodata.status == "pass"){
+   this.toastr.error('Combo  Offer Deleted');
+   this.retreivedata();
+  }
+ })
+}
 }
 type Month = Array<{ id: number; name: String }>;
 type Year = Array<{ id: number; name: number }>;
