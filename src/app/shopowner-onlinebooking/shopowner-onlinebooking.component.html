@@ -28,7 +28,7 @@
               <td style="width: 190px">
                 <!-- <div > -->
                 <label>Customer</label> <br>
-                <select   class="carmodelcls" formControlName="Customer_id"  style="border: 1px solid;height: 34px;width: 180px;" (change)="loadcarDetailsById($event)">   
+                <select   class="carmodelcls" formControlName="Customer_id"  style="border: 1px solid;height: 34px;width: 180px;" (change)="loadcarDetailsById($event)" id="customerid2">   
                      
                   <option value="">--Select--</option>  
                   <option *ngFor="let c1 of custDetBycity1" [value]="c1.customer_id">
@@ -148,7 +148,7 @@
                 <label >Pick-up Date</label> 
     <br>
                      
-    <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
+    <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid2" placeholder="Date From" >
 </div>
               </td>
 

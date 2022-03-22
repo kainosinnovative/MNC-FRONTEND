@@ -727,7 +727,8 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
 
   disabledPickupDetails() {
     let pickup_drop = this.onlinebooking.get('pickup_drop').value;
-    // alert(pickup_drop)
+    // alert(pickup_drop) ;
+    (<HTMLInputElement>document.getElementById("customerid2")).focus();
 
     this.onlinebooking.controls.pickup_date.setValue("");
     this.onlinebooking.controls.instructions.setValue("");
