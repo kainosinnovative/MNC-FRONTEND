@@ -232,6 +232,17 @@ gettestimonialData(): Observable<Testimonial> {
             }
 
 
+            CarDetailsByIdShopOnlineBooking(customer_id:any): Observable<any[]> {
+
+              return this.http.get<any[]>(this.apiURL + "/app/CarDetailsByIdShopOnlineBooking?customer_id="+customer_id)
+  
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
+
+
             carDetByModelId(carDetByModelId:any): Observable<any[]> {
               let model = carDetByModelId["model"];
               let currentUserId = carDetByModelId["currentUserId"];
@@ -244,6 +255,17 @@ gettestimonialData(): Observable<Testimonial> {
               catchError(this.handleError)
               )
               }
+
+              getcustomerByCityId(currentLogincity:any): Observable<any[]> {
+                
+  
+                return this.http.get<any[]>(this.apiURL + "/app/getcustomerByCityId?cityid="+currentLogincity)
+    
+                .pipe(
+                retry(1),
+                catchError(this.handleError)
+                )
+                }
 
 
             RemoveMyCarInfo(carinfo_id:any): Observable<any[]> {
@@ -399,6 +421,8 @@ gettestimonialData(): Observable<Testimonial> {
             catchError(this.handleError)
             )
             }
+
+            
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{

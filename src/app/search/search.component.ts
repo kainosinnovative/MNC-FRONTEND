@@ -41,7 +41,7 @@ export class Service {
   providers: [DatePipe]
 })
 export class SearchComponent implements OnInit {
-
+  currentUsername = localStorage.getItem('currentUsername');
   myControl = new FormControl();
   options = [];
   filteredOptions: Observable<any[]>;
@@ -72,6 +72,8 @@ private innerWidth: number;
    dashboardShopoffer1:any;
    CustomerWhislistData:any;
    CustomerWhislistData1:any;
+   carDetailsById:any;
+   carDetailsById1:any;
   ngOnInit() {
     this.adjustsItemsPerSlide();
     this.date=new Date();
@@ -106,7 +108,7 @@ private innerWidth: number;
         this.dashboardShop1='';
       }
       this.getholidaysForAll();
-
+      this.loadcarDetailsById();
       this.customerId= localStorage.getItem('currentUserId');
    console.log(this.customerId);
     if(this.customerId != null)
@@ -135,6 +137,69 @@ private innerWidth: number;
      })
 
   }
+
+  loadcarDetailsById(){
+
+    let currentUserId = localStorage.getItem('currentUserId');
+    return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+      // alert(data)
+      this.carDetailsById = data;
+      this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+      console.log("carDetailsById1>>>",this.carDetailsById1)
+      this.MovecarDetailsById();
+      this.MovecarDetForOffer();
+    })
+  }
+
+
+  MovecarDetailsById() {
+        
+    if(this.carDetailsById1 != undefined) {
+    for(var i=0;i < this.carDetailsById1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShop1.length);j++) {
+        if(this.dashboardShop1[j].model_id == this.carDetailsById1[i].model){
+          
+          var newNum = "modelAvail";
+          var newVal = "Available";
+          this.dashboardShop1[j][newNum] = newVal;
+        }
+        
+       
+      }
+
+    }
+  }
+
+    console.log("car avl>>>",this.dashboardShop1);
+  }
+
+  MovecarDetForOffer() {
+        
+    if(this.carDetailsById1 != undefined) {
+    for(var i=0;i < this.carDetailsById1.length;i++) {
+
+      for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
+        if(this.dashboardShopoffer1[j].model_id == this.carDetailsById1[i].model){
+          // alert(this.dashboardShop1[j].model_id);
+          var newNum = "modelAvail";
+          var newVal = "Available";
+          this.dashboardShopoffer1[j][newNum] = newVal;
+        }
+        
+        //console.log("val",this.dashboardShop1);
+        // this.datecheckArr.push(ShopHolidaysDetails1[i])
+       
+      }
+
+    }
+  }
+
+
+    
+    console.log("car avl dashboardShopoffer1>>>",this.dashboardShopoffer1);
+  }
+
   loadMasterService(){
 
     return this.restApi.getMasterService().subscribe((data: {}) => {
@@ -271,7 +336,7 @@ slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
     console.log('beforeChange');
   }
 
-userloggedin(shopid :number)
+userloggedin(shopid :number,model_id:any)
   {
     if(!this.userroleSes)
     {
@@ -281,7 +346,7 @@ userloggedin(shopid :number)
     else
     {
       console.log(shopid);
-      this.router.navigate(['/onlinebooking/'+shopid]);
+      this.router.navigate(['/onlinebooking/'+shopid+"#"+model_id]);
     }
   }
   slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
@@ -424,4 +489,8 @@ userloggedin(shopid :number)
     console.log("MoveWishlistOfferCheck>>>",this.dashboardShopoffer1);
   }
 
+
+  checkModelAvail2(model_name:any) {
+    this.toastr.error("Add your "+ model_name + " at my profile sectoin and continue booking");
+  }
   }

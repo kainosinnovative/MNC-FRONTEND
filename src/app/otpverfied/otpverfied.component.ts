@@ -75,8 +75,9 @@ loadCustomerDetails2(Objval:any) {
       if(loginfor == 'shopowner') {
 
       localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
-      localStorage.setItem('currentUserId', this.customerdata2[0].shop_id );
+      localStorage.setItem('currentUserId', this.customerdata2[0].shop_id);
       localStorage.setItem('userroleSes', 'shopOwnerSes');
+      localStorage.setItem('currentLogincity', this.customerdata2[0].city);
       }
       else {
         localStorage.setItem('currentUsername', this.customerdata2[0].firstname);

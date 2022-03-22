@@ -73,6 +73,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {DataTablesModule} from 'angular-datatables';
+import { ShopownerOnlinebookingComponent } from './shopowner-onlinebooking/shopowner-onlinebooking.component';
 
 
 
@@ -102,8 +103,8 @@ const appRoutes: Routes = [
   { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}},
   { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
   { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}},
-  { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}}
-
+  { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}},
+  { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}}
 ];
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ const appRoutes: Routes = [
       MyBookingComponent,
       ViewbookingdetailsComponent,
       ViewbookdetailPopupComponent,
-      PopupmodalComponent
+      PopupmodalComponent,
+      ShopownerOnlinebookingComponent
 
 
      ],

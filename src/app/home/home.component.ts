@@ -492,7 +492,7 @@ else
       }
 
       checkModelAvail2(model_name:any) {
-        this.toastr.error("Add Your"+ model_name + "at My profile sectoin and continue booking");
+        this.toastr.error("Add your "+ model_name + " at my profile sectoin and continue booking");
       }
 
       

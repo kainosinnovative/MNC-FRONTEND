@@ -69,12 +69,12 @@
                     </ng-template>
                     </td>
                 <td>
-                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
+                 &nbsp; <input  class="offerptage"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
                  <p id="validateoffer_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
                  <p id="validateoffer1_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">0% offer not accepted</p>
                 </td>
                 <td>
-                  &nbsp;<input class="offerprice" id="offeramount_{{service.service_id}}_{{i}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
+                  &nbsp;<input readonly  class="offerprice" id="offeramount_{{service.service_id}}_{{i}}" type="number" value="{{service.offer_price}}"  style="width: 60px;">
 
                 </td>
                 <td>
