@@ -255,7 +255,15 @@ gettestimonialData(): Observable<Testimonial> {
               catchError(this.handleError)
               )
               }
+              RemoveMyComboInfo(offerid:any):Observable<any[]> {
+                // alert(carinfo_id)
+                return this.http.get<any[]>(this.apiURL + "/shop/RemoveMyComboOffer?offerid="+offerid)
 
+                .pipe(
+                retry(1),
+                catchError(this.handleError)
+                )
+                }
 
           dashboardShop(cityid:any): Observable<dahsboardShop> {
 
@@ -296,7 +304,7 @@ gettestimonialData(): Observable<Testimonial> {
               catchError(this.handleError)
               )
               }
-              
+
 
 
       getComboOffersData(monyear:any): Observable<Services> {
@@ -648,7 +656,7 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
   )
   }
 
-  
+
 
   insertShopHolidays(holidaysArr:any): Observable<any[]> {
     // alert(shopservAmount)
@@ -694,7 +702,7 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
       getBookingDetailsById(Booking_id:any): Observable<any[]> {
 
         return this.http.get<any[]>(this.apiURL + "/shop/getBookingDetailsById?Booking_id="+Booking_id)
-      
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -704,36 +712,36 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
         getShopHolidays(currentShopId	:any): Observable<logindetails> {
 
           return this.http.get<logindetails>(this.apiURL + '/shop/getShopHolidays?shop_id='+ currentShopId	)
-        
+
           .pipe(
             retry(1),
             catchError(this.handleError)
-        
+
           )
-        
+
         }
 
-        
+
         getholidaysForAll(): Observable<any[]> {
 
           return this.http.get<any[]>(this.apiURL + '/shop/getholidaysForAll')
-        
+
           .pipe(
             retry(1),
             catchError(this.handleError)
-        
+
           )
-        
+
         }
-        
+
         DeleteHolidays(holidaysData:any): Observable<any[]> {
           // alert(shopservAmount)
           let holidayid = holidaysData["holidayid"];
-        
-      
-      
+
+
+
           return this.http.get<any[]>(this.apiURL + "/shop/DeleteHolidays?holidayid="+holidayid)
-      
+
           .pipe(
           retry(1),
           catchError(this.handleError)
@@ -743,7 +751,7 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
           getcurrentComboOffersByShopiddashboard(currentUserId:any): Observable<any[]> {
 
             return this.http.get<any[]>(this.apiURL + "/shop/getcurrentComboOffersByShopiddashboard?currentUserId="+currentUserId)
-      
+
             .pipe(
             retry(1),
             catchError(this.handleError)
