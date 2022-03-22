@@ -3,8 +3,8 @@
 <div id="movetopid"></div>
 <h2 class="mainheading" style="text-align:center;">My Online Booking</h2>
 
-<div style="text-align: center;">
-  <img src="http://localhost/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" style="width: 50px;margin-top: -7px;"><b class="subheading"> {{ShopProfileDetails.name}}</b>
+<div style="text-align: center;" >
+  <img src="http://localhost/MNC-PHP-API/{{ShopProfileDetailsLogo}}" style="width: 50px;margin-top: -7px;"><b class="subheading"> {{ShopProfileDetailsName}}</b>
   </div>
 
 <div >
@@ -40,7 +40,7 @@
                 <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;width: 119px;" (change)="vehicleBasedModel($event)">   
                      
                   <option value="">--Select--</option>  
-                  <option *ngFor="let carmodels of carDetailsById1" [value]="carmodels.vehicle_number">
+                  <option *ngFor="let carmodels of carDetailsById3" [value]="carmodels.vehicle_number">
                     {{carmodels.vehicle_number}}
                     </option> 
                    </select>
@@ -377,7 +377,7 @@
             </div> -->
 
             <div class="MobServSelectbtn">
-              <button id="chooice_{{shoplist.service_id}}_{{j}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id,shoplist.j)">{{textcontent}}</button> 
+              <button id="chooice_{{shoplist.service_id}}" class="selectnow" (click)="selectbuttoncolor(shoplist.service_id,shoplist.j)">{{textcontent}}</button> 
             </div>
 
             

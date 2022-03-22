@@ -18,6 +18,7 @@ export class MyBookingComponent implements OnInit {
   MasterServiceData1:any;
   carwashstatus:any;
   carwashstatus1:any;
+  dtOptions:any = {};
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
     private toastr: ToastrService, private  dialog:  MatDialog) { }
 
@@ -29,6 +30,52 @@ export class MyBookingComponent implements OnInit {
       itemsPerPage: 10,
       currentPage: 1,
       // totalItems: this.collection.count
+    };
+
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 3,
+      processing: true,
+      dom: 'Bfrtip',
+        buttons: {
+          dom: {
+            button: {
+              tag: 'i',
+              className: ''
+            }
+          },
+          //since we now have completely unstyled icons add
+          //some space between them trough a .custom-btn class
+          buttons: [
+           {
+             titleAttr: 'Download as PDF',
+             extend: 'pdfHtml5',
+             className: 'custom-btn fa fa-file-pdf-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Download as Excel',
+             extend: 'excelHtml5',
+             className: 'custom-btn fa fa-file-excel-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Download as CSV',
+             extend: 'csvHtml5',
+             className: 'custom-btn fa fa-file-text-o',
+             text: ''
+           },
+           {
+             titleAttr: 'Print',
+       
+ extend: 'print',
+             className: 'custom-btn fa fa-print',
+             text: ''
+           },
+
+          ]
+        }
     };
   }
 

@@ -145,7 +145,14 @@
                     <a style="text-decoration: unset;" class="openClosed" *ngIf = "s.leavecheck == 'Closed';else booknowDisable" >Closed</a>
                      
                     <ng-template  #booknowDisable>
-                       <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
+                      
+                       <a *ngIf="s.modelAvail == 'Available';else checkModelAvail" style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id,s.model_id)">Book Now</a>
+
+                       <ng-template #checkModelAvail>
+                        <a *ngIf="currentUsername" style="text-decoration: none;cursor: pointer;" class="booknowntn"  (click)="checkModelAvail2(s.model_name)">Book Now</a>
+                        
+                        <a *ngIf="!currentUsername" style="text-decoration: none;cursor: pointer;" class="booknowntn"  (click)="userloggedin(s.shop_id,s.model_id)">Book Now</a>
+                       </ng-template>
                     </ng-template>
                     
                     <!-- {{s.leavecheck}} -->
@@ -254,7 +261,17 @@
                   <a style="text-decoration: unset;" class="openClosed" *ngIf = "s.leavecheck == 'Closed';else booknowDisable" >Closed</a>
                      
                     <ng-template  #booknowDisable>
-                       <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id)">Book Now</a>
+
+                      <a *ngIf="s.modelAvail == 'Available';else checkModelAvail" style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id,s.model_id)">Book Now</a>
+
+                      <ng-template #checkModelAvail>
+                        <a *ngIf="currentUsername" style="text-decoration: none;cursor: pointer;" class="booknowntn"  (click)="checkModelAvail2(s.model_name)">Book Now</a>
+                        
+                        <a *ngIf="!currentUsername" style="text-decoration: none;cursor: pointer;" class="booknowntn"  (click)="userloggedin(s.shop_id,s.model_id)">Book Now</a>
+                     
+                      </ng-template>
+
+                       <!-- <a  style="text-decoration: none;" class="booknowntn" routerLink=""  (click)="userloggedin(s.shop_id,s.model_id)">Book Now</a> -->
                     </ng-template>
             </div>
                 

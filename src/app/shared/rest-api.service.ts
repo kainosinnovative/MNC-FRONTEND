@@ -116,6 +116,18 @@ gettestimonialData(): Observable<Testimonial> {
       )
       }
 
+      getServiceDataOnlineBookingModel(ServiceDataOnlineBookingModel:any): Observable<Services> {
+        let model_id = ServiceDataOnlineBookingModel["model"];
+        let shopid = ServiceDataOnlineBookingModel["shopid"];
+                return this.http.get<Services>(this.apiURL + "/app/getServiceDataOnlineBookingModel?shopid="+shopid +
+        "&model_id=" + model_id)
+  
+        .pipe(
+        retry(1),
+        catchError(this.handleError)
+        )
+        }
+
       getServiceDataOffers(currentUserId:any): Observable<Services> {
         // alert(currentUserId)
         return this.http.get<Services>(this.apiURL + "/shop/getServiceDataOffersByCurdate?currentUserId="+currentUserId)
@@ -218,6 +230,20 @@ gettestimonialData(): Observable<Testimonial> {
             catchError(this.handleError)
             )
             }
+
+
+            carDetByModelId(carDetByModelId:any): Observable<any[]> {
+              let model = carDetByModelId["model"];
+              let currentUserId = carDetByModelId["currentUserId"];
+
+              return this.http.get<any[]>(this.apiURL + "/app/carDetByModelId?model="+model +
+              "&currentUserId=" + currentUserId)
+  
+              .pipe(
+              retry(1),
+              catchError(this.handleError)
+              )
+              }
 
 
             RemoveMyCarInfo(carinfo_id:any): Observable<any[]> {
@@ -549,9 +575,11 @@ readShopProfileDataById(currentShopId	:any): Observable<logindetails> {
 
 }
 
-ShopoffersById(currentShopId:any): Observable<shopoffers> {
+ShopoffersById(onlinebookingcombo:any): Observable<shopoffers> {
+  let model = onlinebookingcombo["model"];
+      let shopid = onlinebookingcombo["shopid"];
 
-  return this.http.get<shopoffers>(this.apiURL +'/shop/OnlineBookingShopDetails?currentUserId='+ currentShopId )
+  return this.http.get<shopoffers>(this.apiURL +'/shop/OnlineBookingShopDetails?shopid='+ shopid +'&model='+model )
 
   .pipe(
     retry(1),

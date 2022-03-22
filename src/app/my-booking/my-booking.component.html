@@ -6,7 +6,7 @@
     <div class="col-sm-6" >
 
       
-        <table  class="table table-responsive servicecss" >
+        <table  class="table table-responsive servicecss" datatable [dtOptions]="dtOptions">
             <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
               
                 <tr>
@@ -22,14 +22,14 @@
                 
               </tr>
             </thead>
-            <tbody *ngIf = "MybookingDetails1 == '';else mybookintbl">
+            <!-- <tbody *ngIf = "MybookingDetails1 == '';else mybookintbl">
               <tr>
                 <td colspan="13" style="text-align: center;">
                   No data available
                 </td>
               </tr>
-            </tbody>
-            <ng-template #mybookintbl>
+            </tbody> -->
+            <!-- <ng-template #mybookintbl> -->
             <tbody   >
               <tr  *ngFor="let b of  MybookingDetails1 | paginate: config ;  let i=index;" style="border:1px solid #aeaeae;">
                
@@ -69,7 +69,7 @@
               </tr>
               
             </tbody>
-          </ng-template>
+          <!-- </ng-template> -->
           </table>
 
             

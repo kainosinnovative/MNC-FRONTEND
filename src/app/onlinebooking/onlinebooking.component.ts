@@ -49,6 +49,8 @@ export class OnlinebookingComponent implements OnInit {
 //totalvalue = 0;
 carDetailsById:any;
 carDetailsById1:any;
+carDetailsById2:any;
+carDetailsById3:any;
 current_date:any;
 OnlineBookingInsert:any;
 carinfoModels:any;
@@ -57,7 +59,8 @@ counter:any = 0;
 date2:any;
   currentUsername = localStorage.getItem('currentUsername');
  isloggedinUser = localStorage.getItem('isloggedinUser');
-
+ ShopProfileDetailsLogo:any;
+ ShopProfileDetailsName:any;
  ProfileDataByIdObject:any;
  ShopProfileDetails:any;
  public text: string = 'Select';
@@ -130,11 +133,14 @@ date2:any;
 
 
        this.router.params.subscribe(params => {
-        const id = params['id'];
-        
-        this.loadshopdetails(id);
-        this.loadshopoffers(id);
+        const id2 = params['id'];
+        const idArr = id2.split("#");
+        let id = idArr[0];
+        //alert(idArr[1]);
+        this.loadshopdetails(id,idArr[1]);
+        this.loadshopoffers(id,idArr[1]);
         this.getPickupAvl(id);
+        this.loadcarDetByModelId(idArr[1]);
         var randomnumber = Math.floor(100000 + Math.random() * 900000) + "-" + id;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
@@ -146,6 +152,22 @@ date2:any;
   
   }
 
+  loadcarDetByModelId(model_id:any){
+    let currentUserId = localStorage.getItem('currentUserId');
+    var carDetByModelId =
+                   {
+                  "model": model_id,
+                  "currentUserId": currentUserId,
+                   }
+    
+    
+    return this.restApi.carDetByModelId(carDetByModelId).subscribe((data: {}) => {
+      // alert(data)
+      this.carDetailsById2 = data;
+      this.carDetailsById3 = this.carDetailsById2.data.carDetByModelId;
+      console.log("carDetailsById3>>>",this.carDetailsById3);
+    })
+  }
 
   getshopProfileDataByIdBooking(id:any) {
   
@@ -155,7 +177,9 @@ date2:any;
   
       
       this.ShopProfileDetails = this.ProfileDataByIdObject.data.profile
-      console.log(this.ShopProfileDetails)
+      this.ShopProfileDetailsLogo = this.ShopProfileDetails.shop_logo;
+      this.ShopProfileDetailsName = this.ShopProfileDetails.name;
+      //console.log("this.ShopProfileDetails>>>",this.ShopProfileDetails.shop_logo)
       
     }
       
@@ -305,32 +329,41 @@ readCustomerDataById() {
   
 }
 
-loadshopdetails(currentUserId:any){
-
-  // let currentUserId = 1;
+loadshopdetails(shopid:any,model_id:any){
+// alert(shopid)
+// alert(shopid)
+  var ServiceDataOnlineBookingModel =
+                   {
+                  "model": model_id,
+                  "shopid": shopid,
+                   }
   
-  return this.restApi.getServiceData(currentUserId).subscribe((data: {}) => {
+  return this.restApi.getServiceDataOnlineBookingModel(ServiceDataOnlineBookingModel).subscribe((data: {}) => {
     // alert(data)
     this.shopdetails = data;
     //console.log("abi", this.shopdetails);
-     this.shopdetails1 = this.shopdetails.data.carAndShopservice;
+     this.shopdetails1 = this.shopdetails.data.getServiceDataOnlineBookingModel;
     
-     console.log("abi>>>>",this.shopdetails1)
+     console.log("shopdetails1 final>>>>",this.shopdetails1)
     
   })
 }
 
-loadshopoffers(currentShopId:any){
+loadshopoffers(shopid:any,modelid:any){
 
-  // let currentShopId = 1;
+  var onlinebookingcombo =
+                   {
+                  "model": modelid,
+                  "shopid": shopid,
+                   }
   
-  return this.restApi.ShopoffersById(currentShopId).subscribe((data: {}) => {
+  return this.restApi.ShopoffersById(onlinebookingcombo).subscribe((data: {}) => {
 
     //console.log('testabi', data);
    
     this.offerdetails = data;
     this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
-    console.log("shop_logo>>>>",this.offerslist.shop_logo)
+    console.log("shop_logo>>>>",this.offerslist)
     
   })
 
@@ -400,7 +433,7 @@ selectbuttoncolor(service_id:any,indexval:any){
 
  //alert(service_id);
    
-  let service_totalid = "amount_" + service_id + "_" +indexval;
+  let service_totalid = "amount_" + service_id;
   
 
  let  currentserviceid ="chooice_"+ service_id;
