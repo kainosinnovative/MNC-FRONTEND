@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class HomeComponent implements OnInit {
+  
   date:any;
   //data: any;
   selectedCity: any;
@@ -95,7 +96,7 @@ this.adjustsItemsPerSlide();
     })
 
   }
-  userloggedin(shopid :number)
+  userloggedin(shopid :number,model_id:any)
   {
     if(!this.userroleSes)
     {
@@ -105,7 +106,8 @@ this.adjustsItemsPerSlide();
     else
     {
       console.log(shopid);
-      this.router.navigate(['/onlinebooking/'+shopid]);
+      this.router.navigate(['/onlinebooking/'+shopid+"#"+model_id]);
+      
     }
   }
   loadMasterService(){
@@ -342,6 +344,7 @@ else
           this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
           console.log("carDetailsById1>>>",this.carDetailsById1)
           this.MovecarDetailsById();
+          this.MovecarDetForOffer();
         })
       }
 
@@ -353,6 +356,7 @@ else
 
           for(var j=0;j < (this.dashboardShop1.length);j++) {
             if(this.dashboardShop1[j].model_id == this.carDetailsById1[i].model){
+              // alert(this.dashboardShop1[j].model_id);
               var newNum = "modelAvail";
               var newVal = "Available";
               this.dashboardShop1[j][newNum] = newVal;
@@ -368,7 +372,34 @@ else
 
 
         
-        console.log("car avl>>>",this.carDetailsById1);
+        console.log("car avl>>>",this.dashboardShop1);
+      }
+
+
+      MovecarDetForOffer() {
+        
+        if(this.carDetailsById1 != undefined) {
+        for(var i=0;i < this.carDetailsById1.length;i++) {
+
+          for(var j=0;j < (this.dashboardShopOffer1.length);j++) {
+            if(this.dashboardShopOffer1[j].model_id == this.carDetailsById1[i].model){
+              // alert(this.dashboardShop1[j].model_id);
+              var newNum = "modelAvail";
+              var newVal = "Available";
+              this.dashboardShopOffer1[j][newNum] = newVal;
+            }
+            
+            //console.log("val",this.dashboardShop1);
+            // this.datecheckArr.push(ShopHolidaysDetails1[i])
+           
+          }
+
+        }
+      }
+
+
+        
+        console.log("car avl dashboardShopOffer1>>>",this.dashboardShopOffer1);
       }
 
     
@@ -458,6 +489,10 @@ else
         }
       }
         console.log("MoveWishlistOfferCheck>>>",this.dashboardShopOffer1);
+      }
+
+      checkModelAvail2(model_name:any) {
+        this.toastr.error("Add Your"+ model_name + "at My profile sectoin and continue booking");
       }
 
       
