@@ -37,7 +37,7 @@ export type ChartOptions2 = {
   fill: ApexFill | any;
   legend: ApexLegend | any;
   dataLabels: ApexDataLabels | any;
-  
+
 };
 @Component({
   selector: 'app-shopdashboard',
@@ -94,7 +94,7 @@ export class ShopdashboardComponent implements OnInit {
     this.currentComboOffers();
 
     this.getBookingByid();
-  
+
     this.loadmasterComboOffer();
     this.ViewBooking_heading = localStorage.getItem('ViewBooking_heading');
     this.config = {
@@ -110,7 +110,7 @@ export class ShopdashboardComponent implements OnInit {
     // this.config2 = {
     //   itemsPerPage: 10,
     //   currentPage: 1,
-      
+
     // };
     this.config3 = {
       itemsPerPage: 10,
@@ -121,10 +121,10 @@ export class ShopdashboardComponent implements OnInit {
     this.loadServiceDataOffers();
 
 
-    
+
 
     this.getcurrentComboOffersByShopiddashboard();
-    
+
   }
 
   FinalBarchartArr = new Array();
@@ -134,12 +134,12 @@ export class ShopdashboardComponent implements OnInit {
       // alert(data)
       this.ComboOffersByShopiddashboard = data;
       this.ComboOffersByShopiddashboard1 = this.ComboOffersByShopiddashboard;
-      
+
       console.log("ComboOffersByShopiddashboard>>>",this.ComboOffersByShopiddashboard1)
 
       // for(let i=0;i<this.ComboOffersByShopiddashboard1.length;i++){
-        
-      //   var json = 
+
+      //   var json =
       //              {
       //             "y": Number(this.ComboOffersByShopiddashboard1[i].y),
       //             "label": this.ComboOffersByShopiddashboard1[i].label
@@ -147,7 +147,7 @@ export class ShopdashboardComponent implements OnInit {
       //   this.FinalBarchartArr.push(json);
 
       // }
-      
+
 
       // let chart = new CanvasJS.Chart("chartContainer", {
       //   animationEnabled: true,
@@ -176,40 +176,40 @@ export class ShopdashboardComponent implements OnInit {
       //     ]
       //   }]
       // });
-        
+
       // chart.render();
     })
 
-    
+
   }
 
   customerBookingForShop(){
 
     let currentUserId = localStorage.getItem('currentUserId');
-    
+
     return this.restApi.getcustomerBookingForShop(currentUserId).subscribe((data: {}) => {
       // alert(data)
       this.bookingDetails = data;
       //console.log("abi", this.shopdetails);
        this.bookingDetails1 = this.bookingDetails.data.customerBookingForShop;
-      
+
       //  console.log("bookingDetails1>>>>",this.bookingDetails1)
-      
+
     })
   }
 
   loadMasterService(){
-    
+
     return this.restApi.getMasterService().subscribe((data: {}) => {
       // alert(data)
       this.MasterServiceData = data;
       this.MasterServiceData1 = this.MasterServiceData.data.type;
-      
+
       // console.log("data>>>>",this.MasterServiceData1)
       // this.dtTrigger.next();
     })
 
-    
+
   }
 
   pageChanged(event:any){
@@ -233,9 +233,9 @@ export class ShopdashboardComponent implements OnInit {
       // alert(data)
       this.pickdrop_statusDetails = data;
        this.pickdrop_statusDetails1 = this.pickdrop_statusDetails.master_pickdrop_status;
-      
+
       //  console.log("Details1>>>>",this.pickdrop_statusDetails1)
-      
+
     })
   }
 
@@ -244,9 +244,9 @@ export class ShopdashboardComponent implements OnInit {
       // alert(data)
       this.carwashstatus = data;
        this.carwashstatus1 = this.carwashstatus.master_carwash_status;
-      
+
        console.log("master_carwash_status>>>>",this.carwashstatus1)
-      
+
     })
   }
 
@@ -259,7 +259,7 @@ export class ShopdashboardComponent implements OnInit {
     //   (<HTMLInputElement>document.getElementById(pickedAndDropId)).focus();
     // }
     // else {
-    var changeBookingStatus = 
+    var changeBookingStatus =
                    {
                   "booking_status": booking_status,
                   "Booking_id": Booking_id,
@@ -277,14 +277,14 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
     else {
       this.toastr.error(booking_status);
     }
-    
+
   }
 },
 success => {
   console.log('Error>>>>>', success);
- 
-  
-  
+
+
+
 }
 );
   }
@@ -294,15 +294,15 @@ success => {
 AcceptedBookingList(){
 
   let currentUserId = localStorage.getItem('currentUserId');
-  
+
   return this.restApi.getAcceptedBookingList(currentUserId).subscribe((data: {}) => {
     // alert(data)
     this.AcceptbookingDetails = data;
     //console.log("abi", this.shopdetails);
      this.AcceptbookingDetails1 = this.AcceptbookingDetails.data.AcceptedBookingList;
-    
+
      console.log("AcceptbookingDetails>>>>",this.AcceptbookingDetails1)
-    
+
   })
 }
 
@@ -315,27 +315,27 @@ let carwashStatusId = "carwash_"+Booking_id;
       (<HTMLInputElement>document.getElementById(carwashStatusId)).focus();
     }
     else {
-      var changeCarwashStatus = 
+      var changeCarwashStatus =
                    {
                   "carwash_status": carwash_status,
                   "Booking_id": Booking_id
-                  
+
                    }
 
 this.restApi.changeCarwashStatus(changeCarwashStatus).subscribe((data: any) => {
   console.log('POST Request is successful >>>>>>>>', data.status);
   if(data.status == "pass") {
-   
+
       this.toastr.success("Carwash status updated");
-    
-    
+
+
   }
 },
 success => {
   console.log('Error>>>>>', success);
- 
-  
-  
+
+
+
 }
 );
     }
@@ -347,8 +347,8 @@ currentComboOffers(){
   this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
     this.currentOffer = data;
      this.currentOffer1 = this.currentOffer;
-    
-    
+
+
     // this.ComboOfferAmountArr = [10,100];
      for(let i=0;i<this.currentOffer1.length;i++){
        this.ComboOfferAmountArr.push(Number(this.currentOffer1[i].offer_percent));
@@ -359,8 +359,8 @@ currentComboOffers(){
 
      this.chartOptions = {
 
-      
-       
+
+
       series: [
         {
           name: "Offer %",
@@ -370,21 +370,21 @@ currentComboOffers(){
       chart: {
         toolbar: {
           show: true,
-         
+
           tools: {
             // download: false,
             download: '<i style="font-size:12px;color:black" class="fa fa-download" title="Download"></i>',
-            
+
           },
         },
-          
+
         type: "bar",
         height: 300,
         width:300,
         colors: "red",
 
       },
-      
+
       plotOptions: {
         bar: {
           horizontal: false,
@@ -406,8 +406,8 @@ currentComboOffers(){
             //font:"20px"
           }
         },
-        
-        
+
+
       },
       yaxis: {
 
@@ -415,9 +415,9 @@ currentComboOffers(){
           display: true,
           labelString: "Date",
          },
-        
-        
-        
+
+
+
     },
     tooltip: {
       y: {
@@ -433,11 +433,11 @@ currentComboOffers(){
     }
   };
 
-   
-    
+
+
   })
-  
- 
+
+
 }
 
 // currentComboOffers(){
@@ -446,9 +446,9 @@ currentComboOffers(){
 //     // alert(data)
 //     this.currentOffer = data;
 //      this.currentOffer1 = this.currentOffer.data.getcurrentComboOffersByShopid;
-    
+
 //      console.log("currentComboOffers>>>>",this.currentOffer1)
-    
+
 //   })
 // }
 
@@ -459,7 +459,7 @@ loadServiceDataOffers(){
     // alert(data)
     this.serviceDataOffers = data;
     this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentOffersByShopid;
-    
+
     console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
     // this.dtTrigger.next();
 
@@ -503,14 +503,14 @@ loadServiceDataOffers(){
             dataLabels: {
               enabled: false
             },
-            
+
           }
         }
       ]
     };
   })
 
-  
+
 }
 
 viewBookingDetails(id :any)
@@ -519,13 +519,13 @@ viewBookingDetails(id :any)
 }
 
 
-  
+
 
 ViewDetailsPopup(Booking_id:any, heading:any){
   localStorage.setItem('ViewBooking_id',Booking_id);
   localStorage.setItem('ViewBooking_heading',heading);
 //   // alert("hi")
-  this.dialog.open(ViewbookdetailPopupComponent,{disableClose: true, 
+  this.dialog.open(ViewbookdetailPopupComponent,{disableClose: true,
   width: '50%'});
 
 }
@@ -538,29 +538,29 @@ getBookingByid() {
     this.bookingDetailsById = data;
     //console.log("abi", this.shopdetails);
     //  this.bookingDetailsById1 = this.bookingDetailsById.data;
-    
+
      console.log("bookingDetails2>>>>",this.bookingDetailsById)
-    
+
   })
     }
 
     loadmasterComboOffer() {
-      
+
       return this.restApi.loadmasterComboOffer().subscribe((data: {}) => {
         // alert(data)
         this.loadmasterComboOfferval = data;
-        
+
          this.loadmasterComboOfferval1 = this.loadmasterComboOfferval;
-        
+
          console.log("loadmasterComboOfferval1>>>>",this.loadmasterComboOfferval1)
-        
+
       })
         }
 
         closeMe() {
           localStorage.removeItem("ViewBooking_id");
           localStorage.removeItem("ViewBooking_heading");
-          
+
        }
 
 }

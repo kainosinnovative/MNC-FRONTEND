@@ -5,6 +5,11 @@ import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angul
 import { ToastrService } from 'ngx-toastr';
 import { ViewbookdetailPopupComponent } from '../viewbookdetail-popup/viewbookdetail-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AfterViewInit, VERSION,ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+// import 'rxjs/add/operator/map';
+import { HttpParams,HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-my-booking',
   templateUrl: './my-booking.component.html',
@@ -12,20 +17,42 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MyBookingComponent implements OnInit {
   MybookingDetails:any;
-  MybookingDetails1:any;
+  title = 'dataTableDemo';
+  apiURL = 'http://localhost/MNC-PHP-API';
+//dtOptions: DataTables.Settings = {};
+dtOptions: any = {};
+posts: any;
+ // apiURL = 'http://localhost/MNC-PHP-API';
+  MybookingDetails1:any=[];
   config:any;
   MasterServiceData:any;
   MasterServiceData1:any;
   carwashstatus:any;
   carwashstatus1:any;
-  dtOptions:any;
+  // @ViewChild(DataTableDirective)
+  // datatableElement: DataTableDirective;
+  //dtOptions: DataTables.Settings = {};
+  persons: any = [];
+  // We use this trigger because fetching the list of persons can be quite long,
+  // thus we make sure the data gets fetched before rendering
+  // dtTrigger: Subject<any> = new Subject();
+
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
-    private toastr: ToastrService, private  dialog:  MatDialog) { }
+    private toastr: ToastrService, private  dialog:  MatDialog) {
+      let currentUserId = localStorage.getItem('currentUserId');
+      this.http.get(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId)
+        .subscribe(posts => {
+          this.posts = posts;
+          console.log("ss>>",this.posts);
+      }, error => console.error(error));
+    }
 
   ngOnInit(): void {
-    this.loadMybookingDetails();
+
+   // this.loadMybookingDetails();
     this.loadMasterService();
     this.master_carwash_status();
+   // this.ngAfterViewInit();
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -33,63 +60,108 @@ export class MyBookingComponent implements OnInit {
     };
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 3,
+      pageLength: 10,
       processing: true,
       dom: 'Bfrtip',
-        buttons: {
-          dom: {
-            button: {
-              tag: 'i',
-              className: ''
-            }
-          },
-          //since we now have completely unstyled icons add
-          //some space between them trough a .custom-btn class
-          buttons: [
-           {
-             titleAttr: 'Download as PDF',
-             extend: 'pdfHtml5',
-             className: 'custom-btn fa fa-file-pdf-o',
-             text: ''
-           },
-           {
-             titleAttr: 'Download as Excel',
-             extend: 'excelHtml5',
-             className: 'custom-btn fa fa-file-excel-o',
-             text: ''
-           },
-           {
-             titleAttr: 'Download as CSV',
-             extend: 'csvHtml5',
-             className: 'custom-btn fa fa-file-text-o',
-             text: ''
-           },
-           {
-             titleAttr: 'Print',
-             extend: 'print',
-             className: 'custom-btn fa fa-print',
-             text: ''
-           },
+      buttons: {
+        dom: {
+          button: {
+            tag: 'i',
+            className: ''
+          }
+        },
+        //since we now have completely unstyled icons add
+        //some space between them trough a .custom-btn class
+        buttons: [
+         {
+           titleAttr: 'Download as PDF',
+           extend: 'pdfHtml5',
+           className: 'custom-btn fa fa-file-pdf-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as Excel',
+           extend: 'excelHtml5',
+           className: 'custom-btn fa fa-file-excel-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as CSV',
+           extend: 'csvHtml5',
+           className: 'custom-btn fa fa-file-text-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Print',
+           extend: 'print',
+           className: 'custom-btn fa fa-print',
+           text: ''
+         },
 
-          ]
-        }
+        ]
+      }
+
     };
+  //   let currentUserId = localStorage.getItem('currentUserId');
+  //   this.http.get<any[]>(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId) .subscribe(
+  //     data => {
+  //      alert(data);
+  //       this.persons = data
+  //      // console.log("11",this.persons);
+  //       this.MybookingDetails1=this.persons;
+  //       console.log("ss>>",this.MybookingDetails1);
+  //     }
+
+
+
+  // );
+ //this.ngAfterViewInit();
+
   }
 
-  loadMybookingDetails(){
-    let currentUserId = localStorage.getItem('currentUserId');
-    return this.restApi.getMybookingDetails(currentUserId).subscribe((data: {}) => {
-      // alert(data)
-      this.MybookingDetails = data;
-      this.MybookingDetails1 = this.MybookingDetails.data.getMybookingDetails;
+  // ngAfterViewInit(): void {
 
-      console.log("MybookingDetails1>>>",this.MybookingDetails1)
-      // this.dtTrigger.next();
-    })
+  //   this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+  //     dtInstance.columns().every(function () {
+  //       const that = this;
+  //       $('input', this.footer()).on('keyup change', function () {
+  //         if (that.search() !== this['value']) {
+  //           that
+  //             .search(this['value'])
+  //             .draw();
+  //         }
+  //       });
+  //     });
+  //   });
+
+ // }
+  // loadMybookingDetails(){
 
 
-  }
 
+
+  // }
+
+
+  // rerender(): void {
+  //     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+  //       dtInstance.destroy();
+  //       this.dtTrigger.next();
+  //     });
+  // }
+  // ngAfterViewInit(): void {
+  //   this.dtTrigger.next();
+  //   this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+  //     dtInstance.columns().every(function () {
+  //       const that = this;
+  //       $('input', this.footer()).on('keyup change', function () {
+  //         if (that.search() !== this['value']) {
+  //           that.search(this['value']).draw();
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
   pageChanged(event:any){
     this.config.currentPage = event;
   }
@@ -102,7 +174,7 @@ export class MyBookingComponent implements OnInit {
       this.MasterServiceData1 = this.MasterServiceData.data.type;
 
       // console.log("data>>>>",this.MasterServiceData1)
-      // this.dtTrigger.next();
+
     })
 
 
@@ -135,3 +207,6 @@ export class MyBookingComponent implements OnInit {
 }
 
 }
+
+
+

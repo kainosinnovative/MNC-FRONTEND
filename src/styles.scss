@@ -270,7 +270,7 @@ line-height: unset !important;
 
 .apexcharts-tooltip-title {
   display: none;
-} 
+}
 
 .mat-calendar-body-cell.selected {
   background-color: skyblue !important;
@@ -285,7 +285,7 @@ line-height: unset !important;
 
 @media screen and (max-width: 768px){
   .autocomplete-container .input-container input {
-  
+
     width: 200px !important;
   }
   }
@@ -304,3 +304,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.dt-buttons
+  {
+    padding-bottom: 10px;
+    font-size: 20px !important;
+    text-align: right;
+  
+  }
