@@ -261,7 +261,7 @@
             <td class="">
 
         <ng-autocomplete class="ng-autocomplete" style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
-              (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+              (inputChanged)='onChangeSearch($event)'    (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
               [notFoundTemplate]="notFoundTemplate" >
             </ng-autocomplete>
 
