@@ -3,7 +3,11 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 // import 'rxjs/add/operator/map';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Chart } from 'angular-highcharts';
+// import { donutChartOptions } from '../helpers/donutChartOptions';
+import { areaChartOptions } from '../helpers/areaChartOptions';
+import { barChart } from '../helpers/barChart';
+import { oneLineBar } from '../helpers/oneLineBar';
 
 @Component({
   selector: 'app-testinsert',
@@ -12,25 +16,16 @@ import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TestinsertComponent implements OnInit
 {
-  title = 'dataTableDemo';
-  apiURL = 'http://localhost/MNC-PHP-API';
-dtOptions: DataTables.Settings = {};
-posts: any;
+  // chart = new Chart(donutChartOptions);
+  areaSplineChart = new Chart(areaChartOptions);
+  barChart = new Chart(barChart);
+  oneLineBar = new Chart(oneLineBar);
 
 constructor(private http: HttpClient) {
-  let currentUserId = localStorage.getItem('currentUserId');
-  this.http.get(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId)
-    .subscribe(posts => {
-      this.posts = posts;
-      console.log(this.posts);
-  }, error => console.error(error));
+  
 }
 
 ngOnInit(): void {
-  this.dtOptions = {
-    pagingType: 'full_numbers',
-    pageLength: 5,
-    processing: true
-  };
+ 
 }
 }

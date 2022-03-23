@@ -534,27 +534,18 @@ success => {
   }
 
   changepickupStatus(shop_id:any,status:any) {
-    //alert(serviceid)
-   // alert(status)
-   // alert(index);
-   // var updatebutton="updatebtn_"+serviceidnew+"_"+index;
-   // alert(updatebutton);
-   // if(status==1)
-   // {
-   //  // alert("hi");
-   //   alert(  (<HTMLInputElement>document.getElementById(updatebutton)));
-   //   (<HTMLInputElement>document.getElementById(updatebutton)).style.color="green";
-   // }
+    
    
        var changepickupStatus =
                       {
-                        "shopserviceid": shop_id,
-                        "status": status,
+                        "shopid": shop_id,
+                        "pickupstatus": status,
                       }
    
    this.restApi. changepickupStatus(changepickupStatus).subscribe((data: any) => {
      console.log('POST Request is successful >>>>>>>>', data.status);
-     if(data.status == "pass") {
+     if(data.status == "pass") 
+     {
        this.loadServiceData();
      }
    },
