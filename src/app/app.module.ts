@@ -74,7 +74,7 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mom
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {DataTablesModule} from 'angular-datatables';
 import { ShopownerOnlinebookingComponent } from './shopowner-onlinebooking/shopowner-onlinebooking.component';
-
+import { ChartModule } from 'angular-highcharts';
 
 
 const appRoutes: Routes = [
@@ -179,10 +179,8 @@ const appRoutes: Routes = [
     NgApexchartsModule,
     MatDatepickerModule,
     NgxChartsModule,
-    DataTablesModule
-    // ScaleLinear,
-    // ScalePoint,
-    // ScaleTime
+    DataTablesModule,
+    ChartModule
   ],
   providers: [
     EventEmitterService,

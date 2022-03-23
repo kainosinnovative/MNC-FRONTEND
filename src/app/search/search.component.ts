@@ -491,6 +491,6 @@ userloggedin(shopid :number,model_id:any)
 
 
   checkModelAvail2(model_name:any) {
-    this.toastr.error("Add your "+ model_name + " at my profile sectoin and continue booking");
+    this.toastr.error("Add your "+ model_name + " at your profile sectoin and continue booking");
   }
   }
