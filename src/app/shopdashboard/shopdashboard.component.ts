@@ -18,7 +18,9 @@ import {
   ApexLegend,ApexYAxis
 } from "ng-apexcharts";
 import * as CanvasJS from './canvasjs.min';
-
+import { AfterViewInit, VERSION } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -45,6 +47,12 @@ export type ChartOptions2 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
+  apiURL = 'http://localhost/MNC-PHP-API';
+  //dtOptions: DataTables.Settings = {};
+  dtOptions: any = {};
+  posts: any;
+  dtOptions1: any = {};
+  posts1: any;
   ComboOffersByShopiddashboard:any;
   ComboOffersByShopiddashboard1:any;
   bookingDetails:any;
@@ -82,7 +90,19 @@ export class ShopdashboardComponent implements OnInit {
   @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions2: Partial<ChartOptions2>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
-    private toastr: ToastrService, private  dialog:  MatDialog) { }
+    private toastr: ToastrService, private  dialog:  MatDialog) {
+      let currentUserId = localStorage.getItem('currentUserId');
+      this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
+        .subscribe(posts => {
+          this.posts = posts;
+          console.log("ss>>",this.posts);
+      }, error => console.error(error));
+      this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+      .subscribe(posts1 => {
+        this.posts1 = posts1;
+        console.log("ss>>",this.posts1);
+    }, error => console.error(error));
+     }
 
   ngOnInit(): void {
     // alert(localStorage.getItem('is_pickup_drop_avl'))
@@ -117,7 +137,94 @@ export class ShopdashboardComponent implements OnInit {
       currentPage: 1,
       // totalItems: this.collection.count
     };
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+      dom: 'Bfrtip',
+      buttons: {
+        dom: {
+          button: {
+            tag: 'i',
+            className: ''
+          }
+        },
+        //since we now have completely unstyled icons add
+        //some space between them trough a .custom-btn class
+        buttons: [
+         {
+           titleAttr: 'Download as PDF',
+           extend: 'pdfHtml5',
+           className: 'custom-btn fa fa-file-pdf-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as Excel',
+           extend: 'excelHtml5',
+           className: 'custom-btn fa fa-file-excel-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as CSV',
+           extend: 'csvHtml5',
+           className: 'custom-btn fa fa-file-text-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Print',
+           extend: 'print',
+           className: 'custom-btn fa fa-print',
+           text: ''
+         },
 
+        ]
+      }
+
+    };
+    this.dtOptions1 = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true,
+      dom: 'Bfrtip',
+      buttons: {
+        dom: {
+          button: {
+            tag: 'i',
+            className: ''
+          }
+        },
+        //since we now have completely unstyled icons add
+        //some space between them trough a .custom-btn class
+        buttons: [
+         {
+           titleAttr: 'Download as PDF',
+           extend: 'pdfHtml5',
+           className: 'custom-btn fa fa-file-pdf-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as Excel',
+           extend: 'excelHtml5',
+           className: 'custom-btn fa fa-file-excel-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Download as CSV',
+           extend: 'csvHtml5',
+           className: 'custom-btn fa fa-file-text-o',
+           text: ''
+         },
+         {
+           titleAttr: 'Print',
+           extend: 'print',
+           className: 'custom-btn fa fa-print',
+           text: ''
+         },
+
+        ]
+      }
+
+    };
     this.loadServiceDataOffers();
 
 
