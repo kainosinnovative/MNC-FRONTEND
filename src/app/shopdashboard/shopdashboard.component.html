@@ -4,7 +4,7 @@
 
       <h2 style="text-align: center;" class="mainheading">Upcoming Booking</h2>
 
-      <table  class="table table-responsive servicecss" >
+      <table  class="table table-responsive servicecss" *ngIf="posts"  datatable="ng"  datatable [dtOptions]="dtOptions">
           <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
 
               <tr>
@@ -26,15 +26,16 @@
 
             </tr>
           </thead>
-          <tbody *ngIf = "bookingDetails1 == ''">
+          <!-- <tbody *ngIf = "bookingDetails1 == ''">
             <tr>
               <td colspan="7" style="text-align: center;">
                 No data available
               </td>
             </tr>
-          </tbody>
-          <tbody *ngIf = "bookingDetails1 != ''">
-            <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+          </tbody> -->
+          <!-- <tbody *ngIf = "bookingDetails1 != ''"> -->
+            <tbody>
+            <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
 
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
@@ -78,10 +79,10 @@
         </table>
 
 
-          <div style="text-align: center;" *ngIf="bookingDetails1!=''">
+          <!-- <div style="text-align: center;" *ngIf="bookingDetails1!=''">
             <br>
             <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-          </div>
+          </div> -->
 
   </div>
   </div>
@@ -91,7 +92,7 @@
     <div  style="width: 98%;margin-left: 13px;">
 
       <h2 style="text-align: center;" class="mainheading">Carwash Status</h2>
-      <table  class="table table-responsive servicecss" >
+      <table  class="table table-responsive servicecss"  *ngIf="posts1"  datatable="ng"  datatable [dtOptions]="dtOptions1">
           <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
 
               <tr>
@@ -112,15 +113,16 @@
 
             </tr>
           </thead>
-          <tbody *ngIf = "AcceptbookingDetails1 == ''">
+          <!-- <tbody *ngIf = "AcceptbookingDetails1 == ''">
             <tr>
               <td colspan="13" style="text-align: center;">
                 No data available
               </td>
             </tr>
-          </tbody>
-          <tbody *ngIf = "AcceptbookingDetails1 != ''">
-            <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+          </tbody> -->
+          <!-- <tbody *ngIf = "AcceptbookingDetails1 != ''"> -->
+            <tbody>
+            <tr *ngFor="let b of  posts1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
 
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
@@ -174,11 +176,11 @@
           </tbody>
         </table>
 
-
+<!-- 
           <div style="text-align: center;" *ngIf="AcceptbookingDetails1!=''">
             <br>
             <pagination-controls (pageChange)="pageChanged1($event)"></pagination-controls>
-          </div>
+          </div> -->
 
   </div>
 
