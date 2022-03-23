@@ -353,6 +353,20 @@ gettestimonialData(): Observable<Testimonial> {
           )
           }
 
+          changepickupStatus(changepickupStatus:any): Observable<ShopService> {
+            // alert(shopservAmount)
+            let shopserviceid = changepickupStatus["shopserviceid"];
+             let status = changepickupStatus["status"];
+  
+            return this.http.get<ShopService>(this.apiURL + "/shop/updatepickupdrop?pickupdropstatus="+status +
+             "&shop_id=" + shopserviceid)
+  
+            .pipe(
+            retry(1),
+            catchError(this.handleError)
+            )
+            }
+
 
           vehicleBasedModel(vehicle_number:any): Observable<any[]> {
             // alert(shopservAmount)

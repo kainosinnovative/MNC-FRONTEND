@@ -69,7 +69,7 @@
                     </ng-template>
                     </td>
                 <td>
-                 &nbsp; <input class="offerptage"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
+                 &nbsp; <input class="offerptage"  (click)="removeoffervalidata(service.service_id,i)"  id="offer_{{service.service_id}}_{{i}}" #term type="number" value="{{service.offer_percent}}"  (keyup)="getOfferPrice(term.value,term.id)">
                  <p id="validateoffer_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Offer %</p>
                  <p id="validateoffer1_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">0% offer not accepted</p>
                 </td>
@@ -79,9 +79,9 @@
                 </td>
                 <td>
 
-                  <input type="date"  id="offerfromdate_{{service.service_id}}_{{i}}" (keyup)="removedatevalidate(service.service_id)"  class=" dateofbirthcls" style="width:112px !important;" value="{{service.from_date}}"  placeholder="">
+                  <input type="date"  id="offerfromdate_{{service.service_id}}_{{i}}" (click)="removedatevalidate(service.service_id,i)"  class=" dateofbirthcls" style="width:112px !important;" value="{{service.from_date}}"  placeholder="">
                   <p id="validatefromdate_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Select Offer Starting Date</p> <p id="validatefromdateformat_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Offer From Date Greater than To Date</p></td>
-                <td> <input type="date"  id="offertodate_{{service.service_id}}_{{i}}"  class=" dateofbirthcls"  style="width:112px !important;" value="{{service.to_date}}" placeholder="">
+                <td> <input type="date"  id="offertodate_{{service.service_id}}_{{i}}" (click)="removedatevalidatesms(service.service_id,i)"  class=" dateofbirthcls"  style="width:112px !important;" value="{{service.to_date}}" placeholder="">
                   <p id="validatetodate_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Select Offer Ending Date</p>  <p id="validatetodateformat_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;">Offer To Date Less than From Date</p></td>
                 <td>
 
@@ -115,11 +115,29 @@
 
   <div class="col-md-6">
 
-    <div class="row">
-      <label class="switch" style="white-space:nowrap">Do you provide pick & drop service..?!  <br>
-        <input style="float: left;     text-align: right;" type="checkbox" >
-        <span class="slider round"></span>
+    <div class="row"  style="margin-bottom: 10px;"  >
+      <div *ngFor="let service of  serviceData1 | paginate: config ;  let i=index;" >
+
+      <label class="switch subheading" style="white-space:nowrap;margin-left: 18px;" >Do you provide pick & drop service..?!
+
+        <span *ngIf="service.status == '1'">&nbsp;</span>
+        <label class="switch" *ngIf="service.status == '1'"  (click)="changepickupStatus(service.shop_id,service.status)">
+          <input  type="checkbox" checked>
+          <span class="slider round"></span>
+        </label>
+
+        <span *ngIf="service.status == '0'">&nbsp;</span>
+        <label class="switch" *ngIf="service.status == '0'"  (click)="changepickupStatus(service.shop_id,service.status)">
+          <input type="checkbox" >
+          <span class="slider round"></span>
+        </label>
+
+        <!-- <input style="float:  right; text-align: right;" type="checkbox" >
+        <span class="slider round"  style="margin-left: 250px;  width: 43px;"></span> -->
       </label>
+
+     
+  </div>
         </div>
 
     <div class="row">

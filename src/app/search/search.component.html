@@ -21,6 +21,14 @@
 </div>
 </div>
 <br>
+
+<tbody *ngIf = "dashboardShop1 == '';">
+  <tr>
+    <td colspan="13" style="text-align: center;">
+      No data available
+    </td>
+  </tr>
+</tbody>
 <div *ngIf="dashboardShop1 != ''">
   <h2 style="text-align: center;" class="mainheading">Combo Offers Of The Day </h2>
 <div *ngFor="let s of dashboardShop1;let k=index">
@@ -151,6 +159,9 @@
 
   <!-- </p> -->
 </div>
+
+
+
 <ngx-slick-carousel class="carousel" style="width:90%;background: none;"
                         #slickModal="slick-carousel"
                         [config]="slideConfig1"
@@ -186,6 +197,7 @@
 
                   <div *ngIf="s.wishlistcheck === 'Yes';else whislistElse2"  class="fa fa-heart " id="wishlistvalue2_{{s.shop_id}}" style="margin-top:12px;color: red;cursor: pointer;" (click)="clickEvent(s.shop_id,'offer')"> </div> 
                   
+                
                  
                   <ng-template #whislistElse2>
                    <span class="wishlist"  title="Add to Wishlist" id="wishlistvalue2_{{s.shop_id}}" (click)="clickEvent(s.shop_id,'offer')" style="margin-top:12px;color: gray;cursor: pointer;"><i class="fa fa-heart"></i> </span>

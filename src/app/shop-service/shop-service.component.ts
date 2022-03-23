@@ -327,13 +327,32 @@ export class ShopServiceComponent implements  OnInit{
   }
 
 
-  removedatevalidate(id:any) {
+  removedatevalidate(id:any, i:any) {
     // alert("hi")
-    let validatemsg = "validatefromdateformat_"+id;
-    // alert(validateamount)
-      (<HTMLInputElement>document.getElementById(validatemsg)).style.display ="none";
+    let validatemsg = "validatefromdate_"+id+"_"+i;
+    let validatemsgformat = "validatefromdateformat_"+id+"_"+i;
+   //alert(validatemsg);
+   (<HTMLInputElement>document.getElementById(validatemsg)).style.display ="none";
+   (<HTMLInputElement>document.getElementById(validatemsgformat)).style.display ="none";
   }
 
+  removedatevalidatesms(id:any, i:any) {
+    // alert("hi")
+    let validateto = "validatetodate_"+id+"_"+i;
+    let validatetoformat = "validatetodateformat_"+id+"_"+i;
+   //alert(validatemsg);
+   (<HTMLInputElement>document.getElementById(validateto)).style.display ="none";
+   (<HTMLInputElement>document.getElementById(validatetoformat)).style.display ="none";
+  }
+
+  removeoffervalidata(id:any, i:any) {
+    // alert("hi")
+    let validoffermsg = "validateoffer_"+id+"_"+i;
+    let validoffermsgformat = "validateoffer1_"+id+"_"+i;
+   //alert(validatemsg);
+      (<HTMLInputElement>document.getElementById(validoffermsg)).style.display ="none";
+      (<HTMLInputElement>document.getElementById(validoffermsgformat)).style.display ="none";
+  }
 
   loadMasterService(){
     let currentUserId = localStorage.getItem('currentUserId');
@@ -513,5 +532,39 @@ success => {
 }
 );
   }
+
+  changepickupStatus(shop_id:any,status:any) {
+    //alert(serviceid)
+   // alert(status)
+   // alert(index);
+   // var updatebutton="updatebtn_"+serviceidnew+"_"+index;
+   // alert(updatebutton);
+   // if(status==1)
+   // {
+   //  // alert("hi");
+   //   alert(  (<HTMLInputElement>document.getElementById(updatebutton)));
+   //   (<HTMLInputElement>document.getElementById(updatebutton)).style.color="green";
+   // }
+   
+       var changepickupStatus =
+                      {
+                        "shopserviceid": shop_id,
+                        "status": status,
+                      }
+   
+   this.restApi. changepickupStatus(changepickupStatus).subscribe((data: any) => {
+     console.log('POST Request is successful >>>>>>>>', data.status);
+     if(data.status == "pass") {
+       this.loadServiceData();
+     }
+   },
+   success => {
+     console.log('Error>>>>>', success);
+   
+   
+   
+   }
+   );
+     }
 
 }
