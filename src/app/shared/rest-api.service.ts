@@ -411,11 +411,11 @@ gettestimonialData(): Observable<Testimonial> {
 
           changepickupStatus(changepickupStatus:any): Observable<ShopService> {
             // alert(shopservAmount)
-            let shopserviceid = changepickupStatus["shopserviceid"];
-             let status = changepickupStatus["status"];
+            let shopid = changepickupStatus["shopid"];
+             let pickupstatus = changepickupStatus["pickupstatus"];
   
-            return this.http.get<ShopService>(this.apiURL + "/shop/updatepickupdrop?pickupdropstatus="+status +
-             "&shop_id=" + shopserviceid)
+            return this.http.get<ShopService>(this.apiURL + "/shop/updatepickupdrop?pickupdropstatus="+pickupstatus +
+             "&shop_id=" + shopid)
   
             .pipe(
             retry(1),
