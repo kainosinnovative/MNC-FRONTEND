@@ -1,98 +1,86 @@
-<div class="row">
-  <div class="col-sm-6" >
-    <div  style="width: 98%;margin-left: 13px;">
 
-      <h2 style="text-align: center;" class="mainheading">Upcoming Booking</h2>
+ <div class="accordion">
+  <h2 class="title subheading"  (click)="opened = !opened">Upcoming Booking <i class="fa fa-chevron-down"></i> </h2>
+  <div class="content-container" [class.opened]="opened">
+    <table  class="table table-responsive servicecss" *ngIf="posts"  datatable="ng"  datatable [dtOptions]="dtOptions">
+      <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
 
-      <table  class="table table-responsive servicecss" *ngIf="posts"  datatable="ng"  datatable [dtOptions]="dtOptions">
-          <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
-
-              <tr>
-              <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
-              <th style="width:90px;font-weight:normal;">Booking Id</th>
-              <th style="width: 137px;font-weight:normal;">Registration Number</th>
-              <th style="width:90px;font-weight:normal;">Date</th>
-              <th style="width:150px;font-weight:normal;">Customer Name</th>
-              <!-- <th style="width:94px;font-weight:normal;" >Combo Services</th> -->
-              <!-- <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th> -->
-              <!-- <th style="width:100px;font-weight:normal;" >Extra Services</th> -->
-              <!-- <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
-              <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
-              <!-- <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th> -->
-              <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
-              <th style="width:60px;font-weight:normal;" >Conform</th>
-              <th style="width:60px;font-weight:normal;" >Reject</th>
+          <tr>
+          <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
+          <th style="width:90px;font-weight:normal;">Booking Id</th>
+          <th style="width: 137px;font-weight:normal;">Registration Number</th>
+          <th style="width:90px;font-weight:normal;">Date</th>
+          <th style="width:150px;font-weight:normal;">Customer Name</th>
+          <!-- <th style="width:94px;font-weight:normal;" >Combo Services</th> -->
+          <!-- <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th> -->
+          <!-- <th style="width:100px;font-weight:normal;" >Extra Services</th> -->
+          <!-- <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
+          <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+          <!-- <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th> -->
+          <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
+          <th style="width:60px;font-weight:normal;" >Confirm</th>
+          <th style="width:60px;font-weight:normal;" >Reject</th>
 
 
-            </tr>
-          </thead>
-          <!-- <tbody *ngIf = "bookingDetails1 == ''">
-            <tr>
-              <td colspan="7" style="text-align: center;">
-                No data available
-              </td>
-            </tr>
-          </tbody> -->
-          <!-- <tbody *ngIf = "bookingDetails1 != ''"> -->
-            <tbody>
-            <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+        </tr>
+      </thead>
+      <!-- <tbody *ngIf = "bookingDetails1 == ''">
+        <tr>
+          <td colspan="7" style="text-align: center;">
+            No data available
+          </td>
+        </tr>
+      </tbody> -->
+      <!-- <tbody *ngIf = "bookingDetails1 != ''"> -->
+        <tbody>
+        <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
 
-              <!-- <td>{{i+1}}</td> -->
-              <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
-              <td>{{b.vehicle_number}}</td>
-              <td>
-                {{b.bookingdate | date: 'dd-MM-yyyy'}}
-                <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
-              </td>
-              <td>{{b.firstname}}({{b.Customer_id}})</td>
-              <!-- <td>     {{b.combo_id}}           </td>  -->
-              <!-- <td>{{b.comboprice_total}}</td> -->
-              <!-- <td>
-                <div *ngIf="b.services != null">
-                <div *ngFor="let m of  b.services.split(',');let j=index" >
-                  <div *ngFor="let m1 of  MasterServiceData1;" >
+          <!-- <td>{{i+1}}</td> -->
+          <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
+          <td>{{b.vehicle_number}}</td>
+          <td>
+            {{b.bookingdate | date: 'dd-MM-yyyy'}}
+            <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
+          </td>
+          <td>{{b.firstname}}({{b.Customer_id}})</td>
+          <!-- <td>     {{b.combo_id}}           </td>  -->
+          <!-- <td>{{b.comboprice_total}}</td> -->
+          <!-- <td>
+            <div *ngIf="b.services != null">
+            <div *ngFor="let m of  b.services.split(',');let j=index" >
+              <div *ngFor="let m1 of  MasterServiceData1;" >
 
-    <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
-                  </div>
-
-                </div>
+<span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
               </div>
-                </td>  -->
-              <!-- <td>{{b.serviceprice_total}}</td> -->
-              <td>{{b.payable_amt}}</td>
-              <!-- <td>
-                <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
 
-                  <ng-template  #pickDropid>
-                    <span>Yes</span>
-                  </ng-template>
-                </td> -->
+            </div>
+          </div>
+            </td>  -->
+          <!-- <td>{{b.serviceprice_total}}</td> -->
+          <td>{{b.payable_amt}}</td>
+          <!-- <td>
+            <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
 
-              <td>
-                <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i class="fa fa-check"></i></a> </td>
-                <td>
-                <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i class="fa fa-close"></i></a>
-              </td>
-            </tr>
+              <ng-template  #pickDropid>
+                <span>Yes</span>
+              </ng-template>
+            </td> -->
 
-          </tbody>
-        </table>
+          <td>
+            <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i class="fa fa-check"></i></a> </td>
+            <td>
+            <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i class="fa fa-close"></i></a>
+          </td>
+        </tr>
 
-
-          <!-- <div style="text-align: center;" *ngIf="bookingDetails1!=''">
-            <br>
-            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-          </div> -->
-
-  </div>
-  </div>
-
-  <div class="col-sm-6" >
-
-    <div  style="width: 98%;margin-left: 13px;">
-
-      <h2 style="text-align: center;" class="mainheading">Carwash Status</h2>
-      <table  class="table table-responsive servicecss"  *ngIf="posts1"  datatable="ng"  datatable [dtOptions]="dtOptions1">
+      </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="accordion1">
+      <h2 class="title1 subheading"  (click)="opened1 = !opened1">Car Wash Status <i class="fa fa-chevron-down"></i> </h2>
+      <div class="content-container1" [class.opened1]="opened1">
+        <table  class="table table-responsive servicecss"  *ngIf="posts1"  datatable="ng"  datatable [dtOptions]="dtOptions1">
           <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
 
               <tr>
@@ -175,80 +163,75 @@
 
           </tbody>
         </table>
+        </div>
+        </div>
 
-<!-- 
-          <div style="text-align: center;" *ngIf="AcceptbookingDetails1!=''">
-            <br>
-            <pagination-controls (pageChange)="pageChanged1($event)"></pagination-controls>
-          </div> -->
+        <div class="accordion2">
+          <h2 class="title2 subheading"  (click)="opened2 = !opened2">Today's Offers<i class="fa fa-chevron-down"></i> </h2>
+          <div class="content-container2" [class.opened2]="opened2">
+            <div class="row">
+              <div class="col-sm-6" *ngIf="currentOffer1 != ''">
+                <h2 style="text-align: center;" class="mainheading"> Combo Offers</h2>
 
-  </div>
+                <div class="row" >
+                  <div class="col-sm-3" ></div>
+                  <div class="col-sm-6" >
+                    <div style="border: 1px solid #aeaeae;">
+                    <div id="chart" style="text-align: center;">
+                      <apx-chart
+                        [series]="chartOptions.series"
+                        [chart]="chartOptions.chart"
+                        [dataLabels]="chartOptions.dataLabels"
+                        [plotOptions]="chartOptions.plotOptions"
+                        [xaxis]="chartOptions.xaxis"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col-sm-3" ></div>
+                </div>
+
+
+              </div>
+
+              <div class="col-sm-6" *ngIf="serviceDataOffers1 !=''">
+                <h2 style="text-align: center;" class="mainheading">Services Offers</h2>
+                <div class="row">
+                  <div class="col-sm-2" ></div>
+                  <div class="col-sm-8" >
+                    <div style="border: 1px solid #aeaeae;height: 317px;" >
+                    <div id="chart2">
+                      <apx-chart
+                        [series]="chartOptions2.series"
+                        [chart]="chartOptions2.chart"
+                        [labels]="chartOptions2.labels"
+                        [fill]="chartOptions2.fill"
+                        [dataLabels]="chartOptions2.dataLabels"
+                        [responsive]="chartOptions2.responsive"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col-sm-2" ></div>
+                </div>
+
+
+
+              </div>
 
 
 
 
-</div>
-</div>
 
+
+
+            </div>
+            <div>
+
+            </div>
 <br>
 
-<div class="row">
-  <div class="col-sm-6" *ngIf="currentOffer1 != ''">
-    <h2 style="text-align: center;" class="mainheading"> Today's Combo Offers</h2>
 
-    <div class="row" >
-      <div class="col-sm-3" ></div>
-      <div class="col-sm-6" >
-        <div style="border: 1px solid #aeaeae;">
-        <div id="chart" style="text-align: center;">
-          <apx-chart
-            [series]="chartOptions.series"
-            [chart]="chartOptions.chart"
-            [dataLabels]="chartOptions.dataLabels"
-            [plotOptions]="chartOptions.plotOptions"
-            [xaxis]="chartOptions.xaxis"
-          ></apx-chart>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-3" ></div>
-    </div>
-
-
-  </div>
-
-  <div class="col-sm-6" *ngIf="serviceDataOffers1 !=''">
-    <h2 style="text-align: center;" class="mainheading">Today's Services Offers</h2>
-    <div class="row">
-      <div class="col-sm-2" ></div>
-      <div class="col-sm-8" >
-        <div style="border: 1px solid #aeaeae;height: 317px;" >
-        <div id="chart2">
-          <apx-chart
-            [series]="chartOptions2.series"
-            [chart]="chartOptions2.chart"
-            [labels]="chartOptions2.labels"
-            [fill]="chartOptions2.fill"
-            [dataLabels]="chartOptions2.dataLabels"
-            [responsive]="chartOptions2.responsive"
-          ></apx-chart>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-2" ></div>
-    </div>
-
-
-
-  </div>
-
-
-
-
-
-
-
-</div>
 
 <br>
 
