@@ -1,4 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewInit, VERSION, Component, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+// import 'rxjs/add/operator/map';
+import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -6,41 +10,27 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './testinsert.component.html',
   styleUrls: ['./testinsert.component.scss']
 })
-export class TestinsertComponent implements OnInit{
-  public data = [
-    {name: 'test', email: 'test@gmail.com', website:'test.com'},
-    {name: 'test', email: 'test@gmail.com', website:'test.com'},
-    {name: 'test', email: 'test@gmail.com', website:'test.com'},
-    {name: 'test', email: 'test@gmail.com', website:'test.com'},
-];
-  constructor() {
+export class TestinsertComponent implements OnInit
+{
+  title = 'dataTableDemo';
+  apiURL = 'http://localhost/MNC-PHP-API';
+dtOptions: DataTables.Settings = {};
+posts: any;
 
-  }
-  title = 'angulardatatables';
-  dtOptions: any = {};
-  ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 3,
-      processing: true,
-      dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'print'
-        ]
-    };
-
-  }
-
-
+constructor(private http: HttpClient) {
+  let currentUserId = localStorage.getItem('currentUserId');
+  this.http.get(this.apiURL + "/app/getMybookingDetails?currentUserId="+currentUserId)
+    .subscribe(posts => {
+      this.posts = posts;
+      console.log(this.posts);
+  }, error => console.error(error));
 }
 
-
-
-
-
-
-
-
-
-
-
+ngOnInit(): void {
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 5,
+    processing: true
+  };
+}
+}

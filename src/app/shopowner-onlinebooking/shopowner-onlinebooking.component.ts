@@ -8,14 +8,21 @@ import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { config_url } from '../shared/customer/constant';
 import { ToastrService } from 'ngx-toastr';
+import { currentuserid } from '../shared/customer/customer';
 
 @Component({
-  selector: 'app-onlinebooking',
-  templateUrl: './onlinebooking.component.html',
-  styleUrls: ['./onlinebooking.component.scss'],
+  selector: 'app-shopowner-onlinebooking',
+  templateUrl: './shopowner-onlinebooking.component.html',
+  styleUrls: ['./shopowner-onlinebooking.component.scss'],
   providers: [DatePipe]
 })
-export class OnlinebookingComponent implements OnInit {
+export class ShopownerOnlinebookingComponent implements OnInit {
+  selectedOption: string;
+  options = [
+    { name: "option1", value: 1 },
+    { name: "option2", value: 2 }
+  ]
+  currentLogincity = localStorage.getItem('currentLogincity');
   private innerWidth: number;
   private mobileBreakpoint = 480;
   show: boolean = true
@@ -66,7 +73,10 @@ date2:any;
  public text: string = 'Select';
 
  public textcontent: string = 'Select';
-
+ custDetBycity:any;
+ custDetBycity1:any;
+ RegistrationNumberByModel:any;
+ RegistrationNumberByModel1:any;
 
   constructor(
     public restApi: RestApiService,
@@ -88,6 +98,7 @@ date2:any;
     this.date2 =this.datepipe.transform(this.date2, 'yyyy-MM-dd');
 
     this.adjustsItemsPerSlide();
+    this.loadCustomerByCity();
     // (<HTMLInputElement>document.getElementById("movetopid")).scrollTop=0;
     (<HTMLInputElement>document.getElementById("booking_date")).focus();
  
@@ -101,7 +112,7 @@ date2:any;
     this.loadcarbrand();
     this.readCustomerDataById();
     // this.loadshopdetails();
-    this.loadcarDetailsById();
+    // this.loadcarDetailsById();
     this.idbyMasterService();
   
     
@@ -113,10 +124,10 @@ date2:any;
       Booking_id: ['', Validators.required],
        services: [],
       combo_id: [],
-      Customer_id: [currentUserId, Validators.required],
+      Customer_id: ['', Validators.required],
       instructions: [],
       bookingdate: ['', Validators.required],
-      // model_id: ['', Validators.required],
+      model_id: ['', Validators.required],
       payable_amt:['', [Validators.required]],
       serviceprice_total: [],
       comboprice_total: [],
@@ -138,10 +149,9 @@ date2:any;
         const idArr = id2.split("#");
         let id = idArr[0];
         //alert(idArr[1]);
-        this.loadshopdetails(id,idArr[1]);
-        this.loadshopoffers(id,idArr[1]);
+        
         this.getPickupAvl(id);
-        this.loadcarDetByModelId(idArr[1]);
+        
         var randomnumber = Math.floor(100000 + Math.random() * 900000) + "-" + id;
         this.onlinebooking.controls.Booking_id.setValue(randomnumber);
         this.onlinebooking.controls.Shop_id.setValue(id);
@@ -153,22 +163,18 @@ date2:any;
   
   }
 
-  loadcarDetByModelId(model_id:any){
-    let currentUserId = localStorage.getItem('currentUserId');
-    var carDetByModelId =
-                   {
-                  "model": model_id,
-                  "currentUserId": currentUserId,
-                   }
-    
-    
-    return this.restApi.carDetByModelId(carDetByModelId).subscribe((data: {}) => {
+
+  loadCustomerByCity(){
+    let currentLogincity = localStorage.getItem('currentLogincity');
+    return this.restApi.getcustomerByCityId(currentLogincity).subscribe((data: {}) => {
       // alert(data)
-      this.carDetailsById2 = data;
-      this.carDetailsById3 = this.carDetailsById2.data.carDetByModelId;
-      console.log("carDetailsById3>>>",this.carDetailsById3);
+      this.custDetBycity = data;
+      this.custDetBycity1 = this.custDetBycity.data.getcustomerByCityId;
+      console.log("custDetBycity1>>>",this.custDetBycity1);
     })
   }
+
+ 
 
   getshopProfileDataByIdBooking(id:any) {
   
@@ -612,15 +618,41 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
   }
 
 
-  loadcarDetailsById(){
-    
-    let currentUserId = localStorage.getItem('currentUserId');
-    return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+  loadcarDetailsById(newObj:any){
+    this.onlinebooking.controls.vehicle_number.setValue("");
+    let customerid : any = newObj.target.value;
+    // alert(customerid)
+    return this.restApi.CarDetailsByIdShopOnlineBooking(customerid).subscribe((data: {}) => {
       // alert(data)
       this.carDetailsById = data;
-      this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+      this.carDetailsById1 = this.carDetailsById.data.CarDetailsByIdShopOnlineBooking;
       console.log("carDetailsById1>>>",this.carDetailsById1)
     })
+  }
+
+  getRegistrationNumberByModel(obj:any) {
+    let Customer_id = this.onlinebooking.get('Customer_id').value;
+    // alert(Customer_id)
+    let modelid : any = obj.target.value;
+
+    let currentUserId = localStorage.getItem('currentUserId');
+    this.loadshopdetails(currentUserId,modelid);
+        this.loadshopoffers(currentUserId,modelid);
+
+    var carDetByModelId =
+                   {
+                  "model": modelid,
+                  "currentUserId": Customer_id, // selected customer id
+                   }
+    
+    
+    return this.restApi.carDetByModelId(carDetByModelId).subscribe((data: {}) => {
+      // alert(data)
+      this.carDetailsById2 = data;
+      this.carDetailsById3 = this.carDetailsById2.data.carDetByModelId;
+      console.log("carDetailsById3>>>",this.carDetailsById3);
+    })
+    
   }
 
 
@@ -661,7 +693,7 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
         console.log("err>>>>>",err);
         if(err.status == 200) {
           this.toastr.success('Booking request submitted');
-          this.router1.navigate(['/MyBooking']);
+          this.router1.navigate(['/ShopDashboard']);
           window.setTimeout(function(){location.reload()},100)
           
         }
@@ -695,7 +727,8 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
 
   disabledPickupDetails() {
     let pickup_drop = this.onlinebooking.get('pickup_drop').value;
-    // alert(pickup_drop)
+    // alert(pickup_drop) ;
+    (<HTMLInputElement>document.getElementById("customerid2")).focus();
 
     this.onlinebooking.controls.pickup_date.setValue("");
     this.onlinebooking.controls.instructions.setValue("");
@@ -722,5 +755,3 @@ slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
   }
 
 }
-
-

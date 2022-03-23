@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class HomeComponent implements OnInit {
+  
   date:any;
   //data: any;
   selectedCity: any;
@@ -47,7 +48,8 @@ ShopHolidaysDetails1:any;
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
-
+  carDetailsById:any;
+  carDetailsById1:any;
 
   ngOnInit(): void {
 
@@ -94,7 +96,7 @@ this.adjustsItemsPerSlide();
     })
 
   }
-  userloggedin(shopid :number)
+  userloggedin(shopid :number,model_id:any)
   {
     if(!this.userroleSes)
     {
@@ -104,7 +106,8 @@ this.adjustsItemsPerSlide();
     else
     {
       console.log(shopid);
-      this.router.navigate(['/onlinebooking/'+shopid]);
+      this.router.navigate(['/onlinebooking/'+shopid+"#"+model_id]);
+      
     }
   }
   loadMasterService(){
@@ -177,6 +180,7 @@ this.adjustsItemsPerSlide();
       console.log("dashboard>>>",this.dashboardShopOffer1);
 
       this.getholidaysForAll();
+      this.loadcarDetailsById();
     })
   }
 
@@ -330,6 +334,74 @@ else
         );
       }
 
+
+      loadcarDetailsById(){
+
+        let currentUserId = localStorage.getItem('currentUserId');
+        return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
+          // alert(data)
+          this.carDetailsById = data;
+          this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
+          console.log("carDetailsById1>>>",this.carDetailsById1)
+          this.MovecarDetailsById();
+          this.MovecarDetForOffer();
+        })
+      }
+
+
+      MovecarDetailsById() {
+        
+        if(this.carDetailsById1 != undefined) {
+        for(var i=0;i < this.carDetailsById1.length;i++) {
+
+          for(var j=0;j < (this.dashboardShop1.length);j++) {
+            if(this.dashboardShop1[j].model_id == this.carDetailsById1[i].model){
+              // alert(this.dashboardShop1[j].model_id);
+              var newNum = "modelAvail";
+              var newVal = "Available";
+              this.dashboardShop1[j][newNum] = newVal;
+            }
+            
+            //console.log("val",this.dashboardShop1);
+            // this.datecheckArr.push(ShopHolidaysDetails1[i])
+           
+          }
+
+        }
+      }
+
+
+        
+        console.log("car avl>>>",this.dashboardShop1);
+      }
+
+
+      MovecarDetForOffer() {
+        
+        if(this.carDetailsById1 != undefined) {
+        for(var i=0;i < this.carDetailsById1.length;i++) {
+
+          for(var j=0;j < (this.dashboardShopOffer1.length);j++) {
+            if(this.dashboardShopOffer1[j].model_id == this.carDetailsById1[i].model){
+              // alert(this.dashboardShop1[j].model_id);
+              var newNum = "modelAvail";
+              var newVal = "Available";
+              this.dashboardShopOffer1[j][newNum] = newVal;
+            }
+            
+            //console.log("val",this.dashboardShop1);
+            // this.datecheckArr.push(ShopHolidaysDetails1[i])
+           
+          }
+
+        }
+      }
+
+
+        
+        console.log("car avl dashboardShopOffer1>>>",this.dashboardShopOffer1);
+      }
+
     
 
       datecheckArr = new Array();
@@ -418,5 +490,11 @@ else
       }
         console.log("MoveWishlistOfferCheck>>>",this.dashboardShopOffer1);
       }
+
+      checkModelAvail2(model_name:any) {
+        this.toastr.error("Add your "+ model_name + " at my profile sectoin and continue booking");
+      }
+
+      
 
 }

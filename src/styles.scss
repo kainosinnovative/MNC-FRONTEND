@@ -270,7 +270,7 @@ line-height: unset !important;
 
 .apexcharts-tooltip-title {
   display: none;
-} 
+}
 
 .mat-calendar-body-cell.selected {
   background-color: skyblue !important;
@@ -285,7 +285,7 @@ line-height: unset !important;
 
 @media screen and (max-width: 768px){
   .autocomplete-container .input-container input {
-  
+
     width: 200px !important;
   }
   }
@@ -293,3 +293,21 @@ line-height: unset !important;
 .btn {
   font-size: 12px !important;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.dt-buttons
+  {
+    padding-bottom: 10px;
+    font-size: 20px !important;
+    text-align: right;
+  
+  }

@@ -31,7 +31,7 @@ import { EventEmitterService } from './event-emitter.service';
 
 export class AppComponent implements OnInit{
   
-
+  currentUserId = localStorage.getItem('currentUserId');
 
   currentUsername = localStorage.getItem('currentUsername');
 
@@ -161,6 +161,11 @@ selectcity(){
 
      this.dialog.open(SelectcityComponent,{disableClose: true});
 
+}
+
+bookingRedirect() {
+  let shop_id = localStorage.getItem('currentUserId');
+this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
 }
 
 }

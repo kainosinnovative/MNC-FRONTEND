@@ -6,7 +6,7 @@
 
       <table  class="table table-responsive servicecss" >
           <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
-            
+
               <tr>
               <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
               <th style="width:90px;font-weight:normal;">Booking Id</th>
@@ -22,8 +22,8 @@
               <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
               <th style="width:60px;font-weight:normal;" >Conform</th>
               <th style="width:60px;font-weight:normal;" >Reject</th>
-             
-              
+
+
             </tr>
           </thead>
           <tbody *ngIf = "bookingDetails1 == ''">
@@ -35,12 +35,12 @@
           </tbody>
           <tbody *ngIf = "bookingDetails1 != ''">
             <tr *ngFor="let b of  bookingDetails1 | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
-              
+
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
               <td>
-                {{b.bookingdate | date: 'dd-MM-yyyy'}} 
+                {{b.bookingdate | date: 'dd-MM-yyyy'}}
                 <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
               </td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
@@ -50,10 +50,10 @@
                 <div *ngIf="b.services != null">
                 <div *ngFor="let m of  b.services.split(',');let j=index" >
                   <div *ngFor="let m1 of  MasterServiceData1;" >
-                   
+
     <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
                   </div>
-                  
+
                 </div>
               </div>
                 </td>  -->
@@ -61,28 +61,28 @@
               <td>{{b.payable_amt}}</td>
               <!-- <td>
                 <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
-                   
+
                   <ng-template  #pickDropid>
                     <span>Yes</span>
                   </ng-template>
                 </td> -->
-                
+
               <td>
                 <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i class="fa fa-check"></i></a> </td>
                 <td>
                 <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i class="fa fa-close"></i></a>
               </td>
             </tr>
-            
+
           </tbody>
         </table>
 
-          
+
           <div style="text-align: center;" *ngIf="bookingDetails1!=''">
             <br>
             <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
           </div>
-        
+
   </div>
   </div>
 
@@ -93,7 +93,7 @@
       <h2 style="text-align: center;" class="mainheading">Carwash Status</h2>
       <table  class="table table-responsive servicecss" >
           <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
-            
+
               <tr>
               <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
               <th style="width:90px;font-weight:normal;">Booking Id</th>
@@ -108,8 +108,8 @@
               <!-- <th  style="width: 108px;font-weight:normal;">Pick-up & Drop</th> -->
               <th  style="width:130px;font-weight:normal;">Status</th>
               <th style="width:60px;font-weight:normal;" >Update</th>
-             
-              
+
+
             </tr>
           </thead>
           <tbody *ngIf = "AcceptbookingDetails1 == ''">
@@ -121,69 +121,69 @@
           </tbody>
           <tbody *ngIf = "AcceptbookingDetails1 != ''">
             <tr *ngFor="let b of  AcceptbookingDetails1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
-              
+
               <!-- <td>{{i+1}}</td> -->
               <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
               <td>
-                {{b.bookingdate | date: 'dd-MM-yyyy'}} 
+                {{b.bookingdate | date: 'dd-MM-yyyy'}}
                 <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
               </td>
               <td>{{b.firstname}}({{b.Customer_id}})</td>
               <!-- <td>
-                
-            {{b.combo_id}} 
+
+            {{b.combo_id}}
           </td>  -->
               <!-- <td>{{b.comboprice_total}}</td> -->
               <!-- <td>
                 <div *ngIf="b.services != null">
                 <div *ngFor="let m of  b.services.split(',');let j=index" >
                   <div *ngFor="let m1 of  MasterServiceData1;" >
-                   
+
     <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
                   </div>
-                  
+
                 </div>
               </div>
-                </td> 
+                </td>
               <td>{{b.serviceprice_total}}</td> -->
               <td>{{b.payable_amt}}</td>
               <!-- <td>
                 <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
-                   
+
                   <ng-template  #pickDropid>
                     <span>Yes</span>
                   </ng-template>
                 </td> -->
                 <td>
-                  
+
                   <select  style="width: 100px;height: 26px;"   id="carwash_{{b.Booking_id}}" [(ngModel)]="b.carwash_status" >
                     <option value="">--Select---</option>
                    <option *ngFor="let c of carwashstatus1" [value]="c.id">
                     {{c.carwash_status_name}}
                     </option>
                     </select>
-                  
+
                 </td>
               <td>
                 <a (click)="updateCarwashStatus(b.Booking_id)"><i class="fa fa-check"></i></a>
                </td>
-                
+
             </tr>
-            
+
           </tbody>
         </table>
 
-          
+
           <div style="text-align: center;" *ngIf="AcceptbookingDetails1!=''">
             <br>
             <pagination-controls (pageChange)="pageChanged1($event)"></pagination-controls>
           </div>
-        
+
   </div>
 
 
-    
+
 
 </div>
 </div>
@@ -193,7 +193,7 @@
 <div class="row">
   <div class="col-sm-6" *ngIf="currentOffer1 != ''">
     <h2 style="text-align: center;" class="mainheading"> Today's Combo Offers</h2>
-    
+
     <div class="row" >
       <div class="col-sm-3" ></div>
       <div class="col-sm-6" >
@@ -211,7 +211,7 @@
       </div>
       <div class="col-sm-3" ></div>
     </div>
-  
+
 
   </div>
 
@@ -241,9 +241,9 @@
   </div>
 
 
-  
 
-    
+
+
 
 
 </div>
