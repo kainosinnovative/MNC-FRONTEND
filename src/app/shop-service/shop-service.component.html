@@ -26,13 +26,13 @@
                 <th style="width:150px;" class="fontwghtcls">Model </th>
                 <th style="width:90px;" class="fontwghtcls">Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
 
-                <th  style="width:100px;border-right:solid 1px;font-weight:normal;">Action</th>
+                <th  style="width:100px;border-right:solid 1px;" class="fontwghtcls">Action</th>
 
                 <th style="width:85px;" class="fontwghtcls">Offer(%) </th>
-                <th style="width:85px;font-weight:normal;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
-                <th style="width:35px;font-weight:normal;">Start Date</th>
-                <th style="width:35px;font-weight:normal;">End Date</th>
-                <th  style="width:100px;font-weight:normal;">Action</th>
+                <th style="width:85px;" class="fontwghtcls">Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
+                <th style="width:35px;" class="fontwghtcls">Start Date</th>
+                <th style="width:35px;" class="fontwghtcls">End Date</th>
+                <th  style="width:100px;" class="fontwghtcls">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -225,7 +225,7 @@
 
               </div>
           </td>
-          <td  style="border-right:solid 1px;">
+          <td  >
             <button class="allSubmitbtn btn-success btn" id="addserviceshopbtn" style="border-radius: 21px; width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
 
           </td>
@@ -253,7 +253,7 @@
     <div class="accordion1">
       <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
-    <div style="border: 1px solid;margin-left:0px!important;height: 90px;overflow: auto;">
+    <div style="border: 1px solid;margin-left:0px!important;height: 90px;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
       <div class="table-responsive boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
