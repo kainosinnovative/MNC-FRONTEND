@@ -50,7 +50,7 @@ export type ChartOptions2 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
-  opened = false;
+  opened = true;
   opened1 = false;
   opened2 = false;
    apiURL = 'http://localhost/MNC-PHP-API';
@@ -114,7 +114,7 @@ export class ShopdashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // alert(localStorage.getItem('is_pickup_drop_avl'))
-    this.AcceptedBookingList();
+    // this.AcceptedBookingList();
     this.customerBookingForShop();
     this.loadMasterService();
     this.master_pickdrop_status();
@@ -163,7 +163,7 @@ export class ShopdashboardComponent implements OnInit {
          {
            titleAttr: 'Download as PDF',
            extend: 'pdfHtml5',
-           className: 'custom-btn fa fa-file-pdf-o',
+           className: 'custom-btn fa fa-file-pdf-o ',
            text: ''
          },
          {
@@ -392,8 +392,23 @@ export class ShopdashboardComponent implements OnInit {
 this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
   console.log('POST Request is successful >>>>>>>>', data.status);
   if(data.status == "pass") {
-    this.customerBookingForShop();
-    this.AcceptedBookingList();
+
+
+    let currentUserId = localStorage.getItem('currentUserId');
+      this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
+        .subscribe(posts => {
+          this.posts = posts;
+          console.log("ss>>",this.posts);
+      }, error => console.error(error));
+      this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+      .subscribe(posts1 => {
+        this.posts1 = posts1;
+        console.log("ss>>",this.posts1);
+    }, error => console.error(error));
+
+
+    // this.customerBookingForShop();
+    // this.AcceptedBookingList();
     if(booking_status == "Accepted"){
       this.toastr.success(booking_status);
     }
@@ -422,7 +437,7 @@ AcceptedBookingList(){
     // alert(data)
     this.AcceptbookingDetails = data;
     //console.log("abi", this.shopdetails);
-     this.AcceptbookingDetails1 = this.AcceptbookingDetails.data.AcceptedBookingList;
+     this.AcceptbookingDetails1 = this.AcceptbookingDetails.data;
 
      console.log("AcceptbookingDetails>>>>",this.AcceptbookingDetails1)
 
@@ -606,13 +621,15 @@ loadServiceDataOffers(){
         type: "gradient"
       },
       labels: this.servicenameArr,
-      // legend: {
-        // enabled:true
+      
+      legend: {
+        position: "left"
+        // enabled:true,
         // formatter:  this.servicenameArr
         // formatter: function(val:any, opts:any) {
         //   return val + " - " + opts.w.globals.series[opts.seriesIndex];
         // }
-      // },
+      },
       responsive: [
         {
           breakpoint: 480,

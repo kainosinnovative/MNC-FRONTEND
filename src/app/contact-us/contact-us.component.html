@@ -78,7 +78,7 @@
 
                    <label class="lblwidthContactus2" >Message <span style="color: red;">*</span></label>
 
-                    <textarea id="message" rows="3"  class=" form-control2"  formControlName='message'></textarea>
+                    <textarea id="message" rows="3" style="border: 1px solid #000407;" class=" form-control2"  formControlName='message'></textarea>
                     <div *ngIf="contactform.controls['message'].touched && contactform.controls['message'].invalid "> 
 
                         <div *ngIf="contactform.controls['message'].errors" style="color: red;"> 

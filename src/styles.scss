@@ -309,5 +309,34 @@ input[type=number] {
     padding-bottom: 10px;
     font-size: 20px !important;
     text-align: right;
+
   
   }
+
+
+  .table {
+    //border: 0.5px solid #000000 !important;
+  }
+
+  .dataTables_wrapper .dataTables_filter {
+   
+    padding-bottom: 10px;
+}
+
+.tr {
+  background-color: red !important;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  
+  background: linear-gradient(to bottom, white 0%, #31a0fc 100%) !important;
+}
+
+.fa-file-excel-o:before{
+  color: #008000 !important;
+}
+
+.fa-file-text-o:before{
+  color: red !important;
+}

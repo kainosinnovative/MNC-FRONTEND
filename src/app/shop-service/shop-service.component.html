@@ -5,30 +5,30 @@
   <button class="btn btn-success" (click)="DisplayForm()" >Add New Service</button>
 
 </div> -->
-
+<div style="overflow: hidden;">
 
 <div class="row">
 
 
-    <div class="col-sm-12">
+    <div class="col-sm-12" style="width: 98%;">
 
 
         <table  class="table table-responsive servicecss" *ngIf="serviceData1!=''">
-            <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;width: 100%;overflow: auto;">
-              <tr >
+            <thead style="border-bottom: 0.5px solid #aeaeae;color: white;width: 100%;">
+              <tr style="background: #202c45;">
                 <th colspan="6" style="text-align:center;border-right:solid 1px;font-weight: normal;font-size:14px;">Services offered in my shop</th>
                 <th colspan="5"  style="text-align:center;font-weight:normal;font-size:14px">Offer Details</th>
                 </tr>
-                <tr>
-                <th style="width:40px;font-weight:normal;">Sl. No.</th>
-                <th style="width:200px;font-weight:normal;">Service Name</th>
-                <th style="width:66px;font-weight:normal;" >Service Status	 </th>
-                <th style="width:150px;font-weight:normal;">Model </th>
-                <th style="width:90px;font-weight:normal;" >Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
+                <tr style="color: black;">
+                <th style="width:40px;" class="fontwghtcls">Sl. No.</th>
+                <th style="width:200px;" class="fontwghtcls">Service Name</th>
+                <th style="width:70px;" class="fontwghtcls">Service Status	 </th>
+                <th style="width:150px;" class="fontwghtcls">Model </th>
+                <th style="width:90px;" class="fontwghtcls">Service Amount (<span><i class="fa fa-rupee"></i></span>)</th>
 
                 <th  style="width:100px;border-right:solid 1px;font-weight:normal;">Action</th>
 
-                <th style="width:85px;font-weight:normal;" >Offer(%) </th>
+                <th style="width:85px;" class="fontwghtcls">Offer(%) </th>
                 <th style="width:85px;font-weight:normal;" >Offer Price (<span><i class="fa fa-rupee"></i></span>)</th>
                 <th style="width:35px;font-weight:normal;">Start Date</th>
                 <th style="width:35px;font-weight:normal;">End Date</th>
@@ -111,14 +111,14 @@
 
 
 </div>
-<div class="row">
+<div class="row" >
 
   <div class="col-md-6">
 
     <div class="row"  style="margin-bottom: 10px;"  >
       <!-- <div *ngIf="let data of  statuspickupvalue;" > -->
 
-      <label class="switch subheading" style="white-space:nowrap;margin-left: 18px;" >Do you provide pick & drop service..?!
+      <label class="switch subheading" style="white-space:nowrap;margin-left: 18px;" >Do you provide pick & drop service?
         
        <!-- {{statuspickupvalue}} -->
 
@@ -313,6 +313,6 @@
 
   </div>
 <br><br>
-
+</div>
 
 
