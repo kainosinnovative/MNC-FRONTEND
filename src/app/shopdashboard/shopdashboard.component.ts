@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angul
 import { ToastrService } from 'ngx-toastr';
 import { ViewbookdetailPopupComponent } from '../viewbookdetail-popup/viewbookdetail-popup.component';
 import { MatDialog } from '@angular/material/dialog';
-import { barChart } from '../helpers/barChart';
+// import { barChart2 } from '../testinsert/testinsert.component';
 import { Chart } from 'angular-highcharts';
 // import { Options } from 'highcharts';
 import {
@@ -50,7 +50,9 @@ export type ChartOptions2 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
-  barChart = new Chart(barChart);
+  
+  // barChart = new Chart(barChart2);
+  
   apiURL = 'http://localhost/MNC-PHP-API';
   //dtOptions: DataTables.Settings = {};
   dtOptions: any = {};

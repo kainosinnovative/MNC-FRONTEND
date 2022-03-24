@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators, FormControl,FormArray} from '@angul
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 
-export class bchart1  {
+export class bchart1   {
   currentOffer:any;
   currentOffer1:any;
   ComboOfferAmountArr:any;
@@ -16,23 +16,26 @@ export class bchart1  {
       this.currentComboOffers2();
     }
 
+    
 
     currentComboOffers2(){
-      let currentUserId = localStorage.getItem('currentUserId');
-      this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
-        this.currentOffer = data;
-         this.currentOffer1 = this.currentOffer;
+      // alert("in");
+      console.log("barchart>>>");
+//       let currentUserId = localStorage.getItem('currentUserId');
+//       this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
+//         this.currentOffer = data;
+//          this.currentOffer1 = this.currentOffer;
     
     
-        // this.ComboOfferAmountArr = [10,100];
-         for(let i=0;i<this.currentOffer1.length;i++){
-           this.ComboOfferAmountArr.push(Number(this.currentOffer1[i].offer_percent));
-          // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
-          this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name);
-         }
-      alert(this.ComboOfferFromDateTodate)
+//         // this.ComboOfferAmountArr = [10,100];
+//          for(let i=0;i<this.currentOffer1.length;i++){
+//            this.ComboOfferAmountArr.push(Number(this.currentOffer1[i].offer_percent));
+//           // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
+//           this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name);
+//          }
+//       alert(this.ComboOfferFromDateTodate)
          
-})
+// })
     }
   }
   
