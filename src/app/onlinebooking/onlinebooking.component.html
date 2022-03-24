@@ -21,6 +21,9 @@
         
         
         <div class="row" style="padding-top: 10px;padding-bottom: 10px;margin-left: -1px;">
+          <div class="col-sm-7">
+
+          
           <div class="table-responsive">
             <table>
               
@@ -31,9 +34,9 @@
                   <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;"  formControlName="bookingdate" placeholder="Date From" id="booking_date" >
                 </div>
                 </td>
-                <!-- <td >
-                <label style="width: 1px;"></label>
-              </td> -->
+                <td style="width: 40px;">
+                
+              </td>
                 <td style="width: 136px">
                   <div >
                   <label>Registration Number</label> <br>
@@ -57,9 +60,10 @@
                     </div> 
                   </div>
                 </td>
-                <!-- <td >
-                  <label style="width: 20px;"></label>
-                </td> -->
+                
+                <td style="width: 40px;">
+                
+                </td>
                 
                 <td style="width: 170px;">
                   <div  *ngIf="getPickupAvlData2 == 1">
@@ -82,25 +86,18 @@
                   <label style="width: 1px;"></label>
                 </td> -->
   
-                <td  style="width: 330px;">
-                  <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" style="display: none;">
-                  <label >Pickup & Drop Instructions</label> 
-                  <!-- <p style="margin-top: 10px;"></p> -->
-                  <!-- <br> -->
-                    <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" id="instructions" matinput="" placeholder=""></textarea>
-  
-                    <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
-                      <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
-                       <div *ngIf="onlinebooking.controls['bookingdate'].errors.required" style="margin-left: 0px;font-size: 12px;">
-                           Select Date
-                       </div> 		   
-                     </div> 
-                   </div>
-                  </div>
-                </td>
+                
                 <!-- <td >
                   <label style="width: 1px;"></label>
                 </td> -->
+                
+              </tr>
+            </table>
+            <br>
+
+            <table>
+              
+              <tr>
                 <td  style="width: 119px;">
                   <div id="pickupdateTdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
                   <label >Pick-up Date</label> 
@@ -110,9 +107,9 @@
   </div>
                 </td>
   
-                <!-- <td >
-                  <label style="width: 20px;"></label>
-                </td> -->
+                <td style="width: 40px;">
+                
+                </td>
                 
                 <td style="width: 87px;" class="pickuptimeMob">
                   <div *ngIf="getPickupAvlData2 == 1" id="pickuptimetdid" style="display: none;width: 67px;">
@@ -156,9 +153,9 @@
                         </div>
                 </td>
   
-                <!-- <td >
-                  <label style="width: 20px;"></label>
-                </td> -->
+                <td style="width: 93px;">
+                
+                </td>
   
                 <td style="width: 121px;" class="dropdateMob">
                   <div id="dropdatetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
@@ -167,6 +164,9 @@
                        
       <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="drop_date" placeholder="Date From" >
                 </div>
+                </td>
+                <td style="width: 48px;">
+                
                 </td>
                 <td>
                   <div id="droptimetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;">
@@ -203,8 +203,150 @@
                           </div>
                 </td>
               </tr>
-            </table>
+              </table>
+
+              <br>
+
+              <table>
+                <tr>
+                  <td  style="width: 330px;">
+                    <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" style="display: none;">
+                    <label >Pickup & Drop Instructions</label> 
+                    <!-- <p style="margin-top: 10px;"></p> -->
+                    <!-- <br> -->
+                      <textarea class="textcls" formControlName="instructions" style="border: 1px solid;height: 34px;" id="instructions" matinput="" placeholder=""></textarea>
+    
+                      <div *ngIf="onlinebooking.controls['bookingdate'].touched && onlinebooking.controls['bookingdate'].invalid "> 
+                        <div *ngIf="onlinebooking.controls['bookingdate'].errors" style="color: red;"> 
+                         <div *ngIf="onlinebooking.controls['bookingdate'].errors.required" style="margin-left: 0px;font-size: 12px;">
+                             Select Date
+                         </div> 		   
+                       </div> 
+                     </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
           </div>
+
+        </div>
+
+        <div class="col-sm-5">
+          <div *ngIf="offerslist != null && offerslist.length !=0">
+            <h2 class="mainheading" style="text-align: center;">Deal Of The Day (offers)</h2>
+          <!-- <div class="accordion1" *ngIf="offerslist != null && offerslist.length !=0"> -->
+          <!---End of Booking details-->
+          
+          
+          <!-- <h2 class="title1 subheading"  (click)="opened1 = !opened1">Deal Of The Day (offers)  <i class="fa fa-chevron-down"></i> </h2>  -->
+          <!-- <div class="content-container1" [class.opened1]="opened1"> -->
+            <!-- style="margin-left: -90px;" -->
+          <div class="col-sm-12" >
+          <!-- <div class="col-sm-12">
+          <div class="container"> -->
+          
+          <ngx-slick-carousel class="carousel" style="width:100%;background: none;"
+                         #slickModal="slick-carousel" 
+                         [config]="slideConfig1" 
+                         (init)="slickInit1($event)"
+                         (breakpoint)="breakpoint1($event)"
+                         (afterChange)="afterChange1($event)"
+                         (beforeChange)="beforeChange1($event)">
+          <div ngxSlickItem *ngFor="let s of offerslist" class="slide1" style="width:100%;">
+           <div class=" card" >
+             <!-- <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" > -->
+                  <div class="first">
+                     <div class="d-flex justify-content-between align-items-center"> 
+                       <span style="margin-left:0px;margin-top: 0px;"*ngIf="s.offer_percent != 0" class="discount">Up to {{s.offer_percent}}% Off</span> 
+                       <span *ngIf="s.offer_percent == 0" class="discount"></span>
+          
+                       <!-- <span  class="discount2"> {{s.offer_name}} </span> -->
+                       
+                       <ng-template  #other_content1></ng-template>
+          
+                       <!-- <span  *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content1" class="openClosed">Closed</span> -->
+                       
+                       <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span>  -->
+                     </div>
+                 </div> 
+          
+             <!-- </div> -->
+          
+             
+          
+             <div class="product-detail-container p-2">
+          
+               <div class="d-flex justify-content-between align-items-center pt-1">
+                 <!-- <div class="color-select d-flex "> 
+                   <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
+                   </div> -->
+              </div>
+          
+             
+          
+               <span ><i class="fa fa-car" style="color: #429c68;"></i>&nbsp; <b>{{s.offer_name}}</b></span> 
+          <br>
+                 <b>Services:</b>
+                  <div style="height: 50px;overflow: auto;">
+                  <div *ngFor="let m of  s.services.split(',');let j=index" >
+                   <div *ngFor="let m1 of  MasterServiceid1;" >
+                  <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
+                  </div>
+                  </div>
+                  </div>
+           
+          
+                 <div class="d-flex justify-content-between align-items-center">
+                     <h5 class="dress-name">{{s.model_name}}</h5>
+                  </div>
+          
+                 <div class="d-flex justify-content-between align-items-center" style="height:20px">
+                   <h5 *ngIf="s.offer_percent != 0"  class="dress-name">Offer Price &nbsp; <i class="fa fa-rupee"></i> &nbsp;
+                     <span class="offerpriceMobile" style="display: none;">
+                       
+                     </span><input type="text" readonly id="offerprice_{{s.offer_id}}" class="combovaluebox" value="{{s.combo_price}}">  /-</h5>
+                   <h5 *ngIf="s.offer_percent == 0" class="dress-name">Price <i class="fa fa-rupee"></i>
+                     <span class="offerpriceMobile" style="display: none;"></span>
+                     <input type="text" readonly id="offerprice_{{s.offer_id}}" class="combovaluebox" value="{{s.original_amount}}">  /-</h5>
+                  </div>
+                  
+                  <div class="d-flex justify-content-between align-items-center">
+                   <span *ngIf="s.offer_percent != 0"><b>Save Upto </b> <i class="fa fa-rupee"></i> {{s.original_amount - s.combo_price }}</span>
+                 </div>
+                 
+               <!-- <div class="d-flex justify-content-between align-items-center pt-1">
+                 <span *ngIf="s.offer_percent != 0" class="buy">Save Upto <i class="fa fa-rupee"></i> {{s.original_amount - s.combo_price }} +</span>
+               </div> -->
+          
+               <!-- <a  style="text-decoration: none;cursor: pointer;" class="booknowntn"  >Book Now</a> -->
+          
+          <div style="text-align: right;">
+            <button id="select_{{s.offer_id}}" (click)="changeBgColor(s.offer_id);getComboOfferDetails(s.offer_id,s.combo_price,s.offer_name)"   class="comboselectbtm" >{{text}}</button>    </div>
+           </div>
+          </div>
+          </div>
+          </ngx-slick-carousel>
+          
+          <br>
+          <!-- <br><br> -->
+          <div class="comboofferpricediv" style="font-size: 17px;text-align: center;margin-left: -18px;">
+          <input type="hidden" formControlName="combo_id" id="ComboPrimaryIdArr" class="selectnow2"  >
+          <label class="mainheading" id="name" >Combo Offer price </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i> 
+          <input type="number" readonly id="finalamount" formControlName="comboprice_total" class="selectnow2"  >
+          <br>
+          <!-- <div > -->
+          <p style="text-align: center" id="offernameShow"></p>
+          <!-- </div> -->
+          
+          <!-- </div>
+          </div> -->
+          </div>
+          </div>
+          <!-- </div> -->
+          <!-- </div> -->
+        </div>
+        </div>
                       
      </div>
     <br>
@@ -217,123 +359,11 @@
 <br>
 
 <div class="row">
-  <div class="col-sm-4">
-    <div *ngIf="offerslist != null && offerslist.length !=0">
-      <h2 class="mainheading" style="text-align: center;">Deal Of The Day (offers)</h2>
-    <!-- <div class="accordion1" *ngIf="offerslist != null && offerslist.length !=0"> -->
-    <!---End of Booking details-->
+  <!-- <div class="col-sm-4">
     
-    
-    <!-- <h2 class="title1 subheading"  (click)="opened1 = !opened1">Deal Of The Day (offers)  <i class="fa fa-chevron-down"></i> </h2>  -->
-    <!-- <div class="content-container1" [class.opened1]="opened1"> -->
-      <!-- style="margin-left: -90px;" -->
-    <div class="col-sm-12" >
-    <!-- <div class="col-sm-12">
-    <div class="container"> -->
-    
-    <ngx-slick-carousel class="carousel" style="width:100%;background: none;"
-                   #slickModal="slick-carousel" 
-                   [config]="slideConfig1" 
-                   (init)="slickInit1($event)"
-                   (breakpoint)="breakpoint1($event)"
-                   (afterChange)="afterChange1($event)"
-                   (beforeChange)="beforeChange1($event)">
-    <div ngxSlickItem *ngFor="let s of offerslist" class="slide1" style="width:100%;">
-     <div class=" card" >
-       <!-- <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" > -->
-            <div class="first">
-               <div class="d-flex justify-content-between align-items-center"> 
-                 <span style="margin-left:0px;margin-top: 0px;"*ngIf="s.offer_percent != 0" class="discount">Up to {{s.offer_percent}}% Off</span> 
-                 <span *ngIf="s.offer_percent == 0" class="discount"></span>
-    
-                 <!-- <span  class="discount2"> {{s.offer_name}} </span> -->
-                 
-                 <ng-template  #other_content1></ng-template>
-    
-                 <!-- <span  *ngIf = "date >= s.leave_from_date && date <= s.leave_to_date;else other_content1" class="openClosed">Closed</span> -->
-                 
-                 <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span>  -->
-               </div>
-           </div> 
-    
-       <!-- </div> -->
-    
-       
-    
-       <div class="product-detail-container p-2">
-    
-         <div class="d-flex justify-content-between align-items-center pt-1">
-           <!-- <div class="color-select d-flex "> 
-             <img src="http://localhost/MNC-PHP-API/{{s.shop_logo}}" style="width: 50px;margin-top: -7px;"> {{s.name}}
-             </div> -->
-        </div>
-    
-       
-    
-         <span ><i class="fa fa-car" style="color: #429c68;"></i>&nbsp; <b>{{s.offer_name}}</b></span> 
-    <br>
-           <b>Services:</b>
-            <div style="height: 50px;overflow: auto;">
-            <div *ngFor="let m of  s.services.split(',');let j=index" >
-             <div *ngFor="let m1 of  MasterServiceid1;" >
-            <span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
-            </div>
-            </div>
-            </div>
-     
-    
-           <div class="d-flex justify-content-between align-items-center">
-               <h5 class="dress-name">{{s.model_name}}</h5>
-            </div>
-    
-           <div class="d-flex justify-content-between align-items-center" style="height:20px">
-             <h5 *ngIf="s.offer_percent != 0"  class="dress-name">Offer Price &nbsp; <i class="fa fa-rupee"></i> &nbsp;
-               <span class="offerpriceMobile" style="display: none;">
-                 
-               </span><input type="text" readonly id="offerprice_{{s.offer_id}}" class="combovaluebox" value="{{s.combo_price}}">  /-</h5>
-             <h5 *ngIf="s.offer_percent == 0" class="dress-name">Price <i class="fa fa-rupee"></i>
-               <span class="offerpriceMobile" style="display: none;"></span>
-               <input type="text" readonly id="offerprice_{{s.offer_id}}" class="combovaluebox" value="{{s.original_amount}}">  /-</h5>
-            </div>
-            
-            <div class="d-flex justify-content-between align-items-center">
-             <span *ngIf="s.offer_percent != 0"><b>Save Upto </b> <i class="fa fa-rupee"></i> {{s.original_amount - s.combo_price }}</span>
-           </div>
-           
-         <!-- <div class="d-flex justify-content-between align-items-center pt-1">
-           <span *ngIf="s.offer_percent != 0" class="buy">Save Upto <i class="fa fa-rupee"></i> {{s.original_amount - s.combo_price }} +</span>
-         </div> -->
-    
-         <!-- <a  style="text-decoration: none;cursor: pointer;" class="booknowntn"  >Book Now</a> -->
-    
-    <div style="text-align: right;">
-      <button id="select_{{s.offer_id}}" (click)="changeBgColor(s.offer_id);getComboOfferDetails(s.offer_id,s.combo_price,s.offer_name)"   class="comboselectbtm" >{{text}}</button>    </div>
-     </div>
-    </div>
-    </div>
-    </ngx-slick-carousel>
-    
-    <br>
-    <!-- <br><br> -->
-    <div class="comboofferpricediv" style="font-size: 17px;text-align: center;margin-left: -18px;">
-    <input type="hidden" formControlName="combo_id" id="ComboPrimaryIdArr" class="selectnow2"  >
-    <label class="mainheading" id="name" >Combo Offer price </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i> 
-    <input type="number" readonly id="finalamount" formControlName="comboprice_total" class="selectnow2"  >
-    <br>
-    <!-- <div > -->
-    <p style="text-align: center" id="offernameShow"></p>
-    <!-- </div> -->
-    
-    <!-- </div>
-    </div> -->
-    </div>
-    </div>
-    <!-- </div> -->
-    <!-- </div> -->
-    </div>
-  </div>
+  </div> -->
 
-  <div class="col-sm-8" >
+  <div class="" >
 <div class="accordion" >
   <h2 class="title subheading"  (click)="opened = !opened">Add Extra Services <i class="fa fa-chevron-down"></i> </h2> 
   <div class="content-container" [class.opened]="opened">
@@ -400,7 +430,7 @@
 </div>
 </div>
 <br>
-<div class="col-sm-12 extraservPrice" style="text-align: right;margin-left: -19px;">
+<div class="col-sm-12 extraservPrice" style="text-align: right;margin-left: -30px;">
   <label class="mainheading">Extra Services price: </label> &nbsp; <i style="margin-right: -13px;" class="fa fa-rupee"></i>
       <input readonly type="number" id="totalamount" formControlName="serviceprice_total" class="selectnow2"  >
 </div>
@@ -420,7 +450,7 @@
       
     </mat-card-content>
 
-    <div class="confirmbkngFinalcls" style="font-size: 17px;text-align: right;margin-right: 21px;">
+    <div class="confirmbkngFinalcls" style="font-size: 17px;text-align: right;margin-right: 27px;">
       
 
 <br><br>

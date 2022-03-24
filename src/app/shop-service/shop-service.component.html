@@ -253,7 +253,7 @@
     <div class="accordion1">
       <h2 class="title1 subheading" style="text-align: left;" (click)="opened1 = !opened1">Add New Service <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
-    <div style="border: 1px solid;margin-left:0px!important;height: 90px;">
+    <div style="border: 1px solid;margin-left:0px!important;height: 85px;">
       <!-- <h2 style="text-align: center;" class="mainheading">Add New Service</h2> -->
       <form [formGroup]="MasterserviceForm" name="pf">
       <div class="table-responsive boxwidht" style="display: block;width: 100%;overflow-x: unset;padding-top: 3px;height: 100px;" id="shopservFormid2">
@@ -263,7 +263,7 @@
             <td>Service</td>
             <td class="">
 
-        <ng-autocomplete class="ng-autocomplete"  md-input-maxlength='10'  style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        <ng-autocomplete class="ng-autocomplete"  minlength="3"  style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)'    (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
               [notFoundTemplate]="notFoundTemplate" >
             </ng-autocomplete>
