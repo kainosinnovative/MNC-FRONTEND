@@ -1,25 +1,26 @@
 
  <div class="accordion">
   <h2 class="title subheading"  (click)="opened = !opened">Upcoming Booking <i class="fa fa-chevron-down"></i> </h2>
-  <div class="content-container" [class.opened]="opened">
-    <table  class="table table-responsive servicecss" *ngIf="posts"  datatable="ng"  datatable [dtOptions]="dtOptions">
-      <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+  <div class="content-container " [class.opened]="opened" >
+    <div class="table-responsive" >
+    <table  class="table  servicecss" *ngIf="posts"  datatable="ng"  datatable [dtOptions]="dtOptions" style="border: 0.5px solid #000000 !important">
+      <thead style="color: black;text-align: center;background-color: #80808091;">
 
           <tr>
           <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
-          <th style="width:90px;font-weight:normal;">Booking Id</th>
-          <th style="width: 137px;font-weight:normal;">Registration Number</th>
-          <th style="width:90px;font-weight:normal;">Date</th>
-          <th style="width:150px;font-weight:normal;">Customer Name</th>
+          <th style="width:90px;" class="fontwghtcls">Booking Id</th>
+          <th style="width: 137px;" class="fontwghtcls">Registration Number</th>
+          <th style="width:90px;" class="fontwghtcls">Date</th>
+          <th style="width:150px;" class="fontwghtcls">Customer Name</th>
           <!-- <th style="width:94px;font-weight:normal;" >Combo Services</th> -->
           <!-- <th style="width: 142px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th> -->
           <!-- <th style="width:100px;font-weight:normal;" >Extra Services</th> -->
           <!-- <th style="width:140px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
-          <th style="width:100px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+          <th style="width:100px;" class="fontwghtcls">Total (<span><i class="fa fa-rupee"></i></span>) </th>
           <!-- <th  style="width:100px;font-weight:normal;">Pick-up & Drop</th> -->
           <!-- <th  style="width:150px;font-weight:normal;">Pick-up & Drop Message</th> -->
-          <th style="width:60px;font-weight:normal;" >Confirm</th>
-          <th style="width:60px;font-weight:normal;" >Reject</th>
+          <th style="width:60px;" class="fontwghtcls">Confirm</th>
+          <th style="width:60px;" class="fontwghtcls">Reject</th>
 
 
         </tr>
@@ -33,10 +34,10 @@
       </tbody> -->
       <!-- <tbody *ngIf = "bookingDetails1 != ''"> -->
         <tbody>
-        <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+        <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: center;">
 
           <!-- <td>{{i+1}}</td> -->
-          <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
+          <td class="fontwghtcls"><a style="cursor: pointer;color: #26a0fc;text-decoration: underline;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
           <td>{{b.vehicle_number}}</td>
           <td>
             {{b.bookingdate | date: 'dd-MM-yyyy'}}
@@ -67,36 +68,39 @@
             </td> -->
 
           <td>
-            <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i class="fa fa-check"></i></a> </td>
+            <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i style="color: #01992d;font-size: 20px;cursor: pointer;" class="fa fa-check-circle"></i></a> </td>
             <td>
-            <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i class="fa fa-close"></i></a>
+            <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i style="color: #bf3900;font-size: 20px;cursor: pointer;" class="fa fa-times-circle"></i></a>
           </td>
         </tr>
 
       </tbody>
     </table>
+  </div>
     </div>
     </div>
+    <br>
     <div class="accordion1">
       <h2 class="title1 subheading"  (click)="opened1 = !opened1">Car Wash Status <i class="fa fa-chevron-down"></i> </h2>
       <div class="content-container1" [class.opened1]="opened1">
-        <table  class="table table-responsive servicecss"  *ngIf="posts1"  datatable="ng"  datatable [dtOptions]="dtOptions1">
-          <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color: white;">
+        <div class="table-responsive">
+        <table  class="table  servicecss"  *ngIf="posts1"  datatable="ng"  datatable [dtOptions]="dtOptions1" style="border: 0.5px solid #000000 !important">
+          <thead style="color: black;text-align: center;background-color: #80808091;">
 
               <tr>
               <!-- <th style="width:60px;font-weight:normal;">Sl. No.</th> -->
-              <th style="width:90px;font-weight:normal;">Booking Id</th>
-              <th style="width: 137px;font-weight:normal;">Registration Number</th>
-              <th style="width:100px;font-weight:normal;">Date</th>
-              <th style="width:150px;font-weight:normal;">Customer Name</th>
+              <th style="width:90px;" class="fontwghtcls">Booking Id</th>
+              <th style="width: 137px;" class="fontwghtcls">Registration Number</th>
+              <th style="width:100px;" class="fontwghtcls">Date</th>
+              <th style="width:150px;" class="fontwghtcls">Customer Name</th>
               <!-- <th style="width: 113px;font-weight:normal;" >Combo Services</th>
               <th style="width: 163px;font-weight:normal;" >Combo Services Price(<span><i class="fa fa-rupee"></i></span>)</th>
               <th style="width:150px;font-weight:normal;" >Extra Services</th>
               <th style="width:190px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
-              <th style="width:80px;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+              <th style="width:80px;" class="fontwghtcls">Total (<span><i class="fa fa-rupee"></i></span>) </th>
               <!-- <th  style="width: 108px;font-weight:normal;">Pick-up & Drop</th> -->
-              <th  style="width:130px;font-weight:normal;">Status</th>
-              <th style="width:60px;font-weight:normal;" >Update</th>
+              <th  style="width:130px;" class="fontwghtcls">Status</th>
+              <th style="width:60px;" class="fontwghtcls">Update</th>
 
 
             </tr>
@@ -110,10 +114,10 @@
           </tbody> -->
           <!-- <tbody *ngIf = "AcceptbookingDetails1 != ''"> -->
             <tbody>
-            <tr *ngFor="let b of  posts1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;">
+            <tr *ngFor="let b of  posts1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: center;">
 
               <!-- <td>{{i+1}}</td> -->
-              <td><a style="cursor: pointer;color: #26a0fc;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
+              <td class="fontwghtcls"><a style="cursor: pointer;color: #26a0fc;text-decoration: underline;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>
               <td>{{b.vehicle_number}}</td>
               <td>
                 {{b.bookingdate | date: 'dd-MM-yyyy'}}
@@ -156,16 +160,17 @@
 
                 </td>
               <td>
-                <a (click)="updateCarwashStatus(b.Booking_id)"><i class="fa fa-check"></i></a>
+                <a (click)="updateCarwashStatus(b.Booking_id)"><i style="color: #01992d;font-size: 20px;cursor: pointer;" class="fa fa-check-circle"></i></a>
                </td>
 
             </tr>
 
           </tbody>
         </table>
+      </div>
         </div>
         </div>
-
+<br>
         <div class="accordion2">
           <h2 class="title2 subheading"  (click)="opened2 = !opened2">Today's Offers<i class="fa fa-chevron-down"></i> </h2>
           <div class="content-container2" [class.opened2]="opened2">
@@ -197,8 +202,8 @@
               <div class="col-sm-6" *ngIf="serviceDataOffers1 !=''">
                 <h2 style="text-align: center;" class="mainheading">Services Offers</h2>
                 <div class="row">
-                  <div class="col-sm-2" ></div>
-                  <div class="col-sm-8" >
+                  <div class="col-sm-1" ></div>
+                  <div class="col-sm-10" >
                     <div style="border: 1px solid #aeaeae;height: 317px;" >
                     <div id="chart2">
                       <apx-chart
@@ -212,7 +217,7 @@
                     </div>
                   </div>
                   </div>
-                  <div class="col-sm-2" ></div>
+                  <div class="col-sm-1" ></div>
                 </div>
 
 

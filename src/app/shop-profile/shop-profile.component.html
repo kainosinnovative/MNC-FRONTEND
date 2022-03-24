@@ -270,26 +270,30 @@
 
         </div> -->
 
-        <div class="col-sm-2"> 
+        <div class="col-sm-2" > 
+            <label style="padding-bottom: 22px;">Add Holidays</label>
 
             <!-- <mat-calendar   #calendar [dateClass]="dateClass()" (selectedChange)="select($event,calendar,this)" ></mat-calendar> -->
-
+<div style="border: 1px solid #aeaeae; padding-bottom: 10px;">
+    <!-- <br> -->
             
             <div (click)="$event.stopPropagation()" >
               <mat-calendar #calendar (selectedChange)="select($event,calendar)"   [dateClass]="isSelected"></mat-calendar>
             </div>  
             
-            <div style="text-align: right;">
+            <div style="text-align: center;">
                 <button class="allSubmitbtn" (click)="holidaysInsert()" style="border: none;">
                     Update
                 </button>
             </div>
         </div>
+            
+</div>
 
         <div class="col-sm-2">
-            <br>
+            <!-- <br> -->
             <p>Selected Dates:</p>
-            <div class="results" id="selectedDateArr" style="height: 100px;overflow: auto;">
+            <div class="results" id="selectedDateArr" style="height: 200px;overflow: auto;">
               <div *ngFor="let date of dates" >
                 <p >{{ date.zone("+09:00").format('YYYY-MM-DD') }},</p>
               </div>

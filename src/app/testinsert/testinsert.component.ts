@@ -3,7 +3,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 // import 'rxjs/add/operator/map';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Chart } from 'angular-highcharts';
+
 // import { donutChartOptions } from '../helpers/donutChartOptions';
 import { areaChartOptions } from '../helpers/areaChartOptions';
 // import { barChart } from '../helpers/barChart';
@@ -27,6 +27,7 @@ import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } fr
   styleUrls: ['./testinsert.component.scss']
 })
 
+
 // let ComboOfferFromDateTodate:any;
 export  class TestinsertComponent implements OnInit
 {
@@ -37,12 +38,15 @@ export  class TestinsertComponent implements OnInit
 
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
     private toastr: ToastrService, private  dialog:  MatDialog) {
-  
+
+
 }
 
 
 ngOnInit(): void {
+
  this.currentComboOffers2();
+
 }
 
 currentComboOffers2(){
@@ -59,8 +63,8 @@ currentComboOffers2(){
       // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
       this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name);
      }
-  
-    
+
+
   })
 }
 
@@ -70,13 +74,13 @@ currentComboOffers2(){
 // export var arr = [1,2,3];
 
 export class barChart1 extends TestinsertComponent{
-  
+
   sum:number = 10;
 
     SumValue() {
         return this.sum;
     }
-    
+
 
   barChart2: Options = {
     chart: {
@@ -119,17 +123,17 @@ export class barChart1 extends TestinsertComponent{
       //   'Dec',
       // ],
     },
-  
+
     plotOptions: {
-      
+
       series: {
         borderRadius: 5,
       } as any,
     },
-  
+
     series: [
       {
-        
+
         type: 'bar',
         color: '#506ef9',
         data: [
@@ -150,12 +154,12 @@ export class barChart1 extends TestinsertComponent{
     ],
   };
 
-  
+
 
 }
 export var barChart2 = [1,2,3];
 
-// export const 
+// export const
 
 // export barChart1;
 
