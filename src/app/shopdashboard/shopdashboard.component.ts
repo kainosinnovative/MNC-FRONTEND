@@ -50,8 +50,12 @@ export type ChartOptions2 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
+  opened = false;
+  opened1 = false;
+  opened2 = false;
+   apiURL = 'http://localhost/MNC-PHP-API';
   barChart = new Chart(barChart);
-  apiURL = 'http://localhost/MNC-PHP-API';
+ // apiURL = 'http://localhost/MNC-PHP-API';
   //dtOptions: DataTables.Settings = {};
   dtOptions: any = {};
   posts: any;
@@ -166,7 +170,10 @@ export class ShopdashboardComponent implements OnInit {
            titleAttr: 'Download as Excel',
            extend: 'excelHtml5',
            className: 'custom-btn fa fa-file-excel-o',
-           text: ''
+           text: '',
+           exportOptions: {
+            columns: [ 0, 1, 3, 4, 5, 6]
+       }
          },
          {
            titleAttr: 'Download as CSV',
@@ -181,7 +188,8 @@ export class ShopdashboardComponent implements OnInit {
            text: ''
          },
 
-        ]
+        ],
+        select: true,
       }
 
     };
@@ -210,7 +218,10 @@ export class ShopdashboardComponent implements OnInit {
            titleAttr: 'Download as Excel',
            extend: 'excelHtml5',
            className: 'custom-btn fa fa-file-excel-o',
-           text: ''
+           text: '',
+      //      exportOptions: {
+      //       columns: [ 0]
+      //  }
          },
          {
            titleAttr: 'Download as CSV',
@@ -225,7 +236,8 @@ export class ShopdashboardComponent implements OnInit {
            text: ''
          },
 
-        ]
+        ],
+        select: true,
       }
 
     };
