@@ -184,11 +184,15 @@ padding: 0px 0px !important;
 }
 
 .table{
-border-collapse:initial !important;
+// border-collapse:initial !important;
 }
 .content-container.opened  {
 max-height: none;
 }
 th{
 font-weight:normal !important;
+}
+
+.fontwghtcls {
+  font-weight: bold !important;
 }

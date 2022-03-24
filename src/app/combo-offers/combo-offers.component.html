@@ -117,15 +117,15 @@
 
       <div style="display: none !important;" id="secondtblid" >
 
-        <table  class="row table table-responsive addcombooffer"  style="width: 76%;border: 0.5px solid #aeaeae;margin-left:56px;overflow: auto;" >
-            <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;">
+        <table  class="table table-responsive addcombooffer"  style="text-align:center;width: 76%;border: 0.5px solid #000000 !important;margin-left:56px;overflow: auto;" >
+            <thead style="background: #202c45;color:white;">
               <tr >
 
                 <th  style="width: 50px;">Sl. No.</th>
 
-                <th style="width: 250px;">Active Service Name</th>
-                <th style="width: 100px">Amount &nbsp;(<i class="fa fa-rupee">) </i></th>
-                <th style="width: 100px">Select</th>
+                <th style="width: 250px;">Service Name</th>
+                <th style="width: 100px;">Amount &nbsp;(<i class="fa fa-rupee">) </i></th>
+                <th style="width: 100px;">Select</th>
               </tr>
             </thead>
             <tbody *ngIf="combooffertblByModelid1.length < 2">
@@ -151,6 +151,7 @@
 
 
               </tr>
+              
 
             </tbody>
           </table>
@@ -308,22 +309,23 @@
 
   </div>
   <br>
+  <div style="margin-right: 17px;">
   <div class="table-responsive" id="history" >
-     <table  class="table  combotable" >
-      <thead style="background: #202c45;border-bottom: 0.5px solid #aeaeae;color:white;font-weight:normal !important;overflow: auto;border:1px rgb(84, 66, 245)">
-        <tr >
+     <table  class="table  combotable" style="border: 0.5px solid #000000 !important;text-align: center;">
+      <thead style="color:black;font-weight:normal !important;overflow: auto;font-weight: bold;background-color: #b7b7b7;">
+        <!-- <tr > -->
 
-          <th style="width:70px;" >Sl.No.</th>
-          <th style="width:100px;">Offer Name</th>
-          <th style="width:120px;">Model</th>
-          <th style="width:250px;">Services</th>
-          <th style="width:100px;">From Date</th>
-          <th style="width:100px;">To Date</th>
-          <th style="width:120px;">Offer Percent(%)</th>
-          <th style="width:120px;">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
-          <th style="width:70px;">Delete</th>
+          <th style="width:70px;" class="fontwghtcls">Sl.No.</th>
+          <th style="width:100px;" class="fontwghtcls">Offer Name</th>
+          <th style="width:120px;" class="fontwghtcls">Model</th>
+          <th style="width:250px;" class="fontwghtcls">Services</th>
+          <th style="width:100px;" class="fontwghtcls">From Date</th>
+          <th style="width:100px;" class="fontwghtcls">To Date</th>
+          <th style="width:120px;" class="fontwghtcls">Offer Percent(%)</th>
+          <th style="width:120px;" class="fontwghtcls">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
+          <th style="width:70px;" class="fontwghtcls">Delete</th>
 
-        </tr>
+        <!-- </tr> -->
       </thead>
       <tbody>
         <tr *ngIf="comboofferData1 == ''">
@@ -370,6 +372,7 @@
       <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 
+  </div>
   </div>
 </div>
 </div>
