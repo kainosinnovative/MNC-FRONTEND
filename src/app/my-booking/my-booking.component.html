@@ -1,22 +1,24 @@
-<h2 style="text-align: center;" class="mainheading">My Booking</h2>
+<div >
+
+<h2 style="text-align: center;padding-top: 7px;" class="mainheading">My Booking</h2>
 
 <div class="row">
     <div class="col-sm-2"></div>
 
-    <div class="col-sm-8" >
+    <div class="col-sm-8" style="margin-left: -98px;;" >
 
 
-        <table  class="table table-responsive servicecss" id="user" *ngIf="posts" datatable="ng"  datatable [dtOptions]="dtOptions" style="border:1px solid black;">
-            <thead style="background: #2697e7;border-bottom: 0.5px solid #aeaeae;color: white;">
+        <table  class="table table-responsive servicecss" id="user" *ngIf="posts" datatable="ng"  datatable [dtOptions]="dtOptions" style="border:1px solid white; ">
+            <thead style="background: #2F9CE2FF;border-bottom: 0.5px solid #aeaeae;color: white;">
 
                 <tr>
 
-                <th style="width:10%;font-weight:normal;">Booking Id</th>
-                <th style="width: 17%;font-weight:normal;">Registration Number</th>
+                <th style="width:13%;font-weight:normal;">Booking Id</th>
+                <th style="width: 17%;font-weight:normal;">Registration No</th>
                 <th style="width:11%;font-weight:normal;">Date</th>
                 <th style="width:23%;font-weight:normal;">Booked Status</th>
                 <th style="width:19%;font-weight:normal;">Service Status</th>
-                <th style="width:8%;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+                <th style="width:12%;font-weight:normal;">Total (<span><i class="fa fa-rupee"></i></span>) </th>
 
 
 
@@ -30,15 +32,15 @@
               </tr>
             </tbody> -->
             <!-- <ng-template #mybookintbl> -->
-            <tbody  >
-              <tr  *ngFor="let b of  posts| paginate: config ;  let i=index;" style="border:1px solid #aeaeae;">
+            <tbody  style="background-color: #ededed8c;" >
+              <tr  *ngFor="let b of  posts| paginate: config ;  let i=index;" style="border:1px solid #aeaeae; background-color: #ededed8c;">
 
-               <td><a style="cursor: pointer;color: #26a0fc;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
+               <td><a style="cursor: pointer;color: #26a0fc; text-decoration:underline;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
                <!-- <td><a style="cursor: pointer;color: #26a0fc;">{{b.Booking_id}}</a></td> -->
                 <td>{{b.vehicle_number}}</td>
                 <td>{{b.bookingdate | date: 'dd-MM-yyyy'}} </td>
                 <td>
-                  <span style="color: blue;font-weight: bold;" *ngIf="b.booked_status == ''">Booking under confirmation</span>
+                  <span style="color: black" *ngIf="b.booked_status == ''">Booking under confirmation</span>
                   <span style="color: green;font-weight: bold;" *ngIf="b.booked_status == 'Accepted'">{{b.booked_status}}</span>
                   <span style="color: red;font-weight: bold;" *ngIf="b.booked_status == 'Rejected'">{{b.booked_status}}</span>
                   </td>
@@ -84,3 +86,5 @@
     <div class="col-sm-2"></div>
 </div>
 <br>
+
+</div>
