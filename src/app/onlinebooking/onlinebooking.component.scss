@@ -217,7 +217,7 @@ padding: 1rem!important;
 .extser{
     background-color: rgb(0 0 0 / 5%);
     height:70px !important;
-    width: 541px;
+    //width: 541px;
 }
 .servicename{
     font-size: 17x;
@@ -389,21 +389,27 @@ padding: 1rem!important;
       }
 
       .comboofferpricediv{
-        margin-left: -67px;
+        // margin-left: -67px;
       }
 
       .serviceprice{
-        margin-left: 80px;
+        // margin-left: 80px;
         font-size: 14px;
     }
     .slick-slider {
-      width: 94% !important;
+      width: 50% !important;
       margin: auto;
       background: rgb(14, 13, 13);
     }
     }
 
   @media screen and (max-width: 768px) {
+    .extraservPrice{
+      text-align: center !important;
+    }
+    .confirmbkngFinalcls{
+      text-align: center !important;
+    }
   .pickupDroplbl {
     width: 100px;
   }
