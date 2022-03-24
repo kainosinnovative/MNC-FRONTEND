@@ -158,7 +158,7 @@ date2:any;
         this.onlinebooking.controls.pickup_drop.setValue(false);
         this.onlinebooking.controls.payment_type.setValue("Cash On Delivery");
         this.getshopProfileDataByIdBooking(id);
-        
+        this.onlinebooking.controls.bookingdate.setValue(this.current_date);
   })
   
   }
@@ -202,8 +202,8 @@ date2:any;
       this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
       this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
     } else {
-      this.slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
-      this.slideConfig1={"slidesToShow": 4, "slidesToScroll": 1};
+      this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
+      this.slideConfig1={"slidesToShow": 1, "slidesToScroll": 1};
     }
   }
 
@@ -375,7 +375,7 @@ loadshopoffers(shopid:any,modelid:any){
   })
 
 }
-  slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
   
   slickInit(e:any) {
     console.log('slick initialized');
@@ -599,7 +599,7 @@ remove1(arr:any, item:any)
 
 
 
-slideConfig1 = {"slidesToShow": 4, "slidesToScroll": 1};
+slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
   
   slickInit1(e:any) {
     console.log('slick initialized');

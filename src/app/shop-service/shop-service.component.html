@@ -116,18 +116,21 @@
   <div class="col-md-6">
 
     <div class="row"  style="margin-bottom: 10px;"  >
-      <div *ngFor="let service of  serviceData1 | paginate: config ;  let i=index;" >
+      <!-- <div *ngIf="let data of  statuspickupvalue;" > -->
 
       <label class="switch subheading" style="white-space:nowrap;margin-left: 18px;" >Do you provide pick & drop service..?!
+        
+       <!-- {{statuspickupvalue}} -->
 
-        <span *ngIf="service.status == '1'">&nbsp;</span>
-        <label class="switch" *ngIf="service.status == '1'"  (click)="changepickupStatus(service.shop_id,service.status)">
+        <span *ngIf="statuspickupvalue == '1'">&nbsp;</span>
+      
+        <label class="switch" *ngIf="statuspickupvalue == '1'"  (click)="changepickupStatus(statuspickupvalue)">
           <input  type="checkbox" checked>
           <span class="slider round"></span>
         </label>
 
-        <span *ngIf="service.status == '0'">&nbsp;</span>
-        <label class="switch" *ngIf="service.status == '0'"  (click)="changepickupStatus(service.shop_id,service.status)">
+        <span *ngIf="statuspickupvalue == '0'">&nbsp;</span>
+        <label class="switch" *ngIf="statuspickupvalue == '0'"   (click)="changepickupStatus(statuspickupvalue)">
           <input type="checkbox" >
           <span class="slider round"></span>
         </label>
@@ -137,7 +140,7 @@
       </label>
 
      
-  </div>
+  <!-- </div> -->
         </div>
 
     <div class="row">
@@ -260,7 +263,7 @@
             <td>Service</td>
             <td class="">
 
-        <ng-autocomplete class="ng-autocomplete" style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        <ng-autocomplete class="ng-autocomplete"  md-input-maxlength='10'  style="height: 24px! important;" [data]="MasterServiceData1" formControlName="service_name" [searchKeyword]="keyword" (selected)='selectEvent($event)'
               (inputChanged)='onChangeSearch($event)'    (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
               [notFoundTemplate]="notFoundTemplate" >
             </ng-autocomplete>

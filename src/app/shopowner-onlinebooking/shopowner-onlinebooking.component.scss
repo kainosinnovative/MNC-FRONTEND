@@ -248,7 +248,7 @@ padding: 1rem!important;
 }
 
 .card {
-    width: 92%;
+    // width: 92%;
     background: rgb(0 0 0 / 5%);
   }
 
@@ -384,12 +384,15 @@ padding: 1rem!important;
   }
 
   @media screen and (min-width: 768px) {
+    .slick-prev{
+    left: -5px !important;
+    }
   .comboselectbtm{
     // margin-left: 188px;
       }
 
       .comboofferpricediv{
-        margin-left: -67px;
+        // margin-left: -67px;
       }
 
       .serviceprice{
@@ -397,7 +400,7 @@ padding: 1rem!important;
         font-size: 14px;
     }
     .slick-slider {
-      width: 94% !important;
+      width: 50% !important;
       margin: auto;
       background: rgb(14, 13, 13);
     }
