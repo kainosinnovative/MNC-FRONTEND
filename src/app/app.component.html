@@ -7,7 +7,7 @@
 
     <!-- customer mobile start -->
     <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item >Hi, {{currentUsername}}</a> </mat-list-item>
-    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'>Select a City
+    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'><i class="fa fa-map-marker" aria-hidden="true"></i>Select a City
     </a> </mat-list-item>
     <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
     </a> </mat-list-item>
@@ -69,7 +69,7 @@
 
 
 <!-- for cust general user -->
-  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu cursorcls" mat-list-item (click)="selectcity()">{{cityname}} <i class="fa fa-caret-down"></i></a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
+  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu cursorcls" mat-list-item (click)="selectcity()"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{cityname}} </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
 <!-- for cust general user -->
 
   <!-- both customer and shop owner -->
