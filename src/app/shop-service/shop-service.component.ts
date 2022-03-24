@@ -36,6 +36,9 @@ export class ShopServiceComponent implements  OnInit{
    myservice:any;
    servicemodelsdata:any;
    servicemodelsdataobj:any;
+   ProfileDataByIdObject:  any;
+   ShopProfileDetails: any;
+   statuspickupvalue: any;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe,
     private frmbuilder: FormBuilder) { }
@@ -47,6 +50,7 @@ export class ShopServiceComponent implements  OnInit{
     this.loadServiceData();
     this.loadMasterService();
     this.loadAllModels();
+    this.readProfileDataById();
 
     let currentUserId:any = localStorage.getItem('currentUserId');
     this.config = {
@@ -533,29 +537,21 @@ success => {
 );
   }
 
-  changepickupStatus(shop_id:any,status:any) {
-    //alert(serviceid)
-   // alert(status)
-   // alert(index);
-   // var updatebutton="updatebtn_"+serviceidnew+"_"+index;
-   // alert(updatebutton);
-   // if(status==1)
-   // {
-   //  // alert("hi");
-   //   alert(  (<HTMLInputElement>document.getElementById(updatebutton)));
-   //   (<HTMLInputElement>document.getElementById(updatebutton)).style.color="green";
-   // }
-   
+  changepickupStatus(statuspickupvalue : any) {
+    
+    let currentUserId = localStorage.getItem('currentUserId');
+
        var changepickupStatus =
                       {
-                        "shopserviceid": shop_id,
-                        "status": status,
+                       "shopid": currentUserId,
+                        "pickupstatus": statuspickupvalue,
                       }
    
    this.restApi. changepickupStatus(changepickupStatus).subscribe((data: any) => {
      console.log('POST Request is successful >>>>>>>>', data.status);
-     if(data.status == "pass") {
-       this.loadServiceData();
+     if(data.status == "pass") 
+     {
+     this. readProfileDataById()
      }
    },
    success => {
@@ -567,4 +563,26 @@ success => {
    );
      }
 
+     readProfileDataById() {
+   
+      
+      let currentShopId = localStorage.getItem('currentUserId');
+      return this.restApi.readShopProfileDataById(currentShopId).subscribe((res)=>{
+        this.ProfileDataByIdObject = res
+    
+        
+        this.ShopProfileDetails = this.ProfileDataByIdObject.data.profile
+
+        this.statuspickupvalue = this.ShopProfileDetails.is_pickup_drop_avl
+
+        console.log(this.statuspickupvalue);
+
+        //console.log(this.ShopProfileDetails)
+        
+      }
+        
+      
+      )
+      
+    }
 }
