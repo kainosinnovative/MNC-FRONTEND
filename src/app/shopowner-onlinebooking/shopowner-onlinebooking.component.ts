@@ -411,7 +411,7 @@ changeBgColor(offer_id:any){
           this.counter = this.counter + 1;
 
         (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Selected";
-      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "rgb(255, 194, 7)";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "rgb(24, 114, 242)";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
         //alert(offer_amt);
         this.finalvalue = this.finalvalue +(offer_amt);
@@ -427,7 +427,7 @@ changeBgColor(offer_id:any){
         this.counter = this.counter - 1;
         // alert("count else>>"+this.counter);
       (<HTMLInputElement>document.getElementById(buttonid)).innerHTML = "Select";
-      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#1872f3";
+      (<HTMLInputElement>document.getElementById(buttonid)).style.backgroundColor = "#0c5578";
        offer_amt = Number((<HTMLInputElement>document.getElementById(offer_totalid)).value);
        this.finalvalue = this.finalvalue -(offer_amt);
        this.onlinebooking.controls.comboprice_total.setValue(this.finalvalue.toFixed());
@@ -450,7 +450,7 @@ selectbuttoncolor(service_id:any,indexval:any){
 
       if(selecttext === 'Select') { 
         (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Selected";
-       (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(255, 194, 7)";
+       (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(24, 114, 242)";
        var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
        console.log(service_amt);
       this.totalvalue = this.totalvalue +(service_amt);
@@ -461,7 +461,7 @@ selectbuttoncolor(service_id:any,indexval:any){
        } else {
    
      (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Select";
-     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#1872f3";
+     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#0c5578";
      var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
      this.totalvalue = this.totalvalue -(service_amt);
     //  (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
