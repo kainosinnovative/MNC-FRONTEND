@@ -207,7 +207,8 @@ export class ShopServiceComponent implements  OnInit{
     let obj=obj1+"_"+i;
     let validateoffer= "validateoffer_"+obj;
     let validateoffer1= "validateoffer1_"+obj;
-    (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="none";
+    let validateoffer2= "validateoffer2_"+obj;
+   (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="none";
     let responsedata :any;
     let servicename="servicename_"+obj;
     let offer_percent = "offer_"+obj;
@@ -229,8 +230,13 @@ export class ShopServiceComponent implements  OnInit{
     (<HTMLInputElement>document.getElementById(validatefromdateid)).style.display ="none";
     let validatetodateid= "validatetodate_"+obj;
     (<HTMLInputElement>document.getElementById(validatetodateid)).style.display ="none";
+  if(Number(offerpercentage)  >99){
+    console.log( "abi");
+      (<HTMLInputElement>document.getElementById(offer_percent)).focus();
 
-    if(Number(offerpercentage) != 0 && fromdate !="" && todate !="" ) {
+      (<HTMLInputElement>document.getElementById(validateoffer2)).style.display ="block";
+    }
+  else  if(Number(offerpercentage) != 0 && fromdate !="" && todate !="" ) {
 
                   if(todate<fromdate)
                   {
@@ -285,12 +291,14 @@ export class ShopServiceComponent implements  OnInit{
 
       (<HTMLInputElement>document.getElementById(validateoffer1)).style.display ="block";
     }
+   
     else {
       (<HTMLInputElement>document.getElementById(offer_percent)).focus();
 
       (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="block";
     }
 
+  
   }
   getOfferPrice(term: string,termid: string): void
   {
@@ -353,9 +361,11 @@ export class ShopServiceComponent implements  OnInit{
     // alert("hi")
     let validoffermsg = "validateoffer_"+id+"_"+i;
     let validoffermsgformat = "validateoffer1_"+id+"_"+i;
+     let validoffermsgformat1 = "validateoffer2_"+id+"_"+i;
    //alert(validatemsg);
       (<HTMLInputElement>document.getElementById(validoffermsg)).style.display ="none";
       (<HTMLInputElement>document.getElementById(validoffermsgformat)).style.display ="none";
+      (<HTMLInputElement>document.getElementById(validoffermsgformat1)).style.display ="none";
   }
 
   loadMasterService(){
