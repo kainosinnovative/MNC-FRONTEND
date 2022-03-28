@@ -41,6 +41,7 @@ export class Service {
   providers: [DatePipe]
 })
 export class SearchComponent implements OnInit {
+  currenttime:any;
   currentUsername = localStorage.getItem('currentUsername');
   myControl = new FormControl();
   options = [];
@@ -74,10 +75,13 @@ private innerWidth: number;
    CustomerWhislistData1:any;
    carDetailsById:any;
    carDetailsById1:any;
+   date1:any;
   ngOnInit() {
     this.adjustsItemsPerSlide();
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+    this.date1=new Date();
+    this.currenttime = this.datepipe.transform(this.date1, 'HH:mm');
     this.loadMasterService();
     this.dashboardShop1='';
     this.dashboardShopoffer1='';
@@ -416,9 +420,12 @@ userloggedin(shopid :number,model_id:any)
 
       for(var j=0;j < (this.dashboardShop1.length);j++) {
         if(this.dashboardShop1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+          if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
+{
           var newNum = "leavecheck";
           var newVal = "Closed";
           this.dashboardShop1[j][newNum] = newVal;
+}
         }
         
         console.log("val",this.dashboardShop1);
@@ -437,9 +444,12 @@ userloggedin(shopid :number,model_id:any)
 
       for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
         if(this.dashboardShopoffer1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+          if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
+{
           var newNum = "leavecheck";
           var newVal = "Closed";
           this.dashboardShopoffer1[j][newNum] = newVal;
+}
         }
         //console.log("val offers",this.dashboardShopOffer1);
       }

@@ -75,6 +75,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {DataTablesModule} from 'angular-datatables';
 import { ShopownerOnlinebookingComponent } from './shopowner-onlinebooking/shopowner-onlinebooking.component';
 import { ChartModule } from 'angular-highcharts';
+import { LeavefromtotimeComponent } from './leavefromtotime/leavefromtotime.component';
 
 
 const appRoutes: Routes = [
@@ -138,7 +139,8 @@ const appRoutes: Routes = [
       ViewbookingdetailsComponent,
       ViewbookdetailPopupComponent,
       PopupmodalComponent,
-      ShopownerOnlinebookingComponent
+      ShopownerOnlinebookingComponent,
+      LeavefromtotimeComponent
 
 
      ],

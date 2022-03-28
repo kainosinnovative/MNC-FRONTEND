@@ -273,7 +273,8 @@ line-height: unset !important;
 }
 
 .mat-calendar-body-cell.selected {
-  background-color: skyblue !important;
+  background-color: none !important;
+ // background-color: skyblue !important;
   border-radius: 50% !important;
   // color: white !important;
 }

@@ -50,12 +50,15 @@ ShopHolidaysDetails1:any;
   userroleSes = localStorage.getItem('userroleSes');
   carDetailsById:any;
   carDetailsById1:any;
-
+  date1:any;
+  currenttime:any;
   ngOnInit(): void {
 
     this.adjustsItemsPerSlide();
+    this.date1=new Date();
     this.date=new Date();
     this.date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+    this.currenttime = this.datepipe.transform(this.date1, 'HH:mm');
     this.loadMasterService();
     // alert("hi")
     this.dashboardShopDetailByOffer();
@@ -412,12 +415,24 @@ else
 
           for(var j=0;j < (this.dashboardShop1.length);j++) {
             if(this.dashboardShop1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
-              var newNum = "leavecheck";
+              // alert("current time>>"+this.currenttime)
+              // alert("from>>"+this.ShopHolidaysDetails1[i].timing_from)
+              // alert("to>>"+this.ShopHolidaysDetails1[i].timing_to)
+              if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
+{
+  // alert("if")
+  var newNum = "leavecheck";
               var newVal = "Closed";
               this.dashboardShop1[j][newNum] = newVal;
+}
+else
+{
+// alert("else") 
+}
+              
             }
             
-            console.log("val",this.dashboardShop1);
+            console.log("val after timing check",this.dashboardShop1);
             // this.datecheckArr.push(ShopHolidaysDetails1[i])
            
           }
@@ -459,9 +474,12 @@ else
 
           for(var j=0;j < (this.dashboardShopOffer1.length);j++) {
             if(this.dashboardShopOffer1[j].shop_id == this.ShopHolidaysDetails1[i].shop_id){
+              if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
+{
               var newNum = "leavecheck";
               var newVal = "Closed";
               this.dashboardShopOffer1[j][newNum] = newVal;
+}
             }
             //console.log("val offers",this.dashboardShopOffer1);
           }

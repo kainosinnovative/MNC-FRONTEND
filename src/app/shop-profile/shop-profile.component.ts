@@ -9,6 +9,10 @@ import { DatePipe } from '@angular/common';
 import { config_url } from '../shared/customer/constant';
 import * as moment from 'moment';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
+import { LeavefromtotimeComponent } from '../leavefromtotime/leavefromtotime.component';
+
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-shop-profile',
   templateUrl: './shop-profile.component.html',
@@ -26,9 +30,9 @@ ProfileDataById:any;
 file_data:any='';
 file=new FormControl('')
 
-opened = true;
+opened = false;
 opened1 = false;
-opened2 = false;
+opened2 = true;
 imageSrc: string;
 citytype: any;
   citydata: any;
@@ -44,7 +48,8 @@ citytype: any;
     private frmbuilder: FormBuilder,
     private http: HttpClient,
     public restApi: RestApiService,
-    private toastr: ToastrService,public datepipe: DatePipe) { }
+    private toastr: ToastrService,public datepipe: DatePipe,
+    private  dialog:  MatDialog) { }
 
     // ngAfterContentChecked() {
 
@@ -350,6 +355,7 @@ else{
     //obj.style.backgroundColor = "red";
     var clickedDate = event.zone("+09:00").format('YYYY-MM-DD');
     if(!this.datas.includes(clickedDate)){
+      this.setLeaveFromtoTime(clickedDate);
     const date: moment.Moment = event
 
     const index = this.dates.findIndex(x => x.isSame(date));
@@ -457,6 +463,7 @@ this.restApi.DeleteHolidays(holidaysData).subscribe((data: any) => {
    
       this.toastr.error("Holiday deleted");
       this.getholidays();
+      window.setTimeout(function(){location.reload()},100)
     
   }
 },
@@ -487,6 +494,13 @@ success => {
       
     }
     );
+  }
+
+  setLeaveFromtoTime(sel_date:any){
+    console.log("hiiiii1111");
+       this.dialog.open(LeavefromtotimeComponent,{disableClose: true, width: '40%'});
+       
+       localStorage.setItem('holidayDateselected',sel_date);
   }
 
 }

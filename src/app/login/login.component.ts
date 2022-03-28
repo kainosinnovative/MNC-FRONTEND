@@ -42,9 +42,9 @@ public  dataForm: FormGroup;
      
       });
   }
- closeMe() {
-    this.dialogRef.close();
- }
+  closeMe() {
+      this.dialogRef.close();
+  }
 
     
  signup(){
