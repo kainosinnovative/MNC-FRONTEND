@@ -34,7 +34,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 export class AppComponent implements OnInit{
-  
+
   currentUserId = localStorage.getItem('currentUserId');
 
   currentUsername = localStorage.getItem('currentUsername');
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit{
 
 
 
-
+shoplogo:any;
   title = 'angular6-sidenav-example';
   cont_id: any;
   cityid: any;
@@ -71,6 +71,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
     
     this.currenttime = this.datepipe.transform(this.date1, 'HH:mm');
     
+    this.shoplogo = localStorage.getItem('shoplogo');
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
@@ -91,10 +92,11 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
 
     this.getholidaysForAll();
 
+
   }
 
   onActivate(event:any) {
-    
+
  }
 
   login(){

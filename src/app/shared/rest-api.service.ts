@@ -21,7 +21,8 @@ headers = new HttpHeaders().set('Content-Type', 'application/text');
 // headers: new HttpHeaders({}),
 
 // }
-
+month=new Array();
+year=new Array();
 httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -78,13 +79,13 @@ gettestimonialData(): Observable<Testimonial> {
     getcitylistbycityid(cityid:any): Observable<citylist> {
 
       return this.http.get<citylist>(this.apiURL + "/app/getcitynamebyCityid?cityid="+cityid)
-  
+
       .pipe(
       retry(1),
       catchError(this.handleError)
       )
       }
-    
+
 
     getstatelist(): Observable<statelist> {
 
@@ -132,7 +133,7 @@ gettestimonialData(): Observable<Testimonial> {
         let shopid = ServiceDataOnlineBookingModel["shopid"];
                 return this.http.get<Services>(this.apiURL + "/app/getServiceDataOnlineBookingModel?shopid="+shopid +
         "&model_id=" + model_id)
-  
+
         .pipe(
         retry(1),
         catchError(this.handleError)
@@ -246,7 +247,7 @@ gettestimonialData(): Observable<Testimonial> {
             CarDetailsByIdShopOnlineBooking(customer_id:any): Observable<any[]> {
 
               return this.http.get<any[]>(this.apiURL + "/app/CarDetailsByIdShopOnlineBooking?customer_id="+customer_id)
-  
+
               .pipe(
               retry(1),
               catchError(this.handleError)
@@ -260,7 +261,7 @@ gettestimonialData(): Observable<Testimonial> {
 
               return this.http.get<any[]>(this.apiURL + "/app/carDetByModelId?model="+model +
               "&currentUserId=" + currentUserId)
-  
+
               .pipe(
               retry(1),
               catchError(this.handleError)
@@ -268,10 +269,10 @@ gettestimonialData(): Observable<Testimonial> {
               }
 
               getcustomerByCityId(currentLogincity:any): Observable<any[]> {
-                
-  
+
+
                 return this.http.get<any[]>(this.apiURL + "/app/getcustomerByCityId?cityid="+currentLogincity)
-    
+
                 .pipe(
                 retry(1),
                 catchError(this.handleError)
@@ -340,14 +341,18 @@ gettestimonialData(): Observable<Testimonial> {
 
 
 
-      getComboOffersData(monyear:any): Observable<Services> {
+      getComboOffersData(val:any,val1:any,currentUserId:any): Observable<Services> {
 
         // alert(currentUserId)
-        let month=monyear["month"];
-        let year=monyear["year"];
-        let currentId=monyear["currentUserId"];
-        return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?month="+month+
-        "&year="+year+
+        // let month=monyear["month"];
+        // let year=monyear["year"];
+        // let currentId=monyear["currentUserId"];
+
+         this.month=val;
+         this.year=val1;
+        let currentId=currentUserId;
+        return this.http.get<Services>(this.apiURL + "/shop/getComboOffersByShopid?month="+this.month+
+        "&year="+this.year+
         "&id="+currentId)
 
         .pipe(
@@ -424,10 +429,10 @@ gettestimonialData(): Observable<Testimonial> {
             // alert(shopservAmount)
             let shopid = changepickupStatus["shopid"];
              let pickupstatus = changepickupStatus["pickupstatus"];
-  
+
             return this.http.get<ShopService>(this.apiURL + "/shop/updatepickupdrop?pickupdropstatus="+pickupstatus +
              "&shop_id=" + shopid)
-  
+
             .pipe(
             retry(1),
             catchError(this.handleError)
@@ -447,7 +452,7 @@ gettestimonialData(): Observable<Testimonial> {
             )
             }
 
-            
+
 
 
   createTestimonial(testimonialData: any): Observable<Testimonial2>{

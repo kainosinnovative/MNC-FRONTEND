@@ -10,7 +10,7 @@
 # npm install @types/datatables.net-buttons --save-dev
 # npm install jszip --save
 
-
+npm install --save @ng-select/ng-select
 
 npm cache clear
 npm install
