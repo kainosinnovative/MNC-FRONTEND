@@ -75,6 +75,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {DataTablesModule} from 'angular-datatables';
 import { ShopownerOnlinebookingComponent } from './shopowner-onlinebooking/shopowner-onlinebooking.component';
 import { ChartModule } from 'angular-highcharts';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 const appRoutes: Routes = [
@@ -144,6 +145,8 @@ const appRoutes: Routes = [
      ],
   imports: [
     BrowserModule,
+ NgSelectModule ,
+
     BrowserAnimationsModule,
     CustomMaterialModule,
     RouterModule.forRoot(

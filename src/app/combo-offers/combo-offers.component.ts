@@ -36,9 +36,13 @@ export class ComboOffersComponent implements OnInit {
   serviceData1: any;
   config: any;
   date:any;
+  public val:any= [];
+  public val1:any=[];
+  selectedmonth=new Array();
+  selectedyear=new Array();
   removecomboinfodata:any;
   comboofferData:any;
-  comboofferData1:any;
+  comboofferData1=new Array();
   MasterServiceData:any;
   MasterServiceData1:any;
   shopserviceModel:any;
@@ -359,48 +363,77 @@ dateErrorMsg() {
   (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="none";
 }
 
+
+changeFn(val) {
+    console.log("Dropdown selection:", val);
+    this.val=val;
+    console.log("Dropdown selectionmon:", val);
+}
+changeFn1(val1) {
+  console.log("Dropdown selection:", val1);
+  this.val1=val1;
+  console.log("Dropdown selectionyear:", val1);
+}
 retreivedata()
 {
-    (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
-    (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
-    let mon = (<HTMLInputElement>document.getElementById("month")).value;
-    let year = (<HTMLInputElement>document.getElementById("year")).value;
-    console.log(mon);
-    console.log(year);
-    if(mon=="")
-    {
-    (<HTMLInputElement>document.getElementById("month")).focus();
+  this.comboofferData1=new Array();
+  for(let i=0;i<this.val.length;i++){
+    this.selectedmonth.push(this.val[i].id);
+  }
+  console.log("month>>",this.selectedmonth)
+  for(let i=0;i<this.val1.length;i++){
+    this.selectedyear.push(this.val1[i].name);
+  }
+  console.log("month>>",this.selectedmonth);
+  //   (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
+  //   (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
+  //   let mon = (<HTMLInputElement>document.getElementById("month")).value;
+  //  // alert(mon);
+  //   let year = (<HTMLInputElement>document.getElementById("year")).value;
+  //   console.log(mon);
+  //   console.log(year);
+  //   if(mon=="")
+  //   {
+  //   (<HTMLInputElement>document.getElementById("month")).focus();
 
-      (<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
-    }
-    else if(year=="")
-    {
-      (<HTMLInputElement>document.getElementById("year")).focus();
-      //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
-      //   let validateamount = "validateamount_"+obj;
-        (<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
-    }
-    else{
-      (<HTMLInputElement>document.getElementById("history")).style.display = "block";
-      let currentUserId = localStorage.getItem('currentUserId');
-      var monyear=
-      {
-        "month":mon,
-        "year":year,
-        "currentUserId":currentUserId
-      }
+  //     (<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
+  //   }
+  //   else if(year=="")
+  //   {
+  //     (<HTMLInputElement>document.getElementById("year")).focus();
+  //     //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+  //     //   let validateamount = "validateamount_"+obj;
+  //       (<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
+  //   }
+  //   else{
+  (<HTMLInputElement>document.getElementById("history")).style.display = "block";
+     let currentUserId = localStorage.getItem('currentUserId');
+      // var monyear=
+      // {
+      //   "month":this.val,
+      //   "year":this.val1,
+      //   "currentUserId":currentUserId
+      // }
 
-    this.restApi.getComboOffersData(monyear).subscribe((data: {}) => {
-        // alert(data)
+    this.restApi.getComboOffersData(this.selectedmonth,this.selectedyear,currentUserId).subscribe((data: {}) => {
+        alert(data)
         this.comboofferData = data;
-        this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
+        console.log("new",this.comboofferData);
+        for(let i=0;i<this.comboofferData.length;i++){
+          if(this.comboofferData[i]!=null)
+          {
+            this.comboofferData1.push(this.comboofferData[i]);
+          }
+        }
+       // this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
 
-        console.log("data>>>>",this.comboofferData1)
+        console.log("datanew>>>>",this.comboofferData1)
         // this.dtTrigger.next();
+     //   window.setTimeout(function(){location.reload()},2000)
       })
 
 
-    }
+
 
 }
 custom()

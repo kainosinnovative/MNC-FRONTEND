@@ -82,6 +82,7 @@ loadCustomerDetails2(Objval:any) {
       localStorage.setItem('currentUserId', this.customerdata2[0].shop_id);
       localStorage.setItem('userroleSes', 'shopOwnerSes');
       localStorage.setItem('currentLogincity', this.customerdata2[0].city);
+      localStorage.setItem('shoplogo', this.customerdata2[0].shop_logo);
       }
       else {
         localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
@@ -91,30 +92,30 @@ loadCustomerDetails2(Objval:any) {
         localStorage.setItem('selectedCity', this.customerdata2[0].city);
 
         this.restApi.getcitylistbycityid(this.customerdata2[0].city).subscribe((citylistdata: {}) => {
- 
+
           // console.log(citylistdata)
            this.citytype = citylistdata;
-       
+
            // console.log(this.citytype)
        //console.log("hi")
            this.citytype1 = this.citytype.data.citylistbyid;
-           
-           
+
+
             console.log("clist>>>",this.citytype1);
             localStorage.setItem('selectedCityname', this.citytype1[0].city_name);
          })
-        
+
         // for(let i=0;i<=this.citytype1.length;i++){
         //   console.log("clist>>>",this.citytype1[i].city_id);
         //   console.log("cust>>>>>",this.customerdata2[0].city);
-          
+
         //   if(this.customerdata2[0].city === this.citytype1[i].city_id) {
         //   localStorage.setItem('selectedCityname', this.citytype1[i].city_name);
         //   }
         // }
-        
+
       }
-      
+
       }
 
 
@@ -157,10 +158,10 @@ let loginfor = localStorage.getItem('loginfor');
 // alert(loginfor)
   if(loginfor == 'customersignup'){
     this.router.navigate(['/home']);
-    
+
   }
   else {
-    this.router.navigate(['/shoplogin']); 
+    this.router.navigate(['/shoplogin']);
   }
 
   window.setTimeout(function(){location.reload()},2000)
@@ -318,8 +319,8 @@ sendotp2(dataForm1: any) {
 
   pauseTimer() {
     clearInterval(this.interval);
-  }  
-  
+  }
+
   move(event:any,p:any,c:any,n:any){
     var length=c.value.length;
     var maxlength=c.getAttribute('maxlength');
@@ -341,7 +342,7 @@ sendotp2(dataForm1: any) {
 }
 
   }
-  
+
 
 
 
