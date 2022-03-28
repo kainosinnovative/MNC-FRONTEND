@@ -75,6 +75,17 @@ gettestimonialData(): Observable<Testimonial> {
     )
     }
 
+    getcitylistbycityid(cityid:any): Observable<citylist> {
+
+      return this.http.get<citylist>(this.apiURL + "/app/getcitynamebyCityid?cityid="+cityid)
+  
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
+    
+
     getstatelist(): Observable<statelist> {
 
       return this.http.get<statelist>(this.apiURL + "/app/state")

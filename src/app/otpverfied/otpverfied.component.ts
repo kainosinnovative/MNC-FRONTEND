@@ -33,7 +33,8 @@ export class OtpverfiedComponent implements OnInit {
   customerdata:any;
   customerdata1:any;
   customerdata2:any;
-
+  citytype:any;
+  citytype1:any;
 
 
 constructor(public router: Router, public restApi: RestApiService,private  dialogRef:  MatDialogRef<OtpverfiedComponent>,
@@ -46,7 +47,10 @@ ngOnInit(): void {
 
     });
  this.startTimer();
+//  this.loadcitylist();
 }
+
+
 
 
 
@@ -83,6 +87,34 @@ loadCustomerDetails2(Objval:any) {
         localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
       localStorage.setItem('currentUserId', this.customerdata2[0].customer_id);
       localStorage.setItem('userroleSes', 'CustomerSes');
+      if(this.customerdata2[0].city != null) {
+        localStorage.setItem('selectedCity', this.customerdata2[0].city);
+
+        this.restApi.getcitylistbycityid(this.customerdata2[0].city).subscribe((citylistdata: {}) => {
+ 
+          // console.log(citylistdata)
+           this.citytype = citylistdata;
+       
+           // console.log(this.citytype)
+       //console.log("hi")
+           this.citytype1 = this.citytype.data.citylistbyid;
+           
+           
+            console.log("clist>>>",this.citytype1);
+            localStorage.setItem('selectedCityname', this.citytype1[0].city_name);
+         })
+        
+        // for(let i=0;i<=this.citytype1.length;i++){
+        //   console.log("clist>>>",this.citytype1[i].city_id);
+        //   console.log("cust>>>>>",this.customerdata2[0].city);
+          
+        //   if(this.customerdata2[0].city === this.citytype1[i].city_id) {
+        //   localStorage.setItem('selectedCityname', this.citytype1[i].city_name);
+        //   }
+        // }
+        
+      }
+      
       }
 
 

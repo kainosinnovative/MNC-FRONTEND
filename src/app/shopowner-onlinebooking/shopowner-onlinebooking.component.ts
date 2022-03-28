@@ -677,7 +677,7 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
   }
     else if(pickup_drop == true && pickup_date == '') {
       
-        (<HTMLInputElement>document.getElementById("pickup_dateid")).focus();
+        (<HTMLInputElement>document.getElementById("pickup_dateid2")).focus();
       this.toastr.error('Select pickup date');
       
     }

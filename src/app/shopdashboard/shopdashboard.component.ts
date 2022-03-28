@@ -147,7 +147,7 @@ export class ShopdashboardComponent implements OnInit {
     };
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10,
+      pageLength: 5,
       processing: true,
       dom: 'Bfrtip',
       buttons: {
@@ -171,9 +171,13 @@ export class ShopdashboardComponent implements OnInit {
            extend: 'excelHtml5',
            className: 'custom-btn fa fa-file-excel-o',
            text: '',
-           exportOptions: {
-            columns: [ 0, 1, 3, 4, 5, 6]
-       }
+          //  exportOptions: {
+          //   columns: [ 0, 1, 3, 4, 5, 6],
+            // 'columnDefs': [ {
+              //'targets': [1,2], /* column index */
+            //  'orderable': false, /* true or false */
+          //  }]
+      //  }
          },
          {
            titleAttr: 'Download as CSV',
@@ -189,13 +193,13 @@ export class ShopdashboardComponent implements OnInit {
          },
 
         ],
-        select: true,
+        // select: true,
       }
 
     };
     this.dtOptions1 = {
       pagingType: 'full_numbers',
-      pageLength: 10,
+      pageLength: 5,
       processing: true,
       dom: 'Bfrtip',
       buttons: {
@@ -219,21 +223,28 @@ export class ShopdashboardComponent implements OnInit {
            extend: 'excelHtml5',
            className: 'custom-btn fa fa-file-excel-o',
            text: '',
+          
       //      exportOptions: {
-      //       columns: [ 0]
+      //       columns: [ 0, 1]
       //  }
          },
          {
            titleAttr: 'Download as CSV',
            extend: 'csvHtml5',
            className: 'custom-btn fa fa-file-text-o',
-           text: ''
+           text: '',
+      //      exportOptions: {
+      //       columns: [ 0, 1]
+      //  }
          },
          {
            titleAttr: 'Print',
            extend: 'print',
            className: 'custom-btn fa fa-print',
-           text: ''
+           text: '',
+      //      exportOptions: {
+      //       columns: [ 0, 1]
+      //  }
          },
 
         ],
@@ -308,17 +319,17 @@ export class ShopdashboardComponent implements OnInit {
 
   customerBookingForShop(){
 
-    let currentUserId = localStorage.getItem('currentUserId');
+    // let currentUserId = localStorage.getItem('currentUserId');
 
-    return this.restApi.getcustomerBookingForShop(currentUserId).subscribe((data: {}) => {
-      // alert(data)
-      this.bookingDetails = data;
-      //console.log("abi", this.shopdetails);
-       this.bookingDetails1 = this.bookingDetails.data.customerBookingForShop;
+    // return this.restApi.getcustomerBookingForShop(currentUserId).subscribe((data: {}) => {
+    //   // alert(data)
+    //   this.bookingDetails = data;
+    //   //console.log("abi", this.shopdetails);
+    //    this.bookingDetails1 = this.bookingDetails.data.customerBookingForShop;
 
-      //  console.log("bookingDetails1>>>>",this.bookingDetails1)
+    //   //  console.log("bookingDetails1>>>>",this.bookingDetails1)
 
-    })
+    // })
   }
 
   loadMasterService(){
@@ -398,12 +409,12 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
       this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
         .subscribe(posts => {
           this.posts = posts;
-          console.log("ss>>",this.posts);
+          console.log("ss1>>",this.posts);
       }, error => console.error(error));
       this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
       .subscribe(posts1 => {
         this.posts1 = posts1;
-        console.log("ss>>",this.posts1);
+        console.log("ss2>>",this.posts1);
     }, error => console.error(error));
 
 
@@ -527,7 +538,7 @@ currentComboOffers(){
         bar: {
           horizontal: false,
           width:20,
-          columnWidth: '10%',
+          columnWidth: '15%',
           // data:20
         }
       },

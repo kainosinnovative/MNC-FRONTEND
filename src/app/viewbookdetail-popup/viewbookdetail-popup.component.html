@@ -24,7 +24,7 @@
                             
                           <span>Yes<br>
                             <span *ngIf="userroleSes == 'CustomerSes';else shoproleSesid">
-                                {{b.pickedAndDrop_status}}  on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span>
+                                <span *ngIf="b.pickedAndDrop_status == ''">{{b.pickedAndDrop_status}}  on {{b.pickup_date}} <span *ngIf="b.pickup_time">@ {{b.pickup_time}}</span></span>
                             </span>
 
                             <ng-template  #shoproleSesid>

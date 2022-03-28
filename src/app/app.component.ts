@@ -61,7 +61,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
-   // alert(this.cityid);
+  //  alert(this.cityid);
     if(this.cityid == null ){
       this.cityid = 3;
       this.cityname="Arakkonam";

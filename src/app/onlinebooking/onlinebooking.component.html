@@ -30,7 +30,7 @@
               <tr >
                 <td style="width: 120px">
                   <div >
-                  <label>Booking Date</label> <br>
+                  <label>Booking Date <span class="requiredfield">  *</span></label> <br>
                   <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;"  formControlName="bookingdate" placeholder="Date From" id="booking_date" >
                 </div>
                 </td>
@@ -39,7 +39,7 @@
               </td>
                 <td style="width: 136px">
                   <div >
-                  <label>Registration Number</label> <br>
+                  <label>Registration Number <span class="requiredfield">  *</span></label> <br>
                   <select   class="carmodelcls" formControlName="vehicle_number"  style="border: 1px solid;height: 34px;width: 119px;" (change)="vehicleBasedModel($event)">   
                        
                     <option value="">--Select--</option>  
@@ -52,7 +52,7 @@
                         
                       <div *ngIf="onlinebooking.controls['vehicle_number'].errors" style="color: red;"> 
                         <div *ngIf="onlinebooking.controls['vehicle_number'].errors.required" style="font-size: 11px;">
-                            Select Registration Number
+                            Select reg.no
                         </div> 		   
                        
                      </div> 
@@ -100,7 +100,7 @@
               <tr>
                 <td  style="width: 119px;">
                   <div id="pickupdateTdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
-                  <label >Pick-up Date</label> 
+                  <label >Pick-up Date <span class="requiredfield">  *</span></label> 
       <br>
                        
       <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
@@ -258,7 +258,7 @@
              <!-- <div class="image-container oneimage" style="border:1px solid;background-image: url('http://localhost/MNC-PHP-API/{{s.shop_image}}')" > -->
                   <div class="first">
                      <div class="d-flex justify-content-between align-items-center"> 
-                       <span style="margin-left:0px;margin-top: 0px;"*ngIf="s.offer_percent != 0" class="discount">Up to {{s.offer_percent}}% Off</span> 
+                       <span style="margin-left: 6px;margin-top: 5px;"*ngIf="s.offer_percent != 0" class="discount">Up to {{s.offer_percent}}% Off</span> 
                        <span *ngIf="s.offer_percent == 0" class="discount"></span>
           
                        <!-- <span  class="discount2"> {{s.offer_name}} </span> -->

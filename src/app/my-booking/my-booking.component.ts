@@ -29,6 +29,8 @@ posts: any;
   MasterServiceData1:any;
   carwashstatus:any;
   carwashstatus1:any;
+  MasterModelData:any;
+  MasterModelData1:any;
   // @ViewChild(DataTableDirective)
   // datatableElement: DataTableDirective;
   //dtOptions: DataTables.Settings = {};
@@ -117,6 +119,20 @@ posts: any;
 
   // );
  //this.ngAfterViewInit();
+this.loadAllModels();
+  }
+
+  loadAllModels(){
+
+    return this.restApi.getAllModels().subscribe((data: {}) => {
+      // alert(data)
+      this.MasterModelData = data;
+      this.MasterModelData1 = this.MasterModelData.data.list;
+
+      console.log("models>>>>",this.MasterModelData1)
+      // this.dtTrigger.next();
+    })
+
 
   }
 
