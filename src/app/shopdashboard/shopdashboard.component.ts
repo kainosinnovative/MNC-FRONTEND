@@ -44,6 +44,16 @@ export type ChartOptions2 = {
   dataLabels: ApexDataLabels | any;
 
 };
+export type ChartOptions3 = {
+  series: ApexNonAxisChartSeries | any;
+  chart: ApexChart | any;
+  dataLabels: ApexDataLabels | any;
+  plotOptions: ApexPlotOptions | any;
+  xaxis: ApexXAxis | any;
+  yaxis:ApexYAxis | any;
+  tooltip:ApexChart | any;
+
+};
 @Component({
   selector: 'app-shopdashboard',
   templateUrl: './shopdashboard.component.html',
@@ -91,12 +101,21 @@ export class ShopdashboardComponent implements OnInit {
   ViewBooking_heading:any;
   loadmasterComboOfferval:any;
   loadmasterComboOfferval1:any;
+  combocustomer :any;
+ combocustomer1:any;
+ combocustomerArr:any = [];
+ combocustomerArr1:any=[];
+ combocustomerArr2:any=[];
+
+
 
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
   @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions2: Partial<ChartOptions2>;
+  @ViewChild("chart3") chart3: ChartComponent;
+  public chartOptions3: Partial<ChartOptions>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
     private toastr: ToastrService, private  dialog:  MatDialog) {
       let currentUserId = localStorage.getItem('currentUserId');
@@ -120,6 +139,7 @@ export class ShopdashboardComponent implements OnInit {
     this.master_pickdrop_status();
     this.master_carwash_status();
     this.currentComboOffers();
+    this.combocustomerinfo();
 
     this.getBookingByid();
 
@@ -223,7 +243,7 @@ export class ShopdashboardComponent implements OnInit {
            extend: 'excelHtml5',
            className: 'custom-btn fa fa-file-excel-o',
            text: '',
-          
+
            exportOptions: {
             columns: [ 1,2,3,4,5,6]
        }
@@ -405,17 +425,17 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
   if(data.status == "pass") {
 
 
-    let currentUserId = localStorage.getItem('currentUserId');
-      this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
-        .subscribe(posts => {
-          this.posts = posts;
-          console.log("ss1>>",this.posts);
-      }, error => console.error(error));
-      this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
-      .subscribe(posts1 => {
-        this.posts1 = posts1;
-        console.log("ss2>>",this.posts1);
-    }, error => console.error(error));
+    // let currentUserId = localStorage.getItem('currentUserId');
+    //   this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
+    //     .subscribe(posts => {
+    //       this.posts = posts;
+    //       console.log("ss1>>",this.posts);
+    //   }, error => console.error(error));
+    //   this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+    //   .subscribe(posts1 => {
+    //     this.posts1 = posts1;
+    //     console.log("ss2>>",this.posts1);
+    // }, error => console.error(error));
 
 
     // this.customerBookingForShop();
@@ -426,7 +446,7 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
     else {
       this.toastr.error(booking_status);
     }
-
+    window.setTimeout(function(){location.reload()},100);
   }
 },
 success => {
@@ -474,8 +494,11 @@ let carwashStatusId = "carwash_"+Booking_id;
 this.restApi.changeCarwashStatus(changeCarwashStatus).subscribe((data: any) => {
   console.log('POST Request is successful >>>>>>>>', data.status);
   if(data.status == "pass") {
+    this.toastr.success('Carwash status updated');
+    // this.toastr.success("Carwash status updated");
 
-      this.toastr.success("Carwash status updated");
+    // this.carwashfnRefresh();
+    window.setTimeout(function(){location.reload()},100);
 
 
   }
@@ -489,20 +512,128 @@ success => {
 );
     }
 }
+combocustomerinfo()
+{
+  let currentUserId = localStorage.getItem('currentUserId');
+  this.restApi.getcombocustomerinfo(currentUserId).subscribe((data: {}) => {
+    this.combocustomer = data;
+    console.log("seetha>>",this.combocustomer);
+     this.combocustomer1 = this.combocustomer;
 
 
+
+
+    // this.ComboOfferAmountArr = [10,100];
+     for(let i=0;i<this.combocustomer1.length;i++){
+       this.combocustomerArr.push(this.combocustomer1[i].count);
+      // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
+      this.combocustomerArr1.push(this.combocustomer1[i].offername+"("+this.combocustomer1[i].modelname+")");
+      this.combocustomerArr2.push(this.combocustomer1[i].modelname);
+     }
+     console.log("arraynew>>>",this.combocustomerArr1);
+
+     this.chartOptions3 = {
+
+
+
+      series: [
+        {
+          name: "No. of Customers",
+          data: this.combocustomerArr
+        }
+      ],
+      chart: {
+        toolbar: {
+          show: true,
+
+          tools: {
+            // download: false,
+            download: '<i style="font-size:12px;color:black" class="fa fa-download" title="Download"></i>',
+
+          },
+        },
+
+        type: "bar",
+        height: 300,
+        width:300,
+        colors: "red",
+
+      },
+
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          width:20,
+          columnWidth: '15%',
+          // data:20
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        // categories: ["test"],
+        categories: this.combocustomerArr1,
+                title: {
+          text: "Offer Name",
+          style: {
+            color: "#000000",
+            //font:"20px"
+          }
+        },
+
+
+      },
+      yaxis: {
+
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+         },
+
+
+
+    },
+    tooltip: {
+      y: {
+        formatter: function(val:any) {
+          return ''
+        },
+        title: {
+          formatter: function (seriesName:any) {
+            return ''
+          }
+        }
+      }
+    }
+  };
+
+
+
+  })
+
+
+}
+carwashfnRefresh() {
+  let currentUserId = localStorage.getItem('currentUserId');
+    this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+    .subscribe(posts1 => {
+      this.posts1 = posts1;
+      console.log("ss2>>",this.posts1);
+  }, error => console.error(error));
+}
 currentComboOffers(){
   let currentUserId = localStorage.getItem('currentUserId');
   this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
     this.currentOffer = data;
      this.currentOffer1 = this.currentOffer;
 
-
+     console.log("array1111>>>",this.currentOffer1);
     // this.ComboOfferAmountArr = [10,100];
      for(let i=0;i<this.currentOffer1.length;i++){
        this.ComboOfferAmountArr.push(Number(this.currentOffer1[i].offer_percent));
       // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
-      this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name);
+      this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name+"("+this.currentOffer1[i].model_name+")");
      }
     //  console.log("array>>>",this.ComboOfferFromDateTodate);
 
@@ -632,7 +763,7 @@ loadServiceDataOffers(){
         type: "gradient"
       },
       labels: this.servicenameArr,
-      
+
       legend: {
         position: "left"
         // enabled:true,

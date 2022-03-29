@@ -742,7 +742,15 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
     )
     }
 
+    getcombocustomerinfo(currentUserId:any): Observable<any[]> {
 
+      return this.http.get<any[]>(this.apiURL + "/shop/chartcustomercombo?currentUserId="+currentUserId)
+
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+      )
+      }
     getcurrentComboOffersByShopid(currentUserId:any): Observable<any[]> {
 
       return this.http.get<any[]>(this.apiURL + "/shop/getcurrentComboOffersByShopid?currentUserId="+currentUserId)
