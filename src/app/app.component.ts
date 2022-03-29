@@ -1,7 +1,7 @@
-import { Component,ElementRef,VERSION, ViewChild } from '@angular/core';
+import { Component,ElementRef,VERSION, ViewChild,Injectable } from '@angular/core';
 import { OnInit } from  '@angular/core';
 import { LoginComponent } from './login/login.component';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router,ActivatedRoute,ParamMap, Params } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
@@ -29,24 +29,26 @@ import { HttpClient } from '@angular/common/http';
 //             num2 = num1;
 //         }
 
-@HostListener('window:unload', ['$event'])
+// @HostListener('window:unload', ['$event'])
+// @Injectable({
+//   providedIn: 'root'
+// })
 
+// export class Service {
+  // apiURL = 'http://localhost/MNC-PHP-API';
+  // constructor(private http: HttpClient) { }
 
-export class Service {
-  apiURL = 'http://localhost/MNC-PHP-API';
-  constructor(private http: HttpClient) { }
+  // opts = [];
 
-  opts = [];
+  // getData() {
+  //   let city= localStorage.getItem('selectedCity');
+  //   return this.opts.length ?
+  //     of(this.opts) :
+  //     this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
 
-  getData() {
-    let city= localStorage.getItem('selectedCity');
-    return this.opts.length ?
-      of(this.opts) :
-      this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
+  // }
 
-  }
-
-}
+// }
 
 @Component({
   selector: 'app-root',
@@ -58,7 +60,7 @@ export class Service {
 
 export class AppComponent implements OnInit{
 
-  filteredOptions: Observable<any[]>;
+ 
 
   myControl = new FormControl();
   
@@ -81,46 +83,21 @@ shoplogo:any;
   ShopHolidaysDetails:any;
   ShopHolidaysDetails1:any;
 
-  dashboardShop:any;
-  dashboardShop1:any;
-  carDetailsById:any;
-   carDetailsById1:any;
-   dashboardShopoffer1:any;
-   customerId:any;
-   CustomerWhislistData:any;
-   CustomerWhislistData1:any;
-   dashboardShopoffer:any;
-   Observable:any
-  service: any;
-  response: any;
-   //dashboardShopoffer1:any;
+  
 
 constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService,
   public datepipe: DatePipe,public restApi: RestApiService,private toastr: ToastrService ){
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(400),
-      distinctUntilChanged(),
-      switchMap(val => {
-            return this.filter(val || '')
-       })
-    )
+   
   }
   closemenu() {
     console.log("hi")
-    // this.cont_id.nativeElement.classList.add('mat-drawer-container mat-sidenav-container mat-drawer-transition')
-  //   let element = document.getElementById("cont_id");
-  //   myTag = this.el.nativeElement.querySelector("li");
-  // element.classList.remove("mystyle");
-    // document.getElementById("cont_id").classList.remove("mat-drawer-container mat-sidenav-container mat-drawer-transition");
+
   }
 
 
   ngOnInit(): void {
 
-    this.loadcarDetailsById();
-    // this.dashboardShop1='';
-    this.dashboardShopoffer1='';
+    
     this.date1=new Date();
   
     
@@ -148,20 +125,12 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
       });
     }
 
-    this.getholidaysForAll();
+ 
 
 
   }
 
-  filter(val: string): Observable<any[]> {
-    // call the service which makes the http-request
-    return this.service.getData()
-     .pipe(
-      //  map(response => response.filter((option:any) => {
-      //    return option.name1.toLowerCase().indexOf(val.toLowerCase()) >-1
-      //  }))
-     )
-   }
+  
 
   onActivate(event:any) {
 
@@ -176,25 +145,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
     signup(){
       console.log("hiiiii1111");
          this.dialog.open(SignupComponent);
-      // console.log("test>>>>",localStorage.getItem('isLoggedIn'))
-
-  //   const foo = {
-  //     "results": [{
-  //           "id": 12,
-  //           "name": "Test"
-  //        },
-  //        {
-  //           "id": 2,
-  //           "name": "Beispiel"
-  //        },
-  //        {
-  //           "id": 3,
-  //           "name": "Sample"
-  //        }
-  //     ]
-  //  };
-  //  console.log(foo.results.find(item => item.name === "Beispiel"))
-
+    
 
 }
 
@@ -246,18 +197,7 @@ selectcity(){
 
 }
 
-getholidaysForAll() {
-        
-  this.restApi.getholidaysForAll().subscribe((res)=>{
-    this.ShopHolidaysDetails = res
- 
-    this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
-    console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
-  //  this.MoveShopHoliday();
-    // this.MoveShopOfferHoliday();
-  }
-  );
-}
+
 
  closing = false;
 bookingRedirect() {
@@ -280,170 +220,7 @@ this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
 }
 }
 
-loadcarDetailsById(){
 
-  let currentUserId = localStorage.getItem('currentUserId');
-  return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
-    // alert(data)
-    this.carDetailsById = data;
-    this.carDetailsById1 = this.carDetailsById.data.CarDetailsByCustomerId;
-    console.log("carDetailsById1>>>",this.carDetailsById1)
-    this.MovecarDetailsById();
-    this.MovecarDetForOffer();
-  })
-}
-
-MovecarDetailsById() {
-        
-  if(this.carDetailsById1 != undefined) {
-  for(var i=0;i < this.carDetailsById1.length;i++) {
-
-    for(var j=0;j < (this.dashboardShop1.length);j++) {
-      if(this.dashboardShop1[j].model_id == this.carDetailsById1[i].model){
-        
-        var newNum = "modelAvail";
-        var newVal = "Available";
-        this.dashboardShop1[j][newNum] = newVal;
-      }
-      
-     
-    }
-
-  }
-}
-
-  console.log("car avl>>>",this.dashboardShop1);
-}
-
-MovecarDetForOffer() {
-        
-  if(this.carDetailsById1 != undefined) {
-  for(var i=0;i < this.carDetailsById1.length;i++) {
-
-    for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
-      if(this.dashboardShopoffer1[j].model_id == this.carDetailsById1[i].model){
-        // alert(this.dashboardShop1[j].model_id);
-        var newNum = "modelAvail";
-        var newVal = "Available";
-        this.dashboardShopoffer1[j][newNum] = newVal;
-      }
-      
-      //console.log("val",this.dashboardShop1);
-      // this.datecheckArr.push(ShopHolidaysDetails1[i])
-     
-    }
-
-  }
-}
-
-
-  
-  console.log("car avl dashboardShopoffer1>>>",this.dashboardShopoffer1);
-}
-
-customerWhislist(customerId:any)
-{
-  var whislist : [];
-  let selectedcity=localStorage.getItem('selectedCity');
-
-  return this.restApi.getCustomerWhislist(customerId,selectedcity).subscribe((data: {}) => {
-    // alert(data)
-    this.CustomerWhislistData = data;
-    this.CustomerWhislistData1= this.CustomerWhislistData.data;
-
-    console.log("whislist",this.CustomerWhislistData1);
-    // this.dtTrigger.next();
-    this.MoveWishlistCheck();
-    this.MoveWishlistOfferCheck();
-  })
-
-}
-
-
-
-  onSelFunc(option: any){
-
-   console.log(option);
-  let city1= localStorage.getItem('selectedCity');
- return this.restApi.dashboardShopSearch(option,city1).subscribe((data: {}) => {
-   //alert(data)
-    this.dashboardShop = data;
-    this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
-    console.log("data dashboard>>>",this.dashboardShop1);
-    if(!this.dashboardShop1)
-    {
-      this.dashboardShop1='';
-    }
-    this.getholidaysForAll();
-    this.loadcarDetailsById();
-    this.customerId= localStorage.getItem('currentUserId');
- console.log(this.customerId);
-  if(this.customerId != null)
-  {
-  this.customerWhislist(this.customerId);
-  }
-  })
-}
-
-MoveWishlistCheck() {
-  //console.log("after ws val",this.dashboardShop1);
-  if(this.CustomerWhislistData1 != undefined) {
-  for(var i=0;i < this.CustomerWhislistData1.length;i++) {
-
-    for(var j=0;j < (this.dashboardShop1.length);j++) {
-      if(this.dashboardShop1[j].shop_id == this.CustomerWhislistData1[i].whislist){
-        var newNum = "wishlistcheck";
-        var newVal = "Yes";
-        this.dashboardShop1[j][newNum] = newVal;
-      }
-      
-    }
-
-  }
-}
-  console.log("val1>>>",this.dashboardShop1);
-}
-
-
-MoveWishlistOfferCheck() {
-  //console.log("after ws val",this.dashboardShop1);
-  if(this.CustomerWhislistData1 != undefined) {
-  for(var i=0;i < this.CustomerWhislistData1.length;i++) {
-
-    for(var j=0;j < (this.dashboardShopoffer1.length);j++) {
-      if(this.dashboardShopoffer1[j].shop_id == this.CustomerWhislistData1[i].whislist){
-        var newNum = "wishlistcheck";
-        var newVal = "Yes";
-        this.dashboardShopoffer1[j][newNum] = newVal;
-      }
-      
-    }
-
-  }
-}
-  console.log("MoveWishlistOfferCheck>>>",this.dashboardShopoffer1);
-}
-
-onSelFunc1(option: any){
-  console.log(option);
-  let city1= localStorage.getItem('selectedCity');
-  return this.restApi.dashboardShopSearchoffer(option,city1).subscribe((data: {}) => {
-    //alert(data)
-     this.dashboardShopoffer = data;
-     this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
-
-     console.log("data dashboard1>>>",this.dashboardShopoffer1);
-     this.getholidaysForAll();
-
-     this.customerId= localStorage.getItem('currentUserId');
- console.log(this.customerId);
-  if(this.customerId != null)
-  {
-  this.customerWhislist(this.customerId);
-  }
-   })
-
-}
 
 
 }

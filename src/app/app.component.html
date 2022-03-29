@@ -119,15 +119,17 @@
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
     <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
-    
-    <!-- <input class="search" type="text"  placeholder="Search">  -->
 
-    <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <!-- hghghgjhgh -->
+
+    
+    
+    <!-- <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
               <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
                 {{option.name1}}
               </mat-option>
-            </mat-autocomplete>
+            </mat-autocomplete> -->
 
 <!--             
     <div class="active-pink-3 active-pink-4 mb-4">
@@ -148,11 +150,13 @@
   </mat-toolbar>
 
 
-
+ 
 
 
   <!-- <mat-sidenav-content> -->
     <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+     
 
 
 <div class="footer" style="height: 340px;background-color: #202c45 !important;" #footer id="footerdisplay">
