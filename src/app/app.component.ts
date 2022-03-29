@@ -7,6 +7,7 @@ import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
 import { SelectcityComponent } from './selectcity/selectcity.component';
 import { EventEmitterService } from './event-emitter.service';
+import { FormControl } from "@angular/forms";
 // import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 // import * as data from '.../server/db';
 // import { TestimonialAddComponent } from './testimonial-add/testimonial-add.component';
@@ -30,6 +31,8 @@ import { EventEmitterService } from './event-emitter.service';
 
 
 export class AppComponent implements OnInit{
+
+  myControl = new FormControl();
   
   currentUserId = localStorage.getItem('currentUserId');
 
@@ -167,6 +170,54 @@ bookingRedirect() {
   let shop_id = localStorage.getItem('currentUserId');
 this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
 }
+
+// onSelFunc(option: any){
+
+    
+
+//   console.log(option);
+//   let city1= localStorage.getItem('selectedCity');
+//  return this.restApi.dashboardShopSearch(option,city1).subscribe((data: {}) => {
+//    //alert(data)
+//     this.dashboardShop = data;
+//     this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
+//     console.log("data dashboard>>>",this.dashboardShop1);
+//     if(!this.dashboardShop1)
+//     {
+//       this.dashboardShop1='';
+//     }
+//     this.getholidaysForAll();
+//     this.loadcarDetailsById();
+//     this.customerId= localStorage.getItem('currentUserId');
+//  console.log(this.customerId);
+//   if(this.customerId != null)
+//   {
+//   this.customerWhislist(this.customerId);
+//   }
+//   })
+// }
+
+// onSelFunc1(option: any){
+//   console.log(option);
+//   let city1= localStorage.getItem('selectedCity');
+//   return this.restApi.dashboardShopSearchoffer(option,city1).subscribe((data: {}) => {
+//     //alert(data)
+//      this.dashboardShopoffer = data;
+//      this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
+
+//      console.log("data dashboard1>>>",this.dashboardShopoffer1);
+//      this.getholidaysForAll();
+
+//      this.customerId= localStorage.getItem('currentUserId');
+//  console.log(this.customerId);
+//   if(this.customerId != null)
+//   {
+//   this.customerWhislist(this.customerId);
+//   }
+//    })
+
+// }
+
 
 }
   // function signup() {

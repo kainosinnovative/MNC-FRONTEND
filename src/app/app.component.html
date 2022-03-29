@@ -115,7 +115,15 @@
   <!-- both customer and shop owner -->
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
-    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search </a></mat-list-item>
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
+    <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
+    <input type="text" style="border-radius: 17px; width: 293px;" placeholder="Search" aria-label="Number" matInput [formControl]="myControl"> 
+    <mat-option class="ss" style="width:250px !important;">
+     
+    </mat-option>
+  </mat-autocomplete>
+  </mat-list-item>
+
   </mat-toolbar>
 
 
