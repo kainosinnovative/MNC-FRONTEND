@@ -55,11 +55,13 @@ export class ComboOffersComponent implements OnInit {
  curmonth:any;
  shortMonth:any;
  ComboCurrentyear:any;
+ current_date:any;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.date=new Date();
+    this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     this.shortMonth = (new Date().getMonth() + 1).toString().slice(-2);
 
     // this.shortMonth = this.date.toLocaleString('en-us', { month: 'short' });
@@ -416,7 +418,7 @@ retreivedata()
       // }
 
     this.restApi.getComboOffersData(this.selectedmonth,this.selectedyear,currentUserId).subscribe((data: {}) => {
-        alert(data)
+        //alert(data)
         this.comboofferData = data;
         console.log("new",this.comboofferData);
         for(let i=0;i<this.comboofferData.length;i++){

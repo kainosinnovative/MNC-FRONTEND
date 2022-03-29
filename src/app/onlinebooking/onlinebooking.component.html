@@ -273,7 +273,23 @@
           
              <!-- </div> -->
           
-             
+             <div class="row" >
+               <table>
+                 <tr>
+                   <td>
+                    <p class="subheading" style="margin-left: 19px;"><i class="fa fa-car" style="color: #429c68;"></i>&nbsp; <b >{{s.offer_name}}</b></p> 
+
+                   </td>
+
+                   <td>
+                    <i id="checkmarkicon_{{s.offer_id}}" style="font-size: 40px;color: #ff2007;display: none;" class="fa fa-check-circle"></i>
+
+                   </td>
+                 </tr>
+               </table>
+              
+              
+             </div>
           
              <div class="product-detail-container p-2">
           
@@ -283,10 +299,9 @@
                    </div> -->
               </div>
           
-             
+            
           
-               <span ><i class="fa fa-car" style="color: #429c68;"></i>&nbsp; <b>{{s.offer_name}}</b></span> 
-          <br>
+               
                  <b>Services:</b>
                   <div style="height: 50px;overflow: auto;">
                   <div *ngFor="let m of  s.services.split(',');let j=index" >

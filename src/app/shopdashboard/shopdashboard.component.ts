@@ -405,17 +405,17 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
   if(data.status == "pass") {
 
 
-    let currentUserId = localStorage.getItem('currentUserId');
-      this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
-        .subscribe(posts => {
-          this.posts = posts;
-          console.log("ss1>>",this.posts);
-      }, error => console.error(error));
-      this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
-      .subscribe(posts1 => {
-        this.posts1 = posts1;
-        console.log("ss2>>",this.posts1);
-    }, error => console.error(error));
+    // let currentUserId = localStorage.getItem('currentUserId');
+    //   this.http.get(this.apiURL + "/shop/customerBookingForShop?currentUserId="+currentUserId)
+    //     .subscribe(posts => {
+    //       this.posts = posts;
+    //       console.log("ss1>>",this.posts);
+    //   }, error => console.error(error));
+    //   this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+    //   .subscribe(posts1 => {
+    //     this.posts1 = posts1;
+    //     console.log("ss2>>",this.posts1);
+    // }, error => console.error(error));
 
 
     // this.customerBookingForShop();
@@ -426,7 +426,7 @@ this.restApi.changeBookingStatus(changeBookingStatus).subscribe((data: any) => {
     else {
       this.toastr.error(booking_status);
     }
-
+    window.setTimeout(function(){location.reload()},100);
   }
 },
 success => {
@@ -474,8 +474,11 @@ let carwashStatusId = "carwash_"+Booking_id;
 this.restApi.changeCarwashStatus(changeCarwashStatus).subscribe((data: any) => {
   console.log('POST Request is successful >>>>>>>>', data.status);
   if(data.status == "pass") {
-
-      this.toastr.success("Carwash status updated");
+    this.toastr.success('Carwash status updated');
+    // this.toastr.success("Carwash status updated");
+    
+    // this.carwashfnRefresh();
+    window.setTimeout(function(){location.reload()},100);
 
 
   }
@@ -488,6 +491,15 @@ success => {
 }
 );
     }
+}
+
+carwashfnRefresh() {
+  let currentUserId = localStorage.getItem('currentUserId');
+    this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+    .subscribe(posts1 => {
+      this.posts1 = posts1;
+      console.log("ss2>>",this.posts1);
+  }, error => console.error(error));
 }
 
 
