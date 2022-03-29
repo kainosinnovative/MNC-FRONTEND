@@ -496,7 +496,7 @@ this.restApi.changeCarwashStatus(changeCarwashStatus).subscribe((data: any) => {
   if(data.status == "pass") {
     this.toastr.success('Carwash status updated');
     // this.toastr.success("Carwash status updated");
-    
+
     // this.carwashfnRefresh();
     window.setTimeout(function(){location.reload()},100);
 
@@ -520,14 +520,7 @@ combocustomerinfo()
     console.log("seetha>>",this.combocustomer);
      this.combocustomer1 = this.combocustomer;
 
-carwashfnRefresh() {
-  let currentUserId = localStorage.getItem('currentUserId');
-    this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
-    .subscribe(posts1 => {
-      this.posts1 = posts1;
-      console.log("ss2>>",this.posts1);
-  }, error => console.error(error));
-}
+
 
 
     // this.ComboOfferAmountArr = [10,100];
@@ -621,7 +614,14 @@ carwashfnRefresh() {
 
 
 }
-
+carwashfnRefresh() {
+  let currentUserId = localStorage.getItem('currentUserId');
+    this.http.get(this.apiURL + "/shop/AcceptedBookingList?currentUserId="+currentUserId)
+    .subscribe(posts1 => {
+      this.posts1 = posts1;
+      console.log("ss2>>",this.posts1);
+  }, error => console.error(error));
+}
 currentComboOffers(){
   let currentUserId = localStorage.getItem('currentUserId');
   this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
