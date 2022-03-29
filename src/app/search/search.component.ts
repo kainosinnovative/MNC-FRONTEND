@@ -30,8 +30,8 @@ export class Service {
     return this.opts.length ?
       of(this.opts) :
       this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
-
-  }
+    
+ }
 
 }
 @Component({
@@ -83,8 +83,8 @@ private innerWidth: number;
     this.date1=new Date();
     this.currenttime = this.datepipe.transform(this.date1, 'HH:mm');
     this.loadMasterService();
-    this.dashboardShop1='';
-    this.dashboardShopoffer1='';
+    // this.dashboardShop1='';
+    // this.dashboardShopoffer1='';
   }
 
   filter(val: string): Observable<any[]> {

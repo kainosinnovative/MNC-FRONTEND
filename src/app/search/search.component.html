@@ -22,16 +22,19 @@
 </div>
 <br>
 
-<tbody *ngIf = "dashboardShop1 == '';">
+<tbody *ngIf ="(dashboardShop1 == '' && dashboardShopoffer1 == '');">
   <tr>
-    <td colspan="13" style="text-align: center;">
+    <td colspan="13" class="nodata">
       No data available
     </td>
   </tr>
 </tbody>
+
 <div *ngIf="dashboardShop1 != ''">
-  <h2 style="text-align: center;" class="mainheading">Combo Offers Of The Day </h2>
+ 
 <div *ngFor="let s of dashboardShop1;let k=index">
+
+  <h2 style="text-align: center;" class="mainheading">Combo Offers Of The Day </h2>
   <p *ngIf="k==0" class="dark-blue-text w-responsive mx-auto fontitalyHome" style="text-align: center;margin-bottom: 2%;">Special Deal Limited Offer Today
     <!-- <img style="height: 50px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRyNBH8h9mrcFvdSft9AiYrolk-c8E4Z5OOaKwwBpxpOWdTzSSuFociZ1KI_Dt_f7cs3o&usqp=CAU"> -->
      <img style="height: 40px;" src="https://thumbs.dreamstime.com/b/hurry-up-154424269.jpg">
@@ -155,10 +158,19 @@
         </div>
 </ngx-slick-carousel>
 <br>
+
+<!-- <tbody *ngIf ="dashboardShopoffer1 == '';">
+  <tr>
+    <td colspan="13" class="nodata">
+      No data available
+    </td>
+  </tr>
+</tbody> -->
 <div *ngIf="dashboardShopoffer1 != ''">
-  <h2 style="text-align: center;" class="mainheading">Service Offers</h2>
+ 
 
   <div *ngFor="let s of dashboardShopoffer1;let k=index">
+    <h2 style="text-align: center;" class="mainheading">Service Offers</h2>
     <p *ngIf="k==0 && s.offer_percent > 0" class="dark-blue-text w-responsive mx-auto fontitalyHome" style="text-align: center;margin-bottom: 2%;">Incredible Services for Incredible People, Deals made especially for you
     </p>
   </div>

@@ -7,7 +7,7 @@
 
     <!-- customer mobile start -->
     <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item >Hi, {{currentUsername}}</a> </mat-list-item>
-    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'><i class="fa fa-map-marker" aria-hidden="true"></i>Select a City
+    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; Select a City
     </a> </mat-list-item>
     <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
     </a> </mat-list-item>
@@ -16,6 +16,8 @@
 
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" mat-list-item >My Booking</a> </mat-list-item>
+
+   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/search" mat-list-item ><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search</a> </mat-list-item>
 
     <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login()">
       Login</a></mat-list-item>
@@ -118,8 +120,28 @@
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
     <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
     
-    <input class="search " type="text"  placeholder="Search"> 
-    
+    <!-- <input class="search" type="text"  placeholder="Search">  -->
+
+    <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
+              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
+                {{option.name1}}
+              </mat-option>
+            </mat-autocomplete>
+
+<!--             
+    <div class="active-pink-3 active-pink-4 mb-4">
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+          <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
+              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
+                {{option.name1}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+  </div> -->
  
   </mat-list-item>
 
