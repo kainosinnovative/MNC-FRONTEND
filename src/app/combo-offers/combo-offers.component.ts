@@ -56,6 +56,7 @@ export class ComboOffersComponent implements OnInit {
  shortMonth:any;
  ComboCurrentyear:any;
  current_date:any;
+ comboofferData2 = new Array();
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
@@ -380,7 +381,13 @@ changeFn1(val1) {
 }
 retreivedata()
 {
+  console.log("this.val>>>>",this.val)
+  console.log("this.val1>>>>",this.val1)
+  // alert(this.val1)
+  this.comboofferData2=new Array();
   this.comboofferData1=new Array();
+  this.selectedmonth=new Array();
+  this.selectedyear=new Array();
   for(let i=0;i<this.val.length;i++){
     this.selectedmonth.push(this.val[i].id);
   }
@@ -397,49 +404,24 @@ retreivedata()
   {(<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
 
   }
-  //
-  //   (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
-  //   let mon = (<HTMLInputElement>document.getElementById("month")).value;
-  //  // alert(mon);
-  //   let year = (<HTMLInputElement>document.getElementById("year")).value;
-  //   console.log(mon);
-  //   console.log(year);
-  //   if(mon=="")
-  //   {
-  //   (<HTMLInputElement>document.getElementById("month")).focus();
-
-  //     (<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
-  //   }
-  //   else if(year=="")
-  //   {
-  //     (<HTMLInputElement>document.getElementById("year")).focus();
-  //     //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
-  //     //   let validateamount = "validateamount_"+obj;
-  //       (<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
-  //   }
-  //   else{
+  
   (<HTMLInputElement>document.getElementById("history")).style.display = "block";
      let currentUserId = localStorage.getItem('currentUserId');
-      // var monyear=
-      // {
-      //   "month":this.val,
-      //   "year":this.val1,
-      //   "currentUserId":currentUserId
-      // }
-
+      
     this.restApi.getComboOffersData(this.selectedmonth,this.selectedyear,currentUserId).subscribe((data: {}) => {
-        //alert(data)
+        // alert(data)
         this.comboofferData = data;
         console.log("new",this.comboofferData);
-        for(let i=0;i<this.comboofferData.length;i++){
-          if(this.comboofferData[i]!=null)
-          {
-            this.comboofferData1.push(this.comboofferData[i]);
-          }
+       
+       for(let i=0;i<this.comboofferData.length;i++){
+        if(this.comboofferData[i].length !=0) {
+        for(let j=0;j<this.comboofferData[i].length;j++){
+          this.comboofferData2.push(this.comboofferData[i][j]);
         }
-       // this.comboofferData1 = this.comboofferData.data.getComboOffersByShopid;
+      }
+       }
 
-        console.log("datanew>>>>",this.comboofferData1)
+        console.log("comboofferData2>>>>",this.comboofferData2)
         // this.dtTrigger.next();
      //   window.setTimeout(function(){location.reload()},2000)
       })

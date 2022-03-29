@@ -348,12 +348,12 @@
         <!-- </tr> -->
       </thead>
       <tbody>
-        <tr *ngIf="comboofferData1 == null">
+        <tr *ngIf="comboofferData2.length == 0">
           <td colspan="7" style="text-align:center;" >No data available</td>
 
         </tr>
 
-          <tr *ngFor="let service of  comboofferData1  | paginate: config ;  let i=index;">
+          <tr *ngFor="let service of  comboofferData2  | paginate: config ;  let i=index;">
 
           <td>{{i + 1}}<input type="hidden" maxlength="3" value={{service.offer_id}} style="width:30px !important;" ></td>
           <td>{{service.offer_name}}</td>
