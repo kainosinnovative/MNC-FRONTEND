@@ -516,10 +516,14 @@ ComboServiceArr1 = new Array();
 ComboPrimaryIdArr = new Array();
 getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Offername:any) {
   var concatServiceid_amount =  Comboserviceid + "#" + Comboservice_Offername;
-  
+
+  let checkmarkicon = "checkmarkicon_" + Comboserviceid;
+  // alert(checkmarkicon);
+
     if(this.ComboServiceArr.includes(concatServiceid_amount)){
       // this.changeBgColor(Comboserviceid);
       this.ComboServiceArr = this.remove(this.ComboServiceArr, concatServiceid_amount);
+      (<HTMLInputElement>document.getElementById(checkmarkicon)).style.display="none";
     }
     else {
       let arrayLength = this.ComboServiceArr.length;
@@ -527,6 +531,7 @@ getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Off
     if(arrayLength < 1){
       // this.changeBgColor(Comboserviceid);
       this.ComboServiceArr.push(concatServiceid_amount);
+      (<HTMLInputElement>document.getElementById(checkmarkicon)).style.display="block";
     }
     }
 
@@ -543,24 +548,16 @@ getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Off
       this.ComboPrimaryIdArr.push(splitArr[0]);
       
   }
-// alert(this.ComboPrimaryIdArr);
-// this.onlinebooking.controls['ComboPrimaryIdArr'].setValue(this.ComboPrimaryIdArr);
-// this.onlinebooking.controls['combo_id'].value = "test@test.com";
+
 this.onlinebooking.controls.combo_id.setValue(this.ComboPrimaryIdArr.toString());
-  // (<HTMLInputElement>document.getElementById("ComboPrimaryIdArr")).value = this.ComboPrimaryIdArr.toString();
-    (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
+    // (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
     
-    // var extraserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
+    
     let extraserviceTotalAmount = Number(this.onlinebooking.get('serviceprice_total').value);
-    // var comboserviceTotalAmount = Number((<HTMLInputElement>document.getElementById("finalamount")).value);
     let comboserviceTotalAmount = Number(this.onlinebooking.get('comboprice_total').value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
-    // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
     this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
-    
-
-    
-    // alert(this.ComboServiceArr1)
+   
 }
 
 

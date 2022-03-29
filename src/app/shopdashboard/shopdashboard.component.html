@@ -116,7 +116,7 @@
           </tbody> -->
           <!-- <tbody *ngIf = "AcceptbookingDetails1 != ''"> -->
             <tbody>
-            <tr *ngFor="let b of  posts1 | paginate: config1;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: center;">
+            <tr *ngFor="let b of  posts1;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: center;">
 
               <td style="display:none;width: 0px;">{{b.id}}</td>
               <td class="fontwghtcls"><a style="cursor: pointer;color: #26a0fc;text-decoration: underline;" (click)="ViewDetailsPopup(b.Booking_id,'Carwash Status')">{{b.Booking_id}}</a></td>

@@ -90,11 +90,11 @@
 
         </div>
         <div class="col-sm-3 databtn" style="text-align: left;">
-          <label style="width: 74px;">From date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input type="date" id="combooffer_fromdate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;" >
+          <label style="width: 74px;">From date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input type="date" id="combooffer_fromdate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;" >
         </div>
 
         <div class="col-sm-3 databtn">
-          <label style="width: 59px;">To date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
+          <label style="width: 59px;">To date</label>  <p class="labelFieldSpace" style="display: block;"></p> <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
           <br><span id="enddate_message" style="color: red;display: none;">To date must be greater than from date</span>
         </div>
 
@@ -210,7 +210,7 @@
           <td>
             <label class="amt" style="width: 70px;">Amount &nbsp;(<i class="fa fa-rupee"> </i>)</label>
             <br>
-            <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;padding-left:15px;">
+            <input type="text" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;">
 
           </td>
         </tr>
@@ -232,7 +232,7 @@
     </div>
 
     <div class="col-sm-3 offamtdiv">
-      <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;padding-left:15px;">
+      <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;">
       </div>
 
    </div>
@@ -240,7 +240,7 @@
    <div  class="row amountwebrow" style="margin-top:10px;">
     <div class="col-sm-10 " >
       <div  class="addofferbtncls" style="text-align: right;">
-        <button id="addCombobtn" class="allSubmitbtn addbtn" style="opacity: .65;"  (click)="AddComboOffer()">Add Offer</button>
+        <button id="addCombobtn" class="allSubmitbtn addbtn btn"   (click)="AddComboOffer()">Add Offer</button>
       </div>
     </div>
 
@@ -321,8 +321,8 @@
         <p style="color: red;display: none;text-align: center;" id="yearerror">Select Year</p>
       </div>
     <div class="col-sm-3" >
-      <label></label><br>
-      <button id="retreive" class="allSubmitbtn addbtn" style="border:none !important;" (click)="retreivedata()" >Submit</button>
+      <br>
+      <button id="retreive" class="allSubmitbtn btn" style="border:none !important;margin-top: 4px;" (click)="retreivedata()" >Submit</button>
     </div>
     <div class="col-sm-1" ></div>
 
