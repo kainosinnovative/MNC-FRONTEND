@@ -365,6 +365,7 @@ dateErrorMsg() {
 
 
 changeFn(val) {
+  (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
     console.log("Dropdown selection:", val);
     this.val=val;
     console.log("Dropdown selectionmon:", val);
@@ -373,6 +374,7 @@ changeFn1(val1) {
   console.log("Dropdown selection:", val1);
   this.val1=val1;
   console.log("Dropdown selectionyear:", val1);
+  (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
 }
 retreivedata()
 {
@@ -385,7 +387,15 @@ retreivedata()
     this.selectedyear.push(this.val1[i].name);
   }
   console.log("month>>",this.selectedmonth);
-  //   (<HTMLInputElement>document.getElementById("montherror")).style.display ="none";
+  if(this.val.length == 0)
+  {(<HTMLInputElement>document.getElementById("montherror")).style.display ="block";
+
+  }
+  if(this.val1.length == 0)
+  {(<HTMLInputElement>document.getElementById("yearerror")).style.display ="block";
+
+  }
+  //
   //   (<HTMLInputElement>document.getElementById("yearerror")).style.display ="none";
   //   let mon = (<HTMLInputElement>document.getElementById("month")).value;
   //  // alert(mon);
@@ -416,7 +426,7 @@ retreivedata()
       // }
 
     this.restApi.getComboOffersData(this.selectedmonth,this.selectedyear,currentUserId).subscribe((data: {}) => {
-        alert(data)
+       // alert(data)
         this.comboofferData = data;
         console.log("new",this.comboofferData);
         for(let i=0;i<this.comboofferData.length;i++){

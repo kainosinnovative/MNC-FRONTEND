@@ -321,7 +321,7 @@
         <p style="color: red;display: none;text-align: center;" id="yearerror">Select Year</p>
       </div>
     <div class="col-sm-3" >
-      <label></label><br><br>
+      <label></label><br>
       <button id="retreive" class="allSubmitbtn addbtn" style="border:none !important;" (click)="retreivedata()" >Submit</button>
     </div>
     <div class="col-sm-1" ></div>
@@ -342,13 +342,13 @@
           <th style="width:100px;" class="fontwghtcls">From Date</th>
           <th style="width:100px;" class="fontwghtcls">To Date</th>
           <th style="width:120px;" class="fontwghtcls">Offer Percent(%)</th>
-          <th style="width:120px;" class="fontwghtcls">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
+          <th style="width:125px;" class="fontwghtcls">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
           <th style="width:70px;" class="fontwghtcls">Delete</th>
 
         <!-- </tr> -->
       </thead>
       <tbody>
-        <tr *ngIf="comboofferData1 ==null">
+        <tr *ngIf="comboofferData1 == null">
           <td colspan="7" style="text-align:center;" >No data available</td>
 
         </tr>
@@ -402,5 +402,5 @@
 
 </div>
 
-
+<br>
 
