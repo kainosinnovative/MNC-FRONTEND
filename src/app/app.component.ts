@@ -7,7 +7,9 @@ import { HostListener } from '@angular/core';
 import { SignupComponent } from './signup/signup.component';
 import { SelectcityComponent } from './selectcity/selectcity.component';
 import { EventEmitterService } from './event-emitter.service';
-import { FormControl } from "@angular/forms";
+import { DatePipe } from '@angular/common';
+import { RestApiService } from "./shared/rest-api.service";
+import { ToastrService } from 'ngx-toastr';
 // import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 // import * as data from '.../server/db';
 // import { TestimonialAddComponent } from './testimonial-add/testimonial-add.component';
@@ -26,13 +28,14 @@ import { FormControl } from "@angular/forms";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [DatePipe]
 })
 
 
 export class AppComponent implements OnInit{
 
-  myControl = new FormControl();
+  // myControl = new FormControl();
   
   currentUserId = localStorage.getItem('currentUserId');
 
@@ -42,13 +45,19 @@ export class AppComponent implements OnInit{
 
 
 
-
+shoplogo:any;
   title = 'angular6-sidenav-example';
   cont_id: any;
   cityid: any;
   cityname:any;
   // topScroll: any;
-constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService ){}
+  date1:any;
+  currenttime:any;
+  ShopHolidaysDetails:any;
+  ShopHolidaysDetails1:any;
+
+constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService,
+  public datepipe: DatePipe,public restApi: RestApiService,private toastr: ToastrService ){}
   closemenu() {
     console.log("hi")
     // this.cont_id.nativeElement.classList.add('mat-drawer-container mat-sidenav-container mat-drawer-transition')
@@ -60,7 +69,11 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
 
 
   ngOnInit(): void {
+    this.date1=new Date();
     
+    this.currenttime = this.datepipe.transform(this.date1, 'HH:mm');
+    
+    this.shoplogo = localStorage.getItem('shoplogo');
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
@@ -79,12 +92,13 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
       });
     }
 
-    
+    this.getholidaysForAll();
+
 
   }
 
   onActivate(event:any) {
-    
+
  }
 
   login(){
@@ -166,9 +180,38 @@ selectcity(){
 
 }
 
+getholidaysForAll() {
+        
+  this.restApi.getholidaysForAll().subscribe((res)=>{
+    this.ShopHolidaysDetails = res
+ 
+    this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
+    console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
+  //  this.MoveShopHoliday();
+    // this.MoveShopOfferHoliday();
+  }
+  );
+}
+
+ closing = false;
 bookingRedirect() {
   let shop_id = localStorage.getItem('currentUserId');
+
+  for(var i=0;i < this.ShopHolidaysDetails1.length;i++) {
+    
+    if(shop_id == this.ShopHolidaysDetails1[i].shop_id) {
+      // alert("hi");
+      if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
+{
+      this.closing = true;
+      this.toastr.error('your shop is closed today from ' + this.ShopHolidaysDetails1[i].leave_timing_from + " to " + this.ShopHolidaysDetails1[i].leave_timing_to);
+}
+    }
+  }
+  // alert(this.closing);
+if(this.closing == false) {
 this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
+}
 }
 
 // onSelFunc(option: any){

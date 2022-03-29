@@ -224,27 +224,27 @@ export class ShopdashboardComponent implements OnInit {
            className: 'custom-btn fa fa-file-excel-o',
            text: '',
           
-      //      exportOptions: {
-      //       columns: [ 0, 1]
-      //  }
+           exportOptions: {
+            columns: [ 1,2,3,4,5,6]
+       }
          },
          {
            titleAttr: 'Download as CSV',
            extend: 'csvHtml5',
            className: 'custom-btn fa fa-file-text-o',
            text: '',
-      //      exportOptions: {
-      //       columns: [ 0, 1]
-      //  }
+           exportOptions: {
+            columns: [ 1,2,3,4,5,6]
+       }
          },
          {
            titleAttr: 'Print',
            extend: 'print',
            className: 'custom-btn fa fa-print',
            text: '',
-      //      exportOptions: {
-      //       columns: [ 0, 1]
-      //  }
+           exportOptions: {
+            columns: [ 1,2,3,4,5,6]
+       }
          },
 
         ],

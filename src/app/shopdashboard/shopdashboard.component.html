@@ -99,7 +99,8 @@
               <th style="width:190px;font-weight:normal;" >Extra Services Price (<span><i class="fa fa-rupee"></i></span>)</th> -->
               <th style="width:80px;" class="fontwghtcls">Total (<span><i class="fa fa-rupee"></i></span>) </th>
               <!-- <th  style="width: 108px;font-weight:normal;">Pick-up & Drop</th> -->
-              <!-- <th   sty>s</th> -->
+              <th   hidden>Status</th>   <!-- for excel print only -->
+              
               <th  style="width:90px;" class="fontwghtcls">Status</th>
               <th style="width:20px;" class="fontwghtcls">Update</th>
 
@@ -142,7 +143,7 @@
               </div>
                 </td>
               <td>{{b.serviceprice_total}}</td> -->
-              <td>{{b.payable_amt}}</td>
+              <td >{{b.payable_amt}}</td>
               <!-- <td>
                 <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
 
@@ -150,9 +151,14 @@
                     <span>Yes</span>
                   </ng-template>
                 </td> -->
-                <!-- <td hidden>
-                  {{b.carwash_status}}
-                </td> -->
+                <td hidden>
+                  <span *ngFor="let m1 of  carwashstatus1;" >
+               
+                    <span *ngIf="b.carwash_status === m1.id">{{m1.carwash_status_name}}</span>
+                  </span>
+                
+                  <!-- for excel print only -->
+                </td>
                 <td>
 
                   <select  style="width: 100px;height: 26px;"   id="carwash_{{b.Booking_id}}" [(ngModel)]="b.carwash_status" >

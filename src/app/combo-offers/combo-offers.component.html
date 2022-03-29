@@ -151,7 +151,7 @@
 
 
               </tr>
-              
+
 
             </tbody>
           </table>
@@ -281,36 +281,56 @@
   <h2 class="title subheading" style="overflow: auto;width: 100%;"  (click)="opened = !opened">Your Previous Combo Offers <i class="fa fa-chevron-down"></i> </h2>
   <div class="content-container" [class.opened]="opened">
     <div class="row">
-    <div class="col-sm-3" style="text-align: left;"  >
+    <div class="col-sm-4" style="text-align: left;"  >
       <label style="width: 74px;">Month</label>
 
-      <select  id="month" class="month"  style="width:80px;height: 24px;"  [(ngModel)]="shortMonth">
+      <!-- <select  id="month" class="month"  style="width:80px;height: 24px;"  [(ngModel)]="shortMonth">
         <option value="">--Select--</option>
         <option *ngFor="let mon of month" [value]="mon.id">{{mon.name}}</option>
 
-      </select>
+      </select> -->
+      <ng-select
+  [items]="month"
+  bindLabel="name"
+  placeholder="Select Category"
+  appendTo="body"
+  [multiple]="true"
+  [(ngModel)]="shortMonth"
+  (change)="changeFn(shortMonth)">
+</ng-select>
       <p style="color: red;display: none;text-align: center;" id="montherror">Select Month</p>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label style="width: 59px;">Year</label>
-       <select  id="year"  style="width:130px;height: 24px;" [(ngModel)]="ComboCurrentyear" >
-        <!-- <option value="">{{date | date:'MMM'}}</option> -->
+     <!-- <select  id="year"  style="width:130px;height: 24px;" [(ngModel)]="ComboCurrentyear" >
+         <option value="">{{date | date:'MMM'}}</option> -->
         <!-- <span *ngFor="let yr of year"></span>
         <option *ngIf yr.name=currentYear [value]="yr.id">{{yr.name}}</option> -->
-        <option *ngFor="let yr of year" [value]="yr.id" >{{yr.name}}</option>
-        </select>
+        <!-- <option *ngFor="let yr of year" [value]="yr.id" >{{yr.name}}</option>
+        </select> -->
+        <ng-select
+  [items]="year"
+  bindLabel="name"
+  placeholder="Select Category"
+  appendTo="body"
+  [multiple]="true"
+  [(ngModel)]="ComboCurrentyear"
+  (change)="changeFn1(ComboCurrentyear)">
+</ng-select>
         <p style="color: red;display: none;text-align: center;" id="yearerror">Select Year</p>
       </div>
     <div class="col-sm-3" >
+      <label></label><br><br>
       <button id="retreive" class="allSubmitbtn addbtn" style="border:none !important;" (click)="retreivedata()" >Submit</button>
     </div>
-    <div class="col-sm-3" ></div>
+    <div class="col-sm-1" ></div>
 
   </div>
   <br>
   <div style="margin-right: 17px;">
   <div class="table-responsive" id="history" >
+
      <table  class="table  combotable" style="border: 0.5px solid #000000 !important;text-align: center;">
       <thead style="color:black;font-weight:normal !important;overflow: auto;font-weight: bold;background-color: #b7b7b7;">
         <!-- <tr > -->
@@ -328,7 +348,7 @@
         <!-- </tr> -->
       </thead>
       <tbody>
-        <tr *ngIf="comboofferData1 == ''">
+        <tr *ngIf="comboofferData1 ==null">
           <td colspan="7" style="text-align:center;" >No data available</td>
 
         </tr>

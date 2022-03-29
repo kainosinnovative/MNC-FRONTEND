@@ -32,7 +32,7 @@ $angular6-sidenav-example-theme: mat.define-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($angular6-sidenav-example-theme);
-
+@import "~@ng-select/ng-select/themes/default.theme.css";
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%;
@@ -273,7 +273,8 @@ line-height: unset !important;
 }
 
 .mat-calendar-body-cell.selected {
-  background-color: skyblue !important;
+  background-color: none !important;
+ // background-color: skyblue !important;
   border-radius: 50% !important;
   // color: white !important;
 }
@@ -310,7 +311,7 @@ input[type=number] {
     font-size: 20px !important;
     text-align: right;
 
-  
+
   }
 
 
@@ -319,7 +320,7 @@ input[type=number] {
   }
 
   .dataTables_wrapper .dataTables_filter {
-   
+
     padding-bottom: 10px;
 }
 
@@ -329,7 +330,7 @@ input[type=number] {
 
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  
+
   background: linear-gradient(to bottom, white 0%, #31a0fc 100%) !important;
 }
 
