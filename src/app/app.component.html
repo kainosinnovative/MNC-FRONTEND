@@ -116,7 +116,13 @@
   <!-- both customer and shop owner -->
 
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
-    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search </a></mat-list-item>
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
+    
+    <input class="search " type="text"  placeholder="Search"> 
+    
+ 
+  </mat-list-item>
+
   </mat-toolbar>
 
 
@@ -136,6 +142,7 @@
       <!-- Grid row -->
       <div class="row">
 
+        
         <!-- Grid column -->
           <div class="col-md-6 mt-md-0 mt-3">
               <div class="row" style="height: 300px;">

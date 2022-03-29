@@ -35,6 +35,8 @@ import { ToastrService } from 'ngx-toastr';
 
 export class AppComponent implements OnInit{
 
+  // myControl = new FormControl();
+  
   currentUserId = localStorage.getItem('currentUserId');
 
   currentUsername = localStorage.getItem('currentUsername');
@@ -211,6 +213,54 @@ if(this.closing == false) {
 this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
 }
 }
+
+// onSelFunc(option: any){
+
+    
+
+//   console.log(option);
+//   let city1= localStorage.getItem('selectedCity');
+//  return this.restApi.dashboardShopSearch(option,city1).subscribe((data: {}) => {
+//    //alert(data)
+//     this.dashboardShop = data;
+//     this.dashboardShop1 = this.dashboardShop.data.dashboardShopSearch;
+//     console.log("data dashboard>>>",this.dashboardShop1);
+//     if(!this.dashboardShop1)
+//     {
+//       this.dashboardShop1='';
+//     }
+//     this.getholidaysForAll();
+//     this.loadcarDetailsById();
+//     this.customerId= localStorage.getItem('currentUserId');
+//  console.log(this.customerId);
+//   if(this.customerId != null)
+//   {
+//   this.customerWhislist(this.customerId);
+//   }
+//   })
+// }
+
+// onSelFunc1(option: any){
+//   console.log(option);
+//   let city1= localStorage.getItem('selectedCity');
+//   return this.restApi.dashboardShopSearchoffer(option,city1).subscribe((data: {}) => {
+//     //alert(data)
+//      this.dashboardShopoffer = data;
+//      this.dashboardShopoffer1 = this.dashboardShopoffer.data.dashboardShopDetailsByOffer;
+
+//      console.log("data dashboard1>>>",this.dashboardShopoffer1);
+//      this.getholidaysForAll();
+
+//      this.customerId= localStorage.getItem('currentUserId');
+//  console.log(this.customerId);
+//   if(this.customerId != null)
+//   {
+//   this.customerWhislist(this.customerId);
+//   }
+//    })
+
+// }
+
 
 }
   // function signup() {
