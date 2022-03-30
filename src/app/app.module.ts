@@ -106,7 +106,9 @@ const appRoutes: Routes = [
   { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
   { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}},
   { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}},
-  { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}}
+  { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}},
+  { path: 'a', loadChildren: () => import('./modulea/modulea.module').then(m => m.ModuleaModule) },
+  { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) }
 ];
 @NgModule({
   declarations: [
