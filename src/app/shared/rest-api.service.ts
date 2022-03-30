@@ -743,7 +743,7 @@ let pickup_drop = changeBookingStatus["pickup_drop"];
     }
 
     getcombocustomerinfo(currentUserId:any): Observable<any[]> {
-
+// alert(currentUserId)
       return this.http.get<any[]>(this.apiURL + "/shop/chartcustomercombo?currentUserId="+currentUserId)
 
       .pipe(

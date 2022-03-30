@@ -1,40 +1,16 @@
 
-<br><br>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-<h2 class="mainheading" style="text-align: center;">Search for Shop /Services</h2>
-<div class="active-pink-3 active-pink-4 mb-4">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-        <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
-            <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
-              {{option.name1}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-</div>
+<div *ngIf ="(dashboardShop1 == '' && dashboardShopoffer1 == '');" style="text-align: center;height: 240px;">
+  <br>
+  <p style="font-weight: bold;font-size: 16px;">No data available</p>
 </div>
 
-</div>
-</div>
-<br>
 
-<tbody *ngIf ="(dashboardShop1 == '' && dashboardShopoffer1 == '');">
-  <tr>
-    <td colspan="13" class="nodata">
-      No data available
-    </td>
-  </tr>
-</tbody>
 
 <div *ngIf="dashboardShop1 != ''">
  
 <div *ngFor="let s of dashboardShop1;let k=index">
 
-  <h2 style="text-align: center;" class="mainheading">Combo Offers Of The Day </h2>
+  <h2 *ngIf="k==0" style="text-align: center;" class="mainheading">Combo Offers Of The Day </h2>
   <p *ngIf="k==0" class="dark-blue-text w-responsive mx-auto fontitalyHome" style="text-align: center;margin-bottom: 2%;">Special Deal Limited Offer Today
     <!-- <img style="height: 50px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRyNBH8h9mrcFvdSft9AiYrolk-c8E4Z5OOaKwwBpxpOWdTzSSuFociZ1KI_Dt_f7cs3o&usqp=CAU"> -->
      <img style="height: 40px;" src="https://thumbs.dreamstime.com/b/hurry-up-154424269.jpg">
@@ -170,7 +146,7 @@
  
 
   <div *ngFor="let s of dashboardShopoffer1;let k=index">
-    <h2 style="text-align: center;" class="mainheading">Service Offers</h2>
+    <h2 *ngIf="k==0" style="text-align: center;" class="mainheading">Service Offers</h2>
     <p *ngIf="k==0 && s.offer_percent > 0" class="dark-blue-text w-responsive mx-auto fontitalyHome" style="text-align: center;margin-bottom: 2%;">Incredible Services for Incredible People, Deals made especially for you
     </p>
   </div>

@@ -52,7 +52,7 @@ body {
 @media screen and (min-width: 768px) {
   .mat-autocomplete-panel.mat-autocomplete-visible {
     visibility: visible;
-    margin-left:250px !important;
+    //margin-left:250px !important;
     border:none !important;
   }
   .mat-autocomplete-panel
@@ -340,4 +340,10 @@ input[type=number] {
 
 .fa-file-text-o:before{
   color: red !important;
+}
+
+
+.mat-autocomplete-panel.mat-autocomplete-visible {
+ 
+  overflow: auto !important;
 }
