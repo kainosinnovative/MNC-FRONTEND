@@ -17,7 +17,7 @@
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" mat-list-item >My Booking</a> </mat-list-item>
 
-   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/search" mat-list-item ><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search</a> </mat-list-item>
+   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" (click)="searchshopMobile()" mat-list-item ><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search</a> </mat-list-item>
 
     <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login()">
       Login</a></mat-list-item>
@@ -124,12 +124,12 @@
 
     
     
-    <!-- <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <input class="search" type="text" placeholder="Search for Shop /Services" aria-label="Number"  matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
-              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
+              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1"  (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
                 {{option.name1}}
               </mat-option>
-            </mat-autocomplete> -->
+            </mat-autocomplete>
 
 <!--             
     <div class="active-pink-3 active-pink-4 mb-4">

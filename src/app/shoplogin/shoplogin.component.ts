@@ -31,7 +31,9 @@ export class ShoploginComponent implements OnInit {
 
     (<HTMLInputElement>document.getElementById('headerdisplay')).style.display = "none";
 
+    if((<HTMLInputElement>document.getElementById('rightsidebarShopRemove'))){
     (<HTMLInputElement>document.getElementById('rightsidebarShopRemove')).style.display = "none";
+    }
 
 
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";

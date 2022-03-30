@@ -14,41 +14,27 @@ import { FormControl } from "@angular/forms";
 import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-//import { Observable } from 'rxjs';
-// import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
-// import * as data from '.../server/db';
-// import { TestimonialAddComponent } from './testimonial-add/testimonial-add.component';
-// import { OtpverfiedComponent } from './otpverfied/otpverfied.component';
+import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.component';
 
-// var num2: any;
-// var num1 = localStorage.getItem('currentUsername');
-//         if(num1 == "" || num1 == null) {
-//             num2 = 0;
-//         }
-//         else {
-//             num2 = num1;
-//         }
+@Injectable({
+  providedIn: 'root'
+})
 
-// @HostListener('window:unload', ['$event'])
-// @Injectable({
-//   providedIn: 'root'
-// })
+export class Service {
+  apiURL = 'http://localhost/MNC-PHP-API';
+  constructor(private http: HttpClient) { }
 
-// export class Service {
-  // apiURL = 'http://localhost/MNC-PHP-API';
-  // constructor(private http: HttpClient) { }
+  opts = [];
 
-  // opts = [];
+  getData() {
+    let city= localStorage.getItem('selectedCity');
+    return this.opts.length ?
+      of(this.opts) :
+      this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
+    
+ }
 
-  // getData() {
-  //   let city= localStorage.getItem('selectedCity');
-  //   return this.opts.length ?
-  //     of(this.opts) :
-  //     this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
-
-  // }
-
-// }
+}
 
 @Component({
   selector: 'app-root',
@@ -60,7 +46,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent implements OnInit{
 
- 
+  filteredOptions: Observable<any[]>;
 
   myControl = new FormControl();
   
@@ -85,9 +71,18 @@ shoplogo:any;
 
   
 
-constructor(private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService,
+constructor(private service: Service,private  dialog:  MatDialog, private  router:  Router,private eventEmitterService: EventEmitterService,
   public datepipe: DatePipe,public restApi: RestApiService,private toastr: ToastrService ){
    
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap(val => {
+            return this.filter(val || '')
+       })
+    )
+
   }
   closemenu() {
     console.log("hi")
@@ -97,7 +92,7 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
 
   ngOnInit(): void {
 
-    
+    this.getholidaysForAll();
     this.date1=new Date();
   
     
@@ -130,7 +125,28 @@ constructor(private  dialog:  MatDialog, private  router:  Router,private eventE
 
   }
 
-  
+  filter(val: string): Observable<any[]> {
+    // call the service which makes the http-request
+    return this.service.getData()
+     .pipe(
+       map(response => response.filter((option:any) => {
+         return option.name1.toLowerCase().indexOf(val.toLowerCase()) >-1
+       }))
+     )
+   }
+
+   onSelFunc(option: any){
+     console.log(option);
+     this.router.navigate(['/search/'+option]);
+     window.setTimeout(function(){location.reload()},10)
+   }
+
+   onSelFunc1(option: any){
+    console.log(option);
+    this.router.navigate(['/search/'+option]);
+    window.setTimeout(function(){location.reload()},10)
+   }
+   
 
   onActivate(event:any) {
 
@@ -197,7 +213,18 @@ selectcity(){
 
 }
 
-
+getholidaysForAll() {
+        
+  this.restApi.getholidaysForAll().subscribe((res)=>{
+    this.ShopHolidaysDetails = res
+ 
+    this.ShopHolidaysDetails1 = this.ShopHolidaysDetails;
+    console.log("ShopHolidaysDetails1>>>",this.ShopHolidaysDetails1);
+  //  this.MoveShopHoliday();
+    // this.MoveShopOfferHoliday();
+  }
+  );
+}
 
  closing = false;
 bookingRedirect() {
@@ -221,10 +248,13 @@ this.router.navigate(['/shopownerOnlineBooking/'+shop_id]);
 }
 
 
+searchshopMobile(){
+
+  this.dialog.open(SearchshopPopupComponent,{disableClose: true,width: '100%'});
+
+}
 
 
 }
-  // function signup() {
-  //   throw new Error('Function not implemented.');
-  // }
+ 
 

@@ -59,10 +59,10 @@
                         <div *ngFor="let m1 of  loadmasterComboOfferval1;" >
                          
             <span *ngIf="m === m1.offer_id">
-                
+               <b>{{m1.offer_name}}</b> 
                 <div *ngFor="let m2 of  m1.services.split(',');let k=index" >
                     <div *ngFor="let m3 of  MasterServiceData1;" >
-                       
+                        
                         <span  *ngIf="m2 === m3.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp;  {{m3.service_name}}</span>
                                     </div>
             </div>
