@@ -275,6 +275,9 @@ AddComboOffer() {
     (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display ="block";
   }
 
+  else if(this.serviceIdArr1.length < 2) {
+    this.toastr.error("Select atleast two services");
+  }
 
   else if(start_date > end_date) {
     // alert("yes")

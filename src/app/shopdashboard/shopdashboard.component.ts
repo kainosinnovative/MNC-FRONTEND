@@ -24,6 +24,7 @@ import * as CanvasJS from './canvasjs.min';
 import { AfterViewInit, VERSION } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { reduce } from 'highcharts';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -521,7 +522,7 @@ combocustomerinfo()
      this.combocustomer1 = this.combocustomer;
 
 
-
+     console.log("arrayold>>>",this.combocustomerArr);
 
     // this.ComboOfferAmountArr = [10,100];
      for(let i=0;i<this.combocustomer1.length;i++){
@@ -553,10 +554,14 @@ combocustomerinfo()
           },
         },
 
+        
+
         type: "bar",
         height: 300,
-        width:300,
-        colors: "red",
+        width:400,
+        colors:  ['#546E7A', '#E91E63'],
+        
+        
 
       },
 
@@ -565,6 +570,7 @@ combocustomerinfo()
           horizontal: false,
           width:20,
           columnWidth: '15%',
+          color:"red"
           // data:20
         }
       },

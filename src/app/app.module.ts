@@ -77,6 +77,7 @@ import { ShopownerOnlinebookingComponent } from './shopowner-onlinebooking/shopo
 import { ChartModule } from 'angular-highcharts';
 import { LeavefromtotimeComponent } from './leavefromtotime/leavefromtotime.component';
 import { NgSelectModule } from "@ng-select/ng-select";
+import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.component';
 
 
 const appRoutes: Routes = [
@@ -100,13 +101,15 @@ const appRoutes: Routes = [
   { path: 'ShopDashboard', component: ShopdashboardComponent, data: {title: 'Shop Dashboard'}},
   { path: 'ComboOffers', component: ComboOffersComponent, data: {title: 'Combo Offers'}},
   { path: 'test', component: TestinsertComponent, data: {title: 'test'}},
-  { path: 'search', component: SearchComponent, data: {title: 'search'}},
+  { path: 'search/:id', component: SearchComponent, data: {title: 'search'}},
   // { path: 'shoplogin', component: ShopLoginComponent, data: {title: 'shoplogin'}}
   { path: 'shoplogin', component: ShoploginComponent, data: {title: 'shoplogin'}},
   { path: 'MyBooking', component: MyBookingComponent, data: {title: 'MyBooking'}},
   { path: 'bookingdetails/:id', component: ViewbookingdetailsComponent, data: {title: 'View Booking Details'}},
   { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}},
-  { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}}
+  { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}},
+  { path: 'a', loadChildren: () => import('./modulea/modulea.module').then(m => m.ModuleaModule) },
+  { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) }
 ];
 @NgModule({
   declarations: [
@@ -141,7 +144,9 @@ const appRoutes: Routes = [
       ViewbookdetailPopupComponent,
       PopupmodalComponent,
       ShopownerOnlinebookingComponent,
-      LeavefromtotimeComponent
+      LeavefromtotimeComponent,
+      SearchshopPopupComponent,
+      
 
 
      ],

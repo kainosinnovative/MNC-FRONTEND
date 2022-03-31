@@ -15,25 +15,25 @@ import { ToastrService } from 'ngx-toastr';
 
 
 import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
-export class Service {
-  apiURL = 'http://localhost/MNC-PHP-API';
-  constructor(private http: HttpClient) { }
+// export class Service {
+//   apiURL = 'http://localhost/MNC-PHP-API';
+//   constructor(private http: HttpClient) { }
 
-  opts = [];
+//   opts = [];
 
-  getData() {
-    let city= localStorage.getItem('selectedCity');
-    return this.opts.length ?
-      of(this.opts) :
-      this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
+//   getData() {
+//     let city= localStorage.getItem('selectedCity');
+//     return this.opts.length ?
+//       of(this.opts) :
+//       this.http.get<any>(this.apiURL+'/shop/getallshoplist?city_id='+city).pipe(tap(data => this.opts = data))
     
- }
+//  }
 
-}
+// }
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -56,15 +56,17 @@ private innerWidth: number;
   ShopHolidaysDetails:any;
   ShopHolidaysDetails1:any;
   customerId:any;
-  constructor(private service: Service,public datepipe: DatePipe,private toastr: ToastrService,public restApi: RestApiService,private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,private http: HttpClient) {
-     this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(400),
-      distinctUntilChanged(),
-      switchMap(val => {
-            return this.filter(val || '')
-       })
-    )
+  constructor(public datepipe: DatePipe,private toastr: ToastrService,public restApi: RestApiService,
+    private route:ActivatedRoute,private router:Router,private eventEmitterService: EventEmitterService,
+    private http: HttpClient) {
+    //  this.filteredOptions = this.myControl.valueChanges.pipe(
+    //   startWith(''),
+    //   debounceTime(400),
+    //   distinctUntilChanged(),
+    //   switchMap(val => {
+    //         return this.filter(val || '')
+    //    })
+    // )
    }
    userroleSes = localStorage.getItem('userroleSes');
    dashboardShop:any;
@@ -85,17 +87,24 @@ private innerWidth: number;
     this.loadMasterService();
     // this.dashboardShop1='';
     // this.dashboardShopoffer1='';
+    this.route.params.subscribe(params => {
+      const id2 = params['id'];
+      this.onSelFunc(id2);
+      this.onSelFunc1(id2);
+    }
+    )
+    
   }
 
-  filter(val: string): Observable<any[]> {
-    // call the service which makes the http-request
-    return this.service.getData()
-     .pipe(
-       map(response => response.filter((option:any) => {
-         return option.name1.toLowerCase().indexOf(val.toLowerCase()) >-1
-       }))
-     )
-   }
+  // filter(val: string): Observable<any[]> {
+  //   // call the service which makes the http-request
+  //   return this.service.getData()
+  //    .pipe(
+  //      map(response => response.filter((option:any) => {
+  //        return option.name1.toLowerCase().indexOf(val.toLowerCase()) >-1
+  //      }))
+  //    )
+  //  }
    onSelFunc(option: any){
 
     
