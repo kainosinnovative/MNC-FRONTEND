@@ -256,7 +256,7 @@
                             <div class="form-group form-inline">
                                 <label class="customerProfileLbl">Zipcode<span class="requiredfield">  *</span></label>
                                 <p class="labelFieldSpace" style="display: none;"></p>
-                                <input type="text" class="" placeholder="" formControlName="zipcode" [(ngModel)]="CustomerDataById1.zipcode">
+                                <input type="text" class="" placeholder="" formControlName="zipcode" minLength="5" maxLength="6"  pattern="zipPattern"  [(ngModel)]="CustomerDataById1.zipcode">
                                 <div *ngIf="profileform.controls['zipcode'].touched && profileform.controls['zipcode'].invalid ">
 
                                     <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;">

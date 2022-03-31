@@ -120,30 +120,18 @@
   <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
     <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
     
-    <!-- <input class="search" type="text"  placeholder="Search">  -->
-
+    <input class="search" type="text" placeholder="Search" >
+  
+    <!-- <mat-form-field class="example-full-width">
     <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
-              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
-                {{option.name1}}
-              </mat-option>
-            </mat-autocomplete>
+    <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
+      <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
+        {{option.name1}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> -->
 
-<!--             
-    <div class="active-pink-3 active-pink-4 mb-4">
-      <form class="example-form">
-          <mat-form-field class="example-full-width">
-          <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" placeholder="select shop">
-              <mat-option class="ss" *ngFor="let option of filteredOptions | async" [value]="option.name1" style="width:250px !important;" (onSelectionChange)="onSelFunc(option.id);onSelFunc1(option.id)" >
-                {{option.name1}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </form>
-  </div> -->
- 
-  </mat-list-item>
+   </mat-list-item>
 
   </mat-toolbar>
 

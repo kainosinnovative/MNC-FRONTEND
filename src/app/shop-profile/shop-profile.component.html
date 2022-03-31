@@ -150,7 +150,7 @@
                                 <div class="form-group">
                                     <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
                                     <p class="labelFieldSpace" style="display: none;"></p>
-                                    <input type="text" class="form-control shopzipcodecls2 " style="" placeholder="" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
+                                    <input type="text" class="form-control shopzipcodecls2 "  placeholder=""   minLength="5" maxLength="6"  pattern="zipPattern" formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
                                     <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
                     
                                         <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
@@ -294,7 +294,7 @@
                        <div class="form-group">
                         <label class="lblwidthProfile leftnamemrg">Date of Birth </label>
                         <p class="labelFieldSpace" style="display: none;"></p>
-                        <input type="date"   class="form-control dateofbirthcls2" style="width: 150px !important;" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
+                        <input type="date"   class="form-control dateofbirthcls2" style="width: 119px !important;padding-right: 0px;" [(ngModel)]="ShopProfileDetails.dob" placeholder="" formControlName="dob">
                         <!-- <div *ngIf="shopprofile.controls['dob'].touched && shopprofile.controls['dob'].invalid "> 
         
                             <div *ngIf="shopprofile.controls['dob'].errors" style="color: red;"> 
