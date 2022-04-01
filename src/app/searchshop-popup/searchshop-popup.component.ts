@@ -10,12 +10,13 @@ import { HttpClient } from '@angular/common/http';
 import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { FormControl } from "@angular/forms";
+import { config_url } from '../shared/customer/constant';
 @Injectable({
   providedIn: 'root'
 })
 
 export class Service {
-  apiURL = 'http://localhost/MNC-PHP-API';
+  apiURL = config_url;
   constructor(private http: HttpClient) { }
 
   opts = [];

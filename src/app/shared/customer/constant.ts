@@ -1,1 +1,1 @@
-export const config_url = "http://localhost/MNC-PHP-API";
+export const config_url = "https://kainosinnovative.com/MNC-PHP-API";

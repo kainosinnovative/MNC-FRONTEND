@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { style } from '@angular/animations';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { ToastrService } from 'ngx-toastr';
+import { config_url } from '../shared/customer/constant';
 
 @Component({
   selector: 'app-home',
@@ -241,7 +242,7 @@ clickEvent(shopid :number,action:any){
 
       if(wishlistcolor === "gray"){
 
-      this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
+      this.http.get(config_url+'/app/Addwhislist?date='+this.date+
             '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
               (data: any) => {
             console.log(data)
@@ -275,7 +276,7 @@ clickEvent(shopid :number,action:any){
 
 else
       {
-          this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
+          this.http.get(config_url+'/app/Deletewhislist?date='+this.date+
             '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
               (data: any) => {
             //console.log(data)

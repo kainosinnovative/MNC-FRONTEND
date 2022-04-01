@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 // import { barChart2 } from '../testinsert/testinsert.component';
 import { Chart } from 'angular-highcharts';
 // import { Options } from 'highcharts';
+import { config_url } from '../shared/customer/constant';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -64,7 +65,7 @@ export class ShopdashboardComponent implements OnInit {
   opened = true;
   opened1 = false;
   opened2 = false;
-   apiURL = 'http://localhost/MNC-PHP-API';
+   apiURL = config_url;
   // barChart = new Chart(barChart);
  // apiURL = 'http://localhost/MNC-PHP-API';
   //dtOptions: DataTables.Settings = {};

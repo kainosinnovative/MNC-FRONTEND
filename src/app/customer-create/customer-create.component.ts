@@ -392,7 +392,7 @@ uploadFile(profileform:any)
 
       // ... do other stuff here ...
 
-      this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+
+      this.http.get('https://kainosinnovative.com/MNC-PHP-API/app/model?cartype='+this.myusername+
   '&brand='+this.selectedDeviceObj).subscribe(
     data => {
       //alert(data)
@@ -425,7 +425,7 @@ uploadFile(profileform:any)
 
     // ... do other stuff here ...
 
-    this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+
+    this.http.get('https://kainosinnovative.com/MNC-PHP-API/app/model?brand='+this.myuser+
 '&cartype='+this.selecttypedata).subscribe(
   data => {
     //alert(data)

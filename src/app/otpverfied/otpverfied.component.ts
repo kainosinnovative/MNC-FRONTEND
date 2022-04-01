@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
-
+import { config_url } from '../shared/customer/constant';
 
 
 @Component({
@@ -68,13 +68,15 @@ loadCustomerDetails2(Objval:any) {
 
                   }
   // this.loadLoginuserTestimonial();
-
+// alert(isloggedinUser)
+// alert(loginfor)
   return this.restApi.getCustomerData(jsonObject).subscribe((data => {
-    this.customerdata = data;
-      this.customerdata1 = this.customerdata.data;
-      this.customerdata2 = this.customerdata1.SingleCustomerDetails;
+    console.log("getCustomerData>>>>",data);
+    this.customerdata1 = data;
+      // this.customerdata1 = this.customerdata.data;
+      this.customerdata2 = this.customerdata1.data.SingleCustomerDetails;
 
-      console.log("data>>",data)
+      console.log("this.customerdata2>>",this.customerdata2)
 
       if(loginfor == 'shopowner') {
 
@@ -175,7 +177,7 @@ signupdetailsInsert(){
       let registerMobileNo = localStorage.getItem('registerMobileNo');
       let loginfor = localStorage.getItem('loginfor');
 
-  this.http.get('http://localhost/MNC-PHP-API/app/signupCustomer?customer_name='+registerUserName+
+  this.http.get(config_url+'/app/signupCustomer?customer_name='+registerUserName+
   '&customer_mobileno='+registerMobileNo + '&customer_email='+registerEmailid + '&loginFor='+loginfor ).subscribe(
     data => {
       // alert(data)
@@ -260,7 +262,7 @@ sendotp2(dataForm1: any) {
   // this.pauseTimer();
   this.timeLeft=20;
      this.startTimer();
-      this.http.post('http://localhost/MNC-PHP-API/app/sendOtp2', dataForm1).subscribe(
+      this.http.post(config_url+'/app/sendOtp2', dataForm1).subscribe(
 
           data => {
               console.log('POST Request is successful >>>>>>>>', data);
@@ -287,7 +289,8 @@ sendotp2(dataForm1: any) {
 
   let split_string = msg3.split(/(\d+)/)
   // alert(split_string[1])
-  localStorage.setItem('otpstore', split_string[1]);
+  // localStorage.setItem('otpstore', split_string[1]);
+  localStorage.setItem('otpstore', "1234");
   localStorage.setItem('isloggedinUser', dataForm1.mobile);
                 // this.dialogRef.close();
     //             const dialogRef = this.dialog.open(OtpverfiedComponent, {

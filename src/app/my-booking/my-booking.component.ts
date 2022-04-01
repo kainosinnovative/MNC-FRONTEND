@@ -18,7 +18,7 @@ import { HttpParams,HttpHeaders } from '@angular/common/http';
 export class MyBookingComponent implements OnInit {
   MybookingDetails:any;
   title = 'dataTableDemo';
-  apiURL = 'http://localhost/MNC-PHP-API';
+  apiURL = 'https://kainosinnovative.com/MNC-PHP-API';
 //dtOptions: DataTables.Settings = {};
 dtOptions: any = {};
 posts: any;

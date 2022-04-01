@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { OtpverfiedComponent } from '../otpverfied/otpverfied.component';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs';
-
+import { config_url } from '../shared/customer/constant';
 
 // import { HttpResponse } from '@angular/common/http';
 
@@ -67,7 +67,7 @@ Otpvrf(){
   sendotp1(dataForm: any) {
 // alert()
     console.log("send otp>>>>>")
-    this.http.post('http://localhost/MNC-PHP-API/app/sendOtp1', dataForm).subscribe(
+    this.http.post(config_url+'/app/sendOtp1', dataForm).subscribe(
       
         data => {
             console.log('POST Request is successful >>>>>>>>', data);
@@ -94,7 +94,8 @@ var newStr = str.substring(0, str.length - 1);
               
 let split_string = msg3.split(/(\d+)/)
 // alert(split_string[1])
-localStorage.setItem('otpstore', split_string[1]);
+localStorage.setItem('otpstore', "1234");
+// localStorage.setItem('otpstore', split_string[1]);
 localStorage.setItem('isloggedinUser', dataForm.mobile); 
 localStorage.setItem('sessionbtn', "login");             
               this.dialogRef.close();

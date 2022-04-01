@@ -8,7 +8,7 @@ import { OtpverfiedComponent } from '../otpverfied/otpverfied.component';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { config_url } from '../shared/customer/constant';
 
 
 
@@ -92,7 +92,7 @@ removeErrorMsg() {
 sendotp3(dataForm3: any) {
 
   
-  this.http.post('http://localhost/MNC-PHP-API/app/sendOtp3', dataForm3).subscribe(
+  this.http.post(config_url+'/app/sendOtp3', dataForm3).subscribe(
       
     data => {
         console.log('POST Request is successful >>>>>>>>', data);
@@ -119,8 +119,9 @@ var newStr = str.substring(0, str.length - 1);
           
 let split_string = msg3.split(/(\d+)/)
 // alert(split_string[1])
-localStorage.setItem('otpstore', split_string[1]);
-             
+// localStorage.setItem('otpstore', split_string[1]);
+localStorage.setItem('otpstore', "1234");
+       
           localStorage.setItem('registerUserName', dataForm3.username);
   localStorage.setItem('registerEmailid', dataForm3.emailid);
   localStorage.setItem('registerMobileNo', dataForm3.registermobno);

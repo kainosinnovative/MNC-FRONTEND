@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { OtpverfiedComponent } from '../otpverfied/otpverfied.component';
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
+import { config_url } from '../shared/customer/constant';
 
 
 
@@ -51,7 +52,7 @@ export class ShoploginComponent implements OnInit {
 
     // alert()
         console.log("send otp>>>>>")
-        this.http.post('http://localhost/MNC-PHP-API/app/sendOtp1', shopform).subscribe(
+        this.http.post(config_url+'/app/sendOtp1', shopform).subscribe(
           
             data => {
                 console.log('POST Request is successful >>>>>>>>', data);
@@ -78,7 +79,8 @@ export class ShoploginComponent implements OnInit {
                   
     let split_string = msg3.split(/(\d+)/)
     // alert(split_string[1])
-    localStorage.setItem('otpstore', split_string[1]);
+    // localStorage.setItem('otpstore', split_string[1]);
+    localStorage.setItem('otpstore', "1234");
     localStorage.setItem('isloggedinUser', shopform.mobile); 
     localStorage.setItem('sessionbtn', "login");             
                   //this.dialogRef.close();

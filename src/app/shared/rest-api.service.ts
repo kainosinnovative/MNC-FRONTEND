@@ -14,7 +14,7 @@ import { contactdetails } from '../shared/customer/customer';
 providedIn: 'root'
 })
 export class RestApiService {
-apiURL = 'http://localhost/MNC-PHP-API';
+apiURL = 'https://kainosinnovative.com/MNC-PHP-API';
 constructor(private http:HttpClient) {}
 headers = new HttpHeaders().set('Content-Type', 'application/text');
 // httpOptions = {

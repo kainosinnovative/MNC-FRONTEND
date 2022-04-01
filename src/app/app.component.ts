@@ -21,7 +21,7 @@ import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.co
 })
 
 export class Service {
-  apiURL = 'http://localhost/MNC-PHP-API';
+  apiURL = 'https://kainosinnovative.com/MNC-PHP-API';
   constructor(private http: HttpClient) { }
 
   opts = [];
