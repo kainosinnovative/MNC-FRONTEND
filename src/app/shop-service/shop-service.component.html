@@ -57,8 +57,9 @@
 
                                     </td>
                 <td>  <input id="model_{{service.service_id}}_{{i}}" type="number" value="{{service.model_id}}"  style="width: 60px;" hidden> <input id="modelname_{{service.service_id}}_{{i}}" type="text" value="{{service.model_name}}"  style="width: 150px;border:none;text-align: center;background-color: #fff;" readonly></td>
-                <td> <input id="amount_{{service.service_id}}_{{i}}" type="number" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
-                <p id="validateamount_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
+                <td> <input id="amount_{{service.service_id}}_{{i}}"   type="number" min="0" value="{{service.actual_amount}}" (keyup)="removevalidateMsg(service.service_id)" style="width: 60px;">
+                  <p id="validateamount_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the Amount</p>
+                  <p id="validateamount1_{{service.service_id}}_{{i}}" style="color: red;display: none;font-size:10px;"> Enter the valided service Amount</p>
                 </td>
 
 
