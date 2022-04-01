@@ -106,7 +106,7 @@
                 <div class="form-group">
                     <label class="customerProfileLbl">Mobile Number<span class="requiredfield">  *</span></label>
                     <p class="labelFieldSpace" style="display: none;"></p>
-                     <input type="type"   placeholder="" formControlName="mobileno"  [(ngModel)]="CustomerDataById1.mobileno">
+                     <input type="type" style="width: 100px;"  placeholder="" formControlName="mobileno"  [(ngModel)]="CustomerDataById1.mobileno">
                     <div *ngIf="profileform.controls['mobileno'].touched && profileform.controls['mobileno'].invalid ">
 
                         <div *ngIf="profileform.controls['mobileno'].errors" style="color: red;">
@@ -127,7 +127,7 @@
                         <div class="form-group">
                         <label class="customerProfileLbl">Date of Birth </label>
                         <p class="labelFieldSpace" style="display: none;"></p>
-                        <input type="date"   class=" " style="width:150px" [(ngModel)]="CustomerDataById1.dob" placeholder="" formControlName="dob">
+                        <input type="date"  class="form-control page.pdf span.date-toggle "  style="width: 119px !important;padding-right: 0px;border-radius: 2px !important;" [(ngModel)]="CustomerDataById1.dob" placeholder="" formControlName="dob">
                         <!-- <div *ngIf="profileform.controls['dob'].touched && profileform.controls['dob'].invalid ">
 
                             <div *ngIf="profileform.controls['dob'].errors" style="color: red;">
@@ -140,6 +140,8 @@
                           </div> -->
 
                         </div>
+
+                        
                         <br>
 
                         <div class="form-group">
@@ -209,7 +211,7 @@
                         <div class="form-group">
                             <label class="customerProfileLbl">State<span class="requiredfield">  *</span></label>
                             <p class="labelFieldSpace" style="display: none;"></p>
-                             <select  placeholder=""   class=" selectoption" formControlName="state" name="" [(ngModel)]="CustomerDataById1.state">
+                             <select  placeholder=""   class=" selectoption" formControlName="state" style="width: 170px !important; height: 28px;" name="" [(ngModel)]="CustomerDataById1.state">
                                  <option value="">--Select State---</option>
                                  <option *ngFor="let statetypes of statedata" [value]="statetypes.state_id ">
                                     {{statetypes.name}}
@@ -231,7 +233,7 @@
                             <div class="form-group">
                                 <label class="customerProfileLbl">City<span class="requiredfield">  *</span></label>
                                 <p class="labelFieldSpace" style="display: none;"></p>
-                                <select  placeholder=""  class="city  citycls" formControlName="city"   [(ngModel)]="CustomerDataById1.city">
+                                <select  placeholder=""  class="city  citycls" formControlName="city"  style="width: 174px;height: 28px;" [(ngModel)]="CustomerDataById1.city">
                                     <option value="">--Select City--</option>
                                    <option *ngFor="let citylist of citydata" [value]="citylist.city_id">
 
@@ -256,7 +258,7 @@
                             <div class="form-group form-inline">
                                 <label class="customerProfileLbl">Zipcode<span class="requiredfield">  *</span></label>
                                 <p class="labelFieldSpace" style="display: none;"></p>
-                                <input type="text" class="" placeholder="" formControlName="zipcode" minLength="5" maxLength="6"  pattern="zipPattern"  [(ngModel)]="CustomerDataById1.zipcode">
+                                <input type="text" style="width: 87px;" placeholder="" formControlName="zipcode" minLength="5" maxLength="6"  pattern="zipPattern"  [(ngModel)]="CustomerDataById1.zipcode">
                                 <div *ngIf="profileform.controls['zipcode'].touched && profileform.controls['zipcode'].invalid ">
 
                                     <div *ngIf="profileform.controls['zipcode'].errors" style="color: red;">

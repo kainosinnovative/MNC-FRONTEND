@@ -236,6 +236,7 @@ export class ShopServiceComponent implements  OnInit{
 
       (<HTMLInputElement>document.getElementById(validateoffer2)).style.display ="block";
     }
+    
   else  if(Number(offerpercentage) != 0 && fromdate !="" && todate !="" ) {
 
                   if(todate<fromdate)
